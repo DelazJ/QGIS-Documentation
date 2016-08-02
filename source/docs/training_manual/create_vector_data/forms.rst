@@ -55,14 +55,14 @@ If you are in edit mode, you can use this form to edit a feature's attributes.
 .. image:: /static/training_manual/create_vector_data/main_street_selected.png
    :align: center
 
-* Edit its :guilabel:`highway` value to be :kbd:`secondary`.
+* Edit its :guilabel:`highway` value to be ``secondary``.
 * Save your edits.
 * Exit edit mode.
 * Open the :guilabel:`Attribute Table` and note that the value has been updated
   in the attributes table and therefore in the source data.
 
 .. Note:: If you're using the default dataset, you'll find that there is more
-  than one road on this map called :kbd:`Voortrek Street`.
+  than one road on this map called ``Voortrek Street``.
 
 |moderate| |FA| Setting Form Field Types
 -------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ allow you to edit data in various different ways.
 * Click on the same main road you chose earlier.
 
 You'll now see that the :guilabel:`man_made` attribute has a checkbox next to it
-denoting :kbd:`True` (checked) or :kbd:`False` (unchecked).
+denoting ``True`` (checked) or ``False`` (unchecked).
 
 .. _backlink-create-vector-forms-1:
 
@@ -106,7 +106,7 @@ Set a more appropriate form widget for the :guilabel:`highway` field.
 
 You can also design your own custom form completely from scratch.
 
-* Create a simple point layer named :kbd:`test-data` with two attributes:
+* Create a simple point layer named ``test-data`` with two attributes:
 
   * Name (text)
   * Age (text)
@@ -137,7 +137,7 @@ another OS. In Ubuntu, do the following in the terminal:
   this process specifically requires Qt4 and is not necessarily compatible with
   Qt5.
 
-:kbd:`sudo apt-get install qt4-designer`
+``sudo apt-get install qt4-designer``
 
 ... and it should install automatically. Otherwise, look for it in the
 *Software Center*.
@@ -159,18 +159,18 @@ another OS. In Ubuntu, do the following in the terminal:
 .. image:: /static/training_manual/create_vector_data/qt4_line_edit.png
    :align: center
 
-* Set its name to :kbd:`Name`.
-* Using the same approach, create a new spinbox and set its name to :kbd:`Age`.
-* Add a :guilabel:`Label` with the text :kbd:`Add a New Person` in a bold font
+* Set its name to ``Name``.
+* Using the same approach, create a new spinbox and set its name to ``Age``.
+* Add a :guilabel:`Label` with the text ``Add a New Person`` in a bold font
   (look in the object *properties* to find out how to set this). Alternatively,
   you may want to set the title of the dialog itself (rather than adding a
   label).
 * Click anywhere in your dialog.
 * Find the :guilabel:`Lay Out Vertically` button (in a toolbar along the top
   edge of the screen, by default). This lays out your dialog automatically.
-* Set the dialog's maximum size (in its properties) to :kbd:`200` (width) by
-  :kbd:`100` (height).
-* Save your new form as :kbd:`exercise_data/forms/add_people.ui`.
+* Set the dialog's maximum size (in its properties) to ``200`` (width) by
+  ``100`` (height).
+* Save your new form as :file:`exercise_data/forms/add_people.ui`.
 * When it's done saving, you can close the *Qt4 Designer* program.
 
 |hard| |FA| Associating the Form with Your Layer
@@ -182,7 +182,7 @@ another OS. In Ubuntu, do the following in the terminal:
   dialog.
 * In the :guilabel:`Attribute editor layout` dropdown, select
   :guilabel:`Provide ui-file`.
-* Click the ellipsis button and choose the :kbd:`add_people.ui` file you just
+* Click the ellipsis button and choose the :file:`add_people.ui` file you just
   created:
 
 .. image:: /static/training_manual/create_vector_data/provide_ui_file.png
