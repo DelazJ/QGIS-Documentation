@@ -34,11 +34,11 @@ significance, area boundaries (such as nature reserves or farms) and surface
 water, such as streams and rivers.
 
 * Open a new QGIS project
-* In the :guilabel:`Vector` menu dropdown, select
-  :guilabel:`OpenStreetMap --> Download Data`. You can then manually enter the
+* In the :menuselection:`Vector` menu dropdown, select
+  :menuselection:`OpenStreetMap --> Download Data`. You can then manually enter the
   co-ordinates of the region you wish to use, or you can use an existing layer
-  to set the co-ordinates.
-* Choose a location to save the resulting .osm file and click :guilabel:`Ok`:
+  to set the coordinates.
+* Choose a location to save the resulting ``.osm`` file and click :guilabel:`OK`:
 
 .. _figure_set_osm_region:
 
@@ -49,7 +49,7 @@ water, such as streams and rivers.
   You may need to select :guilabel:`All files` in the browser window.
   Alternatively, you can drag and drop the file into the QGIS window.
 * In the dialog which opens, select all the layers, *except* the
-  :kbd:`other_relations` and :kbd:`multilinestrings` layer:
+  :file:`other_relations` and :file:`multilinestrings` layers:
 
 .. _figure_select_osm_layers:
 
@@ -68,7 +68,7 @@ vector data).
 We need to extract the useful data from these layers, rename them
 and create corresponding shape files:
 
-* First, double-click the :kbd:`multipolygons` layer to open the
+* First, double-click the :file:`multipolygons` layer to open the
   :guilabel:`Layer properties` dialog.
 * In the :guilabel:`General` tab, click :guilabel:`Query Builder` to open the
   :guilabel:`Query builder` window.
@@ -76,19 +76,19 @@ and create corresponding shape files:
 This layer contains three fields whose data we will need to extract for use
 throughout the Training Manual:
 
-* :kbd:`building`
-* :kbd:`natural` (specifically, water)
-* :kbd:`landuse`
+* ``building``
+* ``natural`` (specifically, water)
+* ``landuse``
 
 You can sample the data your region contains in order to see what kind of
-results your region will yield. If you find that "landuse" returns no results,
+results your region will yield. If you find that ``landuse`` returns no results,
 then feel free to exclude it.
 
 You'll need to write filter expressions for each field to extract the data we
-need. We'll use the "building" field as an example here:
+need. We'll use the ``building`` field as an example here:
 
 * Enter the following expression into the text area:
-  :kbd:`building != "NULL"` and click :guilabel:`Test` to see how many results
+  ``building != "NULL"`` and click :guilabel:`Test` to see how many results
   the query will return. If the number of results is small, you may wish to
   have a look at the layer's :guilabel:`Attribute Table` to see what data OSM
   has returned for your region:
@@ -104,38 +104,39 @@ course:
 
 * Right-click the :guilabel:`multipolygons` layer and select
   :guilabel:`Save As...`
-* Make sure the file type is :kbd:`ESRI Shapefile` and save the file in your
-  new :kbd:`exercise_data` directory, under a directory called "epsg4326".
+* Make sure the file type is ``ESRI Shapefile`` and save the file in your
+  new :file:`exercise_data` directory, under a directory called "epsg4326".
+  Name it :file:`buildings`.
 * Make sure :menuselection:`No Symbology` is selected (we'll add symbology as
   part of the course later on).
 * You can also select :guilabel:`Add saved file to map`.
 
-Once the :guilabel:`buildings` layer has been added to the map, you can repeat
-the process for the :kbd:`natural` and :kbd:`landuse` fields using the following
+Once the :file:`buildings` layer has been added to the map, you can repeat
+the process for the ``natural`` and ``landuse`` fields using the following
 expressions:
 
 .. note:: Make sure you clear the previous filter (via the
    :guilabel:`Layer properties` dialog) from the
-   :guilabel:`multipolygons` layer before proceeding with the next filter
+   :file:`multipolygons` layer before proceeding with the next filter
    expression!
 
-* :kbd:`natural`: "natural = 'water'"
-* :kbd:`landuse`: "landuse != 'NULL'"
+* ``natural``: "natural = 'water'"
+* ``landuse``: "landuse != 'NULL'"
 
 Each resulting data set should be saved in the "epsg4326" directory in your new
-:kbd:`exercise_data` directory (i.e. "water", "landuse").
+:file:`exercise_data` directory (i.e. :file:`water`, :file:`landuse`).
 
-You should then extract and save the following fields from the :kbd:`lines` and
-:kbd:`points` layers to their corresponding directories:
+You should then extract and save the following fields from the :file:`lines` and
+:file:`points` layers to their corresponding directories:
 
-* :kbd:`lines`:
-  "highway != 'NULL'" to :kbd:`roads`, and
-  "waterway != 'NULL'" to :kbd:`rivers`
-* :kbd:`points`:
-  "place != 'NULL'" to :kbd:`places`
+* :file:`lines`:
+  "highway != 'NULL'" to :file:`roads`, and
+  "waterway != 'NULL'" to :file:`rivers`
+* :file:`points`:
+  "place != 'NULL'" to :file:`places`
 
 Once you have finished extracting the above data, you can remove the
-:guilabel:`multipolygons`, :guilabel:`lines` and :guilabel:`points` layers.
+:file:`multipolygons`, :file:`lines` and :file:`points` layers.
 
 You should now have a map which looks something like this (the symbology will
 certainly be very different, but that is fine):
@@ -146,14 +147,14 @@ certainly be very different, but that is fine):
 The important thing is that you have 6 layers matching those shown above and
 that all those layers have some data.
 
-The last step is to create a spatiallite file from the :kbd:`landuse` layer for
+The last step is to create a spatiallite file from the :file:`landuse` layer for
 use during the course:
 
-* Right-click the :kbd:`landuse` layer and select :menuselection:`Save as...`
-* Select :menuselection:`SpatialLite` as the format and save the file as
-  :kbd:`landuse` under the "epsg4326" directory.
-* Click :menuselection:`Ok`.
-* Delete the :kbd:`landuse.shp` and its related files (if created).
+* Right-click the :file:`landuse` layer and select :menuselection:`Save as...`
+* Select :menuselection:`SpatiaLite` as the format and save the file as
+  :file:`landuse` under the :file:`epsg4326` directory.
+* Click :guilabel:`Ok`.
+* Delete the :file:`landuse.shp` and its related files (if created).
 
 
 |hard| |TY| Create SRTM DEM tiff Files
@@ -199,18 +200,18 @@ For reference, the images in the example data are:
 --------------------------------------------------------------------------------
 
 Having created your localised dataset, the final step is to replace the tokens
-in the :kbd:`conf.py` file so that the appropriate names will appear in your
+in the :file:`conf.py` file so that the appropriate names will appear in your
 localised version of the Training Manual.
 
 The tokens you need to replace are as follows:
 
-* :kbd:`majorUrbanName`: this defaults to "Swellendam". Replace with the name of
+* ``majorUrbanName``: this defaults to "Swellendam". Replace with the name of
   the major town in your region.
-* :kbd:`schoolAreaType1`: this defaults to "athletics field". Replace with the
+* ``schoolAreaType1``: this defaults to "athletics field". Replace with the
   name of the largest school area type in your region.
-* :kbd:`largeLandUseArea`: this defaults to "Bontebok National Park". Replace
+* ``largeLandUseArea``: this defaults to "Bontebok National Park". Replace
   with the name of a large landuse polygon in your region.
-* :kbd:`srtmFileName`: this defaults to :kbd:`srtm_41_19.tif`. Replace this with
+* ``srtmFileName``: this defaults to :file:`srtm_41_19.tif`. Replace this with
   the filename of your SRTM DEM file.
-* :kbd:`localCRS`: this defaults to :kbd:`WGS 84 / UTM 34S`. You should replace
+* ``localCRS``: this defaults to ``WGS 84 / UTM 34S``. You should replace
   this with the correct CRS for your region.
