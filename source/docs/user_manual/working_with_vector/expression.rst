@@ -122,6 +122,7 @@ This group contains operators (e.g., +, -, \*).
 Note that for most of the mathematical functions below,
 if one of the inputs is NULL then the result is NULL.
 
+.. tabularcolumns:: |l|l|
 
 =========================== ===================================================
  Function                    Description
@@ -194,6 +195,8 @@ Conditionals
 
 This group contains functions to handle conditional checks in expressions.
 
+.. tabularcolumns:: |l|l|
+
 ===================================== =========================================
  Function                              Description
 ===================================== =========================================
@@ -222,6 +225,8 @@ Mathematical Functions
 -----------------------
 
 This group contains math functions (e.g., square root, sin and cos).
+
+.. tabularcolumns:: |l|l|
 
 =================  ==========================================================
  Function           Description
@@ -270,6 +275,8 @@ Aggregates
 ----------
 
 This group contains functions which aggregate values over layers and fields.
+
+.. tabularcolumns:: |l|l|
 
 ====================== =======================================================
  Function               Description
@@ -342,6 +349,8 @@ Color Functions
 
 This group contains functions for manipulating colors.
 
+.. tabularcolumns:: |l|l|
+
 ================== ==========================================================
  Function           Description
 ================== ==========================================================
@@ -382,6 +391,8 @@ Conversions
 This group contains functions to convert one data type to another
 (e.g., string to integer, integer to string).
 
+.. tabularcolumns:: |l|l|
+
 ==================  ========================================================
  Function            Description
 ==================  ========================================================
@@ -407,6 +418,8 @@ Date and Time Functions
 ------------------------
 
 This group contains functions for handling date and time data.
+
+.. tabularcolumns:: |l|l|
 
 ==============  ==============================================================
  Function        Description
@@ -515,6 +528,8 @@ Fuzzy Matching Functions
 
 This group contains functions for fuzzy comparisons between values.
 
+.. tabularcolumns:: |l|l|
+
 =========================== =================================================
  Function                    Description
 =========================== =================================================
@@ -536,6 +551,8 @@ General Functions
 
 This group  contains general assorted functions.
 
+.. tabularcolumns:: |l|l|
+
 ====================  =======================================================
  Function              Description
 ====================  =======================================================
@@ -554,6 +571,8 @@ Geometry Functions
 ------------------
 
 This group contains functions that operate on geometry objects (e.g., length, area).
+
+.. tabularcolumns:: |l|l|
 
 +------------------------+---------------------------------------------------+
 | Function               | Description                                       |
@@ -837,6 +856,8 @@ Record Functions
 
 This group contains functions that operate on record identifiers.
 
+.. tabularcolumns:: |l|l|
+
 ==================== =========================================================
  Function             Description
 ==================== =========================================================
@@ -876,6 +897,8 @@ String Functions
 
 This group contains functions that operate on strings
 (e.g., that replace, convert to upper case).
+
+.. tabularcolumns:: |l|l|
 
 =====================  ======================================================
  Function               Description
@@ -942,6 +965,8 @@ It means that some functions may not be available according to the context:
 
 To use these functions in an expression, they should be preceded by @ character
 (e.g, @row_number). Are concerned:
+
+.. tabularcolumns:: |l|l|
 
 ======================= =======================================================
  Function                Description
