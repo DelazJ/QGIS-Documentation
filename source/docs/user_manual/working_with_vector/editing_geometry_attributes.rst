@@ -215,6 +215,7 @@ digitizing toolbar, described in section :ref:`sec_advanced_edit`. You can
 select and unselect both under :menuselection:`View --> Toolbars -->`.
 Using the basic digitizing tools, you can perform the following functions:
 
+\
 
 .. _table_editing:
 
