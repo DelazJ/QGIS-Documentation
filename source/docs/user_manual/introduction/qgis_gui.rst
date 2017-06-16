@@ -38,7 +38,7 @@ The QGIS GUI is divided into five components:
 #. Menu Bar
 #. Toolbars
 #. Panels
-#. Map View
+#. Map Canvas
 #. Status Bar
 
 These five components of the QGIS interface are described in more detail in
@@ -542,13 +542,13 @@ Below are listed default panels provided by QGIS:
 * the :ref:`Processing Toolbox <label_processing>`
 
 
-.. index:: Map view
+.. index:: Map view, Map canvas
 .. _`label_mapview`:
 
-Map View
-========
+Map Canvas
+==========
 
-Also called **Map canvas**, this is the "business end" of QGIS ---
+The **Map canvas** is the "business end" of QGIS ---
 maps are displayed in this area. The map displayed in this window
 will depend on the vector and raster layers you have chosen to load.
 
