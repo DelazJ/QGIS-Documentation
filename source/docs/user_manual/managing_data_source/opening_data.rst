@@ -130,11 +130,12 @@ legend and choosing :menuselection:`Properties` from the context menu. See
 section :ref:`vector_style_menu` for more information on setting symbology of
 vector layers.
 
+The Browser toolbar
+-------------------
 
 At the top of the Browser panel, you find some icons that help you to:
 
-* |addLayer| :sup:`Add Selected Layers`: you can also add data into the map
-  canvas by selecting **Add selected layer(s)** from the layer's context menu;
+* |addLayer| :sup:`Add Selected Layers` to the :guilabel:`Layers` panel;
 * |draw| :sup:`Refresh` the browser tree;
 * |filterMap| :sup:`Filter Browser` to search for specific data. Enter a search
   word or wildcard and the browser will filter the tree to only show paths to
@@ -149,18 +150,47 @@ At the top of the Browser panel, you find some icons that help you to:
 
 * |collapseTree| :sup:`Collapse All` the whole tree;
 * |metadata| :sup:`Enable/disable properties widget`: when toggled on,
-  a new widget is added at the bottom of the panel showing, if applicable,
-  metadatas of the selected item.
+  and if the selected item is compatible, a new widget showing some detailed
+  information is added at the bottom of the panel.
+
+  :ref:`information <vectorinformationmenu>`.
+
+The context menu (A COMPLETER)
+----------------
 
 Right-click an item in the browser tree helps you to:
 
-* in case of file or table, display its metadata or open it in your project.
+* in case of a folder:
+
+  * bookmark it into your favorites, at the top of the Browser panel;
+  * display the directory properties and contents (files, subfolders and their
+    characteristics such as size, permissions, owner...);
+  * hide it from the browser tree; hidden folders can be managed from the
+    :menuselection:`Settings --> Options --> Data Sources` tab;
+  * fast scan the directory;
+  * or open the directory in your OS browser application.
+
+* in case of a file:
+
+  * add the selected layer to the canvas;
+  * display its :ref:`properties <vectorinformationmenu>` or open it in your project.
+
   Tables can even be renamed, deleted or truncated;
-* in case of folder, bookmark it into your favourites, hide it from the browser
-  tree. Hidden folders can be managed from the :menuselection:`Settings -->
-  Options --> Data Sources` tab;
+
+
+  .. note::
+
+    :ref:`Metadata properties <vectorinformationmenu>` are only viewable for files
+    that can be read by QGIS.
+
+
+
 * create connection to databases or web servers;
 * refresh, rename or delete schema.
+
+
+
+
 
 You can also import files into databases or copy tables from one schema/database
 to another one with a simple drag-and-drop. There is a second browser panel
