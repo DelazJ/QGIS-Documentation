@@ -1985,6 +1985,24 @@ You can constrain the value to insert in the field. This constraint can be:
   to ensure that the value of the field *col0* has only alphabetical letter.
   A short description can be added to help you remember the constraint.
 
+.. tip:: **Generate serial default values on a field**
+
+   Adding both ``UNIQUE`` and ``NOT NULL`` constraints to an integer field will
+   cause QGIS to automatically populate it with a serial type value whenever a
+   new feature is created. The maximum value of the field is used as starting
+   point of the incrementation process.
+
+.. note:: **Provider-side constraint has precedence on QGIS form's**
+
+   When a (provider side) unique constraint is set on a field and the provider also
+   provides default values, the case the provider default clause takes precedence.
+
+   important check - for provider fields, we CANNOT use auto configured widgets if the field
+   // uses a default value clause - otherwise the widget will obliterate the default value clause
+   // (eg by trying to convert it to a number/date/etc). Instead we have to use a text edit
+   // widget so that the clause remains intact (see PR 3733)
+
+
 Whenever a value is added or edited in a field, it's submitted to the existing
 constraints and:
 
