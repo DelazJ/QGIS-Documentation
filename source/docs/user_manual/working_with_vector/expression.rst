@@ -452,9 +452,11 @@ Fields and Values
 
 Contains a list of fields from the layer.
 
-Double-click a field name to have it added to your expression. You can also
-type the field name (preferably inside double quotes) or its :ref:`alias
-<configure_field>`.
+Double-click a field name to have it added to the expression. If an :ref:`alias
+<configure_field>` is set on the field then it's the alias that will instead be
+added; aliases are a convenient way to make expressions easy to understand.
+You can also simply type the field name or its alias in the text panel,
+(preferably inside double quotes).
 
 To retrieve fields values to use in an expression, select the appropriate field
 and, in the shown widget, choose between **[10 sample]** and **[all unique
