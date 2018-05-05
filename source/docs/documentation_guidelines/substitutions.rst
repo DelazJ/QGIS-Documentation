@@ -382,8 +382,7 @@ Icon                            Substitution                        Icon        
 ==============================  ==================================  ==============================  ==================================
 |fullCumulativeStretch|         ``|fullCumulativeStretch|``         |fullHistogramStretch|          ``|fullHistogramStretch|``
 |showRasterCalculator|          ``|showRasterCalculator|``          |rasterStats|                   ``|rasterStats|``
-|rasterInterpolate|             ``|rasterInterpolate|``             |rasterInfo|                    ``|rasterInfo|``
-|rasterTerrain|                 ``|rasterTerrain|``                 |heatmap|                       ``|heatmap|``
+|rasterInfo|                    ``|rasterInfo|``                    |heatmap|                       ``|heatmap|``
 ==============================  ==================================  ==============================  ==================================
 
 Various Core Plugins
@@ -399,10 +398,8 @@ Icon                            Substitution                        Icon        
 |offlineEditingCopy|            ``|offlineEditingCopy|``            |offlineEditingSync|            ``|offlineEditingSync|``
 |plugin|                        ``|plugin|``                        |interpolation|                 ``|interpolation|``
 |delimitedText|                 ``|delimitedText|``                 \                               \
-|gdalScript|                    ``|gdalScript|``                    |dxf2shpConverter|              ``|dxf2shpConverter|``
-|metasearch|                    ``|metasearch|``
-|geometryChecker|               ``|geometryChecker|``               |geometrySnapper|               ``|geometrySnapper|``
-|topologyChecker|               ``|topologyChecker|``               |oracleRaster|                  ``|oracleRaster|``
+|gdalScript|                    ``|gdalScript|``                    |metasearch|                    ``|metasearch|``
+|geometryChecker|               ``|geometryChecker|``               |topologychecker|               ``|topologychecker|``
 ==============================  ==================================  ==============================  ==================================
 
 Grass integration
@@ -426,6 +423,7 @@ Icon                            Substitution                        Icon        
 |eventBrowser|                  ``|eventBrowser|``                  |eventId|                       ``|eventId|``
 |evisConnect|                   ``|evisConnect|``                   |evisFile|                      ``|evisFile|``
 ==============================  ==================================  ==============================  ==================================
+
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
@@ -634,8 +632,6 @@ Icon                            Substitution                        Icon        
    :width: 1.5em
 .. |duplicateLayout| image:: /static/common/mActionDuplicateLayout.png
    :width: 1.5em
-.. |dxf2shpConverter| image:: /static/common/dxf2shp_converter.png
-   :width: 1.5em
 .. |editCopy| image:: /static/common/mActionEditCopy.png
    :width: 1.5em
 .. |editCut| image:: /static/common/mActionEditCut.png
@@ -709,8 +705,6 @@ Icon                            Substitution                        Icon        
    :width: 2em
 .. |geographic| image:: /static/common/geographic.png
 .. |geometryChecker| image:: /static/common/geometrychecker.png
-   :width: 1.5em
-.. |geometrySnapper| image:: /static/common/geometrysnapper.png
    :width: 1.5em
 .. |georeferencer| image:: /static/common/georeferencer.png
    :width: 1.5em
@@ -889,8 +883,6 @@ Icon                            Substitution                        Icon        
    :width: 1.5em
 .. |options| image:: /static/common/mActionOptions.png
    :width: 1em
-.. |oracleRaster| image:: /static/common/oracleraster.png
-   :width: 1.5em
 .. |osx| image:: /static/common/osx.png
    :width: 1em
 .. |overlay| image:: /static/common/overlay.png
@@ -933,11 +925,7 @@ Icon                            Substitution                        Icon        
    :width: 1.5em
 .. |rasterInfo| image:: /static/common/raster-info.png
    :width: 1.5em
-.. |rasterInterpolate| image:: /static/common/raster-interpolate.png
-   :width: 1.5em
 .. |rasterStats| image:: /static/common/raster-stats.png
-   :width: 1.5em
-.. |rasterTerrain| image:: /static/common/raster_terrain.png
    :width: 1.5em
 .. |redo| image:: /static/common/mActionRedo.png
    :width: 1.5em
