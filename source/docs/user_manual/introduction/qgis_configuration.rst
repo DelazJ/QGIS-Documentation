@@ -740,7 +740,30 @@ General Properties
 
 In the :guilabel:`General` tab, the **general settings** let you:
 
-* give a title to the project beside the project file path
+* give a title to the project beside the project file path. You can also open
+  the folder containing the project file directly;
+* set the :guilabel:`Project home` path ie, a folder containing data and other
+  contents that may be used within the current project. Displayed in the
+  :guilabel:`Browser` panel, it allows the user to quickly ces data of the When not set, it defaults to
+  the project file folder.
+  Project home paths can also be set to relative paths, in which case they will
+  be relative to the project saved location.
+
+The path can be set through the Project Properties dialog, or
+by right-clicking on the Project Home browser item and
+selecting 'set project home'
+  
+This allows the project home path (which is used by the browser
+to create the 'Project Home' item) to be set by users for a
+project, instead of always matching the location where the project
+is saved.
+
+This allows users to set the project home to a folder which contains
+data and other content, and is especially useful for organisations
+where qgis projects are not stored in the root folder of a organisational
+'project'.
+
+
 * choose the color to use for features when they are selected
 * choose the background color: the color to use for the map canvas
 * set whether the path to layers in the project should be saved as absolute
