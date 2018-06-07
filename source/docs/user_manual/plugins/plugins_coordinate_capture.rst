@@ -23,13 +23,13 @@ coordinates on the map canvas for two selected coordinate reference systems (CRS
    right-hand corner of the status bar.
 #. Click on the |checkbox| `Enable on the fly projection` checkbox and select
    a projected coordinate system of your choice (see also :ref:`label_projections`).
-#. Activate the coordinate capture plugin in the Plugin Manager (see
-   :ref:`managing_plugins`) and ensure that the dialog is visible by going to
-   :menuselection:`View --> Panels` and ensuring that |checkbox|
-   :guilabel:`Coordinate Capture` is enabled. The coordinate capture dialog
-   appears as shown in Figure figure_coordinate_capture_. Alternatively,
-   you can also go to :menuselection:`Vector --> Coordinate Capture` and see
-   if |checkbox| :guilabel:`Coordinate Capture` is enabled.
+#. Activate the Coordinate Capture plugin in the Plugin Manager (see
+   :ref:`managing_plugins`).
+#. The coordinate capture dialog appears as shown in Figure figure_coordinate_capture_.
+   Otherwise, you can enable the dialog by going to :menuselection:`View -->
+   Panels` and checking |checkbox| :guilabel:`Coordinate Capture`. Alternatively,
+   you can also go to :menuselection:`Vector -->` and press the :guilabel:`Coordinate
+   Capture` menu.
 #. Click on the |geographic| :sup:`Click to the select the CRS to use for
    coordinate display` icon and select a different CRS from the one you selected
    above.
@@ -39,7 +39,6 @@ coordinates on the map canvas for two selected coordinate reference systems (CRS
 #. To enable mouse coordinate tracking, click the |tracking| :sup:`mouse tracking`
    icon.
 #. You can also copy selected coordinates to the clipboard.
-
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
