@@ -1047,6 +1047,9 @@ apply to each field of the new feature. That value can be:
 * skipped, meaning that the field will be empty,
 * or manually entered, at the bottom of the rows.
 
+.. note:: 
+ If the layer has default values/default value clauses present on fields, then these are
+ used as the initial value for the merged feature
 
 .. index::
    single: Digitizing tools; Merge Attributes
