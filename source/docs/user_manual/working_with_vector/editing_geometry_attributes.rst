@@ -963,7 +963,7 @@ invalid polygon.
 Offset Curves
 -------------
 
-The |offsetCurve| :sup:`Offset Curve` tool creates parallel shifts of line layers.
+The |offsetCurve| :sup:`Offset Curve` tool creates parallel shifts of line layers. // polygons also
 The tool can be applied to the edited layer (the geometries are modified)
 or also to background layers (in which case it creates copies of the lines /
 rings and adds them to the edited layer).
