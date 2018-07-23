@@ -396,7 +396,8 @@ Parameters
   Intersection vector layer
 
 ``Modify current selection by`` [enumeration]
-  How the selection of the algorithm should be managed. You have many options:
+  How the features selection output by the spatial relationship check should
+  be managed. Available options are:
 
   * creating new selection
   * adding to current selection
