@@ -741,7 +741,7 @@ General Properties
 In the :guilabel:`General` tab, the **general settings** let you:
 
 * give a title to the project beside the project file path. You can also open
-  the folder containing the project file directly;
+  in your browser the folder containing the project file;
 * set the :guilabel:`Project home` path ie, a folder containing data and other
   contents that may be used within the current project. Displayed in the
   :guilabel:`Browser` panel, it allows the user to quickly ces data of the When not set, it defaults to
@@ -762,6 +762,16 @@ This allows users to set the project home to a folder which contains
 data and other content, and is especially useful for organisations
 where qgis projects are not stored in the root folder of a organisational
 'project'.
+
+
+
+* define the :guilabel:`Project home` ie, a folder which contains data and
++  other content useful for the project, displayed in the :guilabel:`Browser`
++  panel. If not set, the project folder is used. Customizing the project home
++  is especially useful for organizations where data are not stored in the
++  root folder of an organizational 'project'.
+
+
 
 
 * choose the color to use for features when they are selected
