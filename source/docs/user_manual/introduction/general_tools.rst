@@ -1071,10 +1071,9 @@ QGIS provides four means of measuring geometries:
   Export/Add Geometry Columns`
 
 Measuring works within projected coordinate systems (e.g., UTM) and unprojected
-data. The first three measuring tools behave equally to global project settings:
+data:
 
-* If :guilabel:`"on the fly" CRS transformation` (see :ref:`otf_transformation`)
-  is enabled, the default measurement metric is
+* The default measurement metric is
   - different from most other GIS - ellipsoidal, using the ellipsoid defined in
   :menuselection:`Project --> Properties... --> General`. This is true both
   when geographic and projected coordinate systems are defined for the project.
@@ -1083,15 +1082,10 @@ data. The first three measuring tools behave equally to global project settings:
   (:menuselection:`Project --> Properties... --> CRS`). However,
   with a geographic (= unprojected) CRS defined for the data and project, area and
   distance measurement will be ellipsoidal.
-* If :guilabel:`"on the fly" CRS transformation` is disabled, the measurement
-  metric is planimetric when the project coordinate system is projected and
-  ellipsoidal when the project coordinate system is unprojected / geographic.
+* If the project CRS is set to "No projection (or unknown / non-Earth projection)",
+  the measurement metric is in unknowm units.
 
-However, neither the identify tool nor the field calculator will transform your
-data to the project CRS before measuring. If you want to achieve this, you have
-to use the vector analysis tool: :menuselection:`Vector --> Geometry Tools -->
-Export/Add Geometry Columns`. Here, measurement is by default planimetric except
-if you choose the ellipsoidal measure.
+.. Question: which CRS is taken into account when measuring: layer or project?
 
 Measure length, areas and angles interactive
 ............................................
@@ -1113,8 +1107,8 @@ Properties... --> General` menu.
 
 All measuring modules use the snapping settings from the digitizing module (see
 section :ref:`snapping_tolerance`). So, if you want
-to measure exactly along a line feature, or around a polygon feature, first set
-its layer snapping tolerance. Now, when using the measuring
+to measure exactly along a line feature, or around a polygon feature, first
+enable snapping on the layer. Now, when using the measuring
 tools, each mouse click (within the tolerance setting) will snap to that layer.
 
 .. index::
