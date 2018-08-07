@@ -28,10 +28,10 @@ snapping options:
 .. image:: img/set_snapping_options.png
    :align: center
 
-* Ensure that the box in the :guilabel:`Avoid Int.` column is checked (set to
-  true).
+* Ensure that the box in the :guilabel:`Avoid Intersection` column is checked
+  (set to true).
 * Click :guilabel:`OK` to save your changes and leave the dialog.
-* Enter edit mode with the :guilabel:`landuse` layer selected.
+* Enter edit mode with the :file:`landuse` layer selected.
 * Check under :menuselection:`View --> Toolbars` to make sure that your
   :guilabel:`Advanced Digitizing` toolbar is enabled.
 * Zoom to this area (enable layers and labels if necessary):
@@ -44,7 +44,7 @@ snapping options:
 .. image:: img/new_park_area.png
    :align: center
 
-* When prompted, give it a :guilabel:`OGC_FID` of :kbd:`999`, but feel free to
+* When prompted, give it a :guilabel:`OGC_FID` of ``999``, but feel free to
   leave the other values unchanged.
 
 If you're careful while digitizing and allow the cursor to snap to the vertices
@@ -60,34 +60,35 @@ farm and the existing farms adjacent to it.
 -------------------------------------------------------------------------------
 
 Topology features can sometimes need to be updated. In our example, the
-:guilabel:`landuse` layer has some complex forest areas which have recently been
+:file:`landuse` layer has some complex forest areas which have recently been
 joined to form one area:
 
 .. image:: img/forest_area_example.png
    :align: center
 
 Instead of creating new polygons to join the forest areas, we're going to use
-the :guilabel:`Node Tool` to edit the existing polygons and join them.
+the :guilabel:`Vertex Tool` to edit the existing polygons and join them.
 
-* Enter edit mode, if it isn't active already.
-* Select the :guilabel:`Node Tool`.
-* Pick an area of forest, select a corner and move it to an adjoining corner so
-  two forest sections meet:
+#. Enter edit mode, if it isn't active already.
+#. Select the :guilabel:`Vertex Tool`.
+#. Pick an area of forest, select a corner and move it to an adjoining corner so
+   two forest sections meet:
 
-.. image:: img/corner_selected.png
-   :align: center
+   .. image:: img/corner_selected.png
+      :align: center
 
-* Click and drag the nodes until they snap into place.
+#. Click a vertex, move the mouse over the vertex it should be snapped (should have a particular color, right?)
+   and click again: the two vertices are placed at the same place.
 
-.. image:: img/corner_selected_move.png
-   :align: center
+   .. image:: img/corner_selected_move.png
+      :align: center
 
 The topologically correct border looks like this:
 
 .. image:: img/areas_joined.png
    :align: center
 
-Go ahead and join a few more areas using the :guilabel:`Node Tool`. You can also
+Go ahead and join a few more areas using the :guilabel:`Vertex Tool`. You can also
 use the :guilabel:`Add Feature` tool if it is appropriate. If you are using our
 example data, you should have a forest area looking something like this:
 
@@ -99,25 +100,23 @@ Don't worry if you have joined more, less or different areas of forest.
 |moderate| |FA| Tool: Simplify Feature
 -------------------------------------------------------------------------------
 
-This is the :guilabel:`Simplify Feature` tool:
+This is the :guilabel:`Simplify Feature` tool: |simplifyFeatures|
 
-  |simplifyFeatures|
+#. Click on it to activate it.
+#. Click on one of the areas which you joined using either the
+   :guilabel:`Node Tool` or :guilabel:`Add Feature` tool. You'll see this dialog:
 
-* Click on it to activate it.
-* Click on one of the areas which you joined using either the
-  :guilabel:`Node Tool` or :guilabel:`Add Feature` tool. You'll see this dialog:
+   .. image:: img/simplify_line_dialog.png
+      :align: center
 
-.. image:: img/simplify_line_dialog.png
-   :align: center
+#. Move the slider from side to side and watch what happens:
 
-* Move the slider from side to side and watch what happens:
+   .. image:: img/simplify_line_example.png
+      :align: center
 
-.. image:: img/simplify_line_example.png
-   :align: center
+   This allows you to reduce the amount of nodes in complex features.
 
-This allows you to reduce the amount of nodes in complex features.
-
-* Click :guilabel:`Ok`
+#. Click :guilabel:`Ok`
 
 Notice what the tool does to the topology. The simplified polygon is now no longer
 touching the adjacent polygons as it should. This shows that this tool is
@@ -132,9 +131,7 @@ change.
 |moderate| |TY| Tool: Add Ring
 -------------------------------------------------------------------------------
 
-This is the :guilabel:`Add Ring` tool:
-
- |addRing|
+This is the :guilabel:`Add Ring` tool: |addRing|
 
 It allows you to take a hole out of a feature, as long as the hole is bounded
 on all side by the feature. For example, if you've digitized the outer
@@ -149,9 +146,7 @@ boundaries.
 * Disable snapping for the landuse layer via the dialog you used earlier.
 * Now try using the :guilabel:`Add Ring` tool to create a gap in the
   middle of the |largeLandUseArea|.
-* Delete your new feature by using the :guilabel:`Delete Ring` tool:
-
-  |deleteRing|
+* Delete your new feature by using the :guilabel:`Delete Ring` tool: |deleteRing|
 
 .. Note:: You need to select a corner of the ring in order to delete it.
 
@@ -163,9 +158,7 @@ boundaries.
 |moderate| |TY| Tool: Add Part
 -------------------------------------------------------------------------------
 
-This is the :guilabel:`Add Part` tool:
-
-  |addPart|
+This is the :guilabel:`Add Part` tool: |addPart|
 
 It allows you to create an extra part of the feature, not directly connected to
 the main feature. For example, if you've digitized the boundaries of mainland
@@ -179,9 +172,7 @@ this tool to create them.
 
 * Now try using the :guilabel:`Add Part` tool to add an outlying area to the
   |largeLandUseArea|.
-* Delete your new feature by using the :guilabel:`Delete Part` tool:
-
-  |deletePart|
+* Delete your new feature by using the :guilabel:`Delete Part` tool: |deletePart|
 
 .. Note:: You need to select a corner of the part in order to delete it.
 
@@ -190,9 +181,7 @@ this tool to create them.
 |moderate| |FA| Tool: Reshape Features
 -------------------------------------------------------------------------------
 
-This is the :guilabel:`Reshape Features` tool:
-
-  |reshape|
+This is the :guilabel:`Reshape Features` tool: |reshape|
 
 It can add a bump to an existing feature. With this tool selected:
 
