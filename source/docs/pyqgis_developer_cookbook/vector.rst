@@ -705,7 +705,7 @@ graduatedSymbol    :class:`QgsGraduatedSymbolRenderer`      Renders features usi
 =================  =======================================  ===================================================================
 
 There might be also some custom renderer types, so never make an assumption
-there are just these types. You can query :class:`QgsRendererRegistry`
+there are just these types. You can query the application's :class:`QgsRendererRegistry`
 to find out currently available renderers:
 
 .. code-block:: python
@@ -757,6 +757,8 @@ as in the following code example:
 
     symbol = QgsMarkerSymbol.createSimple({'name': 'square', 'color': 'red'})
     layer.renderer().setSymbol(symbol)
+    # show the change
+    layer.triggerRepaint()
 
 ``name`` indicates the shape of the marker, and can be any of the following:
 
@@ -809,13 +811,15 @@ This can be useful if you want to alter some properties:
 .. code-block:: python
 
     # You can alter a single property...
-    layer.renderer().symbol().symbolLayer(0).setName('square')
+    layer.renderer().symbol().symbolLayer(0).setSize(3)
     # ... but not all properties are accessible from methods,
     # you can also replace the symbol completely:
     props = layer.renderer().symbol().symbolLayer(0).properties()
     props['color'] = 'yellow'
     props['name'] = 'square'
     layer.renderer().setSymbol(QgsMarkerSymbol.createSimple(props))
+    # show the changes
+    layer.triggerRepaint()
 
 
 .. index:: Categorized symbology renderer, Symbology; Categorized symbol renderer
@@ -831,7 +835,7 @@ To get a list of categories
 .. code-block:: python
 
   for cat in renderer.categories():
-      print("%s: %s :: %s" % (cat.value().toString(), cat.label(), str(cat.symbol())))
+      print("%s: %s :: %s" % (cat.value(), cat.label(), str(cat.symbol())))
 
 Where :func:`value` is the value used for discrimination between categories,
 :func:`label` is a text used for category description and :func:`symbol` method
@@ -872,7 +876,7 @@ arrangement)
 
 .. code-block:: python
 
-  from qgis.core import *
+  from qgis.PyQt import QtGui
 
   myVectorLayer = QgsVectorLayer(myVectorPath, myName, 'ogr')
   myTargetField = 'target_field'
@@ -885,7 +889,7 @@ arrangement)
   myColour = QtGui.QColor('#ffee00')
   mySymbol1 = QgsSymbol.defaultSymbol(myVectorLayer.geometryType())
   mySymbol1.setColor(myColour)
-  mySymbol1.setAlpha(myOpacity)
+  mySymbol1.setOpacity(myOpacity)
   myRange1 = QgsRendererRange(myMin, myMax, mySymbol1, myLabel)
   myRangeList.append(myRange1)
   #now make another symbol and range...
@@ -896,15 +900,15 @@ arrangement)
   mySymbol2 = QgsSymbol.defaultSymbol(
        myVectorLayer.geometryType())
   mySymbol2.setColor(myColour)
-  mySymbol2.setAlpha(myOpacity)
-  myRange2 = QgsRendererRange(myMin, myMax, mySymbol2 myLabel)
+  mySymbol2.setOpacity(myOpacity)
+  myRange2 = QgsRendererRange(myMin, myMax, mySymbol2, myLabel)
   myRangeList.append(myRange2)
   myRenderer = QgsGraduatedSymbolRenderer('', myRangeList)
   myRenderer.setMode(QgsGraduatedSymbolRenderer.EqualInterval)
   myRenderer.setClassAttribute(myTargetField)
 
   myVectorLayer.setRenderer(myRenderer)
-  QgsMapLayerRegistry.instance().addMapLayer(myVectorLayer)
+  QgsProject.instance().addMapLayer(myVectorLayer)
 
 
 .. index:: Symbols; Working with
