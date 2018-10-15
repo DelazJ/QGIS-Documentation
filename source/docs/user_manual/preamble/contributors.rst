@@ -75,6 +75,13 @@ and update the whole QGIS documentation.
 | Ramon              | embelding           |                      |                       |                      |
 +--------------------+---------------------+----------------------+-----------------------+----------------------+
 
+Etienne Trimaille
+Nicolas Boisteault
+Ayodele Adeyemo jakob
+Régis Haubourg
+Jakob Miksch
+Matt Walker
+Loïc Bartoletti
 
 .. index:: 
    single: Contributors; Translators
