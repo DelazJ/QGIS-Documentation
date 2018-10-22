@@ -160,16 +160,19 @@ handling cases like this, which we'll cover in a later exercise in this lesson.
 -------------------------------------------------------------------------------
 
 * Return the label and symbol settings to have a point marker and a label offset
-  of :kbd:`2.00mm`. You may like to adjust the styling of the point marker or
+  of ``2.00mm``. You may like to adjust the styling of the point marker or
   labels at this stage.
 
 :ref:`Check your results <label-tool-1>`
 
-* Set the map to the scale :kbd:`1:100000`. You can do this by typing it into
-  the :guilabel:`Scale` box in the :guilabel:`Status Bar`.
-* Modify your labels to be suitable for viewing at this scale.
+**********TO MOVE TO A BETTER PLACE**********
 
-:ref:`Check your results <label-tool-2>`
+  * Set the map to the scale ``1:100000``. You can do this by typing it into
+    the :guilabel:`Scale` box in the :guilabel:`Status Bar`.
+  * Modify your labels to be suitable for viewing at this scale.
+
+  :ref:`Check your results <label-tool-2>`
+**********TO MOVE TO A BETTER PLACE********** end
 
 
 |moderate| |FA| Labeling Lines
@@ -185,55 +188,53 @@ way as the points, your results would look like this:
 We will now reformat the :guilabel:`roads` layer labels so that they are easy to
 understand.
 
-* Hide the :guilabel:`Places` layer so that it doesn't distract you.
-* Activate labels for the :guilabel:`streets` layer as before.
-* Set the font :guilabel:`Size` to :kbd:`10` so that you can see more labels.
-* Zoom in on the |majorUrbanName| town area.
-* In the :guilabel:`Label tool` dialog's :guilabel:`Advanced` tab, choose the
-  following settings:
+#. Hide the :guilabel:`Places` layer so that it doesn't distract you.
+#. Activate labels for the :guilabel:`roads` layer as before.
+#. Set the font :guilabel:`Size` to ``8`` so that you can see more labels.
+#. Zoom in on the |majorUrbanName| town area.
+#. In the :guilabel:`Labels` dialog, choose the following :guilabel:`Placement`
+   settings:
 
-.. image:: img/street_label_settings.png
-   :align: center
+   .. image:: img/street_label_settings.png
+      :align: center
 
-You'll probably find that the text styling has used default values and the
-labels are consequently very hard to read. Set the label text format to have a
-dark-grey or black :kbd:`Color` and a light-yellow :kbd:`buffer`.
+#. You'll probably find that the text styling has used default values and the
+   labels are consequently very hard to read. Set the label text format to have a
+   dark-grey or black :guilabel:`Color` and a light-yellow :guilabel:`buffer`.
 
-The map will look somewhat like this, depending on scale:
+   The map will look somewhat like this, depending on scale:
 
-.. image:: img/street_label_formatted.png
-   :align: center
+   .. image:: img/street_label_formatted.png
+      :align: center
 
-You'll see that some of the road names appear more than once and that's not
-always necessary. To prevent this from happening:
+#. You'll see that some of the road names appear more than once and that's not
+   always necessary. To prevent this from happening:
 
-* In the :guilabel:`Label labelling settings` dialog, choose the
-  :guilabel:`Rendering` option and select the
-  :guilabel:`Merge connected lines to avoid duplicate labels`:
+   #. Choose the |render| :guilabel:`Rendering` option;
+   #. And select the :guilabel:`Merge connected lines to avoid duplicate labels`:
 
-.. image:: img/merge_lines_option.png
-   :align: center
+   .. image:: img/merge_lines_option.png
+      :align: center
 
-* Click :guilabel:`OK`
+#. Click :guilabel:`OK`
 
-Another useful function is to prevent labels being drawn for features too short
-to be of notice.
+Another useful function is to prevent labels being drawn for features too
+short to be of notice.
 
-* In the same :guilabel:`Rendering` panel, set the value of
-  :guilabel:`Suppress labeling of features smaller than ...` to :kbd:`5mm`
-  and note the results when you click :guilabel:`Apply`.
+#. In the same |render| :guilabel:`Rendering` panel, set the value of
+   :guilabel:`Suppress labeling of features smaller than ...` to ``5mm``
+   and note the results when you click :guilabel:`Apply`.
 
-Try out different :guilabel:`Placement` settings as well. As we've seen before,
-the :guilabel:`horizontal` option is not a good idea in this case, so let's
-try the :guilabel:`curved` option instead.
+#. Try out different |labelplacement| :guilabel:`Placement` settings as well.
+   As we've seen before, the :guilabel:`horizontal` option is not a good idea
+   in this case, so let's try the :guilabel:`curved` option instead.
 
-* Select the :guilabel:`Curved` option in the :guilabel:`Placement` panel of
-  the :guilabel:`Layer labeling settings` dialog.
+   Select the :guilabel:`Curved` option in the :guilabel:`Placement` panel of
+   the :guilabel:`Layer labeling settings` dialog.
+   Here's the result:
 
-Here's the result:
-
-.. image:: img/final_street_labels.png
-   :align: center
+   .. image:: img/final_street_labels.png
+      :align: center
 
 As you can see, this hides a lot of the labels that were previously visible,
 because of the difficulty of making some of them follow twisting street lines
@@ -243,27 +244,27 @@ on what you think seems more useful or what looks better.
 |hard| |FA| Data Defined Settings
 -------------------------------------------------------------------------------
 
-* Deactivate labeling for the :guilabel:`Streets` layer.
-* Reactivate labeling for the :guilabel:`Places` layer.
-* Open the attribute table for :guilabel:`Places` via the |openTable| button.
+#. Deactivate labeling for the :guilabel:`Streets` layer.
+#. Reactivate labeling for the :guilabel:`Places` layer.
+#. Open the attribute table for :guilabel:`Places` via the |openTable| button.
 
-It has one fields which is of interest to us now: :kbd:`place` which defines the
-type of urban area for each object. We can use this data to influence the label
-styles.
+   It has one fields which is of interest to us now: :kbd:`place` which defines the
+   type of urban area for each object. We can use this data to influence the label
+   styles.
 
-* Navigate to the :guilabel:`Text` panel in the :guilabel:`places`
-  :guilabel:`Labels` panel.
-* In the :guilabel:`Italic` dropdown, select :kbd:`Edit...` to open the
-  :guilabel:`Expression string builder`:
+#. Navigate to the |text| :guilabel:`Text` panel in the :guilabel:`places`
+   |labeling| :guilabel:`Labels` panel.
+#. In the :guilabel:`Italic` dropdown, select :guilabel:`Edit...` to open the
+   :guilabel:`Expression string builder`:
 
-.. image:: img/expression_string_builder.png
-   :align: center
+   .. image:: img/expression_string_builder.png
+      :align: center
 
-In the text input, type: :kbd:`"place"  =  'town'` and click :guilabel:`Ok`
-twice:
+#. In the text input, type: ``"place"  =  'town'`` and click :guilabel:`Ok`
+   twice:
 
-.. image:: img/expression_builder_settings.png
-   :align: center
+   .. image:: img/expression_builder_settings.png
+      :align: center
 
 Notice its effects:
 
@@ -281,34 +282,39 @@ Notice its effects:
    following means. If you don't, feel free to leave out this section and come
    back later when you've covered the requisite materials.
 
-* Open the Attribute Table for :guilabel:`places`.
-* Enter edit mode by clicking this button: |toggleEditing|
+#. Open the Attribute Table for :guilabel:`places`.
+#. Enter edit mode by clicking this button: |toggleEditing|
 
-* Add a new column:
+#. Add a new column:
 
-.. image:: img/add_column_button.png
-   :align: center
+   .. image:: img/add_column_button.png
+      :align: center
 
-* Configure it like this:
+#. Configure it like this:
 
-.. image:: img/font_size_column.png
-   :align: center
+   .. image:: img/font_size_column.png
+      :align: center
 
-* Use this to set custom font sizes for each different type of place (i.e.,
-  each key in the :kbd:`PLACE` field).
+#. Use this to set custom font sizes for each different type of place (i.e.,
+   each key in the :kbd:`PLACE` field).
 
 :ref:`Check your results <label-data-defined-1>`
 
 
-|hard| Further Possibilities With Labeling
+|hard| Using the Label toolbar (TODO)
 -------------------------------------------------------------------------------
 
-We can't cover every option in this course, but be aware that the
-:guilabel:`Label tool` has many other useful functions. You can set scale-based
-rendering, alter the rendering priority for labels in a layer, and set every
-label option using layer attributes. You can even set the rotation, XY
-position, and other properties of a label (if you have attribute fields
-allocated for the purpose), then edit these properties using the tools adjacent
+Before being able to access the Label tool, you will need to ensure that it has
+been activated.
+
+#. Go to the menu item :menuselection:`View --> Toolbars`.
+#. Ensure that the :guilabel:`Label` item has a check mark next to it. If it
+   doesn't, click on the :guilabel:`Label` item, and it will be activated.
+#. Click on the :guilabel:`places` layer in the :guilabel:`Layers list`, so that it is highlighted.
+#. Click on the following toolbar button: |labeling| 
+   This gives you the :guilabel:`Layer labeling settings` dialog.
+
+then edit these properties using the tools adjacent
 to the main :guilabel:`Label tool`:
 
 |labeling| |showPinnedLabels| |pinLabels|
@@ -318,7 +324,21 @@ to the main :guilabel:`Label tool`:
 (These tools will be active if the required attribute fields exist and you are
 in edit mode.)
 
+
+
+|hard| Further Possibilities With Labeling
+-------------------------------------------------------------------------------
+
+We can't cover every option in this course, but be aware that the
+:guilabel:`Labels` feature has many other useful functions. You can set scale-based
+rendering, alter the rendering priority for labels in a layer, and set every
+label option using layer attributes. You can even set the rotation, XY
+position, and other properties of a label (if you have attribute fields
+allocated for the purpose).
+
+
 Feel free to explore more possibilities of the labeling system.
+
 
 |IC|
 -------------------------------------------------------------------------------

@@ -218,7 +218,7 @@ of your places have names.
 ...............................................................................
 
 Your map should now show the marker points and the labels should be offset by
-:kbd:`2.0 mm`: The style of the markers and labels should allow both to be
+``2.0 mm``: The style of the markers and labels should allow both to be
 clearly visible on the map:
 
 .. image:: img/customised_labels_one.png
@@ -237,18 +237,18 @@ One possible solution has this final product:
 .. image:: img/possible_outcome_map.png
    :align: center
 
-To arrive at this result:
+To arrive at this result, use:
 
-* Use a font size of :kbd:`10`, a :guilabel:`Label
-  distance` of :kbd:`1,5 mm`, :guilabel:`Symbol width` and
-  :guilabel:`Symbol size` of :kbd:`3.0 mm`.
+* a font size of ``10``;
+* a :guilabel:`Label distance` of ``1,5 mm``;
+* a :guilabel:`Symbol width` and :guilabel:`Symbol size` of ``3.0 mm``.
 * In addition, this example uses the :guilabel:`Wrap label on character`
   option:
 
   .. image:: img/wrap_character_settings.png
      :align: center
 
-* Enter a :kbd:`space` in this field and click :guilabel:`Apply` to achieve the
+* Enter a :kbd:`space` character in this field and click :guilabel:`Apply` to achieve the
   same effect. In our case, some of the place names are very long, resulting in
   names with multiple lines which is not very user friendly. You might find this
   setting to be more appropriate for your map.
