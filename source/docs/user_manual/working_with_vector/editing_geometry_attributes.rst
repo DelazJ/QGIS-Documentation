@@ -963,21 +963,26 @@ invalid polygon.
 Offset Curves
 -------------
 
-The |offsetCurve| :sup:`Offset Curve` tool creates parallel shifts of line layers. // polygons also
-The tool can be applied to the edited layer (the geometries are modified)
+The |offsetCurve| :sup:`Offset Curve` tool creates parallel shifts of line or
+polygon layers.
+//The tool can be applied to the edited layer (the geometries are modified)
 or also to background layers (in which case it creates copies of the lines /
-rings and adds them to the edited layer).
-It is thus ideally suited for the creation of distance line layers.
+rings and adds them to the layer being edited).
+It is thus ideally suited for the creation of distance line layers.//
 The :guilabel:`User Input` dialog pops-up, showing the displacement distance.
 
-To create a shift of a line layer, you must first go into editing mode and activate the
-|offsetCurve| :sup:`Offset Curve` tool. Then click on a feature to shift it.
-Move the mouse and click where wanted or enter the desired distance in the user
-input widget. Your changes may then be saved with the |saveEdits| :sup:`Save Layer Edits` tool.
+To create a shift of a feature geometry:
 
-QGIS options dialog (Digitizing tab then **Curve offset tools** section) allows
-you to configure some parameters like **Join style**, **Quadrant segments**,
-**Miter limit**.
+#. Toggle editing mode and activate the |offsetCurve| :sup:`Offset Curve` tool.
+#. Then click on a feature.
+   An input dialog pops up, allowing you set the :ref:`curve offset parameters
+   <curve_offset_tools>` to apply to the current operation.
+#. Move the mouse and click where appropriate or enter the desired :guilabel:`Offset`
+   distance in the widget and press :kbd:`Enter`.
+#. Your changes may then be saved with the |saveEdits| :sup:`Save Layer Edits` tool.
+
+.. warning:: The :guilabel:`Offset Curve` tool does not preserve the Z or M dimension
+  and, if any, will reset their value to 0.
 
 
 .. index::
