@@ -243,32 +243,32 @@ on what you think seems more useful or what looks better.
 |hard| |FA| Data Defined Settings
 -------------------------------------------------------------------------------
 
-* Deactivate labeling for the :guilabel:`Streets` layer.
-* Reactivate labeling for the :guilabel:`Places` layer.
-* Open the attribute table for :guilabel:`Places` via the |openTable| button.
+#. Deactivate labeling for the :guilabel:`Streets` layer.
+#. Open the attribute table for :guilabel:`Places` layer via the |openTable|
+   button.
 
-It has one fields which is of interest to us now: :kbd:`place` which defines the
-type of urban area for each object. We can use this data to influence the label
-styles.
+   It has one field which is of interest to us now: :guilabel:`place` which
+   defines the type of urban area for each object. We can use this data to
+   influence the label styles.
+#. Reactivate labeling for the :guilabel:`Places` layer, i.e. check the
+   :guilabel:`Single labels` in its |labeling| :guilabel:`Labels` properties tab.
+#. Navigate to the :guilabel:`Text` tab.
+#. In the :guilabel:`Italic` |dataDefined| dropdown, select :guilabel:`Edit...`
+   to open the :guilabel:`Expression string builder`:
 
-* Navigate to the :guilabel:`Text` panel in the :guilabel:`places`
-  :guilabel:`Labels` panel.
-* In the :guilabel:`Italic` dropdown, select :kbd:`Edit...` to open the
-  :guilabel:`Expression string builder`:
+   .. image:: img/expression_string_builder.png
+      :align: center
 
-.. image:: img/expression_string_builder.png
-   :align: center
+#. In the text input, type: ``"place"  =  'town'`` and click :guilabel:`OK`
+   twice:
 
-In the text input, type: :kbd:`"place"  =  'town'` and click :guilabel:`Ok`
-twice:
+   .. image:: img/expression_builder_settings.png
+      :align: center
 
-.. image:: img/expression_builder_settings.png
-   :align: center
+#. Notice its effects:
 
-Notice its effects:
-
-.. image:: img/italic_label_result.png
-   :align: center
+   .. image:: img/italic_label_result.png
+      :align: center
 
 
 .. _backlink-label-data-defined-1:
@@ -281,21 +281,20 @@ Notice its effects:
    following means. If you don't, feel free to leave out this section and come
    back later when you've covered the requisite materials.
 
-* Open the Attribute Table for :guilabel:`places`.
-* Enter edit mode by clicking this button: |toggleEditing|
+#. Open the Attribute Table for :guilabel:`places`.
+#. Enter edit mode by clicking this button: |toggleEditing|
+#. Add a new column:
 
-* Add a new column:
+   .. image:: img/add_column_button.png
+      :align: center
 
-.. image:: img/add_column_button.png
-   :align: center
+#. Configure it like this:
 
-* Configure it like this:
+   .. image:: img/font_size_column.png
+      :align: center
 
-.. image:: img/font_size_column.png
-   :align: center
-
-* Use this to set custom font sizes for each different type of place (i.e.,
-  each key in the :kbd:`PLACE` field).
+#. Use this to set custom font sizes for each different type of place (i.e.,
+   each key in the :kbd:`PLACE` field).
 
 :ref:`Check your results <label-data-defined-1>`
 
