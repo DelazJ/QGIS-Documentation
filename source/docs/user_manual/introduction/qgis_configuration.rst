@@ -505,6 +505,8 @@ This tab helps you configure general settings when :ref:`editing vector layer
   transparent circle' or 'None')
 * Define vertex :guilabel:`Marker size`
 
+.. _curve_offset_tools:
+
 **Curve offset tool**
 
 The next 3 options refer to the |offsetCurve| :sup:`Offset Curve` tool in
@@ -512,7 +514,7 @@ The next 3 options refer to the |offsetCurve| :sup:`Offset Curve` tool in
 influence the shape of the line offset. These options are possible starting
 from GEOS 3.3.
 
-* :guilabel:`Join style`: 'Round', 'Mitre' or 'Bevel'
+* :guilabel:`Join style`: 'Round', 'Miter' or 'Bevel'
 * :guilabel:`Quadrant segments`
 * :guilabel:`Miter limit`
 
