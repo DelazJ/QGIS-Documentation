@@ -1863,6 +1863,7 @@ Common widgets
 In QGIS, there are some options you'll often have to work with. For
 convenience, QGIS provides you with special widgets that are presented below.
 
+
 .. index:: Colors
 .. _color-selector:
 
@@ -2094,6 +2095,22 @@ screen resolution, paper size, or the terrain). Available units are:
      :align: center
 
      Adjust scaling range dialog  
+
+
+.. index:: Scale
+.. _scale_selector:
+
+Scale Selector
+--------------
+
+
+
+.. _figure_scale_selector:
+
+.. figure:: img/options_variables.png
+   :align: center
+
+   FAKE The Scale Selector widget
 
 
 .. index::
