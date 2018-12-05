@@ -1492,8 +1492,7 @@ The Label Toolbar
 
 The :guilabel:`Label Toolbar` provides some tools to manipulate |labeling|
 :ref:`label <vector_labels_tab>` or |diagram| :ref:`diagram <sec_diagram>`
-properties, but only if the corresponding data-defined option is indicated
-(otherwise, buttons are disabled).
+properties.
 
 .. _figure_labels_tools:
 
