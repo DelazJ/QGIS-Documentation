@@ -38,11 +38,12 @@ In order to display textual information about a layer using its attributes:
    .. image:: img/select_label_with.png
       :align: center
 
-   Depending on your OS, you may not have the default font.
+   Depending on your OS, you may not have the same default options (e.g. font,
+   size). This is not an issue.
 
 #. Click :guilabel:`OK`.
 
-The map should now have labels like this:
+The map should now have labels, like this:
 
 .. image:: img/first_place_names.png
    :align: center
