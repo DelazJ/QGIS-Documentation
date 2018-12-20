@@ -21,51 +21,57 @@ are numerous different landuse areas on the map.
 |basic| |FA| Classifying Nominal Data
 -------------------------------------------------------------------------------
 
-* Open the :guilabel:`Layer Properties` dialog for the :guilabel:`landuse` layer.
-* Go to the :guilabel:`Symbology` tab.
-* Click on the dropdown that says :guilabel:`Single Symbol` and change it to
-  :guilabel:`Categorized`:
+#. Open the :guilabel:`landuse` layer attribute table and observe the data.
+   To differentiate landuse features based on what they are used for, it looks
+   obvious that we'll need the information in the :guilabel:`landuse` field.
+#. Open the :guilabel:`Layer Properties` dialog for the :guilabel:`landuse` layer.
+#. Go to the :guilabel:`Symbology` tab.
+#. Click on the dropdown that says :guilabel:`Single Symbol` and change it to
+   :guilabel:`Categorized`:
 
-.. image:: img/categorised_styles.png
-   :align: center
+   .. image:: img/categorised_styles.png
+      :align: center
 
-* In the new panel, change the :guilabel:`Column` to :guilabel:`landuse`
-  and the :guilabel:`Color ramp` to :guilabel:`Greens`.
-* Click the button labeled :guilabel:`Classify`:
+#. In the new panel, change the :guilabel:`Column` to :guilabel:`landuse`.
+#. Click the button labeled :guilabel:`Classify`:
 
-.. image:: img/categorised_style_settings.png
-   :align: center
+   .. image:: img/categorised_style_settings.png
+      :align: center
+   
+   A new entry (called ``class``) is created for each different value in
+   the :guilabel:`landuse` field, with a symbol attached.
+#. Click :guilabel:`OK`.
 
-* Click :guilabel:`OK`.
+   You'll see something like this (applied colors may be different in your
+   case, due to the :guilabel:`Random colors` ramp use):
 
-You'll see something like this:
+   .. image:: img/categorisation_result.png
+      :align: center
 
-.. image:: img/categorisation_result.png
-   :align: center
+#. Click the arrow next to :guilabel:`landuse` in the
+   :guilabel:`Layers` panel to expand or collapse the categories:
 
-* Click the arrow (or plus sign) next to :guilabel:`landuse` in the
-  :guilabel:`Layer list`, you'll see the categories explained:
-
-.. image:: img/categories_explained.png
-   :align: center
+   .. image:: img/categories_explained.png
+      :align: center
 
 Now our landuse polygons are appropriately colored and are classified so that
 areas with the same land use are the same color. You may wish to remove the
 black border from the :guilabel:`landuse` layer:
 
-* Open :guilabel:`Layer Properties`, go to the :guilabel:`Symbology` tab and select
-  :guilabel:`Symbol`.
-* Change the symbol by removing the border from the :guilabel:`Simple Fill`
-  layer and click :guilabel:`OK`.
+#. Go to the landuse layer's :guilabel:`Symbology` tab.
+#. Press the :guilabel:`Change...` button next to the :guilabel:`Symbol` label.
+#. In the :guilabel:`Symbol Selector` dialog, select the :guilabel:`Simple Fill`
+   layer and set its :guilabel:`Stroke style` to :guilabel:`No pen`.
+#. Click :guilabel:`OK`.
 
-You'll see that the landuse polygon outlines have been removed, leaving just our new
-fill colours for each categorisation.
+   You'll see that the landuse polygon outlines have been removed, leaving
+   just our new fill colours for each categorisation.
 
-* If you wish to, you can change the fill color for each landuse area by
-  double-clicking the relevant color block:
+#. If you wish to, you can change the fill color for each landuse area by
+   double-clicking the relevant color block:
 
-.. image:: img/change_layer_color.png
-   :align: center
+   .. image:: img/change_layer_color.png
+      :align: center
 
 Notice that there is one category that's empty:
 
@@ -111,18 +117,24 @@ values. For example: temperature above absolute zero (0 degrees Kelvin),
 distance from a point, the average amount of traffic on a given street per
 month, etc.
 
-In the example above, we used nominal classification to assign each farm to the
-town that it is administered by. Now we will use ratio classification to
+In the example above, we used nominal classification to assign ???each farm to the
+town that it is administered by????WTF????. Now we will use ratio classification to
 classify the farms by area.
 
-* Save your landuse symbology (if you want to keep it) by clicking on the
-  :guilabel:`Save Style ...` button in the :guilabel:`Style` drop-down menu.
+We're going to reclassify the :guilabel:`landuse` layer, so existing classes will
+be lost if not saved. To keep the current classification:
 
-We're going to reclassify the layer, so existing classes will be lost if not
-saved.
+#. Open the layer's properties dialog.
+#. Click on the :guilabel:`Save Style ...` button in the :guilabel:`Style` drop-down
+   menu.
+#. Select :guilabel:`Rename Current...`, enter ``land usage`` and press
+   :guilabel:`OK`.
 
-* Close the :guilabel:`Layer Properties` dialog.
-* Open the Attributes Table for the :guilabel:`landuse` layer.
+   The categorization classes and symbologies are now saved inside the layer's properties.
+#. Click now on the :guilabel:`Add...` entry of the :guilabel:`Style` drop-down
+   menu and create a new style named ``ratio``.
+#. Close the :guilabel:`Layer Properties` dialog.
+#. Open the Attributes Table for the :guilabel:`landuse` layer.
 
 We want to classify the landuse areas by size, but there's a problem: they don't
 have a size field, so we'll have to make one.
