@@ -11,16 +11,63 @@ state of the GIS program, with references to all the layers, their labels,
 colors, etc. So for someone who doesn't have the data or the same GIS program
 (such as QGIS), the map file will be useless. Luckily, QGIS can export its map
 file to a format that anyone's computer can read, as well as printing out the
-map if you have a printer connected. Both exporting and printing is handled via
-the print layout.
+map if you have a printer connected. Both exporting and printing capabilities
+are offered via different ways.
 
 **The goal for this lesson:** To use the QGIS print layout to create a basic
 map with all the required settings.
 
+|basic| |FA| The Map Decoration
+-------------------------------------------------------------------------------
+
+
+::
+
+ Source: © OpenStreetMap (2018)
+ Created with QGIS [% @qgis_release_name %]
+
+.. _backlink-more-decorations:
+
+|basic| |TY| More decorations
+-------------------------------------------------------------------------------
+
+Decorate the map canvas with a scale bar and a north arrow.
+
+:ref:`Check your results <more-decorations>`
+
+
+|basic| |FA| Exporting From The Map Canvas
+-------------------------------------------------------------------------------
+
+Now that your map has elements helping to read it, let's export it to an image
+format, allowing you to share it or reuse it in another software.
+
+#. Click :menuselection:`Project --> Import/Export --> Export Map to Image`.
+
+   .. image:: img/map_canvas_export_dialog.png
+      :align: center
+
+#. Ensure that :guilabel:`(current: map view)` is appended to the :guilabel:`Extent`
+   group label, otherwise press the :menuselection:`Map Canvas Extent` button.
+#. Ensure |checkbox| :guilabel:`Draw active decorations` is checked.
+#. Press :guilabel:`Save`.
+#. Indicate the destination folder, file name and extension in the new dialog
+   and press :guilabel:`OK`.
+
+   A confirmation message appears at the top of the map
+   canvas and helps you quickly reopen the export folder in your file browser.
+
+.. note:: Likewise, you can export your map to :file:`.PDF` format.
+
+We've seen a quick way to export your map with some contextual information over
+the canvas. But what if you'd like to add attribute data, legend, more maps,
+or at a high resolution?
+
+
 |basic| |FA| The Layout Manager
 -------------------------------------------------------------------------------
 
-QGIS allows you to create multiple maps using the same map file. For this
+QGIS allows you to create multiple maps using the same project file. For this
 reason, it has a tool called the :guilabel:`Layout Manager`.
 
 #. Click on the :menuselection:`Project --> Layout Manager...` menu entry to open
@@ -36,6 +83,8 @@ reason, it has a tool called the :guilabel:`Layout Manager`.
    .. image:: img/print_composer_menu.png
       :align: center
 
+|
+
 Whichever route you take to get there, you will now see the :guilabel:`Print
 Layout` window:
 
@@ -46,17 +95,18 @@ Layout` window:
 |basic| |FA| Basic Map Composition
 -------------------------------------------------------------------------------
 
-In this example, the composition was already the way we wanted it. Ensure that
+In this example, the composition is already the way we want it. Ensure that
 yours is as well.
 
 #. In the :guilabel:`Print Layout` window, right-click and select :guilabel:`Page
-   Properties...` to open the corresponding panel;
-#. Check that the values under :menuselection:`Paper Size` are set to the following:
+   Properties...` to open the corresponding panel.
+#. Check that the values under :guilabel:`Paper Size` are set to the following:
 
    * :guilabel:`Size`: ``A4``
    * :guilabel:`Orientation`: ``Landscape``
+
 #. Activate the :guilabel:`Layout` panel, check whether the :guilabel:`Export
-   resolution` is set to ``300 dpi``
+   resolution` is set to ``300 dpi``.
 
 Now you've got the page layout the way you wanted it, but this page is still
 blank. It clearly lacks a map. Let's fix that!
@@ -72,14 +122,14 @@ blank. It clearly lacks a map. Let's fix that!
 
    The map will appear on the page.
 
-#. Move the map by clicking and dragging it around:
+#. Move the map item by clicking and dragging it around:
 
    .. image:: img/move_map.png
       :align: center
 
-#. Resize it by clicking and dragging the boxes in the corners:
-   Be sure to leave margins along the edges, and a space along the top for the
-   title.
+#. Resize it by clicking and dragging the edges or the boxes on them:
+   Be sure to leave margins along the paper edges, and a space along the top
+   for the title.
 
    .. image:: img/resize_map.png
       :align: center
@@ -102,7 +152,7 @@ blank. It clearly lacks a map. Let's fix that!
    where you want it, but it also means that if you zoom in or out, the map will
    be at the wrong resolution and will look ugly or unreadable.
 
-#. Force the map to refresh by clicking this button:
+#. Force the map to refresh by clicking this button: |draw|
 
    .. image:: img/refresh_button.png
       :align: center
@@ -314,6 +364,8 @@ you to practice the techniques you have learned so far.
 .. |alignLeft| image:: /static/common/mActionAlignLeft.png
    :width: 1.5em
 .. |basic| image:: /static/global/basic.png
+.. |draw| image:: /static/common/mActionDraw.png
+   :width: 1.5em
 .. |edit| image:: /static/common/edit.png
    :width: 1.5em
 .. |filePrint| image:: /static/common/mActionFilePrint.png

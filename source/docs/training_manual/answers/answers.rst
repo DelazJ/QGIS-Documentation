@@ -304,6 +304,26 @@ The settings you used might not be the same, but with the values
 :ref:`Back to text <backlink-classification-refine-1>`
 
 
+|RF| *Using Print Layout*
+-------------------------------------------------------------------------------
+
+.. _more-decorations:
+
+|basic| *Decorations*
+...............................................................................
+
+These decoration items are also accessible from the :menuselection:`View -->
+Decorations` menu. Their placement and rendering don't really matter, but the
+results should look more or less like this:
+
+.. image:: img/mapcanvas_decorations_result.png
+   :align: center
+
+|
+
+:ref:`Back to text <backlink-more-decorations>`
+
+
 |RF| *Creating a New Vector Dataset*
 -------------------------------------------------------------------------------
 
