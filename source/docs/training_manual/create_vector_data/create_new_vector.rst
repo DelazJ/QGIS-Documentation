@@ -17,63 +17,74 @@ you'll need to create your own new data.
 
 Before you can add new vector data, you need a vector dataset to add it to. In
 our case, you'll begin by creating new data entirely, rather than editing an
-existing dataset. Therefore, you'll need to define your own new dataset first.
+existing dataset. Therefore, you'll need to define your own new dataset first,
+in a GeoPackage format.
 
-You'll need to open the :guilabel:`New Vector Layer` dialog that will allow you
-to define a new layer.
+#. Select the :menuselection:`Layer --> Create Layer -->` |newGeoPackageLayer|
+   :menuselection:`New GeoPackage Layer...` menu.
+   You'll be presented with the following dialog:
 
-* Navigate to and click on the menu entry :menuselection:`Layer --> New --> New
-  Shapefile Layer`.
+   .. figure:: img/create_vector_layer.png
+      :align: center
 
-You'll be presented with the following dialog:
+#. Click the |browseButton| next to the :guilabel:`Database` field, navigate to
+   the :file:`exercise_data` directory and save as :file:`editing_data.gpkg`
+#. As previoulsy mentioned, a geoPackage file can contain more than one layer.
+   For the next exercise, we're going to be creating items related to school
+   features so we'll call the layer ``school_property``.
 
-.. image:: img/create_vector_layer.png
-   :align: center
+   In the :guilabel:`Table name` text field, replace :guilabel:`editing_data`
+   (by default, QGIS uses the same file name as layer name) with ``school_property``.
 
-It's important to decide which kind of dataset you want at this stage. Each
-different vector layer type is "built differently" in the background, so once
-you've created the layer, you can't change its type.
+   It's important to decide which kind of dataset you want at this stage. Each
+   different vector layer type is "built differently" in the background, so once
+   you've created the layer, you can't change its type.
 
-For the next exercise, we're going to be creating new features which describe
-areas. For such features, you'll need to create a polygon dataset.
+   The new features we want describe areas in the school. For such features,
+   you'll need to create a polygon dataset.
 
-* Click on the :guilabel:`Polygon` radio button:
+#. In the :guilabel:`Geometry type` menu, select |polygonLayer| :guilabel:`Polygon`.
 
-.. image:: img/polygon_selected.png
-   :align: center
+   This will enable some spatial properties in the dialog, but it will mainly
+   cause the correct type of geometry to be used when the vector dataset is created.
+#. Keep unchecked the :guilabel:`Include Z dimension` and :guilabel:`Include M
+   values` radio buttons.
+#. The next field allows you to specify the Coordinate Reference System, or CRS. A
+   CRS specifies how to describe a point on Earth in terms of coordinates, and
+   because there are many different ways to do this, there are many different CRSs.
+   The CRS of this project is ``WGS 84``, so it's already correct by default:
 
-This has no impact on the rest of the dialog, but it will cause the correct
-type of geometry to be used when the vector dataset is created.
+   .. figure:: img/default_options.png
+      :align: center
 
-The next field allows you to specify the Coordinate Reference System, or CRS. A
-CRS specifies how to describe a point on Earth in terms of coordinates, and
-because there are many different ways to do this, there are many different CRSs.
-The CRS of this project is WGS84, so it's already correct by default:
+   By default, a new GeoPackage layer has only one attribute, the :guilabel:`fid`
+   field (which you should see in the :guilabel:`Advanced Options` list). This
+   field has a unique value automatically assigned to each feature you create,
+   helping to identify uniquely each feature in the layer; it's a **primary key**.
 
-.. image:: img/default_crs.png
-   :align: center
+   .. figure:: img/new_layer_advanced_options.png
+      :align: center
 
-Next there is a collection of fields grouped under :guilabel:`New attribute`.
-By default, a new layer has only one attribute, the :kbd:`id` field (which you
-should see in the :guilabel:`Attributes list`) below. However, in order for the
-data you create to be useful, you actually need to say something about the
-features you'll be creating in this new layer. For our current purposes, it
-will be enough to add one field called :kbd:`name`.
+   The :guilabel:`fid` field's values are however not really meaningful for
+   anyone that will pick the data. In order for the data you create to be useful,
+   you actually need to say something about the features you'll be creating in
+   this new layer. This is doable in the collection of fields grouped under
+   :guilabel:`New Field`.
 
-* Replicate the setup below, then click the :guilabel:`Add to attributes list`
-  button:
+   For our current purposes, it will be enough to add one field called ``name``.
 
-.. image:: img/new_attribute.png
-   :align: center
+#. Replicate the setup below, then click the |newAttribute| :guilabel:`Add to
+   Fields List` button:
 
-* Check that your dialog now looks like this:
+   .. figure:: img/new_attribute.png
+      :align: center
 
-.. image:: img/new_attribute_added.png
-   :align: center
+#. Check that your dialog now looks like this:
 
-* Click :guilabel:`OK`. A save dialog will appear.
-* Navigate to the :kbd:`exercise_data` directory.
-* Save your new layer as :kbd:`school_property.shp`.
+   .. figure:: img/new_attribute_added.png
+      :align: center
+
+#. Click :guilabel:`OK`.
 
 The new layer should appear in your :guilabel:`Layers` panel.
 
@@ -96,28 +107,40 @@ or aerial photography.
 For our example, you'll be using the digitizing approach. Sample raster datasets
 are provided, so you'll need to import them as necessary.
 
-* Click on the :guilabel:`Add Raster Layer` button: |addRasterLayer|
+#. Click on the |dataSourceManager| :sup:`Open Data Source Manager` button
+   and enable the |addRasterLayer| :guilabel:`Raster` tab.
+#. Ensure |radioButtonOn| :guilabel:`File` is checked and press |browseButton|
+   to navigate to :file:`exercise_data/raster/`.
+#. Select the file :file:`3420C_2010_327_RGB_LATLNG.tif` and click
+   :guilabel:`Open`.
 
-* Navigate to :kbd:`exercise_data/raster/`.
-* Select the file :kbd:`3420C_2010_327_RGB_LATLNG.tif`.
-* Click :guilabel:`Open`. An image will load into your map.
-* Find the new image in the :guilabel:`Layers` panel.
-* Click and drag it to the bottom of the list so that you can still see your
-  other layers.
-* Find and zoom to this area:
+   .. figure:: img/add_raster_layer.png
+      :align: center
 
-.. image:: img/map_area_zoom.png
-   :align: center
+#. Back to the :guilabel:`Data Source Manager` dialog, press :guilabel:`Add` and
+   then :guilabel:`Close` .
 
-.. note:: If your :guilabel:`buildings` layer symbology is covering part or all of the
-   raster layer, you can temporarily disable the layer by deselecting it in the
-   :guilabel:`Layers panel`. You may also wish to hide the
-   :guilabel:`roads` symbology if you find it distracting.
+   An image will load into your map.
+#. Find the new :guilabel:`3420C_2010_327_RGB_LATLNG` image in the
+   :guilabel:`Layers` panel.
+#. Click and drag it to the bottom of the list so that you can still see your
+   other layers.
+#. Find and zoom to this area:
+
+   .. figure:: img/map_area_zoom.png
+      :align: center
+
+   .. note:: If your :guilabel:`buildings` layer symbology is covering part or
+    all of the raster layer, you can temporarily disable the layer by unchecking
+    it in the :guilabel:`Layers` panel. You may also wish to hide the
+    :guilabel:`roads` symbology if you find it distracting.
 
 You'll be digitizing these three fields:
 
-.. image:: img/field_outlines.png
+.. figure:: img/field_outlines.png
    :align: center
+
+|
 
 In order to begin digitizing, you'll need to enter **edit mode**. GIS software
 commonly requires this to prevent you from accidentally editing or deleting
@@ -125,96 +148,87 @@ important data. Edit mode is switched on or off individually for each layer.
 
 To enter edit mode for the :guilabel:`school_property` layer:
 
-* Click on the layer in the :guilabel:`Layer list` to select it. (Make very
-  sure that the correct layer is selected, otherwise you'll edit the wrong
-  layer!)
-* Click on the :guilabel:`Toggle Editing` button: |edit|
+#. Click on the layer in the :guilabel:`Layers` panel to select it. (Make very
+   sure that the correct layer is selected, otherwise you'll edit the wrong
+   layer!)
+#. Click on the :guilabel:`Toggle Editing` button: |toggleEditing|
 
-If you can't find this button, check that the :guilabel:`Digitizing` toolbar is
-enabled. There should be a check mark next to the :menuselection:`View -->
-Toolbars --> Digitizing` menu entry.
+   If you can't find this button, check that the :guilabel:`Digitizing` toolbar is
+   enabled. There should be a check mark next to the :menuselection:`View -->
+   Toolbars --> Digitizing` menu entry.
 
-As soon as you are in edit mode, you'll see the digitizing tools are now
-active:
+#. As soon as you are in edit mode, some other digitizing tools are set active:
 
-  |capturePolygon| |moveFeature| |vertexToolActiveLayer|
+   |allEdits| |capturePolygon| |vertexTool| |editPaste|
 
-Four other relevant buttons are still inactive, but will become active when we
-start interacting with our new data:
+   Another relevant buttons are still inactive, but will become active when you
+   start interacting with your new data:
 
-  |saveEdits| |deleteSelected| |editCut| |editCopy|
-  |editPaste|
+   |saveEdits| |multiEdit| |deleteSelected| |editCut| |editCopy|
 
-From left to right on the toolbar, they are:
-
-- :guilabel:`Save Edits`: saves changes made to the layer.
-- :guilabel:`Add Feature`: start digitizing a new feature.
-- :guilabel:`Move Feature(s)`: move an entire feature around.
-- :guilabel:`Node Tool`: move only one part of a feature.
-- :guilabel:`Delete Selected`: delete the selected feature.
-- :guilabel:`Cut Features`: cut the selected feature.
-- :guilabel:`Copy Features`: copy the selected feature.
-- :guilabel:`Paste Features`: paste a cut or copied feature back into the map.
+   Move the mouse over each of them to check out their purposes.
 
 You want to add a new feature.
 
-* Click on the :guilabel:`Add Feature` button now to begin digitizing our school
-  fields.
+#. Click on the |capturePolygon| :guilabel:`Add Feature` button now to begin
+   digitizing our school fields.
 
-You'll notice that your mouse cursor has become a crosshair. This allows you to
-more accurately place the points you'll be digitizing. Remember that even as
-you're using the digitizing tool, you can zoom in and out on your map by
-rolling the mouse wheel, and you can pan around by holding down the mouse wheel
-and dragging around in the map.
+   You'll notice that your mouse cursor has become a crosshair. This allows you
+   to more accurately place the points you'll be digitizing. Remember that even
+   as you're using the digitizing tool, you can zoom in and out on your map by
+   rolling the mouse wheel, and you can pan around by holding down the mouse
+   wheel and dragging around in the map.
 
-The first feature you'll be digitizing is the |schoolAreaType1|:
+   The first feature you'll be digitizing is the |schoolAreaType1|:
 
-.. image:: img/school_area_one.png
-   :align: center
+   .. figure:: img/school_area_one.png
+      :align: center
 
-* Start digitizing by clicking on a point somewhere along the edge of the
-  field.
-* Place more points by clicking further along the edge, until the shape you're
-  drawing completely covers the field.
-* After placing your last point, *right-click* to finish drawing the polygon.
-  This will finalize the feature and show you the :guilabel:`Attributes` dialog.
-* Fill in the values as below:
+#. Zoom in at a scale you could well identify the field limits.
+#. Start digitizing by clicking on a point somewhere along the edge of the
+   field.
+#. Place more points by clicking further along the edge, until the shape you're
+   drawing completely covers the field.
 
-.. image:: img/school_area_one_attributes.png
-   :align: center
+   If you've made a mistake while digitizing the feature, press the :kbd:`BackSpace`
+   key to undo your last change(s) and redo the point addition at its best place.
+   You can also finish the feature and fix the mistakes afterwards.
+#. After placing your last point, *right-click* to finish drawing the polygon.
+   This will finalize the feature and show you the :guilabel:`Attributes` dialog.
+#. Fill in the feature's :guilabel:`name` as below:
 
-* Click :guilabel:`OK` and you've created a new feature!
+   .. figure:: img/school_area_one_attributes.png
+      :align: center
 
-Remember, if you've made a mistake while digitizing a feature, you can always
-edit it after you're done creating it. If you've made a mistake, continue
-digitizing until you're done creating the feature as above. Then:
+#. Click :guilabel:`OK` and you've created a new feature!
+#. In order to keep the feature you digitized in the layer, you'd need to save
+   your changes. Remember that the project files saves the layer you use in the
+   project and how they are symbolized and interact with each others but not
+   their contents.
 
-* Select the feature with the :guilabel:`Select Single Feature` tool:
+   With the :guilabel:`school_property` layer selected, press :menuselection:`Layer
+   -->` |saveEdits| :menuselection:`Save Layer Edits`. You can also use the
+   shortcut on the :guilabel:`Digitizing` toolbar.
+#. Open the layer's attribute table; you'll notice that the previous "Autogenerate"
+   mention in the :guilabel:`fid` field has become "1". Remember that this field
+   is of serial type.
 
-.. image:: img/single_feature_select.png
-   :align: center
+   .. figure:: img/school_area_one_table.png
+      :align: center
 
-You can use:
+#. Press |toggleEditing| :sup:`Toggle Editing` button to exit the edit mode.
 
-* the :guilabel:`Move Feature(s)` tool to move the entire feature,
-* the :guilabel:`Node Tool` to move only one point where you may have
-  miss-clicked,
-* :guilabel:`Delete Selected` to get rid of the feature entirely so you can try
-  again, and
-* the :menuselection:`Edit --> Undo` menu item or the :kbd:`Ctrl+Z` keyboard
-  shortcut to undo mistakes.
+.. _backlink-create-vector-digitize-1:
 
 |basic| |TY|
 -------------------------------------------------------------------------------
 
-* Digitize the school itself and the upper field. Use this image to assist you:
+Digitize the school itself and the upper field. Use this image to assist you:
 
-.. image:: img/field_outlines.png
+.. figure:: img/field_outlines.png
    :align: center
 
-Remember that each new feature needs to have a unique :kbd:`id` value!
-
-.. note::  When you're done adding features to a layer, remember to save your
+.. note:: When you're done adding features to a layer, remember to save your
    edits and then exit edit mode.
 
 .. note:: You can style the fill, outline and label placement and formatting
@@ -222,41 +236,43 @@ Remember that each new feature needs to have a unique :kbd:`id` value!
    lessons. In our example, we will use a dashed outline of light purple color
    with no fill.
 
-.. _backlink-create-vector-digitize-1:
+:ref:`Check your results <create-vector-digitize-1>`
 
-|basic| |TY|
+
+.. _backlink-create-vector-digitize-2:
+
+|moderate| |TY|
 -------------------------------------------------------------------------------
 
-* Create a new line feature called :kbd:`routes.shp` with attributes :kbd:`id`
-  and :kbd:`type`. (Use the approach above to guide you.)
-* We're going to digitize two routes which are not already marked on the roads
-  layer; one is a path, the other is a track.
+#. Create a new line layer called :file:`routes.shp` with :guilabel:`id` and
+   :guilabel:`type` attributes. (Use the approach above to guide you.)
+#. We're going to digitize two routes which are not already marked on the 
+   :guilabel:`roads` layer; one is a path, the other is a track.
 
-Our path runs along the southern edge of the suburb of Railton, starting and
-ending at marked roads:
+   * Our path runs along the southern edge of the suburb of Railton, starting
+     and ending at marked roads:
 
-.. image:: img/path_start_end.png
-   :align: center
+     .. figure:: img/path_start_end.png
+        :align: center
 
-Our track is a little further to the south:
+   * Our track is a little further to the south:
 
-.. image:: img/track_start_end.png
-   :align: center
+     .. figure:: img/track_start_end.png
+        :align: center
 
-One at a time, digitize the path and the track on the :guilabel:`routes` layer.
-Try to follow the routes as accurately as possible, using points (left-click) at
-any corners or turns.
+   One at a time, digitize the path and the track on the :guilabel:`routes` layer.
+   Try to follow the routes as accurately as possible, using points (left-click) at
+   any corners or turns.
 
-When creating each route, give them the :kbd:`type` attribute value of
-:kbd:`path` or :kbd:`track`.
+   When creating each route, give them the :guilabel:`type` attribute value of
+   ``path`` or ``track``.
 
 You'll probably find that only the points are marked; use the
 :guilabel:`Layer Properties` dialog to add styling to your routes. Feel free to
 give different styles to the path and track.
 
-Save your edits and toggle :guilabel:`Edit` mode.
 
-:ref:`Check your results <create-vector-digitize-1>`
+:ref:`Check your results <create-vector-digitize-2>`
 
 |IC|
 -------------------------------------------------------------------------------
@@ -292,12 +308,16 @@ be useful.
 .. |WN| replace:: What's Next?
 .. |addRasterLayer| image:: /static/common/mActionAddRasterLayer.png
    :width: 1.5em
+.. |allEdits| image:: /static/common/mActionAllEdits.png
+   :width: 1.5em
 .. |basic| image:: /static/global/basic.png
+.. |browseButton| image:: /static/common/browsebutton.png
+   :width: 2.3em
 .. |capturePolygon| image:: /static/common/mActionCapturePolygon.png
    :width: 1.5em
-.. |deleteSelected| image:: /static/common/mActionDeleteSelected.png
+.. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
    :width: 1.5em
-.. |edit| image:: /static/common/edit.png
+.. |deleteSelected| image:: /static/common/mActionDeleteSelected.png
    :width: 1.5em
 .. |editCopy| image:: /static/common/mActionEditCopy.png
    :width: 1.5em
@@ -305,11 +325,21 @@ be useful.
    :width: 1.5em
 .. |editPaste| image:: /static/common/mActionEditPaste.png
    :width: 1.5em
-.. |moveFeature| image:: /static/common/mActionMoveFeature.png
+.. |moderate| image:: /static/global/moderate.png
+.. |multiEdit| image:: /static/common/mActionMultiEdit.png
    :width: 1.5em
+.. |newAttribute| image:: /static/common/mActionNewAttribute.png
+   :width: 1.5em
+.. |newGeoPackageLayer| image:: /static/common/mActionNewGeoPackageLayer.png
+   :width: 1.5em
+.. |polygonLayer| image:: /static/common/mIconPolygonLayer.png
+   :width: 1.5em
+.. |radioButtonOn| image:: /static/common/radiobuttonon.png
 .. |saveEdits| image:: /static/common/mActionSaveEdits.png
    :width: 1.5em
 .. |schoolAreaType1| replace:: athletics field
+.. |toggleEditing| image:: /static/common/mActionToggleEditing.png
+   :width: 1.5em
 .. |updatedisclaimer| replace:: :disclaimer:`Docs in progress for 'QGIS testing'. Visit https://docs.qgis.org/2.18 for QGIS 2.18 docs and translations.`
-.. |vertexToolActiveLayer| image:: /static/common/mActionVertexToolActiveLayer.png
+.. |vertexTool| image:: /static/common/mActionVertexTool.png
    :width: 1.5em

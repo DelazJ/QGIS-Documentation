@@ -312,13 +312,43 @@ The settings you used might not be the same, but with the values
 |basic| *Digitizing*
 ...............................................................................
 
+The new features are to be added in the same layer as the first one.
+The steps are also the same as in the lesson:
+
+#. Toggle editing the :guilabel:`school_property` layers.
+#. Select the |capturePolygon| :sup:`Add polygon feature` tool and draw each
+   element.
+#. Fill their properties accordingly and |saveEdits| save the edits.
+
 The symbology doesn't matter, but the results should look more or less like
 this:
 
-.. image:: img/routes_layer_result.png
+.. figure:: img/school_property_layer_result.png
    :align: center
 
 :ref:`Back to text <backlink-create-vector-digitize-1>`
+
+
+.. _create-vector-digitize-2:
+
+|moderate| *Digitizing Lines*
+...............................................................................
+
+Did you notice that the layer to create is of ESRI Shapefile format (:file:`routes.shp`)
+and not a GeoPackage? Therefore, you'd need to create a new |lineLayer|
+:guilabel:`Line` layer using the :menuselection:`Layer --> Create Layer -->`
+|newVectorLayer| :menuselection:`New Shapefile Layer...`.
+
+Data creation follows the same rules. A difference is that you use |captureLine|
+tool and the :guilabel:`id` field needs to be manually populated.
+
+The symbology doesn't matter, but the results should look more or less like
+this:
+
+.. figure:: img/routes_layer_result.png
+   :align: center
+
+:ref:`Back to text <backlink-create-vector-digitize-2>`
 
 
 .. _create-vector-topology-1:
@@ -1154,10 +1184,18 @@ As you can see, our constraint allows nulls to be added into the database.
 .. |arrowDown| image:: /static/common/mActionArrowDown.png
    :width: 1.5em
 .. |basic| image:: /static/global/basic.png
+.. |captureLine| image:: /static/common/mActionCaptureLine.png
+   :width: 1.5em
+.. |capturePolygon| image:: /static/common/mActionCapturePolygon.png
+   :width: 1.5em
 .. |hard| image:: /static/global/hard.png
 .. |largeLandUseArea| replace:: Bontebok National Park
+.. |lineLayer| image:: /static/common/mIconLineLayer.png
+   :width: 1.5em
 .. |majorUrbanName| replace:: Swellendam
 .. |moderate| image:: /static/global/moderate.png
+.. |newVectorLayer| image:: /static/common/mActionNewVectorLayer.png
+   :width: 1.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
    :width: 1.5em
 .. |symbology| image:: /static/common/symbology.png
