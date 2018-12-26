@@ -26,29 +26,42 @@ To access the :guilabel:`Layer Properties` dialog:
 
 The vector :guilabel:`Layer Properties` dialog provides the following sections:
 
-* |metadata| :ref:`Information <vectorinformationmenu>`
-* |system| :ref:`Source <vectorsourcemenu>`
-* |symbology| :ref:`Symbology <vector_style_menu>` (also available in the
-  :ref:`Layer styling panel <layer_styling_panel>`)
-* |labeling| :ref:`Labels <vector_labels_tab>` (also available in the
-  :guilabel:`Layer styling` panel)
-* |diagram| :ref:`Diagrams <sec_diagram>`
-* |3d| :guilabel:`3D View` (also available in the :guilabel:`Layer styling` panel)
-* |sourceFields| :ref:`Source Fields <vector_fields_menu>`
-* |formView| :ref:`Attributes Form <vector_attributes_menu>`
-* |join| :ref:`Joins <sec_joins>`
-* |auxiliaryStorage| :ref:`Auxiliary Storage <vector_auxiliary_storage>`
-* |action| :ref:`Actions <actions_menu>`
-* |display| :ref:`Display <maptips>`
-* |rendering| :ref:`Rendering <vectorrenderingmenu>`
-* |expression| :ref:`Variables <vectorvariablesmenu>`
-* |editMetadata| :ref:`Metadata <vectormetadatamenu>`
-* |dependencies| :ref:`Dependencies <vectordependenciesmenu>`
-* |legend| :ref:`Legend <vectorlegendmenu>`
-* |overlay| :ref:`QGIS Server <vectorservermenu>`
-* |digitizing| :ref:`Digitizing <digitizingmenu>`
-* and optionally, new tabs added by :ref:`external plugins <plugins>` you have
-  installed. Those are not presented below.
+.. list-table::
+   :widths: 35 30 35
+   :stub-columns: 0
+
+   *  -  |metadata| :ref:`Information <vectorinformationmenu>`
+      -  |system| :ref:`Source <vectorsourcemenu>`
+      -  |symbology| :ref:`Symbology <vector_style_menu> \*
+
+   *  -  |labeling| :ref:`Labels <vector_labels_tab>` \*
+      -  |diagram| :ref:`Diagrams <sec_diagram>`
+      -  |3d| :guilabel:`3D View` \*
+
+   *  -  |sourceFields| :ref:`Source Fields <vector_fields_menu>`
+      -  |formView| :ref:`Attributes Form <vector_attributes_menu>`
+      -  |join| :ref:`Joins <sec_joins>`
+
+   *  -  |auxiliaryStorage| :ref:`Auxiliary Storage <vector_auxiliary_storage>`
+      -  |action| :ref:`Actions <actions_menu>`
+      -  |display| :ref:`Display <maptips>`
+
+   *  -  |rendering| :ref:`Rendering <vectorrenderingmenu>`
+      -  |expression| :ref:`Variables <vectorvariablesmenu>`
+      -  |editMetadata| :ref:`Metadata <vectormetadatamenu>`
+
+   *  -  |dependencies| :ref:`Dependencies <vectordependenciesmenu>`
+      -  |legend| :ref:`Legend <vectorlegendmenu>`
+      -  |overlay| :ref:`QGIS Server <vectorservermenu>`
+
+   *  -  |digitizing| :ref:`Digitizing <digitizingmenu>`
+
+Depending on :ref:`external plugins <plugins>` you have installed, some more
+tabs may be available in the dialog. Those are not presented below.
+
+
+\* The tab is also available in the :ref:`Layer Styling <layer_styling_panel>` panel.
+
 
 .. tip:: **Share full or partial properties of the layer styles**
 
