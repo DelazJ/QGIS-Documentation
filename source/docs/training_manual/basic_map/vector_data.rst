@@ -137,10 +137,18 @@ the :guilabel:`Browser`.
    the data directly, but it remembers which layers you loaded into your map.
 
 
+.. _backlink-vector-load-more-data:
 
+|moderate| |TY| Load More Vector Data
+-------------------------------------------------------------------------------
 
+Load the following datasets from the :file:`exercise_data` folder into your map
+using any of the methods previously shown:
 
+* :guilabel:`buildings`
+* :guilabel:`water`
 
+:ref:`Check your results <vector-load-more-data>`
 
 |FA| Reordering the Layers
 -------------------------------------------------------------------------------
