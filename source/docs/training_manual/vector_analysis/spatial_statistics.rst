@@ -126,43 +126,49 @@ Now get the basic statistics for this layer.
 
 Many different statistics are available, below some description:
 
-Count
-  The amount of samples/values.
+.. list-table::
+   :header-rows: 1
 
-Sum
-  All the values added together.
+   * - Statistic
+     - Description
 
-Mean
-  The mean (average) value is simply the sum of the values divided by the
-  amount of values.
+   * - *Count*
+     - The amount of samples/values
 
-Median
-  If you arrange all the values from least to greatest, the middle value (or
-  the average of the two middle values, if N is an even number) is the median
-  of the values.
+   * - *Sum*
+     - All the values added together
 
-St Dev (pop)
-  The standard deviation. Gives an indication of how closely the values are
-  clustered around the mean. The smaller the standard deviation, the closer
-  values tend to be to the mean.
+   * - *Mean*
+     - The mean (average) value is simply the sum of the values divided by the
+       amount of values
 
-Minimum
-  The minimum value.
+   * - *Median*
+     - If you arrange all the values from least to greatest, the middle value (or
+       the average of the two middle values, if N is an even number) is the median
+       of the values.
 
-Maximum
-  The maximum value.
+   * - *St Dev (pop)*
+     -  The standard deviation. Gives an indication of how closely the values are
+        clustered around the mean. The smaller the standard deviation, the closer
+        values tend to be to the mean.
 
-Range
-  The difference between the minimum and maximum values.
+   * - *Minimum*
+     - The minimum value
 
-Q1
-  First quartile of the data.
+   * - *Maximum*
+     - The maximum value
 
-Q3
-  Third quartile of the data.
+   * - *Range*
+     - The difference between the minimum and maximum values
 
-Missing (null) values
-  Total count of values with missing data-
+   * - *Q1*
+     - The first quartile of the data
+
+   * - *Q3*
+     - The third quartile of the data
+
+   * - *Missing (null) values*
+     - The total count of values with missing data
 
 
 |basic| |FA| Compute statistics on distances between points using the Distance Matrix tool
