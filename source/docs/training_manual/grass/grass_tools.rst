@@ -14,52 +14,57 @@ capabilities of GRASS.
 |basic| |FA| Create an aspect map
 -------------------------------------------------------------------------------
 
-* Open the :guilabel:`GRASS Tools` tab.
-* Load the :kbd:`g_dem` raster layer from the :kbd:`grass_mapset` Mapset
-* Look for the :kbd:`r.aspect` module by searching for it in the
-  :guilabel:`Filter` field of the :guilabel:`Modules List` tab.
-* Open the tool and set it up like this and click on the :guilabel:`Run` button:
+#. Open the :guilabel:`GRASS Tools` tab.
+#. Load the :guilabel:`g_dem` raster layer from the :guilabel:`grass_mapset` Mapset
+#. Look for the :guilabel:`r.aspect` module by searching for it in the
+   :guilabel:`Filter` field of the :guilabel:`Modules List` tab.
+#. Open the tool and set it up like this and click on the :guilabel:`Run` button:
 
-  .. image:: img/grass_aspect.png
-     :align: center
+   .. image:: img/grass_aspect.png
+      :align: center
 
-* When the process is finished click on :guilabel:`View Output` to load the
-  resulting layer in the canvas:
+   |
 
-.. image:: img/grass_aspect_result.png
-   :align: center
+#. When the process is finished click on :guilabel:`View Output` to load the
+   resulting layer in the canvas:
 
-The :kbd:`g_aspect` layer is stored within the :kbd:`grass_mapset` Mapset so you
+   .. image:: img/grass_aspect_result.png
+      :align: center
+
+|
+
+The :guilabel:`g_aspect` layer is stored within the :guilabel:`grass_mapset` Mapset so you
 can remove the layer from the canvas and reload it whenever you want.
 
 |basic| |FA| Get basic statistic of raster layer
 -------------------------------------------------------------------------------
 
-We want to know some basic statistics of the :kbd:`g_dem` raster layer.
+We want to know some basic statistics of the :guilabel:`g_dem` raster layer.
 
-* Open the :guilabel:`GRASS Tools` tab.
-* Load the :kbd:`g_dem` raster layer from the :kbd:`grass_mapset` Mapset
-* Look for the :kbd:`r.info` module by searching for it in the
-  :guilabel:`Filter` field of the :guilabel:`Modules List` tab.
+#. Open the :guilabel:`GRASS Tools` tab.
+#. Load the :guilabel:`g_dem` raster layer from the :guilabel:`grass_mapset` Mapset
+#. Look for the :guilabel:`r.info` module by searching for it in the
+   :guilabel:`Filter` field of the :guilabel:`Modules List` tab.
 
-* Set up the tool like this and click on :guilabel:`Run`:
+#. Set up the tool like this and click on :guilabel:`Run`:
 
-  .. image:: img/grass_raster_info.png
-     :align: center
+   .. image:: img/grass_raster_info.png
+      :align: center
 
-* Within the Output tab you will see some raster information printed, like the
-  path of the file, the number of rows and columns and other useful information:
+|
+
+Within the Output tab you will see some raster information printed, like the
+path of the file, the number of rows and columns and other useful information:
 
   .. image:: img/grass_raster_info_result.png
      :align: center
-
 
 
 |moderate| |FA| The Reclass Tool
 -------------------------------------------------------------------------------
 
 Reclassifying a raster layer is a very useful task. We just created the
-:kbd:`g_aspect` layer from the :kbd:`g_dem` one. The value range gets from 0
+:guilabel:`g_aspect` layer from the :guilabel:`g_dem` one. The value range gets from 0
 (North) passing through 90 (East), 180 (South), 270 (West) and finally to 360
 (North again). We can reclassify the :kbd:`g_aspect` layer to have just 4
 **categories** following specific *rules* (North = 1, East = 2, South = 3 and
@@ -69,21 +74,23 @@ Grass reclassify tool accepts a ``txt`` file with the defined rules. Writing the
 rules is very simple and the GRASS Manual contains very good description.
 
 .. tip:: Each GRASS tool has its own Manual tab. Take the time to read the
-  description of the tool you are using to don't miss some useful parameters
+  description of the tool you are using to not miss some useful parameters.
 
 
-* Load the :kbd:`g_aspect` layer or, if you don't have create it, go back to the
-  :ref:`grass_aspect` section.
-* Look for the :kbd:`r.info` module by searching for it in the :guilabel:`Filter`
-  field of the :guilabel:`Modules List` tab.
-* Open the tool and set it up like the following picture. The file containing the
-  rules is in the :kbd:`exercise_data/grass/` folder, named :kbd:`reclass_aspect.txt`.
-  Click on :guilabel:`Run` and wait until the process is finished:
+#. Load the :guilabel:`g_aspect` layer or, if you don't have create it, go back to the
+   :ref:`grass_aspect` section.
+#. Look for the :guilabel:`r.reclass` module by searching for it in the :guilabel:`Filter`
+   field of the :guilabel:`Modules List` tab.
+#. Open the tool and set it up like the following picture. The file containing the
+   rules is in the :file:`exercise_data/grass/` folder, named :file:`reclass_aspect.txt`.
+#. Click on :guilabel:`Run` and wait until the process is finished:
 
-  .. image:: img/grass_reclass.png
-     :align: center
+   .. image:: img/grass_reclass.png
+      :align: center
 
-* Click on :guilabel:`View Output` to load the reclassified raster in the canvas
+   |
+
+#. Click on :guilabel:`View Output` to load the reclassified raster in the canvas
 
 The new layer is made up by just 4 values (1, 2, 3, and 4) and it is easier to
 manage and to process.
@@ -91,7 +98,9 @@ manage and to process.
 .. image:: img/grass_reclass_result.png
    :align: center
 
-.. tip:: Open the :kbd:`reclass_aspect.txt` with a text editor to see the rules
+|
+
+.. tip:: Open the :file:`reclass_aspect.txt` with a text editor to see the rules
   and to start becoming used to them. Moreover, take a deep look at the GRASS
   manual: a lot of different examples are pointed out.
 
@@ -101,7 +110,7 @@ manage and to process.
 |moderate| |TY| Reclassify with your rules
 -------------------------------------------------------------------------------
 
-Try to reclassify the :kbd:`g_dem` layer into 3 new categories:
+Try to reclassify the :guilabel:`g_dem` layer into 3 new categories:
 
 * from 0 to 1000, new value = 1
 * from 1000 to 1400, new value = 2
@@ -118,11 +127,11 @@ mathematical operation on one or more raster layers and the final result will
 be a new layer with the calculated values.
 
 The aim of the next exercise is to extract the values greater than 1000 from the
-:kbd:`g_dem` raster layer.
+:guilabel:`g_dem` raster layer.
 
-* Look for the :kbd:`r.mapcalc` module by searching for it in the :guilabel:`Filter`
-  field of the :guilabel:`Modules List` tab.
-* Start the tool.
+#. Look for the :guilabel:`r.mapcalc` module by searching for it in the
+   :guilabel:`Filter` field of the :guilabel:`Modules List` tab.
+#. Start the tool.
 
 The Mapcalc dialog allows you to construct a sequence of analyses to be
 performed on a raster, or collection of rasters. You will use these tools to do
@@ -131,38 +140,44 @@ so:
 .. image:: img/map_calc_tools.png
    :align: center
 
+|
+
 In order, they are:
 
-- :kbd:`Add map`: Add a raster file from your current GRASS mapset.
-- :kbd:`Add constant value`: Add a constant value to be used in functions, 1000
+- :guilabel:`Add map`: Add a raster file from your current GRASS mapset.
+- :guilabel:`Add constant value`: Add a constant value to be used in functions, 1000
   in this case
-- :kbd:`Add operator or function`: Add an operator or function to be connected
+- :guilabel:`Add operator or function`: Add an operator or function to be connected
   to inputs and outputs, we will use the operator ``greater equals than``
-- :kbd:`Add connection`: Connect elements. Using this tool, click and drag from
+- :guilabel:`Add connection`: Connect elements. Using this tool, click and drag from
   the red dot on one item to the red dot on another item. Dots that are
   correctly connected to a connector line will turn gray. If the line or dot is
   red, it is not properly connected!
-- :kbd:`Select item`: Select an item and move selected items.
-- :kbd:`Delete selected item`: Removes the selected item from the current
+- :guilabel:`Select item`: Select an item and move selected items.
+- :guilabel:`Delete selected item`: Removes the selected item from the current
   mapcalc sheet, but not from the mapset (if it is an existing raster)
-- :kbd:`Open`: Open an existing file with the operation defined
-- :kbd:`Save`: Save all the operation in a file
-- :kbd:`Save as`: Save all the operations as a new file on the disk.
+- :guilabel:`Open`: Open an existing file with the operation defined
+- :guilabel:`Save`: Save all the operation in a file
+- :guilabel:`Save as`: Save all the operations as a new file on the disk.
 
 Using these tools:
 
-* Construct the following algorithm:
+#. Construct the following algorithm:
 
-  .. image:: img/grass_mapcalc.png
-     :align: center
+   .. image:: img/grass_mapcalc.png
+      :align: center
 
-* Click on :guilabel:`Run` and then on :guilabel:`View output` to see the output
-  displayed in your map:
+   |
 
-  .. image:: img/grass_mapcalc_result.png
-     :align: center
+#. Click on :guilabel:`Run` and then on :guilabel:`View output` to see the output
+   displayed in your map:
 
-This shows all the areas where the terrain higher than 1000 meters.
+   .. image:: img/grass_mapcalc_result.png
+      :align: center
+
+|
+
+This shows all the areas where the terrain is higher than 1000 meters.
 
 .. tip:: You can also save the formula you have created and load it in another
   QGIS project by clicking on the last button on the GRASS Mapcalc toolbar.
