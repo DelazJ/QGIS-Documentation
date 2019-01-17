@@ -14,24 +14,55 @@ file to a format that anyone's computer can read, as well as printing out the
 map if you have a printer connected. Both exporting and printing capabilities
 are offered via different ways.
 
-**The goal for this lesson:** To use the QGIS print layout to create a basic
+**The goal for this lesson:** To use the QGIS print tools to create a basic
 map with all the required settings.
 
 |basic| |FA| The Map Decoration
 -------------------------------------------------------------------------------
 
+A map requires some information to help readers quickly read it and get the
+context (title, scale bar, source, legend...). In QGIS you can add some of
+these decoration items to the map canvas and export the map with them.
 
-::
+#. Zoom to the extent of |majorUrbanName| as shown in the following image
 
- Source: © OpenStreetMap (2018)
- Created with QGIS [% @qgis_release_name %]
+   .. image:: img/map_swellendam_extent.png
+      :align: center
+
+#. Click :menuselection:`View --> Decorations -->` |copyrightLabel|
+   :menuselection:`Copyright Label...`. This opens the following dialog:
+
+   .. image:: img/map_canvas_copyright_empty.png
+      :align: center
+
+#. Check |checkbox| :guilabel:`Enable Copyright Label`
+#. Insert the following expression in the text edit frame::
+
+    Source: © OpenStreetMap (2018)
+    Created with QGIS [% @qgis_release_name %]
+
+#. Add :guilabel:`Horizontal` and guilabel:`Vertical` :guilabel:`Margin from edge`
+   of ``2 mm``.
+   Your dialog would now look like this:
+   
+   .. image:: img/map_canvas_copyright.png
+      :align: center
+
+#. Press :guilabel:`OK` and your map canvas has some information at the bottom
+   right, regarding the sources:
+
+   .. image:: img/Capture du 2018-12-23 03-46-21.png
+      :align: center
 
 .. _backlink-more-decorations:
 
 |basic| |TY| More decorations
 -------------------------------------------------------------------------------
 
-Decorate the map canvas with a scale bar and a north arrow.
+Add decoration items to the canvas to represent the following map:
+
+.. image:: img/mapcanvas_decorations_result.png
+   :align: center
 
 :ref:`Check your results <more-decorations>`
 
