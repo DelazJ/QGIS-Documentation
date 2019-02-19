@@ -1560,8 +1560,8 @@ create, load and manage styles.
 
 A style stores any information set in the layer properties dialog to render
 or interact with the layer (including symbology, labeling, fields and form definitions,
-actions, diagrams...) for vector layers, or the pixels (band or color rendering, transparency,
-pyramids, histogram ...) for raster.
+actions, diagrams...) for vector layers, or the pixels (band or color rendering,
+transparency, pyramids, histogram ...) for raster.
 
 
 .. _figure_manage_style:
@@ -1610,19 +1610,21 @@ to duplicate any layer in the map legend.
 Storing Styles in a File or a Database
 --------------------------------------
 
-While styles created from the :guilabel:`Style` combobox are by default saved
+While styles created from the :guilabel:`Style` combobox (or the |stylePreset|
+:sup:`Style` tab of the :guilabel:`Layer Styling` panel) are by default saved
 inside the project and can be copied and pasted from layer to layer in the project,
 it's also possible to save them outside the project so that they can be loaded
 in another project.
 
+This is done with the |selectString| :menuselection:`Style --> Save Style...`
+button, opening the :guilabel:`SAve Layer Style` dialog, and stores the style:
+
+* as QGIS layer style file (:file:`.qml`)
+* as SLD style file (:file:`.sld`), only available for vector layers
+* or in a database, only if the layer is from that database
+
 Save as text file
 ........................
-
-Clicking the |selectString| :menuselection:`Style --> Save Style`, you can
-save the style as a:
-
-* QGIS layer style file (:file:`.qml`)
-* SLD file (:file:`.sld`), only available for vector layers
 
 Used on file-based format layers (:file:`.shp`, :file:`.tab`...), :guilabel:`Save
 as Default` generates a :file:`.qml` file for the layer (with the same name).
@@ -1640,7 +1642,9 @@ Save in database
 Vector layer styles can also be stored in a database if the layer datasource is a
 database provider. Supported formats are PostGIS, GeoPackage, SpatiaLite, MSSQL
 and Oracle. The layer style is saved inside a table (named :file:`layer_styles`)
-in the database. Click on :menuselection:`Save Style... --> Save in database`
+in the database.
+
+Click on :menuselection:`Save Style... --> Save in database`
 then fill in the dialog to define a style name, add a description, a :file:`.ui`
 file if applicable and to check if the style should be the default style.
 
