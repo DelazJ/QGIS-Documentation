@@ -1617,17 +1617,29 @@ it's also possible to save them outside the project so that they can be loaded
 in another project.
 
 This is done with the |selectString| :menuselection:`Style --> Save Style...`
-button, opening the :guilabel:`SAve Layer Style` dialog, and stores the style:
+button, opening the :guilabel:`Save Layer Style` dialog. The style is stored:
 
-* as QGIS layer style file (:file:`.qml`)
+* as QGIS QML style file (:file:`.qml`)
 * as SLD style file (:file:`.sld`), only available for vector layers
-* or in a database, only if the layer is from that database
+* or in a database, only available if the layer is from a database
 
 Save as text file
-........................
+.................
+
+Used on file-based format layers (:file:`.shp`, :file:`.tab`...), :guilabel:`Save
+Style...` generates a :file:`.qml` file for the layer (with the same name).
+
+.. _figure_save_style_qml:
+
+.. figure:: img/save_style_qml.png
+   :align: center
+
+   Save Layer Style as text file
+
 
 Used on file-based format layers (:file:`.shp`, :file:`.tab`...), :guilabel:`Save
 as Default` generates a :file:`.qml` file for the layer (with the same name).
+
 SLDs can be exported from any type of renderer -- single symbol,
 categorized, graduated or rule-based -- but when importing an SLD, either a
 single symbol or rule-based renderer is created.
