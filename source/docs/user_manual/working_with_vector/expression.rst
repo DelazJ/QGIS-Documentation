@@ -163,7 +163,7 @@ using functions, layer's fields and values. It contains following widgets:
   helps to fetch features attributes. Double-clicking a value adds it to the
   expression editor.
 
-.. tip:: 
+.. tip::
 
    Sometimes, the right panel showing functions help or field values can be
    collapsed, hence invisible in the dialog. Press the :guilabel:`Show Values`
