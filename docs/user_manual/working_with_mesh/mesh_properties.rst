@@ -35,9 +35,9 @@ Mesh provides information about the spatial structure.
 In addition, the mesh can have datasets (groups) that assign a value to every vertex.
 For example, having a triangular mesh with numbered vertices as shown in the image below:
 
-.. _figure_triangual_grid_with_numered_vertices:
+.. _figure_triangual_grid_with_numbered_vertices:
 
-.. figure:: img/triangual_grid_with_numered_vertices.png
+.. figure:: img/triangual_grid_with_numbered_vertices.png
    :align: center
 
    Triangular grid with numbered vertices
