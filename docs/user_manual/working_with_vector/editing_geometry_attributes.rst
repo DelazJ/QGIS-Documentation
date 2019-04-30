@@ -427,35 +427,28 @@ geometry then enter its attributes. To digitize the geometry:
 Vertex tool
 -----------
 
-.. note:: **QGIS 3 major changes**
+Two distinct vertex tools are available to work with in QGIS:
 
-    In QGIS 3, the node tool has been fully redesigned and renamed to *vertex tool*.
-    It was previously
-    working with "click and drag" ergonomy, and now uses a "click - click"
-    workflow. This allows major improvements like taking profit of the advanced
-    digitizing panel with the vertex tool while digitizing or editing objects of
-    multiple layers at the same time.
+* |vertexToolActiveLayer| :sup:`Vertex tool (Current Layer)` for the selected layer
+* |vertexTool| :sup:`Vertex tool (All Layers)` for all editable layers.
 
+For any editable vector layer, the vertex tools provide manipulation
+capabilities of feature vertices similar to CAD programs. It is possible to
+simply select multiple vertices at once and to move, add or delete them
+altogether. The vertex tool also supports the topological editing feature.
+This tool is selection persistent, so when some operation is done, selection
+stays active for this feature and tool.
 
-For any editable vector layer, the
-|vertexToolActiveLayer| :sup:`Vertex tool (Current Layer)` provides manipulation
-capabilities of
-feature vertices similar to CAD programs. It is possible to simply select
-multiple vertices at once and to move, add or delete them altogether.
-The vertex tool also supports
-the topological editing feature. This tool is selection persistent, so when some
-operation is done, selection stays active for this feature and tool.
-
-It is important to set the property :menuselection:`Settings -->` |options|
-:menuselection:`Options --> Digitizing -->` :guilabel:`Search Radius:`
-|selectNumber| to a number greater than zero. Otherwise, QGIS will
-not be able to tell which vertex is being edited and will display a warning.
+It is important to set in :menuselection:`Settings -->` |options|
+:menuselection:`Options --> Digitizing -->` the |selectNumber| :guilabel:`Search
+Radius for vertex edits` property to a number greater than zero. Otherwise, QGIS
+will not be able to tell which vertex is being edited and will display a warning.
 
 .. _tip_vertex_markers:
 
 .. tip:: **Vertex Markers**
 
-   The current version of QGIS supports three kinds of vertex markers:
+   QGIS provides three kinds of vertex markers:
    'Semi-transparent circle', 'Cross' and 'None'. To change the marker style,
    choose |options| :menuselection:`Options` from the
    :menuselection:`Settings` menu, click on the :guilabel:`Digitizing`
@@ -490,10 +483,9 @@ Red circles will appear when hovering vertices.
      Batch vertex selection using :kbd:`Shift+R`
 
 
-  Press :kbd:`Ctrl` will invert the selection, selecting the longest
-  path along the feature boundary.
-  Ending your node selection with a second click, or pressing :kbd:`Esc`
-  will escape the batch mode.
+  Press :kbd:`Ctrl` will invert the selection, selecting the longest path
+  along the feature boundary. Ending your node selection with a second click,
+  or pressing :kbd:`Esc` will escape the batch mode.
 
 * **Adding vertices**: To add a vertex, a virtual new node appears on
   the segment center.
@@ -539,11 +531,11 @@ Red circles will appear when hovering vertices.
 
      Selecting a vertex and moving the vertices to grid
 
-Each change made with the vertex  is stored as a separate entry in the
-:guilabel:`Undo` dialog. Remember that all operations support
-topological editing when this is turned on.
-On-the-fly projection is also supported, and the vertex tool provides
-tooltips to identify a vertex by hovering the pointer over it.
+Each change made with the vertex is stored as a separate entry in the
+:guilabel:`Undo` dialog. Remember that all operations support topological
+editing when this is turned on. On-the-fly projection is also supported,
+and the vertex tool provides tooltips to identify a vertex by hovering
+the pointer over it.
 
 .. index:: Vertex editor panel
 
