@@ -107,6 +107,19 @@ Parameters
     Default: *0.0*
 
   ``Include upper/lower bound points`` [boolean]
+    Adds two multipoint features representing the vertices of each edge at the boundaries
+    of the area serviced by each starting point.
+    Adds the lower and the upper bound points to the ``Service area (boundary nodes)``
+    output layer. These features are extracted from the line network layer and
+    represent the vertices of the last edge
+    
+    for each starting point two points representing Inserts in the multipoint layer output with two points for each edge at the boundaries of the
+    service area.
+    One point is the start of that edge, the other is the end.
+    
+    .. note:: Since these points are added to the ``Service area (boundary nodes)`` output
+     layer is required for this parameter.
+
     Creates a point layer output with two points for each edge at the boundaries of the
     service area.
     One point is the start of that edge, the other is the end.
@@ -117,11 +130,13 @@ Outputs
 .......
 
 ``Service area (lines)`` [vector: line]
-  Line layer representing the parts of the network that can be serviced by the start points.
+  Line layer representing the parts of the network that can be serviced by the start
+  point(s).
 
 ``Service area (boundary nodes)`` [vector: point]
-  Point layer representing the furthest points on the network from the start points,
-  for the given cost.
+  Multipoint layer representing all the vertices from the ``Service area (lines)``
+  network layer that are within the serviced area. extracted from the parts of the network
+  that can be serviced by the start point(s) for the given cost.
 
 
 .. _qgisserviceareafrompoint:
