@@ -212,17 +212,24 @@ concerned issue will be closed as soon as the pull request is merged.
 Add links to any documentation pages that you are changing.
 
 Click on :guilabel:`Create pull request`.
+A new pull request will automatically be added to the `Pull requests list
+<https://github.com/qgis/QGIS-Documentation/pulls>`_.
+Other contributors can now review your pull request and they may
+make suggestions or ask for corrections.
 
-4. Review and comment pull request
-..................................
+4. Review, comment and update pull request
+..........................................
 
 As seen above, anyone can submit modifications to the documentation through pull
 requests. Likewise anyone can review pull requests with questions and `comments
 <https://help.github.com/articles/commenting-on-a-pull-request/>`_. Perhaps the
-writng style doesn't match project guidelines, the change is missing some major
-details or screenshots, or maybe everything looks great and is in order.
+writing style doesn't match the project guidelines, the change is missing some
+major details or screenshots, or maybe everything looks great and is in order.
 Reviewing helps to improve the quality of the contribution, both in form and
 substance.
+
+a. As a reviewer
+^^^^^^^^^^^^^^^^
 
 To review a pull request:
 
@@ -256,41 +263,47 @@ Specific line comments can be published either:
 .. figure:: img/githubAddLineComment.png
     :align: Center
 
-    Commenting a line with a suggestion of rewriting
+    Commenting a line with a change suggestion
 
 
-Line comments can embed suggestions of reformulation that the pull request
-writer can directly insert in his changes. To add a suggestion,
+Line comments can embed suggestions of redraft that the pull request
+writer can directly apply to the pull request. To add a suggestion,
 click the |githubSuggestions| :sup:`Insert a suggestion` button on top of the
 comment text box and modify the text within the suggestion block.
 
+b. As a pull request author
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tip:: **Prefer committing suggestions to your pull request as a batch**
+When fixing texts in your pull request based on reviewers' feedback, you can
+either:
 
- As a pull request author, when directly incorporating reviewers' feedback
- in your pull request, avoid using the :guilabel:`Commit suggestion` button
- at the bottom of the comment when you have many suggestions to address and
- prefer adding them as a batch commit, that is:
+* turn to edit and update the concerned file as exposed in
+  :ref:`5. Make corrections <make_corrections>` section
+* and/or directly incorporate reviewers' suggestions if any, using the
+  corresponding tool. In this case avoid using the :guilabel:`Commit
+  suggestion` button at the bottom of the comment when you have many
+  suggestions to address and **prefer adding them as a batch commit**,
+  that is:
 
- #. Switch to the |githubFilesChanged| tab
- #. Press :guilabel:`Add suggestion to batch` for each rewording you'd like to
-    include. You will see a counter increasing as you go.
- #. Press any of the :guilabel:`Commit suggestions` button when you are ready to
-    apply the suggestions to your pull request and enter a message describing
-    the changes.
+  #. Switch to the |githubFilesChanged| tab
+  #. Press :guilabel:`Add suggestion to batch` for each rewording you'd like to
+     include. You will see a counter increasing as you go.
+  #. Press any of the :guilabel:`Commit suggestions` button when you are ready to
+     apply the suggestions to your pull request, and enter a message describing
+     the changes.
 
- This will add all the modifications to your branch as a single commit, making a
- more legible history of changes and less notifications for the repository
- followers. Incidentally, proceeding as this will also save you many clicks.
+  This will add all the modifications to your branch as a single commit, resulting
+  in a more legible history of changes and less notifications for the repository
+  followers. Incidentally, proceeding as this will also save you time and many
+  clicks.
+
+.. _make_corrections:
 
 5. Make corrections
 ...................
 
-A new pull request will automatically be added to the `Pull requests list <https://github.com/qgis/QGIS-Documentation/pulls>`_.
-Other editors and administrators will review your pull request and they may make
-suggestions or ask for corrections.
-
-A pull request will also trigger a `Travis CI build <https://travis-ci.org/qgis/QGIS-Documentation>`_
+Creating the pull request will also trigger a `Travis CI build
+<https://travis-ci.org/qgis/QGIS-Documentation>`_
 which automatically checks your contribution for build errors.
 If Travis CI finds an error, a red cross will appear next to your commit.
 Click on the red cross or on ``Details`` in the summary section at the bottom
@@ -317,7 +330,7 @@ If you want to fix another issue, create a new branch for
 those changes and repeat the steps above.
 
 An administrator will merge your contribution after any build errors are
-corrected, and after you and the administrators are satisfied with your changes.
+corrected, and after you and the reviewers are satisfied with your changes.
 
 5. Delete your merged branch
 ----------------------------
@@ -326,7 +339,8 @@ You can delete the branch after your changes have been merged.
 Deleting old branches saves you from having unused and outdated branches in
 your repository.
 
-Navigate to your fork of the QGIS-Documentation repository (``https://github.com/<YourName>/QGIS-Documentation``).
+Navigate to your fork of the QGIS-Documentation repository
+(``https://github.com/<YourName>/QGIS-Documentation``).
 Click on the :guilabel:`Branches` tab. Below :guilabel:`Your branches` you'll
 see a list of your branches. Click on the |deleteSelected| :sup:`Delete this
 branch` icon to delete any unwanted branches.
