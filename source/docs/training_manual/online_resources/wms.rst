@@ -191,7 +191,7 @@ layer from the :guilabel:`terrestris` WMS server.
 
 #. Hide the :guilabel:`OSM-WSM` layer in the :guilabel:`Layers` panel.
 #. Add the "ZAF CGS 1M Bedrock Lithostratigraphy" WMS server at this URL:
-   ``http://196.33.85.22/cgi-bin/ZAF_CGS_Bedrock_Geology/wms``
+   ``http://mapsref.brgm.fr/wxs/1GG/SIGAfrique_BRGM_Africa_Geology``
 #. Load the :guilabel:`BEDROCKGEOLOGY` layer into the map (you can also use the
    :menuselection:`Layer --> Add Layer -->` |wms| :menuselection:`Add Layer
    WMS/WMTS Layer...` button to open the Data Source Manager dialog).
