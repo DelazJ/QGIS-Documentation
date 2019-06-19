@@ -17,11 +17,10 @@ exercises.
 Launch QGIS from its desktop shortcut, menu item, etc., depending on how you
 configured its installation.
 
-.. note::  The screenshots for this course were taken in QGIS 3.4 running on
-   Linux. Depending on your setup, the screens you encounter may well appear
+.. note::  The screenshots for this course were taken in QGIS |version| running
+   on Linux. Depending on your setup, the screens you encounter may well appear
    somewhat different. However, all the same buttons will still be available,
-   and the instructions will work on any OS. You will need QGIS 3.4 (the latest
-   version at time of writing) to use this course.
+   and the instructions will work on your OS.
 
 Let's get started right away!
 
