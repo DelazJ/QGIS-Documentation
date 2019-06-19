@@ -2424,6 +2424,9 @@ with the field type. The available widgets are:
 * **Attachment**: Uses a "Open file" dialog to store file path in a
   relative or absolute mode. It can also be used to display a hyperlink (to
   document path), a picture or a web page.
+
+.. _hidden_widget:
+
 * **Hidden**: A hidden attribute column is invisible. The user is not able
   to see its contents.
 * **Key/Value**: Displays a two-columns table to store sets of key/value
@@ -2437,6 +2440,9 @@ with the field type. The available widgets are:
 * **Relation Reference**: This widget lets you embed the feature form of the
   referenced layer on the feature form of the actual layer.
   See :ref:`vector_relations`.
+
+.. _textedit_widget:
+
 * **Text Edit** (default): This opens a text edit field that allows simple
   text or multiple lines to be used. If you choose multiple lines you
   can also choose html content.
@@ -2541,7 +2547,9 @@ source (X and Y positions, rotation angle, font style, color and so on).
 The Auxiliary Storage mechanism provides the solution to these limitations
 and awkward configurations. Auxiliary fields are a roundabout way to
 automatically manage and store these data-defined properties (labels,
-diagram, symbology...) in a SQLite database thanks to editable joins. This allows you to store properties for layers that aren't editable.
+diagram, symbology...) in a SQLite database thanks to editable joins.
+This also allows you to store properties for layers that aren't editable.
+The database creation process is run the first time 
 
 A tab is available in vector layer properties dialog to manage auxiliary
 storage:
@@ -2556,26 +2564,29 @@ storage:
 Labeling
 --------
 
-Considering that the data source may be customized thanks to data-defined
-properties without being editable, labeling map tools described in
-:ref:`label_toolbar` are always available as soon as labeling is activated.
+.. note:: 
 
-Actually, the auxiliary storage system needs an auxiliary layer to store these
+ Considering that the data source may be customized thanks to data-defined
+ properties without being editable, labeling map tools described in
+ :ref:`label_toolbar` are always available as soon as labeling is activated.
+
+The auxiliary storage system needs an auxiliary layer to store the custom
 properties in a SQLite database (see :ref:`vector_auxiliary_storage_database`).
 Its creation process is run the first time you click on the map while a
-labeling map tool is currently activated. Then, a window is displayed, allowing
-you to select the primary key to use for joining (to ensure that features are
-uniquely identified):
+labeling map tool is activated.
 
-.. _figure_auxiliary_layer_creation:
+#. Then, in the displayed window, select the primary key to use for joining
+   (this ensures that features are uniquely identified):
 
-.. figure:: img/auxiliary_storage_key.png
-   :align: center
+   .. _figure_auxiliary_layer_creation:
 
-   Auxiliary Layer creation dialog
+   .. figure:: img/auxiliary_storage_key.png
+      :align: center
+
+      Auxiliary Layer creation dialog
 
 
-As soon as an auxiliary layer is configured for the current data source, you can
+#. As soon as an auxiliary layer is configured for the current data source, you can
 retrieve its information in the tab:
 
 .. figure:: img/auxiliary_storage_tabkey.png
@@ -2670,26 +2681,30 @@ Attribute table and widgets
 
 Auxiliary fields can be edited using the
 :ref:`attribute table <sec_attribute_table>`. However, not all auxiliary fields
-are initially visible in the attribute table.
+are initially visible in the attribute table:
 
-Auxiliary fields representing attributes of a layer's symbology, labeling,
-appearance, or diagrams will appear automatically in the attribute table. The
-exception are attributes that can be modified using the :ref:`Label Toolbar <label_toolbar>`
-which are hidden by default. Auxiliary fields representing a ``Color`` have a
-widget **Color** set by default, otherwise auxiliary fields default to the
-**Text Edit** widget.
+* Auxiliary fields representing attributes of a layer's symbology, labeling,
+  appearance, or diagrams will appear automatically in the attribute table.
+  They are by default displayed in a :ref:`Text Edit widget <textedit_widget>`
+  unless they represent a ``Color`` property (in which case, the :ref:`Color
+  widget <color-selector>` is applied).
+* The exception are properties that can be modified using the :ref:`Label
+  Toolbar <label_toolbar>`. The corresponding fields are :ref:`Hidden
+  <hidden_widget>` by default in the attribute table.
+  
+  To make a field visible:
+  
+  #. Open the :menuselection:`Layer properties --> Attribute Form` tab
+  #. Select the field you want to display
+  #. Change the value of its :guilabel:`Widget Type` property from
+     **Hidden** to another relevant value. For example:
 
-Auxiliary fields that represent attributes that can be modified using
-the :ref:`Label toolbar<label_toolbar>` are **Hidden** in the attribute table
-by default. To make a field visible, open the :ref:`Attribute Form properties
-tab <vector_attributes_menu>` and change the value of an auxiliary field
-:guilabel:`Widget Type` from **Hidden** to another relevant value. For example,
-change the **auxiliary_storage_labeling_size** to **Text Edit** or change
-**auxiliary_storage_labeling_color** to the **Color** widget. Those fields will
-now be visible in the attribute table.
+     #. Change the **auxiliary_storage_labeling_size** to **Text Edit**
+     #. and change **auxiliary_storage_labeling_color** to the **Color** widget.
+  #. Press :guilabel:`OK` and close the dialog.
+  #. Open the attribute table. Those fields will now be visible.
 
 Auxiliary fields in the attribute table will appear like the following image:
-
 
 .. figure:: img/auxiliary_storage_widgets.png
    :align: center
