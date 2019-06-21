@@ -7,6 +7,7 @@
 
 .. contents::
    :local:
+   :numbered:
 
 .. note:: Though QGIS-Documentation is used to demonstrate the process, all
    commands and steps shown below also apply to QGIS-Website.
@@ -24,7 +25,7 @@ are trying to fix or write to the `QGIS-community-team list
 
 Let's now dive into the process.
 
-Using the GitHub web interface
+#. Using the GitHub web interface
 ==============================
 
 The GitHub web interface allows you to do the following:
@@ -45,7 +46,7 @@ project to learn some basic vocabulary and actions that will be used below.
     yourself. This will prevent more than one person from working on the same
     issue.
 
-1. Fork QGIS-Documentation
+#. Fork QGIS-Documentation
 --------------------------
 
 Assuming you already have a `GitHub account <https://github.com/join>`_,
@@ -61,7 +62,7 @@ This repository is a copy of the official QGIS-Documentation repository where
 you have full write access and you can make changes without affecting the
 official documentation.
 
-2. Make changes
+#. Make changes
 ---------------
 
 There are different ways to contribute to QGIS documentation. We show
