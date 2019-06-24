@@ -20,16 +20,17 @@ any Debian based distribution like Ubuntu and its derivatives.
 |moderate| |FA| Install from packages
 -------------------------------------------------------------------------------
 
-In this lesson we're going to do only the install from packages as shown
-`here <https://qgis.org/en/site/forusers/alldownloads.html#linux>`_ .
+In this lesson we're going to do only the install from packages as shown in the
+`QGIS Linux Installers <https://qgis.org/en/site/forusers/alldownloads.html#linux>`_
+documentation.
 
 Install QGIS Server with:
 
 .. code-block:: bash
 
- apt-get install qgis-server
+ apt install qgis-server
  # if you want to install server plugins, also:
- apt-get install python-qgis
+ apt install python-qgis
 
 QGIS Server should be used in production without QGIS Desktop (with
 the accompagning X Server) installed on the same machine.
@@ -74,7 +75,7 @@ In this lesson we're going to use the
 `Apache HTTP server <https://httpd.apache.org>`_, colloquially called Apache.
 
 First we need to install Apache by running the following command in a terminal:
-``apt-get install apache2 libapache2-mod-fcgid``.
+``apt install apache2 libapache2-mod-fcgid``.
 
 You can run QGIS server on your default website, or configure a virtualhost specifically for this, as follows.
 
