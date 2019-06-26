@@ -42,7 +42,7 @@ Settings
 
 **Get QSettings list**
 
-.. testcode::
+.. testcode:: cheat
 
     from qgis.PyQt.QtCore import QSettings
 
@@ -134,7 +134,7 @@ Layers
 
 **List all layers**
 
-.. testcode::
+.. testcode:: cheat_layer
 
     from qgis.core import QgsProject
 
@@ -142,7 +142,7 @@ Layers
 
 **Obtain layers name**
 
-.. testcode::
+.. testcode:: cheat_layer
 
     layers_names = []
     for layer in QgsProject.instance().mapLayers().values():
@@ -150,33 +150,33 @@ Layers
 
     print("layers TOC = {}".format(layers_names))
 
-.. testoutput::
+.. testoutput:: cheat_layer
    :hide:
 
    layers TOC = ['layer name you like']
 
 Otherwise 
 
-.. testcode::
+.. testcode:: cheat_layer
 
     layers_names = [layer.name() for layer in QgsProject.instance().mapLayers().values()]
     print("layers TOC = {}".format(layers_names))
 
-.. testoutput::
+.. testoutput:: cheat_layer
    :hide:
 
    layers TOC = ['layer name you like']
 
 **Find layer by name**
 
-.. testcode::
+.. testcode:: cheat_layer
 
     from qgis.core import QgsProject
 
     layer = QgsProject.instance().mapLayersByName("layer name you like")[0]
     print(layer.name())
 
-.. testoutput::
+.. testoutput:: cheat_layer
    :hide:
 
    layer name you like
@@ -192,7 +192,7 @@ Otherwise
 
 **Show methods**
 
-.. testcode::
+.. testcode:: cheat
 
     dir(layer)
 
@@ -215,7 +215,8 @@ Otherwise
 
     from qgis.core import QgsFeature, QgsGeometry, QgsProject
 
-.. testcode::
+.. testcode:: cheat_feature
+
 
     from qgis.core import QgsPointXY
 
@@ -282,7 +283,9 @@ Otherwise
     from qgis.core import QgsProject, QgsCoordinateReferenceSystem
 
     for layer in QgsProject.instance().mapLayers().values():
-        layer.setCrs(QgsCoordinateReferenceSystem(4326, QgsCoordinateReferenceSystem.EpsgCrsId))
+        layer.setCrs(QgsCoordinateReferenceSystem(
+                     4326, QgsCoordinateReferenceSystem.EpsgCrsId)
+                     )
 
 **See the CRS**
 
