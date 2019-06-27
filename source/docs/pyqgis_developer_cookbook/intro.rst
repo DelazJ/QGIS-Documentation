@@ -198,7 +198,7 @@ Using PyQGIS in standalone scripts
 To start a standalone script, initialize the QGIS resources at the
 beginning of the script:
 
-::
+.. testcode:: intro
 
   from qgis.core import *
 
@@ -230,8 +230,8 @@ is set to ``True``, specifying that default paths are to be
 used.
 
 The QGIS install path varies by platform; the easiest way to find it
-for your system is to use the :ref:`pythonconsole` from within
-QGIS and look at the output from running
+for your system is to use the :ref:`Python console <pythonconsole>`
+from within QGIS and look at the output from running
 ``QgsApplication.prefixPath()``.
 
 After the prefix path is configured, we save a reference to
@@ -253,7 +253,7 @@ application is the second argument when instantiating the ``QgsApplication``.
 Pass ``True`` instead of ``False`` to indicate that we plan to
 use a GUI.
 
-::
+.. testcode:: intro_custom
 
   from qgis.core import *
 
@@ -292,7 +292,7 @@ appropriate Python modules if they are not in a well-known location -
 otherwise Python will complain::
 
   >>> import qgis.core
-  ImportError: No module named qgis.core
+  ModuleNotFoundError: No module named 'qgis.core'
 
 This can be fixed by setting the ``PYTHONPATH`` environment variable. In
 the following commands, ``<qgispath>`` should be replaced with your actual
