@@ -1430,10 +1430,13 @@ to create simple and very complex expressions to label your data in QGIS. See
 Using data-defined override for labeling
 ----------------------------------------
 
-With the |dataDefined| :sup:`Data defined override` function, the settings for
-the labeling are overridden by entries in the attribute table or expressions
-based on them. This feature can be used to
-set values for most of the labeling options described above.
+Using the |dataDefined| :sup:`Data defined override` widget next to a label
+property, you can override its value by entries in the attribute table,
+expressions based on them or :ref:`auxiliary data <vector_auxiliary_storage>`.
+This feature can be used to set values for most of the labeling options
+described above.
+Since there's a dedicated section for the auxiliary data capabilities, we'll be
+focusing here on the other ways.
 
 For example, using the Alaska QGIS sample dataset, let's label the :file:`airports`
 layer with their name, based on their militarian ``USE``, i.e. whether the airport
@@ -1442,9 +1445,10 @@ is accessible to :
 * military people, then display it in gray color, size 8;
 * others, then show in blue color, size 10.
 
-To do this, after you enabled the labeling on the ``NAME`` field of the layer
-(see :ref:`showlabels`):
+To do this:
 
+#. Apply the labeling using the ``NAME`` field of the layer (see
+   :ref:`showlabels`):
 #. Activate the :guilabel:`Text` tab.
 #. Click on the |dataDefined| icon next to the :guilabel:`Size` property.
 #. Select :guilabel:`Edit...` and type::
@@ -1455,15 +1459,17 @@ To do this, after you enabled the labeling on the ``NAME`` field of the layer
       ELSE 10
     END
 
-#. Press :guilabel:`OK` to validate. The dialog closes and the |dataDefined| button
-   becomes |dataDefineExpressionOn| meaning that an rule is being run.
-#. Then click the button next to the color property, type the expression below
-   and validate::
+#. Press :guilabel:`OK` to validate. The dialog closes and the |dataDefined|
+   button becomes |dataDefineExpressionOn| meaning that a rule is being run.
+#. Then click the button next to the :guilabel:`Color` property
+#. Type the following expression and validate::
 
     CASE
       WHEN "USE" like '%Military%' THEN '150, 150, 150'
       ELSE '0, 0, 255'
     END
+
+#. Press :guilabel:`OK` to close the layer properties dialog.
 
 Likewise, you can customize any other property of the label, the way you want.
 See more details on the |dataDefined| :sup:`Data-define override` widget's
@@ -1530,17 +1536,6 @@ same way with diagrams:
   font, size... as long as this property has been mapped to a field. Here you can
   set the option to |checkbox| :guilabel:`Label every part of a feature`.
 
-.. warning:: **Label tools overwrite current field values**
-
-  Using the :guilabel:`Label toolbar` to customize the labeling actually writes
-  the new value of the property in the mapped field. Hence, be careful to not
-  inadvertently replace data you may need later!
-
-.. note::
-
-  The :ref:`vector_auxiliary_storage` mechanism may be used to customize
-  labeling (position, and so on) without modifying the underlying data source.
-
 Customize the labels from the map canvas
 ........................................
 
@@ -1550,11 +1545,14 @@ We now describe an example using the data-defined override function for the
 |moveLabel|:sup:`Move label` function (see figure_labels_coordinate_data_defined_).
 
 #. Import :file:`lakes.shp` from the QGIS sample dataset.
-#. Double-click the layer to open the Layer Properties. Click on :guilabel:`Labels`
-   and :guilabel:`Placement`. Select |radioButtonOn| :guilabel:`Offset from centroid`.
-#. Look for the :guilabel:`Data defined` entries. Click the |dataDefined| icon
-   to define the field type for the :guilabel:`Coordinate`. Choose ``xlabel``
-   for X and ``ylabel`` for Y. The icons are now highlighted in yellow.
+#. Double-click the layer to open the Layer Properties.
+#. Click on :guilabel:`Labels`, then :guilabel:`Placement`.
+#. Select |radioButtonOn| :guilabel:`Offset from centroid`.
+#. Look for the :guilabel:`Data defined` entries.
+#. Click the |dataDefined| icon to define the field type for the
+   :guilabel:`Coordinate`.
+#. Choose ``xlabel`` for X and ``ylabel`` for Y. The icons are now highlighted
+   in yellow.
 
    .. _figure_labels_coordinate_data_defined:
 
@@ -1566,9 +1564,10 @@ We now describe an example using the data-defined override function for the
 #. Zoom into a lake.
 #. Set editable the layer using the |toggleEditing| :sup:`Toggle Editing` button.
 #. Go to the Label toolbar and click the |moveLabel| icon.
-   Now you can shift the label manually to another position (see figure_labels_move_).
-   The new position of the label is saved in the ``xlabel`` and ``ylabel`` columns
-   of the attribute table.
+#. Click the label, move the mouse and click to set the new position (see figure_labels_move_).
+#. Open the attribute table. You'll notice that the new position of the label
+   is saved in the ``xlabel`` and ``ylabel`` attributes of the corresponding
+   feature.
 #. Using :ref:`geometry_generator_symbol` with the expression below, you can
    also add a linestring symbol layer to connect each lake to its moved label:
 
@@ -1584,10 +1583,14 @@ We now describe an example using the data-defined override function for the
 
       Moved labels
 
-.. note::
+.. note:: **Label tools overwrite current field values**
 
-  The :ref:`vector_auxiliary_storage` mechanism may be used with data-defined
-  properties without having an editable data source.
+  Using the :guilabel:`Label toolbar` with the layer fields actually writes
+  the new value of the property in the mapped field. Hence, be careful to not
+  inadvertently replace data you may need later!
+
+  The :ref:`vector_auxiliary_storage` mechanism may be used to customize
+  labeling (position, and so on) without modifying the underlying data source.
 
 
 .. index:: Diagrams
