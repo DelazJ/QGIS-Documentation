@@ -142,7 +142,7 @@ Besides layer-based snapping options, you can also define topological
 functionalities in the :guilabel:`Snapping options...` dialog in the
 :menuselection:`Settings` (or :menuselection:`File`) menu. Here, you can
 define |checkbox| :guilabel:`Enable topological editing`, and/or for polygon
-layers, activate the |checkbox| :guilabel:`Avoid Intersections` option.
+layers, activate the |checkbox| :guilabel:`Avoid Overlap` option.
 
 
 .. index:: Shared polygon boundaries
@@ -156,13 +156,13 @@ and maintaining common boundaries in features mosaics. QGIS 'detects'
 shared boundary by the features, so you only have to move a common vertex/segment
 once, and QGIS will take care of updating the neighboring features.
 
-.. index:: Avoid intersections
-   seealso: Avoid intersections; Topology
+.. index:: Avoid overlaps
+   seealso: Avoid overlaps; Topology
 
-Avoid intersections of new polygons
+Avoid overlaps from new polygons
 -----------------------------------
 
-A second topological option called |checkbox| :guilabel:`Avoid intersections`
+A second topological option called |checkbox| :guilabel:`Avoid Overlap`
 prevents you to draw new features that overlap an existing one.
 It is for quicker digitizing of adjacent
 polygons. If you already have one polygon, it is possible with this option
@@ -174,11 +174,11 @@ don't have to digitize all vertices of the common boundary.
    and the new feature will have no geometry when allowed by the provider, otherwise
    saving modifications will make QGIS pop-up an error message.
 
-.. warning:: **Use cautiously the** :guilabel:`Avoid Intersections` **option**
+.. warning:: **Use cautiously the** :guilabel:`Avoid Overlap` **option**
 
    Because the option cuts or clears geometry of any overlaping feature from
-   any polygon layer, do not forget to uncheck this option once you no longer
-   need it otherwise, you can get unexpected geometries.
+   any polygon layer being edited, do not forget to uncheck this option once
+   you no longer need it otherwise, you can get unexpected geometries.
 
 
 .. index:: Snapping on intersections
