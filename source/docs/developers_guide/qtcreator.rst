@@ -7,40 +7,41 @@
    :local:
 
 
-QtCreator is a newish IDE from the makers of the Qt library. With QtCreator you
-can build any C++ project, but it's really optimised for people working on
-Qt(4) based applications (including mobile apps). Everything I describe below
-assumes you are running Ubuntu 11.04 'Natty'.
+QtCreator is an IDE from the makers of the `Qt library <https://www.qt.io>`_.
+With QtCreator you can build any C++ project, but it's really optimised for
+people working on Qt based applications (including mobile apps).
 
 
 Installing QtCreator
 =====================
 
+Qt Creator is available on all major platforms and can be downloaded from
+https://www.qt.io/download (Go the open source route). Installation
+procedure follows the platform's.
 
-This part is easy:
+If you are running a Unix-like platform, you can also install with command line,
+following your platform flavour, eg on Debian system: 
 
 .. code-block:: bash
 
-  sudo apt-get install qtcreator qtcreator-doc
+  sudo apt install qtcreator qtcreator-doc
 
-After installing you should find it in your gnome menu.
+After installing you should find it in your menu.
 
 
 Setting up your project
 ========================
 
-I'm assuming you have already got a local QGIS clone containing the
+We assume you have already got a local QGIS clone containing the
 source code, and have installed all needed build dependencies etc. There are
 detailed instructions for :ref:`git access <git_access>` and `dependency installation
 <https://htmlpreview.github.io/?https://github.com/qgis/QGIS/blob/master/doc/INSTALL.html>`_.
 
-On my system I have checked out the code into ``$HOME/dev/cpp/QGIS`` and the
-rest of the article is written assuming that, you should update these paths as
+On our system we have checked out the code into ``$HOME/dev/cpp/QGIS`` and the
+rest of the article is written assuming that. You should update these paths as
 appropriate for your local system.
 
-On launching QtCreator do:
-
-*File* -> *Open File or Project*
+On launching QtCreator do :menuselection:`File --> Open File or Project`
 
 Then use the resulting file selection dialog to browse to and open this file:
 
@@ -48,120 +49,201 @@ Then use the resulting file selection dialog to browse to and open this file:
 
   $HOME/dev/cpp/QGIS/CMakeLists.txt
 
-.. image:: images/image01.jpeg
+.. image:: img/selectCMakeLists.png
 
-Next you will be prompted for a build location. I create a specific build dir
-for QtCreator to work in under:
+|
 
-.. code-block:: bash
+QtCreator will parse the project and you will be prompted for a build location
+and options in the :guilabel:`Configure Project` dialog.
 
-  $HOME/dev/cpp/QGIS/build-master-qtcreator
+Since we want QGIS to have debugging capabilities then we'll enable only the
+debug entry and fill it with our build location:
 
-Its probably a good idea to create separate build directories for different
-branches if you can afford the disk space.
+#. Check |checkbox| :guilabel:`Select all kits` enabling the :guilabel:`Desktop`
+   entry
+#. Uncheck all but |checkbox| :guilabel:`Debug` sub item
+#. Fill the path with the build directory. For our purpose, we create a
+   specific build dir for QtCreator to work in under:
 
-.. image:: images/image02.jpeg
+   .. code-block:: bash
 
+    $HOME/dev/cpp/QGIS/build-master-qtcreator
 
-Next you will be asked if you have any CMake build options to pass to CMake. We
-will tell CMake that we want a debug build by adding this option:
+   It's probably a good idea to create separate build directories for different
+   branches if you can afford the disk space.
 
-.. code-block:: bash
+   .. image:: img/configureProject.png
+      :width: 100%
 
-  -DCMAKE_BUILD_TYPE=Debug
+|
 
-.. image:: images/image03.jpeg
+That's the basics of it. Press the :guilabel:`Configure Project` button and
+QtCreator will start scanning the source tree for autocompletion support and
+do some other housekeeping stuff in the background.
 
+.. image:: img/configurationDone.png
+   :width: 100%
 
-That's the basics of it. When you complete the Wizard, QtCreator will start
-scanning the source tree for autocompletion support and do some other
-housekeeping stuff in the background. We want to tweak a few things before we
-start to build though.
+|
+
+We want to tweak a few things before we start to build though.
 
 
 Setting up your build environment
 ==================================
 
-Click on the 'Projects' icon on the left of the QtCreator window.
+Click on the :guilabel:`Projects` icon on the left of the QtCreator window.
 
-.. image:: images/image04.jpeg
+.. image:: img/leftPanel.png
 
-Select the build settings tab (normally active by default).
+Select the :guilabel:`Build` settings tab (normally active by default).
 
-.. image:: images/image05.jpeg
+.. image:: img/buildSettings.png
 
-We now want to add a custom process step. Why? Because QGIS can currently only
-run from an install directory, not its build directory, so we need to ensure
-that it is installed whenever we build it. Under 'Build Steps', click on the
-'Add BuildStep' combo button and choose 'Custom Process Step'.
+|
 
-.. image:: images/image06.jpeg
+The dialog shows the ``Debug`` build configuration and allows you to
+edit settings under the :guilabel:`CMake` section. While the default
+configuration should be enough for a first pass, depending on your needs,
+you may want to enable more features such as:
 
-Now we set the following details:
+* **WITH_3D = ON** for 3D rendering
+* **WITH_ASTYLE = ON** to use QGIS custom reindent scripts
+* **WITH_CUSTOM_WIDGETS = ON** to add QGIS custom widgets for interface design
 
- Enable custom process step: [yes]
+Press :guilabel:`Apply Configuration Changes`.
 
- Command: make
+By default, Qt Creator uses all the CPU cores available to speed the build with
+maximum parallelization. To avoid your computer freeze, you'd better specify a
+lesser number of cores. Under the :guilabel:`Build Steps` section:
 
- Working directory: $HOME/dev/cpp/QGIS/build-master-qtcreator
+#. Press the :menuselection:`Add build step -->` menu and select
+   :guilabel:`Custom Process Step`
+#. Fill the new form as follows:
 
- Command arguments: install
+   * :guilabel:`Command`: ``make``
+   * :guilabel:`Arguments`: ``-j4`` to use 4 cores (setting depends on your device)
+   * :guilabel:`Working directory`: ``%{buildDir}``
 
-.. image:: images/image07.jpeg
+.. image:: img/customProcess.png
 
-You are almost ready to build. Just one note: QtCreator will need write
-permissions on the install prefix. By default (which I am using here) QGIS is
-going to get installed to ``/usr/local/``. For my purposes on my development
-machine, I just gave myself write permissions to the /usr/local directory.
+|
 
-To start the build, click that big hammer icon on the bottom left of the
-window.
+.. note::
 
-.. image:: images/image08.jpeg
+  Also, if you want to speed your build times, you can do it with ``ninja``, an
+  alternative to ``make`` with similar build options. You'd need to set it as
+  the :guilabel:`CMake generator`:
+  
+  #. Open :menuselection:`Tools --> Options --> Build & Run --> Kits`
+  #. Select the :guilabel:`Desktop (default)` kit entry, displaying its properties
+  #. Press :guilabel:`Change...` next to :guilabel:`CMake generator`
+
+You are now ready to build. Press the |build| :sup:`Build` icon at the left
+bottom of the dialog (or :kbd:`Ctrl+B`) to launch the project build! Qt Creator
+will begin compiling and this may be long the first time, depending on your
+device.
+
+At the end of the compilation, you can run QGIS pressing the |runInstall|
+:sup:`Run` button.
+
+The compilation of QGIS also generates binaries in the build directory.
+Hence you can execute QGIS from the command line using:
+
+.. code-block:: bash
+
+ cd $HOME/dev/cpp/QGIS/build-master-qtcreator
+ output/bin/qgis
+
+Sometimes you may want to install QGIS as an executable, out of the build
+directory.
+
+#. If you do not have root access or do not want to overwrite existing QGIS
+   installs (by your package manager for example), set the ``CMAKE_INSTALL_PREFIX``
+   to somewhere you have write access to (we use :file:`${HOME}/apps`).
+
+   .. image:: img/customInstallPrefix.png
+
+  |
+
+#. Press :guilabel:`Apply Configuration Changes` to update the settings
+#. Press the |build| button
+#. When the build is complete, you'll find the :file:`qgis` executable in
+   the :file:`${HOME}/apps/bin` folder.
+
+.. 
+    All this section is commented since it conveys information I could not confirm
+    or I'm not sure it's necessary since I get good results without.
+    Review for devs are more than welcome to sort this out.
+
+    We now want to add a custom process step. Why? Because QGIS can currently only
+    run from an install directory, not its build directory, so we need to ensure
+    that it is installed whenever we build it. Under 'Build Steps', click on the
+    'Add BuildStep' combo button and choose 'Custom Process Step'.
+
+    Now we set the following details::
+
+    Enable custom process step: [yes]
+
+    Command: make
+
+    Working directory: $HOME/dev/cpp/QGIS/build-master-qtcreator
+
+    Command arguments: install
+
+    .. image:: img/image07.jpeg
+
+    You are almost ready to build. Just one note: QtCreator will need write
+    permissions on the install prefix. By default (which I am using here) QGIS is
+    going to get installed to ``/usr/local/``. For my purposes on my development
+    machine, I just gave myself write permissions to the /usr/local directory.
+
+    To start the build, click that big hammer icon on the bottom left of the
+    window.
+
+    .. image:: img/image08.jpeg
 
 
-Setting your run environment
-=============================
+    Setting your run environment
+    =============================
 
-As mentioned above, we cannot run QGIS from directly in the build directly, so
-we need to create a custom run target to tell QtCreator to run QGIS from the
-install dir (in my case ``/usr/local/``). To do that, return to the projects
-configuration screen.
+    As mentioned above, we cannot run QGIS from directly in the build directly, so
+    we need to create a custom run target to tell QtCreator to run QGIS from the
+    install dir (in my case ``/usr/local/``). To do that, return to the projects
+    configuration screen.
 
-.. image:: images/image04.jpeg
+    Now select the 'Run Settings' tab
 
-Now select the 'Run Settings' tab
+    .. image:: img/image09.jpeg
 
-.. image:: images/image09.jpeg
+    We need to update the default run settings from using the 'qgis' run
+    configuration to using a custom one.
 
-We need to update the default run settings from using the 'qgis' run
-configuration to using a custom one.
+    .. image:: img/image10.jpeg
 
-.. image:: images/image10.jpeg
+    Do do that, click the 'Add v' combo button next to the Run configuration
+    combo and choose 'Custom Executable' from the top of the list.
 
-Do do that, click the 'Add v' combo button next to the Run configuration
-combo and choose 'Custom Executable' from the top of the list.
+    .. image:: img/image11.jpeg
 
-.. image:: images/image11.jpeg
+    Now in the properties area set the following details:
 
-Now in the properties area set the following details:
+    Executable: /usr/local/bin/qgis
 
- Executable: /usr/local/bin/qgis
+    Arguments :
 
- Arguments :
+    Working directory: $HOME
 
- Working directory: $HOME
+    Run in terminal: [no]
 
- Run in terminal: [no]
+    Debugger: C++ [yes]
 
- Debugger: C++ [yes]
+    Qml [no]
 
- Qml [no]
+    Then click the 'Rename' button and give your custom executable a meaningful
+    name e.g. 'Installed QGIS'
 
-Then click the 'Rename' button and give your custom executable a meaningful
-name e.g. 'Installed QGIS'
-
-.. image:: images/image12.jpeg
+    .. image:: img/image12.jpeg
 
 Running and debugging
 ======================
@@ -169,9 +251,24 @@ Running and debugging
 Now you are ready to run and debug QGIS. To set a break point, simply open a
 source file and click in the left column.
 
-.. image:: images/image14.jpeg
+.. image:: img/image14.jpeg
 
-Now launch QGIS under the debugger by clicking the icon with a bug on it in the
-bottom left of the window.
+|
 
-.. image:: images/image13.jpeg
+Now launch QGIS under the debugger by clicking the |runDebug| :sup:`Start
+Debugging` in the bottom left of the window. 
+
+
+.. |build| image:: img/build.png
+.. |runDebug| image:: img/runDebug.png
+.. |runInstall| image:: img/runInstall.png
+
+
+.. Substitutions definitions - AVOID EDITING PAST THIS LINE
+   This will be automatically updated by the find_set_subst.py script.
+   If you need to create a new substitution manually,
+   please add it also to the substitutions.txt file in the
+   source folder.
+
+.. |checkbox| image:: /static/common/checkbox.png
+   :width: 1.3em
