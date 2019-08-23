@@ -110,6 +110,7 @@ pygments_style = 'sphinx'
 #keep_warnings = False
 
 intersphinx_mapping = {'pyqgis_api': ('https://qgis.org/pyqgis/master/', None)}
+intersphinx_cache_limit = 1
 
 # -- Options for HTML output ---------------------------------------------------
 
