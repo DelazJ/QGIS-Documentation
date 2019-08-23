@@ -417,7 +417,7 @@ Input types
      - Alg constant
      - Description
    * - :class:`QgsProcessingParameterAuthConfig <qgis.core.QgsProcessingParameterAuthConfig>`
-     - ``alg.AUTH_CFG``
+     - :func:`alg.AUTH_CFG`
      - Allows users to select from available authentication configurations or
        create new authentication configurations
    * - :class:`QgsProcessingParameterBand <qgis.core.QgsProcessingParameterBand>`
