@@ -49,56 +49,36 @@ In order to provide translations:
  :file:`.cpp`, :file:`.yaml` and others... files that shape the application are
  pushed to and pulled from transifex as a single :file:`.ts` file.
  
-Two different tools are currently used to do translations in QGIS:
+To translate strings in QGIS, we use the `Transifex web platform <https://www.transifex.com/>`_.
+It transparently does the process described above and pulls all the translatable
+texts in one place for the translator. Just pick the files you want and translate.
+Translated files are stored in the platform until another release is pushed.
 
-* The `Transifex web platform <https://www.transifex.com/>`_, the easiest and
-  recommended way to translate QGIS,
-  transparently does the process described above and pulls all the translatable
-  texts in one place for the translator. Just pick the files you want and translate.
-  Translated files are stored in the platform until another release is pushed.
-* `Qt Linguist <https://doc.qt.io/qt-5/qtlinguist-index.html>`_, a Qt
+.. `Qt Linguist <https://doc.qt.io/qt-5/qtlinguist-index.html>`_, a Qt
   development tool, requires the translator to pull locally
   the :file:`.po` (or :file:`.ts`) files from the source code, translate and
   then push back.
 
-Note that whatever tool you choose, rules of translations are the same.
+  Note that whatever tool you choose, rules of translations are the same.
+  
+  While downloading and uploading translatable files can be done with Transifex,
+  it's not advised to use this process. Since there's no
+  versioning system on Transifex, the file you upload will simply replace the
+  existing one and potentially overwrite any modification made by others on the
+  platform in the meantime.
+  For further information on the use of Qt Linguist, see
+  https://doc-snapshots.qt.io/qt5-5.12/linguist-translators.html
+
 
 .. _translate_file:
 
 Translate a file
 ================
 
-To explain how translation works, we will use the heatmap plugin as an example.
-In this example we will translate it from English to Dutch, but it will
-be practically the same for other documents in all languages.
-
-The source of the document can be found here:
-
-::
-
-  QGIS-Documentation/source/docs/user_manual/plugins/plugins_heatmap.rst
-
-So why did I choose this document?
-
-#. It includes images, captions, headers, references and replacements.
-#. I wrote it so it is easier for me to translate ;-)
-
-The build process has created the English :file:`.po` file which can be found here::
-
- QGIS-Documentation/i18n/en/LC_MESSAGES/docs/user_manual/plugins/plugins_heatmap.po
-
-The equivalent Dutch :file:`.po` file (basically a copy) can be found here::
-
- QGIS-Documentation/i18n/nl/LC_MESSAGES/docs/user_manual/plugins/plugins_heatmap.po
-
-Along this file you will see a tiny :file:`.mo` file which indicates that it
-does not hold any translations yet.
-
-
 .. _translation_transifex:
 
 Translation in Transifex
-........................
+------------------------
 
 In order to translate using Transifex, you need to:
 
@@ -137,85 +117,36 @@ For further information on the use of Transifex Web Editor, see
 https://docs.transifex.com/translation/translating-with-the-web-editor.
 
 
-.. _translation_linguist:
-
-Translation in Qt Linguist
-..........................
-
-With Qt Linguist, you need to:
-
-#. manually grab the :file:`.po` or :file:`.ts`  file(s). This can be achieved
-   by downloading the file(s) either from Transifex platform or from the
-   :file:`i18n/$language` folder of the source repository (in GitHub),
-#. proceed to the translation locally
-#. upload the modified files to their sources (Transifex or GitHub).
-
-While downloading and uploading translatable files can be done with Transifex,
-it's not advised to use this process. Since there's no
-versioning system on Transifex, the file you upload will simply replace the
-existing one and potentially overwrite any modification made by others on the
-platform in the meantime.
-
-When you open the file in Qt Linguist for the first time you will see the
-following dialog:
-
-.. _figure_translation_language:
-
-.. figure:: img/linguist_choose_language.png
-   :align: center
-
-   Select language for translation in linguist menu
-
-
-The Target language should be filled correctly. The Source language can be left
-as is with language POSIX and Country/Region on Any Country.
-
-When you press the :guilabel:`OK` button Qt Linguist is filled with sentences and
-you can start translating, see Figure_translation_menu_.
-
-
-.. _figure_translation_menu:
-
-.. figure:: img/linguist_menu.png
-   :align: center
-   :width: 50em
-
-   Translate using the linguist menu
-
-In the menu you see the following buttons which are convenient to use.
-
-* |linguist_done_next| The Translation Done Next button, is the most important
-  button. If the item needs translation, you enter a translation in the text
-  field, then hit this button. If the item does not need translation just leave the
-  text field for translation empty and also hit this button which indicates the
-  item is done and you continue with the next item.
-* |linguist_previous| The Goto Previous button, can be used to go to the
-  previous translation item.
-* |linguist_next| The Goto Next button, can be used to go to the next
-  translation item.
-* |linguist_next_todo| The Next Todo button, jumps to the first translation
-  item that still needs a translation. Handy when the original document has
-  changed and only several new/changed sentences need to be translated.
-* |linguist_previous_todo| The Previous Todo button, searches backward and
-  jumps to the first translation item it finds that still needs a translation.
-
-For further information on the use of Qt Linguist, see
-https://doc-snapshots.qt.io/qt5-5.12/linguist-translators.html
-
-.. warning::
-
-   If you want to download content to translate from the source
-   repository, never do this in the ``master`` branch. For translations
-   there are always translation branches available, once a document is fully
-   updated in English for a certain version. As an example, to translate
-   the manual of QGIS 2.8, you have to use the manual_en_v2.8 branch.
-
-
 .. _translate_manual:
 
-Translate a manual
-..................
+A step by step translation
+--------------------------
 
+To explain how translation works, we will use the heatmap plugin as an example.
+In this example we will translate it from English to Dutch, but it will
+be practically the same for other documents in all languages.
+
+The source of the document can be found here:
+
+::
+
+  QGIS-Documentation/source/docs/user_manual/plugins/plugins_heatmap.rst
+
+So why did I choose this document?
+
+#. It includes images, captions, headers, references and replacements.
+#. I wrote it so it is easier for me to translate ;-)
+
+The build process has created the English :file:`.po` file which can be found here::
+
+ QGIS-Documentation/i18n/en/LC_MESSAGES/docs/user_manual/plugins/plugins_heatmap.po
+
+The equivalent Dutch :file:`.po` file (basically a copy) can be found here::
+
+ QGIS-Documentation/i18n/nl/LC_MESSAGES/docs/user_manual/plugins/plugins_heatmap.po
+
+Along this file you will see a tiny :file:`.mo` file which indicates that it
+does not hold any translations yet.
 Now we start to translate the plugin_heatmap manual!
 
 Translating most of the sentences should be straightforward.
@@ -330,7 +261,7 @@ part of it!!
 .. _translation_summary:
 
 Summary Rules for translation
-.............................
+=============================
 
 #. Do not change text between two ``|`` characters like ``|bronze|``, ``|checkbox|``, 
    ``|labels|``, ``|selectString|``, ``|addLayer|`` ... These are special tags
