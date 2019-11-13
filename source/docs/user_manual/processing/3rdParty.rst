@@ -211,21 +211,24 @@ where your R binaries are located. You can do this using the :guilabel:`R folder
 entry in the processing configuration dialog. Once you have set that parameter,
 you can start creating and executing your own R scripts.
 
-.. note:: for **Windows** user, usually the R executable file is in the
-   :file:`C:\\Program Files\\R\\R-3.2` folder. Add just the folder and **NOT** the
+.. note:: For **Windows** user, usually the R executable file is in the
+   :file:`C:\\Program Files\\R\\R-3.2` folder. Add only the folder and **NOT** the
    binary!
 
-Once again, this is different in Linux, and you just have to make sure that the
-R folder is included in the PATH environment variable. If you can start R just
+Once again, this is different in Linux, and you have to make sure that the
+R folder is included in the PATH environment variable. If you can start R by
 typing ``R`` in a console, then you are ready to go.
 
+.. tip:: Have a look at the :ref:`R Intro <r-intro>` and the :ref:`R Syntax <r-syntax>`
+ Training Manual Chapters to have more information on how to write your own R scripts.
+ 
 To add a new algorithm that calls an R function (or a more complex R script that
 you have developed and you would like to have available from QGIS), you have
 to create a script file that tells the processing framework how to perform that
 operation and the corresponding R commands to do so.
 
 R script files have the extension :file:`.rsx`, and creating them is pretty easy
-if you just have a basic knowledge of R syntax and R scripting. They should be
+if you have a basic knowledge of R syntax and R scripting. They should be
 stored in the R scripts folder. You can set this folder in the :guilabel:`R`
 settings group (available from the processing settings dialog), just like you do
 with the folder for regular processing scripts.
@@ -250,9 +253,6 @@ The first lines, which start with a double Python comment sign (``##``), tell
 QGIS the inputs of the algorithm described in the file and the outputs that
 it will generate. They work with exactly the same syntax as the Processing scripts
 that we have already seen, so they will not be described here again.
-
-Please have a look at the :ref:`R Intro <r-intro>` and the :ref:`R Syntax <r-syntax>`
-Training Manual Chapters to have more information on how to write your own R scripts-
 
 When you declare an input parameter, QGIS uses that information for two
 things: creating the user interface to ask the user for the value of that
