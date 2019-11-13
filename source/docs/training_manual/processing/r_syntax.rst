@@ -64,8 +64,9 @@ Example with vector output
 --------------------------
 
 Let's take an algorithm from the online collection that creates random points from
-the extent of an input layer::
+the extent of an input layer:
 
+.. code-block:: R
 
   ##Point pattern analysis=group
   ##Layer=vector
@@ -97,8 +98,9 @@ Example with raster output
 --------------------------
 
 The following script will perform a basic ordinary kriging and will create a raster
-map of the interpolated values::
+map of the interpolated values:
 
+.. code-block:: R
 
   ##Basic statistics=group
   ##Layer=vector
@@ -115,7 +117,7 @@ map of the interpolated values::
   Output<-prediction
 
 
-from a vector and its field in input the algorithm will use the ``autoKrige``
+From a vector and its field in input the algorithm will use the ``autoKrige``
 function of the ``automap`` R package and it will first calculate the kriging
 model and then create a raster.
 
@@ -127,7 +129,9 @@ Example with table output
 
 Let's edit the ``Summary Statistics`` algorithm so that the output is a table file (csv).
 
-The script body is the following::
+The script body is the following:
+
+.. code-block:: R
 
   ##Basic statistics=group
   ##Layer=vector
@@ -157,7 +161,9 @@ Example with console output
 ---------------------------
 
 We can take the previous example and instead of creating a table, print the result
-in the **Result Viewer**::
+in the **Result Viewer**:
+
+.. code-block:: R
 
   ##Basic statistics=group
   ##Layer=vector
@@ -186,8 +192,9 @@ The script is exactly the same of above with just 2 edits:
 Example with plot
 -----------------
 Creating plots is very simple. You have to use the ``##showplots`` parameter as
-the following script shows::
+the following script shows:
 
+.. code-block:: R
 
   ##Basic statistics=group
   ##Layer=vector
