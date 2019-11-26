@@ -177,42 +177,41 @@ Symbology properties are divided in several tabs:
 General 
 .......
 
-The tab |general| presents the following items:
+.. remember to update  when vector dataset are available
 
-* groups available in the mesh dataset
-* dataset in the selected group(s), for example, if the layer has a temporal dimension
-* metadata if available
-* :ref:`blending mode <blend-modes>` available for the selected dataset.
+The |general| :sup:`General` tab allows you to define the data you'd like to
+represent.
 
+#. From the :guilabel:`Groups` frame, set active the target group in the mesh
+   dataset, by clicking the |contour_inactive| icon next to its name; the icon
+   turned into |contour_active|.
+#. Since a mesh group can contain multiple temporal datasets, select from the group
+   the actual dataset to render in the map canvas. Use the slider |slider|, combo box
+   |selectString| and |groupsexploring| buttons to explore other dimensions of the
+   layer. The |options| :sup:`Time format options` button allows you to set whether
+   to use absolute or relative time for data identification in the timeframe.
 
-The slider |slider|, combo box |selectString| and |groupsexploring| buttons
-allow to explore another dimension of the data, if available.
-As the slider moves, the metadata is presented accordingly.
-See the figure :ref:`Mesh groups <figure_mesh_groups>` below as an example.
-The map canvas will display the selected dataset group as well.
+   As the slider moves, the :guilabel:`Metadata` of the current dataset is
+   presented accordingly.
 
-.. _figure_mesh_groups:
+   .. _figure_mesh_groups:
 
-.. figure:: img/mesh_groups.png
-   :align: center
+   .. figure:: img/mesh_groups.png
+      :align: center
 
-   Dataset in Selected Group(s)
+      Dataset in Selected Group(s)
+   
+#. Set the :ref:`blending mode <blend-modes>` if desired
 
-
-
-You can apply symbology to each group using the tabs.
-
+You can tweak the symbology of the active group using the following tabs.
 
 .. _mesh_symbology_contours:
 
 Contours Symbology
 ..................
 
-Under :guilabel:`Groups`, click on |contour_inactive| to show contours with
-default visualization parameters.
-
-In the tab |contour_active| you can see and change the current visualization options of contours
-for the selected group, as shown in the image :ref:`Styling contours in a mesh <figure_mesh_symbology_contours>` below:
+The |contour_active| :sup:`Contours` tab helps you configure, if any, contours
+within the selected group in the |general| :sup:`General` tab.
 
 .. _figure_mesh_symbology_contours:
 
@@ -221,7 +220,11 @@ for the selected group, as shown in the image :ref:`Styling contours in a mesh <
 
    Styling Contours in a Mesh Layer
 
-Use the slide bar or combo box to set the opacity of the current group.
+#. Check the |checkbox| :guilabel:`Show Contours` option to enable the customization
+#. Set the convenient :guilabel:`Opacity`
+#. Enter the :guilabel:`Min` and :guilabel:`Max` pixels values to use or fetch the
+   information from the data using the :guilabel:`Load` button.
+
 
 Use :guilabel:`Load` to adjust the min and max values of the current group.
 
@@ -321,6 +324,8 @@ The line width and color can be changed in this dialog, and both the grid render
    :width: 1.5em
 .. |groupsexploring| image:: /static/common/mesh_groups_explore.png
    :width: 1.5em
+.. |options| image:: /static/common/mActionOptions.png
+   :width: 1em
 .. |rendering_mesh| image:: /static/common/mesh_rendering.png
    :width: 1.5em
 .. |selectString| image:: /static/common/selectstring.png
