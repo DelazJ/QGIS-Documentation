@@ -111,6 +111,8 @@ Mesh Dataset Properties
 Information Properties
 ----------------------
 
+.. file to recreate
+
 .. _figure_mesh_info_properties:
 
 .. figure:: img/mesh_info_properties.png
@@ -125,6 +127,15 @@ face count and dataset groups count.
 
 Source Properties
 -----------------
+
+.. file to rename
+
+.. _figure_mesh_source_properties:
+
+.. figure:: img/mesh_info_properties.png
+   :align: center
+
+   Mesh Layer Source Properties
 
 The :guilabel:`Source` tab displays basic information about the selected mesh,
 including:
