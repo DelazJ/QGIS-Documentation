@@ -157,3 +157,45 @@
     UPDATE your_table SET area=ST_AREA(geom);
 
 **end_postgisexecutesqlexample**
+
+.. The following section is included in singleband pseudocolor of raster
+ and contours symbology of mesh data
+ 
+**singleband_pseudocolor**
+
+Using a :guilabel:`Band` of the layer and a :ref:`values range <minmaxvalues>`,
+three types of color :guilabel:`Interpolation` are available:
+
+* Discrete (a <= symbol appears in the value column)
+* Linear
+* Exact (an equal symbol appears in the Value column)
+
+The :guilabel:`Color ramp` drop down list lists the color ramp in your QGIS. You
+can add a new one, edit or save the one you changed. The name of the color ramp
+will be saved in the configuration and in the QML files.
+
+The :guilabel:`Label unit suffix` is a label added after the value in the
+legend.
+
+For the classification :guilabel:`Mode` |selectString| 'Equal interval', you
+only need to select the :guilabel:`number of classes` |selectNumber| and press
+the button :guilabel:`Classify`.
+In the case of the :guilabel:`Mode` |selectString| 'Continuous', QGIS creates
+classes automatically depending on the :guilabel:`Min` and :guilabel:`Max`.
+
+The button |signPlus| :sup:`Add values manually` adds a value
+to the individual color table. The button |signMinus| :sup:`Remove selected row`
+deletes a value from the individual color table. Double clicking on the value column
+lets you insert a specific value. Double clicking on the color column opens the dialog
+:guilabel:`Change color`, where you can select a color to apply on that value.
+Further, you can also add labels for each color, but this value won't be displayed
+when you use the identify feature tool.
+
+You can use the buttons |fileOpen| :sup:`Load color map from file` or |fileSaveAs|
+:sup:`Export color map to file` to load an existing color table or to save the
+defined color table for other sessions.
+
+The |checkbox| :guilabel:`Clip out of range values` allows QGIS to not render pixel
+greater than the :guilabel:`Max` value.
+
+**end_singleband_pseudocolor**
