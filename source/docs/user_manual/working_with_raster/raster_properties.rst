@@ -211,6 +211,11 @@ You can also create individual color maps for the single bands here.
    Raster Symbology - Singleband pseudocolor rendering
 
 
+.. include:: ../processing_algs/qgis/qgis_algs_include.rst
+   :start-after: singleband_pseudocolor
+   :end-before: end_singleband_pseudocolor
+
+
 Using a :guilabel:`Band` of the layer and a :ref:`values range <minmaxvalues>`,
 three types of color :guilabel:`Interpolation` are available:
 
