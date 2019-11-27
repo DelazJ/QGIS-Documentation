@@ -455,14 +455,58 @@ or fine-tune the symbols rendering:
 Graduated Renderer
 ..................
 
-The |graduatedSymbol| :guilabel:`Graduated` renderer is used to render
-all the features from a layer, using an user-defined symbol whose color or size
+The |graduatedSymbol| :guilabel:`Graduated` renderer is used to represent
+quantitative variations of an attribute. Features are sorted and grouped
+into classes based on their values.
+
+These differences are displayed using a user-defined symbol whose color or size
 reflects the assignment of a selected feature's attribute to a class.
 
-Like the Categorized Renderer, the Graduated Renderer allows you
-to define rotation and size scale from specified columns.
+.. To remove??
+ Like the Categorized Renderer, the Graduated Renderer allows you
+ to define rotation and size scale from specified columns.
 
-Also, analogous to the Categorized Renderer, it allows you to select:
+ Also, analogous to the Categorized Renderer, it allows you to select:
+
+
+
+To create a graduated rendering:
+
+#. In the :guilabel:`Value` option, provide a numeric field or an |expression|
+   expression to range the features with
+#. Configure the :ref:`Symbol <symbol-selector>` which will be used as
+   base symbol for each class
+#. Enter the :guilabel:`Legend format`, ie a template for the text that would be
+   associated to each class in the :guilabel:`Layers` panel or print layout legend.
+#. The :guilabel:`Precision` allows you to round the lower and upper values of the
+   class in the legend text. Check |unchecked| :guilabel:`Trim` to remove trailing
+   zeroes from decimal values in the legend.
+#. The :guilabel:`Method` of data representation: it can be :guilabel:`Color`
+   (for all layers) or :guilabel:`Size` (for point or line layers).
+
+
+   WHAT DOES REPERESENT COLOR IN ONE CASE AND SIZE IN THE OTHER . WHAT TO DO WITH EACH?
+
+   * The colors (using the color Ramp list) if the color method is selected
+   * The size (using the size domain and its unit)
+
+#. Indicate the :ref:`Color ramp <color-ramp>`, ie the range of colors from which
+   the color applied to each symbol is selected.
+
+   Besides the common options of the :ref:`color ramp widget <color_ramp_widget>`,
+   you can apply a |unchecked| :guilabel:`Random Color Ramp` to the categories.
+   And click the :guilabel:`Shuffle Random Colors` entry to regenerate a new set
+   of random colors if not satisfactory.
+
+The example in figure_graduated_symbology_ shows the graduated rendering dialog for
+the rivers layer of the QGIS sample dataset.
+
+.. _figure_graduated_symbology:
+
+.. figure:: img/graduatedsymbol_ng_line.png
+   :align: center
+
+   Graduated Symbolizing options
 
 * The value (using the fields listbox or the |expression|
   :sup:`Set value expression` function)
@@ -472,6 +516,8 @@ Also, analogous to the Categorized Renderer, it allows you to select:
 * The colors (using the color Ramp list) if the color method is selected
 * The size (using the size domain and its unit)
 
+Histogram
+^^^^^^^^^
 Then you can use the Histogram tab which shows an interactive histogram of the
 values from the assigned field or expression. Class breaks can be moved or
 added using the histogram widget.
@@ -511,24 +557,6 @@ Right-clicking over selected item(s) shows a contextual menu to
 **Copy/Paste Symbol**, **Change Color**, **Change Opacity**,
 **Change Output Unit**, **Change Width / Size**, **Change Angle**.
 
-The example in figure_graduated_symbology_ shows the graduated rendering dialog for
-the major_rivers layer of the QGIS sample dataset.
-
-.. _figure_graduated_symbology:
-
-.. figure:: img/graduatedsymbol_ng_line.png
-   :align: center
-
-   Graduated Symbolizing options
-
-.. tip:: **Thematic maps using an expression**
-
-   Categorized and graduated thematic maps can be created using the result
-   of an expression. In the properties dialog for vector layers, the attribute
-   chooser is extended with a |expression| :sup:`Set column expression` function.
-   So you don't need to write the classification attribute
-   to a new column in your attribute table if you want the classification
-   attribute to be a composite of multiple fields, or a formula of some sort.
 
 .. index:: Proportional symbol, Multivariate analysis, Size assistant
 .. _proportional_symbols:
