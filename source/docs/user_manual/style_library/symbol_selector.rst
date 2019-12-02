@@ -85,9 +85,9 @@ You can setup some parameters that apply to the global symbol:
 
   .. tip::
 
-    Use :guilabel:`Size` (for marker symbols) or the :guilabel:`Width` (for
+    Use the :guilabel:`Size` (for marker symbols) or the :guilabel:`Width` (for
     line symbols) properties at the symbol level to proportionally resize all
-    of its embedded :ref:symbol layers <symbol_layer>` dimensions.
+    of its embedded :ref:`symbol layers <symbol_layer>` dimensions.
 
   .. note::
 
