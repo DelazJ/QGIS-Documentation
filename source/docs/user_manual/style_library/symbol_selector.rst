@@ -126,7 +126,7 @@ You can setup some parameters that apply to the global symbol:
     geometry is unchanged. This allows for creation of fill symbols with consistent
     appearance, regardless of the dataset being rendered and the ring orientation
     of individual features.
-  * Depending on the :ref:`symbology <vector_style_menu>` of a layer a symbol is
+  * Depending on the :ref:`symbology <vector_style_menu>` of the layer a symbol is
     being applied to, additional settings are available in the :guilabel:`Advanced`
     menu:
 
