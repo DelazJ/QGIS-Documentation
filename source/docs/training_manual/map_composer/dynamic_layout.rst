@@ -80,6 +80,11 @@ The layout should have a margin of 7.5mm and the header should be 36mm high.
 |moderate| |FA| Creating the dynamic header
 -------------------------------------------------------------------------------
 
+
+.. figure:: img/dynamic_layout_structure.png
+   :align: center
+   :width: 100%
+   
 Let's create a  a rectangle which will contain the header.
 
 #. With the |addBasicShape| :sup:`Add Shape` button, draw a rectangle. 
@@ -150,15 +155,15 @@ into different sections.
 
    * for :guilabel:`X`
 
-   ::
+     ::
 
-    @layout_pagewidth - @sw_layout_margin * 2 - 83.5
+      @layout_pagewidth - @sw_layout_margin * 2 - 83.5
 
    * for :guilabel:`Y`
  
-   ::
+     ::
 
-    @sw_layout_margin
+      @sw_layout_margin
  
    * for the :guilabel:`Height`, same as the header we created, so enter
      the expression
@@ -167,11 +172,9 @@ into different sections.
 
       @sw_layout_height_header
 
-The figure below shows the structure of our dynamic layout. We will fill
-the areas created by the lines with some elements.
-
-.. figure:: img/dynamic_layout_structure.png
-   :align: center
+The figure below shows the structure of our dynamic layout.
+Next, we will fill the areas created by the lines with some elements
+(labels and images).
 
 |moderate| |FA| Creating labels for the dynamic header
 ---------------------------------------------------------------------------------------
@@ -238,12 +241,17 @@ The third label will include information about your organisation.
    of the :guilabel:`Item Properties`.
 
    #. Go to the :guilabel:`Layout` menu
-   #. Click the |signPlus| button each time and enter the names ``o_department``,
-      ``o_name`` , ``o_adress`` and ``o_postcode`` as shown in the picture below.
+   #. Click the |signPlus| button each time and enter the names ``o_department``
+   #. In the second column enter the corresponding information about your department.
+   #. Add other variables named ``o_name`` , ``o_adress`` and ``o_postcode`` and,
+      as above provide the corresponding information.
 
-#. In the second column enter the corresponding information about your organisation.
+#. Use these variables in the label's :guilabel:`Main Properties` section as shown
+   in the image below.
 
-   We will use these variables in the label's :guilabel:`Main Properties` section.
+   .. figure:: img/dynamic_layout_organisation.png
+      :align: center
+
 #. Define the :guilabel:`X` position of the label
 
    :: 
@@ -262,8 +270,6 @@ The third label will include information about your organisation.
    ::
 
      @sw_layout_height_header - 15.5
-
-.. figure:: img/dynamic_layout_organisation.png
 
 |moderate| |FA| Adding pictures to the dynamic header
 ---------------------------------------------------------------------------------------
@@ -304,8 +310,8 @@ This will be inserted by using |northArrow| :sup:`Adds a new North Arrow to the 
 
     @sw_layout_margin + 22.5
 
-#. We use static numbers here to define the :guilabel:`Width` and the
-   :guilabel:`Height`: ``21`` for both.
+#. Use static numbers here to define the :guilabel:`Width` and the
+   :guilabel:`Height`: e.g. ``21`` for both.
 
 |moderate| |FA| Creating the scalebar of the dynamic header
 ----------------------------------------------------------------------------------------
@@ -342,6 +348,7 @@ click the |draw| :sup:`Refresh view` button and the page design is adapted.
 
 .. figure:: img/dynamic_layout.png
    :align: center
+   :width: 100%
 
 |WN|
 -------------------------------------------------------------------------------
