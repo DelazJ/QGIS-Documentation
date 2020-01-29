@@ -467,7 +467,7 @@ Input types
      - A filename for a newly created output file
    * - :class:`QgsProcessingParameterFolderDestination <qgis.core.QgsProcessingParameterFolderDestination>`
      - ``alg.FOLDER_DEST``
-     - A folder (destination folder)
+     - A folder specifying a destination folder
    * - :class:`QgsProcessingParameterNumber <qgis.core.QgsProcessingParameterNumber>`
      - ``alg.INT``
      - An integer
@@ -481,8 +481,8 @@ Input types
      - ``alg.MAPLAYER``
      - A map layer
    * - :class:`QgsProcessingParameterMapTheme <qgis.core.QgsProcessingParameterMapTheme>`
-     - ``alg.MAP_THEME``
-     - A project map theme
+     - ``alg.MAPTHEME``
+     - A map theme
    * - :class:`QgsProcessingParameterMatrix <qgis.core.QgsProcessingParameterMatrix>`
      - ``alg.MATRIX``
      - A matrix
@@ -506,10 +506,10 @@ Input types
      - A number range
    * - :class:`QgsProcessingParameterRasterLayer <qgis.core.QgsProcessingParameterRasterLayer>`
      - ``alg.RASTER_LAYER``
-     - A raster layer
+     - An existing raster layer
    * - :class:`QgsProcessingParameterRasterDestination <qgis.core.QgsProcessingParameterRasterDestination>`
      - ``alg.RASTER_LAYER_DEST``
-     - A raster layer
+     - A raster layer specifying a destination layer
    * - :class:`QgsProcessingParameterScale <qgis.core.QgsProcessingParameterScale>`
      - ``alg.SCALE``
      - A map scale
@@ -524,10 +524,10 @@ Input types
      - A text string
    * - :class:`QgsProcessingParameterVectorLayer <qgis.core.QgsProcessingParameterVectorLayer>`
      - ``alg.VECTOR_LAYER``
-     - A vector layer
+     - An existing vector layer
    * - :class:`QgsProcessingParameterVectorDestination <qgis.core.QgsProcessingParameterVectorDestination>`
      - ``alg.VECTOR_LAYER_DEST``
-     - A vector layer
+     - A vector layer specifying a destination layer
 
 
 Output types
