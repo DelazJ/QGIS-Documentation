@@ -67,6 +67,7 @@ We first need to load the data to work with.
 
    .. figure:: img/osm_swellendam.png
       :align: center
+      :width: 100%
 
 #. In the :file:`training_data.gpkg` Geopackage database load all the files we will
    use in this chapter:
@@ -109,7 +110,7 @@ The map with all the data should look like the following one:
 
 .. figure:: img/osm_swellendam_2.png
    :align: center
-
+   :width: 100%
 
 |basic| |TY| Convert Layers' CRS
 -------------------------------------------------------------------------------
@@ -130,7 +131,7 @@ But feel free to choose the best workflow for yourself.
     more appropriate for your region.
 
 #. Right click the :guilabel:`roads` layer in the :guilabel:`Layers` panel;
-#. Click :guilabel:`Export --> Save Features As...`;
+#. Click :menuselection:`Export --> Save Features As...`;
 #. In the :guilabel:`Save Vector Layer As` dialog choose :guilabel:`GeoPackage`
    as :guilabel:`Format`;
 #. Click on :guilabel:`...` of :guilabel:`File name` parameter and name the new
@@ -212,6 +213,7 @@ Now your map will look something like this:
 
 .. figure:: img/roads_buffer_result.png
    :align: center
+   :width: 100%
 
 If your new layer is at the top of the :guilabel:`Layers` list, it will probably
 obscure much of your map, but this gives you all the areas in your region which are
@@ -235,6 +237,7 @@ this:
 
 .. figure:: img/dissolve_buffer_results.png
    :align: center
+   :width: 100%
 
 Now there are no unnecessary subdivisions.
 
@@ -279,12 +282,14 @@ group within :menuselection:`Processing --> Toolbox`.
 
    .. figure:: img/intersect_result.png
       :align: center
+      :width: 100%
 
 #. You may remove the two buffer layers and only keep the one that shows where
    they overlap, since that's what we really wanted to know in the first place:
 
    .. figure:: img/final_intersect_result.png
       :align: center
+      :width: 100%
 
 .. _select-by-location:
 
@@ -308,6 +313,7 @@ extract the buildings in that area.
 
    .. figure:: img/select_zoom_result.png
       :align: center
+      :width: 100%
 
    The red buildings are those which match our criteria, while the buildings
    in green are those which do not.
