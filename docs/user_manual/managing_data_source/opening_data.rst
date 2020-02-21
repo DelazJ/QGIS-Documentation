@@ -190,10 +190,10 @@ For file system directory entries, the context menu offers the following:
   * :guilabel:`GeoPackage...`
   * :guilabel:`ShapeFile...`
 * :guilabel:`Add as a Favorite`: favorite folders can be renamed
-  (:guilabel:`Rename favorite...`) or removed (:guilabel:`Remove favorite`) any time.
+  (:guilabel:`Rename Favorite...`) or removed (:guilabel:`Remove Favorite`) any time.
 * :guilabel:`Hide from Browser`: hidden folders can be toggled to visible from
-  the :menuselection:`Settings --> Options --> Data Sources --> Hidden browser
-  paths` setting
+  the :menuselection:`Settings --> Options --> Data Sources --> Hidden Browser
+  Paths` setting
 * :guilabel:`Fast Scan this Directory`
 * :guilabel:`Open Directory`
 * :guilabel:`Open in Terminal`
@@ -205,25 +205,58 @@ menu will have supporting entries.
 For example, for non-database, non-service-based vector, raster and
 mesh data sources:
 
-* :guilabel:`Delete File "<name of file>"...`
-* :guilabel:`Export Layer` --> :guilabel:`To File...`
-* :guilabel:`Add Layer to Project`
-* :guilabel:`Layer Properties`
-* :guilabel:`File Properties`
+.. list-table::
+   :header-rows: 1
+   :widths: auto
 
-In the :guilabel:`Layer properties` entry, you will find (similar
-to what you will find in the
-:ref:`vector <vector_properties_dialog>` and
-:ref:`raster <raster_properties_dialog>` layer properties once
-the layers have been added to the project):
+   * - Option
+     - File on disk (vector, raster, mesh)
+     - Database
+     - Web service
+   * - :guilabel:`Rename Layer "<name of layer>"...`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Edit...`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Delete File "<name of file>"...`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Delete Layer "<name of layer>"...`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Truncate Table`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
+   * - :menuselection:`Export Layer --> To File...`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Add Layer to Project`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Layer Properties`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`File Properties`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
 
-* :guilabel:`Metadata` for the layer.
-  Metadata groups: :guilabel:`Information from provider` (if possible,
-  :guilabel:`Path` will be a hyperlink to the source),
-  :guilabel:`Identification`, :guilabel:`Extent`, :guilabel:`Access`,
-  :guilabel:`Fields` (for vector layers), :guilabel:`Bands` (for raster layers),
-  :guilabel:`Contacts`, :guilabel:`Links` (for vector layers),
-  :guilabel:`References` (for raster layers), :guilabel:`History`.
+In the :guilabel:`Layer properties` entry, you will find:
+
+* :guilabel:`Metadata` for the layer: similar
+  to what you will find in the
+  :ref:`vector <vectorinformationmenu>` and
+  :ref:`raster <raster_information>` layer metadata properties once
+  the layers have been added to the project.
 * A :guilabel:`Preview` panel
 * The attribute table for vector sources (in the :guilabel:`Attributes`
   panel).
