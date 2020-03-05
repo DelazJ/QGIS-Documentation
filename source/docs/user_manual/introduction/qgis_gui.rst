@@ -2109,39 +2109,82 @@ If there are already layers in the project, no map canvas resize is
 performed, so only features falling within the current map canvas extent
 will be visible.
 
-The map view can be panned, shifting the display to another region
-of the map, and it can be zoomed in and out.
-Various other operations can be performed on the map as described in
-the :ref:`label_toolbars` section.
-The map view and the legend are tightly bound to each other --- the
-maps in the view reflect changes you make in the legend area.
+While the focus is over the map view:
 
+* it can be panned, shifting the display to another region of the map:
+  this is performed using the |pan| :sup:`Pan Map` tool, the arrow keys,
+  moving the mouse while any of the :kbd:`Space` key, the middle mouse
+  button or the mouse wheel is held down.
+* it can be zoomed in and out, with the dedicated |zoomIn| :sup:`Zoom In`
+  and |zoomIn| :sup:`Zoom Out` tools. This is also performed by rolling
+  the wheel forward to zoom in and backwards to zoom out.
+  The zoom is centered on the mouse cursor position.
 
-.. index:: Zoom, Mouse wheel
+  You can customize the :guilabel:`Zoom factor` under the
+  :menuselection:`Settings --> Options --> Map tools` menu.
+* it can be zoomed to the full extent of loaded layers (|zoomFullExtent|
+  :sup:`Zoom Full`), to a layer extent (|zoomToLayer| :sup:`Zoom to Layer`)
+  or to the extent of selected features (|zoomToSelected| :sup:`Zoom to Selection`)
+* you can navigate back/forward through canvas view history with
+  the |zoomLast|:sup:`Zoom Last` and |zoomNext|:sup:`Zoom Next` buttons
+  or using the back/forward mouse buttons.
 
-.. tip::
-   **Zooming the Map with the Mouse Wheel**
+By default, QGIS opens a single map view (so called "main map"), which is
+tightly bound to the :guilabel:`Layers` panel; the main map *automatically*
+reflects the changes you make in the :guilabel:`Layers` panel area.
+But it's possible to have additional map views to preview different
+renderings of your dataset, side by side; while still relying on
+the layers properties as set in the :guilabel:`Layers` panel, each map view
+can display a different set of layers at different scale and extent.
 
-   You can use the mouse wheel to zoom in and out on the map.
-   Place the mouse cursor inside the map area and roll the wheel forward
-   (away from you) to zoom in and backwards (towards you) to zoom out.
-   The zoom is centered on the mouse cursor position.
-   You can customize the behavior of the mouse wheel zoom using the
-   :guilabel:`Map tools` tab under the
-   :menuselection:`Settings --> Options` menu.
+.. _additional_map_views:
 
+Setting additional map views
+----------------------------
 
-.. index:: Pan, Arrow
+To add a new map view, go to :menuselection:`View -->` |newMap|
+:menuselection:`New Map View`. A new floating widget displaying the layers
+rendering is added to QGIS. You can add as many map views as you need.
+They can be kept floating, placed side by side or stacked on top of each
+other.
 
-.. tip::
-   **Panning the Map with the Arrow Keys and Space Bar**
+.. _figure_mapviews:
 
-   You can use the arrow keys to pan the map.
-   Place the mouse cursor inside the map area and click on the arrow
-   keys to pan left, right, up and down.
-   You can also pan the map by moving the mouse while holding down the
-   space bar or the middle mouse button (or holding down the mouse
-   wheel).
+.. figure:: img/map_views.png
+   :align: center
+   :width: 100%
+
+   Multiple map views with different settings
+
+At the top of an additional map canvas, there's a toolbar with following
+capabilities:
+
+* |zoomFullExtent| :sup:`Zoom Full`, |zoomToSelected| :sup:`Zoom to Selection`
+  and |zoomToLayer| :sup:`Zoom to Layer` to navigate within the view
+* |showMapTheme| :sup:`Set View Theme` to select the :ref:`map theme <map_themes>`
+  to display in the map view. If set to ``(none)``, the view will follow
+  the :guilabel:`Layers` panel changes.
+* |options| :sup:`View settings` to configure the map view:
+
+  * |radioButtonOn| :guilabel:`Synchronize view center with main map`:
+    syncs the center of the map views without changing the scale.
+    This allows you to have an overview style or magnified map which follows
+    the main canvas center.
+  * |radioButtonOff| :guilabel:`Synchronize view to selection`: same as
+    zoom to selection
+  * :guilabel:`Scale`
+  * :guilabel:`Rotation`
+  * :guilabel:`Magnification`
+  * |unchecked| :guilabel:`Synchronize scale` with the main map scale.
+    A :guilabel:`Scale factor` can then be applied, allowing you to have
+    a view which is e.g. always 2x the scale of the main canvas.
+  * |checkbox| :guilabel:`Show annotations`
+  * |checkbox| :guilabel:`Show cursor position`
+  * |unchecked| :guilabel:`Show main canvas extent`
+  * |checkbox| :guilabel:`Show labels`: allows to hide labels regardless
+    they are set in the displayed layers' properties
+  * :guilabel:`Change map CRS...`
+  * :guilabel:`Rename view...`
 
 
 .. _`exportingmapcanvas`:
@@ -2558,7 +2601,6 @@ Click the icon to open the Plugin Manager dialog.
    :width: 1.5em
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-
 .. |circle2Points| image:: /static/common/mActionCircle2Points.png
    :width: 1.5em
 .. |circle2TangentsPoint| image:: /static/common/mActionCircle2TangentsPoint.png
@@ -2569,14 +2611,9 @@ Click the icon to open the Plugin Manager dialog.
    :width: 1.5em
 .. |circleCenterPoint| image:: /static/common/mActionCircleCenterPoint.png
    :width: 1.5em
-.. |circleExtent| image:: /static/common/mActionCircleExtent.png
-   :width: 1.5em
-
 .. |circularStringCurvePoint| image:: /static/common/mActionCircularStringCurvePoint.png
    :width: 1.5em
 .. |circularStringRadius| image:: /static/common/mActionCircularStringRadius.png
-   :width: 1.5em
-.. |coordinateCapture| image:: /static/common/coordinate_capture.png
    :width: 1.5em
 .. |customProjection| image:: /static/common/mActionCustomProjection.png
    :width: 1.5em
@@ -2602,7 +2639,6 @@ Click the icon to open the Plugin Manager dialog.
    :width: 1.5em
 .. |editPaste| image:: /static/common/mActionEditPaste.png
    :width: 1.5em
-
 .. |ellipseCenter2Points| image:: /static/common/mActionEllipseCenter2Points.png
    :width: 1.5em
 .. |ellipseCenterPoint| image:: /static/common/mActionEllipseCenterPoint.png
@@ -2615,13 +2651,10 @@ Click the icon to open the Plugin Manager dialog.
    :width: 1.5em
 .. |eventId| image:: /static/common/event_id.png
    :width: 1.5em
-
-.. |expressionSelect| image:: /static/common/mIconExpressionSelect.png
-   :width: 1.5em
-
 .. |evisConnect| image:: /static/common/evis_connect.png
    :width: 1.5em
-
+.. |expressionSelect| image:: /static/common/mIconExpressionSelect.png
+   :width: 1.5em
 .. |extents| image:: /static/common/extents.png
    :width: 1.5em
 .. |fileExit| image:: /static/common/mActionFileExit.png
@@ -2637,11 +2670,7 @@ Click the icon to open the Plugin Manager dialog.
    :width: 1.5em
 .. |formSelect| image:: /static/common/mIconFormSelect.png
    :width: 1.5em
-.. |geometryChecker| image:: /static/common/geometrychecker.png
-   :width: 1.5em
 .. |georefRun| image:: /static/common/mGeorefRun.png
-   :width: 1.5em
-.. |gpsImporter| image:: /static/common/gps_importer.png
    :width: 1.5em
 .. |helpContents| image:: /static/common/mActionHelpContents.png
    :width: 1.5em
@@ -2709,13 +2738,10 @@ Click the icon to open the Plugin Manager dialog.
    :width: 1.5em
 .. |newTableRow| image:: /static/common/mActionNewTableRow.png
    :width: 1.5em
-
-
 .. |offlineEditingCopy| image:: /static/common/offline_editing_copy.png
    :width: 1.5em
 .. |offlineEditingSync| image:: /static/common/offline_editing_sync.png
    :width: 1.5em
-
 .. |offsetCurve| image:: /static/common/mActionOffsetCurve.png
    :width: 1.5em
 .. |offsetPointSymbols| image:: /static/common/mActionOffsetPointSymbols.png
@@ -2750,7 +2776,10 @@ Click the icon to open the Plugin Manager dialog.
    :width: 1.5em
 .. |qgisHomePage| image:: /static/common/mActionQgisHomePage.png
    :width: 1.5em
-
+.. |radioButtonOff| image:: /static/common/radiobuttonoff.png
+   :width: 1.5em
+.. |radioButtonOn| image:: /static/common/radiobuttonon.png
+   :width: 1.5em
 .. |rectangle3PointsDistance| image:: /static/common/mActionRectangle3PointsDistance.png
    :width: 1.5em
 .. |rectangle3PointsProjected| image:: /static/common/mActionRectangle3PointsProjected.png
@@ -2759,17 +2788,14 @@ Click the icon to open the Plugin Manager dialog.
    :width: 1.5em
 .. |rectangleExtent| image:: /static/common/mActionRectangleExtent.png
    :width: 1.5em
-
 .. |redo| image:: /static/common/mActionRedo.png
    :width: 1.5em
-
 .. |regularPolygon2Points| image:: /static/common/mActionRegularPolygon2Points.png
    :width: 1.5em
 .. |regularPolygonCenterCorner| image:: /static/common/mActionRegularPolygonCenterCorner.png
    :width: 1.5em
 .. |regularPolygonCenterPoint| image:: /static/common/mActionRegularPolygonCenterPoint.png
    :width: 1.5em
-
 .. |removeAllOVerview| image:: /static/common/mActionRemoveAllFromOverview.png
    :width: 1.5em
 .. |removeLayer| image:: /static/common/mActionRemoveLayer.png
@@ -2802,6 +2828,8 @@ Click the icon to open the Plugin Manager dialog.
    :width: 1.5em
 .. |showBookmarks| image:: /static/common/mActionShowBookmarks.png
    :width: 1.5em
+.. |showMapTheme| image:: /static/common/mActionShowPresets.png
+   :width: 1.5em
 .. |showMeshCalculator| image:: /static/common/mActionShowMeshCalculator.png
    :width: 1.5em
 .. |showPluginManager| image:: /static/common/mActionShowPluginManager.png
@@ -2823,8 +2851,6 @@ Click the icon to open the Plugin Manager dialog.
 .. |sum| image:: /static/common/mActionSum.png
    :width: 1.2em
 .. |toggleEditing| image:: /static/common/mActionToggleEditing.png
-   :width: 1.5em
-.. |topologyChecker| image:: /static/common/mActionTopologyChecker.png
    :width: 1.5em
 .. |tracking| image:: /static/common/tracking.png
    :width: 1.5em
