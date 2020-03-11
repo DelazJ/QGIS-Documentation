@@ -2109,6 +2109,7 @@ If there are already layers in the project, no map canvas resize is
 performed, so only features falling within the current map canvas extent
 will be visible.
 
+click on the map view and you should be able to interact with  it:
 While the focus is over the map view:
 
 * it can be panned, shifting the display to another region of the map:
@@ -2133,8 +2134,19 @@ While the focus is over the map view:
 By default, QGIS opens a single map view (called "main map"), which is
 tightly bound to the :guilabel:`Layers` panel. The main map *automatically*
 reflects the changes you make in the :guilabel:`Layers` panel area.
-But it's possible to have additional map views to preview different
-renderings of your dataset, side by side; while still relying on
+But it is possible to have additional map views to display different
+renderings of your dataset, side by side; these map views can not follow
+the changes in the Layers panel, but they while still relying on
+the layers properties as set in the :guilabel:`Layers` panel, each map view
+can display a different set of layers at different scale and extent.
+
+By default, QGIS opens a single map view (called "main map"), which is
+tightly bound to the :guilabel:`Layers` panel; the main map *automatically*
+reflects the changes you do in the :guilabel:`Layers` panel area.
+But it is also possible to open additional map views that could diverge
+from the :guilabel:`Layers` panel current state. display different
+renderings of your dataset, side by side; these map views can not follow
+the changes in the Layers panel, but they while still relying on
 the layers properties as set in the :guilabel:`Layers` panel, each map view
 can display a different set of layers at different scale and extent.
 
