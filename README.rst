@@ -31,12 +31,12 @@ Alternative
 
 You can also use your own virtual env by creating it using it first::
 
- # you NEED python >3.6. Depending on distro either use `python3` or `python`
+ # you NEED python >3.6. Depending on distro either use ``python3`` or ``python``
  # common name is 'venv' but call it whatever you like
 
  python3 -m venv venv  # using the venv module, create a venv named 'venv'
 
-Then activate the venv and install the requirements via the REQUIRMENTS.txt::
+Then activate the venv and install the requirements via the REQUIREMENTS.txt::
 
  source ./venv/bin/activate
  pip install -r REQUIREMENTS.txt
