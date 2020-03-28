@@ -35,19 +35,19 @@
       <dl>
         <dt>{{ _('Contribute to Docs') }}</dt>
           <dd>
-            <a href="{{ github_url }}/{{ pagename }}.rst">{{ _('Edit on GitHub') }}</a>
+            <a href="{{ github_url }}/{{ pagename }}.rst">{{ _('Modify') }}</a>
           </dd>
           {# Display the call for translation only for the latest document. #}
           {% if not isTesting %} 
           <dd>
-            <a href="{{ transifex_url }}/#{{ language }}/{{ pagename }}">{{ _('Translate Page') }}</a>
+            <a href="{{ transifex_url }}/#{{ language }}/{{ pagename }}">{{ _('Translate') }}</a>
           </dd>
           {% endif %}
       </dl>
       {% endif %}
 
       <dl>
-        <dt>{{ _('On QGIS Project') }}</dt>
+        <dt>{{ _('QGIS Project') }}</dt>
           <dd>
             <a href="https://qgis.org/{{ language }}">{{ _('Home') }}</a>
           </dd>
