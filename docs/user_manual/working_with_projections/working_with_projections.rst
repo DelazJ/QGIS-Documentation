@@ -165,7 +165,7 @@ Available options are:
   Checking this setting will disable ALL projection handling within the QGIS
   project, causing all layers and map coordinates to be treated as simple 2D
   Cartesian coordinates, with no relation to positions on the Earth's surface.
-  It can be used to guess a layer CRS (based on its raw coordinates or when
+  It can be used to guess a layer CRS (based on its raw coordinates) or when
   using QGIS for non earth uses like role-playing game maps, building mapping
   or microscopic stuff. In this case:
 

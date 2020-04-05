@@ -1267,13 +1267,35 @@ Measuring
 General information
 ...................
 
-QGIS provides four means of measuring geometries:
+Measuring works within projected coordinate systems (e.g., UTM) and unprojected
+data. The general behavior is to follow the global project settings:
+
+* Unlike most other GIS, the default measurement metric is ellipsoidal,
+  using the ellipsoid defined in :menuselection:`Project --> Properties... -->
+  General`. This is true both when geographic and projected coordinate systems
+  are defined for the project.
+* If you want to calculate the projected/planimetric area or distance using cartesian
+  maths, the measurement ellipsoid has to be set to "None/Planimetric"
+  (:menuselection:`Project --> Properties... --> General`). However,
+  with a geographic (ie unprojected) CRS defined for the data and project, area and
+  distance measurement will be ellipsoidal.
+
+  
+  
+
+QGIS provides various means to get measurements on features:
+
+* :ref:`geometry functions <geometry_functions>`
+* Processing algorithms such as :ref:`qgisexportaddgeometrycolumns`
+* derived measurements in the :ref:`identify` tool
+of measuring geometries:
+
+
 
 * interactive measurement tools |measure|
 * measuring in the |calculateField| :sup:`Field Calculator`
 * derived measurements in the :ref:`identify` tool
-* the vector analysis tool: :menuselection:`Vector --> Geometry Tools -->
-  Export/Add Geometry Columns`
+* the Processing :ref:`qgisexportaddgeometrycolumns` algorithm
 
 Measuring works within projected coordinate systems (e.g., UTM) and unprojected
 data. The first three measuring tools behave equally to global project settings:
@@ -1284,7 +1306,7 @@ data. The first three measuring tools behave equally to global project settings:
   when geographic and projected coordinate systems are defined for the project.
 * If you want to calculate the projected/planimetric area or distance using cartesian
   maths, the measurement ellipsoid has to be set to "None/Planimetric"
-  (:menuselection:`Project --> Properties... --> CRS`). However,
+  (:menuselection:`Project --> Properties... --> General`). However,
   with a geographic (ie unprojected) CRS defined for the data and project, area and
   distance measurement will be ellipsoidal.
 
