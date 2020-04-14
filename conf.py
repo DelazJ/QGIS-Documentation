@@ -125,25 +125,6 @@ import yaml
 
 sys.path.insert(0, os.path.abspath('../../'))
 
-with open('docs_conf.yml', 'r') as f:
-    cfg = yaml.safe_load(f)
-
-html_context = {
-    # When a QGIS version reaches end of life, set this to True to show an information
-    # message on the top of the page.
-    'outdated': False,
-    # When a new QGIS version is released, set this to False to remove the disclaimer
-    # information message on the top of the page.
-    'isTesting': False
-}
-
-supported_languages = cfg['supported_languages'].replace(' ','').split(',')
-version_list = cfg['version_list'].replace(' ','').split(',')
-docs_url = 'https://docs.qgis.org/'
-
-if version not in version_list:
-  raise ValueError('QGIS version is not in version list', version, version_list)
-
 # This config value contains the locations and names of other projects that
 # should be linked to in this documentation.
 
@@ -163,6 +144,25 @@ extlinks = {# api website: docs master branch points to '/' while x.y points to 
             # code on github: docs master branch points to 'master' while x.y points to release-x_y
             'source': ('https://github.com/qgis/QGIS/blob/{}/%s'.format(source_version), None)
            }
+
+html_context = {
+    # When a QGIS version reaches end of life, set this to True to show an information
+    # message on the top of the page.
+    'outdated': False,
+    # When a new QGIS version is released, set this to False to remove the disclaimer
+    # information message on the top of the page.
+    'isTesting': False
+}
+
+with open('docs_conf.yml', 'r') as f:
+    cfg = yaml.safe_load(f)
+
+supported_languages = cfg['supported_languages'].replace(' ','').split(',')
+version_list = cfg['version_list'].replace(' ','').split(',')
+docs_url = 'https://docs.qgis.org/'
+
+if version not in version_list:
+  raise ValueError('QGIS version is not in version list', version, version_list)
 
 context = {
     # 'READTHEDOCS': True,
