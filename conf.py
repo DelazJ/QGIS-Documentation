@@ -135,7 +135,7 @@ intersphinx_mapping = {'pyqgis_api': ('https://qgis.org/pyqgis/{}/'.format(pyqgi
 # alias names to a base URL and a prefix.
 
 api_version = version if version != 'testing' else ''
-source_version = ''.join(['release-', version]).replace('.', '_') if version != 'testing' else 'master'
+source_version = 'release-{}'.format(version).replace('.', '_') if version != 'testing' else 'master'
 
 extlinks = {# api website: docs master branch points to '/' while x.y points to x.y
             'api': ('https://qgis.org/api/{}%s'.format(''.join([version, '/']) if version != 'testing' else ''), None),
@@ -164,6 +164,8 @@ docs_url = 'https://docs.qgis.org/'
 if version not in version_list:
   raise ValueError('QGIS version is not in version list', version, version_list)
 
+branch_name = 'release_{}'.format(version) if version != 'testing' else 'master'
+
 context = {
     # 'READTHEDOCS': True,
     'version_downloads': False,
@@ -175,7 +177,7 @@ context = {
     'github_user': 'qgis',
     'github_repo': 'QGIS-Documentation',
     'github_version': 'master/',
-    'github_url':'https://github.com/qgis/QGIS-Documentation/edit/master',
+    'github_url': 'https://github.com/qgis/QGIS-Documentation/edit/{}'.format(branch_name),
     'transifex_url': 'https://www.transifex.com/qgis/qgis-documentation/translate',
 
     'pyqgis_version': pyqgis_version,
