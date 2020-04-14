@@ -171,14 +171,10 @@ context = {
     'versions': [ [v, docs_url+v] for v in version_list],
     'supported_languages': [ [l, docs_url+version+'/'+l] for l in supported_languages],
     # 'downloads': [ ['PDF', '/builders.pdf'], ['HTML', '/builders.tgz'] ],
-    
-    'display_github': True,
-    'github_user': 'qgis',
-    'github_repo': 'QGIS-Documentation',
-    'github_version': 'master/',
+
     'github_url':'https://github.com/qgis/QGIS-Documentation/edit/master',
     'transifex_url': 'https://www.transifex.com/qgis/qgis-documentation/translate',
-    
+
     'pyqgis_version': pyqgis_version,
     'source_version': source_version,
     'api_version': api_version
