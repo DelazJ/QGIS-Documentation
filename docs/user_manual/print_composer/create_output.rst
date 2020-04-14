@@ -242,7 +242,7 @@ To export a layout as PDF:
        much more suitable for printing outputs or for post-production in external
        applications (requires Qt 5.13 or later).
    * |unchecked| :guilabel:`Create Geospatial PDF`:
-     Generate a georeferenced PDF file.
+     Generate a ref:`georeferenced PDF file <geopdf>`.
    * |unchecked| :guilabel:`Disable tiled raster layer exports`: When exporting
      files, QGIS uses tiled based rendering that saves memory.
      Sometimes, this can cause visible "seams" in the rasters for generated files.
@@ -258,6 +258,9 @@ To export a layout as PDF:
    * By checking |checkbox| :guilabel:`Open file after exporting` the exported 
      file will automatically open in the default PDF viewer.
 
+.. note:: Exporting a print layout to formats that supports georeferencing
+   (e.g. ``PDF`` and ``TIFF``) creates a georeferenced output by default.
+
 
 .. _figure_layout_output_pdf:
 
@@ -266,9 +269,40 @@ To export a layout as PDF:
 
    PDF Export Options
 
-.. note:: Geospatial PDF export is supported, and a number of Geospatial PDF specific options
-   are available:
-   
+.. _geopdf:
+
+Exploring GEOPDF features
+-------------------------
+
+.. a bit of a mess to cleanup and structure where info should go...
+
+At its most basic, Geospatial PDF is a standard extension to the PDF format
+which allows for vector spatial datasets to be embedded in PDF files.
+QGIS supports such a format in export and import modes.
+
+If the “Include vector feature information” checkbox is ticked
+when creating a Geospatial PDF output, then QGIS will automatically include
+all the geometry and attribute information from features visible within the page.
+So if you export a simple map to PDF, you will get an output file
+which looks just like any old regular PDF map output…
+
+Exporting to PDF files: :menuselection:`Project --> Import/Export --> Export
+Map to PDF...` opens a dialog where you can define the part
+(:guilabel:`Extent`) of the map to be exported, the :guilabel:`Scale`,
+:guilabel:`Resolution`, :guilabel:`Output width` (pixels) and
+:guilabel:`Output height` (pixels).
+You can also choose to :guilabel:`Draw active decorations` and
+:guilabel:`Draw annotations`, as well as :guilabel:`Rasterize map`.
+Since QGIS 3.10, with GDAL 3 it is also possible to
+:guilabel:`Create geospatial PDF`, choose the GeoPDF :guilabel:`Format` and
+:guilabel:`Include vector feature information` in the GeoPDF file
+(GeoPDFGDAL).
+Checking the last one will include all the geometry and attribute information
+from features visible within the page in the output GeoPDF file.
+For more on GeoPDF support in QGIS, see: GeoPDFQGIS.
+
+:guilabel:`Include multiple map themes` (specify map themes to include).
+
    * :guilabel:`Format` (Geospatial PDF format - there are some variations),
    * :guilabel:`Include multiple map themes` (specify map themes to include),
    * :guilabel:`Include vector feature information` (choose the layers and
@@ -276,10 +310,6 @@ To export a layout as PDF:
 
      .. When expanding on the Geospatial PDF description,
       mention also the "Geospatial PDF group" property of layout items?
-
-.. note:: Exporting a print layout to formats that supports georeferencing
-   (e.g. ``PDF`` and ``TIFF``) creates a georeferenced output by default.
-
 
 .. index:: Atlas generation
 
