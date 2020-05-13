@@ -100,7 +100,7 @@ Here are some definition of the most common objects treated in this chapter.
     A set of authentication data depending on :term:`Authentication Method`.
     e.g Basic authentication method stores the couple of user/password.
 
-  Authentication config
+  Authentication Config
     :term:`Authentication Configuration`
 
   Authentication Method
