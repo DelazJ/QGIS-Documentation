@@ -94,6 +94,7 @@ following functionality:
    "|zoomToSelected|", "Zoom map to the selected rows", "", ":kbd:`Ctrl+J`"
    "|newAttribute|", "New field", "Add a new field to the data source", ":kbd:`Ctrl+W`"
    "|deleteAttribute|", "Delete field", "Remove a field from the data source"
+   "|newAttribute|", "Organize columns", "Show/hide fields from the attribute table"
    "|calculateField|", "Open field calculator", "Update field for many features in a row", ":kbd:`Ctrl+I`"
    "|conditionalFormatting|", "Conditional formatting", "Enable table formatting"
    "|dock|", "Dock attribute table", "Allows to dock/undock the attribute table"
