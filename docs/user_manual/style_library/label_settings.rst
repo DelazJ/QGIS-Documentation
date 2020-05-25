@@ -362,51 +362,65 @@ the global :ref:`PAL setting <automated_placement>`.
 Placement for point layers
 --------------------------
 
-With the |radioButtonOn| :guilabel:`Cartographic` placement mode,
-point labels are generated with a better visual relationship with the
-point feature, following ideal cartographic placement rules. Labels can be
-placed at a set :guilabel:`Distance` either from the point feature itself
-or from the bounds of the symbol used to represent the feature.
-The latter option is especially useful when the symbol size isn't fixed,
-e.g. if it's set by a data defined size or when using different symbols
-in a categorized renderer.
+Point labels placement options available are:
 
-By default, placements are prioritised in the following order:
+* :guilabel:`Cartographic`: in this mode, point labels are generated with a
+  better visual relationship with the point feature, following ideal
+  cartographic placement rules. Labels can be placed at a set
+  :guilabel:`Distance` in :ref:`supported units <unit_selector>`, either
+  from the point feature itself or from the bounds of the symbol used
+  to represent the feature (set in :guilabel:`Distance offset from`). 
+  The latter option is especially useful when the symbol size isn't fixed,
+  e.g. if it's set by a data defined size or when using different symbols
+  in a categorized renderer.
 
-#. top right
-#. top left
-#. bottom right
-#. bottom left
-#. middle right
-#. middle left
-#. top, slightly right
-#. bottom, slightly left.
+  By default, cartographic mode placements are prioritised in the following order:
 
-Placement priority can, however, be customized or set for an individual
-feature using a data defined list of prioritised positions.
-This also allows only certain placements to be used, so e.g.
-for coastal features you can prevent labels being placed over the land.
+  #. top right
+  #. top left
+  #. bottom right
+  #. bottom left
+  #. middle right
+  #. middle left
+  #. top, slightly right
+  #. bottom, slightly left.
 
-The |radioButtonOn| :guilabel:`Around point` setting places the label in an
-equal radius (set in :guilabel:`Distance`) circle around the feature. The
-placement of the label can even be constrained using the :guilabel:`Quadrant`
-option.
+  The :guilabel:`Position priority` can, however, be customized or set for an
+  individual feature using a data defined list of prioritised positions.
+  This also allows only certain placements to be used, so e.g.
+  for coastal features you can prevent labels being placed over the land.
 
-With the |radioButtonOn| :guilabel:`Offset from point`, labels are
-placed at a fixed offset from the point feature. You can select the
-:guilabel:`Quadrant` in which to place your label. You are also able to set
-the :guilabel:`Offset X,Y` distances between the points and their labels and
-can alter the angle of the label placement with the :guilabel:`Rotation`
-setting. Thus, placement in a selected quadrant with a defined rotation is
-possible.
+* :guilabel:`Around point` setting places the label in an
+  equal radius (set in :guilabel:`Distance`) circle around the feature. The
+  placement of the label can even be constrained using the :guilabel:`Quadrant`
+  option.
+
+* With the |radioButtonOn| :guilabel:`Offset from point`, labels are
+  placed at a fixed offset from the point feature. You can select the
+  :guilabel:`Quadrant` in which to place your label. You are also able to set
+  the :guilabel:`Offset X,Y` distances between the points and their labels and
+  can alter the angle of the label placement with the :guilabel:`Rotation`
+  setting. Thus, placement in a selected quadrant with a defined rotation is
+  possible.
 
 .. _labels_line_placement:
 
 Placement for line layers
 -------------------------
 
-Label options for line layers include |radioButtonOn| :guilabel:`Parallel`,
-|radioButtonOff| :guilabel:`Curved` or |radioButtonOff| :guilabel:`Horizontal`.
+Label placement mode for line layers include
+
+* :guilabel:`Parallel`: draws a line parallel
+* :guilabel:`Curved`: draws a curved label, following the line feature geometry
+* :guilabel:`Horizontal`: draws a horizontal label.
+
+.. _figure_labels_placement_line:
+
+.. figure:: img/line_label_placement.png
+   :align: center
+
+   Label placement examples in lines
+
 For the |radioButtonOn| :guilabel:`Parallel` and |radioButtonOff|
 :guilabel:`Curved` options, you can set the position to |checkbox|
 :guilabel:`Above line`, |checkbox| :guilabel:`On line` and |checkbox|
@@ -417,16 +431,14 @@ position of the label. Additionally, you can define a :guilabel:`Maximum
 angle between curved characters` when selecting the |radioButtonOff|
 :guilabel:`Curved` option (see Figure_labels_placement_line).
 
-.. _figure_labels_placement_line:
 
-.. figure:: img/line_label_placement.png
-   :align: center
+:guilabel:`Overrun feature`: allows to specify the maximal allowable distance
+a label may run past the end (or start) of line features. Convenient when the
+lines are too short but you still want to display their label. It supports
+data-defined distances, in various units.
 
-   Label placement examples in lines
-
-For all three placement options, in :guilabel:`Repeat`, you can set up a
-minimum distance for repeating labels. The distance can be in ``mm`` or in
-``map units``.
+For all the placement mode, in :guilabel:`Repeat`, you can set up a data-defined
+minimum distance for repeating labels, in any supported unit.
 
 Placement for polygon layers
 ----------------------------
@@ -434,44 +446,40 @@ Placement for polygon layers
 You can choose one of the following options for placing labels in polygons
 (see figure_labels_placement_polygon_):
 
-* |radioButtonOn| :guilabel:`Offset from centroid`,
-* |radioButtonOff| :guilabel:`Horizontal (slow)`,
-* |radioButtonOff| :guilabel:`Around centroid`,
-* |radioButtonOff| :guilabel:`Free (slow)`,
-* |radioButtonOff| :guilabel:`Using perimeter`,
-* and |radioButtonOff| :guilabel:`Using perimeter (curved)`.
+* |radioButtonOn| :guilabel:`Offset from centroid`: labels are placed at a
+  fixed offset of the centroid. You can specify if the centroid is of the
+  :guilabel:`visible polygon` or the :guilabel:`whole polygon`. That means that
+  either the centroid is used for the polygon you can see on the map or the
+  centroid is determined for the whole polygon, no matter if you can see the
+  whole feature on the map.
+  You can place your label within a specific quadrant, and define offset and rotation.
+* |radioButtonOff| :guilabel:`Horizontal`: places at the best position a horizontal 
+  label inside the polygon
+* |radioButtonOff| :guilabel:`Around centroid`: places the label at a specified
+  distance around the centroid. Again, you can define whether the centroid is the one
+  of the :guilabel:`visible polygon` or the :guilabel:`whole polygon`.
+* |radioButtonOff| :guilabel:`Free (angled)`: places at the best position a rotated label
+  inside the polygon
+* |radioButtonOff| :guilabel:`Using perimeter`: draws the label next to the polygon boundary
+  The label will behave like the :ref:`parallel option for lines <labels_line_placement>`.
+  You can define a position and a distance for the label. For the position,
+  :guilabel:`Above line`, :guilabel:`On line`, :guilabel:`Below line` and
+  :guilabel:`Line orientation dependent position` are possible. You can
+  specify the distance between the label and the polygon outline, as well as
+  the repeat interval for the label.
+* |radioButtonOff| :guilabel:`Using perimeter (curved)`: draws the label along
+  the polygon boundary, using a curved labeling. In addition to the parameters
+  available with :guilabel:`Using perimeter` setting, you can set the
+  :guilabel:`Maximum angle between curved characters polygon`, either inside
+  or outside.
+* |radioButtonOff| :guilabel:`Outside polygons`: always places polygon labels
+  for the layer outside the features, at a set :guilabel:`Distance`
 
-In the :guilabel:`Offset from centroid` settings you can
-specify if the centroid is of the |radioButtonOn| :guilabel:`visible
-polygon` or |radioButtonOff| :guilabel:`whole polygon`. That means that
-either the centroid is used for the polygon you can see on the map or the
-centroid is determined for the whole polygon, no matter if you can see the
-whole feature on the map. You can place your label within a specific
-quadrant, and define offset and rotation.
+:guilabel:`Allow placing labels outside of polygons` when it is not possible
+to place them inside the polygon. Thanks to data-defined properties, it's possible to
+either allow outside labels, prevent outside labels, or force outside labels on
+a feature-by-feature basis. Not available for every placement mode.
 
-The :guilabel:`Around centroid` setting places the label at a specified
-distance around the centroid. Again, you can define |radioButtonOn|
-:guilabel:`visible polygon` or |radioButtonOff| :guilabel:`whole polygon`
-for the centroid.
-
-With the :guilabel:`Horizontal (slow)` or :guilabel:`Free (slow)` options,
-QGIS places at the best position either a horizontal or a rotated label inside
-the polygon.
-
-With the :guilabel:`Using perimeter` option, the label
-will be drawn next to the polygon boundary. The label will behave like the
-parallel option for lines. You can define a position and a distance for the
-label. For the position, |checkbox| :guilabel:`Above line`, |checkbox|
-:guilabel:`On line`, |checkbox| :guilabel:`Below line` and |checkbox|
-:guilabel:`Line orientation dependent position` are possible. You can
-specify the distance between the label and the polygon outline, as well as
-the repeat interval for the label.
-
-The :guilabel:`Using perimeter (curved)` option helps you draw the label along
-the polygon boundary, using a curved labeling. In addition to the parameters
-available with :guilabel:`Using perimeter` setting, you can set the
-:guilabel:`Maximum angle between curved characters polygon`, either inside
-or outside.
 
 .. _figure_labels_placement_polygon:
 

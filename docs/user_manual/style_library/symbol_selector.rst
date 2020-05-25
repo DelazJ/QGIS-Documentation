@@ -193,7 +193,15 @@ Appropriate for point geometry features, marker symbols have several
   uses a :ref:`fill sub symbol <vector_fill_symbols>` to render the marker.
   This allows use of all the existing QGIS fill (and stroke) styles for
   rendering markers, e.g. gradient or shapeburst fills.
-* **Font marker**: use installed fonts as marker symbols
+* **Font marker**:  similar to the simple marker symbol layer, except that it
+  uses installed fonts to render the marker. Its specific properties are:
+
+  * :guilabel:`Font family`
+  * :guilabel:`Font style`
+  * :guilabel:`Character(s)`, representing the text to display as symbol.
+    They can be typed or selected from the font characters collection widget
+    and you can live :guilabel:`Preview` them with the selected settings.
+    These are data-definable settings.
 * **Geometry generator** (see :ref:`geometry_generator_symbol`)
 
 .. _raster_image_marker:

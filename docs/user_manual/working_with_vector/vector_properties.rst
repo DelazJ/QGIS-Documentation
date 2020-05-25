@@ -1570,8 +1570,9 @@ We now describe an example using the data-defined override function for the
 |moveLabel|:sup:`Move label` function (see figure_labels_coordinate_data_defined_).
 
 #. Import :file:`lakes.shp` from the QGIS sample dataset.
-#. Double-click the layer to open the Layer Properties. Click on :guilabel:`Labels`
-   and :guilabel:`Placement`. Select |radioButtonOn| :guilabel:`Offset from centroid`.
+#. Double-click the layer to open the Layer Properties.
+#. Click on :guilabel:`Labels` and then :guilabel:`Placement` tab.
+#. Select |radioButtonOn| :guilabel:`Offset from centroid`.
 #. Look for the :guilabel:`Data defined` entries. Click the |dataDefined| icon
    to define the field type for the :guilabel:`Coordinate`. Choose ``xlabel``
    for X and ``ylabel`` for Y. The icons are now highlighted in yellow.
@@ -1584,7 +1585,6 @@ We now describe an example using the data-defined override function for the
       Labeling of vector polygon layers with data-defined override
 
 #. Zoom into a lake.
-#. Set editable the layer using the |toggleEditing| :sup:`Toggle Editing` button.
 #. Go to the Label toolbar and click the |moveLabel| icon.
    Now you can shift the label manually to another position (see figure_labels_move_).
    The new position of the label is saved in the ``xlabel`` and ``ylabel`` columns
@@ -2605,7 +2605,7 @@ widget **Color** set by default, otherwise auxiliary fields default to the
 **Text Edit** widget.
 
 Auxiliary fields that represent attributes that can be modified using
-the :ref:`Label toolbar<label_toolbar>` are **Hidden** in the attribute table
+the :ref:`Label toolbar <label_toolbar>` are **Hidden** in the attribute table
 by default. To make a field visible, open the :ref:`Attribute Form properties
 tab <vector_attributes_menu>` and change the value of an auxiliary field
 :guilabel:`Widget Type` from **Hidden** to another relevant value. For example,
