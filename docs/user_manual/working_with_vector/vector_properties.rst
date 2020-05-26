@@ -1527,7 +1527,9 @@ toolbar, note that when mentioned in their name, the tools work almost the
 same way with diagrams:
 
 * |pinLabels| :sup:`Pin/Unpin Labels And Diagrams`. By clicking or draging an
-  area, you pin label(s). If you click or drag an area holding :kbd:`Shift`,
+  area, you pin covered label(s), ie you setlle its ``X`` and ``Y`` coordinate
+  in the assigned fields. The label's position will not change whatever placement
+  settings you apply. If you click or drag an area holding :kbd:`Shift`,
   label(s) are unpinned. Finally, you can also click or drag an area holding
   :kbd:`Ctrl` to toggle the pin status of label(s).
 * |showPinnedLabels| :sup:`Highlight Pinned Labels And Diagrams`. If the
