@@ -496,12 +496,14 @@ the map canvas. If there are labels from different layers in the same
 location, the label with the higher priority will be displayed and the
 others will be left out.
 
-.. _`label_obstacles`:
+.. _`labels_obstacles`:
 
 Obstacles
 .........
 
-An obstacle is a feature QGIS tries as far as possible to not place labels over.
+An obstacle is a feature QGIS does not place labels or diagrams over.
+Every feature is assigned a priority rank and 
+assigned an obstacle weight and the higher th
 From the :guilabel:`Obstacles` frame, you can manage the covering relation
 between labels and features.
 
