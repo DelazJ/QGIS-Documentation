@@ -1146,12 +1146,21 @@ Chapter :ref:`sec_ogc` contains descriptions of these capabilities.
 Using XYZ Tile services
 -----------------------
 
-XYZ Tile services can be found in the :guilabel:`XYZ Tiles` top level
-entry in the :guilabel:`Browser`.
-By default, the OpenStreetMap XYZ Tile service is configured. You can
-add other services that use the XYZ Tile protocol by choosing
-:guilabel:`New Connection` in the XYZ Tiles context menu (right-click
-to open).
+XYZ Tile services can be added via the |addXyzLayer| :guilabel:`XYZ` tab
+of the :guilabel:`Data Source Manager` dialog or the context menu of the
+:guilabel:`XYZ Tiles` entry in the :guilabel:`Browser`.
+Press :guilabel:`New` and provide:
+
+* the :guilabel:`Name`
+* the :guilabel:`URL`
+* the :guilabel:`Authentication` configuration
+* the :guilabel:`Min. Zoom level` and :guilabel:`Max. Zoom level`
+* the :guilabel:`Referer`
+* the :guilabel:`Tile Resolution`: possible values are
+  :guilabel:`Unknown (not scaled)`, :guilabel:`Standard (256x256 / 96DPI)`
+  and :guilabel:`High (512x512 / 192DPI)`
+
+By default, the OpenStreetMap XYZ Tile service is configured.
 figure_xyz_tiles_openstreetmap_ shows the dialog with the OpenStreetMap
 XYZ Tile service configuration.
 
@@ -1162,9 +1171,8 @@ XYZ Tile service configuration.
 
    XYZ Tiles - OpenStreetMap configuration
 
-Configurations can be saved (:guilabel:`Save Connections`) to XML
-and loaded (:guilabel:`Load Connections`) through the context menu.
-Authentication configuration is supported.
+Part or all the configured tile services can be saved (:guilabel:`Save`)
+to XML and loaded (:guilabel:`Load`) through the context menu.
 The XML file for OpenStreetMap looks like this:
 
 .. code-block:: xml
@@ -1176,7 +1184,11 @@ The XML file for OpenStreetMap looks like this:
      authcfg="" referer=""/>
   </qgsXYZTilesConnections>
   
-Once a connection to a XYZ tile service is set, right-click over the entry to:
+All the above actions are also available from the context of the
+:guilabel:`XYZ Tiles` entry in the :guilabel:`Browser` panel.
+
+Once a connection to a XYZ tile service is set, right-click over the
+entry in the to:
 
 * :guilabel:`Edit...` the XYZ connection settings
 * :guilabel:`Delete` the connection
@@ -1226,6 +1238,12 @@ Examples of XYZ Tile services:
 .. |addRasterLayer| image:: /static/common/mActionAddRasterLayer.png
    :width: 1.5em
 .. |addSpatiaLiteLayer| image:: /static/common/mActionAddSpatiaLiteLayer.png
+   :width: 1.5em
+.. |addXyzLayer| image:: /static/common/mActionAddXyzLayer.png
+   :width: 1.5em
+.. |afs| image:: /static/common/mIconAfs.png
+   :width: 1.5em
+.. |ams| image:: /static/common/mIconAms.png
    :width: 1.5em
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
