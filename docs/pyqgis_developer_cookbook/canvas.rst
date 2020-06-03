@@ -4,13 +4,13 @@
    :linenothreshold: 5
 
 
-.. testsetup:: canvas
+.. testsetup:: *
 
     iface = start_qgis()
 
 The code snippets on this page need the following imports if you're outside the pyqgis console:
 
-.. testcode:: canvas
+.. testcode:: *
 
     from qgis.PyQt.QtGui import (
         QColor,
@@ -90,7 +90,7 @@ Embedding Map Canvas
 Map canvas is a widget like any other Qt widget, so using it is as simple as
 creating and showing it.
 
-.. testcode:: canvas
+.. testcode:: *
 
   canvas = QgsMapCanvas()
   canvas.show()
@@ -106,7 +106,7 @@ other widgets (as children of a main window or dialog) and create a layout.
 By default, map canvas has black background and does not use anti-aliasing. To
 set white background and enable anti-aliasing for smooth rendering
 
-.. testcode:: canvas
+.. testcode:: *
 
   canvas.setCanvasColor(Qt.white)
   canvas.enableAntiAliasing(True)
@@ -118,7 +118,7 @@ Now it is time to add some map layers. We will first open a layer and add it to
 the current project. Then we will set the canvas extent and set the list of
 layers for the canvas.
 
-.. testcode:: canvas
+.. testcode:: *
 
   vlayer = QgsVectorLayer('testdata/airports.shp', "Airports layer", "ogr")
   if not vlayer.isValid():
@@ -152,7 +152,7 @@ being panned or zoomed.
 
 To show a polyline:
 
-.. testcode:: canvas
+.. testcode:: canvas1
 
   r = QgsRubberBand(canvas, False)  # False = not a polygon
   points = [QgsPoint(-100, 45), QgsPoint(10, 60), QgsPoint(120, 45)]
@@ -160,7 +160,7 @@ To show a polyline:
 
 To show a polygon
 
-.. testcode:: canvas
+.. testcode:: canvas2
 
   r = QgsRubberBand(canvas, True)  # True = a polygon
   points = [[QgsPointXY(-100, 35), QgsPointXY(10, 50), QgsPointXY(120, 35)]]
@@ -173,7 +173,7 @@ further (optional) rings correspond to holes in the polygon.
 Rubber bands allow some customization, namely to change their color and line
 width
 
-.. testcode:: canvas
+.. testcode:: canvas1, canvas2
 
   r.setColor(QColor(0, 0, 255))
   r.setWidth(3)
@@ -182,7 +182,7 @@ The canvas items are bound to the canvas scene. To temporarily hide them (and
 show them again), use the :func:`hide` and :func:`show` combo. To completely remove
 the item, you have to remove it from the scene of the canvas
 
-.. testcode:: canvas
+.. testcode:: canvas1, canvas2
 
   canvas.scene().removeItem(r)
 
@@ -196,7 +196,7 @@ Rubber band can be also used for drawing points, but the
 
 You can use the vertex marker like this:
 
-.. testcode:: canvas
+.. testcode:: canvas3
 
   m = QgsVertexMarker(canvas)
   m.setCenter(QgsPointXY(10,40))
@@ -204,7 +204,7 @@ You can use the vertex marker like this:
 This will draw a red cross on position **[10,45]**. It is possible to customize the
 icon type, size, color and pen width
 
-.. testcode:: canvas
+.. testcode:: canvas3
 
   m.setColor(QColor(0, 255, 0))
   m.setIconSize(5)
@@ -228,7 +228,7 @@ state of the actions -- when a map tool gets activated, its action is marked as
 selected and the action of the previous map tool is deselected. The map tools
 are activated using :meth:`setMapTool() <qgis.gui.QgsMapCanvas.setMapTool>` method.
 
-.. testcode:: canvas
+.. testcode:: canvas4
 
   from qgis.gui import *
   from qgis.PyQt.QtWidgets import QAction, QMainWindow
@@ -287,7 +287,7 @@ You can try the above code in the Python console editor. To invoke the canvas wi
 add the following lines to instantiate the ``MyWnd`` class. They will render the currently
 selected layer on the newly created canvas
 
-.. testcode:: canvas
+.. testcode:: canvas4
 
   w = MyWnd(iface.activeLayer())
   w.show()
@@ -310,7 +310,7 @@ clicking and dragging on the canvas. When the rectangle is defined, it prints
 its boundary coordinates in the console. It uses the rubber band elements
 described before to show the selected rectangle as it is being defined.
 
-.. testcode:: canvas
+.. testcode:: canvas5
 
   class RectangleMapTool(QgsMapToolEmitPoint):
     def __init__(self, canvas):
@@ -383,7 +383,7 @@ Writing Custom Map Canvas Items
 
 Here is an example of a custom canvas item that draws a circle:
 
-.. testcode:: canvas
+.. testcode:: canvas6
 
   class CircleCanvasItem(QgsMapCanvasItem):
     def __init__(self, canvas):
