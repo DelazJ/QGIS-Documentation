@@ -3,7 +3,7 @@
 .. highlight:: python
    :linenothreshold: 5
 
-.. testsetup:: geometry
+.. testsetup:: *
 
     iface = start_qgis()
 
@@ -21,7 +21,7 @@
 
 The code snippets on this page need the following imports if you're outside the pyqgis console:
 
-.. testcode:: geometry
+.. testcode:: *
 
     from qgis.core import (
       QgsGeometry,
@@ -72,7 +72,7 @@ PyQGIS provides several options for creating a geometry:
 
 * from coordinates
 
-  .. testcode:: geometry
+  .. testcode:: geometry1
 
     gPnt = QgsGeometry.fromPointXY(QgsPointXY(1,1))
     print(gPnt)
@@ -82,7 +82,7 @@ PyQGIS provides several options for creating a geometry:
 	QgsPointXY(2, 2), QgsPointXY(2, 1)]])
     print(gPolygon)
 
-  .. testoutput:: geometry
+  .. testoutput:: geometry1
     :hide:
 
     <QgsGeometry: Point (1 1)>
@@ -142,7 +142,7 @@ First, you should find out the geometry type. The :meth:`wkbType() <qgis.core.Qg
 method is the one to use. It returns a value from the :class:`QgsWkbTypes.Type <qgis.core.QgsWkbTypes>`
 enumeration.
 
-.. testcode:: geometry
+.. testcode:: geometry1
 
   if gPnt.wkbType() == QgsWkbTypes.Point:
     print(gPnt.wkbType())
@@ -153,7 +153,7 @@ enumeration.
     print(gPolygon.wkbType())
     # output: 3 for Polygon
 
-.. testoutput:: geometry
+.. testoutput:: geometry1
   :hide:
 
   1
@@ -167,7 +167,7 @@ enumeration.
 You can use the :meth:`displayString() <qgis.core.QgsWkbTypes.displayString>`
 function to get a human readable geometry type.
 
-.. testcode:: geometry
+.. testcode:: geometry1
 
   print(QgsWkbTypes.displayString(gPnt.wkbType()))
   # output: 'Point'
@@ -176,7 +176,7 @@ function to get a human readable geometry type.
   print(QgsWkbTypes.displayString(gPolygon.wkbType()))
   # output: 'Polygon'
 
-.. testoutput:: geometry
+.. testoutput:: geometry1
 
   Point
   LineString
@@ -188,7 +188,7 @@ There is also a helper function
 To extract information from a geometry there are accessor functions for every
 vector type. Here's an example on how to use these accessors:
 
-.. testcode:: geometry
+.. testcode:: geometry1
 
   print(gPnt.asPoint())
   # output: <QgsPointXY: POINT(1 1)>
@@ -197,7 +197,7 @@ vector type. Here's an example on how to use these accessors:
   print(gPolygon.asPolygon())
   # output: [[<QgsPointXY: POINT(1 1)>, <QgsPointXY: POINT(2 2)>, <QgsPointXY: POINT(2 1)>, <QgsPointXY: POINT(1 1)>]]
 
-.. testoutput:: geometry
+.. testoutput:: geometry1
   :hide:
 
   <QgsPointXY: POINT(1 1)>
@@ -229,10 +229,11 @@ given layer and performing some geometric computations based on their
 geometries. The below code will compute and print the area and perimeter of
 each country in the ``countries`` layer within our tutorial QGIS project.
 
-The following code assumes ``layer`` is a :class:`QgsVectorLayer <qgis.core.QgsVectorLayer>` object that has Polygon feature type.
+The following code assumes ``layer`` is a :class:`QgsVectorLayer <qgis.core.QgsVectorLayer>`
+object that has Polygon feature type.
 
 
-.. testcode:: geometry
+.. testcode:: geometry2
 
   # let's access the 'countries' layer
   layer = QgsProject.instance().mapLayersByName('countries')[0]
@@ -250,7 +251,7 @@ The following code assumes ``layer`` is a :class:`QgsVectorLayer <qgis.core.QgsV
     print('Perimeter: ', geom.length())
 
 
-.. testoutput:: geometry
+.. testoutput:: geometry2
 
     Zubin Potok
     Area:  0.040717371293465573
@@ -278,7 +279,7 @@ class can be used, which can perform ellipsoid based calculations:
 The following code assumes ``layer`` is a :class:`QgsVectorLayer
 <qgis.core.QgsVectorLayer>` object that has Polygon feature type.
 
-.. testcode:: geometry
+.. testcode:: geometry3
 
   d = QgsDistanceArea()
   d.setEllipsoid('WGS84')
@@ -300,7 +301,7 @@ The following code assumes ``layer`` is a :class:`QgsVectorLayer
     print("Area (km2):", d.convertAreaMeasurement(d.measureArea(geom), QgsUnitTypes.AreaSquareKilometers))
 
 
-.. testoutput:: geometry
+.. testoutput:: geometry3
 
     Zubin Potok
     Perimeter (m): 87581.40256396442
@@ -321,7 +322,7 @@ The following code assumes ``layer`` is a :class:`QgsVectorLayer
 
 Alternatively, you may want to know the distance and bearing between two points.
 
-.. testcode:: geometry
+.. testcode:: geometry4
 
   d = QgsDistanceArea()
   d.setEllipsoid('WGS84')
@@ -334,7 +335,7 @@ Alternatively, you may want to know the distance and bearing between two points.
 
   print("Distance in meters: ", d.measureLine(santa, tenerife))
 
-.. testoutput:: geometry
+.. testoutput:: geometry4
   :hide:
 
   Distance in meters:  5154172.923937496
