@@ -133,7 +133,7 @@ The following snippet gives an example to set master password to open the
 access to the authentication settings. Code comments are important to
 understand the snippet.
 
-.. testcode:: auth
+.. testcode:: auth1
 
   authMgr = QgsApplication.authManager()
 
@@ -183,7 +183,7 @@ Any Authentication Method sets a configuration hash map where authentication
 informations will be stored. Hereafter an useful snippet to store PKI-path
 credentials for an hypothetic alice user:
 
-.. testcode:: auth
+.. testcode:: auth2
 
   authMgr = QgsApplication.authManager()
   # set alice PKI data
@@ -223,7 +223,7 @@ authentication manager init. Available authentication methods are:
 Populate Authorities
 ....................
 
-.. testcode:: auth
+.. testcode:: auth3
 
     authMgr = QgsApplication.authManager()
     # add authorities
@@ -245,7 +245,7 @@ A convenience class to pack PKI bundles composed on SslCert, SslKey and CA
 chain is the :class:`QgsPkiBundle <qgis.core.QgsPkiBundle>`
 class. Hereafter a snippet to get password protected:
 
-.. testcode:: auth
+.. testcode:: auth4
 
   # add alice cert in case of key with pwd
   caBundlesList = []  # List of CA bundles
@@ -267,7 +267,7 @@ Remove an entry from authdb
 We can remove an entry from :term:`Authentication Database` using it's
 ``authcfg`` identifier with the following snippet:
 
-.. testcode:: auth
+.. testcode:: auth5
 
   authMgr = QgsApplication.authManager()
   authMgr.removeAuthenticationConfig( "authCfg_Id_to_remove" )
@@ -295,7 +295,7 @@ enabled service like a WMS or WFS or to a DB connection.
   <qgis.core.QgsAuthManager.certIdentity>` method supports the following list
   of providers:
 
-  .. testcode:: auth
+  .. testcode:: auth6
 
     authM = QgsApplication.authManager()
     print(authM.authMethod("Identity-Cert").supportedDataProviders())
@@ -310,7 +310,7 @@ For example, to access a WMS service using stored credentials identified with
 ``authcfg = 'fm1s770'``, we just have to use the ``authcfg`` in the data source
 URL like in the following snippet:
 
-.. testcode:: auth
+.. testcode:: auth8
 
   authCfg = 'fm1s770'
   quri = QgsDataSourceUri()
@@ -341,7 +341,7 @@ URI parameter with credential just before setting the HTTP connection.
 Usually an URI string, built using the :class:`QgsDataSourceURI <qgis.core.QgsDataSourceUri>`
 class, is used to set a data source in the following way:
 
-.. testcode:: auth
+.. testcode:: auth9
 
   authCfg = 'fm1s770'
   quri = QgsDataSourceUri("my WMS uri here")
@@ -414,7 +414,7 @@ stored in the :term:`Authentication DB` it is available in the GUI class
 
 and can be used as in the following snippet:
 
-.. testcode:: auth
+.. testcode:: auth10
 
   # create the instance of the QgsAuthConfigSelect GUI hierarchically linked to
   # the widget referred with `parent`
@@ -445,7 +445,7 @@ Authentication utilities is managed by the
 
 and can be used as in the following snippet:
 
-.. testcode:: auth
+.. testcode:: auth11
 
   # create the instance of the QgsAuthEditorWidgets GUI hierarchically linked to
   # the widget referred with `parent`
@@ -469,7 +469,7 @@ A GUI used to manage only authorities is managed by the
 
 and can be used as in the following snippet:
 
-.. testcode:: auth
+.. testcode:: auth12
 
   # create the instance of the QgsAuthAuthoritiesEditor GUI hierarchically
   #  linked to the widget referred with `parent`
