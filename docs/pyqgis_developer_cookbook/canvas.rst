@@ -173,7 +173,7 @@ further (optional) rings correspond to holes in the polygon.
 Rubber bands allow some customization, namely to change their color and line
 width
 
-.. testcode:: canvas1, canvas2
+.. testcode:: *
 
   r.setColor(QColor(0, 0, 255))
   r.setWidth(3)
@@ -182,7 +182,7 @@ The canvas items are bound to the canvas scene. To temporarily hide them (and
 show them again), use the :func:`hide` and :func:`show` combo. To completely remove
 the item, you have to remove it from the scene of the canvas
 
-.. testcode:: canvas1, canvas2
+.. testcode:: *
 
   canvas.scene().removeItem(r)
 
