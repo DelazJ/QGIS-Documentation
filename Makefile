@@ -7,7 +7,7 @@ LANG            = en
 LANGUAGES       = en bg cs de es fi fr id it ja ko nl pt_BR pt_PT ro ru tr zh_Hant zh_Hans
 # for transifex we need other codes for the chinese languages
 # a symbolic link is needed to be able to build them
-#LANGUAGES       = en bg cs de es fi fr id it ja ko nl pt_BR pt_PT ro ru tr zh-Hant zh-Hans
+TXLANGUAGES       = en bg cs de es fi fr id it ja ko nl pt_BR pt_PT ro ru tr zh-Hant zh-Hans
 SPHINXOPTS      =
 SPHINXINTLOPTS  = $(SPHINXOPTS) -D language=$(LANG)
 SPHINXBUILD     ?= sphinx-build
@@ -82,7 +82,7 @@ all:
 # in that way a build from git will contain those translation
 # tx is the python transifex cli client (pip install transifex-client)
 tx_force_pull_translations:
-	@for LANG in $(LANGUAGES) ; do \
+	@for LANG in $(TXLANGUAGES) ; do \
 		tx pull -f --parallel -l $$LANG ; \
 	done
 
