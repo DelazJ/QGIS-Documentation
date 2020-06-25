@@ -18,12 +18,12 @@ cache:
 
 if: NOT branch =~ /^(cherry-pick-)?backport-\d+-on-/
 
-#addons:
-#  apt:
-#    packages:
-#      - texlive-latex-recommended
-#      - texlive-latex-extra
-#      - texlive-fonts-recommended
+addons:
+  apt:
+    packages:
+      - texlive-latex-recommended
+      - texlive-latex-extra
+      - texlive-fonts-recommended
 
 notifications:
   irc:
@@ -54,6 +54,7 @@ install:
 
 script:
   - make html
+  - make pdf LANG=en
   - make -f docker.mk doctest
 
 #after_success:
