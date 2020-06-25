@@ -236,6 +236,7 @@ latex_elements = {
 
   # Additional stuff for the LaTeX preamble.
   'preamble': u'''\\usepackage{combelow}
+    \\usepackage{babel}
     \\usepackage{newunicodechar}
     \\newunicodechar{Ș}{\\cb{S}}
     \\newunicodechar{ș}{\\cb{s}}
