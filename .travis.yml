@@ -24,6 +24,7 @@ addons:
       - texlive-latex-recommended
       - texlive-latex-extra
       - texlive-fonts-recommended
+      - texlive-lang-all
 
 notifications:
   irc:
@@ -53,9 +54,9 @@ install:
 #  - ./scripts/ci/setup_git.sh
 
 script:
-  - make html
-  - make pdf LANG=en
-  - make -f docker.mk doctest
+  #- make html
+  - make pdf LANG=fr
+  #- make -f docker.mk doctest
 
 #after_success:
 #  - ./scripts/ci/deploy-docs.sh
