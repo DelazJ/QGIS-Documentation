@@ -29,6 +29,7 @@ jobs:
     - name: Build English PDF documentation
       run: |
           make pdf
+          rm -rf latex/
     - name: Upload build artifact
       uses: actions/upload-artifact@v2
       with:
