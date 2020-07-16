@@ -1560,14 +1560,15 @@ same way with diagrams:
   determine whether any important labels are missing from the maps (e.g. due
   to overlaps or other constraints). They are displayed with a customizable
   color (see :ref:`automated_placement`).
-* |showHideLabels| :sup:`Show/Hide Labels And Diagrams`. If you click on the labels,
+* |showHideLabels| :sup:`Show/Hide Labels And Diagrams`: If you click on the labels,
   or click and drag an area holding :kbd:`Shift`, they are hidden.
-  When a label is hidden, you just have to click on the feature to restore its
-  visibility. If you drag an area, all the labels in the area will be restored.
-* |moveLabel| :sup:`Move Label And Diagram`. You just have to drag the label to
-  the desired place.
-* |rotateLabel| :sup:`Rotate Label`. Click the label and move around and
-  you get the text rotated.
+  When a label is hidden, click on the feature to restore its visibility.
+  Click and drag an area, and all the labels in the area will be restored.
+* |moveLabel| :sup:`Move Label And Diagram`: click and drag the label to
+  the desired place and the new coordinate values are stored in the corresponding
+  fields.
+* |rotateLabel| :sup:`Rotate Label`: Click the label and move around and
+  you get the text rotated. Rotation value is also stored in the associated field.
 * |changeLabelProperties| :sup:`Change Label`. It opens a dialog to change the
   clicked label properties; it can be the label itself, its coordinates, angle,
   font, size... as long as this property has been mapped to a field. Here you can
