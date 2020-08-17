@@ -1,4 +1,4 @@
-Sphinx==2.4.4
+Sphinx==3.2.1
 sphinx-intl==0.9.11
 sphinx_rtd_theme
 sphinx-intl[transifex]
