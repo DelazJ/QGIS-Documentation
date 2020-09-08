@@ -401,10 +401,25 @@ This parameter allows to define the QGIS project file to use.
 As mentioned in :ref:`GetMap parameters table <qgisserver-wms-getmap>`,
 ``MAP`` is mandatory because a request needs a QGIS project to
 actually work.
-However, the ``QGIS_PROJECT_FILE`` environment variable may be used to
-define a default QGIS project.
-In this specific case, ``MAP`` is not longer a required parameter.
-For further information you may refer to :ref:`server_env_variables`.
+You can specify an absolute path or a path relative to the location of
+the server executable (:file:`qgis_mapserv.fcgi`).
+If not specified, QGIS Server searches for ``.qgs`` or ``.qgz`` files in
+the directory where the server executable is located.
+
+Example::
+
+  http://localhost/cgi-bin/qgis_mapserv.fcgi?\
+    REQUEST=GetMap&MAP=/home/qgis/projects/world.qgs&...
+
+..  note::
+
+  You can define a **QGIS_PROJECT_FILE** as an environment variable
+  to tell the server executable where to find the QGIS project file.
+  This variable will be the location where QGIS will look for the
+  project file and ``MAP`` is no longer a required parameter.
+  If not defined it will use the MAP parameter in the request and
+  finally look at the server executable directory.
+  For further information you may refer to :ref:`server_env_variables`.
 
 
 .. _`wms-bgcolor`:
@@ -2095,31 +2110,9 @@ The following extra parameters are supported by all protocols.
 * **FILE_NAME**: if set, the server response will be sent to the
   client as a file attachment with the specified file name.
 
-.. note::
+  .. note::
 
     Not available for WFS3.
-
-* **MAP**: Similar to MapServer, the ``MAP`` parameter can be used to
-  specify the path to the QGIS project file. You can specify an absolute
-  path or a path relative to the location of the server executable
-  (:file:`qgis_mapserv.fcgi`).
-  If not specified, QGIS Server searches for .qgs files in the directory
-  where the server executable is located.
-
-  Example::
-
-    http://localhost/cgi-bin/qgis_mapserv.fcgi?\
-      REQUEST=GetMap&MAP=/home/qgis/projects/world.qgs&...
-
-..  note::
-
-    You can define a **QGIS_PROJECT_FILE** as an environment variable
-    to tell the server executable where to find the QGIS project file.
-    This variable will be the location where QGIS will look for the
-    project file.
-    If not defined it will use the MAP parameter in the request and
-    finally look at the server executable directory.
-
 
 .. _`qgisserver-redlining`:
 
@@ -2161,7 +2154,7 @@ The ``GetPrint`` equivalent is in the format (note that ``mapX:`` parameter is a
  &map0:HIGHLIGHT_LABELBUFFERCOLOR=%23FFFFFF
  &map0:HIGHLIGHT_LABELBUFFERSIZE=1.5
 
-Here is the image outputed by the above request in which a polygon and
+Here is the image output by the above request in which a polygon and
 a label are drawn on top of the normal map:
 
 .. _figure_server_redlining:
@@ -2209,10 +2202,10 @@ client (not cascaded via QGIS server). For printing however, these layers
 should be cascaded via QGIS server in order to appear in the printed map.
 
 External layers can be added to the LAYERS parameter as
-EXTERNAL_WMS:<layername>.
+``EXTERNAL_WMS:<layername>``.
 The parameters for the external WMS layers (e.g. url, format,
 dpiMode, crs, layers, styles) can later be given as service
-parameters <layername>:<parameter>.
+parameters ``<layername>:<parameter>``.
 In a GetMap request, this might look like this:
 
 .. code-block:: none
