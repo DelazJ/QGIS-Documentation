@@ -28,17 +28,17 @@ jobs:
             pip install -r REQUIREMENTS.txt
 
       # Runs a single command using the runners shell
-      - name: Docs test
-        run: make doctest
+      #- name: Docs test
+      #  run: make doctest
 
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "docs/"
-        build-command: "sphinx-build -b doctest . _build"
+      - uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
+          build-command: "sphinx-build -b doctest . _build"
         
       # Set output
-    - name: Upload build artifact
-      uses: actions/upload-artifact@v1
-      with:
-        name: Doctest build
-        path: build
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Doctest build
+          path: build
