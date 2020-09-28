@@ -264,19 +264,26 @@ To change the order of the symbol layers:
    .. figure:: img/better_roads_symbology.png
       :align: center
 
-When you're done, remember to save the symbol itself so as not to lose your
-work if you change the symbol again in the future. You can save your current
-symbol style by clicking the :guilabel:`Save Style...` button at the bottom
-of the :guilabel:`Layer Properties` dialog.
-We will be using the :guilabel:`QGIS QML Style File` format.
+#. When you're done, remember to save the symbol itself so as not to lose your
+   work if you change the symbol again in the future. To save your current
+   symbol style:
+
+   #. Click the :guilabel:`Save Style...` button at the bottom
+      of the :guilabel:`Layer Properties` dialog.
+   #. Select the :guilabel:`QGIS QML Style File` format.
+   #. Save your style under :file:`solution/styles/better_roads.qml`.
 
 .. TODO: imho there's a mix of saving symbols and saving styles here that could
  be misleading. Saving style should deserve its own section.
 
-Save your style in the :file:`solution/styles/better_roads.qml` folder. You can load a
-previously saved style at any time by clicking the :guilabel:`Load Style...`
-button. Before you change a style, keep in mind that any unsaved style you are
-replacing will be lost.
+.. tip:: Loading styles onto layers
+
+  You can load a previously saved style at any time by expanding the
+  :menuselection:`Style -->` menu at the bottom of the layer properties dialog,
+  click :menuselection:`Load Style...` button and select the corresponding style
+  file. Before you change a style, keep in mind that any unsaved style you are
+  replacing will be lost.
+
 
 .. _backlink-symbology-levels-1:
 
@@ -305,11 +312,11 @@ symbols). Since we haven't covered classification yet, you will work with some
 rudimentary pre-classified data.
 
 #. Create a new map and add only the :guilabel:`roads` dataset.
-#. Load the style file :file:`advanced_levels_demo.qml` provided in
-   :file:`exercise_data/styles`.
+#. Load the style :file:`advanced_levels_demo.qml` provided in
+   :file:`exercise_data/styles` onto the :guilabel:`roads` layer.
 #. Zoom in to the |majorUrbanName| area.
 #. Using symbol layers, ensure that the outlines of layers flow into one another
-   as per the image below:
+   as per the image below.
 
    .. figure:: img/correct_advanced_levels.png
       :align: center
