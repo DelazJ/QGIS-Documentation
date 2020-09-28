@@ -268,9 +268,24 @@ To change the order of the symbol layers:
    work if you change the symbol again in the future. To save your current
    symbol style:
 
-   #. Click the :guilabel:`Save Style...` button at the bottom
-      of the :guilabel:`Layer Properties` dialog.
-   #. Select the :guilabel:`QGIS QML Style File` format.
+   #. Click the :guilabel:`Save symbol...` button at the bottom of the
+      :menuslection:`Symbology` tab
+   #. Enter a name, e.g. ``cleaner_roads`` and press :guilabel:`OK`.
+      A new symbol is now available in the symbols list and can be used to
+      render other layers.
+
+
+|moderate| |FA| Save Layer Style
+-------------------------------------------------------------------------------
+
+Saving symbols in the :guilabel:`Symbol Manager` makes them available for all
+your projects. But what if you want your layer to render by default with a
+symbol?
+
+You need to create a default 
+   #. Click the :menuselection:`Style --> Save current style...` button at the
+      bottom of the :guilabel:`Layer properties` dialog.
+   #. Select the :guilabel:`As QGIS QML style file` format.
    #. Save your style under :file:`solution/styles/better_roads.qml`.
 
 .. TODO: imho there's a mix of saving symbols and saving styles here that could
@@ -278,10 +293,11 @@ To change the order of the symbol layers:
 
 .. tip:: Loading styles onto layers
 
-  You can load a previously saved style at any time by clicking the
-  :menuselection:`Style --> Load Style...` button at the bottom of the layer
-  properties dialog. Before you change a style, keep in mind that any unsaved
-  style you are replacing will be lost.
+  You can load a previously saved style at any time by expanding the
+  :menuselection:`Style -->` menu at the bottom of the layer properties dialog,
+  click :menuselection:`Load Style...` button and select the corresponding style
+  file. Before you change a style, keep in mind that any unsaved style you are
+  replacing will be lost.
 
 
 .. _backlink-symbology-levels-1:
