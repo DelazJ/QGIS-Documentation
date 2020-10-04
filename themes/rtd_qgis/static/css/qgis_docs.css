@@ -15,10 +15,6 @@
  padding:2.4px 6px;
  margin:auto 2px
 }
-/*keyboard text are by default rendered bigger*/
-.rst-content .kbd {
- font-size: 80%
-}
 .outdated {
   /* only to be visible for outdated releases*/
   background: #ffbaba;
