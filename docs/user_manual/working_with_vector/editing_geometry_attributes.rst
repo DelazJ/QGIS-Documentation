@@ -606,29 +606,26 @@ tooltips to identify a vertex by hovering the pointer over it.
 The Vertex Editor Panel
 .......................
 
-When using the :guilabel:`Vertex tool` on a feature, it is possible to
-right click to open the :guilabel:`Vertex Editor` panel listing all the
-vertices of the feature with their :guilabel:`x`, :guilabel:`y`
-(:guilabel:`z`, :guilabel:`m` if applicable) coordinates and
-:guilabel:`r` (for the radius, in case of circular geometry).
+The vertex editor panel opens automatically upon activating the vertex tool,
+and its position/docked state is remembered across uses.
+   
+Right-clicking over a feature with the :guilabel:`Vertex tool` (opens and)
+populates the :guilabel:`Vertex Editor` panel with information on its vertices.
+These include the vertex index in the geometry, its :guilabel:`x`,
+:guilabel:`y` (:guilabel:`z`, :guilabel:`m` if applicable) coordinates and
+the radius :guilabel:`r` (in case of circular geometry).
+
 Simply select a row in the table does select the corresponding vertex
 in the map canvas, and vice versa.
 Simply change a coordinate in the table and your vertex position is
 updated.
 You can also select multiple rows and delete them altogether.
 
-.. note:: **Changed behavior in QGIS 3.4**
-
-   Right click on a feature will immediately show the vertex editor and
-   lock this feature, thus disabling the editing of any other features.
-   While being locked, a feature is exclusive for editing: Selecting
-   and moving of vertices and segments by clicking or dragging is only
-   possible for this feature.
-   New vertices can only be added to the locked feature.
-   Also, the vertex editor panel now opens itself automatically upon
-   activating the vertex tool, and its position/docked state remembered
-   across uses.
-
+Linking the vertex editor panel to a feature bounds editing to that
+feature,nand disables the editing of any other features. Selecting
+and moving of vertices and segments by clicking or dragging is only
+possible for this feature.
+New vertices can only be added to the locked feature.
 
 
 .. _figure_edit_vertex:
