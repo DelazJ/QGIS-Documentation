@@ -456,7 +456,7 @@ geometry then enter its attributes. To digitize the geometry:
     a lower opacity (or alpha channel) to the rubber band's :guilabel:`Fill Color`
     in :menuselection:`Settings --> Options --> Digitizing` menu.
     You can also avoid the use of the rubber band by checking :guilabel:`Don't
-    update rubber band during node editing`.
+    update rubber band during node editing`. 
 
 #. The attribute window will appear, allowing you to enter the information for
    the new feature. Figure_edit_values_ shows setting attributes for a fictitious
@@ -483,14 +483,17 @@ geometry then enter its attributes. To digitize the geometry:
 Vertex tool
 -----------
 
-.. note:: **QGIS 3 major changes**
+The vertex tool is one of the most common and important tools to edit existing
+features' geometry. It adds, moves and removes vertices within an existing
+geometry, and is of two levels:
 
-    In QGIS 3, the node tool has been fully redesigned and renamed to *vertex tool*.
-    It was previously
-    working with "click and drag" ergonomy, and now uses a "click - click"
-    workflow. This allows major improvements like taking profit of the advanced
-    digitizing panel with the vertex tool while digitizing or editing objects of
-    multiple layers at the same time.
+* |vertexToolActiveLayer| :sup:`Vertex Tool (Current Layer)`: only interacts
+  with the active layer
+* and |vertexTool| :sup:`Vertex Tool (All Layers)`
+
+Digitizing with the vertex tool uses a "click-click" workflow, allowing
+to take profit of the :ref:`advanced digitizing panel <advanced_digitizing_panel>`
+with the vertex tool while editing features.
 
 
 For any editable vector layer, the
