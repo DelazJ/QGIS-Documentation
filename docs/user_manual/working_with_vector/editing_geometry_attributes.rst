@@ -484,26 +484,26 @@ Vertex tool
 -----------
 
 The vertex tool is one of the most common and important tools to edit existing
-features' geometry. It adds, moves and removes vertices within an existing
-geometry, and is of two levels:
+features' geometry. For any editable vector layer, it provides manipulation
+capabilities of feature vertices similar to CAD programs. It is possible to
+simply select multiple vertices at once and to move, add or delete them altogether.
+The vertex tool also supports the topological editing feature.
+
+The vertex tool is available at two levels:
 
 * |vertexToolActiveLayer| :sup:`Vertex Tool (Current Layer)`: only interacts
   with the active layer
-* and |vertexTool| :sup:`Vertex Tool (All Layers)`
+* and |vertexTool| :sup:`Vertex Tool (All Layers)`: allows to edit vertices
+  from many layers at once. This option allows to restore previous behavior,
+  ie only edit active layer. Useful with transaction groups and database trigger design interfering with multi layer editing
 
-Digitizing with the vertex tool uses a "click-click" workflow, allowing
+The vertex tool is selection persistent, so when some operation is done, selection stays active
+for this feature and tool. Digitizing with the vertex tool uses a "click-click" workflow, allowing
 to take profit of the :ref:`advanced digitizing panel <advanced_digitizing_panel>`
 with the vertex tool while editing features.
 
 
-For any editable vector layer, the
-|vertexToolActiveLayer| :sup:`Vertex tool (Current Layer)` provides manipulation
-capabilities of
-feature vertices similar to CAD programs. It is possible to simply select
-multiple vertices at once and to move, add or delete them altogether.
-The vertex tool also supports
-the topological editing feature. This tool is selection persistent, so when some
-operation is done, selection stays active for this feature and tool.
+
 
 It is important to set the property :menuselection:`Settings -->` |options|
 :menuselection:`Options --> Digitizing -->` :guilabel:`Search Radius:`
@@ -580,8 +580,8 @@ Red circles will appear when hovering vertices.
 * **Moving vertices**: Select all the vertices you want to move, click
   on a selected vertex or edge, and click again on the desired new
   location.
-  All the selected vertices will move together. If snapping is enabled,
-  the whole selection can jump to the nearest vertex or line.
+  All the selected vertices will translate (??) together. If snapping is enabled,
+  the whole selection can jump to the nearest vertex or line (??).
   You can use Advanced Digitizing Panel constraints for distance,
   angles, exact X Y location before the second click.
 
