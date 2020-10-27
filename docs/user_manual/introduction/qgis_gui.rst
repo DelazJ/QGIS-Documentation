@@ -748,19 +748,23 @@ actions like:
      -
      -
      -
-   * - :menuselection:`--> Simulate Photocopy (Grayscale)`
-     -
-     -
-     -
    * - :menuselection:`--> Simulate Fax (Mono)`
      -
      -
      -
-   * - :menuselection:`--> Simulate Color Blindness (Protanope)`
+   * - :menuselection:`--> Simulate Achromatopsia Color Blindness and Photocopy (Grayscale)`
      -
      -
      -
-   * - :menuselection:`--> Simulate Color Blindness (Deuteronope)`
+   * - :menuselection:`--> Simulate Protonopia Color Blindness (No Red)`
+     -
+     -
+     -
+   * - :menuselection:`--> Simulate Deuteranopia Color Blindness (No Green)`
+     -
+     -
+     -
+   * - :menuselection:`--> Simulate Tritanopia Color Blindness (Tritanopia)`
      -
      -
      -
