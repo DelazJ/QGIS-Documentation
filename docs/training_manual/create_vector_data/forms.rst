@@ -18,11 +18,12 @@ This lesson shows you how.
 ----------------------------------------------------------------------
 
 #. Select the ``roads`` layer in the :guilabel:`Layers` panel
-#. Enter *Edit Mode* as before
-#. Open the ``roads`` layer's attribute table
+#. Open its attribute table
 #. Right-click on any cell in the table. A short menu will appear,
-   that includes the :guilabel:`Open form` entry.
+   that includes the :guilabel:`Open form...` entry.
 #. Click on it to see the form that QGIS generates for this layer
+
+.. Add a screenshot
 
 Obviously it would be nice to be able to do this while looking at the
 map, rather than needing to search for a specific street in the
@@ -35,17 +36,17 @@ map, rather than needing to search for a specific street in the
    of the fields values and other general information about the
    clicked feature.
 #. At the top of the panel, check the :guilabel:`Auto open form for single feature results`
-   checkbox in the |options| sup:`Identify Settings` menu.
+   checkbox in the |options| :sup:`Identify Settings` menu.
 #. Now, click again on any street in the map. Along the previous
    :guilabel:`Identify Results` dialog, you'll see the now-familiar
-   form:
+   form.
 
    .. figure:: img/roads_form.png
       :align: center
 
 #. Each time you click on a single feature with the *Identify* tool,
-   its form pops up as long as the :guilabel:`Auto open form` is
-   checked.
+   its form pops up as long as the :guilabel:`Auto open form for single
+   feature results` setting is checked.
 
 |basic| |TY| Using the Form to Edit Values
 ----------------------------------------------------------------------
@@ -53,7 +54,7 @@ map, rather than needing to search for a specific street in the
 If you are in edit mode, you can use this form to edit a feature's
 attributes.
 
-#. Activate edit mode (if it isn't already activated).
+#. Toggle the roads layer to edit mode.
 #. Using the |identify| :sup:`Identify Features` tool, click on the
    main street running through |majorUrbanName|:
 
@@ -61,9 +62,9 @@ attributes.
       :align: center
 
 #. Edit its :guilabel:`highway` value to be ``secondary``
-#. Exit edit mode and save your edits
+#. |saveEdits| Save your edits and exit edit mode
 #. Open the :guilabel:`Attribute Table` and note that the value has
-   been updated in the attributes table and therefore in the source
+   been updated in the attribute table and therefore in the source
    data
 
 |moderate| |FA| Setting Form Field Types
@@ -118,7 +119,7 @@ You can also design your own custom form completely from scratch.
    attributes:
 
    * name (text)
-   * age (text)
+   * age (integer)
 
    .. figure:: img/new_point_layer.png
       :align: center
