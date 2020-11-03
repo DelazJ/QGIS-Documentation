@@ -1,0 +1,46 @@
+name: Generate translation Files
+
+on:
+  # pull-request:
+  push:
+    branches:
+      - "release_3.16"
+  # schedule:
+    # - cron:  '00 00 * * *'
+
+jobs:
+  prepare_translation:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+        # ref: ${{ github.head_ref }}
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Install dependencies
+      run: |
+          python -m pip install --upgrade pip
+          pip install -r REQUIREMENTS.txt
+    - name: Generate English PO files
+      run: |
+          make gettext
+          sphinx-intl update -p build/gettext -l en
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Update English PO files
+
+    - name: "Run if changes have been detected"
+      if: steps.auto-commit-action.outputs.changes_detected == 'true'
+      run: |
+          echo "Changes detected!"
+          # tx push -fs --no-interactive # let's push file to transifex
+    - name: "Run if no changes have been detected"
+      if: steps.auto-commit-action.outputs.changes_detected == 'false'
+      run: echo "No Changes detected!"
