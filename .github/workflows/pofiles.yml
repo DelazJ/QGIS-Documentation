@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - "release_3.16"
-  # schedule:
-    # - cron:  '00 00 * * *'
+  # schedule: #run at 04:00 every day
+    # - cron:  '00 04 * * *'
 
 jobs:
   prepare_translation:
