@@ -1039,9 +1039,31 @@ Connecting to MSSQL Spatial
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to some of the options in :ref:`vector_create_stored_connection`,
-creating a new MSSQL connection dialog proposes you to fill a **Provider/DSN**
-name. You can also display available databases.
+creating a new MSSQL connection dialog proposes you to fill:
 
+* **Connection name**
+* **Provider/DSN**
+* **Host**
+* **Login** with username and password.
+
+Then press :guilabel:`List databases` to display available databses through the
+connection. Available options for databases are:
+
+* |checkbox| :guilabel:`Only look in the geometry_columns table`: restricts the
+  available tables to those that are in the ``geometry_columns`` metadata table.
+  This can speed up the table scanning.
+* |checkbox| :guilabel:`Also list tables with no geometry`: indicates that
+  tables without geometry should also be listed by default.
+* |checkbox| :guilabel:`Use estimated table parameters`: avoids a slow table scan,
+  but may result in incorrect layer properties such as layer extent.
+* |checkbox| :guilabel:`Skip invalid geometry handling`: all handling of records
+  with invalid geometry will be disabled, speeding up the provider. However,
+  if any invalid geometries are present in a table then the result is unpredictable
+  and may include missing records. Only check this option if you are certain that
+  all geometries present in the database are valid, and any newly added geometries
+  or tables will also be valid.
+
+Select a database and :guilabel:`Test connection`, and validate with :guilabel:`OK`.
 
 .. _vector_loading_database:
 
