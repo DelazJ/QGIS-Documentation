@@ -244,6 +244,14 @@ Some use cases of expressions
   The previous expression could also be used to define which features
   to label or show on the map.
 
+* Select features in the current layer that overlap the natural zones in the "lands" layer::
+
+   overlay_intersects( layer:='lands', filter:="zone_type"='Natural' )
+
+* Count the "buildings" features that are within each feature of the current layer::
+
+   array_length( overlay_contains( layer:='buildings', expression:=$id ) )
+
 * Create a different symbol (type) for the layer, using the geometry generator::
 
     point_on_surface( $geometry )
