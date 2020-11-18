@@ -6,6 +6,7 @@
 # Translators:
 # Richard Duivenvoorde <richard@duif.net>, 2020
 # Fred ETHEVE <fred@f-etheve.fr>, 2020
+# Francis Gasc <francisgasc@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-05 01:57+0200\n"
 "PO-Revision-Date: 2020-03-16 19:20+0000\n"
-"Last-Translator: Fred ETHEVE <fred@f-etheve.fr>, 2020\n"
+"Last-Translator: Francis Gasc <francisgasc@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/qgis/teams/6144/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -247,15 +248,16 @@ msgstr "Vous pouvez maintenant fermer la table d’attributs."
 
 #: ../../docs/training_manual/vector_classification/attribute_data.rst:135
 msgid "|basic| |TY| Exploring Vector Data Attributes"
-msgstr ""
+msgstr "|basic| |TY| explorer les attributs des donnees vecteur"
 
 #: ../../docs/training_manual/vector_classification/attribute_data.rst:137
 msgid "How many fields are available in the :guilabel:`rivers` layer?"
 msgstr ""
+"Combien de champs sont disponibles dans la couche :guilabel:`rivers` ?"
 
 #: ../../docs/training_manual/vector_classification/attribute_data.rst:138
 msgid "Tell us a bit about the ``town`` places in your dataset."
-msgstr ""
+msgstr "Parlez-nous un peu des endroits town de votre jeu de données."
 
 #: ../../docs/training_manual/vector_classification/attribute_data.rst:139
 msgid ""
@@ -265,7 +267,7 @@ msgstr ""
 
 #: ../../docs/training_manual/vector_classification/attribute_data.rst:142
 msgid ":ref:`Check your results <vector-explore-attribute-data>`"
-msgstr ""
+msgstr ":ref:`Check your results <vector-explore-attribute-data>`"
 
 #: ../../docs/training_manual/vector_classification/attribute_data.rst:145
 msgid "|IC|"
