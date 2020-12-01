@@ -165,6 +165,15 @@ homebrew or MacPorts installs on Mac.
 Python Applications
 ===================
 
+Depending on your Operating System, QGIS by default installs files under:
+
+* on Linux: :file:`XXX`
+* on Windows: :file:`C:\\Program Files\\QGIS <version>` for a standalone
+  installation, or :file:`C:\\OSGeo4W\\apps\\<qgisrelease>` using OSGeo4W installer.
+  `<qgisrelease>` is the type of release, e.g. qgis-rel, qgis-ltr, qgis-dev...
+* on macOS: :file:`/Applications/QGIS <version>`
+
+
 It is often handy to create  scripts for automating processes.
 With PyQGIS, this is perfectly possible --- import
 the :mod:`qgis.core` module, initialize it and you are ready for the
