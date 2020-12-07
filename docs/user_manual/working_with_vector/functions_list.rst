@@ -911,6 +911,7 @@ To use these variables in an expression, they should be preceded by the
    "item_id", "The layout item user ID (not necessarily unique)"
    "item_uuid", "The layout item unique ID"
    "layer", "The current layer"
+   "layer_crs |318|", "The Coordinate Reference System Authority ID of the current layer"
    "layer_id", "The ID of current layer"
    "layer_ids", "The IDs of all the map layers in the current project as a list"
    "layer_name", "The name of current layer"
@@ -920,6 +921,8 @@ To use these variables in an expression, they should be preceded by the
    "layout_numpages", "The number of pages in the layout"
    "layout_page", "The page number of the current item in the layout"
    "layout_pageheight", "The active page height in the layout (in mm)"
+   "layout_pageoffsets", "Array of Y coordinate of the top of each page.
+   Allows to dynamically position items on pages in a context where page sizes may change"
    "layout_pagewidth", "The active page width in the layout (in mm)"
    "legend_column_count", "The number of columns in the legend"
    "legend_filter_by_map", "Indicates if the content of the legend is
@@ -1070,6 +1073,7 @@ This makes it easy to quickly retrieve and reapply previously used expressions.
    please add it also to the substitutions.txt file in the
    source folder.
 
+.. |318| replace:: ``NEW in 3.18`` 
 .. |calculateField| image:: /static/common/mActionCalculateField.png
    :width: 1.5em
 .. |expressionSelect| image:: /static/common/mIconExpressionSelect.png
