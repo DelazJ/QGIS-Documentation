@@ -413,9 +413,6 @@ The effect is a smoother image.
 This method can be applied to for instance digital topographic
 raster maps.
 
-At the bottom of the :guilabel:`Symbology` tab, you can see a
-thumbnail of the layer, its legend symbol, and the palette.
-
 
 .. index:: Transparency
 .. _raster_transparency:
