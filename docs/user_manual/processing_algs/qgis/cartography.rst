@@ -7,6 +7,98 @@ Cartography
       :local:
       :depth: 1
 
+.. _qgisangletonearest:
+
+Align point to features
+-----------------------
+
+Calculates the rotation required to align point features with their nearest
+feature from another reference layer. A new field is added to the output layer
+which is filled with the angle (in degrees, clockwise) to the nearest reference
+feature.
+
+Optionally, the output layer's symbology can be set to automatically use the
+calculated rotation field to rotate marker symbols.
+If desired, a maximum distance to use when aligning points can be set,
+to avoid aligning isolated points to distant features.
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layer**
+     - ``INPUT``
+     - [vector: point]
+     - 
+   * - **Reference layer**
+     - ``REFERENCE_LAYER``
+     - [vector: line or polygon]
+     - 
+   * - **Maximum distance to consider**
+     - ``MAX_DISTANCE``
+     - [number]
+
+       Default: Not set
+     - 
+   * - **Angle field name**
+     - ``FIELD_NAME``
+     - [string]
+
+       Default: 'rotation'
+     - Field in which to store the rotation value.
+   * - **Automatically apply symbology**
+     - ``APPLY_SYMBOLOGY``
+     - [boolean]
+
+       Default: False
+     - Rotates the symbol marker of the features using the rotation value
+   * - **Aligned layer**
+     - ``OUTPUT``
+     - [vector: point]
+       
+       Default: ``[Save to temporary file]``
+     - Specify the rotated output vector layer. One of:
+
+       * Save to a Temporary Layer (``TEMPORARY_OUTPUT``)
+       * Save to File...
+       * Save to GeoPackage...
+       * Save to Database Table...
+
+       The file encoding can also be changed here.
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Aligned layer**
+     - ``OUTPUT``
+     - [vector: point]
+     - The XXX
+
+Python code
+...........
+
+**Algorithm ID**: ``qgis:angletonearest``
+
+.. include:: qgis_algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
 .. _qgiscombinestyles:
 
 Combine style databases
@@ -425,6 +517,43 @@ Python code
 ...........
 
 **Algorithm ID**: ``qgis:printlayoutmapextenttolayer``
+
+.. include:: qgis_algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgissetlayerstyle:
+
+Set layer style
+---------------
+
+Applies the style to a layer. The style must be defined as QML file.
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Layer**
+     - ``INPUT``
+     - [vector]
+     - 
+   * - **Style file**
+     - ``STYLE``
+     - [file]
+     - :file:`.QML` style file to apply to the selected layer
+
+Python code
+...........
+
+**Algorithm ID**: ``qgis:setlayerstyle``
 
 .. include:: qgis_algs_include.rst
   :start-after: **algorithm_code_section**
