@@ -11,6 +11,7 @@ Raster analysis
 
 Cell statistics
 ---------------
+|316|
 
 Computes per-cell statistics based on input raster layers
 and for each cell writes the resulting statistics to an output raster. At each
@@ -165,6 +166,7 @@ Python code
 
 Fuzzify raster (gaussian membership)
 ------------------------------------
+|312|
 
 Transforms an input raster to a fuzzified raster by assigning a
 membership value to each pixel, using a Gaussian membership function.
@@ -282,6 +284,7 @@ Python code
 
 Fuzzify raster (large membership)
 ---------------------------------
+|312|
 
 Transforms an input raster to a fuzzified raster by assigning a
 membership value to each pixel, using a Large membership function.
@@ -392,6 +395,7 @@ Python code
 
 Fuzzify raster (linear membership)
 ----------------------------------
+|312|
 
 Transforms an input raster to a fuzzified raster by assigning a
 membership value to each pixel, using a Linear membership function.
@@ -506,6 +510,7 @@ Python code
 
 Fuzzify raster (near membership)
 --------------------------------
+|312|
 
 Transforms an input raster to a fuzzified raster by assigning a
 membership value to each pixel, using a Near membership function.
@@ -615,6 +620,7 @@ Python code
 
 Fuzzify raster (power membership)
 ---------------------------------
+|312|
 
 Transforms an input raster to a fuzzified raster by assigning a
 membership value to each pixel, using a Power membership function.
@@ -733,6 +739,7 @@ Python code
 
 Fuzzify raster (small membership)
 ---------------------------------
+|312|
 
 Transforms an input raster to a fuzzified raster by assigning a
 membership value to each pixel, using a Small membership function.
@@ -2283,3 +2290,12 @@ Python code
    :height: 4.4em
 .. |small_formula| image:: img/fuzzy_small_formula.png
    :height: 3.2em
+
+.. Substitutions definitions - AVOID EDITING PAST THIS LINE
+   This will be automatically updated by the find_set_subst.py script.
+   If you need to create a new substitution manually,
+   please add it also to the substitutions.txt file in the
+   source folder.
+
+.. |312| replace:: ``NEW in 3.12``
+.. |316| replace:: ``NEW in 3.16``

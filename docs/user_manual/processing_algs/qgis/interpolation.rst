@@ -384,7 +384,8 @@ Python code
 .. _qgislinedensity:
 
 Line Density
------------------------
+------------
+|312|
 
 Calculates for each raster cell, the density measure of linear
 features within a circular neighbourhood. This measure is obtained by
@@ -629,5 +630,6 @@ Python code
    please add it also to the substitutions.txt file in the
    source folder.
 
+.. |312| replace:: ``NEW in 3.12``
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em

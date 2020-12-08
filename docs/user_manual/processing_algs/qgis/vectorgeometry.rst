@@ -11,6 +11,7 @@ Vector geometry
 
 Affine transform
 ----------------
+|312|
 
 Applies an affine transformation to the layer geometries.
 Affine transformations can include translation, scaling and rotation.
@@ -5412,7 +5413,7 @@ Parameters
      - ``INPUT``
      - [vector: any]
      - Input vector layer (with non-NULL geometries)
-   * - **Also remove empty geometries**
+   * - **Also remove empty geometries** |314|
      - ``REMOVE_EMPTY``
      - [boolean]
      - 
@@ -7467,6 +7468,8 @@ Python code
    please add it also to the substitutions.txt file in the
    source folder.
 
+.. |312| replace:: ``NEW in 3.12``
+.. |314| replace:: ``NEW in 3.14``
 .. |arrowDown| image:: /static/common/mActionArrowDown.png
    :width: 1.5em
 .. |arrowUp| image:: /static/common/mActionArrowUp.png

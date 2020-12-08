@@ -1101,6 +1101,7 @@ Python code
 
 Random points in polygons
 -------------------------
+|316|
 
 Creates a point layer with points placed inside the polygons of
 another layer.
@@ -1368,6 +1369,7 @@ Python code
 
 Random points on lines
 ----------------------
+|314|
 
 Creates a point layer with points placed on the lines of another
 layer.
@@ -1799,6 +1801,8 @@ Python code
    please add it also to the substitutions.txt file in the
    source folder.
 
+.. |314| replace:: ``NEW in 3.14``
+.. |316| replace:: ``NEW in 3.16``
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
 .. |dataDefined| image:: /static/common/mIconDataDefine.png
