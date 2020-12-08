@@ -11,10 +11,11 @@ The Table Items
 
 You can use table items to decorate and explain your map:
 
-* :ref:`Attribute table <layout_attribute_table_item>`: shows a subset of the
-  attributes of a layer, based on predefined rules
-* :ref:`Fixed table <layout_fixed_table_item>`: inserts a
-  manual text table where information can be independent from the layers.
+* :ref:`Attribute table <layout_attribute_table_item>`: automatically extracts
+  a subset of the attributes of a layer, based on predefined rules
+* :ref:`Fixed table <layout_fixed_table_item>`: allows for creation of tables
+  with contents manually entered (i.e. spreadsheet style), so that users can
+  create completely custom tables.
 
 .. _layout_attribute_table_item:
 
@@ -265,7 +266,8 @@ Main properties
 In :guilabel:`Main properties` you can work with the :guilabel:`Table designer`
 when clicking the :guilabel:`Edit table ...`:
 
-* You can click into the table and insert texts manually.
+* You can click into the table and insert texts manually. Press :kbd:`Ctrl+Enter`
+  to add linebreak (for a multiline text).
 * Through the menus on top it is possible to:
 
   * :guilabel:`Import Content From Clipboard` by going to :guilabel:`File`
@@ -357,7 +359,7 @@ provides the following functionalities (see :numref:`figure_layout_table_fonts`)
 * For :guilabel:`Table heading` you can additionally set the :guilabel:`Alignment`
   to ``Follow column alignment`` or override this setting by choosing ``Left``,
   ``Center`` or ``Right``. The column alignment is set using the :guilabel:`Select
-  Attributes` dialog (see :numref:`figure_layout_table_select` ).
+  Attributes` dialog (see :numref:`figure_layout_table_select`).
 
 
 Frames
