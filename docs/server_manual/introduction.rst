@@ -22,3 +22,4 @@ In the following sections, we will provide a sample configuration to set up
 a QGIS Server on Linux (Debian, Ubuntu and derivatives) and on Windows.
 For more information about server plugin development, please read :ref:`server_plugins`.
 
+This is the new build
