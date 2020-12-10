@@ -1,4 +1,4 @@
-name: Generate translation Files
+name: Generate translation Files V2
 
 on:
   # pull-request:
