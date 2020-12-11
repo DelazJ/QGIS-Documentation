@@ -17,7 +17,7 @@ jobs:
       - uses: everlytic/branch-merge@1.1.0
         with:
           github_token: ${{ github.token }}
-          source_ref: release_3.16
+          source_ref: 'release_3.16'
           target_branch: 'latest'
           commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}:'
 
