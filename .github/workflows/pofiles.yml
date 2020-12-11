@@ -14,11 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
       - uses: everlytic/branch-merge@1.1.0
         with:
           github_token: ${{ github.token }}
-          source_ref: 'release_3.16'
-          target_branch: 'latest'
+          source_ref: release_3.16
+          target_branch: latest
           commit_message_template: '[Automated] Merged release_3.16 into target latest:'
 
   prepare_translation:
