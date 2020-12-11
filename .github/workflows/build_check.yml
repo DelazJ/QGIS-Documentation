@@ -1,0 +1,60 @@
+name: Build Check
+
+on: [push, pull_request]
+
+jobs:
+
+  context:
+    runs-on: ubuntu-latest
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+          python -m pip install --upgrade pip
+          pip install -r REQUIREMENTS.txt
+
+  html_buildV2:
+    needs: context
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Build sphinx documentation
+      run: |
+          make html
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: HTML build
+        path: build
+
+  doctest_buildV2:
+    needs: context
+    runs-on: ubuntu-latest
+
+    services:
+      image: docker
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+
+    - name: Build test code
+      run: |
+          make -f docker.mk doctest
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Doctest build
+        path: ./build/doctest/output.txt
