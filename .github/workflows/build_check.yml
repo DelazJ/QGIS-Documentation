@@ -13,10 +13,6 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
-    - name: Install dependencies
-      run: |
-          python -m pip install --upgrade pip
-          pip install -r REQUIREMENTS.txt
 
   html_buildV2:
     needs: context
@@ -29,6 +25,10 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.7    
+    - name: Install dependencies
+      run: |
+          python -m pip install --upgrade pip
+          pip install -r REQUIREMENTS.txt
     - name: Build sphinx documentation
       run: |
           make html
