@@ -10,14 +10,26 @@ on:
     # - cron:  '00 04 * * *'
 
 jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: everlytic/branch-merge@1.1.0
+        with:
+          github_token: ${{ github.token }}
+          source_ref: ${{ github.ref }}
+          target_branch: 'latest'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}':
+
   prepare_translation:
+    needs: merge-branch
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
+    #  with:
+    #    fetch-depth: 1
         # ref: ${{ github.head_ref }}
 
     - name: Set up Python 3.7
