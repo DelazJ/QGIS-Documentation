@@ -19,7 +19,7 @@ jobs:
           github_token: ${{ github.token }}
           source_ref: release_3.16
           target_branch: 'latest'
-          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}':
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}:'
 
   prepare_translation:
     needs: merge-branch
