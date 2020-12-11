@@ -11,7 +11,7 @@ shared border and both features will change at the same time.
 
 **The goal for this lesson:** To understand topology using examples.
 
-|moderate| |FA| Snapping
+|moderate| |FA| Snapping YES
 ----------------------------------------------------------------------
 
 Snapping makes topological editing easier.
