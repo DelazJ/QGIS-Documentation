@@ -1,4 +1,4 @@
-|LS| Labels
+|LS| Labels Circus
 ===============================================================================
 
 Labels can be added to a map to show any information about an object. Any
