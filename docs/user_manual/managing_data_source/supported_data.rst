@@ -20,7 +20,7 @@ Raster data
 ===========
 
 GIS raster data are matrices of discrete cells that represent
-features / phenomena on, above or below the earth's surface.
+features / phenomena on, above or below the earth's surface. YYY
 Each cell in the raster grid has the same size, and cells are usually
 rectangular (in QGIS they will always be rectangular).
 Typical raster datasets include remote sensing data, such as aerial
