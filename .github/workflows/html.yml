@@ -8,20 +8,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
+
+    - uses: actions/checkout@v2
+
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
+    
+    - name: Cache dependencies modules
+      id: cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
     - name: Install dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
       run: |
           python -m pip install --upgrade pip
           pip install -r REQUIREMENTS.txt
+
     - name: Build sphinx documentation
       run: |
           make html
+
     - name: Upload build artifact
       uses: actions/upload-artifact@v1
       with:
