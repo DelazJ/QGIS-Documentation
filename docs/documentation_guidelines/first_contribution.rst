@@ -15,7 +15,7 @@ If you are reading these lines, it is certainly because you are willing
 to contribute to writing QGIS documentation and are looking for a how-to.
 You have come to the right place! The current document will guide you through
 the different ways to achieve this objective, showing you the main steps to
-follow, the tricks you can use and the traps you should be aware of.
+follow, the tricks you can use and the traps you should be aware of.buy
 
 For any help, do not hesitate to either ask in a comment on the issue report you
 are trying to fix or write to the `QGIS-community-team list
