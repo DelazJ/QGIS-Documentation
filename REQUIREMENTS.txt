@@ -1,5 +1,4 @@
 Sphinx
-sphinx-build
 sphinx-intl==2.0.1
 sphinx_rtd_theme
 sphinx-intl[transifex]
