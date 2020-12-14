@@ -6,7 +6,7 @@ on:
       - "release_3.16"
 
   schedule: #run at 04:00 every day
-    - cron:  '33 01 * * *'
+    - cron:  '40 21 * * *'
 
 jobs:
   prepare_translation:
