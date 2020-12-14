@@ -1,9 +1,9 @@
 name: Generate translation Files V2
 
 on:
-  #push:
-   # branches:
-    #  - "release_3.16"
+  push:
+    branches:
+      - "release_3.16"
 
   schedule: #run at 04:00 every day
     - cron:  '33 01 * * *'
