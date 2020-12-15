@@ -8,7 +8,7 @@ on:
       - 'docs/**'
 
   schedule: #run at 04:00 every day
-    - cron:  '5 * * * *'
+    - cron:  '0 2 * * *'
 
 jobs:
   prepare_translation:
@@ -36,7 +36,7 @@ jobs:
       run: |
           make gettext
           sphinx-intl update -p build/gettext -l en
-          # An attempt to find whether files got updated in the repo with the commands above
+          # An attempt to find whether files got updated in the repo with the commands above (to skip some steps)
           echo "::set-output name=count_modifs::$(find locale/en/LC_MESSAGES/docs -type f -name '*.po' -mmin -5 -ls | wc -l)"
 
     - name: Read the outputs
