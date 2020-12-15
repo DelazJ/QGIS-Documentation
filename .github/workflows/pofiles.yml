@@ -7,8 +7,8 @@ on:
     paths:
       - 'docs/**'
 
-  schedule: #run at 04:00 every day
-    - cron:  '0 2 * * *'
+  #schedule: #run at 04:00 every day
+   # - cron:  '0 2 * * *'
 
 jobs:
   prepare_translation:
@@ -29,7 +29,7 @@ jobs:
     - name: Install dependencies
       run: |
           python -m pip install --upgrade pip
-          pip install -r REQUIREMENTS.txt
+          pip install -r sphinx sphinx-intl
 
     - name: Generate English PO files
       id: "generate-po-files"
