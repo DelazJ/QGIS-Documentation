@@ -11,4 +11,4 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Show name
-      run: echo `git branch --show-current`
+      run: git branch --show-current
