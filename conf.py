@@ -446,4 +446,4 @@ ext_doctest.SphinxDocTestRunner = BetterDocTestRunner
 # -- Redirection settings --------------------------------
 
 rediraffe_redirects = "redirects.txt"
-rediraffe_branch = "release_3.4"
+#rediraffe_branch = "release_3.4"
