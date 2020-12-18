@@ -15,7 +15,7 @@ docs/training_manual/introduction/index.rst: docs/training_manual/foreword/index
 docs/training_manual/introduction/intro.rst: docs/training_manual/foreword/intro.rst,
 docs/training_manual/introduction/preparation.rst: docs/training_manual/basic_map/preparation.rst,
 docs/training_manual/introduction/overview.rst: docs/training_manual/basic_map/overview.rst,
-docs/training_manual/basic_map/vector_data: docs/training_manual/basic_map/preparation.rst,
+docs/training_manual/basic_map/vector_data.rst: docs/training_manual/basic_map/preparation.rst,
 
 # Print Layout
-docs/user_manual/print_composer/composer_items/composer_attribute_table.rst: docs/user_manual/print_composer/composer_items/composer_table_items
+docs/user_manual/print_composer/composer_items/composer_attribute_table.rst: docs/user_manual/print_composer/composer_items/composer_table_items.rst
