@@ -276,7 +276,7 @@ Now there are no unnecessary subdivisions.
 
 Use the same approach as above and create a buffer for your schools.
 
-It shall to be ``1 km`` in radius.
+It shall have a radius of 1km.
 Save the new layer in the :file:`vector_analysis.gpkg` file as ``schools_buffer_1km_dissolved``.
 
 :ref:`Check your results <vector-analysis-basic-1>`
