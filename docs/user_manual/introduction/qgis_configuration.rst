@@ -42,6 +42,13 @@ require a restart of QGIS before they will be effective.
 
 The tabs where you can customize your options are described below.
 
+.. only:: html
+
+   .. contents::
+      :local:
+      :class: toc_columns
+      :depth: 1
+
 .. note:: **Plugins can embed their settings within the Options dialog**
 
  While only Core settings are presented below, note that this list can be extended
