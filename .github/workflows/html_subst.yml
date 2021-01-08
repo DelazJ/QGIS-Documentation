@@ -50,5 +50,5 @@ jobs:
         output: ' '
         githubToken: ${{ secrets.GITHUB_TOKEN }}
     - name: Check substitutions
-      run: python ./scripts/find_set_subst.py -r ${{ steps.changed_files.outputs.files_modified }} ${{ steps.changed_files.outputs.files_added }}
+      run: python ./scripts/find_set_subst.py ${{ steps.changed_files.outputs.files_modified }} ${{ steps.changed_files.outputs.files_added }}
 
