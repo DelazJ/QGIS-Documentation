@@ -148,3 +148,7 @@ linkcheck:
 	$(SPHINXBUILD) -b linkcheck $(SOURCEDIR) $(BUILDDIR)/linkcheck
 	@echo "Check finished. Report is in $(BUILDDIR)/linkcheck/output.txt."
 
+	# Isolate broken links
+	grep -e '\[broken\]' $(BUILDDIR)/linkcheck/output.txt > $(BUILDDIR)/linkcheck/broken_links.txt
+	@echo "Broken links are reported in $(BUILDDIR)/linkcheck/broken_links.txt."
+
