@@ -25,6 +25,7 @@ Two types of text-related items are available in QGIS:
 
   #. Open the |styleManager| :guilabel:`Style Manager` dialog
   #. Activate the :guilabel:`Text format` tab
+  #. the |cad|
 
      .. _figure_textformats:
 
