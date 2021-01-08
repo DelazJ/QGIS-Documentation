@@ -102,6 +102,7 @@ To load a mesh dataset into QGIS, use the |addMeshLayer| :guilabel:`Mesh` tab
 in the :guilabel:`Data Source Manager` dialog. Read :ref:`mesh_loading` for
 more details.
 
+|cad|
 
 .. _`label_meshproperties`:
 
