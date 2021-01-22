@@ -1959,12 +1959,27 @@ Every toolbar can be moved around according to your needs.
 Additionally, they can be switched off using the right mouse button
 context menu, or by holding the mouse over the toolbars.
 
-.. _figure_toolbars:
+Available toolbars are:
 
-.. figure:: img/toolbars.png
-   :align: center
+.. csv-table::
+   :header: "Menu Option", "Main Reference"
+   :widths: auto
 
-   The Toolbars menu
+   ":guilabel:`Advanced Digitizing`", ":ref:`sec_advanced_edit`"
+   ":guilabel:`Attributes`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Data Source Manager`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Database`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Digitizing`", ":ref:`sec_edit_existing_layer`"
+   ":guilabel:`Help`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Manage Layers`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Map Navigation`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Plugins`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Project`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Raster`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Shape digitizing`", ":ref:`shape_edit`"
+   ":guilabel:`Snapping`",":ref:`snapping_tolerance`"
+   ":guilabel:`Vector`", "ref:`sec_edit_existing_layer`"
+   ":guilabel:`Web`", "ref:`sec_edit_existing_layer`"
 
 .. index::
    single: Toolbars; Layout
@@ -1989,13 +2004,6 @@ QGIS provides many panels.
 Panels are special widgets that you can interact with (selecting
 options, checking boxes, filling values...) to perform more complex
 tasks.
-
-.. _figure_panels:
-
-.. figure:: img/panels.png
-   :align: center
-
-   The Panels menu
 
 Below is a list of the default panels provided by QGIS:
 
