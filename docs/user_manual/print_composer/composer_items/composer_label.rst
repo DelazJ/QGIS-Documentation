@@ -28,6 +28,8 @@ functionalities (see :numref:`figure_layout_label`):
 
    Label Item Properties Panel
 
+.. _layout_label_main_properties:
+
 Main properties
 ----------------
 
@@ -36,19 +38,27 @@ be in HTML) or the expression to build the label. Expressions need to be
 surrounded by ``[%`` and ``%]`` in order to be interpreted as such.
 
 * Labels can be interpreted as HTML code: check |checkbox|
-  :guilabel:`Render as HTML`. You can now insert a URL, a clickable image that
-  links to a web page or something more complex.
+  :guilabel:`Render as HTML`. You can now insert HTML tags or styles, URL, a clickable image that
+  links to a web page,  something more complex.
 * You can also use :ref:`expressions <expression_builder>`: click on :guilabel:`Insert
   or Edit an expression...` button, write your formula as usual and when the dialog is
   applied, QGIS automatically adds the surrounding characters.
-  
-.. note:: Clicking the :guilabel:`Insert or Edit an Expression...` button when no
-  selection is made in the textbox will append the new expression to the existing text.
-  If you want to update an existing text, you need to select it the part of
-  interest beforehand.
 
-You can combine HTML rendering with expressions, leading to advanced labeling.
-The following code will output :numref:`figure_layout_label_html`:
+  Because maps are usually filled with some common textual information (date,
+  author, title, page number, ...), QGIS provides a direct access to the
+  corresponding expressions: press the :guilabel:`Dynamic text` button to select
+  and insert in your label item.
+
+.. hint:: Clicking the :guilabel:`Insert or Edit an Expression...` button when no
+  selection is made in the textbox will append the new expression to the existing text.
+  If you want to modify an existing expression, you need to first select the part of
+  interest.
+
+.. note:: The :menuselection:`Add Item --> Add Dynamic Text -->` top menu can be
+  used to create a new label item populated with the selected predefined expression.
+
+The following code combines HTML rendering with expressions, for an advanced
+labeling and will output :numref:`figure_layout_label_html`:
 
 .. code-block:: css
 
@@ -82,7 +92,6 @@ The following code will output :numref:`figure_layout_label_html`:
    :align: center
 
    Leveraging a label with HTML styling
-
 
 
 Appearance
