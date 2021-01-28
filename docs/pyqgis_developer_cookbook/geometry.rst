@@ -211,7 +211,58 @@ vector type. Here's an example on how to use these accessors:
    and :meth:`y() <qgis.core.QgsPoint.y>` methods.
 
 For multipart geometries there are similar accessor functions:
-:meth:`asMultiPoint() <qgis.core.QgsGeometry.asMultiPoint>`, :meth:`asMultiPolyline() <qgis.core.QgsGeometry.asMultiPolyline>` and :meth:`asMultiPolygon() <qgis.core.QgsGeometry.asMultiPolygon>`.
+:meth:`asMultiPoint() <qgis.core.QgsGeometry.asMultiPoint>`,
+:meth:`asMultiPolyline() <qgis.core.QgsGeometry.asMultiPolyline>`
+and :meth:`asMultiPolygon() <qgis.core.QgsGeometry.asMultiPolygon>`.
+
+
+
+It is possible to iterate over all the parts of a geometry,
+regardless of the geometry's type. E.g.
+
+.. testcode:: geometry
+
+  geometry = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
+  for part in geometry.parts():
+    print(part.asWkt())
+
+.. testoutput:: geometry
+
+  Point (0 0)
+  Point (1 1)
+  Point (2 2)
+
+.. testcode:: geometry
+
+  geometry = QgsGeometry.fromWkt( 'LineString( 0 0, 10 10 )' )
+  for part in geometry.parts():
+    print(part.asWkt())
+
+.. testoutput:: geometry
+
+  LineString (0 0, 10 10)
+
+There are two iterators available:
+
+* :meth:`QgsGeometry.parts() <qgis.core.QgsGeometry.parts>` gives
+  a non-const iterator, allowing the parts to be modified in place:
+
+  .. testcode:: geometry
+
+    geometry = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
+    for part in geometry.parts():
+      part.translate(2, 90)
+
+* Calling :meth:`QgsGeometry.const_parts() <qgis.core.QgsGeometry.const_parts>`
+  gives a const iterator, which cannot edit the parts but avoids a potentially
+  expensive :class:`QgsGeometry <qgis.core.QgsGeometry>` detach and clone.
+
+  .. testcode:: geometry
+
+    geometry = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
+    for part in geometry.const_parts():
+      print(part.x())
+
 
 
 .. index:: Geometry; Predicates and operations
