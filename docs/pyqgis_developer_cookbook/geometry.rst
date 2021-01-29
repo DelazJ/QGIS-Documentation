@@ -222,8 +222,8 @@ regardless of the geometry's type. E.g.
 
 .. testcode:: geometry
 
-  geometry = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
-  for part in geometry.parts():
+  geom = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
+  for part in geom.parts():
     print(part.asWkt())
 
 .. testoutput:: geometry
@@ -234,8 +234,8 @@ regardless of the geometry's type. E.g.
 
 .. testcode:: geometry
 
-  geometry = QgsGeometry.fromWkt( 'LineString( 0 0, 10 10 )' )
-  for part in geometry.parts():
+  geom = QgsGeometry.fromWkt( 'LineString( 0 0, 10 10 )' )
+  for part in geom.parts():
     print(part.asWkt())
 
 .. testoutput:: geometry
@@ -249,19 +249,39 @@ There are two iterators available:
 
   .. testcode:: geometry
 
-    geometry = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
-    for part in geometry.parts():
-      part.translate(2, 90)
+    geom = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
+    for part in geom.parts():
+      part.transform(QgsCoordinateTransform(
+        QgsCoordinateReferenceSystem("EPSG:4326"),
+        QgsCoordinateReferenceSystem("EPSG:3111"),
+        QgsProject.instance())
+      )
 
-* Calling :meth:`QgsGeometry.const_parts() <qgis.core.QgsGeometry.const_parts>`
-  gives a const iterator, which cannot edit the parts but avoids a potentially
+    print(geom.asWkt())
+
+  .. testoutput:: geometry
+
+    MultiPoint ((107.26108797294588726 -54.67121246945769997),(107.26110721317103014 -54.67120789902708822),(107.26112645339298979 -54.67120332859410325))
+
+* :meth:`QgsGeometry.constParts() <qgis.core.QgsGeometry.constParts>` gives
+  a const iterator, which cannot edit the parts but avoids a potentially
   expensive :class:`QgsGeometry <qgis.core.QgsGeometry>` detach and clone.
 
   .. testcode:: geometry
 
-    geometry = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
-    for part in geometry.const_parts():
-      print(part.x())
+    geom = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
+    for part in geom.constParts():
+      part.transform(QgsCoordinateTransform(
+        QgsCoordinateReferenceSystem("EPSG:4326"),
+        QgsCoordinateReferenceSystem("EPSG:3111"),
+        QgsProject.instance())
+      )
+
+    print(geom.asWkt())
+
+  .. testoutput:: geometry
+
+    MultiPoint ((107.26108797294588726 -54.67121246945769997),(107.26110721317103014 -54.67120789902708822),(107.26112645339298979 -54.67120332859410325))
 
 
 
