@@ -33,6 +33,7 @@ The code snippets on this page need the following imports if you're outside the 
       QgsVectorLayer,
       QgsDistanceArea,
       QgsUnitTypes,
+      QgsCoordinateTransform
     )
 
 .. _geometry:
