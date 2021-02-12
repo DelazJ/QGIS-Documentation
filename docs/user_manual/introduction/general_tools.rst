@@ -238,6 +238,9 @@ layers.
 Interact with groups and layers
 ...............................
 
+.. Todo: tackle the group/layer visibility checkbox behavior and the move to top
+ option
+
 Layers in the legend window can be organized into groups. There are two ways to
 do this:
 
