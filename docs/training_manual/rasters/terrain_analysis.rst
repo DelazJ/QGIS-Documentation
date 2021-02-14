@@ -37,12 +37,16 @@ We are going to use algorithms in the
    (East), 180 (South) and 270 (West), while the
    :guilabel:`Vertical angle` sets how high the light source is
    (0 to 90 degrees).
-   We will use the default values:
+#. We will use the default values:
+
+   * :guilabel:`Z factor` at ``1.0``
+   * :guilabel:`Azimuth (horizontal angle)` at ``300.0``\°
+   * :guilabel:`Vertical angle` at ``40.0``\°
 
    .. figure:: img/hillshade_explanation.png
       :align: center
 
-#. Save the file in a new folder ``raster_analysis`` within the folder ``exercise_data``
+#. Save the file in a new folder :file:`exercise_data/raster_analysis/`
    with the name ``hillshade``
 #. Finally click on :guilabel:`Run`
 
@@ -90,29 +94,6 @@ the hillshade becomes, the dimmer the colors behind it will be. You will need
 to find a balance that works for you.
 
 Remember to save the project when you are done.
-
-
-|moderate| |FA| Calculating the Slope
-----------------------------------------------------------------------
-
-Another useful thing to know about the terrain is how steep it is. If, for
-example, you want to build houses on the land there, then you need land
-that is relatively flat.
-
-To do this, you need to use the :menuselection:`Slope` algorithm of the
-:menuselection:`Processing --> Raster terrain analysis`.
-
-#. Open the algorithm
-#. Choose :guilabel:`srtm_41_19` as the :guilabel:`Elevation layer`
-#. Save the output as a file with the name ``slope`` in the same folder as the
-   ``hillshade``
-#. Click on :guilabel:`Run`
-
-Now you'll see the slope of the terrain, with black pixels being flat terrain
-and white pixels, steep terrain:
-
-.. figure:: img/slope_raster.png
-   :align: center
 
 .. _backlink-raster-analysis-1:
 
@@ -210,6 +191,29 @@ What does it mean?
 The formula we wrote contains the *conditional* operator ``OR``.
 Therefore the final result will be **False** (0) and **True** (1).
 
+
+|moderate| |FA| Calculating the Slope
+----------------------------------------------------------------------
+
+Another useful thing to know about the terrain is how steep it is. If, for
+example, you want to build houses on the land there, then you need land
+that is relatively flat.
+
+To do this, you need to use the :menuselection:`Slope` algorithm of the
+:menuselection:`Processing --> Raster terrain analysis`.
+
+#. Open the algorithm
+#. Choose :guilabel:`srtm_41_19` as the :guilabel:`Elevation layer`
+#. Keep the :guilabel:`Z factor` at ``1.0``
+#. Save the output as a file with the name ``slope`` in the same folder as the
+   ``hillshade``
+#. Click on :guilabel:`Run`
+
+Now you'll see the slope of the terrain, with black pixels being flat terrain
+and white pixels, steep terrain:
+
+.. figure:: img/slope_raster.png
+   :align: center
 
 .. _backlink-raster-analysis-2:
 
@@ -378,7 +382,7 @@ in :menuselection:`Raster analysis` in the
 
    The method used by the algorithm to treat the threshold values of
    each class is defined by the :guilabel:`Range boundaries`.
-#. Save the layer as file:`reclassified.tif` in the
+#. Save the layer as :file:`reclassified.tif` in the
    :file:`exercise_data/raster_analysis/` folder
 
    .. figure:: img/reclassify_setup.png
