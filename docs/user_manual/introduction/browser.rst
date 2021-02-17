@@ -222,6 +222,41 @@ For layers/tables you can
 * inspect its properties (:guilabel:`Layer Properties...`)
 
 
+
++-------------+-----------------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Level       | Context menu                            | PostGIS     | MSSQL       | DB2         | SAP HANA    | Oracle      | GeoPackage  |
++-------------+-----------------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Top menu    | Create a :guilabel:`New Connection...`  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |
+|             | :guilabel:`Save Connections…`           | |checkbox|  | |checkbox|  | |Checkbox|  |             |             |             |
+|             | :guilabel:`Load Connections…`           | |checkbox|  | |checkbox|  | |Checkbox|  |             |             |             |
+|             | :guilabel:`Create Database…`            |             |             |             |             |             | |checkbox|  |
+| Connection  | :guilabel:`Refresh` a connection        | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
+|             | :guilabel:`Edit Connection…` settings   | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
+|             | :guilabel:`Delete Connection`           | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
+|             | Create a :guilabel:`New Schema...`      | |checkbox|  |             |             |             |             |             |
+|             | Create a :guilabel:`New Table…`         | |checkbox|  |             |             |             |             |             |
+| Database    |                                         |             |             |             |             |             |             |
+|             |                                         |             |             |             |             |             |             |
+|             |                                         |             |             |             |             |             |             |
+| Schema      | :guilabel:`Create schema                | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
+|             | :guilabel:`Refresh` a schema            | |checkbox|  | |checkbox|  |             | |checkbox|  | |checkbox|  |             |
+|             | :guilabel:`Rename schema`               | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
+|             | :guilabel:`Delete schema`               | |checkbox|  |             | |checkbox|  | |checkbox|  | |checkbox|  |             |
+| Table/Layer | :guilabel:`Rename Table`                | |checkbox|  | |checkbox|  | |checkbox|  |             | |checkbox|  |             |
+|             | :guilabel:`Truncate Table`              | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
+|             | :guilabel:`Export Layer to file`        | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
+|             | :guilabel:`Add layer to Project`        | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
+|             | :guilabel:`Delete layer`                | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
+|             | Open :guilabel:`Layer properties` dialog| |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  | |checkbox|  |             |
++-------------+-----------------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+
+
+
+
+
+
+
+
+
 MSSQL
 ......................................................................
 Microsoft SQL Server connections.
@@ -454,6 +489,8 @@ Resources
 .. |browserCollapse| image:: /static/common/browser_collapse.png
    :width: 1.5em
 .. |browserExpand| image:: /static/common/browser_expand.png
+   :width: 1.5em
+.. |checkbox| image:: /static/common/checkbox.png
    :width: 1.5em
 .. |collapseTree| image:: /static/common/mActionCollapseTree.png
    :width: 1.5em
