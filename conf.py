@@ -261,7 +261,8 @@ latex_elements = {
     \\newunicodechar{㎡}{$m^2$}
     \\newunicodechar{′}{\ensuremath{^{\prime}}}
     \\newunicodechar{″}{\ensuremath{^{\prime\prime}}}
-    \\newunicodechar{​}{ }'''
+    \\newunicodechar{​}{ }
+    \\usepackage{ocgx}'''
 }
 
 # Special case of korean that need different latex settings to work
