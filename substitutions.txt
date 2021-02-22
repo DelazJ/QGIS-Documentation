@@ -22,6 +22,7 @@
 .. |RF| replace:: Results For
 .. |TY| replace:: Try Yourself
 .. |WN| replace:: What's Next?
+.. |first| image:: https://raw.githubusercontent.com/qgis/QGIS/master/themes/default/mActionFirst.svg
 .. |action| image:: /static/common/action.png
    :width: 2em
 .. |actionRun| image:: /static/common/mAction.png
