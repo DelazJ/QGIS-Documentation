@@ -12,7 +12,7 @@ QGIS Python console
    .. contents::
       :local:
 
-As you will see later in this chapter, QGIS has been designed with a plugin
+|first| |first1| As you will see later in this chapter, QGIS has been designed with a plugin
 architecture. Plugins can be written in Python, a very famous language in the
 geospatial world.
 
@@ -158,6 +158,8 @@ share the code via codepad.org and much more). Main features are:
 .. |clearConsole| image:: /static/common/iconClearConsole.png
    :width: 1.5em
 .. |distributeHSpace| image:: /static/common/mActionDistributeHSpace.svg
+.. |first| image:: https://github.com/qgis/QGIS/blob/master/images/themes/default/mActionFirst.svg
+.. |first1| image:: https://raw.githubusercontent.com/qgis/QGIS/master/themes/default/mActionFirst.svg
 .. |helpContents| image:: /static/common/mActionHelpContents.png
    :width: 1.5em
 .. |options| image:: /static/common/mActionOptions.png
