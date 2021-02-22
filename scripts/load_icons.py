@@ -41,35 +41,50 @@ md_table_header = (
 )
 md_table_row_tpl = """| ![{}]({}){} | `QIcon(QgsApplication.iconPath(":{}"))` | `QIcon(":{}")`<br/>`QPixmap(":{}")` |\n"""
 
+substitutions =[]
 # iterate over resources
 for prefix in root:
     if prefix.tag == "qresource" and "prefix" in prefix.attrib:
         # set prefix (= level 2 in markdown)
         prefix_name = prefix.attrib.get("prefix")[1:]
+        print(prefix_name)
         out_markdown += "\n## {}\n".format(prefix_name)
 
         # iterate over files under prefix, after sorting them by filepath
         previous_subfolder = ""
         for binimg in sorted(prefix.findall("file"), key=lambda x: x.text.rsplit("/", 1)[0]):
             # build path to image
-            img_path_abs = urljoin(base_path,  f"{prefix_name}/{binimg.text}")
-            img_path_rel = Path(prefix_name, binimg.text)
+            print(binimg.text)
+            # Only keep what is in themes folder
+            if binimg.text.rsplit("/")[0] in ['themes']:
+                img_path_abs = urljoin(base_path,  f"{prefix_name}/{binimg.text}")
+                img_path_rel = Path(prefix_name, binimg.text)
 
-            # use subfolder as markdown level 3
-            if binimg.text.rsplit("/", 1)[0] != previous_subfolder:
-                out_markdown += "\n### {}\n\n".format(binimg.text.rsplit("/", 1)[0])
-                out_markdown += md_table_header
-                previous_subfolder = binimg.text.rsplit("/", 1)[0]
+                # use subfolder as markdown level 3
+                if binimg.text.rsplit("/", 1)[0] != previous_subfolder:
+                    out_markdown += "\n### {}\n\n".format(binimg.text.rsplit("/", 1)[0])
+                    out_markdown += md_table_header
+                    previous_subfolder = binimg.text.rsplit("/", 1)[0]
 
-            # add line for image
-            out_markdown += md_table_row_tpl.format(
-                img_path_rel.stem,
-                img_path_abs,
-                pymd_attr_list,
-                img_path_rel.name,
-                img_path_rel,
-                img_path_rel,
-            )
+                # add line for image
+                out_markdown += md_table_row_tpl.format(
+                    img_path_rel.stem,
+                    img_path_abs,
+                    pymd_attr_list,
+                    img_path_rel.name,
+                    img_path_rel,
+                    img_path_rel,
+                )
+                substitutions.append( "\n.. |{}| image:: {}".format(img_path_rel.stem, img_path_rel))
+                #print("substitutions: {}".format(substitutions))
 
 with Path("qgis_resources_preview_table.md").open("w") as io_out:
     io_out.write(out_markdown)
+
+
+with Path("auto_substitution.txt").open("w") as txt_out:
+    for substance in sorted(substitutions):
+        txt_out.write(substance)
+
+
+
