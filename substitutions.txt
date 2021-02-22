@@ -1,17 +1,9 @@
 # Substitutions below are sorted and should be in lowerCamelCase
 # NOTE that for inline images (like button and menu icons inline in text) you HAVE TO make a substitution
 
-.. |25dSymbol| image:: /static/common/renderer25dSymbol.png
-   :width: 1.5em
 .. |318| replace:: ``NEW in 3.18``
 .. |320| replace:: ``NEW in 3.20``
 .. |322| replace:: ``NEW in 3.22``
-.. |3d| image:: /static/common/3d.png
-   :width: 1.5em
-.. |3dNavigation| image:: /static/common/mAction3DNavigation.png
-   :width: 1.3em
-.. |3dconfigure| image:: /static/common/mIconProperties.png
-   :width: 1.3em
 .. |CURRENT| replace:: 3.16
 .. |FA| replace:: Follow Along:
 .. |FR| replace:: Further Reading
@@ -22,6 +14,23 @@
 .. |RF| replace:: Results For
 .. |TY| replace:: Try Yourself
 .. |WN| replace:: What's Next?
+.. |lerato| image:: img/lerato_nsibande.png
+.. |marcelle| image:: img/marcelle_sutton.png
+.. |otto| image:: img/otto_dassau.png
+.. |outofdate| replace:: `Despite our constant efforts, information beyond this line may not be updated for QGIS 3. Refer to https://qgis.org/pyqgis/master for the python API documentation or, give a hand to update the chapters you know about. Thanks.`
+.. |sibongile| image:: img/sibongile_mthombeni.png
+.. |tim| image:: img/tim_sutton.png
+
+## Substitutions below are generated from QGIS code icons ##
+
+.. |25dSymbol| image:: /static/common/renderer25dSymbol.png
+   :width: 1.5em
+.. |3d| image:: /static/common/3d.png
+   :width: 1.5em
+.. |3dNavigation| image:: /static/common/mAction3DNavigation.png
+   :width: 1.3em
+.. |3dconfigure| image:: /static/common/mIconProperties.png
+   :width: 1.3em
 .. |first| image:: https://raw.githubusercontent.com/qgis/QGIS/master/themes/default/mActionFirst.svg
 .. |action| image:: /static/common/action.png
    :width: 2em
@@ -606,7 +615,6 @@
    :width: 1.5em
 .. |legend| image:: /static/common/legend.png
    :width: 1.2em
-.. |lerato| image:: img/lerato_nsibande.png
 .. |lineLayer| image:: /static/common/mIconLineLayer.png
    :width: 1.5em
 .. |linguist_done_next| image:: img/linguist_done_next.png
@@ -649,7 +657,6 @@
    :width: 1.5em
 .. |mapTips| image:: /static/common/mActionMapTips.png
    :width: 1.5em
-.. |marcelle| image:: img/marcelle_sutton.png
 .. |mean| image:: /static/common/mean.png
    :width: 1.5em
 .. |measure| image:: /static/common/mActionMeasure.png
@@ -758,8 +765,6 @@
    :width: 1.5em
 .. |osx| image:: /static/common/osx.png
    :width: 1em
-.. |otto| image:: img/otto_dassau.png
-.. |outofdate| replace:: `Despite our constant efforts, information beyond this line may not be updated for QGIS 3. Refer to https://qgis.org/pyqgis/master for the python API documentation or, give a hand to update the chapters you know about. Thanks.`
 .. |overlay| image:: /static/common/overlay.png
    :width: 1.5em
 .. |ows| image:: /static/common/mIconOws.png
@@ -982,7 +987,6 @@
    :width: 1.5em
 .. |showUnplacedLabel| image:: /static/common/mActionShowUnplacedLabel.png
    :width: 1.5em
-.. |sibongile| image:: img/sibongile_mthombeni.png
 .. |signMinus| image:: /static/common/symbologyRemove.png
    :width: 1.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
@@ -1043,7 +1047,6 @@
    :width: 1.5em
 .. |textAnnotation| image:: /static/common/mActionTextAnnotation.png
    :width: 1.5em
-.. |tim| image:: img/tim_sutton.png
 .. |tiltDown| image:: /static/common/mActionTiltDown.png
    :width: 1.5em
 .. |tiltUp| image:: /static/common/mActionTiltUp.png
