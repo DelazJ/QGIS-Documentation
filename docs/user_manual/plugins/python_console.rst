@@ -158,7 +158,6 @@ share the code via codepad.org and much more). Main features are:
 .. |clearConsole| image:: /static/common/iconClearConsole.png
    :width: 1.5em
 .. |distributeHSpace| image:: /static/common/mActionDistributeHSpace.svg
-   :width: 1.5em
 .. |helpContents| image:: /static/common/mActionHelpContents.png
    :width: 1.5em
 .. |options| image:: /static/common/mActionOptions.png
