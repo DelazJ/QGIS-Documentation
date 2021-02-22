@@ -316,6 +316,8 @@
    :width: 1.5em
 .. |dissolve| image:: /static/common/dissolve.png
    :width: 1.5em
+.. |distributeHSpace| image:: /static/common/mActionDistributeHSpace.svg
+   :width: 1.5em
 .. |dock| image:: /static/common/dock.png
    :width: 1.5em
 .. |doubleSpinBox| image:: /static/common/doublespinbox.png
