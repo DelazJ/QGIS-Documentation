@@ -252,6 +252,7 @@ latex_elements = {
     'preamble': u'''
     \\usepackage{combelow}
     \\setcounter{tocdepth}{2}
+    \\usepackage{ocgx2}
     \\usepackage{newunicodechar}
     \\newunicodechar{Ș}{\\cb{S}}
     \\newunicodechar{ș}{\\cb{s}}
