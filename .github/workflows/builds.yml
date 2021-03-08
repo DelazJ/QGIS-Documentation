@@ -25,7 +25,7 @@ jobs:
         python-version: 3.7
     - name: Install Requirements
       run: |
-        sudo apt-get install -y texlive-xetex fonts-freefont-otf
+        sudo apt-get install -y texlive-xetex texlive-ocgx2 fonts-freefont-otf
 
         python -m pip install --upgrade pip
         pip install -r REQUIREMENTS.txt
