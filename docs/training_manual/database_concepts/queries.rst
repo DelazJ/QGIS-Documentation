@@ -10,7 +10,7 @@ useful information.
 .. note:: If you did not do so in the previous lesson, add the following people
   objects to your :kbd:`people` table. If you receive any errors related to
   foreign key constraints, you will need to add the 'Main Road' object to your
-  streets table first
+  streets table first.
 
 .. code-block:: sql
 
