@@ -3,6 +3,8 @@
 About the authors & contributors
 ********************************
 
+YES
+
 +----------------+----------------------------------------------------------------------+
 | |tim|          | Tim Sutton --- Editor & Lead Author. Tim Sutton is a developer and   |
 |                | project steering committee member of the QGIS project. He is         |
