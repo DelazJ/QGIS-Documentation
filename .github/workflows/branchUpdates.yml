@@ -1,0 +1,43 @@
+name: Branch updates
+
+# on schedule and dispatch runs, the workflow will update branches (master, latest) with upstream
+
+on:
+  schedule:
+    # scheduled at 3:30 every day
+    - cron:  '30 3 * * *'
+
+  workflow_dispatch:
+
+jobs:
+
+  sync_with_upstream:
+    name: Sync branches with upstream latest
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch: [master, release_3.16]
+
+    steps:
+    - name: Checkout ${{ matrix.branch }}
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ matrix.branch }}
+
+    - name: Pull upstream ${{ matrix.branch }} changes
+      id: sync
+      uses: aormsby/Fork-Sync-With-Upstream-action@v2.3
+      with:
+        upstream_repository: qgis/QGIS-Documentation
+        upstream_branch: ${{ matrix.branch }}
+        target_branch: ${{ matrix.branch }}
+
+    - name: Timestamp
+      run: date
+
+    # Display a message if 'sync' step had new commits (simple test)
+    - name: Check for new commits
+      if: steps.sync.outputs.has_new_commits
+      run: echo "There were new commits in ${{ matrix.branch }}."
+
+
