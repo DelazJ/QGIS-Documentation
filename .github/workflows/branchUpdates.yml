@@ -9,8 +9,12 @@ on:
 
   workflow_dispatch:
     inputs:
+      sourcebranch:
+        description: 'Upstream branch to fetch'     
+        required: true
+        default: 'master'
       targetbranch:
-        description: 'Branch to update'     
+        description: 'Local branch to update'     
         required: true
         default: 'master'
       pull_args:
@@ -34,7 +38,7 @@ jobs:
       uses: aormsby/Fork-Sync-With-Upstream-action@v2.3
       with:
         upstream_repository: qgis/QGIS-Documentation
-        upstream_branch: ${{ github.event.inputs.targetbranch }}
+        upstream_branch: ${{ github.event.inputs.sourcebranch }}
         target_branch: ${{ github.event.inputs.targetbranch }}
         git_pull_args: ${{ github.event.inputs.pull_args }}
 
