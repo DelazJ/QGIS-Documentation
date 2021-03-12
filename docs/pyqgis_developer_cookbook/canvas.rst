@@ -1,7 +1,7 @@
 .. index:: Map canvas
 
 .. highlight:: python
-   :linenothreshold: 5
+   :linenos:
 
 
 .. testsetup:: canvas
@@ -11,6 +11,7 @@
 The code snippets on this page need the following imports if you're outside the pyqgis console:
 
 .. testcode:: canvas
+   :linenos:
 
     from qgis.PyQt.QtGui import (
         QColor,
@@ -120,6 +121,7 @@ the current project. Then we will set the canvas extent and set the list of
 layers for the canvas.
 
 .. testcode:: canvas
+   :linenos:
 
   vlayer = QgsVectorLayer('testdata/airports.shp', "Airports layer", "ogr")
   if not vlayer.isValid():
