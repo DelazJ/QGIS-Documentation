@@ -13,6 +13,9 @@ on:
         description: 'Branch to update'     
         required: true
         default: 'master'
+      pull_args:
+        description: 'Arguments for git pull command'     
+        required: false
 
 jobs:
 
@@ -33,6 +36,7 @@ jobs:
         upstream_repository: qgis/QGIS-Documentation
         upstream_branch: ${{ github.event.inputs.targetbranch }}
         target_branch: ${{ github.event.inputs.targetbranch }}
+        git_pull_args: ${{ github.event.inputs.pull_args }}
 
     # Display a message if 'sync' step had new commits (simple test)
     - name: Check for new commits
