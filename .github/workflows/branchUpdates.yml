@@ -1,7 +1,6 @@
 name: Branch updates
 
-# on schedule and dispatch runs, the workflow will build the 3 different Docker images (master, PR, LTR)
-# on tags, it will build only the image of the given tag
+# on schedule and dispatch runs, the workflow will update branches (master, latest) with upstream
 # this is made by using a matrix defined in a dedicated job
 
 on:
@@ -40,7 +39,7 @@ jobs:
 
     - name: Pull upstream ${{ matrix.branch }} changes
       id: sync
-      uses: aormsby/Fork-Sync-With-Upstream-action@v2.2
+      uses: aormsby/Fork-Sync-With-Upstream-action@v2.3
       with:
         upstream_repository: qgis/QGIS-Documentation
         upstream_branch: ${{ matrix.branch }}
