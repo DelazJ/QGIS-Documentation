@@ -1,7 +1,6 @@
 name: Branch updates
 
 # on schedule and dispatch runs, the workflow will update branches (master, latest) with upstream
-# this is made by using a matrix defined in a dedicated job
 
 on:
   schedule:
@@ -12,24 +11,12 @@ on:
 
 jobs:
 
-  define-strategy:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.matrix.outputs.matrix }}
-
-    steps:
-      - id: matrix
-        run: |
-            echo "::set-output name=matrix::{\"branch\":[\"master\", \"release_3.16\"]}"
-
-
   sync_with_upstream:
-    runs-on: ubuntu-latest
-    needs: define-strategy
     name: Sync branches with upstream latest
-
+    runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ fromJSON( needs.define-strategy.outputs.matrix ) }}
+      matrix:
+        branch: [master, release_3.16]
 
     steps:
     - name: Checkout ${{ matrix.branch }}
