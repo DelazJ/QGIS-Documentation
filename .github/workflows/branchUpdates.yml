@@ -1,6 +1,6 @@
 name: Branch updates
 
-# on schedule and dispatch runs, the workflow will update branches (master, latest) with upstream
+# on schedule and dispatch runs, the workflow will update target branch with upstream
 
 on:
   schedule:
@@ -8,36 +8,36 @@ on:
     - cron:  '30 3 * * *'
 
   workflow_dispatch:
+    inputs:
+      targetbranch:
+        description: 'Branch to update'     
+        required: true
+        default: 'master'
 
 jobs:
 
   sync_with_upstream:
     name: Sync branches with upstream latest
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        branch: [master, release_3.16]
 
     steps:
-    - name: Checkout ${{ matrix.branch }}
+    - name: Checkout ${{ github.event.inputs.targetbranch }}
       uses: actions/checkout@v2
       with:
-        ref: ${{ matrix.branch }}
+        ref: ${{ github.event.inputs.targetbranch }}
 
-    - name: Pull upstream ${{ matrix.branch }} changes
+    - name: Pull upstream changes
       id: sync
       uses: aormsby/Fork-Sync-With-Upstream-action@v2.3
       with:
         upstream_repository: qgis/QGIS-Documentation
-        upstream_branch: ${{ matrix.branch }}
-        target_branch: ${{ matrix.branch }}
-
-    - name: Timestamp
-      run: date
+        upstream_branch: ${{ github.event.inputs.targetbranch }}
+        target_branch: ${{ github.event.inputs.targetbranch }}
 
     # Display a message if 'sync' step had new commits (simple test)
     - name: Check for new commits
       if: steps.sync.outputs.has_new_commits
-      run: echo "There were new commits in ${{ matrix.branch }}."
+      run: echo "There were new commits in ${{ github.event.inputs.targetbranch }}."
 
-
+    - name: Timestamp
+      run: date
