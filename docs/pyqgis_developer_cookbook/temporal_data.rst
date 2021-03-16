@@ -99,6 +99,7 @@ Registering a Vector layer as Temporal
     # get the current  responsible for the mapCanvas behaviour and Temporal Controller gui
     canvas = iface.mapCanvas()
     navigator = canvas.temporalController()
+    print(type(navigator))
 
     # update the 'range' of the object (so the limits) to reflect the range of our current project
     #navigator.setTemporalExtents(time_range)
@@ -120,6 +121,7 @@ Registering a Vector layer as Temporal
     map_settings.setIsTemporal(True)
 
     navigator = iface.mapCanvas().temporalController()
+    print(type(navigator))
     save_dir = tempfile.gettempdir() + os.sep
 
     # setup animation settings, using current navigation state (OR create other)
