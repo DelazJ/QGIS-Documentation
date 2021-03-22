@@ -19,9 +19,18 @@
 .rst-content .kbd {
  font-size: 80%
 }
-/*Rendering of the Answer frame in training manual*/
-.rst-content .dropdown .admonition-title::before {
- content: "\1F4A1"
+/*Rendering of the Answer drop-down frame in training manual*/
+.rst-content .dropdown .admonition {
+ background-color: #ffbf0024;
+}
+.rst-content .dropdown .admonition .button .toggle-button {
+background: #fbedb4;
+}
+.rst-content .dropdown .admonition-title {
+ background: #4b494642;
+}
+.rst-content .dropdown .admonition-title:before {
+ content: "\1F4A1";
 }
 .outdated {
   /* only to be visible for outdated releases*/
