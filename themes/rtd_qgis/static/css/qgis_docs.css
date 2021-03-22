@@ -19,6 +19,10 @@
 .rst-content .kbd {
  font-size: 80%
 }
+/*Rendering of the Answer frame in training manual*/
+.rst-content .dropdown .admonition-title::before {
+ content: "\1F4A1"
+}
 .outdated {
   /* only to be visible for outdated releases*/
   background: #ffbaba;
