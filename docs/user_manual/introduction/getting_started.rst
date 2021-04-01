@@ -7,7 +7,7 @@
 Getting Started
 ***************
 
-.. only:: html
+.. only:: no latex
 
    .. contents::
       :local:
