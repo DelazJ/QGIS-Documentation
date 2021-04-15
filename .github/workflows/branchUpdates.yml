@@ -4,8 +4,8 @@ name: Branch updates
 
 on:
   schedule:
-    # scheduled at 3:30 every day
-    - cron:  '30 3 * * *'
+    # scheduled at 3:30 on Thursday
+    - cron:  '30 3 * * 4'
 
   workflow_dispatch:
     inputs:
@@ -20,10 +20,11 @@ on:
       pull_args:
         description: 'Arguments for git pull command'     
         required: false
+        default: '--rebase'
       rebase:
         description: 'Rebase when pulling'     
         required: false
-        default: 'false'
+        default: 'true'
 
 jobs:
 
