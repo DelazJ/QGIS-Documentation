@@ -11,6 +11,7 @@ The code snippets on this page need the following imports if you're outside the 
 
 .. testcode:: temporal_data
 
+    from qgis.gui import QgsMapCanvas
     from qgis.core import (
          QgsApplication,
          QgsField,
@@ -65,10 +66,11 @@ Registering a Vector layer as Temporal
     #time_layer = iface.addVectorLayer('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', 'earthquakes', 'ogr')
     time_layer = QgsVectorLayer('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', 'earthquakes', 'ogr')
     print( time_layer)
+    QgsProject.instance().addMapLayer(time_layer)
 
 .. testoutput:: temporal_data
 
-    (True, '')
+    <QgsVectorLayer: 'earthquakes' (ogr)>
 
 .. testcode:: temporal_data
 
