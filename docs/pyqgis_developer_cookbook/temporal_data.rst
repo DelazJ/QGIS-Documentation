@@ -69,10 +69,10 @@ Registering a Vector layer as Temporal
     QgsProject.instance().addMapLayer(time_layer)
     canvas = iface.mapCanvas()
     # set extent to the extent of our layer
-    canvas.setExtent(vlayer.extent())
+    canvas.setExtent(time_layer.extent())
 
     # set the map canvas layer set
-    canvas.setLayers([vlayer])
+    canvas.setLayers([time_layer])
     print( iface.mapCanvas().extent(), iface.mapCanvas().layers() )
 
 .. testoutput:: temporal_data
@@ -113,9 +113,41 @@ Registering a Vector layer as Temporal
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
     print( iface.mapCanvas().extent(), iface.mapCanvas().layers() )
     
-
-
 .. testoutput:: temporal_data
 
     <QgsRectangle: -188.89500000000001023 -101.60823720626630973, 188.89500000000001023 95.34233720626632191> [<QgsVectorLayer: 'earthquakes' (ogr)>]
 
+.. testcode:: temporal_data
+
+    # OK, all setup now. let's show Temporal controller, `rewind to start and play one loop
+    navigator.setNavigationMode(QgsTemporalNavigationObject.Animated) # will show controller
+    navigator.rewindToStart()
+    navigator.playForward()
+
+    # now create a set of images so you can create an animated gif or mp4 movie of it
+
+    # setup all your map settings stuff here, e.g. scale, extent, image size, etc
+    map_settings = QgsMapSettings()
+    map_settings.setLayers(iface.mapCanvas().layers())
+    map_settings.setOutputSize(QSize(300, 150)) # width, height
+    rect = QgsRectangle(iface.mapCanvas().fullExtent())
+    rect.scale(1.0)
+    map_settings.setExtent(rect)
+    map_settings.setIsTemporal(True)
+
+    navigator = iface.mapCanvas().temporalController()
+    save_dir = tempfile.gettempdir() + os.sep
+
+    # setup animation settings, using current navigation state (OR create other)
+    animation_settings=QgsTemporalUtils.AnimationExportSettings()
+    animation_settings.animationRange=navigator.temporalExtents()
+    animation_settings.frameDuration=navigator.frameDuration()
+    animation_settings.outputDirectory=save_dir
+    animation_settings.fileNameTemplate='frame####.png'
+    animation_settings.decorations=[]
+
+    print(QgsTemporalUtils.exportAnimation(map_settings, animation_settings))
+
+    # you could now cd into the save_dir and do:
+    # ffmpeg -y -r 1 -i %4d.png -vcodec libx264 -vf "fps=1,scale=-2:720" -pix_fmt yuv420p -r 4 movie.mp4
+    # ffmpeg -y -r 1 -i %4d.png -vf "fps=6,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 movie.gif
