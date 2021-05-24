@@ -24,7 +24,8 @@ The code snippets on this page need the following imports if you're outside the 
          QgsUnitTypes,
          QgsVectorLayer,
          QgsVectorLayerTemporalProperties,
-         QgsTemporalNavigationObject
+         QgsTemporalNavigationObject,
+         QgsTemporalController,
     )
 
     from qgis.PyQt.QtCore import (
@@ -116,13 +117,13 @@ Registering a Vector layer as Temporal
     
 .. testoutput:: temporal_data
 
-    <QgsRectangle: -203.36845000000002415 -43.56239999999999668, 203.11384999999998513 72.57540000000000191> [<QgsVectorLayer: 'earthquakes' (ogr)>]
+    <QgsRectangle: -203.36845000000002415 -43.56239999999999668, 203.11384999999998513 72.57540000000000191> [<QgsVectorLayer: 'earthquakes' (ogr)>]  <QgsDateTimeRange:[2021-05-23T14:57:55, 2021-05-24T15:26:29]>
 
 .. testcode:: temporal_data
 
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
     canvas.setTemporalRange( time_range )
-    navigator = canvas.setTemporalController()
+    navigator = canvas.setTemporalController( QgsTemporalController )
     print( navigator, type( navigator ), canvas.temporalRange() )
 
 .. testoutput:: temporal_data
