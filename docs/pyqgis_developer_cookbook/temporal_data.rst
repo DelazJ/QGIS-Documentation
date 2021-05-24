@@ -63,6 +63,13 @@ Registering a Vector layer as Temporal
     # https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson
     # or from file if better?
     time_layer = iface.addVectorLayer('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', 'earthquakes', 'ogr')
+    print( time_layer)
+
+.. testoutput:: temporal_data
+
+    (True, '')
+
+.. testcode:: temporal_data
 
     # argh, this data only has datetime as epoch (seconds since 1970)
     # so we create a virtual column
