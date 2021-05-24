@@ -62,7 +62,8 @@ Registering a Vector layer as Temporal
     # https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
     # https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson
     # or from file if better?
-    time_layer = iface.addVectorLayer('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', 'earthquakes', 'ogr')
+    #time_layer = iface.addVectorLayer('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', 'earthquakes', 'ogr')
+    time_layer = QgsVectorLayer('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', 'earthquakes', 'ogr')
     print( time_layer)
 
 .. testoutput:: temporal_data
