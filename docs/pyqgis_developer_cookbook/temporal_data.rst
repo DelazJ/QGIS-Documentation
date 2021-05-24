@@ -11,7 +11,7 @@ The code snippets on this page need the following imports if you're outside the 
 
 .. testcode:: temporal_data
 
-    from qgis.gui import QgsMapCanvas
+    import qgis.gui
     from qgis.core import (
          QgsApplication,
          QgsField,
@@ -74,7 +74,7 @@ Registering a Vector layer as Temporal
 
     # set the map canvas layer set
     canvas.setLayers([time_layer])
-    print( iface.mapCanvas().extent(), iface.mapCanvas().layers() )
+    print( canvas.extent(), canvas.layers() )
 
 .. testoutput:: temporal_data
 
@@ -112,7 +112,7 @@ Registering a Vector layer as Temporal
     time_range = QgsTemporalUtils.calculateTemporalRangeForProject(project)
 
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
-    print( iface.mapCanvas().extent(), iface.mapCanvas().layers() )
+    print( canvas.extent(), canvas.layers() )
     
 .. testoutput:: temporal_data
 
@@ -124,7 +124,7 @@ Registering a Vector layer as Temporal
     #project = QgsProject.instance()
     #time_range = QgsTemporalUtils.calculateTemporalRangeForProject(project)
 
-    # get the current  responsible for the mapCanvas behaviour and Temporal Controller gui
+    # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
     navigator = canvas.temporalController()
     print( navigator, type( navigator ) )
 
