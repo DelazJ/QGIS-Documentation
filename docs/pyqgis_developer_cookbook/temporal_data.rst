@@ -93,7 +93,8 @@ Registering a Vector layer as Temporal
     time_range = QgsTemporalUtils.calculateTemporalRangeForProject(project)
 
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
-    print( iface.mapCanvas().extent() )
+    print( iface.mapCanvas().extent(), iface.mapCanvas().layers() )
+    
 
 
 .. testoutput:: temporal_data
