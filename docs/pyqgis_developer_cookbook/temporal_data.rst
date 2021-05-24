@@ -23,7 +23,8 @@ The code snippets on this page need the following imports if you're outside the 
          QgsTemporalUtils,
          QgsUnitTypes,
          QgsVectorLayer,
-         QgsVectorLayerTemporalProperties
+         QgsVectorLayerTemporalProperties,
+         QgsTemporalNavigationObject
     )
 
     from qgis.PyQt.QtCore import (
@@ -124,11 +125,18 @@ Registering a Vector layer as Temporal
     #time_range = QgsTemporalUtils.calculateTemporalRangeForProject(project)
 
     # get the current  responsible for the mapCanvas behaviour and Temporal Controller gui
-    navigator = iface.mapCanvas().temporalController()
+    navigator = canvas.temporalController()
+    print( navigator, type( navigator ) )
 
-    # update the 'range' of the object (so the limits) to reflect the range of our current project
+.. testoutput:: temporal_data
+
+    <qgis._core.QgsTemporalNavigationObject object at 0x17140b940> <class 'qgis._core.QgsTemporalNavigationObject'>
+
+.. testcode:: temporal_data
+
+   # update the 'range' of the object (so the limits) to reflect the range of our current project
     #navigator.setTemporalExtents(time_range)
-    # OK, all setup now. let's show Temporal controller, `rewind to start and play one loop
+    # OK, all setup now. let's show Temporal controller, rewind to start and play one loop
     navigator.setNavigationMode(QgsTemporalNavigationObject.Animated) # will show controller
     navigator.rewindToStart()
     navigator.playForward()
