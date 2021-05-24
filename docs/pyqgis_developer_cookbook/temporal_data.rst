@@ -112,7 +112,7 @@ Registering a Vector layer as Temporal
     time_range = QgsTemporalUtils.calculateTemporalRangeForProject(project)
 
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
-    print( canvas.extent(), canvas.layers() )
+    print( canvas.extent(), canvas.layers(), time_range )
     
 .. testoutput:: temporal_data
 
@@ -120,13 +120,10 @@ Registering a Vector layer as Temporal
 
 .. testcode:: temporal_data
 
-    # get a handle to current project and determine start and end range of ALL current temporal enabled layers
-    #project = QgsProject.instance()
-    time_range = QgsTemporalUtils.calculateTemporalRangeForProject(project)
-
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
+    canvas.setTemporalRange( time_range )
     navigator = canvas.temporalController()
-    print( navigator, type( navigator ) )
+    print( navigator, type( navigator ), canvas.temporalRange() )
 
 .. testoutput:: temporal_data
 
