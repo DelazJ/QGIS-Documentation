@@ -117,18 +117,19 @@ Registering a Vector layer as Temporal
     
 .. testoutput:: temporal_data
 
-    <QgsRectangle: -203.36845000000002415 -43.56239999999999668, 203.11384999999998513 72.57540000000000191> [<QgsVectorLayer: 'earthquakes' (ogr)>]  <QgsDateTimeRange:[2021-05-23T14:57:55, 2021-05-24T15:26:29]>
+    <QgsRectangle: -203.36845000000002415 -43.56239999999999668, 203.11384999999998513 72.57540000000000191> [<QgsVectorLayer: 'earthquakes' (ogr)>]  <QgsDateTimeRange:[2021-05-23T15:58:26, 2021-05-24T16:52:09]>
 
 .. testcode:: temporal_data
 
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
     canvas.setTemporalRange( time_range )
-    navigator = canvas.setTemporalController( QgsTemporalController() )
+    canvas.setTemporalController( QgsTemporalController() )
+    navigator = canvas.temporalController()
     print( navigator, type( navigator ), canvas.temporalRange() )
 
 .. testoutput:: temporal_data
 
-    <qgis._core.QgsTemporalNavigationObject object at 0x17140b940> <class 'qgis._core.QgsTemporalNavigationObject'>
+    <qgis._core.QgsTemporalNavigationObject object at 0x17140b940> <class 'qgis._core.QgsTemporalNavigationObject'> <QgsDateTimeRange:[2021-05-23T15:58:26, 2021-05-24T16:52:09]>
 
 .. testcode:: temporal_data
 
