@@ -67,10 +67,18 @@ Registering a Vector layer as Temporal
     time_layer = QgsVectorLayer('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', 'earthquakes', 'ogr')
     print( time_layer)
     QgsProject.instance().addMapLayer(time_layer)
+    canvas = iface.mapCanvas()
+    # set extent to the extent of our layer
+    canvas.setExtent(vlayer.extent())
+
+    # set the map canvas layer set
+    canvas.setLayers([vlayer])
+    print( iface.mapCanvas().extent(), iface.mapCanvas().layers() )
 
 .. testoutput:: temporal_data
 
     <QgsVectorLayer: 'earthquakes' (ogr)>
+    <QgsRectangle: -188.89500000000001023 -101.60823720626630973, 188.89500000000001023 95.34233720626632191> [<QgsVectorLayer: 'earthquakes' (ogr)>]
 
 .. testcode:: temporal_data
 
@@ -109,5 +117,5 @@ Registering a Vector layer as Temporal
 
 .. testoutput:: temporal_data
 
-    (True, '')
+    <QgsRectangle: -188.89500000000001023 -101.60823720626630973, 188.89500000000001023 95.34233720626632191> [<QgsVectorLayer: 'earthquakes' (ogr)>]
 
