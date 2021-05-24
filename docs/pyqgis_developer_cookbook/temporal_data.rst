@@ -92,8 +92,10 @@ Registering a Vector layer as Temporal
     project = QgsProject.instance()
     time_range = QgsTemporalUtils.calculateTemporalRangeForProject(project)
 
-    # get the current  responsible for the mapCanvas behaviour and Temporal Controller gui
+    # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
+    print( iface.mapCanvas().extent() )
     navigator = iface.mapCanvas().temporalController()
+    print( type( navigator ) )
 
     # update the 'range' of the object (so the limits) to reflect the range of our current project
     #navigator.setTemporalExtents(time_range)
