@@ -123,8 +123,8 @@ Registering a Vector layer as Temporal
 
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
     canvas.setTemporalRange( time_range )
-    canvas.setTemporalController( QgsTemporalController() )
-    navigator = canvas.temporalController()
+    navigator = QgsTemporalNavigationObject()
+    #canvas.setTemporalController( QgsTemporalController() )
     print( navigator, type( navigator ), canvas.temporalRange() )
 
 .. testoutput:: temporal_data
