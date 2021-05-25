@@ -75,14 +75,14 @@ Registering a Vector layer as Temporal
 
     # set the map canvas layer set
     canvas.setLayers([time_layer])
-    print( canvas.extent(), canvas.layers() )
+#    print( canvas.extent(), canvas.layers() )
 
-.. testoutput:: temporal_data
+#.. testoutput:: temporal_data
 
-    <QgsVectorLayer: 'earthquakes' (ogr)>
-    <QgsRectangle: -193.40005000000002156 -43.49470000000000169, 193.14485000000001946 66.94670000000002119> [<QgsVectorLayer: 'earthquakes' (ogr)>]
+#    <QgsVectorLayer: 'earthquakes' (ogr)>
+#    <QgsRectangle: -193.40005000000002156 -43.49470000000000169, 193.14485000000001946 66.94670000000002119> [<QgsVectorLayer: 'earthquakes' (ogr)>]
 
-.. testcode:: temporal_data
+#.. testcode:: temporal_data
 
     # argh, this data only has datetime as epoch (seconds since 1970)
     # so we create a virtual column
@@ -113,25 +113,25 @@ Registering a Vector layer as Temporal
     time_range = QgsTemporalUtils.calculateTemporalRangeForProject(project)
 
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
-    print( canvas.extent(), canvas.layers(), time_range )
+#    print( canvas.extent(), canvas.layers(), time_range )
     
-.. testoutput:: temporal_data
+#.. testoutput:: temporal_data
 
-    <QgsRectangle: -193.40005000000002156 -43.49470000000000169, 193.14485000000001946 66.94670000000002119> [<QgsVectorLayer: 'earthquakes' (ogr)>] <QgsDateTimeRange:[2021-05-24T09:18:14, 2021-05-25T09:51:50]>
+#    <QgsRectangle: -193.40005000000002156 -43.49470000000000169, 193.14485000000001946 66.94670000000002119> [<QgsVectorLayer: 'earthquakes' (ogr)>] <QgsDateTimeRange:[2021-05-24T09:18:14, 2021-05-25T09:51:50]>
 
-.. testcode:: temporal_data
+#.. testcode:: temporal_data
 
     # get the current responsible for the mapCanvas behaviour and Temporal Controller gui
     canvas.setTemporalRange( time_range )
     navigator = QgsTemporalNavigationObject()
     #canvas.setTemporalController( QgsTemporalController() )
-    print( navigator, type( navigator ), canvas.temporalRange() )
+#    print( navigator, type( navigator ), canvas.temporalRange() )
 
-.. testoutput:: temporal_data
+#.. testoutput:: temporal_data
 
-    <qgis._core.QgsTemporalNavigationObject object at 0x7fe399288670> <class 'qgis._core.QgsTemporalNavigationObject'> <QgsDateTimeRange:[2021-05-24T09:18:14, 2021-05-25T09:51:50]>
+#    <qgis._core.QgsTemporalNavigationObject object at 0x7fe399288670> <class 'qgis._core.QgsTemporalNavigationObject'> <QgsDateTimeRange:[2021-05-24T09:18:14, 2021-05-25T09:51:50]>
 
-.. testcode:: temporal_data
+#.. testcode:: temporal_data
 
     # update the 'range' of the object (so the limits) to reflect the range of our current project
     navigator.setTemporalExtents(time_range)
@@ -167,3 +167,7 @@ Registering a Vector layer as Temporal
     # you could now cd into the save_dir and do:
     # ffmpeg -y -r 1 -i %4d.png -vcodec libx264 -vf "fps=1,scale=-2:720" -pix_fmt yuv420p -r 4 movie.mp4
     # ffmpeg -y -r 1 -i %4d.png -vf "fps=6,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 movie.gif
+
+.. testoutput:: temporal_data
+
+    (True, '')
