@@ -67,7 +67,7 @@ Registering a Vector layer as Temporal
     # or from file if better?
     #time_layer = iface.addVectorLayer('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', 'earthquakes', 'ogr')
     time_layer = QgsVectorLayer('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', 'earthquakes', 'ogr')
-    print( time_layer)
+#    print( time_layer)
     QgsProject.instance().addMapLayer(time_layer)
     canvas = iface.mapCanvas()
     # set extent to the extent of our layer
