@@ -80,7 +80,7 @@ Registering a Vector layer as Temporal
 .. testoutput:: temporal_data
 
     <QgsVectorLayer: 'earthquakes' (ogr)>
-    <QgsRectangle: -203.36845000000002415 -43.56239999999999668, 203.11384999999998513 72.57540000000000191> [<QgsVectorLayer: 'earthquakes' (ogr)>]
+    <QgsRectangle: -193.40005000000002156 -43.49470000000000169, 193.14485000000001946 66.94670000000002119> [<QgsVectorLayer: 'earthquakes' (ogr)>]
 
 .. testcode:: temporal_data
 
@@ -117,7 +117,7 @@ Registering a Vector layer as Temporal
     
 .. testoutput:: temporal_data
 
-    <QgsRectangle: -203.36845000000002415 -43.56239999999999668, 203.11384999999998513 72.57540000000000191> [<QgsVectorLayer: 'earthquakes' (ogr)>]  <QgsDateTimeRange:[2021-05-23T15:58:26, 2021-05-24T16:52:09]>
+    <QgsRectangle: -193.40005000000002156 -43.49470000000000169, 193.14485000000001946 66.94670000000002119> [<QgsVectorLayer: 'earthquakes' (ogr)>] <QgsDateTimeRange:[2021-05-24T09:18:14, 2021-05-25T09:51:50]>
 
 .. testcode:: temporal_data
 
@@ -129,7 +129,7 @@ Registering a Vector layer as Temporal
 
 .. testoutput:: temporal_data
 
-    <qgis._core.QgsTemporalNavigationObject object at 0x17140b940> <class 'qgis._core.QgsTemporalNavigationObject'> <QgsDateTimeRange:[2021-05-23T15:58:26, 2021-05-24T16:52:09]>
+    <qgis._core.QgsTemporalNavigationObject object at 0x7fe399288670> <class 'qgis._core.QgsTemporalNavigationObject'> <QgsDateTimeRange:[2021-05-24T09:18:14, 2021-05-25T09:51:50]>
 
 .. testcode:: temporal_data
 
@@ -151,7 +151,7 @@ Registering a Vector layer as Temporal
     map_settings.setExtent(rect)
     map_settings.setIsTemporal(True)
 
-    navigator = iface.mapCanvas().temporalController()
+    #navigator = iface.mapCanvas().temporalController()
     save_dir = tempfile.gettempdir() + os.sep
 
     # setup animation settings, using current navigation state (OR create other)
