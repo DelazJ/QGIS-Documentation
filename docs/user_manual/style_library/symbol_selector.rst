@@ -495,30 +495,38 @@ differently modified symbol layers on top of each other.
 
 Some examples:
 
-::
+* Apply a symbol representing the centroid of a feature (same as using the centroid WXXX)::
 
-  -- render the centroid of a feature
-  centroid( $geometry ) 
+   centroid( $geometry ) 
 
-  -- visually overlap features within a 100 map units distance from a point
-  -- feature, i.e generate a 100m buffer around the point
-  buffer( $geometry, 100 )
+* Generate a 100 map units buffer around a point feature::
 
-  -- Given polygon layer1( id1, layer2_id, ...) and layer2( id2, fieldn...)
-  -- render layer1 with a line joining centroids of both where layer2_id = id2
-  make_line( centroid( $geometry ),
-             centroid( geometry( get_feature( 'layer2', 'id2', attribute(
-                 $currentfeature, 'layer2_id') ) )
-           ) 
+   buffer( $geometry, 100 )
 
-  -- Create a nice radial effect of points surrounding the central feature
-  -- point when used as a MultiPoint geometry generator
-  collect_geometries(
-    array_foreach(
-      generate_series( 0, 330, 30 ),
-        project( $geometry, .2, radians( @element ) )
+*  Given polygon layer1( id1, layer2_id, ...) and layer2( id2, fieldn...)
+   render layer1 with a line joining centroids of both where layer2_id = id2::
+   
+    make_line( centroid( $geometry ),
+               centroid( geometry( get_feature( 'layer2', 'id2',
+                                                attribute($currentfeature, 'layer2_id')
+                                              )
+                                 )
+                       )
+             ) 
+
+* Create a nice radial effect of points surrounding the central feature
+  point when used as a MultiPoint geometry generator::
+
+    collect_geometries(
+      array_foreach(
+        generate_series( 0, 330, 30 ),
+          project( $geometry, .2, radians( @element ) )
+      )
     )
-  )
+
+* Create a curved flow map-like xxx to connect origin and destination features (NEEDS A CHECK!!!)::
+
+    make_line( start_point( $geometry), translate( centroid( $geometry), $length/10, $length/10), end_point($geometry))
 
 .. _vector_field_marker:
 
