@@ -90,8 +90,8 @@ You can use the following options:
   production use.
 * |checkbox| :guilabel:`Show also deprecated plugins`. Because they use
   functions that are no longer available in QGIS, these plugins are set
-  deprecated and generally unsuitable for production use. They appear among
-  invalid plugins list.
+  deprecated and generally unsuitable for production use. They appear as
+  disabled (commonly, grayed) at the bottom of the plugins list.
 
 By default, QGIS provides you with its official plugin repository with the URL
 https://plugins.qgis.org/plugins/plugins.xml?qgis=3.0 (in case of QGIS 3.0)
