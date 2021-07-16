@@ -87,7 +87,9 @@ You can use the following options:
   'once a day', 'every 3 days', 'every week', 'every 2 weeks' or 'every month'.
 * |checkbox| :guilabel:`Show also experimental plugins`. QGIS will show you
   plugins in early stages of development, which are generally unsuitable for
-  production use.
+  production use. But if you are willing to test new features, you'll be able
+  to install either the latest stable or the experimental version, and switch
+  back and forth.
 * |checkbox| :guilabel:`Show also deprecated plugins`. Because they use
   functions that are no longer available in QGIS, these plugins are set
   deprecated and generally unsuitable for production use. They appear as
