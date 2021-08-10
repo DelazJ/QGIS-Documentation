@@ -196,9 +196,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
    
 Outputs
 .......
@@ -427,9 +426,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -499,9 +497,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -646,9 +643,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -734,9 +730,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1372,9 +1367,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1448,9 +1442,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1588,7 +1581,6 @@ Parameters
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
 
-
 Outputs
 .......
 
@@ -1694,9 +1686,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1845,9 +1836,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1929,9 +1919,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2020,9 +2009,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2118,7 +2106,6 @@ Parameters
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
 
-
 Outputs
 .......
 
@@ -2209,9 +2196,8 @@ Parameters
        from the raster layer). One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2283,9 +2269,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2371,7 +2356,6 @@ Parameters
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
 
-
 Outputs
 .......
 
@@ -2443,9 +2427,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2528,9 +2511,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2628,9 +2610,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2716,9 +2697,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2795,9 +2775,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2897,9 +2876,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2993,9 +2971,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3092,9 +3069,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3162,9 +3138,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3225,9 +3200,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3300,9 +3274,8 @@ Parameters
      - Specify the output line vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3403,9 +3376,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3485,9 +3457,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3563,7 +3534,6 @@ Parameters
        .. include:: qgis_algs_include.rst
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
-
 
 Outputs
 .......
@@ -3648,9 +3618,8 @@ Parameters
      - Specify the output line vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3715,9 +3684,8 @@ Parameters
      - Specify the output polygon vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3782,9 +3750,8 @@ Parameters
      - Specify the output line vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3885,7 +3852,6 @@ Parameters
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
 
-
 Outputs
 .......
 
@@ -3959,9 +3925,8 @@ Parameters
      - Specify the output polygon vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4051,9 +4016,8 @@ Parameters
      - Specify the output polygon vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4127,9 +4091,8 @@ Parameters
      - Specify the output polygon vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4240,9 +4203,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4310,9 +4272,8 @@ Parameters
      - Specify the output polygon vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4401,9 +4362,8 @@ Parameters
      - Specify the output polygon vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4471,9 +4431,8 @@ Parameters
      - Specify the output point vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4564,9 +4523,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4653,7 +4611,6 @@ Parameters
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
 
-
 Outputs
 .......
 
@@ -4730,9 +4687,8 @@ Parameters
      - Specify the output polygon vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4811,7 +4767,6 @@ Parameters
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
 
-
 Outputs
 .......
 
@@ -4877,9 +4832,8 @@ Parameters
      - Specify the output line vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4952,9 +4906,8 @@ Parameters
      - Specify the output point vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5024,9 +4977,8 @@ Parameters
      - Specify the output multipart vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5128,9 +5080,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5225,9 +5176,8 @@ Parameters
      - Specify the output vector layer. One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5389,9 +5339,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5473,9 +5422,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5550,9 +5498,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5627,9 +5574,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5706,9 +5652,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5801,9 +5746,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5880,9 +5824,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5979,9 +5922,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6092,9 +6034,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6207,9 +6148,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6337,9 +6277,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6440,7 +6379,6 @@ Parameters
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
 
-
 Outputs
 .......
 
@@ -6506,9 +6444,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6599,9 +6536,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6669,9 +6605,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6761,9 +6696,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6834,9 +6768,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -7037,7 +6970,6 @@ Parameters
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
 
-
 Outputs
 .......
 
@@ -7215,9 +7147,8 @@ Parameters
        One of:
 
        .. include:: qgis_algs_include.rst
-          :start-after: **layer_output_types**
-          :end-before: **end_layer_output_types**
-
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
