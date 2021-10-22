@@ -29,7 +29,7 @@ Parameters
      - Description
    * - **Input mesh layer**
      - ``INPUT``
-     - [layer: mesh]
+     - [mesh]
      - The mesh layer to export data from
    * - **Dataset groups**
      - ``DATASET_GROUPS``
@@ -145,7 +145,7 @@ Parameters
      - Description
    * - **Input mesh layer**
      - ``INPUT``
-     - [layer: mesh]
+     - [mesh]
      - The mesh layer to export data from
    * - **Dataset groups**
      - ``DATASET_GROUPS``
@@ -230,13 +230,9 @@ Parameters
      - Name
      - Type
      - Description
-   * - Label
-     - Name
-     - Type
-     - Description
    * - **Input mesh layer**
      - ``INPUT``
-     - [layer: mesh]
+     - [mesh]
      - The mesh layer to export data from
    * - **Dataset groups**
      - ``DATASET_GROUPS``
@@ -258,7 +254,7 @@ Parameters
      - Coordinate Reference System to assign to the output
    * - **Export vector option**
      - ``VECTOR_OPTION``
-     -
+     - [enumeration]
      -
 
        * 0 --- Cartesian (x,y)
@@ -318,17 +314,13 @@ Parameters
    :widths: 20 20 20 40
    :class: longtable
 
-    * - Label
-     - Name
-     - Type
-     - Description
    * - Label
      - Name
      - Type
      - Description
    * - **Input mesh layer**
      - ``INPUT``
-     - [layer: mesh]
+     - [mesh]
      - The mesh layer to export data from
    * - **Dataset groups**
      - ``DATASET_GROUPS``
@@ -336,7 +328,7 @@ Parameters
      - The dataset groups 
    * - **Dataset time**
      - ``DATASET_TIME``
-     - 
+     -
      - The time range to take into account
 
        * 0 --- Current canvas time
@@ -350,7 +342,7 @@ Parameters
      - Coordinate Reference System to assign to the output
    * - **Export vector option**
      - ``VECTOR_OPTION``
-     -
+     - [enumeration]
      -
 
        * 0 --- Cartesian (x,y)
@@ -419,13 +411,9 @@ Parameters
      - Name
      - Type
      - Description
-   * - Label
-     - Name
-     - Type
-     - Description
    * - **Input mesh layer**
      - ``INPUT``
-     - [layer: mesh]
+     - [mesh]
      - The mesh layer to export data from
    * - **Dataset groups**
      - ``DATASET_GROUPS``
@@ -433,7 +421,7 @@ Parameters
      - The dataset groups 
    * - **Dataset time**
      - ``DATASET_TIME``
-     - 
+     -
      - The time range to take into account
 
        * 0 --- Current canvas time
@@ -444,7 +432,11 @@ Parameters
        Optional
      - ``EXTENT``
      - [extent]
-     - Spatial extent on which to process the data
+     - Specify the spatial extent on which to process the data. One of:
+
+       * Calculate from layer…
+       * Use map canvas extent
+       * Draw on canvas
    * - **Grid spacing**
 
        Optional
@@ -461,7 +453,7 @@ Parameters
      - Coordinate Reference System to assign to the output
    * - **Export vector option**
      - ``VECTOR_OPTION``
-     -
+     - [enumeration]
      -
 
        * 0 --- Cartesian (x,y)
@@ -521,17 +513,13 @@ Parameters
    :widths: 20 20 20 40
    :class: longtable
 
-    * - Label
-     - Name
-     - Type
-     - Description
    * - Label
      - Name
      - Type
      - Description
    * - **Input mesh layer**
      - ``INPUT``
-     - [layer: mesh]
+     - [mesh]
      - The mesh layer to export data from
    * - **Dataset groups**
      - ``DATASET_GROUPS``
@@ -553,7 +541,7 @@ Parameters
      - Coordinate Reference System to assign to the output
    * - **Export vector option**
      - ``VECTOR_OPTION``
-     -
+     - [enumeration]
      -
 
        * 0 --- Cartesian (x,y)
@@ -616,9 +604,13 @@ Parameters
    :widths: 20 20 20 40
    :class: longtable
 
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Input mesh layer**
      - ``INPUT``
-     - [layer: mesh]
+     - [mesh]
      - The mesh layer to extract data from
    * - **Dataset groups**
      - ``DATASET_GROUPS``
@@ -626,7 +618,7 @@ Parameters
      - The dataset groups 
    * - **Starting time**
      - ``STARTING_TIME``
-     - 
+     -
      - The start of the time range to take into account
 
        * 0 --- Current canvas time
@@ -634,7 +626,7 @@ Parameters
        * 2 --- Dataset group time step
    * - **Finishing time**
      - ``FINISHING_TIME``
-     - 
+     -
      - The end of the time range to take into account
 
        * 0 --- Current canvas time
@@ -727,13 +719,9 @@ Parameters
      - Name
      - Type
      - Description
-   * - Label
-     - Name
-     - Type
-     - Description
    * - **Input mesh layer**
      - ``INPUT``
-     - [layer: mesh]
+     - [mesh]
      - The mesh layer to export data from
    * - **Dataset groups**
      - ``DATASET_GROUPS``
@@ -741,7 +729,7 @@ Parameters
      - The dataset groups 
    * - **Dataset time**
      - ``DATASET_TIME``
-     - 
+     -
      - The time range to take into account
 
        * 0 --- Current canvas time
@@ -752,7 +740,11 @@ Parameters
        Optional
      - ``EXTENT``
      - [extent]
-     - Spatial extent on which to process the data
+     - Specify the spatial extent on which to process the data. One of:
+
+       * Calculate from layer…
+       * Use map canvas extent
+       * Draw on canvas
    * - **Pixel size**
      - ``PIXEL_SIZE``
      - [number]
@@ -809,6 +801,7 @@ Python code
 TIN mesh creation
 -----------------
 
+Creates a TIN mesh layer from vector layers.
 
 Parameters
 ..........
@@ -824,10 +817,23 @@ Parameters
      - Description
    * - **Input layers**
      - ``SOURCE_DATA``
-     - []
+     - [vector: any][list]
+     - Vector layers to combine to generate the mesh layer 
+   * - **Vector layer**
+     - GUI ONLY
+     - [vector: any][list]
+     - A selector for the vector layers to combine to generate the mesh layer
+   * - **Value on vertex**
+     - GUI ONLY
+     - [tablefield: any]
+     - A selector of the field to use from the selected layer.
+       Each vertex is assigned the corresponding value of its original feature.
+   * - **Use Z-coordinate for value on vertex**
+     - GUI ONLY
+     - [boolean]
 
-       Default:
-     - 
+       Default: False
+     -
    * - **Output format**
      - ``MESH_FORMAT``
      - [enumeration]
@@ -846,7 +852,7 @@ Parameters
      - [crs]
      - Coordinate Reference System to assign to the output
    * - **Output file**
-     - ``OUTPUT``
+     - ``OUTPUT_MESH``
      - [mesh]
 
        Default: ``[Save to temporary file]``
@@ -867,11 +873,11 @@ Outputs
      - Name
      - Type
      - Description
-   * - **Output vector layer**
-     - ``OUTPUT``
+   * - **Output file**
+     - ``OUTPUT_MESH``
      - [mesh]
-     - Output raster layer with dataset values computed
-       from the mesh layer.
+     - Output mesh layer with dataset values computed
+       from the vector layers.
 
 Python code
 ...........
