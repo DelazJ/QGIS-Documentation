@@ -1,4 +1,4 @@
-# Substitutions below are sorted and should be in lowerCamelCase
+# Substitutions below are sorted and in lower case
 # NOTE that for inline images (like button and menu icons inline in text) you HAVE TO make a substitution
 
 # Text replacement

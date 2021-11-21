@@ -14,7 +14,7 @@ def find_by_ext(folder, extension):
 
 def get_subst_from_file(file):
     """
-    Returns sorted list of existing substitutions on a file
+    Returns sorted and lowercase list of existing substitutions on a file
     :param file: string with path to file
     :return: list
     """
@@ -42,7 +42,7 @@ def get_subst_from_file(file):
                     f.seek(pos-1)
                     if f.read() != "\n":
                         f.write("\n")
-    list_subs = list(set(subs))
+    list_subs = list(set([sub.lower() for sub in subs]))
     list_subs.sort()
     return list_subs
 
@@ -88,7 +88,7 @@ def get_subst_definition(subst_list, s_dict):
 
 def read_subst(file):
     """
-    Returns dictionary with all available substitutions
+    Returns dictionary with all available substitutions, in lowercase
     :param file: file with substitutions in sphinx format
     :return: dictionary with substitutions in more scriptable format
     """
@@ -125,6 +125,7 @@ def read_subst(file):
                 subs_dict[m.group(1)] = dict()
                 subs_dict[m.group(1)]['unicode'] = m.group(2)
 
+    subs_dict = dict((k.lower(), v) for k, v in subs_dict.items())
     return subs_dict
 
 def append_subst(file, subst_definition):
