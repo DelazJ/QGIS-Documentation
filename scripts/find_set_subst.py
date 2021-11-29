@@ -86,6 +86,48 @@ def get_subst_definition(subst_list, s_dict):
         s_def = None
     return s_def
 
+def create_image_subst():
+    """
+    Creates the list of image substitution to use in the project
+    based on available icons
+    """
+    image_folder = path.abspath(path.join(__file__ ,"../../static"))
+    #print(image_folder)
+    filename_pattern = re.compile(r"^(mAction|mIcon|renderer|mAlgorithm|m)([A-Z\d]\w*)")
+    subs_dict = dict()
+    for root, dirs, files in walk(image_folder):
+        for name in files:
+            # normalize the substitution spelling
+            new_subst = re.sub('[_-]', '', re.sub('(\.\w*)', '', re.sub(filename_pattern,'\g<2>', name))).lower()
+            subs_dict[new_subst] = path.relpath(path.join(root, name), path.dirname(image_folder))
+
+    substitution_text=""
+    img_title = "# Icons replacement"
+    for k, v in sorted(subs_dict.items()):
+        substitution_text += ".. |{}| image:: /{}\n".format(k, v)
+        substitution_text += "   :width: 1.5em\n"
+
+    with open(subst_file_path, 'r+') as f:
+        pos = f.tell()
+        print('pos ', pos)
+        line = f.readline()
+        print('line ', line)
+        while line != "":
+            print('newpos ', pos)
+            if re.match(img_title, line) is not None:
+                f.seek(pos)
+                f.truncate()
+                break
+            else:
+                #subs += s_pattern.findall(line)
+                print('poselse ', pos)
+                pos = f.tell()
+                line = f.readline()
+                print('newline ', line)
+
+        f.write("{}\n\n{}".format(img_title, substitution_text))
+
+
 def read_subst(file):
     """
     Returns dictionary with all available substitutions
@@ -139,8 +181,9 @@ def append_subst(file, subst_definition):
             f.write(subst_definition)
 
 if __name__ == '__main__':
-    src_path =  path.abspath(path.join(__file__ ,"../../docs"))
+    src_path = path.abspath(path.join(__file__ ,"../../docs"))
     subst_file_path = path.join(src_path,"../substitutions.txt")
+    create_image_subst()
     s_dict = read_subst(subst_file_path)
     for file in find_by_ext(src_path, 'rst'):
         s_list = get_subst_from_file(file)
