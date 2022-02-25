@@ -17,7 +17,7 @@ jobs:
           parameters: |
             [ {"keywords": ["QGIS version: 3.22"], "labels": ["3.22"], "milestone":"QGIS 3.22"},
               {"keywords": ["QGIS version: 3.24"], "labels": ["3.24"], "milestone":"QGIS 3.28"},
-              {"keywords": ["QGIS version: 3.26"], "labels": ["3.26"], "milestone":"QGIS 3.28"},
+              {"keywords": ["QGIS version: 3.26"], "labels": ["3.26"], "milestone":"1"},
               {"keywords": ["QGIS version: 3.28"], "labels": ["3.28"], "milestone":"QGIS 3.28"}
             ]
           github-token: "${{ secrets.GITHUB_TOKEN }}"
