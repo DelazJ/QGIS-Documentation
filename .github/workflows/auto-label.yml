@@ -5,7 +5,7 @@
 name: "Set Issue Label for issues from main QGIS repo"
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
 
 jobs:
   test:
