@@ -93,20 +93,34 @@ def create_image_subst():
     """
     image_folder = path.abspath(path.join(__file__ ,"../../static"))
     #print(image_folder)
-    filename_pattern = re.compile(r"^(mAction|mIcon|renderer|mAlgorithm|m)([A-Z\d]\w*)")
-    subs_dict = dict()
+    filename_pattern = re.compile(r"^(mAction|mIcon|icon|renderer|mAlgorithm|m)([A-Z\d]\w*)")
+    img_subs_dict = dict()
+    i=0
+    exception_subst=['CRS.png', 'mAction.png']
     for root, dirs, files in walk(image_folder):
+
         for name in files:
             # normalize the substitution spelling
-            new_subst = re.sub('[_-]', '', re.sub('(\.\w*)', '', re.sub(filename_pattern,'\g<2>', name))).lower()
-            subs_dict[new_subst] = path.relpath(path.join(root, name), path.dirname(image_folder))
+            if name not in exception_subst:
+                new_subst = re.sub('[_-]', '', re.sub('(\.\w*)', '', re.sub(filename_pattern,'\g<2>', name)))
+                new_subst=new_subst[0].lower() + new_subst[1:]
+            else:
+                new_subst=name
 
-    substitution_text=""
+            img_subs_dict[new_subst] = path.relpath(path.join(root, name), path.dirname(image_folder))
+            #if i<5 and name.startswith('mAction'):
+                #print('new_subst', new_subst)
+                #print('img_subs_dict', img_subs_dict)
+                #i=i+1
+
+    img_substitution_text=""
     img_title = "# Icons replacement"
-    for k, v in sorted(subs_dict.items()):
-        substitution_text += ".. |{}| image:: /{}\n".format(k, v)
-        substitution_text += "   :width: 1.5em\n"
+    # Generate the images substitutions list
+    for k, v in sorted(img_subs_dict.items()):
+        img_substitution_text += ".. |{}| image:: /{}\n".format(k, v)
+        img_substitution_text += "   :width: 1.5em\n"
 
+    # Update the substitutions.txt file with the images substitutions (replacement)
     with open(subst_file_path, 'r+') as f:
         pos = f.tell()
         print('pos ', pos)
@@ -125,7 +139,7 @@ def create_image_subst():
                 line = f.readline()
                 print('newline ', line)
 
-        f.write("{}\n\n{}".format(img_title, substitution_text))
+        f.write("{}\n\n{}".format(img_title, img_substitution_text))
 
 
 def read_subst(file):
