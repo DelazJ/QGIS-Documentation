@@ -595,19 +595,8 @@
    :width: 1.5em
 .. |legend| image:: /static/common/legend.png
    :width: 1.2em
-.. |lerato| image:: img/lerato_nsibande.png
 .. |lineLayer| image:: /static/common/mIconLineLayer.png
    :width: 1.5em
-.. |linguist_done_next| image:: img/linguist_done_next.png
-   :width: 2em
-.. |linguist_next| image:: img/linguist_next.png
-   :width: 2em
-.. |linguist_next_todo| image:: img/linguist_next_todo.png
-   :width: 2em
-.. |linguist_previous| image:: img/linguist_previous.png
-   :width: 2em
-.. |linguist_previous_todo| image:: img/linguist_previous_todo.png
-   :width: 2em
 .. |link| image:: /static/common/mActionLink.png
    :width: 1.5em
 .. |linkGeorefToQGis| image:: /static/common/mActionLinkGeorefToQGis.png
@@ -638,7 +627,6 @@
    :width: 1.5em
 .. |mapTips| image:: /static/common/mActionMapTips.png
    :width: 1.5em
-.. |marcelle| image:: img/marcelle_sutton.png
 .. |mean| image:: /static/common/mean.png
    :width: 1.5em
 .. |measure| image:: /static/common/mActionMeasure.png
@@ -778,7 +766,6 @@
    :width: 1em
 .. |otb| image:: /static/common/otb.png
    :width: 1.5em
-.. |otto| image:: img/otto_dassau.png
 .. |outofdate| replace:: `Despite our constant efforts, information beyond this line may not be updated for QGIS 3. Refer to https://qgis.org/pyqgis/master for the python API documentation or, give a hand to update the chapters you know about. Thanks.`
 .. |overlay| image:: /static/common/overlay.png
    :width: 1.5em
@@ -1009,7 +996,6 @@
    :width: 1.5em
 .. |showUnplacedLabel| image:: /static/common/mActionShowUnplacedLabel.png
    :width: 1.5em
-.. |sibongile| image:: img/sibongile_mthombeni.png
 .. |simplify| image:: /static/common/mActionSimplify.png
    :width: 1.5em
 .. |singleSymbol| image:: /static/common/rendererSingleSymbol.png
@@ -1082,7 +1068,6 @@
    :width: 1.5em
 .. |textAnnotation| image:: /static/common/mActionTextAnnotation.png
    :width: 1.5em
-.. |tim| image:: img/tim_sutton.png
 .. |tiltDown| image:: /static/common/mActionTiltDown.png
    :width: 1.5em
 .. |tiltUp| image:: /static/common/mActionTiltUp.png
