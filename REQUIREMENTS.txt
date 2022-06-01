@@ -1,6 +1,9 @@
-Sphinx==4.1.2
-sphinx-intl==2.0.1
+Sphinx
+sphinx-intl
 sphinx_rtd_theme
 sphinx-intl[transifex]
+sphinxext-rediraffe
+sphinx_togglebutton
+transifex-client
 PyYAML
 pdflatex

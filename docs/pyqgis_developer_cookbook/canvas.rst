@@ -1,16 +1,20 @@
-.. index:: Map canvas
-
 .. highlight:: python
    :linenothreshold: 5
-
 
 .. testsetup:: canvas
 
     iface = start_qgis()
 
-The code snippets on this page need the following imports if you're outside the pyqgis console:
+.. index:: Map canvas
+.. _canvas:
 
-.. testcode:: canvas
+********************
+Using the Map Canvas
+********************
+
+.. hint:: The code snippets on this page need the following imports if you're outside the pyqgis console:
+
+  .. testcode:: canvas
 
     from qgis.PyQt.QtGui import (
         QColor,
@@ -34,16 +38,10 @@ The code snippets on this page need the following imports if you're outside the 
         QgsRubberBand,
     )
 
+.. only:: html
 
-.. _canvas:
-
-********************
-Using the Map Canvas
-********************
-
-
-.. contents::
-   :local:
+   .. contents::
+      :local:
 
 The Map canvas widget is probably the most important widget within QGIS because
 it shows the map composed from overlaid map layers and allows interaction with
@@ -53,7 +51,8 @@ there are tools for panning, zooming, identifying layers, measuring, vector
 editing and others. Similar to other graphics programs, there is always one
 tool active and the user can switch between the available tools.
 
-The map canvas is implemented with the :class:`QgsMapCanvas <qgis.gui.QgsMapCanvas>` class in the :mod:`qgis.gui`
+The map canvas is implemented with the :class:`QgsMapCanvas <qgis.gui.QgsMapCanvas>`
+class in the :pyqgis:`qgis.gui <gui>`
 module. The implementation is based on the Qt Graphics View framework.
 This framework generally provides a surface and a view where custom graphics
 items are placed and user can interact with them.  We will assume that you are
@@ -291,6 +290,33 @@ selected layer on the newly created canvas
 
   w = MyWnd(iface.activeLayer())
   w.show()
+
+
+
+Select a feature using QgsMapToolIdentifyFeature
+------------------------------------------------
+
+You can use the map tool :class:`QgsMapToolIdentifyFeature <qgis.gui.QgsMapToolIdentifyFeature>`
+for asking to the user to select a feature that will be sent to a callback function.
+
+.. testcode:: canvas
+
+  def callback(feature):
+    """Code called when the feature is selected by the user"""
+    print("You clicked on feature {}".format(feature.id()))
+
+  canvas = iface.mapCanvas()
+  feature_identifier = QgsMapToolIdentifyFeature(canvas)
+
+  # indicates the layer on which the selection will be done
+  feature_identifier.setLayer(vlayer)
+
+  # use the callback as a slot triggered when the user identifies a feature
+  feature_identifier.featureIdentified.connect(callback)
+
+  # activation of the map tool
+  canvas.setMapTool(feature_identifier)
+
 
 .. index:: Map canvas; Custom map tools
 

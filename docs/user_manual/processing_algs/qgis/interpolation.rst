@@ -145,10 +145,9 @@ Parameters
      - Specify the output raster layer with kernel density values.
        One of:
 
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
 Outputs
 .......
@@ -175,7 +174,7 @@ Another excellent QGIS tutorial on making heatmaps can be found at
 `http://qgistutorials.com
 <http://www.qgistutorials.com/en/docs/creating_heatmaps.html>`_.
 
-In Figure_Heatmap_data_processing_, the airports of Alaska are shown.
+In :numref:`Figure_Heatmap_data_processing`, the airports of Alaska are shown.
 
 .. _figure_heatmap_data_processing:
 
@@ -195,7 +194,7 @@ In Figure_Heatmap_data_processing_, the airports of Alaska are shown.
    The :guilabel:`Pixel size Y`, :guilabel:`Rows` and
    :guilabel:`Columns` will be automatically updated.
 #. Click on :guilabel:`Run` to create and load the airports heatmap
-   (see Figure_Heatmap_created_processing_).
+   (see :numref:`Figure_Heatmap_created_processing`).
 
 .. _figure_heatmap_settings_processing:
 
@@ -228,7 +227,7 @@ The heatmap can now be styled in QGIS to improve its appearance.
 #. Click the :guilabel:`Classify` button.
 #. Press :guilabel:`OK` to update the layer.
 
-The final result is shown in Figure_Heatmap_styled_processing_.
+The final result is shown in :numref:`Figure_Heatmap_styled_processing`.
 
 .. _figure_heatmap_styled_processing:
 
@@ -244,7 +243,7 @@ Python code
 
 **Algorithm ID**: ``qgis:heatmapkerneldensityestimation``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -320,9 +319,11 @@ Parameters
      - ``EXTENT``
      - [extent]
      - Extent of the output raster layer.
-       You have to declare the output extent by either choosing it
-       from the map canvas, selecting it from another layer or type it
-       manually.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Output raster size**
      - ``PIXEL_SIZE``
      - [number]
@@ -349,10 +350,9 @@ Parameters
      - Raster layer of interpolated values.
        One of:
 
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
 Outputs
 .......
@@ -376,7 +376,7 @@ Python code
 
 **Algorithm ID**: ``qgis:idwinterpolation``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -441,11 +441,9 @@ Parameters
        Default: ``[Save to temporary file]``
      - The output as a raster layer. One of:
 
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
 Outputs
 .......
@@ -467,9 +465,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:linedensity``
+**Algorithm ID**: ``native:linedensity``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -547,9 +545,11 @@ Parameters
      - ``EXTENT``
      - [extent]
      - Extent of the output raster layer.
-       You have to declare the output extent by either choosing it
-       from the map canvas, selecting it from another layer or type it
-       manually.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Output raster size**
      - ``PIXEL_SIZE``
      - [number]
@@ -575,10 +575,10 @@ Parameters
        Default: ``[Save to temporary file]``
      - The output TIN interpolation as a raster layer. One of:
 
-       * Save to a Temporary File
-       * Save to File...
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
-       The file encoding can also be changed here.
    * - **Triangulation**
      - ``TRIANGULATION``
      - [vector: line]
@@ -586,11 +586,9 @@ Parameters
        Default: ``[Skip output]``
      - The output TIN as a vector layer. One of:
 
-       * Skip Output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 .......
@@ -618,7 +616,7 @@ Python code
 
 **Algorithm ID**: ``qgis:tininterpolation``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 

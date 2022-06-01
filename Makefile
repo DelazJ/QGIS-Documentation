@@ -6,13 +6,16 @@ LANG            = en
 # currently we are building for the following languages, if you want yours to be build: ask!
 LANGUAGES       = en # bg cs de es fi fr id it ja ko nl pt_BR pt_PT ro ru tr zh_Hant zh_Hans
 SPHINXOPTS      =
-SPHINXINTLOPTS  = $(SPHINXOPTS) -D language=$(LANG)
+# Use the tag i18n to filter text based on whether we are translating or not
+SPHINXINTLOPTS  = $(SPHINXOPTS) -D language=$(LANG) -t i18n
 SPHINXBUILD     ?= sphinx-build
 SPHINXINTL      ?= sphinx-intl
 SOURCEDIR       = .
 BUILDDIR        = build
 #SITEDIR         = qgis2:/var/www/qgisdata/QGIS-Documentation/live/html
-SITEDIR         = /var/www/qgisdata/QGIS-Documentation/live/html
+#SITEDIR         = /var/www/qgisdata/QGIS-Documentation/live/html
+# to be able to run the Makefile in a docker you have to mount (with -v) your site dir on /site
+SITEDIR         = /site
 VERSION         = testing
 
 
@@ -104,25 +107,23 @@ zip:
 	mv $(BUILDDIR)/html/QGIS-$(VERSION)-Documentation-$(LANG).zip $(BUILDDIR)/zip/;
 
 site: html zip
-	rsync -az $(BUILDDIR)/html/$(LANG) $(SITEDIR)/;
+	rsync -hvrzc --delete --progress $(BUILDDIR)/html/$(LANG) $(SITEDIR)/;
 
-
-full: springclean html zip
+full: html zip
 	make LANG=$(LANG) pdf;
 	
-
 # this will build ALL languages, AND tries to rsync them to the web dir on qgis2
 # to be able to run this you will need a key on the server
 all: springclean
 	@for LANG in $(LANGUAGES) ; do \
 		make LANG=$$LANG site; \
 	done
-	rsync -az $(BUILDDIR)/zip $(SITEDIR)/;
+	rsync -hvrzc $(BUILDDIR)/zip $(SITEDIR)/;
 
 	@for LANG in $(LANGUAGES) ; do \
 		make LANG=$$LANG pdf; \
 	done
-	rsync -az $(BUILDDIR)/pdf $(SITEDIR)/;
+	rsync -hvrzc $(BUILDDIR)/pdf $(SITEDIR)/;
 
 # this will pull ALL translations (or at least from the languages we build for)
 # to your local disk, so it can be committed into github
@@ -132,14 +133,19 @@ all: springclean
 # transifex, we need to replace the underscores by dashes,
 # the english language is removed to avoid pulling the po source files.
 # finally, the spaces are replaced by commas. In the end we have something like this
-# tx pull -f --parallel -l lang1,lang2,lang2,lang4
+# tx pull -f --parallel --mode onlytranslated -l lang1,lang2,lang3,lang4
 tx_force_pull_translations:
 	$(eval space := )
 	$(eval space += )
 	$(eval comma += ,)
-	tx pull -f --parallel -l $(subst $(space),$(comma),$(subst en$(space),,$(subst zh_,zh-,$(LANGUAGES)))) ;
+	tx pull -f --parallel --mode onlytranslated -l $(subst $(space),$(comma),$(subst en$(space),,$(subst zh_,zh-,$(LANGUAGES)))) ;
 
 doctest:
 	LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
+
+linkcheck:
+	$(SPHINXBUILD) -b linkcheck $(SOURCEDIR) $(BUILDDIR)/linkcheck
+	@echo "Check finished. Report is in $(BUILDDIR)/linkcheck/output.txt."
+

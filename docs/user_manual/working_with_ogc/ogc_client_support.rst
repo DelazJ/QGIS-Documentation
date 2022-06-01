@@ -158,72 +158,86 @@ Selecting WMS/WMTS Servers
 
 The first time you use the WMS feature in QGIS, there are no servers defined.
 
-Begin by clicking the |addWmsLayer| :sup:`Add WMS layer` button on the
-toolbar, or selecting :menuselection:`Layer --> Add WMS Layer...`.
+You then need to create connections to the server you are targeting:
 
-The dialog :guilabel:`Add Layer(s) from a Server` for adding layers from
-the WMS server appears. You can add some servers to play with by clicking the
-:guilabel:`Add Default Servers` button. This will add two WMS demo servers for you to
-use: the WMS servers of the DM Solutions Group and Lizardtech. To define a new
-WMS server in the :guilabel:`Layers` tab, select the :guilabel:`New` button. Then enter
-the parameters to connect to your desired WMS server, as listed in table_OGC_wms_:
+#. Go to the |wms| :guilabel:`WMS/WMTS` tab of the :guilabel:`Data Source
+   Manager` dialog, either by:
 
-\
+   * clicking the |dataSourceManager| :sup:`Open Data Source Manager` button
+     (or pressing :kbd:`Ctrl+L`) and enabling the tab
+   * clicking the |addWmsLayer| :sup:`Add WMS layer` button on the
+     *Manage Layers* toolbar
+   * or selecting :menuselection:`Layer --> Add Layer -->` |addWmsLayer|
+     :menuselection:`Add WMS/WMTS Layer...` menu
+#. Press :guilabel:`New` from the :guilabel:`Layers` tab.
+   The :guilabel:`Create a New WMS/WMTS Connection...` dialog appears.
 
-.. _table_OGC_wms:
+   .. tip:: Right-click the |wms| :guilabel:`WMS/WMTS` entry from within the
+    :ref:`Browser panel <label_browserpanel>` and select :guilabel:`New Connection...`
+    also opens the :guilabel:`Create a New WMS/WMTS Connection...` dialog.
 
-+--------------------------------------+------------------------------------------------------------------+
-| Name                                 | A name for this connection.  This name will be used in the       |
-|                                      | Server Connections drop-down box so that you can distinguish     |
-|                                      | it from other WMS servers.                                       |
-+--------------------------------------+------------------------------------------------------------------+
-| URL                                  | URL of the server providing the data. This must be a resolvable  |
-|                                      | host name -- the same format as you would use to open a telnet   |
-|                                      | connection or ping a host.                                       |
-+--------------------------------------+------------------------------------------------------------------+
-| Username                             | Username to access a secured WMS server.  This parameter is      |
-|                                      | optional.                                                        |
-+--------------------------------------+------------------------------------------------------------------+
-| Password                             | Password for a basic authenticated WMS server. This parameter    |
-|                                      | is optional.                                                     |
-+--------------------------------------+------------------------------------------------------------------+
-| Ignore GetMap URI                    | |checkbox|                                                       |
-|                                      | :guilabel:`Ignore GetMap URI reported in capabilities`. Use      |
-|                                      | given URI from URL field above.                                  |
-+--------------------------------------+------------------------------------------------------------------+
-| Ignore GetFeatureInfo URI            | |checkbox|                                                       |
-|                                      | :guilabel:`Ignore GetFeatureInfo URI reported in capabilities`.  |
-|                                      | Use given URI from URL field above.                              |
-+--------------------------------------+------------------------------------------------------------------+
+#. Then enter the parameters to connect to your desired WMS server, as listed
+   below:
 
-Table OGC 1: WMS Connection Parameters
+   .. _figure_OGC_create_wms_connection:
+
+   .. figure:: img/add_connection_wms.png
+      :align: center
+
+      Creating a connection to a WMS server
+
+
+   * :guilabel:`Name`: A name for the connection. This name will be used in
+     the Server Connections drop-down box so that you can distinguish it from
+     other WMS servers.
+   * :guilabel:`URL`: URL of the server providing the data. This must be a
+     resolvable host name -- the same format as you would use to open a telnet
+     connection or ping a host, i.e. the base URL only.
+     For example, you shouldn't have fragments such as ``request=GetCapabilities``
+     or ``version=1.0.0`` in your URL.
+   * :guilabel:`Authentication` (optional): using a :ref:`stored configuration
+     <authentication_workflow>` or a basic authentication with
+     :guilabel:`Username` and :guilabel:`Password`.
+
+     .. warning::
+
+      Entering **username** and **password** in the :guilabel:`Authentication`
+      tab will keep unprotected credentials in the connection configuration.
+      Those **credentials will be visible** if, for instance, you shared the
+      project file with someone. Therefore, it's advisable to save your
+      credentials in a *Authentication configuration* instead
+      (:guilabel:`configurations` tab).
+      See :ref:`authentication_index` for more details.
+
+   * HTTP :guilabel:`Referer`
+   * :guilabel:`DPI-Mode`: Available options are **all**, **off**, **QGIS**,
+     **UMN** and **GeoServer**
+   * |unchecked| :guilabel:`Ignore GetMap/GetTile URI reported in capabilities`:
+     if checked, use given URI from the :guilabel:`URL` field above.
+   * |unchecked| :guilabel:`Ignore GetFeatureInfo URI reported in capabilities`:
+     if checked, use given URI from the :guilabel:`URL` field above.
+   * |unchecked| :guilabel:`Ignore axis orientation (WMS 1.3/WMTS)`
+   * |unchecked| :guilabel:`Ignore reported layer extents`: because the extent
+     reported by raster layers may be smaller than the actual area which can
+     be rendered (notably for WMS servers with symbology which takes more space
+     than the data extent), check this option to avoid cropping raster layers
+     to their reported extents, resulting in truncated symbols on the borders
+     of these layers.
+   * |unchecked| :guilabel:`Invert axis orientation`
+   * |unchecked| :guilabel:`Smooth pixmap transformation`
+#. Press :guilabel:`OK`
+
+Once the new WMS server connection has been created, it will be preserved for
+future QGIS sessions.
 
 .. index:: Proxy, Proxy server
 
 If you need to set up a proxy server to be able to receive WMS services from the
 internet, you can add your proxy server in the options. Choose
-:menuselection:`Settings --> Options` and click on the :guilabel:`Network & Proxy` tab.
+:menuselection:`Settings --> Options` and click on the :guilabel:`Network` tab.
 There, you can add your proxy settings and enable them by setting |checkbox|
 :guilabel:`Use proxy for web access`. Make sure that you select the correct
 proxy type from the :guilabel:`Proxy type` |selectString| drop-down menu.
-
-Once the new WMS server connection has been created, it will be preserved for
-future QGIS sessions.
-
-.. tip:: **On WMS Server URLs**
-
-   Be sure, when entering the WMS server URL, that you have the base URL only.
-   For example, you shouldn't have fragments such as ``request=GetCapabilities``
-   or ``version=1.0.0`` in your URL.
-
-.. warning::
-
-   Entering **username** and **password** in the :guilabel:`Authentication` tab
-   will keep unprotected credentials in the connection configuration. Those
-   **credentials will be visible** if, for instance, you shared the project file
-   with someone. Therefore, it's advisable to save your credentials in a
-   *Authentication configuration* instead (:guilabel:`configurations` tab).
-   See :ref:`authentication_index` for more details.
 
 .. _`ogc-wms-layers`:
 
@@ -231,23 +245,34 @@ Loading WMS/WMTS Layers
 -----------------------
 
 Once you have successfully filled in your parameters, you can use the
-:guilabel:`Connect` button to retrieve the capabilities of the selected server. This
-includes the image encoding, layers, layer styles and projections. Since this is
-a network operation, the speed of the response depends on the quality of your
-network connection to the WMS server. While downloading data from the WMS server,
-the download progress is visualized in the lower left of the WMS dialog.
+:guilabel:`Connect` button to retrieve the capabilities of the selected server.
+This includes the image encoding, layers, layer styles and projections.
+Since this is a network operation, the speed of the response depends on the
+quality of your network connection to the WMS server.
+While downloading data from the WMS server, the download progress is
+visualized in the lower left corner of the main QGIS dialog.
 
-.. following should be replaced in 1.8 with the response of de DM Solutions Group
-
-Your screen should now look a bit like figure_OGC_add_wms_, which shows the response
-provided by the European Soil Portal WMS server.
+Your screen should now look a bit like :numref:`figure_OGC_add_wms`,
+which shows the response provided by a WMS server.
 
 .. _figure_OGC_add_wms:
 
 .. figure:: img/connection_wms.png
    :align: center
 
-   Dialog for adding a WMS server, showing its available layers
+   Dialog for adding a WMS server, with filter on available layers
+
+The upper part of the :guilabel:`Layers` tab of the dialog shows a tree
+structure that can include layer groups embedding layers with their associated
+image style(s) served by the server.
+Each item can be identified by:
+
+* an :guilabel:`ID`
+* a :guilabel:`Name`
+* a :guilabel:`Title`
+* and an :guilabel:`Abstract`.
+
+The list can be filtered using the |search| widget in the top right corner.
 
 **Image Encoding**
 
@@ -270,101 +295,58 @@ requirements.
 
 **Options**
 
-The Options area of the dialog provides a text field where you can add a :guilabel:`Layer name`
-for the WMS layer. This name will appear in the legend after loading
-the layer.
+The Options area of the dialog provides means to configure the WMS requests.
+You can define:
 
-Below the layer name, you can define :guilabel:`Tile size` if you want to set tile
-sizes (e.g., 256x256) to split up the WMS request into multiple requests.
+* :guilabel:`Tile size` if you want to set tile sizes (e.g., 256x256)
+  to split up the WMS request into multiple requests.
+* The :guilabel:`Request step size`
+* The :guilabel:`Maximum number of GetFeatureInfo results` from the server
 
-The :guilabel:`Feature limit for GetFeatureInfo` defines what features from
-the server to query.
+* Each WMS layer can be presented in multiple CRSs, depending on the capability of
+  the WMS server. If you select a WMS from the list, a field with the default projection 
+  provided by the web server appears. Press the : |setProjection| :sup:`Select CRS` widget
+  to replace the default projection of the WMS with another CRS supported by the WMS server.
 
-If you select a WMS from the list, a field with the default projection provided
-by the mapserver appears. If the :guilabel:`Change...` button is active, you can click
-on it and change the default projection of the WMS to another CRS provided by
-the WMS server.
+  A dialog similar to the one shown in :numref:`figure_projection_custom` will appear.
+  The main difference with the WMS version of the dialog is that only
+  those CRSs supported by the WMS server will be shown.
 
-Finally you can activate |checkbox| :guilabel:`Use contextual WMS-Legend` if the
-WMS Server supports this feature. Then only the relevant legend for your current map view extent
-will be shown and thus will not include legend items for things you can't see in the current map.
+* Finally you can activate |checkbox| :guilabel:`Use contextual WMS Legend` if the
+  WMS Server supports this feature. Then only the relevant legend for your current
+  map view extent will be shown and thus will not include legend items for items
+  you can't see in the current map.
+
+At the bottom of the dialog, a :guilabel:`Layer name` text field displays the
+selected item's :guilabel:`Title`. You can change the name at your will.
+This name will appear in the :guilabel:`Layers` panel after you pressed the
+:guilabel:`Add` button and loaded the layer(s) in QGIS.
+
+You can select several layers at once, but only one image style per layer.
+When several layers are selected, they will be combined at the WMS server
+and transmitted to QGIS in one go, as a single layer.
+The default name is a slash (`/`) separated list of their original title.
 
 **Layer Order**
 
 The :guilabel:`Layer Order` tab lists the selected layers available from the
-current connected WMS server. You may notice that some layers are expandable;
-this means that the layer can be displayed in a choice of image styles.
+current connected WMS server.
 
-You can select several layers at once, but only one image style per layer.
-When several layers are selected, they will be combined at the WMS server
-and transmitted to QGIS in one go.
-
-
-.. tip:: **WMS Layer Ordering**
-
-   WMS layers rendered by a server are overlaid in the order listed in the Layers
-   section, from top to bottom of the list. If you want to change the overlay
-   order, you can use the :guilabel:`Layer Order` tab.
+WMS layers rendered by a server are overlaid in the order listed in the
+:guilabel:`Layers` tab, from top to bottom of the list.
+If you want to change the overlay order, you can use the :guilabel:`Up`
+and :guilabel:`Down` buttons of the :guilabel:`Layer Order` tab.
 
 .. _`ogc-wms-transparency`:
 
 **Transparency**
 
-In this version of QGIS, the :guilabel:`Global transparency` setting from the
+The :guilabel:`Global transparency` setting from the
 :guilabel:`Layer Properties` is hard coded to be always on, where available.
 
-.. index::
-   single: WMS; Layer transparency
-
-.. tip:: **WMS Layer Transparency**
-
-  The availability of WMS image transparency depends on the image encoding
-  used: PNG and GIF support transparency, whilst JPEG leaves it unsupported.
-
-**Coordinate Reference System**
 
 
-.. index:: SRS (Spatial Reference System), CRS (Coordinate Reference System)
-
-A coordinate reference system (CRS) is the OGC terminology for a QGIS projection.
-
-Each WMS layer can be presented in multiple CRSs, depending on the capability of
-the WMS server.
-
-To choose a CRS, select :guilabel:`Change...` and a dialog similar to
-the one shown in :numref:`figure_projection_custom` will appear.
-The main difference with the WMS version of the dialog is that only
-those CRSs supported by the WMS server will be shown.
-
-.. _`serversearch`:
-
-Server search
--------------
-
-Within QGIS, you can search for WMS servers. Figure_OGC_search_ shows the
-:guilabel:`Server Search` tab with the :guilabel:`Add Layer(s) from a Server` dialog.
-
-.. _Figure_OGC_search:
-
-.. figure:: img/wms_server_search.png
-   :align: center
-
-   Dialog for searching WMS servers after some keywords
-
-As you can see, it is possible to enter a search string in the text field and hit
-the :guilabel:`Search` button. After a short while, the search result will be populated
-into the list below the text field. Browse the result list and inspect your search
-results within the table. To visualize the results, select a table entry, press
-the :guilabel:`Add Selected Row to WMS List` button and change back to the
-:guilabel:`Layers` tab. QGIS has automatically updated your server list, and the
-selected search result is already enabled in the list of saved WMS servers in
-the :guilabel:`Layers` tab. You only need to request the list of layers by clicking
-the :guilabel:`Connect` button. This option is quite handy when you want to search maps
-by specific keywords.
-
-Basically, this option is a front end to the API of http://geopole.org.
-
-.. _`tilesets`:
+.. _tilesets:
 
 Tilesets
 --------
@@ -611,7 +593,7 @@ WFS and WFS-T Client
 
 In QGIS, a WFS layer behaves pretty much like any other vector layer.
 You can identify and select features, and view the attribute table.
-QGIS supports WFS 1.0.0, 1.1.0, 2.0 and WFS3 (OGC API - Features),
+QGIS supports WFS 1.0.0, 1.1.0, 2.0 and OGC API - Features (OAPIF),
 including editing (through WFS-T).
 
 In general, adding a WFS layer is very similar to the procedure used with WMS.
@@ -643,8 +625,8 @@ To be able to load a WFS Layer, first create a connection to the WFS server:
    
       Creating a connection to a WFS server
 
-   .. note:: In case of an OGC API - Features (WFS3), the URL to provide should
-     be the :ref:`landing page <wfs3_endpoints>`, ie the main page from which
+   .. note:: In case of an OGC API - Features (OAPIF), the URL to provide should
+     be the :ref:`landing page <oapif_endpoints>`, ie the main page from which
      it is possible to navigate to all the available service endpoints.
 
 #. In the WFS settings dialog, you can:
@@ -731,9 +713,15 @@ features and view the attribute table.
    :width: 1.5em
 .. |kde| image:: /static/common/kde.png
    :width: 1.5em
+.. |search| image:: /static/common/search.png
+   :width: 1.5em
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |setProjection| image:: /static/common/mActionSetProjection.png
+   :width: 1.5em
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em
 .. |wcs| image:: /static/common/mIconWcs.png
+   :width: 1.5em
+.. |wms| image:: /static/common/mIconWms.png
    :width: 1.5em

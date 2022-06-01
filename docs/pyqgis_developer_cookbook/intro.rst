@@ -1,20 +1,32 @@
-.. _introduction:
-
-
 .. highlight:: python
    :linenothreshold: 5
 
+.. _introduction:
 
 ************
 Introduction
 ************
 
+
 This document is intended to be both a tutorial and a reference
 guide. While it does not list all possible use cases, it should
 give a good overview of the principal functionality.
 
-.. contents::
-   :local:
+
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.3 or any later version
+published by the Free Software Foundation; with no Invariant Sections, no
+Front-Cover Texts, and no Back-Cover Texts.
+
+A copy of the license is included in the section :ref:`gnu_fdl`.
+
+This license also applies to all code snippets in this document.
+
+
+.. only:: html
+
+   .. contents::
+      :local:
 
 Python support was first introduced in QGIS 0.9.
 There are several ways to use Python in QGIS Desktop
@@ -34,11 +46,11 @@ Python application.
 
 .. index:: API
 
-There is a :api:`complete QGIS API <>` reference that
+There is a :api:`complete QGIS C++ API <>` reference that
 documents the classes from the QGIS libraries. :pyqgis:`The Pythonic QGIS API
 (pyqgis) <>` is nearly identical to the C++ API.
 
-A good resource for learning how to perform common tasks is to
+Another good resource for learning how to perform common tasks is to
 download existing plugins from the
 `plugin repository <https://plugins.qgis.org/>`_ and examine their
 code.
@@ -108,6 +120,14 @@ for detailed instructions.
     See :ref:`server_plugins` for further details.
 
 
+Processing Plugins
+------------------
+
+Processing Plugins can be used to process data. They are easier to develop,
+more specific and more lightweight than Python Plugins. :ref:`processing_plugin`
+explains when the use of Processing algorithms is appropiate and how to develop
+them.
+
 .. index::
   pair: Python; Startup
 
@@ -167,12 +187,12 @@ Python Applications
 
 It is often handy to create  scripts for automating processes.
 With PyQGIS, this is perfectly possible --- import
-the :mod:`qgis.core` module, initialize it and you are ready for the
+the :pyqgis:`qgis.core <core>` module, initialize it and you are ready for the
 processing.
 
 Or you may want to create an interactive application that uses
 GIS functionality --- perform measurements, export a map as PDF, ...
-The :mod:`qgis.gui` module provides various GUI
+The :pyqgis:`qgis.gui <gui>` module provides various GUI
 components, most notably the map canvas widget that can be
 incorporated into the application with support for zooming, panning
 and/or any further custom map tools.
@@ -220,37 +240,49 @@ beginning of the script:
   # provider and layer registries from memory
   qgs.exitQgis()
 
-First we import the :mod:`qgis.core` module and configure
+First we import the :pyqgis:`qgis.core <core>` module and configure
 the prefix path. The prefix path is the location where QGIS is
 installed on your system. It is configured in the script by calling
-the :meth:`setPrefixPath <qgis.core.QgsApplication.setPrefixPath>` method.
+the :meth:`setPrefixPath() <qgis.core.QgsApplication.setPrefixPath>` method.
 The second argument of
-:meth:`setPrefixPath <qgis.core.QgsApplication.setPrefixPath>`
-is set to ``True``, specifying that default paths are to be
+:meth:`setPrefixPath() <qgis.core.QgsApplication.setPrefixPath>`
+is set to :const:`True`, specifying that default paths are to be
 used.
 
 The QGIS install path varies by platform; the easiest way to find it
 for your system is to use the :ref:`pythonconsole` from within
-QGIS and look at the output from running
-``QgsApplication.prefixPath()``.
+QGIS and look at the output from running:
+
+.. code-block:: python
+
+  QgsApplication.prefixPath()
 
 After the prefix path is configured, we save a reference to
-``QgsApplication`` in the variable ``qgs``. The second argument is set
-to ``False``, specifying that we do not plan to use the GUI since
-we are writing a standalone script. With ``QgsApplication``
+:class:`QgsApplication <qgis.core.QgsApplication>` in the variable ``qgs``.
+The second argument is set to :const:`False`, specifying that we do not plan
+to use the GUI since we are writing a standalone script. With ``QgsApplication``
 configured, we load the QGIS data providers and layer registry by
-calling the ``qgs.initQgis()`` method. With QGIS initialized, we are
-ready to write the rest of the script. Finally, we wrap up by calling
-``qgs.exitQgis()`` to remove the data providers and layer registry
-from memory.
+calling the :meth:`initQgis() <qgis.core.QgsApplication.initQgis>` method.
 
+.. code-block:: python
+
+  qgs.initQgis()
+
+With QGIS initialized, we are ready to write the rest of the script.
+Finally, we wrap up by calling :meth:`exitQgis() <qgis.core.QgsApplication.exitQgis>`
+to remove the data providers and layer registry from memory.
+
+.. code-block:: python
+
+  qgs.exitQgis()
 
 Using PyQGIS in custom applications
 -----------------------------------
 
 The only difference between :ref:`standalonescript` and a custom PyQGIS
-application is the second argument when instantiating the ``QgsApplication``.
-Pass ``True`` instead of ``False`` to indicate that we plan to
+application is the second argument when instantiating the
+:class:`QgsApplication <qgis.core.QgsApplication>`.
+Pass :const:`True` instead of :const:`False` to indicate that we plan to
 use a GUI.
 
 .. code-block:: python

@@ -4,10 +4,12 @@
 .. testsetup:: raster
 
     from qgis.core import (
+        Qgis,
         QgsRasterLayer,
         QgsProject,
         QgsPointXY,
         QgsRaster,
+        QgsRasterBlock,
         QgsRasterShader,
         QgsColorRampShader,
         QgsSingleBandPseudoColorRenderer,
@@ -26,9 +28,18 @@
     QgsProject.instance().addMapLayers([rlayer, rlayer_multi])
     assert rlayer.isValid()
 
-The code snippets on this page need the following imports if you're outside the pyqgis console:
+.. _raster:
 
-.. testcode:: raster
+.. index::
+   pair: Raster; Raster layers
+
+*********************
+ Using Raster Layers
+*********************
+
+.. hint:: The code snippets on this page need the following imports if you're outside the pyqgis console:
+
+  .. testcode:: raster
 
     from qgis.core import (
         QgsRasterLayer,
@@ -46,14 +57,10 @@ The code snippets on this page need the following imports if you're outside the 
         QColor,
     )
 
-.. _raster:
+.. only:: html
 
-.. index::
-   pair: Raster; Raster layers
-
-*********************
- Using Raster Layers
-*********************
+   .. contents::
+      :local:
 
 .. index:: Raster layers; Details
 
@@ -120,6 +127,15 @@ The following code assumes ``rlayer`` is a
 
 .. testcode:: raster
 
+     # get the first band name of the raster
+     print(rlayer.bandName(1))
+
+.. testoutput:: raster
+
+    Band 1: Height
+
+.. testcode:: raster
+
     # get all the available metadata as a QgsLayerMetadata object
     print(rlayer.metadata())
 
@@ -154,13 +170,15 @@ To query the current renderer:
 
     singlebandgray
 
-To set a renderer, use the :meth:`setRenderer <qgis.core.QgsRasterLayer.setRenderer>`
+To set a renderer, use the :meth:`setRenderer() <qgis.core.QgsRasterLayer.setRenderer>`
 method of :class:`QgsRasterLayer <qgis.core.QgsRasterLayer>`. There are a
 number of renderer classes (derived from :class:`QgsRasterRenderer
 <qgis.core.QgsRasterRenderer>`):
 
+* :class:`QgsHillshadeRenderer <qgis.core.QgsHillshadeRenderer>`
 * :class:`QgsMultiBandColorRenderer <qgis.core.QgsMultiBandColorRenderer>`
 * :class:`QgsPalettedRasterRenderer <qgis.core.QgsPalettedRasterRenderer>`
+* :class:`QgsRasterContourRenderer <qgis.core.QgsRasterContourRenderer>`
 * :class:`QgsSingleBandColorDataRenderer <qgis.core.QgsSingleBandColorDataRenderer>`
 * :class:`QgsSingleBandGrayRenderer <qgis.core.QgsSingleBandGrayRenderer>`
 * :class:`QgsSingleBandPseudoColorRenderer <qgis.core.QgsSingleBandPseudoColorRenderer>`
@@ -216,7 +234,7 @@ The number ``1`` in the code above is the band number (raster bands are
 indexed from one).
 
 Finally we have to use the
-:meth:`triggerRepaint <qgis.core.QgsMapLayer.triggerRepaint>` method
+:meth:`triggerRepaint() <qgis.core.QgsMapLayer.triggerRepaint>` method
 to see the results:
 
 .. testcode:: raster
@@ -230,7 +248,7 @@ Multi Band Rasters
 ------------------
 
 By default, QGIS maps the first three bands to red, green and blue to
-create a color image (this is the ``MultiBandColor`` drawing style.
+create a color image (this is the ``MultiBandColor`` drawing style).
 In some cases you might want to override these setting.
 The following code interchanges red band (1) and green band (2):
 
@@ -243,7 +261,7 @@ The following code interchanges red band (1) and green band (2):
 In case only one band is necessary for visualization of the raster,
 single band drawing can be chosen, either gray levels or pseudocolor.
 
-We have to use :meth:`triggerRepaint <qgis.core.QgsMapLayer.triggerRepaint>`
+We have to use :meth:`triggerRepaint() <qgis.core.QgsMapLayer.triggerRepaint>`
 to update the map and see the result:
 
 .. testcode:: raster
@@ -260,17 +278,17 @@ Query Values
 ============
 
 Raster values can be queried using the
-:meth:`sample <qgis.core.QgsRasterDataProvider.sample>` method of
+:meth:`sample() <qgis.core.QgsRasterDataProvider.sample>` method of
 the :class:`QgsRasterDataProvider <qgis.core.QgsRasterDataProvider>` class.
 You have to specify a :class:`QgsPointXY <qgis.core.QgsPointXY>`
 and the band number of the raster layer you want to query. The method returns a
-tuple with the value and ``True`` or ``False`` depending on the results:
+tuple with the value and :const:`True` or :const:`False` depending on the results:
 
 .. testcode:: raster
 
     val, res = rlayer.dataProvider().sample(QgsPointXY(20.50, -34), 1)
 
-Another method to query raster values is using the :meth:`identify
+Another method to query raster values is using the :meth:`identify()
 <qgis.core.QgsRasterDataProvider.identify>` method that returns a
 :class:`QgsRasterIdentifyResult <qgis.core.QgsRasterIdentifyResult>` object.
 
@@ -285,7 +303,30 @@ Another method to query raster values is using the :meth:`identify
 
     {1: 323.0}
 
-In this case, the :meth:`results <qgis.core.QgsRasterIdentifyResult.results>`
+In this case, the :meth:`results() <qgis.core.QgsRasterIdentifyResult.results>`
 method returns a dictionary, with band indices as keys, and band values as
 values.
 For instance, something like ``{1: 323.0}``
+
+
+Editing raster data
+===================
+
+You can create a raster layer using the :class:`QgsRasterBlock <qgis.core.QgsRasterBlock>`
+class. For example, to create a 2x2 raster block with one byte per pixel:
+
+.. testcode:: raster
+
+    block = QgsRasterBlock(Qgis.Byte, 2, 2)
+    block.setData(b'\xaa\xbb\xcc\xdd')
+
+Raster pixels can be overwritten thanks to the :meth:`writeBlock()
+<qgis.core.QgsRasterDataProvider.writeBlock>` method.
+To overwrite existing raster data at position 0,0 by the 2x2 block:
+
+.. testcode:: raster
+
+    provider = rlayer.dataProvider()
+    provider.setEditable(True)
+    provider.writeBlock(block, 1, 0, 0)
+    provider.setEditable(False)

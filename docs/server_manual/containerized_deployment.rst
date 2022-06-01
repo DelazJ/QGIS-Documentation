@@ -22,7 +22,7 @@ simple (simple Docker images) to sophisticated (Kubernetes and so on).
 
 .. note:: QGIS Debian-Ubuntu package downloads need a valid gpg authentication key.  
    Please refer to the `installation pages <https://www.qgis.org/fr/site/forusers/alldownloads.html#debian-ubuntu>`_ 
-   to update the following Dockerfile with the latest key fingerprint 
+   to update the following Dockerfile with the latest key and its fingerprint value
 
 .. _simple-docker-images:
 
@@ -49,9 +49,9 @@ it. To do so create a directory :file:`qgis-server` and within its directory:
           locales \
       && localedef -i en_US -f UTF-8 en_US.UTF-8 \
       # Add the current key for package downloading - As the key changes every year at least
-      # Please refer to QGIS install documentation and replace it with the latest one
-      && wget -O - https://qgis.org/downloads/qgis-2020.gpg.key | gpg --import \
-      && gpg --export --armor F7E06F06199EF2F2 | apt-key add - \
+      # Please refer to QGIS install documentation and replace it and its fingerprint value with the latest ones
+      && wget -O - https://qgis.org/downloads/qgis-2021.gpg.key | gpg --import \
+      && gpg --export --armor 46B5721DBBD2996A | apt-key add - \
       && echo "deb http://qgis.org/debian buster main" >> /etc/apt/sources.list.d/qgis.list \
       && apt-get update \
       && apt-get install --no-install-recommends --no-install-suggests --allow-unauthenticated -y \
@@ -75,6 +75,7 @@ it. To do so create a directory :file:`qgis-server` and within its directory:
   ENV QGIS_SERVER_LOG_LEVEL 2
   
   COPY cmd.sh /home/qgis/cmd.sh
+  RUN chmod -R 777 /home/qgis/cmd.sh
   RUN chown qgis:qgis /home/qgis/cmd.sh
   
   USER qgis
@@ -111,6 +112,15 @@ To run the server you will need a QGIS project file. You can use one of yours or
 To do so, create a directory :file:`data` within the directory
 :file:`qgis-server` and copy your file in it. To comply with the following
 explanations, rename it to :file:`osm.qgs`.
+
+.. note::
+
+  You may need to add advertised URLs under the :guilabel:`QGIS Server` tab of the
+  :menuselection:`Project --> Properties` if the GetCapabilites are broken.
+  For example if your server is exposed on port 8080, you will put this for
+  advertised URL ``http://localhost:8080/qgis-server/``. More information
+  available in section :ref:`Creatingwmsfromproject` and subsequent.
+
 
 Now, you can run the server with:
 
@@ -294,17 +304,17 @@ Installation
 
 If you have a **Docker Desktop** installation, using Kubernetes (aka
 k8s) is pretty straight forward:
-`enable k8s <https://docs.docker.com/get-started/orchestration/#enable-Kubernetes>`_. 
+`enable k8s <https://docs.docker.com/get-started/orchestration/#enable-kubernetes>`_.
 
 If not, follow the
-`minikube tutorial <https://Kubernetes.io/docs/tutorials/hello-minikube/>`_
+`minikube tutorial <https://kubernetes.io/docs/tutorials/hello-minikube/>`_
 or
-`microk8s for Ubuntu <https://ubuntu.com/tutorials/install-a-local-Kubernetes-with-microk8s>`_.
+`microk8s for Ubuntu <https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s>`_.
 
 As Kubernetes installation can be really complex, we will only focus
 on aspects used by this demo.
 For further / deeper information, check the
-`official documentation <https://Kubernetes.io/docs/home/>`_. 
+`official documentation <https://kubernetes.io/docs/home/>`_.
 
 microk8s
 """"""""

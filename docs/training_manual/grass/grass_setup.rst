@@ -144,7 +144,7 @@ you will see the |grassMapsetOpen| icon next to the Mapset that is opened.
    :align: center
 
 .. note:: You will see a replication of the GRASS Location as normal folder:
-  GRASS ``Mapset`` data are those within the |grass| folder
+  GRASS ``Mapset`` data are those within the |grassLogo| folder
 
 You can easily **drag and drop** layers from a folder to the GRASS Mapset.
 
@@ -241,8 +241,6 @@ We are going to import in the GRASS Mapset the layer |srtmFileName|.
 #. You may now remove the original |srtmFileName| layer.
 
 
-.. _backlink-grass_add_to_mapset:
-
 |basic| |TY| Add Layers to Mapset
 -------------------------------------------------------------------------------
 Try to import in the GRASS Mapset the vector layers :file:`water.shp` and
@@ -250,8 +248,12 @@ Try to import in the GRASS Mapset the vector layers :file:`water.shp` and
 for :file:`rivers` rename the imported layer as :file:`g_water` and :file:`g_places`
 to avoid confusion
 
-:ref:`Check your results <grass_add_to_mapset>`
+.. admonition:: Answer
+   :class: dropdown
 
+   You can add layers (both vector and raster) into a GRASS Mapset by drag and
+   drop them in the Browser (see :ref:`grass_browser`) or by using the
+   ``v.in.gdal.qgis`` for vector and ``r.in.gdal.qgis`` for raster layers.
 
 |basic| Open an existing GRASS Mapset
 -------------------------------------------------------------------------------
@@ -292,7 +294,7 @@ Even faster and easier is opening a ``Mapset`` using the QGIS Browser:
 #. Close the Mapset (if it is open) by clicking on the :guilabel:`Close Mapset`
    button of the :guilabel:`GRASS Tools` window.
 #. In the QGIS Browser, browse to the folder of the GRASS database.
-#. Right click on the Mapset (remember, the Mapset has the |grass| GRASS icon
+#. Right click on the Mapset (remember, the Mapset has the |grassLogo| GRASS icon
    next to it). You will see some options.
 #. Click on :guilabel:`Open mapset`:
 
@@ -331,7 +333,7 @@ operations that GRASS offers.
 .. |TY| replace:: Try Yourself
 .. |WN| replace:: What's Next?
 .. |basic| image:: /static/common/basic.png
-.. |grass| image:: /static/common/grasslogo.png
+.. |grassLogo| image:: /static/common/grasslogo.png
    :width: 1.5em
 .. |grassMapsetOpen| image:: /static/common/grass_mapset_open.png
    :width: 1.5em

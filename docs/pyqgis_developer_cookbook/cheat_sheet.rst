@@ -1,5 +1,3 @@
-.. _cheat-sheet:
-
 .. highlight:: python
    :linenothreshold: 5
 
@@ -19,9 +17,15 @@
 
     iface.attributesToolBar.return_value = toolbar
 
-The code snippets on this page need the following imports if you're outside the pyqgis console:
+.. _cheat-sheet:
 
-.. testcode:: cheat_sheet
+**********************
+Cheat sheet for PyQGIS
+**********************
+
+.. hint:: The code snippets on this page need the following imports if you're outside the pyqgis console:
+
+  .. testcode:: cheat_sheet
 
     from qgis.PyQt.QtCore import (
         QRectF,
@@ -36,15 +40,11 @@ The code snippets on this page need the following imports if you're outside the 
         QgsLayerTreeView,
     )
 
-
-**********************
-Cheat sheet for PyQGIS
-**********************
-
 .. only:: html
 
    .. contents::
       :local:
+
 
 User Interface
 ==============
@@ -93,7 +93,7 @@ Settings
 .. testoutput:: cheat_sheet
   :hide:
 
-  qgis/symbolsListGroupsIndex
+  ...
 
 Toolbars
 ========
@@ -400,12 +400,14 @@ Otherwise
 
 .. testcode:: cheat_sheet
 
+    from qgis.core import QgsDataProvider
+
     fileName = "testdata/sublayers.gpkg"
     layer = QgsVectorLayer(fileName, "test", "ogr")
     subLayers = layer.dataProvider().subLayers()
 
     for subLayer in subLayers:
-        name = subLayer.split('!!::!!')[1]
+        name = subLayer.split(QgsDataProvider.SUBLAYER_SEPARATOR)[1]
         uri = "%s|layername=%s" % (fileName, name,)
         # Create layer
         sub_vlayer = QgsVectorLayer(uri, name, 'ogr')
@@ -480,7 +482,7 @@ Advanced TOC
    :hide:
 
    <qgis._core.QgsLayerTree object at 0x7f068bbc0c18>
-   [<qgis._core.QgsLayerTreeGroup object at 0x7f068bbc01f8>]
+   [<QgsLayerTreeGroup: My Group>]
 
 **Access the first child node**
 
@@ -538,7 +540,7 @@ Advanced TOC
 
 .. testoutput:: cheat_sheet
 
-    <qgis._core.QgsLayerTreeGroup object at 0x7fd75560cee8>
+    <QgsLayerTreeGroup: My Group>
 
 **Find layer by id**
 
@@ -548,7 +550,7 @@ Advanced TOC
 
 .. testoutput:: cheat_sheet
 
-    <qgis._core.QgsLayerTreeLayer object at 0x7f56087af288>
+    <QgsLayerTreeLayer: layer name you like>
 
 **Add layer**
 
@@ -604,12 +606,17 @@ Advanced TOC
     myGroup.insertChildNode(0, myLayer)
     parent.removeChildNode(myOriginalLayer)
 
-**Changing visibility**
+.. index:: Toggle layers
+
+**Toggling active layer visibility**
 
 .. testcode:: cheat_sheet
 
-    myGroup.setItemVisibilityChecked(False)
-    myLayer.setItemVisibilityChecked(False)
+  root = QgsProject.instance().layerTreeRoot()
+  node = root.findLayer(layer.id())
+  new_state = Qt.Checked if node.isVisible() == Qt.Unchecked else Qt.Unchecked
+  node.setItemVisibilityChecked(new_state)
+
 
 **Is group selected**
 
@@ -649,7 +656,7 @@ Advanced TOC
     root = QgsProject.instance().layerTreeRoot()
 
     layer = QgsProject.instance().mapLayersByName('layer name you like')[0]
-    node = root.findLayer( layer.id())
+    node = root.findLayer(layer.id())
 
     index = model.node2index( node )
     ltv.setRowHidden( index.row(), index.parent(), True )

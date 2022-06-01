@@ -17,12 +17,15 @@ algorithms.
      cartography
      database
      filetools
+     gps
      interpolation
      layertools
+     mesh
      modelertools
      networkanalysis
      plots
      rasteranalysis
+     rastercreation
      rasterterrainanalysis
      rastertools
      vectoranalysis
@@ -32,3 +35,4 @@ algorithms.
      vectoroverlay
      vectorselection
      vectortable
+     vectortiles

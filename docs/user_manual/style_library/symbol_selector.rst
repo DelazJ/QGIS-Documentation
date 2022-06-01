@@ -40,8 +40,8 @@ symbol properties change.
 Depending on the level selected in the symbol tree items, various tools are
 made available to help you manage the tree:
 
-* |signPlus| add new symbol layer: you can stack as many symbols as you want
-* |signMinus| remove the selected symbol layer
+* |symbologyAdd| add new symbol layer: you can stack as many symbols as you want
+* |symbologyRemove| remove the selected symbol layer
 * lock colors of symbol layer: a |locked| locked color stays unchanged when
   user changes the color at the global (or upper) symbol level
 * |duplicateLayer| duplicate a (group of) symbol layer(s)
@@ -148,7 +148,7 @@ regardless it's of marker, line or fill sub-type:
 * :guilabel:`Units`: it can be **Millimeters**, **Points**, **Pixels**,
   **Meters at Scale**, **Map units** or **Inches** (see :ref:`unit_selector`
   for more details)
-* the |dataDefined| :sup:`data-defined override` widget near almost all options,
+* the |dataDefine| :sup:`Data-defined override` widget near almost all options,
   extending capabilities of customizing each symbol (see :ref:`data_defined` for
   more information)
 * the |checkbox| :guilabel:`Enable symbol layer` option controls the symbol layer's
@@ -187,6 +187,20 @@ Appropriate for point geometry features, marker symbols have several
 
      Designing a Simple Marker Symbol
 
+  The simple marker symbol layer type has the following properties:
+
+  * :guilabel:`Size` in various supported units
+  * :guilabel:`Fill color`
+  * :guilabel:`Stroke color`, :guilabel:`Stroke style` from a predefined
+    list and :guilabel:`Stroke size`
+  * :guilabel:`Join style`: it can be **Bevel**, **Miter** or **Round**
+  * :guilabel:`Cap style`: it can be **Square**, **Flat** or **Round**
+  * :guilabel:`Rotation`
+  * :guilabel:`Offset` in :guilabel:`X` and :guilabel:`Y` directions
+    from the feature
+  * :guilabel:`Anchor point`: defining the quadrant point on the symbol to settle
+    as placement origin. This is the point the :guilabel:`Offset` is applied on.
+
 * **Ellipse marker**: a simple marker symbol layer, with customizable width and
   height
 * **Filled marker**: similar to the simple marker symbol layer, except that it
@@ -205,11 +219,18 @@ Appropriate for point geometry features, marker symbols have several
 
 * **Geometry generator** (see :ref:`geometry_generator_symbol`)
 
+.. _mask_marker_symbol:
+
+* **Mask**: its sub-symbol defines a mask shape whose color property will be
+  ignored and only the opacity will be used. This is convenient when the marker
+  symbol overlaps with labels or other symbols whose colors are close,
+  making it hard to decipher. More details at :ref:`vector_mask_menu`.
+
 .. _raster_image_marker:
 
 * **Raster image marker**: use an image (:file:`PNG`, :file:`JPG`, :file:`BMP` ...)
   as marker symbol. The image can be a file on the disk, a remote URL
-  or embedded in the style database (:ref:`more details <svg_paths>`).
+  or embedded in the style database (:ref:`more details <embedded_file_selector>`).
   Width and height of the image can be set independently or using the
   |lockedGray| :sup:`Lock aspect ratio`. The size can be set using any of the
   :ref:`common units <unit_selector>` or as a percentage of the image's original
@@ -223,7 +244,10 @@ Appropriate for point geometry features, marker symbols have several
   symbol. Width and height of the symbol can be set independently or using the
   |lockedGray| :sup:`Lock aspect ratio`. Each SVG file colors and stroke can
   also be adapted. The image can be a file on the disk, a remote URL or
-  embedded in the style database (:ref:`more details <svg_paths>`).
+  embedded in the style database (:ref:`more details <embedded_file_selector>`).
+
+  The symbol can also be set with :guilabel:`Dynamic SVG parameters`.
+  See :ref:`svg_symbol` section to parametrize an SVG symbol.
 
   .. note:: SVG version requirements
 
@@ -236,20 +260,6 @@ Appropriate for point geometry features, marker symbols have several
    Some features not included in these specifications might not be rendered
    correctly in QGIS.
 
-  .. tip:: Enable SVG marker symbol customization
-
-   To have the possibility to change the colors of a :guilabel:`SVG marker`,
-   you have to add the placeholders ``param(fill)`` for fill color,
-   ``param(outline)`` for stroke color and ``param(outline-width)`` for stroke
-   width. These placeholders can optionally be followed by a default value, e.g.:
-
-   .. code-block:: xml
-
-    <svg width="100%" height="100%">
-    <rect fill="param(fill) #ff0000" stroke="param(outline) #00ff00" stroke-width="param(outline-width) 10" width="100" height="100">
-    </rect>
-    </svg>
-
 
 .. _vector_line_symbols:
 
@@ -261,7 +271,7 @@ layer types:
 
 .. _simple_line_symbol:
 
-* **Simple line** (default): available settings are:
+* **Simple line** (default)
 
   .. _figure_simple_line_symbol:
 
@@ -273,29 +283,97 @@ layer types:
   The simple line symbol layer type has many of the same properties as the
   :ref:`simple marker symbol <simple_marker_symbol>`, and in addition:
 
-  * :guilabel:`Cap style`
   * |checkbox| :guilabel:`Use custom dash pattern`: overrides the
     :guilabel:`Stroke style` setting with a custom dash.
+  * :guilabel:`Pattern offset`: the positioning of the dashes/spaces in the line
+    can be tweaked, so that they can be placed at nicer positions to account for corners
+    in the line (also can be used potentially to "align" adjacent dash pattern borders)
+  * |checkbox| :guilabel:`Align dash pattern to line length`: the dash pattern
+    length will be adjusted so that the line will end with a complete dash 
+    element, instead of a gap.
+  * |checkbox| :guilabel:`Tweak dash pattern at sharp corners`: dynamically 
+    adjusts the dash pattern placement so that sharp corners are represented
+    by a full dash element coming into and out of the sharp corner.
+    Dependent on :guilabel:`Align dash pattern to line length`.
+  * :guilabel:`Trim lines` from :guilabel:`Start` and/or :guilabel:`End`:
+    allows for the line rendering to trim off the first x mm and last y mm
+    from the actual line string when drawing the line.
+    It can be used e.g. when creating complex symbols where a line layer should
+    not overlap marker symbol layers placed at the start and end of the line.
+    The start/end trim distance supports a range of :ref:`units  <unit_selector>`,
+    including percentage of the overall line length, and can be data defined for
+    extra control.
 
 .. _arrow_symbol:
 
 * **Arrow**: draws lines as curved (or not) arrows with a single or a double
-  head with configurable width, length and thickness. To create a curved arrow
-  the line feature must have at least three vertices. It also uses a
-  :ref:`fill symbol <vector_fill_symbols>` such as gradients or shapeburst
-  to render the arrow body. Combined with the geometry generator, this type of
-  layer symbol helps you representing flow maps.
+  head with configurable (and data-defined):
+
+  * :guilabel:`Head type`
+  * :guilabel:`Arrow type`
+  * :guilabel:`Arrow width`
+  * :guilabel:`Arrow width at start`
+  * :guilabel:`Head length`
+  * :guilabel:`Head thickness`
+  * :guilabel:`Offset`
+
+  It is possible to create |checkbox| :guilabel:`Curved arrows`
+  (the line feature must have at least three vertices) and
+  |checkbox| :guilabel:`Repeat arrow on each segment`.
+  It also uses a :ref:`fill symbol <vector_fill_symbols>` such as gradients or
+  shapeburst to render the arrow body. Combined with the geometry generator,
+  this type of layer symbol helps you representing flow maps.
 * **Geometry generator** (see :ref:`geometry_generator_symbol`)
+
+.. _interpolated_line_symbol:
+
+* **Interpolated line**: allows to render a line whose :guilabel:`Stroke width`
+  and/or :guilabel:`Color` may be constant (given a :guilabel:`Fixed width` and
+  :guilabel:`Single color` parameters) or vary along the geometry.
+  When varying, necessary inputs are:
+
+  * :guilabel:`Start value` and :guilabel:`End value`: Values that will be used
+    for interpolation at the extremities of the features geometry.
+    They can be fixed values, feature's attributes or based on an expression.
+  * :guilabel:`Min. value` and :guilabel:`Max. value`: Values between which
+    the interpolation is performed.
+    Press the |refresh| :sup:`Load` button to automatically fill them based
+    on the minimum and maximum start/end values applied to the layer.
+  * Only available for the stroke option:
+
+    * :guilabel:`Min. width` and :guilabel:`Max. width`: define the range of
+      the varying width. :guilabel:`Min. width` is assigned to the
+      :guilabel:`Min. value` and :guilabel:`Max. width` to the
+      :guilabel:`Max. value`.
+      A :ref:`unit <unit_selector>` can be associated.
+    * |checkbox| :guilabel:`Use absolute value`: only consider absolute value
+      for interpolation (negative values are used as positive).
+    * |checkbox| :guilabel:`Ignore out of range`: by default, when
+      the ``[start value - end value]`` range of a feature is not included in
+      the ``[min. value - max. value]`` range, the out-of-bounds parts of
+      the feature's geometry are rendered with the min or max width.
+      Check this option to not render them at all.
+  * For varying color, you can use any of the interpolation methods of
+    :ref:`color ramp classification <color_ramp_shader>`
+
+  .. _figure_interpolated_line_symbol:
+
+  .. figure:: img/interpolatedLineSymbol.png
+     :align: center
+     :width: 100%
+
+     Examples of interpolated lines
 
 .. _marker_line_symbol:
 
 * **Marker line**: repeats a :ref:`marker symbol
   <vector_marker_symbols>` over the length of a line.
 
-  * The markers placement can be at a regular distance or based on the line
-    geometry: first, last or each vertex, on the central point of the line
+  * The :guilabel:`Marker placement` can be at a regular distance or based on the
+    line geometry: first, last or each vertex, on the central point of the line
     or of each segment, or on every curve point.
-  * The markers placement can also be given an offset along the line
+  * :guilabel:`Offset along the line`: the markers placement can also be given
+    an offset from the start, along the line
   * The |checkbox| :guilabel:`Rotate marker to follow line direction` option
     sets whether each marker symbol should be oriented relative to the line
     direction or not.
@@ -309,7 +387,8 @@ layer types:
     This has the effect of smoothing (or removing) any tiny local deviations
     from the overall line direction, resulting in much nicer visual orientations
     of the marker line symbols.
-  * The marker line can also be offset from the line itself.
+  * :guilabel:`Line offset`: the marker symbols can also be offset from the line
+    feature.
 
 .. _hashed_line_symbol:
 
@@ -330,6 +409,37 @@ layer types:
      :width: 100%
 
      Examples of hashed lines
+
+.. _raster_line_symbol:
+
+* **Raster line**: renders and repeats a raster image following the length 
+  of a line feature shape. The :guilabel:`Stroke width`, :guilabel:`Offset`,
+  :guilabel:`Join style`, :guilabel:`Cap style` and :guilabel:`Opacity`
+  can be adjusted.
+
+  .. _figure_raster_line_symbol:
+
+  .. figure:: img/rasterLineSymbol.png
+     :align: center
+     :width: 100%
+
+     Examples of raster lines
+
+.. _lineburst_symbol:
+
+* **Lineburst**: renders a gradient along the width of a line.
+  You can choose between :guilabel:`Two color` or :guilabel:`Color ramp` and
+  the :guilabel:`Stroke width`, :guilabel:`Offset`,
+  :guilabel:`Join style`, :guilabel:`Cap style` and :guilabel:`Opacity`
+  can be adjusted.
+
+  .. _figure_lineburst_symbol:
+
+  .. figure:: img/lineburstSymbol.png
+     :align: center
+     :width: 100%
+
+     Examples of lineburst lines
 
 
 .. _vector_fill_symbols:
@@ -359,8 +469,8 @@ symbol layer types:
   
   You can:
   
-  * :guilabel:`Force point inside polygon`
-  * :guilabel:`Draw point on every part of multi-part feature` or place
+  * :guilabel:`Force placement of markers inside polygons`
+  * :guilabel:`Draw markers on every part of multi-part features` or place
     the point only on its biggest part
   * display the marker symbol(s) in whole or in part, keeping parts overlapping
     the current feature geometry (:guilabel:`Clip markers to polygon boundary`)
@@ -372,14 +482,15 @@ symbol layer types:
   simple two color gradients or a predefined :ref:`gradient color ramp
   <color-ramp>` to fill polygons. The gradient can be rotated and applied on
   a single feature basis or across the whole map extent. Also start and end
-  points can be set via coordinates or using the centroid (of feature or map);
+  points can be set via coordinates or using the centroid (of feature or map).
+  A data-defined offset can be defined.
 * **Line pattern fill**: fills the polygon with a hatching pattern of
   :ref:`line symbol layer <vector_line_symbols>`. You can set a rotation, the
-  spacing between lines and an offset from the feature boundary;
+  spacing between lines and an offset from the feature boundary.
 * **Point pattern fill**: fills the polygon with a hatching pattern of 
   :ref:`marker symbol layer <vector_marker_symbols>`. You can set the distance
-  and a displacement between rows of markers, and an offset from the
-  feature boundary; 
+  and a displacement between rows of markers, an offset from the
+  feature boundary and the angle of the pattern.
 * **Random marker fill**: fills the polygon with a :ref:`marker symbol 
   <vector_marker_symbols>` placed at random locations within the polygon
   boundary. You can set:
@@ -395,30 +506,35 @@ symbol layer types:
 
 * **Raster image fill**: fills the polygon with tiles from a raster image (:file:`PNG`
   :file:`JPG`, :file:`BMP` ...). The image can be a file on the disk, a remote URL
-  or an embedded file encoded as a string (:ref:`more details <svg_paths>`).
+  or an embedded file encoded as a string (:ref:`more details <embedded_file_selector>`).
   Options include (data defined) opacity, image width, coordinate mode (object
   or viewport), rotation and offset. The image width can be set using any of the
   :ref:`common units <unit_selector>` or as a percentage of the original size.
-* **SVG fill**: fills the polygon using :ref:`SVG markers <svg_marker>`;
+* **SVG fill**: fills the polygon using :ref:`SVG markers <svg_marker>`
+  of a given size (:guilabel:`Texture width`).
 * **Shapeburst fill**: buffers a gradient fill, where a gradient
   is drawn from the boundary of a polygon towards the polygon's centre.
   Configurable parameters include distance from the boundary to shade, use of
   color ramps or simple two color gradients, optional blurring of the fill and
-  offsets;
+  offsets.
 * **Outline: Arrow**: uses a line :ref:`arrow symbol <arrow_symbol>` layer to
-  represent the polygon boundary;
+  represent the polygon boundary. The settings for the outline arrow are the same
+  as for arrow line symbols.
 * **Outline: Hashed line**: uses a :ref:`hash line symbol <hashed_line_symbol>`
-  layer to represent the polygon boundary (the interior rings, the
-  exterior ring or all the rings).
+  layer to represent the polygon boundary (:guilabel:`Rings`) which can be the
+  interior rings only, the exterior ring only or all the rings).
+  The other settings for the outline hashed line are the same as for hashed line symbols.
 * **Outline: Marker line**: uses a :ref:`marker line symbol <marker_line_symbol>`
-  layer to represent the
-  polygon boundary (the interior rings, the exterior ring or all the rings).
+  layer to represent the polygon boundary (:guilabel:`Rings`) which can be the
+  interior rings only, the exterior ring only or all the rings).
+  The other settings for the outline marker line are same as for marker line symbols.
 * **Outline: simple line**: uses a :ref:`simple line symbol <simple_line_symbol>`
-  layer to represent the
-  polygon boundary (the interior rings, the exterior ring or all the rings).
+  layer to represent the polygon boundary (:guilabel:`Rings`) which can be the
+  interior rings only, the exterior ring only or all the rings).
   The :guilabel:`Draw line only inside polygon` option displays the
   polygon borders inside the polygon and can be useful to clearly represent
   adjacent polygon boundaries.
+  The other settings for the outline simple line are the same as for simple line symbols.
 
 .. note::
 
@@ -426,6 +542,41 @@ symbol layer types:
  clipping of lines/polygons to the canvas extent. In some cases this clipping
  results in unfavourable symbology (e.g. centroid fills where the centroid must
  always be the actual feature's centroid).
+
+.. _svg_symbol:
+
+Parametrizable SVG
+..................
+
+You have the possibility to change the colors of a :guilabel:`SVG marker`.
+You have to add the placeholders ``param(fill)`` for fill color,
+``param(outline)`` for stroke color and ``param(outline-width)`` for stroke
+width. These placeholders can optionally be followed by a default value, e.g.:
+
+.. code-block:: xml
+
+    <svg width="100%" height="100%">
+    <rect fill="param(fill) #ff0000" stroke="param(outline) #00ff00" stroke-width="param(outline-width) 10" width="100" height="100">
+    </rect>
+    </svg>
+
+More generally, SVG can be freely parametrized using ``param(param_name)``.
+This param can either be used as an attribute value or a node text:
+
+.. code-block:: xml
+
+    <g stroke-width=".265" text-anchor="middle" alignment-baseline="param(align)">
+      <text x="98" y="147.5" font-size="6px">param(text1)</text>
+      <text x="98" y="156.3" font-size="4.5px">param(text2)</text>
+    </g>
+
+The parameters can then be defined as expressions in the :guilabel:`Dynamic SVG parameters` table.
+
+.. figure:: img/svg_parameters.png
+   :align: center
+
+   Dynamic SVG parameters table
+
 
 .. _geometry_generator_symbol: 
  
@@ -435,8 +586,12 @@ The Geometry Generator
 Available with all types of symbols, the :guilabel:`geometry generator` symbol
 layer allows to use :ref:`expression syntax <functions_list>` to generate a
 geometry on the fly during the rendering process. The resulting geometry does
-not have to match with the original geometry type and you can add several
-differently modified symbol layers on top of each other.
+not have to match with the original :guilabel:`Geometry type` and you can add
+several differently modified symbol layers on top of each other.
+
+A :guilabel:`Units` property can be set: when the geometry generator symbol
+is not applied to a layer (e.g., it is used on a layout item), this allows
+more control over the generated output.
 
 Some examples:
 
@@ -499,7 +654,7 @@ viewing the field.
 
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-.. |dataDefined| image:: /static/common/mIconDataDefine.png
+.. |dataDefine| image:: /static/common/mIconDataDefine.png
    :width: 1.5em
 .. |duplicateLayer| image:: /static/common/mActionDuplicateLayer.png
    :width: 1.5em
@@ -513,11 +668,13 @@ viewing the field.
    :width: 1.5em
 .. |paintEffects| image:: /static/common/mIconPaintEffects.png
    :width: 1.5em
+.. |refresh| image:: /static/common/mActionRefresh.png
+   :width: 1.5em
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em
-.. |signMinus| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
 .. |styleManager| image:: /static/common/mActionStyleManager.png
+   :width: 1.5em
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
+   :width: 1.5em
+.. |symbologyRemove| image:: /static/common/symbologyRemove.png
    :width: 1.5em

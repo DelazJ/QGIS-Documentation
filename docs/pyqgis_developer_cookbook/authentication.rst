@@ -1,5 +1,3 @@
-.. index:: Plugins; Developing, Python; Authentication infrastructure
-
 .. highlight:: python
    :linenothreshold: 5
 
@@ -7,9 +5,15 @@
 
     iface = start_qgis()
 
-The code snippets on this page need the following imports if you're outside the pyqgis console:
+.. index:: Plugins; Developing, Python; Authentication infrastructure
+.. _Authentication_Infrastructure:
 
-.. testcode:: auth
+*****************************
+Authentication infrastructure
+*****************************
+.. hint:: The code snippets on this page need the following imports if you're outside the pyqgis console:
+
+  .. testcode:: auth
 
     from qgis.core import (
       QgsApplication,
@@ -34,15 +38,10 @@ The code snippets on this page need the following imports if you're outside the 
 
     from qgis.PyQt.QtNetwork import QSslCertificate
 
-.. _Authentication_Infrastructure:
+.. only:: html
 
-
-*****************************
-Authentication infrastructure
-*****************************
-
-.. contents::
-   :local:
+   .. contents::
+      :local:
 
 
 .. _Authentication_Introduction:
@@ -142,13 +141,13 @@ understand the snippet.
   # QgsAuthManager.init() is executed during QGIS application init and hence
   # you do not normally need to call it directly.
   if authMgr.authenticationDatabasePath():
-      # already initilised => we are inside a QGIS app.
+      # already initialized => we are inside a QGIS app.
       if authMgr.masterPasswordIsSet():
           msg = 'Authentication master password not recognized'
           assert authMgr.masterPasswordSame("your master password"), msg
       else:
           msg = 'Master password could not be set'
-          # The verify parameter check if the hash of the password was
+          # The verify parameter checks if the hash of the password was
           # already saved in the authentication db
           assert authMgr.setMasterPassword("your master password",
                                             verify=True), msg
@@ -180,8 +179,8 @@ an organization.
 :class:`QgsAuthMethodConfig <qgis.core.QgsAuthMethodConfig>` is the base class
 for any :term:`Authentication Method`.
 Any Authentication Method sets a configuration hash map where authentication
-informations will be stored. Hereafter an useful snippet to store PKI-path
-credentials for an hypothetic alice user:
+information will be stored. Hereafter a useful snippet to store PKI-path
+credentials for a hypothetical alice user:
 
 .. testcode:: auth
 
@@ -291,7 +290,7 @@ enabled service like a WMS or WFS or to a DB connection.
   Take into account that not all QGIS data providers are integrated with the
   Authentication infrastructure. Each authentication method, derived from the
   base class :class:`QgsAuthMethod <qgis.core.QgsAuthMethod>`
-  and support a different set of Providers. For example the :meth:`certIdentity ()
+  and support a different set of Providers. For example the :meth:`certIdentity()
   <qgis.core.QgsAuthManager.certIdentity>` method supports the following list
   of providers:
 
@@ -328,7 +327,8 @@ URL like in the following snippet:
 .. testoutput:: auth
     :hide:
 
-    WMS(1): Download of capabilities failed: network request update failed for authentication config
+    WMS(1): Download of capabilities failed:
+    network request update failed for authentication config
 
 In the upper case, the ``wms`` provider will take care to expand ``authcfg``
 URI parameter with credential just before setting the HTTP connection.
@@ -351,7 +351,8 @@ class, is used to set a data source in the following way:
 .. testoutput:: auth
     :hide:
 
-    WMS(1): Download of capabilities failed: network request update failed for authentication config
+    WMS(1): Download of capabilities failed:
+    network request update failed for authentication config
 
 .. note::
 

@@ -7,9 +7,14 @@
 
     iface = start_qgis()
 
-The code snippets on this page need the following imports if you're outside the pyqgis console:
 
-.. testcode:: communicating
+***************************
+Communicating with the user
+***************************
+
+.. hint:: The code snippets on this page need the following imports if you're outside the pyqgis console:
+
+  .. testcode:: communicating
 
     from qgis.core import (
         QgsMessageLog,
@@ -28,14 +33,10 @@ The code snippets on this page need the following imports if you're outside the 
         QDialogButtonBox,
     )
 
+.. only:: html
 
-
-***************************
-Communicating with the user
-***************************
-
-.. contents::
-   :local:
+   .. contents::
+      :local:
 
 This section shows some methods and elements that should be used to communicate
 with the user, in order to keep consistency in the User Interface.
@@ -204,6 +205,7 @@ example:
     :hide:
 
     .
+    .
 
 
 Logging
@@ -271,7 +273,7 @@ The python built in logging module
 The basicConfig method configures the basic setup of the logging.
 In the above code the filename, logging level and the format are defined.
 The filename refers to where to write the logfile to, the logging level defines what
-levels to output and the format defines the format in which each message is output. 
+levels to output and the format defines the format in which each message is output.
 
 .. code-block::
 
@@ -279,7 +281,7 @@ levels to output and the format defines the format in which each message is outp
   2020-10-08 13:14:42,998 - root - DEBUG - This logging debug text goes into the file as well
 
 If you want to erase the log file every time you execute your script you can do something like:
-   
+
 .. code-block:: python
 
    if os.path.isfile(logfilename):

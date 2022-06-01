@@ -43,7 +43,7 @@ with the following line:
 
 Now, there is basically just one (interesting) thing you can do with
 that from the console: execute an algorithm. That is done using the
-:meth:`run <qgis.core.QgsProcessingAlgorithm.run>` method, which
+:meth:`run() <qgis.core.QgsProcessingAlgorithm.run>` method, which
 takes the name of the algorithm to execute
 as its first parameter, and then a variable number of additional
 parameters depending on the requirements of the algorithm. So the
@@ -231,7 +231,8 @@ Where parameters is a dictionary of parameters that depend on the
 algorithm you want to run, and is exactly the list that the
 ``algorithmHelp()`` method gives you.
 
-::
+.. code-block:: python
+   :linenos:
 
     >>> processing.run("native:buffer", {'INPUT': '/data/lines.shp',
                   'DISTANCE': 100.0,
@@ -308,14 +309,16 @@ appended to the given file path.
 
 Unlike when an algorithm is executed from the toolbox, outputs are not
 added to the map canvas if you execute that same algorithm from the
-Python console using ``run()``, but ``runAndLoadResults()`` will do
-that.
+Python console using :meth:`run() <qgis.core.QgsProcessingAlgorithm.run>`,
+but ``runAndLoadResults()`` will do that.
 
-The ``run`` method returns a dictionary with one or more output names (the
+The :meth:`run() <qgis.core.QgsProcessingAlgorithm.run>` method returns
+a dictionary with one or more output names (the
 ones shown in the algorithm description) as keys and the file paths of
 those outputs as values:
 
-::
+.. code-block:: python
+   :linenos:
 
     >>> myresult = processing.run("native:buffer", {'INPUT': '/data/lines.shp',
                   'DISTANCE': 100.0,
@@ -330,7 +333,8 @@ those outputs as values:
 
 You can load feature output by passing the corresponding file paths to
 the ``load()`` method.
-Or you could use ``runAndLoadResults()`` instead of ``run()`` to load
+Or you could use ``runAndLoadResults()`` instead of
+:meth:`run() <qgis.core.QgsProcessingAlgorithm.run>` to load
 them immediately.
 
 If you want to open an algorithm dialog from the console you can use the 
@@ -338,7 +342,8 @@ If you want to open an algorithm dialog from the console you can use the
 name, but you can also define the dictionary of parameters so that the dialog 
 will be filled automatically:
 
-::
+.. code-block:: python
+   :linenos:
 
     >>> my_dialog = processing.createAlgorithmDialog("native:buffer", {
                   'INPUT': '/data/lines.shp',
@@ -353,7 +358,8 @@ will be filled automatically:
 
 The ``execAlgorithmDialog`` method opens the dialog immediately:
 
-::
+.. code-block:: python
+   :linenos:
 
     >>> processing.execAlgorithmDialog("native:buffer", {
                   'INPUT': '/data/lines.shp',
@@ -393,6 +399,7 @@ distance on a vector layer that is specified by the user, after first
 smoothing the layer.
 
 .. code-block:: python
+  :linenos:
 
   from qgis.core import (QgsProcessingAlgorithm, 
          QgsProcessingParameterNumber,
@@ -455,72 +462,75 @@ After doing the necessary imports, the following
 :class:`QgsProcessingAlgorithm <qgis.core.QgsProcessingAlgorithm>`
 functions are specified:
 
-* :meth:`name <qgis.core.QgsProcessingAlgorithm.name>`: The id of the
+* :meth:`name() <qgis.core.QgsProcessingAlgorithm.name>`: The id of the
   algorithm (lowercase).
-* :meth:`displayName <qgis.core.QgsProcessingAlgorithm.displayName>`:
+* :meth:`displayName() <qgis.core.QgsProcessingAlgorithm.displayName>`:
   A human readable name for the algorithm.
-* :meth:`createInstance <qgis.core.QgsProcessingAlgorithm.createInstance>`:
+* :meth:`createInstance() <qgis.core.QgsProcessingAlgorithm.createInstance>`:
   Create a new instance of the algorithm class.
-* :meth:`initAlgorithm <qgis.core.QgsProcessingAlgorithm.initAlgorithm>`:
+* :meth:`initAlgorithm() <qgis.core.QgsProcessingAlgorithm.initAlgorithm>`:
   Configure the parameterDefinitions and outputDefinitions.
 
   Here you describe the parameters and output of the algorithm.  In
   this case, a feature source for the input, a feature sink for
   the result and a number for the buffer distance.
-* :meth:`processAlgorithm <qgis.core.QgsProcessingAlgorithm.processAlgorithm>`:
+* :meth:`processAlgorithm() <qgis.core.QgsProcessingAlgorithm.processAlgorithm>`:
   Do the work.
 
   Here we first run the ``smoothgeometry`` algorithm to smooth the
   geometry, and then we run the ``buffer`` algorithm on the smoothed
   output.
   To be able to run algorithms from within another algorithm we have to
-  define a dummy function for the ``onFinish`` parameter for ``run``.
-  This is the ``no_post_process`` function.
+  set the ``is_child_algorithm`` argument to :const:`True`.
   You can see how input and output parameters are used as parameters
   to the ``smoothgeometry`` and ``buffer`` algorithms.
 
 There are a number of different parameter types available for
 input and output. Below is an alphabetically sorted list:
 
-* :class:`QgsProcessingParameterAggregate <qgis.core.QgsProcessingParameterAggregate>`
-* :class:`QgsProcessingParameterAuthConfig <qgis.core.QgsProcessingParameterAuthConfig>`
-* :class:`QgsProcessingParameterBand <qgis.core.QgsProcessingParameterBand>`
-* :class:`QgsProcessingParameterBoolean <qgis.core.QgsProcessingParameterBoolean>`
-* :class:`QgsProcessingParameterColor <qgis.core.QgsProcessingParameterColor>`
-* :class:`QgsProcessingParameterCoordinateOperation <qgis.core.QgsProcessingParameterCoordinateOperation>`
-* :class:`QgsProcessingParameterCrs <qgis.core.QgsProcessingParameterCrs>`
-* :class:`QgsProcessingParameterDatabaseSchema <qgis.core.QgsProcessingParameterDatabaseSchema>`
-* :class:`QgsProcessingParameterDatabaseTable <qgis.core.QgsProcessingParameterDatabaseTable>`
-* :class:`QgsProcessingParameterDateTime <qgis.core.QgsProcessingParameterDateTime>`
-* :class:`QgsProcessingParameterDistance <qgis.core.QgsProcessingParameterDistance>`
-* :class:`QgsProcessingParameterEnum <qgis.core.QgsProcessingParameterEnum>`
-* :class:`QgsProcessingParameterExpression <qgis.core.QgsProcessingParameterExpression>`
-* :class:`QgsProcessingParameterExtent <qgis.core.QgsProcessingParameterExtent>`
-* :class:`QgsProcessingParameterFeatureSink <qgis.core.QgsProcessingParameterFeatureSink>`
-* :class:`QgsProcessingParameterFeatureSource <qgis.core.QgsProcessingParameterFeatureSource>`
-* :class:`QgsProcessingParameterField <qgis.core.QgsProcessingParameterField>`
-* :class:`QgsProcessingParameterFieldMapping  <qgis.core.QgsProcessingParameterFieldMapping>`
-* :class:`QgsProcessingParameterFile <qgis.core.QgsProcessingParameterFile>`
-* :class:`QgsProcessingParameterFileDestination <qgis.core.QgsProcessingParameterFileDestination>`
-* :class:`QgsProcessingParameterFolderDestination <qgis.core.QgsProcessingParameterFolderDestination>`
-* :class:`QgsProcessingParameterLayout <qgis.core.QgsProcessingParameterLayout>`
-* :class:`QgsProcessingParameterLayoutItem <qgis.core.QgsProcessingParameterLayoutItem>`
-* :class:`QgsProcessingParameterMapLayer <qgis.core.QgsProcessingParameterMapLayer>`
-* :class:`QgsProcessingParameterMapTheme <qgis.core.QgsProcessingParameterMapTheme>`
-* :class:`QgsProcessingParameterMatrix <qgis.core.QgsProcessingParameterMatrix>`
-* :class:`QgsProcessingParameterMeshLayer <qgis.core.QgsProcessingParameterMeshLayer>`
-* :class:`QgsProcessingParameterMultipleLayers <qgis.core.QgsProcessingParameterMultipleLayers>`
-* :class:`QgsProcessingParameterNumber <qgis.core.QgsProcessingParameterNumber>`
-* :class:`QgsProcessingParameterPoint <qgis.core.QgsProcessingParameterPoint>`
-* :class:`QgsProcessingParameterProviderConnection <qgis.core.QgsProcessingParameterProviderConnection>`
-* :class:`QgsProcessingParameterRange <qgis.core.QgsProcessingParameterRange>`
-* :class:`QgsProcessingParameterRasterDestination <qgis.core.QgsProcessingParameterRasterDestination>`
-* :class:`QgsProcessingParameterRasterLayer <qgis.core.QgsProcessingParameterRasterLayer>`
-* :class:`QgsProcessingParameterScale <qgis.core.QgsProcessingParameterScale>`
-* :class:`QgsProcessingParameterString <qgis.core.QgsProcessingParameterString>`
-* :class:`QgsProcessingParameterVectorDestination <qgis.core.QgsProcessingParameterVectorDestination>`
-* :class:`QgsProcessingParameterVectorLayer <qgis.core.QgsProcessingParameterVectorLayer>`
-* :class:`QgsProcessingParameterVectorTileWriterLayers <qgis.core.QgsProcessingParameterVectorTileWriterLayers>`
+.. list-table:: List of input and output algorithm parameter types
+   :class: longtable
+
+   * - :class:`QgsProcessingParameterAggregate <qgis.core.QgsProcessingParameterAggregate>`
+     - :class:`QgsProcessingParameterAuthConfig <qgis.core.QgsProcessingParameterAuthConfig>`
+     - :class:`QgsProcessingParameterBand <qgis.core.QgsProcessingParameterBand>`
+     - :class:`QgsProcessingParameterBoolean <qgis.core.QgsProcessingParameterBoolean>`
+   * - :class:`QgsProcessingParameterColor <qgis.core.QgsProcessingParameterColor>`
+     - :class:`QgsProcessingParameterCoordinateOperation <qgis.core.QgsProcessingParameterCoordinateOperation>`
+     - :class:`QgsProcessingParameterCrs <qgis.core.QgsProcessingParameterCrs>`
+     - :class:`QgsProcessingParameterDatabaseSchema <qgis.core.QgsProcessingParameterDatabaseSchema>`
+   * - :class:`QgsProcessingParameterDatabaseTable <qgis.core.QgsProcessingParameterDatabaseTable>`
+     - :class:`QgsProcessingParameterDateTime <qgis.core.QgsProcessingParameterDateTime>`
+     - :class:`QgsProcessingParameterDistance <qgis.core.QgsProcessingParameterDistance>`
+     - :class:`QgsProcessingParameterEnum <qgis.core.QgsProcessingParameterEnum>`
+   * - :class:`QgsProcessingParameterExpression <qgis.core.QgsProcessingParameterExpression>`
+     - :class:`QgsProcessingParameterExtent <qgis.core.QgsProcessingParameterExtent>`
+     - :class:`QgsProcessingParameterFeatureSink <qgis.core.QgsProcessingParameterFeatureSink>`
+     - :class:`QgsProcessingParameterFeatureSource <qgis.core.QgsProcessingParameterFeatureSource>`
+   * - :class:`QgsProcessingParameterField <qgis.core.QgsProcessingParameterField>`
+     - :class:`QgsProcessingParameterFieldMapping  <qgis.core.QgsProcessingParameterFieldMapping>`
+     - :class:`QgsProcessingParameterFile <qgis.core.QgsProcessingParameterFile>`
+     - :class:`QgsProcessingParameterFileDestination <qgis.core.QgsProcessingParameterFileDestination>`
+   * - :class:`QgsProcessingParameterFolderDestination <qgis.core.QgsProcessingParameterFolderDestination>`
+     - :class:`QgsProcessingParameterLayout <qgis.core.QgsProcessingParameterLayout>`
+     - :class:`QgsProcessingParameterLayoutItem <qgis.core.QgsProcessingParameterLayoutItem>`
+     - :class:`QgsProcessingParameterMapLayer <qgis.core.QgsProcessingParameterMapLayer>`
+   * - :class:`QgsProcessingParameterMapTheme <qgis.core.QgsProcessingParameterMapTheme>`
+     - :class:`QgsProcessingParameterMatrix <qgis.core.QgsProcessingParameterMatrix>`
+     - :class:`QgsProcessingParameterMeshLayer <qgis.core.QgsProcessingParameterMeshLayer>`
+     - :class:`QgsProcessingParameterMultipleLayers <qgis.core.QgsProcessingParameterMultipleLayers>`
+   * - :class:`QgsProcessingParameterNumber <qgis.core.QgsProcessingParameterNumber>`
+     - :class:`QgsProcessingParameterPoint <qgis.core.QgsProcessingParameterPoint>`
+     - :class:`QgsProcessingParameterProviderConnection <qgis.core.QgsProcessingParameterProviderConnection>`
+     - :class:`QgsProcessingParameterRange <qgis.core.QgsProcessingParameterRange>`
+   * - :class:`QgsProcessingParameterRasterDestination <qgis.core.QgsProcessingParameterRasterDestination>`
+     - :class:`QgsProcessingParameterRasterLayer <qgis.core.QgsProcessingParameterRasterLayer>`
+     - :class:`QgsProcessingParameterScale <qgis.core.QgsProcessingParameterScale>`
+     - :class:`QgsProcessingParameterString <qgis.core.QgsProcessingParameterString>`
+   * - :class:`QgsProcessingParameterVectorDestination <qgis.core.QgsProcessingParameterVectorDestination>`
+     - :class:`QgsProcessingParameterVectorLayer <qgis.core.QgsProcessingParameterVectorLayer>`
+     - :class:`QgsProcessingParameterVectorTileWriterLayers <qgis.core.QgsProcessingParameterVectorTileWriterLayers>`
+     -
 
 The first parameter to the constructors is the name of the parameter,
 and the second is the description of the parameter (for the user
@@ -551,19 +561,19 @@ Feedback
 ........
 
 The :class:`feedback <qgis.core.QgsProcessingFeedback>` object passed to
-:meth:`processAlgorithm <qgis.core.QgsProcessingAlgorithm.processAlgorithm>`
+:meth:`processAlgorithm() <qgis.core.QgsProcessingAlgorithm.processAlgorithm>`
 should be used for user feedback / interaction.
-You can use the :meth:`setProgress <qgis.core.QgsFeedback.setProgress>`
+You can use the :meth:`setProgress() <qgis.core.QgsFeedback.setProgress>`
 function of the :class:`feedback <qgis.core.QgsProcessingFeedback>` object to update
 the progress bar (0 to 100) to inform the user about the progress of the
 algorithm. This is very useful if your algorithm takes a long time to complete.
 
 The :class:`feedback <qgis.core.QgsProcessingFeedback>` object provides an
-:meth:`isCanceled <qgis.core.QgsFeedback.isCanceled>` method that
+:meth:`isCanceled() <qgis.core.QgsFeedback.isCanceled>` method that
 should be monitored to enable cancelation of the algorithm by the user.
-The :meth:`pushInfo <qgis.core.QgsProcessingFeedback.pushInfo>` method of
+The :meth:`pushInfo() <qgis.core.QgsProcessingFeedback.pushInfo>` method of
 :class:`feedback <qgis.core.QgsProcessingFeedback>` can be used to send information
-to the user, and :meth:`reportError <qgis.core.QgsProcessingFeedback.reportError>`
+to the user, and :meth:`reportError() <qgis.core.QgsProcessingFeedback.reportError>`
 is handy for pushing non-fatal errors to users.
 
 Algorithms should avoid using other forms of providing feedback to
@@ -602,12 +612,12 @@ As in the case of models, you can create additional documentation for
 your scripts, to explain what they do and how to use them.
 
 :class:`QgsProcessingAlgorithm <qgis.core.QgsProcessingAlgorithm>`
-provides the :meth:`helpString <qgis.core.QgsProcessingAlgorithm.helpString>`,
-:meth:`shortHelpString <qgis.core.QgsProcessingAlgorithm.shortHelpString>` and
-:meth:`helpUrl <qgis.core.QgsProcessingAlgorithm.helpUrl>` functions for that purpose.
+provides the :meth:`helpString() <qgis.core.QgsProcessingAlgorithm.helpString>`,
+:meth:`shortHelpString() <qgis.core.QgsProcessingAlgorithm.shortHelpString>` and
+:meth:`helpUrl() <qgis.core.QgsProcessingAlgorithm.helpUrl>` functions for that purpose.
 Specify / override these to provide more help to the user.
 
-:meth:`shortDescription <qgis.core.QgsProcessingAlgorithm.shortDescription>`
+:meth:`shortDescription() <qgis.core.QgsProcessingAlgorithm.shortDescription>`
 is used in the tooltip when hovering over the algorithm in the toolbox.
 
 Pre- and post-execution script hooks

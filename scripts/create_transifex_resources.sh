@@ -1,67 +1,67 @@
 #!/bin/bash
 
-# This script is used to register InaSAFE translatable resources with Transifex
-# http://transifex.com
+# This script is used to register QGIS-Documentation translatable resources with Transifex
+# https://www.transifex.com
 #
 # Note that this script updates or creates entries in .tx/config file
+# so that they match expected formatting of tx-github integration slugs.
+# Used to first "tx push" existing translations to Transifex when enabling the github integration
 #
 # Tim Sutton, March 2013
+# Update: Harrissou Sant-anna, December 2020
 
-#
-# Sphinx documentation first
-#
+TARGETBRANCH=`git branch --show-current`
+SOURCEPOFILES='locale/en/LC_MESSAGES/docs/'
+PROJECT='qgis-documentation'
+CONFIGFILE='.tx/config'
 
-#LOCALES=`ls i18n`
-LOCALES='de es fi fr gl hi id ja it ko nl nqo pl pt_BR pt_PT ro ru'
+# To be sure there are no *.pot or *.mo files left
+make springclean
 
-# to be sure there are no pot files left
-make clean
+# Regenerate the English PO files
+make gettext
+# Only rm if really starting from scratch (might "break" metadata in transifex)
+# rm -r $SOURCEPOFILES
+sphinx-intl update -p build/gettext -l en
 
-for POFILE in `find i18n/en/LC_MESSAGES/${ITEM}/ -type f -name '*.po'`
+# Clean generated translation *.po files from obsolete strings, if any
+find $SOURCEPOFILES -type f -name '*.po' -exec sed -i '/^#~ /,/^$/d' {} \;
+
+# Clean the .tx/config files from existing references, out of the main section
+# each reference is made of 5 lines and a blank line
+sed -i "/$PROJECT/,+5d" .tx/config
+
+for POFILE in `find $SOURCEPOFILES -type f -name '*.po'`
 do
+  #echo $POFILE
   # get the po file, replacing 'en' with '<lang>' and removing double '//'s in path
-  GENERICFILE=`echo $POFILE | sed 's/\/en\//\/<lang>\//g' | sed 's/\/\//\//g'`
-  #echo $GENERICFILE
-  # Get the filename-only part of the po file so we can use that
-  # name when registering the resource
-  BASE=`dirname $GENERICFILE`/`basename $GENERICFILE .po`
-  # removing i18n/<lang>/LC_MESSAGES
-  # replace _ in - in filenames
-  # replace empty spaces to -
-  # replace / in _ 
-  # replace . to _ (eg for release2.0 names)
-  # so we have for a file like
-  #   site/about/my_screenshots/index.po
+  GENERICFILE=`echo $POFILE | sed 's,\/en\/,\/<lang>\/,g' | sed 's,\/\/,\/,g'`
+  echo $GENERICFILE
+
+  # Set the resource slug by
+  # lowering the case of the whole text
+  # appending the target branch name after double "-"
+  # and replacing "_", "/", ".", "\" and " " characters with "-" in the path
+  # so for a file like
+  #   locale/en/LC_MESSAGES/docs/user_manual/processing/3rdParty.po in release_3.16 branch
   # we will get
-  #   site_about_my-screenshots_index
-  BASE=`echo $BASE | sed 's,i18n.*LC_MESSAGES\/,,g' | sed 's,_,-,g' | sed 's, ,-,g' | sed 's,/,_,g' | sed 's,\.,-,g'`
-  RESOURCE=qgis-documentation.$BASE
-  #echo $RESOURCE
-  # Register each po file as a transifex resource (an individual translatable file)
-  set -x
-  tx set -t PO --auto-local -r $RESOURCE \
-    "$GENERICFILE" \
-    --source-lang en \
-    --execute
-  #set +x
-  # Now register the language translations for the localised po file against
-  # this resource.
-  for LOCALE in $LOCALES
-  do
-      LOCALEFILE=`echo $POFILE | sed "s/\/en\//\/$LOCALE\//g"`
-      #echo "$LOCALEFILE"
-      tx set -r $RESOURCE -l $LOCALE  "$LOCALEFILE"
-  done
-  # When we are done in this block we should have created a section in the
-  # .tx/config file that looks like this:
+  #   locale-en-lc-messages-docs-user-manual-processing-3rdparty-po--release-3-16
+  RESOURCE=`echo "$POFILE--$TARGETBRANCH" | tr '[:upper:]' '[:lower:]' | sed 's,[_/ \.\\],-,g'`
+  echo $RESOURCE
+
+  # Populate the config file
+  # When we are done in this block we should have created sections in the
+  # .tx/config file that look like this:
   #
-  #   [qgis-website.site_forusers_alldownloads]
-  #   file_filter = i18n/<lang>/LC_MESSAGES/site/forusers/alldownloads.po
-  #   source_file = i18n/en/LC_MESSAGES/site/forusers/alldownloads.po
+  #   [qgis-documentation.locale-en-lc-messages-docs-user-manual-processing-3rdparty-po--release-3-16]
+  #   file_filter = locale/<lang>/LC_MESSAGES/docs/user_manual/processing/3rdParty.po
+  #   source_file = locale/en/LC_MESSAGES/docs/user_manual/processing/3rdParty.po
   #   source_lang = en
-  #   trans.nl = i18n/nl/LC_MESSAGES/site/forusers/alldownloads.po
   #   type = PO
+  #
+  echo -e "[$PROJECT.$RESOURCE]\nfile_filter = $GENERICFILE\nsource_file = $POFILE\nsource_lang = en\ntype = PO\n" >> $CONFIGFILE
+
 done
 
-#Print out a listing of all registered resources
+# Print out a listing of all registered resources
 #tx status

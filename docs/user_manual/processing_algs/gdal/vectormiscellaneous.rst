@@ -51,10 +51,10 @@ Parameters
      - Specify the output layer containing only the duplicates.
        One of:
 
-       * Save to a Temporary File
-       * Save to File...
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 ..........
@@ -77,7 +77,7 @@ Python code
 
 **Algorithm ID**: ``gdal:buildvirtualvector``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -91,10 +91,13 @@ Runs a simple or complex query with SQL syntax on the source layer.
 The result of the query will be added as a new layer.
 
 This algorithm is derived from the
-`GDAL ogr2ogr utility <https://gdal.org/ogr2ogr.html>`_.
+`GDAL ogr2ogr utility <https://gdal.org/programs/ogr2ogr.html>`_.
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -119,11 +122,37 @@ Parameters
      - [enumeration]
 
        Default: 0
-     - SQL dialect to use.  One of:
+     - SQL dialect to use. One of:
 
        * 0 --- None
        * 1 --- OGR SQL
        * 2 --- SQLite
+   * - **SQL result**
+     - ``OUTPUT``
+     - [vector: any]
+     - Specification of the output layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+       For ``Save to File``, the output format has to be specified.
+       All GDAL vector formats are supported.
+       For ``Save to a Temporary File`` the default output vector
+       layer format will be used.
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -132,21 +161,6 @@ Parameters
 
        Default: '' (no additional options)
      - Additional GDAL creation options.
-   * - **SQL result**
-     - ``OUTPUT``
-     - [vector: any]
-     - Specification of the output layer.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
-       For ``Save to File``, the output format has to be specified.
-       All GDAL vector formats are supported.
-       For ``Save to a Temporary File`` the default output vector
-       layer format will be used.
 
 Outputs
 .......
@@ -169,7 +183,7 @@ Python code
 
 **Algorithm ID**: ``gdal:executesql``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -188,7 +202,7 @@ activated.
 Then you can use the algorithm.
 
 This algorithm is derived from the
-`GDAL ogr2ogr utility <https://gdal.org/ogr2ogr.html>`_.
+`GDAL ogr2ogr utility <https://gdal.org/programs/ogr2ogr.html>`_.
 
 Parameters
 ..........
@@ -349,6 +363,11 @@ Parameters
        Default: None
      - You can select features from a given extent that will be in
        the output table.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Clip the input layer using the above (rectangle) extent**
 
        Optional
@@ -473,7 +492,7 @@ Python code
 
 **Algorithm ID**: ``gdal:importvectorintopostgisdatabaseavailableconnections``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -486,7 +505,7 @@ Imports vector layers inside a PostGreSQL database. A new connection
 to the PostGIS database must be created.
 
 This algorithm is derived from the
-`GDAL ogr2ogr utility <https://gdal.org/ogr2ogr.html>`_.
+`GDAL ogr2ogr utility <https://gdal.org/programs/ogr2ogr.html>`_.
 
 Parameters
 ..........
@@ -682,6 +701,11 @@ Parameters
        Default: None
      - You can select features from a given extent that will be in
        the output table.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Clip the input layer using the above (rectangle) extent**
 
        Optional
@@ -815,7 +839,7 @@ Python code
 
 **Algorithm ID**: ``gdal:importvectorintopostgisdatabasenewconnection``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -832,7 +856,7 @@ The information includes the geometry type, feature count, the spatial
 extent, the projection information and many more.
 
 This algorithm is derived from the
-`GDAL ogrinfo utility <https://gdal.org/ogrinfo.html>`_.
+`GDAL ogrinfo utility <https://gdal.org/programs/ogrinfo.html>`_.
 
 Parameters
 ..........
@@ -874,10 +898,10 @@ Parameters
      - Specify the output HTML file that includes the file
        information. One of:
 
-       * Save to a Temporary File
-       * Save to File...
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
-       The file encoding can also be changed here.
        If no HTML-file is defined the output will be written
        to a temporary file
 
@@ -903,6 +927,6 @@ Python code
 
 **Algorithm ID**: ``gdal:ogrinfo``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**

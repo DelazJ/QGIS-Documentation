@@ -11,7 +11,6 @@
       :local:
 
 .. index:: Raster calculator
-
 .. _label_raster_calc:
 
 Raster Calculator
@@ -19,38 +18,56 @@ Raster Calculator
 
 The :menuselection:`Raster Calculator` in the :menuselection:`Raster` menu
 allows you to perform calculations on the basis of existing
-raster pixel values (see figure_raster_calculator_).
-The results are written to a new raster layer with a GDAL-supported format.
+raster pixel values (see :numref:`figure_raster_calculator`).
+The results are written to a new raster layer in a GDAL-supported format.
 
 .. _figure_raster_calculator:
 
 .. figure:: img/raster_calculator.png
    :align: center
 
-   Raster Calculator (``abs``, ``min`` and ``max`` added in 3.10)
+   Raster Calculator
 
 
-The **Raster bands** list contains all loaded raster layers that can be used.
+The :guilabel:`Raster bands` list contains all loaded raster layers that can be used.
 To add a raster to the raster calculator expression field, double
 click its name in the Fields list. You can then use the operators to construct
 calculation expressions, or you can just type them into the box.
 
-In the **Result layer** section, you will need to define an output layer. You can
-then define the extent of the calculation area based on an input raster layer, or
-based on X,Y coordinates and on columns and rows, to set the resolution of the
-output layer. If the input layer has a different resolution, the values will be
-resampled with the nearest neighbor algorithm.
+In the :guilabel:`Result layer` section, you will need to define an output layer.
+You can:
 
-The **Operators** section contains all available operators. To add an operator
+* |checkbox| :guilabel:`Create on-the-fly raster instead of writing layer to disk`:
+
+  * If unchecked, the output is stored on the disk as a new plain file.
+    An :guilabel:`Output layer` path and an :guilabel:`Output format` are required.
+  * If checked, a virtual raster layer, i.e. a raster layer defined by its URI and
+    whose pixels are calculated on-the-fly, is created. It's not a new file on disk;
+    the virtual layer is still connected to the rasters used in the calculation
+    meaning that deleting or moving these rasters would break it.
+    A :guilabel:`Layer name` can be provided, otherwise the calculation expression
+    is used as such. Removing the virtual layer from the project deletes it,
+    and it can be made persistent in file using the layer
+    :menuselection:`Export --> Save as...` contextual menu.
+
+* Define the :guilabel:`Spatial extent` of the calculation based on an input
+  raster layer extent, or on custom X,Y coordinates
+* Set the :guilabel:`Resolution` of the layer using columns and rows number.
+  If the input layer has a different resolution, the values will be
+  resampled with the nearest neighbor algorithm.
+* With the |checkbox| :guilabel:`Add result to project` checkbox, the result layer
+  will automatically be added to the legend area and can be visualized.
+  Checked by default for virtual rasters.
+
+The :guilabel:`Operators` section contains all available operators. To add an operator
 to the raster calculator expression box, click the appropriate button. Mathematical
 calculations (``+``, ``-``, ``*``, ... ) and trigonometric functions (``sin``,
 ``cos``, ``tan``, ... ) are available. Conditional expressions (``=``, ``!=``,
 ``<``, ``>=``, ... ) return either 0 for false or 1 for true, and therefore can be
-used with other operators and functions. Stay tuned for more operators to come!
+used with other operators and functions.
 
-With the |checkbox| :guilabel:`Add result to project` checkbox, the result layer
-will automatically be added to the legend area and can be visualized.
 
+.. hint:: See also the :ref:`qgisrastercalculator` algorithm.
 
 Examples
 --------
@@ -79,6 +96,7 @@ evaluates to 1, which keeps the original value by multiplying it by 1.
 Otherwise the conditional expression evaluates to 0, which sets the raster value to 0.
 This creates the mask on the fly.
 
+**Classify a Raster**
 
 If you want to classify a raster -- say, for instance into two elevation classes,
 you can use the following expression to create a raster with two values 1 and 2
@@ -90,6 +108,12 @@ in one step.
 
 In other words, for every cell less than 50 set its value to 1. For every cell
 greater than or equal 50 set its value to 2.
+
+Or you can use the ``IF`` operator. 
+
+::
+
+  if ( elevation@1 < 50 , 1 , 2 )
 
 .. index::
    single: Raster; Align Raster
@@ -109,10 +133,10 @@ that means:
 All rasters will be saved in another files.
 
 First, open the tools from :menuselection:`Raster --> Align Raster...` and click
-on the |signPlus| :sup:`Add new raster` button to choose one existing raster in
+on the |symbologyAdd| :sup:`Add new raster` button to choose one existing raster in
 QGIS. Select an output file to save the raster after the alignment, the
 resampling method and if the tools need to :guilabel:`Rescale values according
-to the cell size`. The resampling method can be (see figure_raster_align_edit_):
+to the cell size`. The resampling method can be (see :numref:`figure_raster_align_edit`):
 
 * **Nearest Neighbor**
 * **Bilinear (2x2 kernel)**
@@ -124,9 +148,6 @@ to the cell size`. The resampling method can be (see figure_raster_align_edit_):
 * **Maximum**, **Minimum**, **Mediane**, **First Quartile (Q1)** or
   **Third Quartile (Q3)** of all non-NODATA contributing pixels
 
-.. note:: Methods like maximum, minimum, mediane, first and third quartiles are
-   available only if QGIS is built with GDAL >= 2.0.
-
 .. _figure_raster_align_edit:
 
 .. figure:: img/raster_align_edit.png
@@ -135,14 +156,14 @@ to the cell size`. The resampling method can be (see figure_raster_align_edit_):
    Select Raster Resampling Options
 
 In the main :guilabel:`Align raster` dialog, you can still |symbologyEdit| :sup:`Edit
-file settings` or |signMinus| :sup:`Remove an existing file` from the list of raster
-layers. You can also choose one or more other options (see figure_raster_align_):
+file settings` or |symbologyRemove| :sup:`Remove an existing file` from the list of raster
+layers. You can also choose one or more other options (see :numref:`figure_raster_align`):
 
 * Select the :guilabel:`Reference Layer`,
 * Transform into a new :guilabel:`CRS`,
 * Setup a different :guilabel:`Cell size`,
 * Setup a different :guilabel:`Grid Offset`,
-* :guilabel:`Clip to Extent`: it can be user-defined or based on a layer or the map view
+* :guilabel:`Clip to Extent`: it can be user-defined, bound to a layer or to the map canvas
 * :guilabel:`Output Size`,
 * :guilabel:`Add aligned raster to the map canvas`.
 
@@ -162,9 +183,9 @@ layers. You can also choose one or more other options (see figure_raster_align_)
 
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-.. |signMinus| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
    :width: 1.5em
 .. |symbologyEdit| image:: /static/common/symbologyEdit.png
+   :width: 1.5em
+.. |symbologyRemove| image:: /static/common/symbologyRemove.png
    :width: 1.5em

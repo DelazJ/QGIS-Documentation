@@ -69,8 +69,8 @@ The algorithm dialog
 --------------------
 
 Once you double-click on the name of the algorithm that you want to execute, a
-dialog similar to that in the figure below is shown (in this case, the dialog
-corresponds to the ``Centroids`` algorithm).
+dialog similar to that in the :numref:`figure_parameters_dialog` below is shown
+(in this case, the dialog corresponds to the ``Centroids`` algorithm).
 
 .. _figure_parameters_dialog:
 
@@ -79,8 +79,11 @@ corresponds to the ``Centroids`` algorithm).
 
    Algorithm Dialog - Parameters
 
+The dialog shows two tabs (:guilabel:`Parameters` and :guilabel:`Log`)
+on the left part, the algorithm description on the right, and a set of
+buttons at the bottom.
 
-This dialog is used to set the input values that the algorithm needs to be
+The :guilabel:`Parameters` tab is used to set the input values that the algorithm needs to be
 executed. It shows a list of input values and configuration parameters to
 be set. It of course has a different content, depending on the requirements of
 the algorithm to be executed, and is created automatically based on those
@@ -134,7 +137,7 @@ table can be of one of the following types.
 * An **option**, to choose from a selection list of possible options.
 * A **numerical value**, to be introduced in a spin box. In some contexts (when
   the parameter applies at the feature level and not at the layer's), you will
-  find a |dataDefined| :sup:`Data-defined override` button by its side, allowing
+  find a |dataDefine| :sup:`Data-defined override` button by its side, allowing
   you to open the :ref:`expression builder <vector_expressions>` and enter a
   mathematical expression to generate variable values for the parameter. Some useful
   variables related to data loaded into QGIS can be added to your expression, so
@@ -155,13 +158,23 @@ table can be of one of the following types.
 * A **coordinate reference system**. You can select it among the recently used
   ones from the drop-down list or from the :ref:`CRS selection <crs_selector>`
   dialog that appears when you click on the button on the right-hand side.
-* An **extent**, to be entered by four numbers representing its ``xmin``,
-  ``xmax``, ``ymin``, ``ymax`` limits. Clicking on the button on the
-  right-hand side of the value selector, a pop-up menu will appear, giving
-  you options:
+* An **extent**, a text box defining a rectangle through its corners coordinate
+  in the format ``xmin, xmax, ymin, ymax``. Press the |mapIdentification|
+  :sup:`Set to current map canvas extent` button to use the map canvas
+  extent. Clicking the arrow on the right-hand side of the value selector,
+  a pop-up menu will appear, giving you options to:
 
-  * to select the value from a layer or the current canvas extent;
-  * or to define it by dragging directly onto the map canvas.
+  * :menuselection:`Calculate from layer -->`: fills the text box with the coordinates
+    of the bounding box of a layer to select among the loaded ones
+  * :menuselection:`Calculate from layout map -->`: fills the text box with the coordinates
+    of a map item selected from a layout in the current project
+  * :menuselection:`Calculate from bookmark -->`: fills the text box with the coordinates
+    of a saved bookmark
+  * |mapIdentification| :guilabel:`Use current map canvas extent`
+  * :guilabel:`Draw on canvas`: the parameters window will hide itself, so you
+    can click and drag onto the canvas. Once you have defined the extent
+    rectangle, the dialog will reappear, containing the values in the extent text
+    box.
 
   .. _figure_extent:
 
@@ -169,27 +182,6 @@ table can be of one of the following types.
      :align: center
 
      Extent selector
-
-  If you select the first option, you will see a window like the next one.
-
-  .. _figure_extent_list:
-
-  .. figure:: img/extent_list.png
-     :align: center
-
-     Extent List
-
-  If you select the second one, the parameters window will hide itself, so you
-  can click and drag onto the canvas. Once you have defined the selected
-  rectangle, the dialog will reappear, containing the values in the extent text
-  box.
-
-  .. _figure_extent_drag:
-
-  .. figure:: img/extent_drag.png
-     :align: center
-
-     Extent Drag
 
 * A **list of elements** (whether raster or vector layers, tables, fields) to
   select from. Click on the :guilabel:`...` button at the left of the option to
@@ -221,7 +213,7 @@ table can be of one of the following types.
 
 .. _reference_layer_param:
 
-.. note:: Some algorithms require many parameter to run, e.g. in the
+.. note:: Some algorithms require many parameters to run, e.g. in the
   :ref:`qgisrastercalculator` you have to specify manually the cell size, the
   extent and the CRS. You can avoid to choose all the parameters manually when
   the algorithm has the ``Reference layers`` parameter. With this parameter you
@@ -229,12 +221,17 @@ table can be of one of the following types.
   will be used.
 
 Along with the :guilabel:`Parameters` tab, there is another tab named
-:guilabel:`Log` (see figure below).
+:guilabel:`Log` (see :numref:`figure_alg_dialog_log` below).
 Information provided by the algorithm during its execution is written
 in this tab, and allow you to track the execution and be aware and have
-more details about the algorithm as it runs. Notice that not all algorithms
-write information to this tab, and many of them might run silently without
+more details about the algorithm as it runs.
+Information on algorithm execution is also output in the
+:menuselection:`View --> Panels --> Log Messages Panel`.
+
+Notice that not all algorithms write information to the :guilabel:`Log` tab,
+and many of them might run silently without
 producing any output other than the final files.
+Check the :guilabel:`Log Messages Panel` in that case.
 
 .. _figure_alg_dialog_log:
 
@@ -244,10 +241,11 @@ producing any output other than the final files.
    Algorithm Dialog - Log
 
 At the bottom of the :guilabel:`Log` tab you will find buttons to
-``Save Log to File``, ``Copy Log to Clipboard`` and ``Clear Log``.
+|fileSave| :guilabel:`Save Log to File`, |editCopy| :guilabel:`Copy
+Log to Clipboard` and |clearConsole| :guilabel:`Clear Log`.
 These are particularly handy when you have checked the
-``Keep dialog open after running algorithm`` in the ``General`` part
-of the Processing options.
+:guilabel:`Keep dialog open after running algorithm` in the
+:guilabel:`General` part of the Processing options.
 
 On the right hand side of the dialog you will find a short description of the
 algorithm, which will help you understand its purpose and its basic ideas.
@@ -258,6 +256,10 @@ parameter it uses, or examples, you will find a :guilabel:`Help` button at the
 bottom of the dialog bringing you to the :ref:`Processing algorithms
 documentation <processing_algs>` or to the provider documentation (for
 some third-party providers).
+
+The :guilabel:`Run as batch process` button triggers the :ref:`batch processing
+mode <processing_batch>` allowing to configure and run multiple instances of
+the algorithm with a variety of parameters.
 
 
 A note on projections
@@ -383,7 +385,15 @@ to a temporary file and deleted once you exit QGIS).
    please add it also to the substitutions.txt file in the
    source folder.
 
-.. |dataDefined| image:: /static/common/mIconDataDefine.png
+.. |clearConsole| image:: /static/common/iconClearConsole.png
+   :width: 1.5em
+.. |dataDefine| image:: /static/common/mIconDataDefine.png
+   :width: 1.5em
+.. |editCopy| image:: /static/common/mActionEditCopy.png
+   :width: 1.5em
+.. |fileSave| image:: /static/common/mActionFileSave.png
+   :width: 1.5em
+.. |mapIdentification| image:: /static/common/mActionMapIdentification.png
    :width: 1.5em
 .. |options| image:: /static/common/mActionOptions.png
    :width: 1em

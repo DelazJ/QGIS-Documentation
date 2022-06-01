@@ -17,7 +17,7 @@
 }
 /*keyboard text are by default rendered bigger*/
 .rst-content .kbd {
- font-size: 80%
+ font-size: 90%
 }
 .outdated {
   /* only to be visible for outdated releases*/
@@ -65,10 +65,11 @@ from https://rackerlabs.github.io/docs-rackspace/tools/rtd-tables.html */
    }
 
    .wy-table-responsive {
-      overflow: visible !important;
+      overflow: auto !important;
    }
 }
 
 .toc-columns ul {
   column-count: 3;
 }
+

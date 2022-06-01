@@ -39,8 +39,7 @@ Installing from source
 
 If you need to build QGIS from source, please refer to the installation
 instructions. They are distributed with the QGIS source code in a file
-called :file:`INSTALL`. You can also find them online at
-https://github.com/qgis/QGIS/blob/master/INSTALL.md.
+called :file:`INSTALL`. You can also find them online at :source:`INSTALL.md`.
 
 
 If you want to build a particular release and not the version in development,
@@ -67,25 +66,8 @@ Downloading sample data
 -----------------------
 
 This user guide contains examples based on the QGIS sample dataset (also called
-the ``Alaska dataset``).
-
-|win| The Windows installer has an option to download the QGIS sample dataset.
-If checked, the data will be downloaded to your :file:`Documents` folder and
-placed in a folder called :file:`GIS Database`. You may use Windows Explorer to
-move this folder to any convenient location. If you did not select the checkbox
-to install the sample dataset during the initial QGIS installation,
-you may do one of the following:
-
-* Use GIS data that you already have
-* Download sample data from
-  https://github.com/qgis/QGIS-Sample-Data/archive/master.zip and unzip the archive
-  on any convenient location on your system.
-* Uninstall QGIS and reinstall with the data download option checked (only
-  recommended if the above solutions are unsuccessful)
-
-|nix| |osx| For GNU/Linux and macOS, there are no dataset installation
-packages available as rpm, deb or dmg. To use the sample dataset, download it
-from https://github.com/qgis/QGIS-Sample-Data/archive/master.zip and unzip the archive
+the ``Alaska dataset``).  Download the sample data from
+https://github.com/qgis/QGIS-Sample-Data/archive/master.zip and unzip the archive
 on any convenient location on your system.
 
 The Alaska dataset includes all GIS data that are used for the examples and
@@ -189,7 +171,7 @@ Where :file:`qgis_sample_data` represents the path to the unzipped dataset.
 
          Select the Coordinate Reference System of data
 
-   #. Select the :guilabel:`NAD27 / Alaska Alberts` entry
+   #. Select the :guilabel:`NAD27 / Alaska Albers` entry
    #. Click :guilabel:`OK`
    #. Close the Data Source Manager window
 
@@ -216,7 +198,7 @@ Let's do some customization on the lakes layer.
 #. To display the name of the lakes:
 
    #. Reopen the :file:`lakes` layer :guilabel:`Properties` dialog
-   #. Click on the |labeling| :guilabel:`Labels` tab
+   #. Click on the |labelingSingle| :guilabel:`Labels` tab
    #. Select :guilabel:`Single labels` in the drop-down menu to enable labeling.
    #. From the :guilabel:`Label with` list, choose the ``NAMES`` field.
 
@@ -277,7 +259,7 @@ features and settings, and how to use them.
    :width: 1.5em
 .. |fileSave| image:: /static/common/mActionFileSave.png
    :width: 1.5em
-.. |labeling| image:: /static/common/labelingSingle.png
+.. |labelingSingle| image:: /static/common/labelingSingle.png
    :width: 1.5em
 .. |nix| image:: /static/common/nix.png
    :width: 1em

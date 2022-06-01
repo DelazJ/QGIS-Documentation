@@ -7,137 +7,6 @@ Vector geometry
       :local:
       :depth: 1
 
-.. _qgisaffinetransform:
-
-Affine transform
-----------------
-
-Applies an affine transformation to the layer geometries.
-Affine transformations can include translation, scaling and rotation.
-The operations are performed in the following order: scale, rotation, and translation.
-
-Z and M values (if present) can be translated and scaled.
-
-.. figure:: img/affinetransform.png
-   :align: center
-
-   Vector point layer (green dots) before (left), and after (rigth) an affine transformation (translation). 
-
-.. seealso:: :ref:`qgistranslategeometry` 
-
-Parameters
-..........
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-   :class: longtable
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Input layer**
-     - ``INPUT``
-     - [vector: any]
-     - Input vector layer
-   * - **Translation (x-axis)**
-     - ``DELTA_X``
-     - [number |dataDefined|]
-
-       Default: 0
-     - Displacement to apply on the X axis.
-   * - **Translation (y-axis)**
-     - ``DELTA_Y``
-     - [number |dataDefined|]
-
-       Default: 0
-     - Displacement to apply on the Y axis.
-   * - **Translation (z-axis)**
-     - ``DELTA_Z``
-     - [number |dataDefined|]
-
-       Default: 0
-     - Displacement to apply on the Z axis.
-   * - **Translation (m-values)**
-     - ``DELTA_M``
-     - [number |dataDefined|]
-
-       Default: 0
-     - Offset to apply on m values.
-   * - **Scale factor (x-axis)**
-     - ``SCALE_X``
-     - [number |dataDefined|]
-
-       Default: 1
-     - Scaling value (expansion or contraction) to apply on the X axis. 
-   * - **Scale factor (y-axis)**
-     - ``SCALE_Y``
-     - [number |dataDefined|]
-
-       Default: 1
-     - Scaling value (expansion or contraction) to apply on the Y axis.
-   * - **Scale factor (z-axis)**
-     - ``SCALE_Z``
-     - [number |dataDefined|]
-
-       Default: 1
-     - Scaling value (expansion or contraction) to apply on the Z axis.
-   * - **Scale factor (m-values)**
-     - ``SCALE_M``
-     - [number |dataDefined|]
-
-       Default: 1
-     - Scaling value (expansion or contraction) to apply on m values.
-   * - **Rotation around z-axis (degrees counter-clockwise)**
-     - ``ROTATION_Z``
-     - [number |dataDefined|]
-
-       Default: 0
-     - Angle of the rotation in degrees.	
-
-   * - **Transformed**
-     - ``OUTPUT``
-     - [same as input]
-
-       Default: ``[Create temporary layer]``
-     - Specify the output vector layer.
-       One of:
-
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
-   
-Outputs
-.......
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-   :class: longtable
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Transformed**
-     - ``OUTPUT``
-     - [same as input]
-     - Output (transformed) vector layer.
-
-Python code
-...........
-
-**Algorithm ID**: ``qgis:affinetransform``
-
-.. include:: qgis_algs_include.rst
-  :start-after: **algorithm_code_section**
-  :end-before: **end_algorithm_code_section**
-
-
 .. _qgisexportaddgeometrycolumns:
 
 Add geometry attributes
@@ -197,12 +66,10 @@ Parameters
      - Specify the output (input copy with geometry) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -226,7 +93,139 @@ Python code
 
 **Algorithm ID**: ``qgis:exportaddgeometrycolumns``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisaffinetransform:
+
+Affine transform
+----------------
+
+Applies an affine transformation to the layer geometries.
+Affine transformations can include translation, scaling and rotation.
+The operations are performed in the following order: scale, rotation, and translation.
+
+Z and M values (if present) can be translated and scaled.
+
+.. figure:: img/affinetransform.png
+   :align: center
+
+   Vector point layer (green dots) before (left), and after (rigth) an affine transformation (translation). 
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>` 
+of point, line, and polygon features
+
+.. seealso:: :ref:`qgistranslategeometry` 
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layer**
+     - ``INPUT``
+     - [vector: any]
+     - Input vector layer
+   * - **Translation (x-axis)**
+     - ``DELTA_X``
+     - [number |dataDefine|]
+
+       Default: 0
+     - Displacement to apply on the X axis.
+   * - **Translation (y-axis)**
+     - ``DELTA_Y``
+     - [number |dataDefine|]
+
+       Default: 0
+     - Displacement to apply on the Y axis.
+   * - **Translation (z-axis)**
+     - ``DELTA_Z``
+     - [number |dataDefine|]
+
+       Default: 0
+     - Displacement to apply on the Z axis.
+   * - **Translation (m-values)**
+     - ``DELTA_M``
+     - [number |dataDefine|]
+
+       Default: 0
+     - Offset to apply on m values.
+   * - **Scale factor (x-axis)**
+     - ``SCALE_X``
+     - [number |dataDefine|]
+
+       Default: 1
+     - Scaling value (expansion or contraction) to apply on the X axis. 
+   * - **Scale factor (y-axis)**
+     - ``SCALE_Y``
+     - [number |dataDefine|]
+
+       Default: 1
+     - Scaling value (expansion or contraction) to apply on the Y axis.
+   * - **Scale factor (z-axis)**
+     - ``SCALE_Z``
+     - [number |dataDefine|]
+
+       Default: 1
+     - Scaling value (expansion or contraction) to apply on the Z axis.
+   * - **Scale factor (m-values)**
+     - ``SCALE_M``
+     - [number |dataDefine|]
+
+       Default: 1
+     - Scaling value (expansion or contraction) to apply on m values.
+   * - **Rotation around z-axis (degrees counter-clockwise)**
+     - ``ROTATION_Z``
+     - [number |dataDefine|]
+
+       Default: 0
+     - Angle of the rotation in degrees.	
+
+   * - **Transformed**
+     - ``OUTPUT``
+     - [same as input]
+
+       Default: ``[Create temporary layer]``
+     - Specify the output vector layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
+   
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Transformed**
+     - ``OUTPUT``
+     - [same as input]
+     - Output (transformed) vector layer.
+
+Python code
+...........
+
+**Algorithm ID**: ``native:affinetransform``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -352,12 +351,10 @@ Parameters
      - Specify the output (aggregate) layer
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -378,9 +375,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:aggregate``
+**Algorithm ID**: ``native:aggregate``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -432,12 +429,9 @@ Parameters
      - Specify the output (boundary) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -459,9 +453,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:boundary``
+**Algorithm ID**: ``native:boundary``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -479,7 +473,8 @@ Polygon and line geometries are supported.
    Black lines represent the bounding boxes of each polygon feature
 
 |checkbox| Allows
-:ref:`features in-place modification <processing_inplace_edit>`
+:ref:`features in-place modification <processing_inplace_edit>` 
+of polygon features
 
 .. seealso:: :ref:`qgisminimumboundinggeometry`
 
@@ -506,12 +501,9 @@ Parameters
      - Specify the output (bounding box) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -532,9 +524,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:boundingboxes``
+**Algorithm ID**: ``native:boundingboxes``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -555,7 +547,8 @@ In this case the buffer will result in a smaller polygon (setback).
    Buffer (in yellow) of points, line and polygon
 
 |checkbox| Allows
-:ref:`features in-place modification <processing_inplace_edit>`
+:ref:`features in-place modification <processing_inplace_edit>` 
+of polygon features
 
 **Default menu**: :menuselection:`Vector --> Geoprocessing Tools`
 
@@ -580,7 +573,7 @@ Parameters
      - Input vector layer
    * - **Distance**
      - ``DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 10.0
      - Buffer distance (from the boundary of each feature).
@@ -616,7 +609,7 @@ Parameters
      - ``JOIN_STYLE``
      - [enumeration]
 
-       Default: *0*
+       Default: 0
      - Specifies whether round, miter or beveled joins should be
        used when offsetting corners in a line.
        Options are:
@@ -625,6 +618,11 @@ Parameters
        * 1 --- Miter
        * 2 --- Bevel
 
+       .. figure:: img/buffer_join_style.png
+          :align: center
+          :width: 100%
+
+          Round, miter, and bevel join styles
    * - **Miter limit**
      - ``MITER_LIMIT``
      - [number]
@@ -655,12 +653,9 @@ Parameters
      - Specify the output (buffer) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -681,9 +676,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:buffer``
+**Algorithm ID**: ``native:buffer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -710,6 +705,7 @@ as for the original features.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point features
 
 **Default menu**: :menuselection:`Vector --> Geometry Tools`
 
@@ -732,7 +728,7 @@ Parameters
      - Input vector layer
    * - **Create centroid for each part**
      - ``ALL_PARTS``
-     - [boolean |dataDefined|]
+     - [boolean |dataDefine|]
 
        Default: False
      - If True (checked), a centroid will be created for each part
@@ -745,12 +741,9 @@ Parameters
      - Specify the output (centroid) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -771,9 +764,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:centroids``
+**Algorithm ID**: ``native:centroids``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -855,13 +848,10 @@ Parameters
      - Specify the vector layer to contain a copy of the valid
        features of the source layer. One of:
 
-       * Skip output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
-       The file encoding can also be changed here.
    * - **Invalid output**
      - ``INVALID_OUTPUT``
      - [same as input]
@@ -871,13 +861,10 @@ Parameters
        the source layer with the field  ``_errors`` listing the
        summary of the error(s) found. One of:
 
-       * Skip output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
-       The file encoding can also be changed here.
    * - **Error output**
      - ``ERROR_OUTPUT``
      - [vector: point]
@@ -887,13 +874,10 @@ Parameters
        problems detected with the ``message`` field describing
        the error(s) found. One of:
 
-       * Skip output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -942,7 +926,7 @@ Python code
 
 **Algorithm ID**: ``qgis:checkvalidity``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1145,19 +1129,17 @@ Outputs
      - Specify the output vector layer for the collected geometries.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:collect``
+**Algorithm ID**: ``native:collect``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1218,12 +1200,10 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -1246,7 +1226,7 @@ Python code
 
 **Algorithm ID**: ``qgis:concavehull``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1317,12 +1297,10 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -1345,7 +1323,7 @@ Python code
 
 **Algorithm ID**: ``qgis:knearestconcavehull``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1357,11 +1335,15 @@ Convert geometry type
 Generates a new layer based on an existing one, with a different type
 of geometry.
 
-Not all conversions are possible. For instance, a line can be
-converted to a point, but a point cannot be converted to a
-line. A line can also be converted to a polygon.
+The attribute table of the output layer is the same as the one of
+the input layer.
 
-.. seealso:: :ref:`qgispolygonize`, :ref:`qgislinestopolygons`
+Not all conversions are possible. For instance, a line layer
+can be converted to a point layer, but a point layer cannot
+be converted to a line layer.
+
+.. seealso:: :ref:`qgispolygonize`, :ref:`qgislinestopolygons`, :ref:`qgispolygonstolines`,
+   :ref:`qgispointstopath`
 
 Parameters
 ..........
@@ -1400,12 +1382,10 @@ Parameters
      - Specify the output vector layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -1428,7 +1408,90 @@ Python code
 
 **Algorithm ID**: ``qgis:convertgeometrytype``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisconverttocurves:
+
+Convert to curved geometries
+----------------------------
+
+Converts a geometry into its curved geometry equivalent.
+
+Already curved geometries will be retained without change.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of line and polygon features
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layer**
+     - ``INPUT``
+     - [vector: line or polygon]
+     - Input vector layer
+   * - **Maximum distance tolerance**
+     - ``DISTANCE``
+     - [number]
+
+       Default: 0.000001
+     - The maximum distance allowed between the original location of vertices
+       and where they would fall on the converted curved geometries
+   * - **Maximum angle tolerance**
+     - ``ANGLE``
+     - [number]
+
+       Default: 0.000001
+     - Segments are considered as suitable for replacing with an arc
+       if the points are all regularly spaced on the candidate arc.
+       This parameter specifies the maximum angular deviation (in degrees)
+       allowed when testing for regular point spacing. Between 0 and 45\°.
+   * - **Curves**
+     - ``OUTPUT``
+     - [vector: compoundcurve or curvepolygon]
+
+       Default: ``[Create temporary layer]``
+     - Specify the output vector layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Curves**
+     - ``OUTPUT``
+     - [vector: compoundcurve or curvepolygon]
+     - Output vector layer with curved geometries
+
+Python code
+...........
+
+**Algorithm ID**: ``native:converttocurves``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1450,6 +1513,7 @@ features.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of polygon features
 
 **Default menu**: :menuselection:`Vector --> Geoprocessing Tools`
 
@@ -1478,12 +1542,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1504,9 +1565,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:convexhull``
+**Algorithm ID**: ``native:convexhull``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1539,6 +1600,11 @@ Parameters
      - ``INPUT``
      - [extent]
      - Input extent
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Extent**
      - ``OUTPUT``
      - [vector: polygon]
@@ -1546,12 +1612,10 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -1572,9 +1636,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:extenttolayer``
+**Algorithm ID**: ``native:extenttolayer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1619,12 +1683,9 @@ Parameters
      - Specify the output layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1645,9 +1706,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:pointtolayer``
+**Algorithm ID**: ``native:pointtolayer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1688,13 +1749,13 @@ Parameters
      - Input point vector layer
    * - **Azimuth (degrees from North)**
      - ``AZIMUTH``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Angle (in degrees) as the middle value of the wedge
    * - **Wedge width (in degrees)**
      - ``WIDTH``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 45.0
      - Width (in degrees) of the buffer.
@@ -1708,7 +1769,7 @@ Parameters
 
    * - **Outer radius**
      - ``OUTER_RADIUS``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - The outer *size* (length) of the wedge:
@@ -1718,7 +1779,7 @@ Parameters
 
        Optional
      - ``INNER_RADIUS``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Inner radius value.
@@ -1730,12 +1791,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1756,9 +1814,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:wedgebuffers``
+**Algorithm ID**: ``native:wedgebuffers``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1799,12 +1857,10 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -1827,7 +1883,7 @@ Python code
 
 **Algorithm ID**: ``qgis:delaunaytriangulation``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1852,6 +1908,7 @@ are smaller than a specified area threshold. Leaving this parameter at
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of polygon features
 
 Parameters
 ..........
@@ -1872,7 +1929,7 @@ Parameters
 
        Optional
      - ``MIN_AREA``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Only holes with an area less than this threshold will be
@@ -1885,12 +1942,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1911,9 +1965,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:deleteholes``
+**Algorithm ID**: ``native:deleteholes``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1938,6 +1992,7 @@ input parameter.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of line and polygon features
 
 **Default menu**: :menuselection:`Vector --> Geometry Tools`
 
@@ -1971,12 +2026,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1997,9 +2049,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:densifygeometries``
+**Algorithm ID**: ``native:densifygeometries``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2033,6 +2085,7 @@ at 2.5 increments allows them to be evenly spaced over the segment.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of line and polygon features
 
 .. seealso:: :ref:`qgisdensifygeometries`
 
@@ -2053,7 +2106,7 @@ Parameters
      - Input line or polygon vector layer
    * - **Interval between vertices to add**
      - ``INTERVAL``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Maximum distance between two consecutive vertices
@@ -2064,12 +2117,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2090,9 +2140,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:densifygeometriesgivenaninterval``
+**Algorithm ID**: ``native:densifygeometriesgivenaninterval``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2161,12 +2211,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -2187,9 +2234,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:dissolve``
+**Algorithm ID**: ``native:dissolve``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2206,6 +2253,10 @@ If Z values already exist in the layer, they will be overwritten with
 the new value.
 If no Z values exist, the geometry will be upgraded to include the Z
 dimension.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features with Z enabled
 
 .. seealso:: :ref:`qgissetmfromraster`, :ref:`qgissetzvalue`
 
@@ -2237,14 +2288,14 @@ Parameters
      - The raster band to take the Z values from
    * - **Value for nodata or non-intersecting vertices**
      - ``NODATA``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0
      - Value to use in case the vertex does not intersect
        (a valid pixel of) the raster
    * - **Scale factor**
      - ``SCALE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Scaling value: the band values are multiplied
@@ -2257,12 +2308,9 @@ Parameters
      - Specify the output vector layer (with Z values
        from the raster layer). One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2284,9 +2332,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:setzfromraster``
+**Algorithm ID**: ``native:setzfromraster``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2333,12 +2381,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2361,9 +2406,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:dropmzvalues``
+**Algorithm ID**: ``native:dropmzvalues``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2420,12 +2465,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -2448,7 +2490,7 @@ Python code
 
 **Algorithm ID**: ``qgis:eliminateselectedpolygons``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2472,6 +2514,7 @@ point, with no intermediate vertices between them.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of line features
 
 .. seealso:: :ref:`qgissubdivide`, :ref:`qgislinesubstring`
 
@@ -2497,12 +2540,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2524,9 +2564,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:explodelines``
+**Algorithm ID**: ``native:explodelines``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2549,6 +2589,7 @@ the line.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of line features
 
 .. seealso:: :ref:`qgislinesubstring`
 
@@ -2569,12 +2610,12 @@ Parameters
      - Input line vector layer
    * - **Start distance**
      - ``START_DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
      - Distance by which to extend the first segment of the line
        (starting point)
    * - **End distance**
      - ``END_DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
      - Distance by which to extend the last segment of the line
        (ending point)
    * - **Extended**
@@ -2584,12 +2625,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2610,9 +2648,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:extendlines``
+**Algorithm ID**: ``native:extendlines``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2686,12 +2724,9 @@ Parameters
      - Specify the output layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2712,9 +2747,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:extractmvalues``
+**Algorithm ID**: ``native:extractmvalues``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2743,6 +2778,10 @@ vertex position (e.g., 0, -1, etc), the original vertex index, the
 vertex’s part and its index within the part (as well as its ring for
 polygons), distance along the original geometry and bisector angle of
 vertex for the original geometry.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of point features
 
 .. seealso:: :ref:`qgisextractvertices`, :ref:`qgisfilterverticesbym`,
    :ref:`qgisfilterverticesbyz`
@@ -2776,12 +2815,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2803,9 +2839,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:extractspecificvertices``
+**Algorithm ID**: ``native:extractspecificvertices``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2829,6 +2865,10 @@ geometry and bisector angle of vertex for original geometry.
    :align: center
 
    Vertices extracted for line and polygon layer
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of point features
 
 **Default menu**: :menuselection:`Vector --> Geometry Tools`
 
@@ -2857,12 +2897,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2884,9 +2921,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:extractvertices``
+**Algorithm ID**: ``native:extractvertices``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2961,12 +2998,9 @@ Parameters
      - Specify the output layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -2987,9 +3021,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:extractzvalues``
+**Algorithm ID**: ``native:extractzvalues``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3012,6 +3046,10 @@ the minimum value is tested.
 
    The red line represents the black line with only vertices whose M
    value is <=10.
+   
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of line and polygon features with M enabled
 
 .. note:: Depending on the input geometry attributes and the filters
    used, the resultant geometries created by this algorithm may no
@@ -3040,7 +3078,7 @@ Parameters
 
        Optional
      - ``MIN``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: *Not set*
      - Minimum of M values allowed
@@ -3048,7 +3086,7 @@ Parameters
 
        Optional
      - ``MAX``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: *Not set*
      - Maximum of M values allowed
@@ -3059,12 +3097,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3086,9 +3121,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:filterverticesbym``
+**Algorithm ID**: ``native:filterverticesbym``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3111,6 +3146,10 @@ the minimum value is tested.
 
    The red line represents the black line with only vertices whose Z
    value is <=10.
+   
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of line and polygon features with Z enabled
 
 .. note:: Depending on the input geometry attributes and the filters
    used, the resultant geometries created by this algorithm may no
@@ -3141,7 +3180,7 @@ Parameters
 
        Optional
      - ``MIN``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: *Not set*
      - Minimum of Z values allowed
@@ -3149,7 +3188,7 @@ Parameters
 
        Optional
      - ``MAX``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: *Not set*
      - Maximum of Z values allowed
@@ -3160,12 +3199,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3187,9 +3223,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:filterverticesbyz``
+**Algorithm ID**: ``native:filterverticesbyz``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3203,10 +3239,11 @@ without losing any of the input vertices.
 Already valid geometries are returned without further intervention.
 Always outputs multi-geometry layer.
 
-.. note:: M values will be dropped from the output.
-
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features without M enabled
+
+.. note:: M values will be dropped from the output.
 
 .. seealso:: :ref:`qgischeckvalidity`
 
@@ -3232,12 +3269,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3258,9 +3292,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:fixgeometries``
+**Algorithm ID**: ``native:fixgeometries``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3274,6 +3308,10 @@ Forces polygon geometries to respect the Right-Hand-Rule, in which
 the area that is bounded by a polygon is to the right of the boundary.
 In particular, the exterior ring is oriented in a clockwise
 direction and any interior rings in a counter-clockwise direction.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of polygon features
 
 Parameters
 ..........
@@ -3297,12 +3335,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3323,9 +3358,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:forcerhr``
+**Algorithm ID**: ``native:forcerhr``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3352,6 +3387,10 @@ this breakpoint.
 If the input geometry contains M or Z values, these will be linearly
 interpolated for the new vertices created at the antimeridian.
 
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of line features
+
 Parameters
 ..........
 
@@ -3374,12 +3413,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output line vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3400,9 +3436,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:antimeridiansplit``
+**Algorithm ID**: ``native:antimeridiansplit``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3479,12 +3515,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3505,9 +3538,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:geometrybyexpression``
+**Algorithm ID**: ``native:geometrybyexpression``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3552,7 +3585,7 @@ Parameters
      - Input line or polygon vector layer
    * - **Distance**
      - ``DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Distance from the beginning of the line
@@ -3563,12 +3596,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3590,9 +3620,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:interpolatepoint``
+**Algorithm ID**: ``native:interpolatepoint``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3641,12 +3671,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -3670,7 +3697,7 @@ Python code
 
 **Algorithm ID**: ``qgis:keepnbiggestparts``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3695,6 +3722,7 @@ considered when calculating the substring.
    ending distance at 250 meters.
 
 |checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of line features
 
 .. seealso:: :ref:`qgisextendlines`
 
@@ -3715,12 +3743,12 @@ Parameters
      - Input line vector layer
    * - **Start distance**
      - ``START_DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
      - Distance along the input line to the start point of
        the output feature
    * - **End distance**
      - ``END_DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
      - Distance along the input line to the end point of
        the output feature
    * - **Substring**
@@ -3730,12 +3758,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output line vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3756,9 +3781,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:linesubstring``
+**Algorithm ID**: ``native:linesubstring``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3770,12 +3795,12 @@ Lines to polygons
 Generates a polygon layer using as polygon rings the lines from an
 input line layer.
 
-The attribute table of the output layer is the same as the one from of
-the input line layer.
+The attribute table of the output layer is the same as the one of
+the input layer.
 
 **Default menu**: :menuselection:`Vector --> Geometry Tools`
 
-.. seealso:: :ref:`qgispolygonstolines`, :ref:`qgispolygonize`
+.. seealso:: :ref:`qgispolygonstolines`, :ref:`qgispolygonize`, :ref:`qgisconvertgeometrytype`
 
 Parameters
 ..........
@@ -3799,12 +3824,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3827,7 +3849,7 @@ Python code
 
 **Algorithm ID**: ``qgis:linestopolygons``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3845,6 +3867,7 @@ any lines which could be merged and any non-connected line parts.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of line features
 
 Parameters
 ..........
@@ -3868,12 +3891,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output line vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -3894,9 +3914,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:mergelines``
+**Algorithm ID**: ``native:mergelines``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -3970,12 +3990,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -3998,7 +4015,7 @@ Python code
 
 **Algorithm ID**: ``qgis:minimumboundinggeometry``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4017,6 +4034,7 @@ layer.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of polygon features
 
 .. seealso:: :ref:`qgisminimumboundinggeometry`
 
@@ -4049,12 +4067,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4075,9 +4090,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:minimumenclosingcircle``
+**Algorithm ID**: ``native:minimumenclosingcircle``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4096,6 +4111,7 @@ input layer, using a fixed or dynamic distance and number of rings.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of polygon features
 
 .. seealso:: :ref:`qgisbuffer`,
    :ref:`qgisvariabledistancebuffer`,
@@ -4120,7 +4136,7 @@ Parameters
      - Input vector layer
    * - **Number of rings**
      - ``RINGS``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1
      - The number of rings.
@@ -4129,7 +4145,7 @@ Parameters
        rings depends on feature values).
    * - **Distance between rings**
      - ``DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Distance between the rings.
@@ -4143,12 +4159,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4169,9 +4182,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:multiringconstantbuffer``
+**Algorithm ID**: ``native:multiringconstantbuffer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4194,6 +4207,7 @@ but divided into single features.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 **Default menu**: :menuselection:`Vector --> Geometry Tools`
 
@@ -4221,12 +4235,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4247,9 +4258,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:multiparttosingleparts``
+**Algorithm ID**: ``native:multiparttosingleparts``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4269,6 +4280,7 @@ distances will offset them to the right.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of line features
 
 .. seealso:: :ref:`qgisarrayoffsetlines`, :ref:`qgistranslategeometry`
 
@@ -4291,7 +4303,7 @@ Parameters
      - Input line vector layer
    * - **Distance**
      - ``DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 10.0
      - Offset distance.
@@ -4310,7 +4322,7 @@ Parameters
      - ``JOIN_STYLE``
      - [enumeration]
 
-       Default: *0*
+       Default: 0
      - Specifies whether round, miter or beveled joins should be
        used when offsetting corners in a line.
        Options are:
@@ -4319,6 +4331,11 @@ Parameters
        * 1 --- Miter
        * 2 --- Bevel
 
+       .. figure:: img/buffer_join_style.png
+          :align: center
+          :width: 100%
+
+          Round, miter, and bevel join styles
    * - **Miter limit**
      - ``MITER_LIMIT``
      - [number]
@@ -4336,12 +4353,9 @@ Parameters
      - Specify the output (offset) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4362,9 +4376,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:offsetline``
+**Algorithm ID**: ``native:offsetline``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4383,6 +4397,7 @@ input layer.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of polygon features
 
 .. seealso:: :ref:`qgisminimumboundinggeometry`
 
@@ -4408,12 +4423,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4434,9 +4446,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:orientedminimumboundingbox``
+**Algorithm ID**: ``native:orientedminimumboundingbox``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4458,6 +4470,7 @@ every angle in the geometry either a right angle or a straight line.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of line and polygon features
 
 Parameters
 ..........
@@ -4501,12 +4514,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4527,9 +4537,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:orthogonalize``
+**Algorithm ID**: ``native:orthogonalize``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4543,6 +4553,7 @@ guaranteed to lie on the surface of the feature geometry.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point features
 
 .. seealso:: :ref:`qgiscentroids`
 
@@ -4563,7 +4574,7 @@ Parameters
      - Input vector layer
    * - **Create point on surface for each part**
      - ``ANGLE_TOLERANCE``
-     - [boolean |dataDefined|]
+     - [boolean |dataDefine|]
      - If checked, a point will be created for each part of the
        geometry.
    * - **Point**
@@ -4573,12 +4584,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output point vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4599,9 +4607,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:pointonsurface``
+**Algorithm ID**: ``native:pointonsurface``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4643,20 +4651,20 @@ Parameters
      - Input line or polygon vector layer
    * - **Distance**
      - ``DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Distance between two consecutive points along the line
    * - **Start offset**
      - ``START_OFFSET``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Distance from the beginning of the input line, representing the
        position of the first point.
    * - **End offset**
      - ``END_OFFSET``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Distance from the end of the input line, representing the
@@ -4668,12 +4676,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4695,9 +4700,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:pointsalonglines``
+**Algorithm ID**: ``native:pointsalonglines``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4756,12 +4761,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -4784,7 +4786,7 @@ Python code
 
 **Algorithm ID**: ``qgis:pointsdisplacement``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4838,12 +4840,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -4864,9 +4863,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:poleofinaccessibility``
+**Algorithm ID**: ``native:poleofinaccessibility``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4886,7 +4885,7 @@ line layer of **closed** features.
 .. note:: The line layer must have closed shapes in order to be
    transformed into a polygon.
 
-.. seealso:: :ref:`qgispolygonstolines`
+.. seealso:: :ref:`qgispolygonstolines`, :ref:`qgislinestopolygons`, :ref:`qgisconvertgeometrytype`
 
 Parameters
 ..........
@@ -4903,14 +4902,14 @@ Parameters
      - ``INPUT``
      - [vector: line]
      - Input line vector layer
-   * - **Keep table structure of line layer**
+   * - **Keep fields from the input layer**
 
        Optional
      - ``KEEP_FIELDS``
      - [boolean]
 
        Default: False
-     - Check to copy the original attributes of the input layer
+     - Check to keep the fields (only the table structure, not the values) of the input layer
    * - **Polygons from lines**
      - ``OUTPUT``
      - [vector: polygon]
@@ -4918,12 +4917,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output polygon vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -4944,9 +4940,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:polygonize``
+**Algorithm ID**: ``native:polygonize``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -4958,6 +4954,9 @@ Polygons to lines
 Takes a polygon layer and creates a line layer, with lines
 representing the boundaries of the polygons in the input layer.
 
+The attribute table of the output layer is the same as the one of
+the input layer.
+
 .. figure:: img/polygon_to_lines.png
    :align: center
 
@@ -4965,7 +4964,7 @@ representing the boundaries of the polygons in the input layer.
 
 **Default menu**: :menuselection:`Vector --> Geometry Tools`
 
-.. seealso:: :ref:`qgispolygonize`
+.. seealso:: :ref:`qgislinestopolygons`, :ref:`qgispolygonize`, :ref:`qgisconvertgeometrytype`
 
 Parameters
 ..........
@@ -4989,12 +4988,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output line vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5015,9 +5011,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:polygonstolines``
+**Algorithm ID**: ``native:polygonstolines``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5030,6 +5026,7 @@ Projects point geometries by a specified distance and bearing (azimuth).
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point features
 
 Parameters
 ..........
@@ -5049,13 +5046,13 @@ Parameters
      - Input point vector layer
    * - **Bearing (degrees from North)**
      - ``BEARING``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Clockwise angle starting from North, in degree (°) unit
    * - **Distance**
      - ``DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Distance to offset geometries, in layer units
@@ -5066,12 +5063,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output point vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5092,9 +5086,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:projectpointcartesian``
+**Algorithm ID**: ``native:projectpointcartesian``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5115,6 +5109,7 @@ features.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 .. seealso:: :ref:`qgisaggregate`, :ref:`qgiscollect`
 
@@ -5140,12 +5135,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output multipart vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5166,9 +5158,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:promotetomulti``
+**Algorithm ID**: ``native:promotetomulti``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5215,13 +5207,13 @@ Parameters
 
    * - **Width**
      - ``WIDTH``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Width of the buffer shape
    * - **Height**
      - ``HEIGHT``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Height of the buffer shape
@@ -5229,7 +5221,7 @@ Parameters
 
        Optional
      - ``ROTATION``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: None
      - Rotation of the buffer shape
@@ -5246,12 +5238,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5272,9 +5261,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:rectanglesovalsdiamonds``
+**Algorithm ID**: ``native:rectanglesovalsdiamonds``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5297,11 +5286,12 @@ If the :guilabel:`Use Z Value` parameter is true, then the Z values
 are also tested and vertices with the same X and Y but different Z
 will be maintained.
 
+|checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
+
 .. note:: Duplicate vertices are not tested between different parts
    of a multipart geometry, e.g. a multipoint geometry with
    overlapping points will not be changed by this method.
-
-|checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
 
 .. seealso:: :ref:`qgisextractvertices`,
    :ref:`qgisextractspecificvertices`,
@@ -5325,14 +5315,14 @@ Parameters
      - Input vector layer
    * - **Tolerance**
      - ``TOLERANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.000001
      - Vertices closer than the specified distance are considered
        duplicates
    * - **Use Z value**
      - ``USE_Z_VALUE``
-     - [boolean |dataDefined|]
+     - [boolean |dataDefine|]
 
        Default: False
      - If the :guilabel:`Use Z Value` parameter is true, then the Z
@@ -5345,12 +5335,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5371,9 +5358,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:removeduplicatevertices``
+**Algorithm ID**: ``native:removeduplicatevertices``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5418,6 +5405,8 @@ Parameters
      - 
    * - **Non null geometries**
      - ``OUTPUT``
+
+       Optional
      - [same as input]
 
        Default: ``[Create temporary layer]``
@@ -5425,13 +5414,13 @@ Parameters
        non-empty) geometries.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
-       The file encoding can also be changed here.
    * - **Null geometries**
+
+       Optional
      - ``NULL_OUTPUT``
      - [same as input]
 
@@ -5439,13 +5428,9 @@ Parameters
      - Specify the output vector layer for the NULL (and empty) geometries.
        One of:
 
-       * Skip Output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 .......
@@ -5470,9 +5455,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:removenullgeometries``
+**Algorithm ID**: ``native:removenullgeometries``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5489,6 +5474,7 @@ Inverts the direction of a line layer.
    Before and after the direction inversion
 
 |checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of line features
 
 Parameters
 ..........
@@ -5513,12 +5499,9 @@ Parameters
      - Specify the output line vector layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5539,9 +5522,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:reverselinedirection``
+**Algorithm ID**: ``native:reverselinedirection``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5556,6 +5539,7 @@ around a unique preset point.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 .. seealso:: :ref:`qgistranslategeometry`, :ref:`qgisswapxy`
 
@@ -5576,7 +5560,7 @@ Parameters
      - Input vector layer
    * - **Rotation (degrees clockwise)**
      - ``ANGLE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Angle of the rotation in degrees
@@ -5599,12 +5583,9 @@ Parameters
      - Specify the output vector layer (with rotated geometries).
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5625,9 +5606,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:rotatefeatures``
+**Algorithm ID**: ``native:rotatefeatures``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5665,7 +5646,7 @@ Parameters
      - Input line or polygon vector layer
    * - **Maximum angle between vertices (degrees)**
      - ``ANGLE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 5.0
      - Maximum allowed radius angle between vertices
@@ -5678,12 +5659,9 @@ Parameters
      - Specify the output vector layer (with segmentized geometries).
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5704,9 +5682,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:segmentizebymaxangle``
+**Algorithm ID**: ``native:segmentizebymaxangle``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5743,7 +5721,7 @@ Parameters
      - Input line or polygon vector layer
    * - **Maximum offset distance**
      - ``DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Maximum allowed offset distance between the
@@ -5757,12 +5735,9 @@ Parameters
      - Specify the output vector layer (with segmentized geometries).
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5783,9 +5758,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:segmentizebymaxdistance``
+**Algorithm ID**: ``native:segmentizebymaxdistance``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5801,6 +5776,10 @@ with the new value.
 If no M values exist, the geometry will be upgraded to include M
 values and the specified value used as the initial M value for all
 geometries.
+    
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features with M enabled
 
 .. tip:: Use the |identify|:sup:`Identify Features` button to check
    the added M value: the results are available in the
@@ -5826,7 +5805,7 @@ Parameters
      - Input vector layer
    * - **M Value**
      - ``M_VALUE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - M value to assign to the feature geometries
@@ -5838,12 +5817,9 @@ Parameters
      - Specify the output vector layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5865,9 +5841,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:setmvalue``
+**Algorithm ID**: ``native:setmvalue``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5885,6 +5861,10 @@ If M values already exist in the layer, they will be overwritten with
 the new value.
 If no M values exist, the geometry will be upgraded to include M
 values.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features with M enabled
 
 .. seealso:: :ref:`qgissetzfromraster`, :ref:`qgissetmvalue`
 
@@ -5916,13 +5896,13 @@ Parameters
      - The raster band from which the M values are taken
    * - **Value for nodata or non-intersecting vertices**
      - ``NODATA``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
        Default: 0.0
      - Value to use in case the vertex does not intersect
        (a valid pixel of) the raster
    * - **Scale factor**
      - ``SCALE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Scaling value: the band values are multiplied
@@ -5935,12 +5915,9 @@ Parameters
      - Specify the output vector layer (with updated M values).
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -5961,9 +5938,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:setmfromraster``
+**Algorithm ID**: ``native:setmfromraster``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -5979,6 +5956,10 @@ with the new value.
 If no Z values exist, the geometry will be upgraded to include Z
 values and the specified value used as the initial Z value for all
 geometries.
+ 
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features with Z enabled
 
 .. tip:: Use the |identify|:sup:`Identify Features` button to check
  the added Z value: the results are available in the
@@ -6004,7 +5985,7 @@ Parameters
      - Input vector layer
    * - **Z Value**
      - ``Z_VALUE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Z value to assign to the feature geometries
@@ -6016,12 +5997,9 @@ Parameters
      - Specify the output vector layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6042,9 +6020,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:setzvalue``
+**Algorithm ID**: ``native:setzvalue``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6067,6 +6045,7 @@ distance based (the "Douglas-Peucker" algorithm), area based
    simplification tolerances
 
 |checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of line and polygon features
 
 **Default menu**: :menuselection:`Vector --> Geometry Tools`
 
@@ -6102,7 +6081,7 @@ Parameters
 
    * - **Tolerance**
      - ``TOLERANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Threshold tolerance (in units of the layer):
@@ -6117,12 +6096,9 @@ Parameters
      - Specify the output (simplified) vector layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6143,9 +6119,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:simplifygeometries``
+**Algorithm ID**: ``native:simplifygeometries``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6191,6 +6167,8 @@ Parameters
    * - **Side**
      - ``SIDE``
      - [enumeration]
+  
+       Default: 0
      - Which side to create the buffer on.
        One of:
 
@@ -6207,6 +6185,8 @@ Parameters
    * - **Join style**
      - ``JOIN_STYLE``
      - [enumeration]
+
+       Default: 0
      - Specifies whether round, miter or beveled joins should be
        used when offsetting corners in a line.
        Options are:
@@ -6214,7 +6194,12 @@ Parameters
        * 0 --- Round
        * 1 --- Miter
        * 2 --- Bevel
+  
+       .. figure:: img/buffer_join_style.png
+          :align: center
+          :width: 100%
 
+          Round, miter, and bevel join styles
    * - **Miter limit**
      - ``MITER_LIMIT``
      - [number]
@@ -6232,12 +6217,9 @@ Parameters
      - Specify the output (buffer) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6258,9 +6240,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:singlesidedbuffer``
+**Algorithm ID**: ``native:singlesidedbuffer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6300,6 +6282,7 @@ this will not be smoothed. For example, setting the maximum angle to
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of line and polygon features
 
 .. seealso:: :ref:`qgissimplifygeometries`,
    :ref:`qgisdensifygeometries`,
@@ -6323,21 +6306,21 @@ Parameters
      - Input line or polygon vector layer
    * - **Iterations**
      - ``ITERATIONS``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1
      - Increasing the number of iterations will give smoother
        geometries (and more vertices).
    * - **Offset**
      - ``OFFSET``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.25
      - Increasing values will *move* the smoothed lines / boundaries
        further away from the input lines / boundaries.
    * - **Maximum node angle to smooth**
      - ``MAX_ANGLE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 180.0
      - Every node below this value will be smoothed
@@ -6349,12 +6332,9 @@ Parameters
      - Specify the output (smoothed) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6375,9 +6355,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:smoothgeometry``
+**Algorithm ID**: ``native:smoothgeometry``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6392,6 +6372,10 @@ another layer, or to geometries within the same layer.
 Matching is done based on a tolerance distance, and vertices will be
 inserted or removed as required to make the geometries match the
 reference geometries.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 .. seealso:: :ref:`qgissnappointstogrid`
 
@@ -6422,7 +6406,7 @@ Parameters
        Default: 10.0
      - Control how close input vertices need to be to the
        reference layer geometries before they are snapped.
-   * - *Behavior**
+   * - **Behavior**
      - ``BEHAVIOR``
      - [enumeration]
 
@@ -6433,13 +6417,44 @@ Parameters
 
        * 0 --- Prefer aligning nodes, insert extra vertices where
          required
+
+         Prefer to snap to nodes, even when a segment may be closer
+         than a node. New nodes will be inserted to make geometries
+         follow each other exactly when inside allowable tolerance.
+
        * 1 --- Prefer closest point, insert extra vertices where
          required
+
+         Snap to closest point, regardless of it is a node or a
+         segment. New nodes will be inserted to make geometries
+         follow each other exactly when inside allowable tolerance.
+
        * 2 --- Prefer aligning nodes, don't insert new vertices
+
+         Prefer to snap to nodes, even when a segment may be closer
+         than a node. No new nodes will be inserted.
+
        * 3 --- Prefer closest point, don't insert new vertices
+
+         Snap to closest point, regardless of it is a node or a
+         segment. No new nodes will be inserted.
+
        * 4 --- Move end points only, prefer aligning nodes
+
+         Only snap start/end points of lines (point features will
+         also be snapped, polygon features will not be modified),
+         prefer to snap to nodes.
+
        * 5 --- Move end points only, prefer closest point
+
+         Only snap start/end points of lines (point features will
+         also be snapped, polygon features will not be modified),
+         snap to closest point
+
        * 6 --- Snap end points to end points only
+
+         Only snap the start/end points of lines to other start/end points of lines
+
        * 7 --- Snap to anchor nodes (single layer only)
 
    * - **Snapped geometry**
@@ -6450,12 +6465,9 @@ Parameters
      - Specify the output (snapped) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -6476,9 +6488,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:snapgeometries``
+**Algorithm ID**: ``native:snapgeometries``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6496,11 +6508,12 @@ the feature's geometry will be cleared.
 Snapping can be performed on the X, Y, Z or M axis. A grid spacing of
 0 for any axis will disable snapping for that axis.
 
-.. note:: Snapping to grid may generate an invalid geometry in some
-   corner cases.
-
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
+
+.. note:: Snapping to grid may generate an invalid geometry in some
+   corner cases.
 
 .. seealso:: :ref:`qgissnapgeometries`
 
@@ -6522,25 +6535,25 @@ Parameters
      - Input vector layer
    * - **X Grid Spacing**
      - ``HSPACING``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Grid spacing on the X axis
    * - **Y Grid Spacing**
      - ``VSPACING``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Grid spacing on the Y axis
    * - **Z Grid Spacing**
      - ``ZSPACING``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Grid spacing on the Z axis
    * - **M Grid Spacing**
      - ``MSPACING``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Grid spacing on the M axis
@@ -6552,12 +6565,9 @@ Parameters
      - Specify the output (snapped) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6578,9 +6588,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:snappointstogrid``
+**Algorithm ID**: ``native:snappointstogrid``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6593,6 +6603,10 @@ Takes a line (or curve) layer and splits each feature into
 multiple parts, where each part is of a specified maximum length.
 Z and M values at the start and end of the new line substrings are
 linearly interpolated from existing values.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>`
+of line features
 
 Parameters
 ..........
@@ -6611,7 +6625,7 @@ Parameters
      - The input line vector layer
    * - **Maximum line length**
      - ``LENGTH``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 10.0
      - The maximum length of a line in the output.
@@ -6623,12 +6637,9 @@ Parameters
      - Specify the output line vector layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6652,9 +6663,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:splitlinesbylength``
+**Algorithm ID**: ``native:splitlinesbylength``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6678,11 +6689,12 @@ Curved geometries will be segmentized before subdivision.
    Left the input layer, middle maximum nodes value is 100 and right
    maximum value is 200
 
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>` 
+of point, line, and polygon features
+
 .. note:: Subdividing a geometry can generate geometry parts that may
    not be valid and may contain self-intersections.
-
-|checkbox| Allows
-:ref:`features in-place modification <processing_inplace_edit>`
 
 .. seealso:: :ref:`qgisexplodelines`, :ref:`qgislinesubstring`
 
@@ -6704,7 +6716,7 @@ Parameters
      - The input vector layer
    * - **Maximum nodes in parts**
      - ``MAX_NODES``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 256
      - Maximum number of vertices each new
@@ -6718,12 +6730,9 @@ Parameters
      - Specify the output (subdivided) vector layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6745,9 +6754,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:subdivide``
+**Algorithm ID**: ``native:subdivide``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6763,6 +6772,7 @@ latitude and longitude values reversed.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 .. seealso:: :ref:`qgistranslategeometry`, :ref:`qgisrotatefeatures`
 
@@ -6790,12 +6800,9 @@ Parameters
      - Specify the output vector layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6817,9 +6824,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:swapxy``
+**Algorithm ID**: ``native:swapxy``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6857,21 +6864,21 @@ Parameters
      - Input line vector layer
    * - **Start width**
      - ``START_WIDTH``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Represents the radius of the buffer applied
        at the start point of the line feature
    * - **End width**
      - ``END_WIDTH``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Represents the radius of the buffer applied
        at the end point of the line feature.
    * - **Segments**
      - ``SEGMENTS``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 16
      - Controls the number of line segments to use to approximate
@@ -6884,12 +6891,9 @@ Parameters
      - Specify the output (buffer) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6910,9 +6914,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:taperedbuffer``
+**Algorithm ID**: ``native:taperedbuffer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -6935,6 +6939,7 @@ component polygons.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of polygon features
 
 Parameters
 ..........
@@ -6959,12 +6964,9 @@ Parameters
      - Specify the output layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -6985,9 +6987,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:tessellate``
+**Algorithm ID**: ``3d:tessellate``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -7035,13 +7037,13 @@ Parameters
      - Input line vector layer
    * - **Length of the transect**
      - ``LENGTH``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 5.0
      - Length in map unit of the transect
    * - **Angle in degrees from the original line at the vertices**
      - ``ANGLE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 90.0
      - Change the angle of the transect
@@ -7062,12 +7064,9 @@ Parameters
      - Specify the output line layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -7088,9 +7087,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:transect``
+**Algorithm ID**: ``native:transect``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -7111,6 +7110,7 @@ Z and M values present in the geometry can also be translated.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 .. seealso:: :ref:`qgisarraytranslatedfeatures`,
    :ref:`qgisoffsetline`, :ref:`qgisrotatefeatures`, :ref:`qgisswapxy`
@@ -7133,25 +7133,25 @@ Parameters
      - Input vector layer
    * - **Offset distance (x-axis)**
      - ``DELTA_X``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Displacement to apply on the X axis
    * - **Offset distance (y-axis)**
      - ``DELTA_Y``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Displacement to apply on the Y axis
    * - **Offset distance (z-axis)**
      - ``DELTA_Z``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Displacement to apply on the Z axis
    * - **Offset distance (m values)**
      - ``DELTA_M``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Displacement to apply on the M axis
@@ -7163,12 +7163,9 @@ Parameters
      - Specify the output vector layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -7189,112 +7186,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:translategeometry``
+**Algorithm ID**: ``native:translategeometry``
 
-.. include:: qgis_algs_include.rst
-  :start-after: **algorithm_code_section**
-  :end-before: **end_algorithm_code_section**
-
-
-.. _qgisvariabledistancebuffer:
-
-Variable distance buffer
---------------------------------------------------
-Computes a buffer area for all the features in an input layer.
-
-The size of the buffer for a given feature is defined by an
-attribute, so it allows different features to have different buffer
-sizes.
-
-.. note:: This algorithm is only available from the
-  :ref:`Graphical modeler <processing.modeler>`.
-
-.. seealso:: :ref:`qgisbuffer`
-
-Parameters
-..........
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-   :class: longtable
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Input layer**
-     - ``INPUT``
-     - [vector: any]
-     - Input vector layer
-   * - **Distance field**
-     - ``DISTANCE``
-     - [tablefield: numeric]
-     - Attribute for the distance radius of the buffer
-   * - **Segments**
-     - ``SEGMENTS``
-     - [number]
-
-       Default: *5*
-     - Controls the number of line segments to use to approximate a
-       quarter circle when creating rounded offsets.
-   * - **Dissolve result**
-     - ``DISSOLVE``
-     - [boolean]
-
-       Default: *False*
-     - Choose to dissolve the final buffer, resulting in a single
-       feature covering all input features.
-
-       .. figure:: img/buffer_dissolve.png
-          :align: center
-
-          Normal and dissolved buffer
-   * - **End cap style**
-     - ``END_CAP_STYLE``
-     - [enumeration]
-     - Controls how line endings are handled in the buffer.
-
-       .. figure:: img/buffer_cap_style.png
-          :align: center
-
-          Round, flat and square cap styles
-   * - **Join style**
-     - ``JOIN_STYLE``
-     - [enumeration]
-     - Specifies whether round, miter or beveled joins should be used
-       when offsetting corners in a line.
-   * - **Miter limit**
-     - ``MITER_LIMIT``
-     - [number]
-
-       Default: 2.0
-     - Only applicable for mitered join styles, and controls the
-       maximum distance from the offset curve to use when creating a
-       mitered join.
-
-Outputs
-.......
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Buffer**
-     - ``OUTPUT``
-     - [vector: polygon]
-     - Buffer polygon vector layer.
-
-Python code
-...........
-
-**Algorithm ID**: ``qgis:variabledistancebuffer``
-
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -7312,7 +7206,7 @@ line geometries as the diameter of the buffer at each vertex.
    Variable buffer example
 
 .. seealso:: :ref:`qgistaperedbuffer`, :ref:`qgisbuffer`,
-   :ref:`qgissetmvalue`
+   :ref:`qgissetmvalue`, :ref:`qgisvariabledistancebuffer`
 
 Parameters
 ..........
@@ -7331,7 +7225,7 @@ Parameters
      - Input line vector layer
    * - **Segments**
      - ``SEGMENTS``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 16
      - Number of the buffer segments per quarter circle.
@@ -7346,12 +7240,9 @@ Parameters
      - Specify the output (buffer) layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -7372,9 +7263,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:bufferbym``
+**Algorithm ID**: ``native:bufferbym``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -7427,13 +7318,9 @@ Parameters
      - Specify the output layer (with the Voronoi polygons).
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
-
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -7456,7 +7343,7 @@ Python code
 
 **Algorithm ID**: ``qgis:voronoipolygons``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -7475,7 +7362,7 @@ Python code
    :width: 1.3em
 .. |clearText| image:: /static/common/mIconClearText.png
    :width: 1.5em
-.. |dataDefined| image:: /static/common/mIconDataDefine.png
+.. |dataDefine| image:: /static/common/mIconDataDefine.png
    :width: 1.5em
 .. |deleteAttribute| image:: /static/common/mActionDeleteAttribute.png
    :width: 1.5em

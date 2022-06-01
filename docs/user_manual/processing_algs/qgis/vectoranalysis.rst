@@ -44,9 +44,17 @@ Parameters
      - [tablefield: any]
      - Any supported table field to calculate the statistics
    * - **Statistics**
+
+       Optional
      - ``OUTPUT_HTML_FILE``
      - [html]
-     - HTML file for the calculated statistics
+
+       Default: ``[Save to temporary file]``
+     - Specification of the file for the calculated statistics. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types_skip**
+          :end-before: **end_file_output_types_skip**
 
 Outputs
 .......
@@ -150,7 +158,7 @@ Python code
 
 **Algorithm ID**: ``qgis:basicstatisticsforfields``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -191,7 +199,13 @@ Parameters
    * - **Climb layer**
      - ``OUTPUT``
      - [vector: line]
-     - The output (line) layer
+
+       Default: ``[Create temporary layer]``
+     - Specification of the output (line) layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -235,7 +249,7 @@ Python code
 
 **Algorithm ID**: ``qgis:climbalongline``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -260,6 +274,10 @@ An optional weight field can be used to assign weights to each point.
 Alternatively, a unique class field can be specified.
 If both options are used, the weight field will take precedence and
 the unique class field will be ignored.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>` 
+of polygon features
 
 ``Default menu``: :menuselection:`Vector --> Analysis Tools`
 
@@ -312,7 +330,13 @@ Parameters
    * - **Count**
      - ``OUTPUT``
      - [vector: polygon]
-     - Specification of the output layer
+
+       Default: ``[Create temporary layer]``
+     - Specification of the output layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -331,6 +355,15 @@ Outputs
      - Resulting layer with the attribute table containing the
        new column with the points count
 
+Python code
+...........
+
+**Algorithm ID**: ``native:countpointsinpolygon``
+
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
 
 .. _qgisdbscanclustering:
 
@@ -342,10 +375,13 @@ spatial clustering of applications with noise (DBSCAN) algorithm.
 The algorithm requires two parameters, a minimum cluster size,
 and the maximum distance allowed between clustered points.
 
-.. seealso:: :ref:`qgiskmeansclustering`
+.. seealso:: :ref:`qgisstdbscanclustering`, :ref:`qgiskmeansclustering`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -373,13 +409,29 @@ Parameters
        Default: 1.0
      - Distance beyond which two features can not belong
        to the same cluster (eps)
-   * - **Cluster field name**
-     - ``FIELD_NAME``
-     - [string]
+   * - **Clusters**
+     - ``OUTPUT``
+     - [vector: point]
 
-       Default: 'CLUSTER_ID'
-     - Name of the field where the associated cluster number
-       shall be stored
+       Default: ``[Create temporary layer]``
+     - Specify the vector layer for the result of the clustering. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Treat border points as noise (DBSCAN\*)**
 
        Optional
@@ -391,10 +443,19 @@ Parameters
        themselves treated as unclustered points, and only
        points in the interior of a cluster are tagged as
        clustered.
-   * - **Clusters**
-     - ``OUTPUT``
-     - [vector: point]
-     - Vector layer for the result of the clustering
+   * - **Cluster field name**
+     - ``FIELD_NAME``
+     - [string]
+
+       Default: 'CLUSTER_ID'
+     - Name of the field where the associated cluster number
+       shall be stored
+   * - **Cluster size field name**
+     - ``SIZE_FIELD_NAME``
+     - [string]
+
+       Default: 'CLUSTER_SIZE'
+     - Name of the field with the count of features in the same cluster
 
 Outputs
 .......
@@ -420,9 +481,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:dbscanclustering``
+**Algorithm ID**: ``native:dbscanclustering``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -500,7 +561,13 @@ Parameters
    * - **Distance matrix**
      - ``OUTPUT``
      - [vector: point]
-     -
+
+       Default: ``[Create temporary layer]``
+     - Specification of the output vector layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -527,7 +594,7 @@ Python code
 
 **Algorithm ID**: ``qgis:distancematrix``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -591,7 +658,14 @@ Parameters
    * - **Hub distance**
      - ``OUTPUT``
      - [vector: line]
-     - Line vector layer for the distance matrix output
+
+       Default: ``[Create temporary layer]``
+     - Specify the output line vector layer connecting the matching points.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -616,7 +690,7 @@ Python code
 
 **Algorithm ID**: ``qgis:distancetonearesthublinetohub``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -676,7 +750,14 @@ Parameters
    * - **Hub distance**
      - ``OUTPUT``
      - [vector: point]
-     - Point vector layer for the distance matrix output.
+
+       Default: ``[Create temporary layer]``
+     - Specify the output point vector layer with the nearest hub.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -692,8 +773,8 @@ Outputs
    * - **Hub distance**
      - ``OUTPUT``
      - [vector: point]
-     - Point vector layer with the attributes of the
-       input features, the identifier of their closest
+     - Point vector layer representing the center of the source features
+       with their attributes, the identifier of their closest
        feature and the calculated distance.
 
 Python code
@@ -701,7 +782,7 @@ Python code
 
 **Algorithm ID**: ``qgis:distancetonearesthubpoints``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -736,6 +817,9 @@ A smaller distance results in a denser, more accurate line.
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -783,6 +867,29 @@ Parameters
        Default: False
      - Create geodesic lines (the shortest path on the surface of
        an ellipsoid)
+   * - **Hub lines**
+     - ``OUTPUT``
+     - [vector: line]
+
+       Default: ``[Create temporary layer]``
+     - Specify the output hub line vector layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Distance between vertices (geodesic lines only)**
      - ``GEODESIC_DISTANCE``
      - [number]
@@ -797,10 +904,6 @@ Parameters
        Default: False
      - Split lines at ±180 degrees longitude (to improve rendering
        of the lines)
-   * - **Hub lines**
-     - ``OUTPUT``
-     - [vector: line]
-     - The resulting line layer
 
 Outputs
 .......
@@ -816,14 +919,14 @@ Outputs
    * - **Hub lines**
      - ``OUTPUT``
      - [vector: line]
-     - The resulting line layer
+     - The resulting line layer connecting matching points in input layers
 
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:hublines``
+**Algorithm ID**: ``native:hublines``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -848,7 +951,7 @@ the centroid of the feature.
 
   A five class point clusters
 
-.. seealso:: :ref:`qgisdbscanclustering`
+.. seealso:: :ref:`qgisdbscanclustering`, :ref:`qgisstdbscanclustering`
 
 Parameters
 ..........
@@ -871,17 +974,43 @@ Parameters
 
        Default: 5
      - Number of clusters to create with the features
+   * - **Clusters**
+     - ``OUTPUT``
+     - [vector: any]
+
+       Default:``[Create temporary layer]``
+     - Specify the output vector layer for generated the clusters.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Cluster field name**
      - ``FIELD_NAME``
      - [string]
 
        Default: 'CLUSTER_ID'
-     - Name of the cluster number field
-   * - **Clusters**
-     - ``OUTPUT``
-     - [vector: any]
-     - Vector layer for generated the clusters
+     - Name of the field where the associated cluster number
+       shall be stored
+   * - **Cluster size field name**
+     - ``SIZE_FIELD_NAME``
+     - [string]
 
+       Default: 'CLUSTER_SIZE'
+     - Name of the field with the count of features in the same cluster
 
 Outputs
 .......
@@ -898,14 +1027,14 @@ Outputs
      - ``OUTPUT``
      - [vector: any]
      - Vector layer containing the original features with
-       a field specifying the cluster they belong to
+       fields specifying the cluster they belong to and their number in it
 
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:kmeansclustering``
+**Algorithm ID**: ``native:kmeansclustering``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -939,14 +1068,31 @@ Parameters
      - [tablefield: any]
      - Field to analyze
    * - **Unique values**
+
+       Optional
      - ``OUTPUT``
      - [table]
-     - Summary table layer with unique values
+
+       Default:``[Create temporary layer]``
+     - Specify the summary table layer with unique values. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
+
    * - **HTML report**
+
+       Optional
      - ``OUTPUT_HTML_FILE``
      - [html]
+
+       Default:``[Save to temporary file]``
      - HTML report of unique values in the
-       :menuselection:`Processing --> Results viewer`
+       :menuselection:`Processing --> Results viewer`. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types_skip**
+          :end-before: **end_file_output_types_skip**
 
 Outputs
 .......
@@ -983,7 +1129,7 @@ Python code
 
 **Algorithm ID**: ``qgis:listuniquevalues``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1035,7 +1181,13 @@ Parameters
    * - **Mean coordinates**
      - ``OUTPUT``
      - [vector: point]
-     - The (point vector) layer for the result
+
+       Default:``[Create temporary layer]``
+     - Specify the (point vector) layer for the result. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1056,9 +1208,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:meancoordinates``
+**Algorithm ID**: ``native:meancoordinates``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1107,10 +1259,18 @@ Parameters
      - [vector: point]
      - Point vector layer to calculate the statistics on
    * - **Nearest neighbour**
+
+       Optional
      - ``OUTPUT_HTML_FILE``
      - [html]
-     - HTML file for the computed statistics
 
+       Default:``[Save to temporary file]``
+     - Specification of the HTML file for the computed statistics.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types_skip**
+          :end-before: **end_file_output_types_skip**
 
 Outputs
 .......
@@ -1151,14 +1311,14 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:nearestneighbouranalysis``
+**Algorithm ID**: ``native:nearestneighbouranalysis``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
 
-.. _qgisoverlapanalysis:
+.. _qgiscalculatevectoroverlaps:
 
 Overlap analysis
 ---------------------
@@ -1196,12 +1356,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1224,9 +1381,143 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:overlapanalysis``
+**Algorithm ID**: ``native:calculatevectoroverlaps``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisstdbscanclustering:
+
+ST-DBSCAN clustering
+--------------------
+
+Clusters point features based on a 2D implementation of spatiotemporal
+Density-based clustering of applications with noise (ST-DBSCAN) algorithm.
+
+.. seealso:: :ref:`qgisdbscanclustering`, :ref:`qgiskmeansclustering`
+
+Parameters
+..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layer**
+     - ``INPUT``
+     - [vector: point]
+     - Layer to analyze
+   * - **Date/time field**
+     - ``DATETIME_FIELD``
+     - [tablefield: date]
+     - Field containing the temporal information
+   * - **Minimum cluster size**
+     - ``MIN_SIZE``
+     - [number]
+
+       Default: 5
+     - Minimum number of features to generate a cluster
+   * - **Maximum distance between clustered points**
+     - ``EPS``
+     - [number]
+
+       Default: 1.0
+     - Distance beyond which two features can not belong
+       to the same cluster (eps)
+   * - **Maximum time duration between clustered points**
+     - ``EPS2``
+     - [number]
+
+       Default: 0.0 (days)
+     - Time duration beyond which two features can not belong
+       to the same cluster (eps2).
+       Available time units are milliseconds, seconds, minutes,
+       hours, days and weeks.
+   * - **Clusters**
+     - ``OUTPUT``
+     - [vector: point]
+
+       Default: ``[Create temporary layer]``
+     - Specify the vector layer for the result of the clustering. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Treat border points as noise (DBSCAN\*)**
+
+       Optional
+     - ``DBSCAN*``
+     - [boolean]
+
+       Default: False
+     - If checked, points on the border of a cluster are
+       themselves treated as unclustered points, and only
+       points in the interior of a cluster are tagged as
+       clustered.
+   * - **Cluster field name**
+     - ``FIELD_NAME``
+     - [string]
+
+       Default: 'CLUSTER_ID'
+     - Name of the field where the associated cluster number
+       shall be stored
+   * - **Cluster size field name**
+     - ``SIZE_FIELD_NAME``
+     - [string]
+
+       Default: 'CLUSTER_SIZE'
+     - Name of the field with the count of features in the same cluster
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Clusters**
+     - ``OUTPUT``
+     - [vector: point]
+     - Vector layer containing the original features with a
+       field setting the cluster they belong to
+   * - **Number of clusters**
+     - ``NUM_CLUSTERS``
+     - [number]
+     - The number of clusters discovered
+
+Python code
+...........
+
+**Algorithm ID**: ``native:stdbscanclustering``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1266,7 +1557,13 @@ Parameters
    * - **Statistics by category**
      - ``OUTPUT``
      - [table]
-     - Table for the generated statistics
+
+       Default: ``[Create temporary layer]``
+     - Specify the output table for the generated statistics. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1382,7 +1679,7 @@ Python code
 
 **Algorithm ID**: ``qgis:statisticsbycategories``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1397,6 +1694,10 @@ of lines and the total number of them that cross each polygon.
 The resulting layer has the same features as the input polygon layer,
 but with two additional attributes containing the length and count of
 the lines across each polygon.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>` 
+of polygon features
 
 **Default menu**: :menuselection:`Vector --> Analysis Tools`
 
@@ -1435,7 +1736,13 @@ Parameters
    * - **Line length**
      - ``OUTPUT``
      - [vector: polygon]
-     - The output polygon vector layer
+
+       Default: ``[Create temporary layer]``
+     - Specify the output polygon layer with generated statistics. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1457,9 +1764,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:sumlinelengths``
+**Algorithm ID**: ``native:sumlinelengths``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 

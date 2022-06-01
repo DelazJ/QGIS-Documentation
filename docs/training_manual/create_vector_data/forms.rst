@@ -35,7 +35,7 @@ map, rather than needing to search for a specific street in the
    of the fields values and other general information about the
    clicked feature.
 #. At the top of the panel, check the :guilabel:`Auto open form for single feature results`
-   checkbox in the |options| sup:`Identify Settings` menu.
+   checkbox in the |options| :sup:`Identify Settings` menu.
 #. Now, click again on any street in the map. Along the previous
    :guilabel:`Identify Results` dialog, you'll see the now-familiar
    form:
@@ -100,14 +100,34 @@ You will now see that the :guilabel:`oneway` attribute has a
 checkbox next to it denoting ``True`` (checked) or ``False``
 (unchecked).
 
-.. _backlink-create-vector-forms-1:
 
 |hard| |TY|
 ----------------------------------------------------------------------
 
 Set a more appropriate form widget for the :guilabel:`highway` field.
 
-:ref:`Check your results <create-vector-forms-1>`
+.. admonition:: Answer
+   :class: dropdown
+
+   For the :guilabel:`TYPE`, there is obviously a limited amount of types that a
+   road can be, and if you check the attribute table for this layer, you'll see
+   that they are predefined.
+
+   #. Set the widget to :guilabel:`Value Map` and click
+      :guilabel:`Load Data from Layer`.
+   #. Select :guilabel:`roads` in the :guilabel:`Label` dropdown and
+      :guilabel:`highway` for both the :guilabel:`Value` and :guilabel:`Description`
+      options:
+
+      .. figure:: img/value_map_settings.png
+         :align: center
+
+   #. Click :guilabel:`OK` three times.
+   #. If you use the :guilabel:`Identify` tool on a street now while edit mode is
+      active, the dialog you get should look like this:
+
+      .. figure:: img/highway_as_value_map.png
+         :align: center
 
 |hard| |TY| Creating Test Data
 ----------------------------------------------------------------------
@@ -118,7 +138,7 @@ You can also design your own custom form completely from scratch.
    attributes:
 
    * name (text)
-   * age (text)
+   * age (integer)
 
    .. figure:: img/new_point_layer.png
       :align: center
@@ -162,20 +182,27 @@ the person who creates the forms).
    .. figure:: img/qt_line_edit.png
       :align: center
 
-#. Set its name to ``Name``.
-#. Using the same approach, create a new spinbox and set its name to
-   ``Age``.
+#. Set its name to ``name``.
+#. Using the same approach, create a new :guilabel:`Spin Box` and set its name to
+   ``age``.
 #. Add a :guilabel:`Label` with the text ``Add a New Person`` in a
    bold font (look in the object *properties* to find out how to set
    this).
    Alternatively, you may want to set the title of the dialog itself
    (rather than adding a label).
+#. Add a :guilabel:`Label` for your :guilabel:`Line Edit` and your :guilabel:`Spin Box`.
+#. Arrange the elements to your own desire.
 #. Click anywhere in your dialog.
-#. Find the *Lay Out Vertically* button (in a toolbar along the top
+#. Find the *Lay Out in a Form Layout* button (in a toolbar along the top
    edge of the screen, by default). This lays out your dialog
    automatically.
 #. Set the dialog's maximum size (in its properties) to ``200``
-   (width) by ``100`` (height).
+   (width) by ``150`` (height).
+#. Your form should now look similar to this:
+
+   .. figure:: img/qt_example_form.png
+      :align: center
+
 #. Save your new form as :file:`exercise_data/forms/add_people.ui`
 #. When it's done saving, you can close *Qt Designer*
 

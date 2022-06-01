@@ -25,11 +25,15 @@ distances will offset them to the right.
    In blue the source layer, in red the offset one
 
 |checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of line features
 
 .. seealso:: :ref:`qgisoffsetline`, :ref:`qgisarraytranslatedfeatures`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -46,16 +50,39 @@ Parameters
      - Input line vector layer to use for the offsets.
    * - **Number of features to create**
      - ``COUNT``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 10
      - Number of offset copies to generate for each feature
    * - **Offset step distance**
      - ``OFFSET``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - Distance between two consecutive offset copies
+   * - **Offset lines**
+     - ``OUTPUT``
+     - [vector: line]
+
+       Default: ``[Create temporary layer]``
+     - Specify the output line layer with offset features. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Segments**
      - ``SEGMENTS``
      - [number]
@@ -74,7 +101,12 @@ Parameters
        * 0 --- Round
        * 1 --- Miter
        * 2 --- Bevel
+  
+       .. figure:: img/buffer_join_style.png
+          :align: center
+          :width: 100%
 
+          Round, miter, and bevel join styles
    * - **Miter limit**
      - ``MITER_LIMIT``
      - [number]
@@ -83,19 +115,6 @@ Parameters
      - Only applicable for mitered join styles, and controls
        the maximum distance from the offset curve to use when
        creating a mitered join.
-   * - **Offset lines**
-     - ``OUTPUT``
-     - [vector: line]
-
-       Default: ``[Create temporary layer]``
-     - Specify the output line layer with offset features. One of:
-
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -117,9 +136,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:arrayoffsetlines``
+**Algorithm ID**: ``native:arrayoffsetlines``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -143,6 +162,7 @@ M values present in the geometry can also be translated.
 
 |checkbox| Allows
 :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 .. seealso:: :ref:`qgistranslategeometry`, :ref:`qgisarrayoffsetlines`
 
@@ -164,31 +184,31 @@ Parameters
      - Input vector layer to translate
    * - **Number of features to create**
      - ``COUNT``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 10
      - Number of copies to generate for each feature
    * - **Step distance (x-axis)**
      - ``DELTA_X``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Displacement to apply on the X axis
    * - **Step distance (y-axis)**
      - ``DELTA_Y``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Displacement to apply on the Y axis
    * - **Step distance (z-axis)**
      - ``DELTA_Z``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Displacement to apply on the Z axis
    * - **Step distance (m values)**
      - ``DELTA_M``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - Displacement to apply on M
@@ -201,12 +221,9 @@ Parameters
        of the features.
        The original features are also copied. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -229,9 +246,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:arraytranslatedfeatures``
+**Algorithm ID**: ``native:arraytranslatedfeatures``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -287,6 +304,11 @@ Parameters
      - ``EXTENT``
      - [extent]
      - Extent of the grid
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Horizontal spacing**
      - ``HSPACING``
      - [number]
@@ -326,12 +348,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Resulting vector grid layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -353,9 +372,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:creategrid``
+**Algorithm ID**: ``native:creategrid``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -420,12 +439,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the resulting point layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -446,9 +462,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:createpointslayerfromtable``
+**Algorithm ID**: ``native:createpointslayerfromtable``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -494,12 +510,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Resulting point layer with pixel centroids. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -522,7 +535,7 @@ Python code
 
 **Algorithm ID**: ``qgis:generatepointspixelcentroidsalongline``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -568,12 +581,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Resulting point layer of pixel centroids. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -594,9 +604,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:generatepointspixelcentroidsinsidepolygons``
+**Algorithm ID**: ``native:generatepointspixelcentroidsinsidepolygons``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -640,6 +650,8 @@ Parameters
        Default: False
      - If checked, the folder and its subfolders will be scanned
    * - **Photos**
+
+       Optional
      - ``OUTPUT``
      - [vector: point]
 
@@ -647,12 +659,10 @@ Parameters
      - Specify the point vector layer for the geotagged photos.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
-       The file encoding can also be changed here.
    * - **Invalid photos table**
 
        Optional
@@ -663,13 +673,9 @@ Parameters
      - Specify the table of unreadable or non-geotagged photos.
        One of:
 
-       * Skip Output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 .......
@@ -699,9 +705,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:importphotos``
+**Algorithm ID**: ``native:importphotos``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -712,10 +718,9 @@ Points to path
 --------------
 
 Converts a point layer to a line layer, by joining points in an
-order defined by an expression or a field in the input point layer (if the order
-field is a date/time field, the format must be specified).
+order defined by an expression or a field in the input point layer.
 
-Points can be grouped by a field to distinguish line features.
+Points can be grouped by a field or an expression to distinguish line features.
 
 In addition to the line vector layer, a text file is output
 that describes the resulting line as a start point and a
@@ -738,34 +743,37 @@ Parameters
      - ``INPUT``
      - [vector: point]
      - Input point vector layer
-   * - **Close path**
+   * - **Create closed paths**
      - ``CLOSE_PATH``
      - [boolean]
 
        Default: False
      - If checked, the first and last points of the line will be connected
        and close the generated path
-   * - **Order expression** |318|
+   * - **Order expression**
+
+       Optional
      - ``ORDER_EXPRESSION``
      - [expression]
-     - Field or expression providing the order to connect the points in the path
-   * - **Group field**
+     - Field or expression providing the order to connect the points in the path.
+       If not set, the feature ID (``$id``) is used.
+   * - **Sort text containing numbers naturally**
 
        Optional
-     - ``GROUP_FIELD``
-     - [tablefield: any]
-     - Point features of the same value in the field will be
+     - ``NATURAL_SORT``
+     - [boolean]
+
+       Default: False
+     - If checked, naturally sorts the features based on the provided expression
+       (i.e., 'a9' < 'a10').
+   * - **Path group expression**
+
+       Optional
+     - ``GROUP_EXPRESSION``
+     - [expression]
+     - Point features of the same value in the field or expression will be
        grouped in the same line.
-       If not set, a single path is drawn with all the input
-       points.
-   * - **Date format (if order field is DateTime)**
-
-       Optional
-     - ``DATE_FORMAT``
-     - [string]
-     - The format to use for the ``Order field`` parameter.
-       Specify this only if the ``Order field`` is of type
-       Date/Time.
+       If not set, a single path is drawn with all the input points.
    * - **Paths**
      - ``OUTPUT``
      - [vector: line]
@@ -773,13 +781,13 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the line vector layer of the path. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
    * - **Directory for text output**
+
+       Optional
      - ``OUTPUT_TEXT_DIR``
      - [folder]
 
@@ -787,12 +795,9 @@ Parameters
      - Specify the directory that will contain the description
        files of points and paths. One of:
 
-       * Skip Output
-       * Save to a Temporary Directory
-       * Save to Directory...
-
-       The file encoding can also be changed here.
-
+       .. include:: ../algs_include.rst
+          :start-after: **directory_output_types_skip**
+          :end-before: **end_directory_output_types_skip**
 
 Outputs
 .......
@@ -817,9 +822,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:pointstopath``
+**Algorithm ID**: ``native:pointstopath``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -893,12 +898,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - The output random points. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -921,7 +923,7 @@ Python code
 
 **Algorithm ID**: ``qgis:qgisrandompointsalongline``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -943,6 +945,9 @@ be increased.
 Parameters
 ..........
 
+Basic parameters
+^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 20 20 20 40
@@ -955,6 +960,11 @@ Parameters
      - ``EXTENT``
      - [extent]
      - Map extent for the random points
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Number of points**
      - ``POINTS_NUMBER``
      - [number]
@@ -973,12 +983,6 @@ Parameters
 
        Default: *Project CRS*
      - CRS of the random points layer
-   * - **Maximum number of search attempts given the minimum distance**
-     - ``MAX_ATTEMPTS``
-     - [number]
-
-       Default: 200
-     - Maximum number of attempts to place the points
    * - **Random points**
      - ``OUTPUT``
      - [vector: point]
@@ -986,12 +990,28 @@ Parameters
        Default: ``[Create temporary layer]``
      - The output random points. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Maximum number of search attempts given the minimum distance**
+     - ``MAX_ATTEMPTS``
+     - [number]
+
+       Default: 200
+     - Maximum number of attempts to place the points
 
 Outputs
 .......
@@ -1014,7 +1034,7 @@ Python code
 
 **Algorithm ID**: ``native:randompointsinextent``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1065,12 +1085,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - The output random points. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1093,7 +1110,7 @@ Python code
 
 **Algorithm ID**: ``qgis:randompointsinlayerbounds``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1147,6 +1164,9 @@ the polygon feature geometry.
 Parameters
 ..........
 
+Basic parameters
+^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 20 20 20 40
@@ -1162,7 +1182,7 @@ Parameters
      - Input polygon vector layer
    * - **Number of points for each feature**
      - ``POINTS_NUMBER``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1
      - Number of points to create
@@ -1170,15 +1190,38 @@ Parameters
 
        Optional
      - ``MIN_DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - The minimum distance between points within one polygon feature
+   * - **Random points in polygons**
+     - ``OUTPUT``
+     - [vector: point]
+
+       Default: ``[Create temporary layer]``
+     - The output random points. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Global minimum distance between points**
 
        Optional
      - ``MIN_DISTANCE_GLOBAL``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - The global minimum distance between points.
@@ -1188,7 +1231,7 @@ Parameters
 
        Optional
      - ``MAX_TRIES_PER_POINT``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 10
      - The maximum number of tries per point.
@@ -1209,19 +1252,6 @@ Parameters
        Default: True
      - If set, a point will get the attributes from the line on
        which it is placed.
-   * - **Random points in polygons**
-     - ``OUTPUT``
-     - [vector: point]
-
-       Default: ``[Create temporary layer]``
-     - The output random points. One of:
-
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -1260,9 +1290,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:randompointsinpolygons``
+**Algorithm ID**: ``native:randompointsinpolygons``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1314,7 +1344,7 @@ Parameters
 
    * - **Point count or density**
      - ``VALUE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1.0
      - The number or density of points, depending on the chosen
@@ -1332,12 +1362,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - The output random points. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1360,7 +1387,7 @@ Python code
 
 **Algorithm ID**: ``qgis:randompointsinsidepolygons``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1414,6 +1441,9 @@ the line feature geometry.
 Parameters
 ..........
 
+Basic parameters
+^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 20 20 20 40
@@ -1429,7 +1459,7 @@ Parameters
      - Input line vector layer
    * - **Number of points for each feature**
      - ``POINTS_NUMBER``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 1
      - Number of points to create
@@ -1437,15 +1467,38 @@ Parameters
 
        Optional
      - ``MIN_DISTANCE``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - The minimum distance between points within one line feature
+   * - **Random points on lines**
+     - ``OUTPUT``
+     - [vector: point]
+
+       Default: ``[Create temporary layer]``
+     - The output random points. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Global minimum distance between points**
 
        Optional
      - ``MIN_DISTANCE_GLOBAL``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 0.0
      - The global minimum distance between points.
@@ -1455,7 +1508,7 @@ Parameters
 
        Optional
      - ``MAX_TRIES_PER_POINT``
-     - [number |dataDefined|]
+     - [number |dataDefine|]
 
        Default: 10
      - The maximum number of tries per point.
@@ -1476,19 +1529,6 @@ Parameters
        Default: True
      - If set, a point will get the attributes from the line on
        which it is placed.
-   * - **Random points on lines**
-     - ``OUTPUT``
-     - [vector: point]
-
-       Default: ``[Create temporary layer]``
-     - The output random points. One of:
-
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -1515,7 +1555,7 @@ Outputs
      - [number]
      - Not including features with empty or no geometry
    * - **Total number of points generated**
-     - ``OUTPUT_POINTS``
+     - ``POINTS_GENERATED``
      - [number]
      - 
    * - **Number of missed points**
@@ -1527,9 +1567,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:randompointsonlines``
+**Algorithm ID**: ``native:randompointsonlines``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1578,12 +1618,9 @@ Parameters
      - Specify the resulting point layer of pixels centroids.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1604,9 +1641,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:pixelstopoints``
+**Algorithm ID**: ``native:pixelstopoints``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1655,12 +1692,9 @@ Parameters
      - Specify the resulting polygon layer of pixel extents.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1681,9 +1715,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:pixelstopolygons``
+**Algorithm ID**: ``native:pixelstopolygons``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1722,6 +1756,11 @@ Parameters
      - ``EXTENT``
      - [extent]
      - Map extent for the random points
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Point spacing/count**
      - ``SPACING``
      - [number]
@@ -1761,12 +1800,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output regular point layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -1789,7 +1825,7 @@ Python code
 
 **Algorithm ID**: ``qgis:regularpoints``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1800,8 +1836,7 @@ Python code
    please add it also to the substitutions.txt file in the
    source folder.
 
-.. |318| replace:: ``NEW in 3.18``
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-.. |dataDefined| image:: /static/common/mIconDataDefine.png
+.. |dataDefine| image:: /static/common/mIconDataDefine.png
    :width: 1.5em

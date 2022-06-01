@@ -15,7 +15,7 @@ Assign projection
 Applies a coordinate system to a raster dataset.
 
 This algorithm is derived from the
-`GDAL edit utility <https://gdal.org/gdal_edit.html>`_.
+`GDAL edit utility <https://gdal.org/programs/gdal_edit.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Projections`
 
@@ -60,7 +60,7 @@ Python code
 
 **Algorithm ID**: ``gdal:assignprojection``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -73,7 +73,7 @@ Extracts the projection of a raster file and writes it into a *world*
 file with extension :file:`.wld`.
 
 This algorithm is derived from the
-`GDAL srsinfo utility <https://gdal.org/gdalsrsinfo.html>`_.
+`GDAL srsinfo utility <https://gdal.org/programs/gdalsrsinfo.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Projections`
 
@@ -132,7 +132,7 @@ Python code
 
 **Algorithm ID**: ``gdal:extractprojection``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -146,12 +146,15 @@ Reprojects a raster layer into another Coordinate Reference System
 The output file resolution and the resampling method can be chosen.
 
 This algorithm is derived from the
-`GDAL warp utility <https://gdal.org/gdalwarp.html>`_.
+`GDAL warp utility <https://gdal.org/programs/gdalwarp.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Projections`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -200,7 +203,6 @@ Parameters
        * 9 --- Median
        * 10 --- First quartile
        * 11 --- Third quartile
-
    * - **Nodata value for output bands**
 
        Optional
@@ -219,6 +221,30 @@ Parameters
 
        Default: None
      - Defines the output file resolution of reprojection result
+   * - **Reprojected**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output raster layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -231,15 +257,17 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Output data type**
      - ``DATA_TYPE``
      - [enumeration]
 
        Default: 0
      - Defines the format of the output raster file.
-
        Options:
-       
+
        * 0 --- Use input layer data type
        * 1 --- Byte
        * 2 --- Int16
@@ -252,7 +280,6 @@ Parameters
        * 9 --- CInt32
        * 10 --- CFloat32
        * 11 --- CFloat64
-       
    * - **Georeferenced extents of output file to be created**
 
        Optional
@@ -262,6 +289,11 @@ Parameters
        created (in the :guilabel:`Target CRS` by default.
        In the :guilabel:`CRS of the target raster extent`, if
        specified).
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **CRS of the target raster extent**
 
        Optional
@@ -290,18 +322,6 @@ Parameters
 
        Default: None
      - Add extra GDAL command line options.
-   * - **Reprojected**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: '[Save to temporary file]'
-     - Specification of the output raster layer.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -326,6 +346,6 @@ Python code
 
 **Algorithm ID**: ``gdal:warpreproject``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**

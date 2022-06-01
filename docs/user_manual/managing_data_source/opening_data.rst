@@ -29,8 +29,8 @@ and often write a lot of formats:
   many more...
   Read the complete list of `supported raster formats
   <https://gdal.org/drivers/raster/index.html>`_.
-* Database formats include PostgreSQL/PostGIS, SQLite/SpatiaLite, Oracle, DB2
-  or MSSQL Spatial, MySQL...
+* Database formats include PostgreSQL/PostGIS, SQLite/SpatiaLite, Oracle,
+  MSSQL Spatial, SAP HANA, MySQL...
 * Web map and data services (WM(T)S, WFS, WCS, CSW, XYZ tiles, ArcGIS
   services, ...) are also handled by QGIS providers.
   See :ref:`working_with_ogc` for more information about some of these.
@@ -154,7 +154,7 @@ hierarchically, and there are several top level entries:
    * |postgis| :guilabel:`PostGIS`
    * |mssql| :guilabel:`MSSQL`
    * |oracle| :guilabel:`Oracle`
-   * |db2| :guilabel:`DB2`
+   * |hana| :guilabel:`SAP HANA`
    * |wms| :guilabel:`WMS/WMTS`
    * |vectorTileLayer| :guilabel:`Vector Tiles`
    * |xyz| :guilabel:`XYZ Tiles`
@@ -205,10 +205,12 @@ menu will have supporting entries.
 For example, for non-database, non-service-based vector, raster and
 mesh data sources:
 
-* :guilabel:`Delete File "<name of file>"...`
-* :guilabel:`Export Layer` --> :guilabel:`To File...`
+* :menuselection:`Export Layer --> To File...`
 * :guilabel:`Add Layer to Project`
 * :guilabel:`Layer Properties`
+* :menuselection:`Manage --> Rename "<name of file>"...` or
+  :guilabel:`Delete "<name of file>"...`
+* :guilabel:`Show in Files`
 * :guilabel:`File Properties`
 
 In the :guilabel:`Layer properties` entry, you will find (similar
@@ -292,7 +294,7 @@ The DB Manager
 
 The :guilabel:`DB Manager` Plugin is another tool
 for integrating and managing spatial database formats supported by
-QGIS (PostGIS, SpatiaLite, GeoPackage, Oracle Spatial, MSSQL, DB2, Virtual
+QGIS (PostGIS, SpatiaLite, GeoPackage, Oracle Spatial, MSSQL, Virtual
 layers). It can be activated from the
 :menuselection:`Plugins --> Manage and Install Plugins...` menu.
 
@@ -375,9 +377,16 @@ To load a layer from a file:
    in the pull-down menu).
 #. Press :guilabel:`Open` to load the selected file into :guilabel:`Data
    Source Manager` dialog
-#. You can specify the encoding for vector file if desired
+   
+   .. _figure_vector_layer_open_options:
+   
+   .. figure:: img/openoptionsvectorlayer.png
+      :align: center
+      
+      Loading a Shapefile with open options
+
 #. Press :guilabel:`Add` to load the file in QGIS and display them in the map view.
-   figure_vector_loaded_ shows QGIS after loading the :file:`alaska.shp` file.
+   :numref:`figure_vector_loaded` shows QGIS after loading the :file:`alaska.shp` file.
 
    .. _figure_vector_loaded:
 
@@ -385,7 +394,14 @@ To load a layer from a file:
       :align: center
 
       QGIS with Shapefile of Alaska loaded
+      
+.. note::
 
+ For loading vector and raster files the GDAL driver offers to define open
+ actions. These will be shown when a file is selected. Options are described
+ in detail on https://gdal.org/drivers/vector/, https://gdal.org/drivers/raster
+ and if a file is selected in QGIS, a text with hyperlink will directly
+ lead to the documentation of the selected file type.
 .. note::
 
  Because some formats like MapInfo (e.g., :file:`.tab`) or Autocad (:file:`.dxf`)
@@ -430,6 +446,8 @@ Layer` tabs allow loading of layers from source types other than :guilabel:`File
     using ``GeoJSON`` or ``GEOJSON - Newline Delimited`` format or based on
     ``CouchDB`` database.
     A :guilabel:`URI` is required, with optional :ref:`authentication <authentication_index>`.
+  * For all vector source types it is possible to define the :guilabel:`Encoding` or
+    to use the :menuselection:`Automatic -->` setting.
 
 .. _mesh_loading:
 
@@ -448,8 +466,12 @@ To add a mesh layer to QGIS:
 #. Enable the |addMeshLayer| :guilabel:`Mesh` tab on the left panel
 #. Press the :guilabel:`...` :sup:`Browse` button to select the file.
    :ref:`Various formats <mesh_supported_formats>` are supported.
-#. Select the layer and press :guilabel:`Add`.
+#. Select the file and press :guilabel:`Add`.
    The layer will be added using the native mesh rendering.
+#. If the selected file contains many mesh layers, then you'll be prompted
+   with a dialog to choose the sublayers to load.
+   Do your selection and press :guilabel:`OK` and the layers are loaded with
+   the native mesh rendering. It's also possible to load them within a group.
 
 .. _figure_mesh_datasource_manager:
 
@@ -685,9 +707,21 @@ QGIS also supports editable views in SpatiaLite.
 GPS
 ---
 
-Loading GPS data in QGIS can be done using the core plugin ``GPS Tools``.
-Instructions are found in section :ref:`plugin_gps`.
+There are dozens of different file formats for storing GPS data. The format
+that QGIS uses is called GPX (GPS eXchange format), which is a standard
+interchange format that can contain any number of waypoints, routes and tracks
+in the same file.
 
+Use the :guilabel:`...` :sup:`Browse` button to select the GPX file, then use the checkboxes
+to select the feature types you want to load from that GPX file.
+Each feature type will be loaded in a separate layer.
+
+.. _figure_gps_datasource_manager:
+
+.. figure:: img/gps_datasource.png
+   :align: center
+
+   Loading GPS Data dialog
 
 GRASS
 -----
@@ -718,8 +752,8 @@ of them and load their tables:
 * |addMssqlLayer| :menuselection:`Add MSSQL Spatial Layer`
 * |addOracleLayer| :menuselection:`Add Oracle Spatial Layer...` or by typing
   :kbd:`Ctrl+Shift+O`
-* |addDb2Layer| :menuselection:`Add DB2 Spatial Layer...` or by typing
-  :kbd:`Ctrl+Shift+2`
+* |addHanaLayer| :menuselection:`Add SAP HANA Spatial Layer...` or by typing
+  :kbd:`Ctrl+Shift+G`
 
 These tools are accessible either from the :guilabel:`Manage Layers Toolbar`
 and the :menuselection:`Layer --> Add Layer -->` menu.
@@ -738,12 +772,12 @@ corresponding descriptions at:
 
 * :ref:`create_mssql_connection`;
 * :ref:`create_oracle_connection`;
-* :ref:`create_db2_connection`.
+* :ref:`create_hana_connection`.
 
 The first time you use a PostGIS data source, you must create a connection to a
 database that contains the data. Begin by clicking the appropriate button as
 exposed above, opening an :guilabel:`Add PostGIS Table(s)` dialog
-(see figure_add_postgis_tables_).
+(see :numref:`figure_add_postgis_tables`).
 To access the connection manager, click on the :guilabel:`New`
 button to display the
 :guilabel:`Create a New PostGIS Connection` dialog.
@@ -811,7 +845,7 @@ For the other database types, see their differences at
 
 * :guilabel:`Authentication`, configurations.
   Choose an authentication configuration. You can add configurations using
-  the |signPlus| button. Choices are:
+  the |symbologyAdd| button. Choices are:
 
   * Basic authentication
   * PKI PKCS#12 authentication
@@ -846,7 +880,7 @@ clicking the :guilabel:`Test Connection` button or apply it by clicking
 the :guilabel:`OK` button.
 From :guilabel:`Add PostGIS Table(s)`, click now on :guilabel:`Connect`,
 and the dialog is filled with tables from the selected database
-(as shown in figure_add_postgis_tables_).
+(as shown in :numref:`figure_add_postgis_tables`).
 
 
 .. _db_requirements:
@@ -951,7 +985,11 @@ the connection dialog proposes:
 * **Database**: SID or SERVICE_NAME of the Oracle instance;
 * **Port**: Port number the Oracle database server listens on. The default
   port is ``1521``;
-* **Workspace**: Workspace to switch to.
+* **Options**: Oracle connection specific options (e.g. OCI_ATTR_PREFETCH_ROWS,
+  OCI_ATTR_PREFETCH_MEMORY). The format of the options string is a semicolon
+  separated list of option names or option=value pairs;
+* **Workspace**: Workspace to switch to;
+* **Schema**: Schema in which the data are stored
 
 Optionally, you can activate the following checkboxes:
 
@@ -987,52 +1025,6 @@ Optionally, you can activate the following checkboxes:
    tables have a **primary key**.
 
 
-.. _create_db2_connection:
-
-Connecting to DB2 Spatial
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In addition to some of the options described in
-:ref:`vector_create_stored_connection`, the connection to a DB2 database (see
-:ref:`label_db2_spatial` for more information) can be specified using either a
-:guilabel:`Service/DSN` name defined to ODBC or :guilabel:`Driver`,
-:guilabel:`Host` and :guilabel:`Port`.
-
-An ODBC **Service/DSN** connection requires the service name defined to ODBC.
-
-A driver/host/port connection requires:
-
-* **Driver**: Name of the DB2 driver.
-  Typically this would be IBM DB2 ODBC DRIVER.
-* **DB2 Host**: Name of the database host.
-  This must be a resolvable host name such as would be used to open a
-  TCP/IP connection or ping the host.
-  If the database is on the same computer as QGIS, simply enter
-  *localhost* here.
-* **DB2 Port**: Port number the DB2 database server listens on.
-  The default DB2 LUW port is ``50000``.
-  The default DB2 z/OS port is ``446``.
-
-.. _tip_db2_Spatial_layers:
-
-.. tip:: **DB2 Spatial Layers**
-
-   A DB2 Spatial layer is defined by a row in the
-   **DB2GSE.ST_GEOMETRY_COLUMNS** view.
-
-.. note::
-
-  In order to work effectively with DB2 spatial tables in QGIS, it is important
-  that tables have an INTEGER or BIGINT column defined as PRIMARY KEY and if new
-  features are going to be added, this column should also have the GENERATED
-  characteristic.
-
-  It is also helpful for the spatial column to be registered with a specific
-  spatial reference identifier (most often ``4326`` for WGS84 coordinates).
-  A spatial column can be registered by calling the
-  ``ST_Register_Spatial_Column`` stored procedure.
-
-
 .. _create_mssql_connection:
 
 Connecting to MSSQL Spatial
@@ -1042,6 +1034,96 @@ In addition to some of the options in :ref:`vector_create_stored_connection`,
 creating a new MSSQL connection dialog proposes you to fill a **Provider/DSN**
 name. You can also display available databases.
 
+.. _create_hana_connection:
+
+Connecting to SAP HANA
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: You require the SAP HANA Client to connect to a SAP HANA database.
+  You can download the SAP HANA Client for your platform at the `SAP Development
+  Tools website <https://tools.hana.ondemand.com/#hanatools>`_.
+
+.. _figure_new_hana_connection:
+
+.. figure:: img/newhanaconnection.png
+   :align: center
+
+   Create a New SAP HANA Connection Dialog
+
+The following parameters can be entered:
+
+* :guilabel:`Name`: A name for this connection.
+
+* :guilabel:`Driver` |win|: The name of the HANA ODBC driver. It is ``HDBODBC``
+  if you are using 64-bit QGIS, ``HDBODBC32`` if you are using 32-bit QGIS. The
+  appropriate driver name is entered automatically.
+
+* :guilabel:`Driver` |nix| |osx|: Either the name under which the SAP HANA ODBC
+  driver has been registered in :file:`/etc/odbcinst.ini` or the full path to the
+  SAP HANA ODBC driver. The SAP HANA Client installer will install the ODBC
+  driver to :file:`/usr/sap/hdbclient/libodbcHDB.so` by default.
+
+* :guilabel:`Host`: The name of the database host.
+
+* :guilabel:`Identifier`: Identifies the instance to connect to on the host.
+  This can be either :guilabel:`Instance Number` or :guilabel:`Port Number`.
+  Instance numbers consist of two digits, port numbers are in the range from 1
+  to 65,535.
+
+* :guilabel:`Mode`: Specifies the mode in which the SAP HANA instance runs. This
+  setting is only taken into account if :guilabel:`Identifier` is set to
+  :guilabel:`Instance Number`. If the database hosts multiple containers, you
+  can either connect to a tenant with the name given at
+  :guilabel:`Tenant database` or you can connect to the system database.
+
+* :guilabel:`Schema`: This parameter is optional. If a schema name is given,
+  QGIS will only search for data in that schema. If this field is left blank,
+  QGIS will search for data in all schemas.
+
+* :menuselection:`Authentication --> Basic`.
+
+  * :guilabel:`User name`: User name used to connect to the database.
+  * :guilabel:`Password`: Password used to connect to the database.
+
+* :guilabel:`SSL Settings`
+
+  * |checkbox| :guilabel:`Enable TLS/SSL encryption`: Enables TLS 1.1 - TLS1.2
+    encryption. The server will choose the highest available.
+  * :guilabel:`Provider`: Specifies the cryptographic library provider used for
+    SSL communication. :guilabel:`sapcrypto` should work on all platforms,
+    :guilabel:`openssl` should work on |nix| |osx|, :guilabel:`mscrypto` should
+    work on |win| and :guilabel:`commoncrypto` requires CommonCryptoLib to be
+    installed.
+  * |checkbox| :guilabel:`Validate SSL certificate`: If checked, the SSL
+    certificate will be validated using the truststore given in
+    :guilabel:`Trust store file with public key`.
+  * :guilabel:`Override hostname in certificate`: Specifies the host name used
+    to verify server’s identity. The host name specified here verifies the
+    identity of the server instead of the host name with which the connection
+    was established. If you specify ``*`` as the host name, then the server's
+    host name is not validated. Other wildcards are not permitted.
+  * :guilabel:`Keystore file with private key`: Currently ignored. This
+    parameter might allow to authenticate via certificate instead via user and
+    password in future.
+  * :guilabel:`Trust store file with public key`: Specifies the path to a trust
+    store file that contains the server’s public certificates if using OpenSSL.
+    Typically, the trust store contains the root certificate or the certificate
+    of the certification authority that signed the server’s public certificates.
+    If you are using the cryptographic library CommonCryptoLib or msCrypto, then
+    leave this property empty.
+
+* |checkbox| :guilabel:`Only look for user's tables`: If checked, QGIS searches
+  only for tables and views that are owned by the user that connects to the
+  database.
+
+* |checkbox| :guilabel:`Also list tables with no geometries`: If checked, QGIS
+  searches also for tables and views that do not contain a spatial column.
+
+.. tip:: **Connecting to SAP HANA Cloud**
+
+   If you'd like to connect to an SAP HANA Cloud instance, you usually must set
+   :guilabel:`Port Number` to ``443`` and check
+   :guilabel:`Enable TLS/SSL encryption`.
 
 .. _vector_loading_database:
 
@@ -1140,19 +1222,90 @@ WFS(-T), WCS, CSW, ...).
 Thanks to QGIS Server, you can also publish such services.
 :ref:`QGIS-Server-manual` contains descriptions of these capabilities.
 
+.. index:: Vector Tiles services
+.. _vector_tiles:
+
+Using Vector Tiles services
+---------------------------
+
+Vector Tile services can be added via the |addVectorTileLayer| :guilabel:`Vector
+Tiles` tab of the :guilabel:`Data Source Manager` dialog or the contextual menu
+of the :guilabel:`Vector Tiles` entry in the :guilabel:`Browser` panel.
+Services can be either a :guilabel:`New Generic Connection...` or a
+:guilabel:`New ArcGIS Vector Tile Service Connection...`.
+
+You set up a service by adding:
+
+* a :guilabel:`Name`
+* the :guilabel:`URL`: of the type ``http://example.com/{z}/{x}/{y}.pbf`` for generic
+  services and ``http://example.com/arcgis/rest/services/Layer/VectorTileServer``
+  for ArcGIS based services.
+  The service must provide tiles in :file:`.pbf` format.
+* the |checkbox|:guilabel:`Min. Zoom Level` and the |checkbox|:guilabel:`Max. Zoom Level`.
+  Vector Tiles have a pyramid structure. By using these options you have the
+  opportunity to individually generate layers from the tile pyramid.
+  These layers will then be used to render the Vector Tile in QGIS.
+
+  For Mercator projection (used by OpenStreetMap Vector Tiles) Zoom Level 0
+  represents the whole world at a scale of 1:500.000.000. Zoom Level 14
+  represents the scale 1:35.000.
+* a :guilabel:`Style URL`: a URL to a MapBox GL JSON style configuration.
+  If provided, then that style will be applied whenever the layers
+  from the connection are added to QGIS.
+  In the case of Arcgis vector tile service connections, the URL overrides
+  the default style configuration specified in the server configuration.
+* the :ref:`authentication <authentication_index>` configuration if necessary
+* a :guilabel:`Referer`
+
+:numref:`figure_vector_tiles_maptilerplanet` shows the dialog with the
+MapTiler planet Vector Tiles service configuration.
+
+.. _figure_vector_tiles_maptilerplanet:
+
+.. figure:: img/vector_tiles_maptilerplanet.png
+   :align: center
+   
+   Vector Tiles - Maptiler Planet configuration
+
+Configurations can be saved to :file:`.XML` file (:guilabel:`Save Connections`)
+through the :guilabel:`Vector Tiles` entry in :guilabel:`Data Source Manager`
+dialog or its context menu in the :guilabel:`Browser` panel.
+Likewise, they can be added from a file (:guilabel:`Load Connections`).
+
+Once a connection to a vector tile service is set, it's possible to:
+
+* :guilabel:`Edit` the vector tile connection settings
+* :guilabel:`Remove` the connection
+* From the :guilabel:`Browser` panel, right-click over the entry
+  and you can also:
+
+  * :guilabel:`Add layer to project`: a double-click also adds the layer
+  * View the :guilabel:`Layer Properties...` and get access to metadata and
+    a preview of the data provided by the service.
+    More settings are available when the layer has been loaded into the project.
+
 .. index:: XYZ Tile services
 .. _xyz_tile:
 
 Using XYZ Tile services
 -----------------------
 
-XYZ Tile services can be found in the :guilabel:`XYZ Tiles` top level
-entry in the :guilabel:`Browser`.
-By default, the OpenStreetMap XYZ Tile service is configured. You can
-add other services that use the XYZ Tile protocol by choosing
-:guilabel:`New Connection` in the XYZ Tiles context menu (right-click
-to open).
-figure_xyz_tiles_openstreetmap_ shows the dialog with the OpenStreetMap
+XYZ Tile services can be added via the |addXyzLayer| :guilabel:`XYZ` tab
+of the :guilabel:`Data Source Manager` dialog or the contextual menu of the
+:guilabel:`XYZ Tiles` entry in the :guilabel:`Browser` panel.
+Press :guilabel:`New` (respectively :guilabel:`New Connection`) and provide:
+
+* a :guilabel:`Name`
+* the :guilabel:`URL`
+* the :ref:`authentication <authentication_index>` configuration if necessary
+* the :guilabel:`Min. Zoom level` and :guilabel:`Max. Zoom level`
+* a :guilabel:`Referer`
+* the :guilabel:`Tile Resolution`: possible values are
+  :guilabel:`Unknown (not scaled)`, :guilabel:`Standard (256x256 / 96DPI)`
+  and :guilabel:`High (512x512 / 192DPI)`
+
+By default, the OpenStreetMap XYZ Tile service is configured.
+:numref:`figure_xyz_tiles_openstreetmap` shows the dialog with the OpenStreetMap
 XYZ Tile service configuration.
 
 .. _figure_xyz_tiles_openstreetmap:
@@ -1162,9 +1315,11 @@ XYZ Tile service configuration.
 
    XYZ Tiles - OpenStreetMap configuration
 
-Configurations can be saved (:guilabel:`Save Connections`) to XML
-and loaded (:guilabel:`Load Connections`) through the context menu.
-Authentication configuration is supported.
+Configurations can be saved to :file:`.XML` file (:guilabel:`Save Connections`)
+through the :guilabel:`XYZ Tiles` entry in :guilabel:`Data Source Manager`
+dialog or its context menu in the :guilabel:`Browser` panel.
+Likewise, they can be added from a file (:guilabel:`Load Connections`).
+
 The XML file for OpenStreetMap looks like this:
 
 .. code-block:: xml
@@ -1172,20 +1327,23 @@ The XML file for OpenStreetMap looks like this:
   <!DOCTYPE connections>
   <qgsXYZTilesConnections version="1.0">
     <xyztiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-     zmin="0" zmax="19" password="" name="OpenStreetMap" username=""
-     authcfg="" referer=""/>
+     zmin="0" zmax="19" tilePixelRatio="0" password="" name="OpenStreetMap" 
+     username="" authcfg="" referer=""/>
   </qgsXYZTilesConnections>
 
-Once a connection to a XYZ tile service is set, right-click over the entry to:
+Once a connection to a XYZ tile service is set, it's possible to:
 
-* :guilabel:`Edit...` the XYZ connection settings
-* :guilabel:`Delete` the connection
-* :menuselection:`Export layer... --> To File`, :ref:`saving it as a raster
-  <general_saveas>`
-* :guilabel:`Add layer to project`: a double-click also adds the layer
-* View the :guilabel:`Layer Properties...` and get access to metadata and
-  a preview of the data provided by the service.
-  More settings are available when the layer has been loaded into the project.
+* :guilabel:`Edit` the XYZ connection settings
+* :guilabel:`Remove` the connection
+* From the :guilabel:`Browser` panel, right-click over the entry
+  and you can also:
+
+  * :menuselection:`Export layer... --> To File`, :ref:`saving it as a raster
+    <general_saveas>`
+  * :guilabel:`Add layer to project`: a double-click also adds the layer
+  * View the :guilabel:`Layer Properties...` and get access to metadata and
+    a preview of the data provided by the service.
+    More settings are available when the layer has been loaded into the project.
 
 
 Examples of XYZ Tile services:
@@ -1201,15 +1359,82 @@ Examples of XYZ Tile services:
   :guilabel:`Min. Zoom Level`: 0, :guilabel:`Max. Zoom Level`: 19.
 
 
+.. index:: ArcGIS REST Servers
+.. _arcgis_rest:
+
+Using ArcGIS REST Servers
+-------------------------
+
+ArcGIS REST Servers can be added via the
+|addAfsLayer| :guilabel:`ArcGIS REST Server` tab of the 
+:guilabel:`Data Source Manager` dialog or the contextual menu of the
+:guilabel:`ArcGIS REST Servers` entry in the :guilabel:`Browser` panel.
+Press :guilabel:`New` (respectively :guilabel:`New Connection`) and provide:
+
+* a :guilabel:`Name`
+* the :guilabel:`URL`
+* a :guilabel:`Community endpoint URL`
+* a :guilabel:`Content endpoint URL`
+* the :ref:`authentication <authentication_index>` configuration if necessary
+* a :guilabel:`Referer`
+
+.. note::
+
+   ArcGIS Feature Service connections which have their corresponding Portal 
+   endpoint URLS set can be explored by content groups in the browser panel.
+
+   If a connection has the Portal endpoints set, then expanding out the connection
+   in the browser will show a “Groups” and “Services” folder, instead of the full
+   list of services usually shown. Expanding out the groups folder will show a list
+   of all content groups that the user is a member of, each of which can be
+   expanded to show the service items belonging to that group.
+
+Configurations can be saved to :file:`.XML` file (:guilabel:`Save Connections`)
+through the :guilabel:`ArcGIS REST Server` entry in
+:guilabel:`Data Source Manager` dialog. Likewise, they can be added from
+a file (:guilabel:`Load Connections`).
+
+Once a connection to an ArcGIS REST Server is set, it's possible to:
+
+* :guilabel:`Edit` the ArcGIS REST Server connection settings
+* :guilabel:`Remove` the connection
+* :guilabel:`Refresh` the connection
+* use a filter for the available layers
+* choose from a list of available layers with the option to
+  |checkbox|:guilabel:`Only request features overlapping the current view extent`
+
+* From the :guilabel:`Browser` panel, right-click over the connection entry
+  and you can:
+
+  * :guilabel:`Refresh`
+  * :guilabel:`Edit connection...`
+  * :guilabel:`Remove connection...`
+  * :guilabel:`View Service Info` which will open the default web browser
+    and display the Service Info.
+
+* Right-click over the layer entry and you can also:
+
+  * :guilabel:`View Service Info` which will open the default web browser
+    and display the Service Info.
+  * :menuselection:`Export layer... --> To File`
+  * :guilabel:`Add layer to project`: a double-click also adds the layer
+  * View the :guilabel:`Layer Properties...` and get access to metadata and
+    a preview of the data provided by the service.
+    More settings are available when the layer has been loaded into the
+    project.
+
+
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
    If you need to create a new substitution manually,
    please add it also to the substitutions.txt file in the
    source folder.
 
-.. |addDb2Layer| image:: /static/common/mActionAddDb2Layer.png
+.. |addAfsLayer| image:: /static/common/mActionAddAfsLayer.png
    :width: 1.5em
 .. |addDelimitedTextLayer| image:: /static/common/mActionAddDelimitedTextLayer.png
+   :width: 1.5em
+.. |addHanaLayer| image:: /static/common/mActionAddHanaLayer.png
    :width: 1.5em
 .. |addLayer| image:: /static/common/mActionAddLayer.png
    :width: 1.5em
@@ -1227,6 +1452,10 @@ Examples of XYZ Tile services:
    :width: 1.5em
 .. |addSpatiaLiteLayer| image:: /static/common/mActionAddSpatiaLiteLayer.png
    :width: 1.5em
+.. |addVectorTileLayer| image:: /static/common/mActionAddVectorTileLayer.png
+   :width: 1.5em
+.. |addXyzLayer| image:: /static/common/mActionAddXyzLayer.png
+   :width: 1.5em
 .. |afs| image:: /static/common/mIconAfs.png
    :width: 1.5em
 .. |ams| image:: /static/common/mIconAms.png
@@ -1237,8 +1466,6 @@ Examples of XYZ Tile services:
    :width: 1.5em
 .. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
    :width: 1.5em
-.. |db2| image:: /static/common/mIconDb2.png
-   :width: 1.5em
 .. |dbManager| image:: /static/common/dbmanager.png
    :width: 1.5em
 .. |filterMap| image:: /static/common/mActionFilterMap.png
@@ -1247,14 +1474,20 @@ Examples of XYZ Tile services:
    :width: 1.5em
 .. |geonode| image:: /static/common/mIconGeonode.png
    :width: 1.5em
+.. |hana| image:: /static/common/mIconHana.png
+   :width: 1.5em
 .. |kde| image:: /static/common/kde.png
    :width: 1.5em
 .. |metadata| image:: /static/common/metadata.png
    :width: 1.5em
 .. |mssql| image:: /static/common/mIconMssql.png
    :width: 1.5em
+.. |nix| image:: /static/common/nix.png
+   :width: 1em
 .. |oracle| image:: /static/common/mIconOracle.png
    :width: 1.5em
+.. |osx| image:: /static/common/osx.png
+   :width: 1em
 .. |ows| image:: /static/common/mIconOws.png
    :width: 1.5em
 .. |postgis| image:: /static/common/mIconPostgis.png
@@ -1267,9 +1500,9 @@ Examples of XYZ Tile services:
    :width: 1.5em
 .. |setProjection| image:: /static/common/mActionSetProjection.png
    :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
 .. |spatialite| image:: /static/common/mIconSpatialite.png
+   :width: 1.5em
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
    :width: 1.5em
 .. |vectorTileLayer| image:: /static/common/mIconVectorTileLayer.png
    :width: 1.5em
@@ -1277,6 +1510,8 @@ Examples of XYZ Tile services:
    :width: 1.5em
 .. |wfs| image:: /static/common/mIconWfs.png
    :width: 1.5em
+.. |win| image:: /static/common/win.png
+   :width: 1em
 .. |wms| image:: /static/common/mIconWms.png
    :width: 1.5em
 .. |xyz| image:: /static/common/mIconXyz.png

@@ -15,12 +15,15 @@ Clip raster by extent
 Clips any GDAL-supported raster file to a given extent.
 
 This algorithm is derived from the
-`GDAL grid utility <https://gdal.org/gdal_grid.html>`_.
+`GDAL translate utility <https://gdal.org/programs/gdal_translate.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Extraction`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -41,6 +44,17 @@ Parameters
      - Extent that should be used for the output raster.
        Only pixels within the specified bounding box will be
        included in the output.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
+   * - **Override the projection for the output file**
+     - ``OVERCRS``
+     - [boolean]
+
+       Default: False
+     - If checked, the output file is assigned the input layer CRS.
    * - **Assign a specified nodata value to output bands**
 
        Optional
@@ -50,6 +64,29 @@ Parameters
        Default: None
      - Defines a value that should be inserted for the nodata
        values in the output raster
+   * - **Clipped (extent)**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output raster layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -62,6 +99,9 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Output data type**
      - ``DATA_TYPE``
      - [enumeration]
@@ -92,18 +132,6 @@ Parameters
 
        Default: None
      - Add extra GDAL command line options
-   * - **Clipped (extent)**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: '[Save to temporary file]'
-     - Specification of the output raster layer.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here
 
 Outputs
 .......
@@ -126,7 +154,7 @@ Python code
 
 **Algorithm ID**: ``gdal:cliprasterbyextent``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -138,12 +166,15 @@ Clip raster by mask layer
 Clips any GDAL-supported raster by a vector mask layer.
 
 This algorithm is derived from the
-`GDAL grid utility <https://gdal.org/gdal_grid.html>`_.
+`GDAL warp utility <https://gdal.org/programs/gdalwarp.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Extraction`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -159,17 +190,17 @@ Parameters
      - [raster]
      - The input raster
    * - **Mask layer**
-     - ``EXTENT``
+     - ``MASK``
      - [vector: polygon]
      - Vector mask for clipping the raster
    * - **Source CRS**
      - ``SOURCE_CRS``
      - [crs]
-     -
+     - Set the coordinate reference to use for the input raster
    * - **Target CRS**
      - ``TARGET_CRS``
      - [crs]
-     -
+     - Set the coordinate reference to use for the mask layer
    * - **Assign a specified nodata value to output bands**
 
        Optional
@@ -185,15 +216,13 @@ Parameters
 
        Default: False
      - Creates an alpha band for the result.
-       The alpha band then includes the transparency values of
-       the pixels.
+       The alpha band then includes the transparency values of the pixels.
    * - **Match the extent of the clipped raster to the extent of the mask layer**
      - ``CROP_TO_CUTLINE``
      - [boolean]
 
        Default: True
-     - Applies the vector layer extent to the output raster if
-       checked.
+     - Applies the vector layer extent to the output raster if checked.
    * - **Keep resolution of input raster**
      - ``KEEP_RESOLUTION``
      - [boolean]
@@ -227,7 +256,31 @@ Parameters
      - [boolean]
 
        Default: False
-     -
+     - Two threads will be used to process chunks of image
+       and perform input/output operation simultaneously.
+       Note that computation is not multithreaded itself.
+   * - **Clipped (mask)**
+     - ``OUTPUT``
+     - [raster]
+       Default: ``[Save to temporary file]``
+     - Specification of the output raster layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -240,6 +293,9 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Output data type**
      - ``DATA_TYPE``
      - [enumeration]
@@ -270,17 +326,6 @@ Parameters
 
        Default: None
      - Add extra GDAL command line options
-   * - **Clipped (mask)**
-     - ``OUTPUT``
-     - [raster]
-       Default: '[Save to temporary file]'
-     - Specification of the output raster layer.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here
 
 Outputs
 .......
@@ -303,7 +348,7 @@ Python code
 
 **Algorithm ID**: ``gdal:cliprasterbymasklayer``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -312,15 +357,19 @@ Python code
 
 Contour
 -------
+
 Extracts contour lines from any GDAL-supported elevation raster.
 
 This algorithm is derived from the
-`GDAL contour utility <https://gdal.org/gdal_contour.html>`_.
+`GDAL contour utility <https://gdal.org/programs/gdal_contour.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Extraction`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -338,6 +387,8 @@ Parameters
    * - **Band number**
      - ``BAND``
      - [raster band]
+
+       Default: 1
      - Raster band to create the contours from
    * - **Interval between contour lines**
      - ``INTERVAL``
@@ -353,8 +404,38 @@ Parameters
      - [string]
 
        Default: 'ELEV'
-     - Defines the attribute name for the field containing the
-       values of the contour lines.
+     - Provides a name for the attribute in which to put the elevation.
+   * - **Offset from zero relative to which to interpret intervals**
+
+       Optional
+     - ``OFFSET``
+     - [number]
+
+       Default: 0.0
+     -
+   * - **Contours**
+     - ``OUTPUT``
+     - [vector: line]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output vector layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Produce 3D vector**
      - ``CREATE_3D``
      - [boolean]
@@ -377,14 +458,6 @@ Parameters
        Default: None
      - Defines a value that should be inserted for the nodata
        values in the output raster
-   * - **Offset from zero relative to which to interpret intervals**
-
-       Optional
-     - ``OFFSET``
-     - [number]
-
-       Default: 0.0
-     -
    * - **Additional command-line parameters**
 
        Optional
@@ -392,31 +465,8 @@ Parameters
      - [string]
 
        Default: None
-     - Add extra GDAL command line options
-   * - **Additional creation options**
-
-       Optional
-     - ``OPTIONS``
-     - [string]
-
-       Default: ''
-     - For adding one or more creation options that control the
-       raster to be created (colors, block size, file
-       compression...).
-       For convenience, you can rely on predefined profiles (see
-       :ref:`GDAL driver options section <gdal_createoptions>`).
-   * - **Contours**
-     - ``OUTPUT``
-     - [vector: line]
-
-       Default: '[Save to temporary file]'
-     - Specification of the output raster layer.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
+     - Add extra GDAL command line options.
+       Refer to the corresponding GDAL utility documentation.
 
 Outputs
 .......
@@ -439,6 +489,157 @@ Python code
 
 **Algorithm ID**: ``gdal:contour``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _gdalcontour_polygon:
+
+Contour Polygons
+----------------
+
+Extracts contour polygons from any GDAL-supported elevation raster.
+
+This algorithm is derived from the
+`GDAL contour utility <https://gdal.org/programs/gdal_contour.html>`_.
+
+Parameters
+..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layer**
+     - ``INPUT``
+     - [raster]
+     - Input raster
+   * - **Band number**
+     - ``BAND``
+     - [raster band]
+
+       Default: 1
+     - Raster band to create the contours from
+   * - **Interval between contour lines**
+     - ``INTERVAL``
+     - [number]
+
+       Default: 10.0
+     - Defines the interval between the contour lines in the given
+       units of the elevation raster (minimum value 0)
+   * - **Offset from zero relative to which to interpret intervals**
+
+       Optional
+     - ``OFFSET``
+     - [number]
+
+       Default: 0.0
+     -
+   * - **Attribute name for minimum elevation of contour polygon**
+
+       Optional
+     - ``FIELD_NAME_MIN``
+     - [string]
+
+       Default: 'ELEV_MIN'
+     - Provides a name for the attribute in which to put the minimum elevation
+       of contour polygon. If not provided no minimum elevation attribute
+       is attached.
+   * - **Attribute name for maximum elevation of contour polygon**
+
+       Optional
+     - ``FIELD_NAME_MAX``
+     - [string]
+
+       Default: 'ELEV_MAX'
+     - Provides a name for the attribute in which to put the maximum elevation
+       of contour polygon. If not provided no maximum elevation attribute
+       is attached.
+   * - **Contours**
+     - ``OUTPUT``
+     - [vector: polygon]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output vector layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Produce 3D vector**
+     - ``CREATE_3D``
+     - [boolean]
+
+       Default: False
+     - Forces production of 3D vectors instead of 2D.
+       Includes elevation at every vertex.
+   * - **Treat all raster values as valid**
+     - ``IGNORE_NODATA``
+     - [boolean]
+
+       Default: False
+     - Ignores any nodata values in the dataset.
+   * - **Input pixel value to treat as "nodata"**
+
+       Optional
+     - ``NODATA``
+     - [number]
+
+       Default: None
+     - Defines a value that should be inserted for the nodata
+       values in the output raster
+   * - **Additional command-line parameters**
+
+       Optional
+     - ``EXTRA``
+     - [string]
+
+       Default: None
+     - Add extra GDAL command line options.
+       Refer to the corresponding GDAL utility documentation.
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Contours**
+     - ``OUTPUT``
+     - [vector: polygon]
+     - Output vector layer with contour polygons
+
+Python code
+...........
+
+**Algorithm ID**: ``gdal:contour_polygon``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**

@@ -50,7 +50,7 @@ and update the whole QGIS documentation.
    "Paolo Corti", "Tudor Bărăscu", "Maning Sambale",  "Claudia A. Engel", "Yoichi Kayama"
    "Otto Dassau", "Denis Rouzaud", "Nick Bearman", "embelding", "ajazepk"
    "Ramon", "Andrei", "zstadler",  "icephale", "Rosa Aguilar"
-
+   "Patrice Pineault"
 
 
 .. index:: 
@@ -75,11 +75,12 @@ The current translations are made possible thanks to:
    "Bahasa Indonesia", "Emir Hartato, I Made Anombawa, Januar V. Simarmata,
    Muhammad Iqnaul Haq Siregar, Trias Aditya"
    "Chinese (Traditional)", "Calvin Ngei, Zhang Jun, Richard Xie"
+   "Chinese (Simplified)", "Xu Baocai"
    "Dutch", "Carlo van Rijswijk, Dick Groskamp, Diethard Jansen, Raymond Nijssen,
    Richard Duivenvoorde, Willem Hoffman"
    "Finnish", "Matti Mäntynen, Kari Mikkonen"
    "French", "Arnaud Morvan, Augustin Roche, Didier Vanden Berghe, Dofabien,
-   Etienne Trimaille, Harrissou Sant-anna, Jean-Roc Morreale, Jérémy Garniaux,
+   Etienne Trimaille, Francis Gasc, Harrissou Sant-anna, Jean-Roc Morreale, Jérémy Garniaux,
    Loïc Buscoz, Lsam,  Marc-André Saia, Marie Silvestre, Mathieu Bossaert, Mathieu
    Lattes, Mayeul Kauffmann, Médéric Ribreux, Mehdi Semchaoui, Michael Douchin,
    Nicolas Boisteault, Nicolas Rochard, Pascal Obstetar, Robin Prest, Rod Bera,
@@ -108,3 +109,23 @@ The current translations are made possible thanks to:
    "Spanish", "Carlos Dávila, Diana Galindo, Edwin Amado, Gabriela Awad,
    Javier César Aldariz, Mayeul Kauffmann, Fran Raga"
    "Ukrainian", "Alexander Bruy"
+
+
+.. _translation_stats:
+
+Statistics of translation
+=========================
+
+Efforts of translation for QGIS |CURRENT| Long Term Release are provided below.
+
+.. include:: translation_stats.rst
+   :start-line: 8
+
+
+.. Substitutions definitions - AVOID EDITING PAST THIS LINE
+   This will be automatically updated by the find_set_subst.py script.
+   If you need to create a new substitution manually,
+   please add it also to the substitutions.txt file in the
+   source folder.
+
+.. |CURRENT| replace:: 3.22

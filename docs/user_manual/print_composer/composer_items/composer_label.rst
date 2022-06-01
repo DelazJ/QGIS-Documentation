@@ -19,7 +19,7 @@ same way as exposed in :ref:`interact_layout_item`.
 By default, the label item provides a default text that you can customize using
 its :guilabel:`Item Properties` panel. Other than the :ref:`items common
 properties <item_common_properties>`, this feature has the following
-functionalities (see figure_layout_label_):
+functionalities (see :numref:`figure_layout_label`):
 
 .. _figure_layout_label:
 
@@ -28,36 +28,80 @@ functionalities (see figure_layout_label_):
 
    Label Item Properties Panel
 
+.. _layout_label_main_properties:
+
 Main properties
 ----------------
 
-The :guilabel:`Main properties` group is the place to provide the text (it can
-be in HTML) or the expression to build the label. Expressions need to be
-surrounded by ``[%`` and ``%]`` in order to be interpreted as such.
+The :guilabel:`Main properties` group is the place to provide the text of the label.
+The text can be static, dynamic with :ref:`expression <expression_builder>`
+functions and variables, and/or formatted with HTML.
+Dynamic parts of a label need to be surrounded by ``[%`` and ``%]``
+in order to be interpreted and evaluated as such.
+
+* To use expressions in labels, you can click on :guilabel:`Insert/Edit Expression...`
+  button, write your formula as usual and when the dialog is applied,
+  QGIS automatically adds the surrounding characters.
+
+  .. hint:: Clicking the :guilabel:`Insert/Edit Expression...` button when no
+   selection is made in the textbox will append the new expression to the existing text.
+   If you want to modify an existing expression, you need to first select the part of
+   interest.
+
+  Because maps are usually filled with some common textual information (date,
+  author, title, page number, ...), QGIS provides a direct access to the
+  corresponding expressions or variables: press the :guilabel:`Dynamic text`
+  button to select and insert them into your label.
+
+  .. tip:: The top menu :menuselection:`Add Item --> Add Dynamic Text -->` can be
+   used to create a new label item filled with the selected predefined expression.
+
+  It's possible to turn a dynamic label into static: press the drop-down arrow
+  next to the :guilabel:`Insert/Edit Expression...` button and select
+  :guilabel:`Convert to Static`. Any dynamic parts of the label's contents
+  will be evaluated and replaced with their current values.
+  You can then manually tweak the resulting text when needed.
 
 * Labels can be interpreted as HTML code: check |checkbox|
-  :guilabel:`Render as HTML`. You can now insert a URL, a clickable image that
-  links to a web page or something more complex.
-* You can also use :ref:`expressions <expression_builder>`: click on :guilabel:`Insert
-  or Edit an expression...` button, write your formula as usual and when the dialog is
-  applied, QGIS automatically adds the surrounding characters.
-  
-.. note:: Clicking the :guilabel:`Insert or Edit an Expression...` button when no
-  selection is made in the textbox will append the new expression to the existing text.
-  If you want to update an existing text, you need to select it the part of
-  interest beforehand.
+  :guilabel:`Render as HTML`. You can now insert HTML tags or styles, URL,
+  a clickable image that links to a web page, or something more complex...
 
-You can combine HTML rendering and expressions, leading to e.g. a text like:
+The following code combines HTML rendering with expressions, for an advanced
+labeling and will output :numref:`figure_layout_label_html`:
 
-::
+.. code-block:: css
 
- [% '<b>Check out the new logo for ' || '<a href="https://www.qgis.org" title="Nice logo" target="_blank">QGIS ' ||@qgis_short_version || '</a>' || ' : <img src="https://qgis.org/en/_downloads/qgis-icon128.png" alt="QGIS icon"/>' %]
+ <html>
+  <head>
+    <style>
+       /* Define some custom styles, with attribute-based size */
+       name {color:red; font-size: [% ID %]px; font-family: Verdana; text-shadow: grey 1px 0 10px;}
+       use {color:blue;}
+    </style>
+  </head>
 
-which will render:
-**Check out the new logo for** `QGIS 3.0 <https://www.qgis.org>`_ **:** |logo|
+  <body>
+    <!-- Information to display -->
+    <u>Feature Information</u>
+    <ul style="list-style-type:disc">
+      <li>Feature Id: [% ID %]</li>
+      <li>Airport: <name>[% NAME %]</name></li>
+      <li>Main use: <use>[% USE %]</use></li>
+    </ul>
+    Last check: [% concat( format_date( "control_date", 'yyyy-MM-dd'), ' by <b><i>', @user_full_name, '</i></b>' ) %]
 
-.. Todo: it may be nice to provide some screenshot of some funnier/cooler/advanced
- html label in action
+    <!-- Insert an image -->
+    <p align=center><img src="path/to/logos/qgis-logo-made-with-color.svg" alt="QGIS icon" style="width:80px;height:50px;"</p>
+  </body>
+ </html>
+
+.. _figure_layout_label_html:
+
+.. figure:: img/label_htmlexpression.png
+   :align: center
+
+   Leveraging a label with HTML styling
+
 
 Appearance
 ----------
@@ -102,6 +146,47 @@ should be surrounded by ``[%`` and ``%]`` in the :guilabel:`Main properties` fra
 
     concat( 'Page ', @atlas_featurenumber, '/', @atlas_totalfeatures )
 
+* Return the name of the airports of the current atlas region feature,
+  based on their common attributes:
+
+  ::
+
+    aggregate( layer := 'airports',
+               aggregate := 'concatenate',
+               expression := "NAME",
+               filter := fk_regionId = attribute( @atlas_feature, 'ID' ),
+               concatenator := ', '
+             )
+
+  Or, if an :ref:`attributes relation <vector_relations>` is set:
+
+  ::
+
+    relation_aggregate( relation := 'airports_in_region_relation',
+                        aggregate := 'concatenate',
+                        expression := "NAME",
+                        concatenator := ', '
+                      )
+
+* Return the name of the airports contained in the current atlas region feature,
+  based on their spatial relationship:
+
+  ::
+
+    aggregate( layer := 'airports',
+               aggregate := 'concatenate',
+               expression := "NAME",
+               filter := contains( geometry( @parent ), $geometry ),
+               concatenator := ', '
+             )
+
+  OR::
+
+    array_to_string( array:= overlay_contains( layer := 'airports',
+                                               expression := "NAME" ),
+                     delimiter:= ', '
+                   )
+
 * Return the lower X coordinate of the ``Map 1`` item's extent:
 
   ::
@@ -121,6 +206,13 @@ should be surrounded by ``[%`` and ``%]`` in the :guilabel:`Main properties` fra
     '\n' -- converts the list to string separated by breaklines
    )
 
+* Display the list of layers with their license strings (usage rights) in a layout ``Map 1`` item.
+  You need to fill the layers' :ref:`Access metadata <metadatamenu>` properties first.
+
+  ::
+
+   array_to_string( map_credits( 'Map 1', true ) )
+
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
@@ -131,6 +223,4 @@ should be surrounded by ``[%`` and ``%]`` in the :guilabel:`Main properties` fra
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
 .. |label| image:: /static/common/mActionLabel.png
-   :width: 1.5em
-.. |logo| image:: /static/common/logo.png
    :width: 1.5em

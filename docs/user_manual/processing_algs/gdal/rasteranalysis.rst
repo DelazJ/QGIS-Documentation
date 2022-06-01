@@ -22,7 +22,7 @@ On the northern hemisphere, the north side of slopes is often shaded
 solar radiation (higher azimuth from 180°-270°).
 
 This algorithm is derived from the
-`GDAL DEM utility <https://gdal.org/gdaldem.html>`_.
+`GDAL DEM utility <https://gdal.org/programs/gdaldem.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
@@ -74,6 +74,29 @@ Parameters
 
        Default: False
      - Activates Zevenbergen&Thorne formula for smooth landscapes
+   * - **Aspect**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Output raster layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -86,25 +109,17 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
-   * - **Aspect**
-     - ``OUTPUT``
-     - [raster]    
-
-       Default: ``[Save to temporary file]``
-     - Output raster layer. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -127,7 +142,7 @@ Python code
 
 **Algorithm ID**: ``gdal:aspect``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -144,7 +159,7 @@ By default, the colors between the given elevation values are blended
 smoothly and the result is a nice colorized elevation raster.
 
 This algorithm is derived from the
-`GDAL DEM utility <https://gdal.org/gdaldem.html>`_.
+`GDAL DEM utility <https://gdal.org/programs/gdaldem.html>`_.
 
 Parameters
 ..........
@@ -201,25 +216,28 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
    * - **Color relief**
      - ``OUTPUT``
-     - [raster]    
+     - [raster]
 
        Default: ``[Save to temporary file]``
      - Output raster layer. One of:
 
-       * Save to a Temporary File
-       * Save to File...
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -242,7 +260,7 @@ Python code
 
 **Algorithm ID**: ``gdal:colorrelief``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -264,17 +282,25 @@ It is generally not so great for interpolating a raster from sparse
 point data.
 
 This algorithm is derived from the
-`GDAL fillnodata utility <https://gdal.org/gdal_fillnodata.html>`_.
+`GDAL fillnodata utility <https://gdal.org/programs/gdal_fillnodata.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
 Parameters
 ..........
 
+Basic parameters
+^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 20 20 20 40
    :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
 
    * - Label
      - Name
@@ -315,6 +341,29 @@ Parameters
      - ``MASK_LAYER``
      - [raster]
      - A raster layer that defines the areas to fill.
+   * - **Filled**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output raster layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -327,25 +376,17 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
-   * - **Filled**
-     - ``OUTPUT``
-     - [raster]    
-
-       Default: ``[Save to temporary file]``
-     - Specification of the output raster layer. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -368,7 +409,7 @@ Python code
 
 **Algorithm ID**: ``gdal:fillnodata``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -381,7 +422,7 @@ Computes some data metrics using the specified window and output grid
 geometry.
 
 This algorithm is derived from the
-`GDAL grid utility <https://gdal.org/gdal_grid.html>`_.
+`GDAL grid utility <https://gdal.org/programs/gdal_grid.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
@@ -389,6 +430,9 @@ This algorithm is derived from the
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -463,6 +507,30 @@ Parameters
 
        Default: 0.0
      - No data marker to fill empty points
+   * - **Interpolated (data metrics)**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer with interpolated values.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Z value from field**
 
        Optional
@@ -481,11 +549,14 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
@@ -509,19 +580,6 @@ Parameters
        * 9 --- CFloat32
        * 10 --- CFloat64
 
-   * - **Interpolated (data metrics)**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer with interpolated values.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
 Outputs
 .......
 
@@ -543,7 +601,7 @@ Python code
 
 **Algorithm ID**: ``gdal:griddatametrics``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -558,7 +616,7 @@ nearest neighbor method.
 Ideal when a maximum number of data points to use is required.
 
 This algorithm is derived from the
-`GDAL grid utility <https://gdal.org/gdal_grid.html>`_.
+`GDAL grid utility <https://gdal.org/programs/gdal_grid.html>`_.
 
 .. seealso:: `GDAL grid tutorial <https://gdal.org/tutorials/gdal_grid_tut.html>`_
 
@@ -617,6 +675,30 @@ Parameters
 
        Default: 0.0
      - No data marker to fill empty points
+   * - **Interpolated (IDW with NN search)**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer with interpolated values.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Z value from field**
 
        Optional
@@ -635,11 +717,14 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
@@ -663,19 +748,6 @@ Parameters
        * 9 --- CFloat32
        * 10 --- CFloat64
 
-   * - **Interpolated (IDW with NN search)**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer with interpolated values.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
 Outputs
 .......
 
@@ -697,7 +769,7 @@ Python code
 
 **Algorithm ID**: ``gdal:gridinversedistancenearestneighbor``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -714,7 +786,7 @@ including coordinates of every data point and output grid geometry.
 The function will compute interpolated value for the given position in output grid.
 
 This algorithm is derived from the
-`GDAL grid utility <https://gdal.org/gdal_grid.html>`_.
+`GDAL grid utility <https://gdal.org/programs/gdal_grid.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
@@ -723,6 +795,9 @@ This algorithm is derived from the
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -791,6 +866,30 @@ Parameters
 
        Default: 0.0
      - No data marker to fill empty points
+   * - **Interpolated (IDW)**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer with interpolated values.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Z value from field**
 
        Optional
@@ -809,11 +908,14 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
@@ -837,19 +939,6 @@ Parameters
        * 9 --- CFloat32
        * 10 --- CFloat64
 
-   * - **Interpolated (IDW)**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer with interpolated values.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
 Outputs
 .......
 
@@ -871,7 +960,7 @@ Python code
 
 **Algorithm ID**: ``gdal:gridinversedistance``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -888,10 +977,13 @@ If the point is not in any triangle, depending on the radius, the
 algorithm will use the value of the nearest point or the NODATA value.
 
 This algorithm is derived from the
-`GDAL grid utility <https://gdal.org/gdal_grid.html>`_.
+`GDAL grid utility <https://gdal.org/programs/gdal_grid.html>`_.
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -923,6 +1015,30 @@ Parameters
 
        Default: 0.0
      - No data marker to fill empty points
+   * - **Interpolated (Linear)**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer with interpolated values.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Z value from field**
 
        Optional
@@ -941,11 +1057,14 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
@@ -969,19 +1088,6 @@ Parameters
        * 9 --- CFloat32
        * 10 --- CFloat64
 
-   * - **Interpolated (Linear)**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer with interpolated values.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
 Outputs
 .......
 
@@ -1003,7 +1109,7 @@ Python code
 
 **Algorithm ID**: ``gdal:gridlinear``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1022,7 +1128,7 @@ are not enough points in window, the grid node considered empty and
 will be filled with specified NODATA value.
 
 This algorithm is derived from the
-`GDAL grid utility <https://gdal.org/gdal_grid.html>`_.
+`GDAL grid utility <https://gdal.org/programs/gdal_grid.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
@@ -1030,6 +1136,9 @@ This algorithm is derived from the
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -1080,6 +1189,29 @@ Parameters
 
        Default: 0.0
      - No data marker to fill empty points
+   * - **Interpolated (moving average)**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Z value from field**
 
        Optional
@@ -1098,11 +1230,14 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
@@ -1126,18 +1261,6 @@ Parameters
        * 9 --- CFloat32
        * 10 --- CFloat64
 
-   * - **Interpolated (moving average)**
-     - ``OUTPUT``
-     - [raster] 
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
 Outputs
 .......
 
@@ -1159,7 +1282,7 @@ Python code
 
 **Algorithm ID**: ``gdal:gridaverage``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1175,7 +1298,7 @@ If there are no points found, the specified NODATA value will be
 returned.
 
 This algorithm is derived from the
-`GDAL grid utility <https://gdal.org/gdal_grid.html>`_.
+`GDAL grid utility <https://gdal.org/programs/gdal_grid.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
@@ -1183,6 +1306,9 @@ This algorithm is derived from the
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -1224,6 +1350,30 @@ Parameters
 
        Default: 0.0
      - No data marker to fill empty points
+   * - **Interpolated (Nearest neighbour)**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer with interpolated values.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Z value from field**
 
        Optional
@@ -1242,11 +1392,14 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
@@ -1270,19 +1423,6 @@ Parameters
        * 9 --- CFloat32
        * 10 --- CFloat64
 
-   * - **Interpolated (Nearest neighbour)**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer with interpolated values.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
 Outputs
 .......
 
@@ -1304,7 +1444,7 @@ Python code
 
 **Algorithm ID**: ``gdal:gridnearestneighbor``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1320,12 +1460,15 @@ source, a vertical exaggeration factor and a scaling factor to account
 for differences between vertical and horizontal units.
 
 This algorithm is derived from the
-`GDAL DEM utility <https://gdal.org/gdaldem.html>`__ .
+`GDAL DEM utility <https://gdal.org/programs/gdaldem.html>`__ .
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -1400,6 +1543,30 @@ Parameters
 
        Default: False
      - 
+   * - **Hillshade**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer with interpolated values.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -1412,26 +1579,17 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
-   * - **Hillshade**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer with interpolated values.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -1454,7 +1612,7 @@ Python code
 
 **Algorithm ID**: ``gdal:hillshade``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1472,12 +1630,15 @@ This is often used to "fix up" lossy compressed airphotos so that
 color pixels can be treated as transparent when mosaicking.
 
 This algorithm is derived from the
-`GDAL nearblack utility <https://gdal.org/nearblack.html>`_.
+`GDAL nearblack utility <https://gdal.org/programs/nearblack.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -1507,6 +1668,29 @@ Parameters
        Default: False
      - Search for nearly white (255) pixels instead of nearly black
        pixels
+   * - **Nearblack**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -1519,25 +1703,17 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
-   * - **Nearblack**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -1560,7 +1736,7 @@ Python code
 
 **Algorithm ID**: ``gdal:nearblack``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1576,12 +1752,15 @@ Target pixels are those in the source raster for which the raster
 pixel value is in the set of target pixel values.
 
 This algorithm is derived from the
-`GDAL proximity utility <https://gdal.org/gdal_proximity.html>`_.
+`GDAL proximity utility <https://gdal.org/programs/gdal_proximity.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -1659,6 +1838,29 @@ Parameters
 
        Default: 0.0
      - Specify the nodata value to use for the output raster
+   * - **Proximity map**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -1671,11 +1873,14 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
@@ -1699,18 +1904,6 @@ Parameters
        * 9 --- CFloat32
        * 10 --- CFloat64
 
-   * - **Proximity map**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
 Outputs
 .......
 
@@ -1732,7 +1925,7 @@ Python code
 
 **Algorithm ID**: ``gdal:proximity``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1750,12 +1943,15 @@ terrain elevation data, it's useful for calculations of the river
 morphology, in climatology and physical geography in general.
 
 This algorithm is derived from the
-`GDAL DEM utility <https://gdal.org/gdaldem.html>`_.
+`GDAL DEM utility <https://gdal.org/programs/gdaldem.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -1782,6 +1978,29 @@ Parameters
 
        Default: False
      - Generates edges from the elevation raster
+   * - **Roughness**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -1794,17 +2013,9 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
-   * - **Roughness**
-     - ``OUTPUT``
-     - [raster]    
 
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
 
 Outputs
 .......
@@ -1828,7 +2039,7 @@ Python code
 
 **Algorithm ID**: ``gdal:roughness``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1844,12 +2055,15 @@ It is useful if you have a large amount of small areas on your raster
 map.
 
 This algorithm is derived from the
-`GDAL sieve utility <https://gdal.org/gdal_sieve.html>`_.
+`GDAL sieve utility <https://gdal.org/programs/gdal_sieve.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -1889,25 +2103,37 @@ Parameters
      - ``MASK_LAYER``
      - [raster]
      - Validity mask to use instead of the default
-   * - **Additional command-line parameters**
-
-       Optional
-     - ``EXTRA``
-     - [string]   
-
-       Default: None
-     - Add extra GDAL command line options
    * - **Sieved**
      - ``OUTPUT``
-     - [raster]    
+     - [raster]
 
        Default: ``[Save to temporary file]``
      - Specify the output raster layer. One of:
 
-       * Save to a Temporary File
-       * Save to File...
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
-       The file encoding can also be changed here.
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Additional command-line parameters**
+
+       Optional
+     - ``EXTRA``
+     - [string]
+
+       Default: None
+     - Add extra GDAL command line options
 
 Outputs
 .......
@@ -1930,7 +2156,7 @@ Python code
 
 **Algorithm ID**: ``gdal:sieve``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1945,12 +2171,15 @@ You have the option of specifying the type of slope value you want:
 degrees or percent slope.
 
 This algorithm is derived from the
-`GDAL DEM utility <https://gdal.org/gdaldem.html>`_.
+`GDAL DEM utility <https://gdal.org/programs/gdaldem.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -1995,6 +2224,29 @@ Parameters
 
        Default: False
      - Activates Zevenbergen&Thorne formula for smooth landscapes
+   * - **Slope**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -2007,25 +2259,17 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
      - ``EXTRA``
-     - [string]   
+     - [string]
 
        Default: None
      - Add extra GDAL command line options
-   * - **Slope**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -2048,7 +2292,7 @@ Python code
 
 **Algorithm ID**: ``gdal:slope``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2064,12 +2308,15 @@ as the mean difference between a central pixel and its
 surrounding cells.
 
 This algorithm is derived from the
-`GDAL DEM utility <https://gdal.org/gdaldem.html>`_.
+`GDAL DEM utility <https://gdal.org/programs/gdaldem.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -2096,6 +2343,29 @@ Parameters
 
        Default: False
      - Generates edges from the elevation raster
+   * - **Terrain Ruggedness Index**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -2108,17 +2378,9 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
-   * - **Terrain Ruggedness Index**
-     - ``OUTPUT``
-     - [raster]    
 
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
 
 Outputs
 .......
@@ -2142,7 +2404,7 @@ Python code
 
 **Algorithm ID**: ``gdal:triterrainruggednessindex``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2157,12 +2419,15 @@ difference between a central pixel and the mean of its surrounding
 cells.
 
 This algorithm is derived from the
-`GDAL DEM utility <https://gdal.org/gdaldem.html>`_.
+`GDAL DEM utility <https://gdal.org/programs/gdaldem.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Analysis`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -2189,6 +2454,29 @@ Parameters
 
        Default: False
      - Generates edges from the elevation raster
+   * - **Terrain Ruggedness Index**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specify the output raster layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -2201,17 +2489,9 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
-   * - **Terrain Ruggedness Index**
-     - ``OUTPUT``
-     - [raster]    
 
-       Default: ``[Save to temporary file]``
-     - Specify the output raster layer. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
 
 Outputs
 .......
@@ -2234,6 +2514,6 @@ Python code
 
 **Algorithm ID**: ``gdal:tpitopographicpositionindex``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**

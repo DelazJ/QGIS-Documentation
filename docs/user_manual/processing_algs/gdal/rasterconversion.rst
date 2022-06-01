@@ -53,11 +53,10 @@ Parameters
      - Specification of the output file.
        One of:
 
-       * Save to a Temporary File
-       * Save to File...
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
-       The file encoding can also be changed here.
-  
 Outputs
 .......
 
@@ -79,7 +78,7 @@ Python code
 
 **Algorithm ID**: ``gdal:gdal2xyz``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -93,7 +92,7 @@ It will convert a pseudocolor band from the input file to
 an RGB file of the desired format.
 
 This algorithm is derived from the
-`GDAL pct2rgb utility <https://gdal.org/pct2rgb.html>`_.
+`GDAL pct2rgb utility <https://gdal.org/programs/pct2rgb.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Conversion`
 
@@ -134,10 +133,9 @@ Parameters
      - Specification of the output file.
        One of:
 
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
   
 Outputs
 .......
@@ -160,7 +158,7 @@ Python code
 
 **Algorithm ID**: ``gdal:pcttorgb``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -174,12 +172,15 @@ raster sharing a common pixel value. Each polygon is created with an
 attribute indicating the pixel value of that polygon.
 
 This algorithm is derived from the
-`GDAL polygonize utility <https://gdal.org/gdal_polygonize.html>`_.
+`GDAL polygonize utility <https://gdal.org/programs/gdal_polygonize.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Conversion`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -216,14 +217,6 @@ Parameters
        considered connected (*4-connected*).
        If set, touching raster cells are also considered connected
        (*8-connected*).
-   * - **Additional command-line parameters**
-
-       Optional
-     - ``EXTRA``
-     - [string]   
-
-       Default: None
-     - Add extra GDAL command line options
    * - **Vectorized**
      - ``OUTPUT``
      - [vector: polygon]
@@ -232,11 +225,30 @@ Parameters
      - Specification of the output (polygon) vector layer.
        One of:
 
-       * Save to a Temporary File
-       * Save to File...
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
-       The file encoding can also be changed here.
-  
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Additional command-line parameters**
+
+       Optional
+     - ``EXTRA``
+     - [string]
+
+       Default: None
+     - Add extra GDAL command line options
+
 Outputs
 .......
 
@@ -258,7 +270,7 @@ Python code
 
 **Algorithm ID**: ``gdal:polygonize``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -272,10 +284,13 @@ The algorithm also makes it possible to reorder the bands for the
 newly-created raster.
 
 This algorithm is derived from the
-`GDAL translate utility <https://gdal.org/gdal_translate.html>`_.
+`GDAL translate utility <https://gdal.org/programs/gdal_translate.html>`_.
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -296,6 +311,28 @@ Parameters
 
        Default: None
      - Ordered list of the bands to use to create the new raster
+   * - **Converted**
+     - ``OUTPUT``
+     - [raster]
+
+       Default:  ``[Save to temporary file]``
+     - Specification of the output raster. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -308,6 +345,9 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Output data type**
      - ``DATA_TYPE``
      - [enumeration]
@@ -329,18 +369,6 @@ Parameters
        * 10 --- CFloat32
        * 11 --- CFloat64
 
-   * - **Converted**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: Save to temporary file
-     - Specification of the output raster. One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-  
 Outputs
 .......
 
@@ -362,7 +390,7 @@ Python code
 
 **Algorithm ID**: ``gdal:rearrange_bands``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -383,7 +411,7 @@ classes it can be helpful to downsample your image with this algorithm
 before.
 
 This algorithm is derived from the
-`GDAL rgb2pct utility <https://gdal.org/rgb2pct.html>`_.
+`GDAL rgb2pct utility <https://gdal.org/programs/rgb2pct.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Conversion`
 
@@ -417,10 +445,9 @@ Parameters
        Default: ``[Save to temporary file]``
      - Specification of the output raster. One of:
 
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
 Outputs
 .......
@@ -443,7 +470,7 @@ Python code
 
 **Algorithm ID**: ``gdal:rgbtopct``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -456,12 +483,15 @@ Translate (convert format)
 Converts raster data between different formats.
 
 This algorithm is derived from the
-`GDAL translate utility <https://gdal.org/gdal_translate.html>`_.
+`GDAL translate utility <https://gdal.org/programs/gdal_translate.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Conversion`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -496,6 +526,29 @@ Parameters
 
        Default: False
      - Create individual files for subdatasets
+   * - **Converted**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output (translated) raster layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -508,6 +561,9 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Additional command-line parameters**
 
        Optional
@@ -537,19 +593,6 @@ Parameters
        * 10 --- CFloat32
        * 11 --- CFloat64
 
-   * - **Converted**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: ``[Save to temporary file]``
-     - Specification of the output (translated) raster layer.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
 Outputs
 .......
 
@@ -571,6 +614,6 @@ Python code
 
 **Algorithm ID**: ``gdal:translate``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**

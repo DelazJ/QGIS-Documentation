@@ -117,8 +117,6 @@ the :ref:`locator_options` section of the QGIS User Manual.
 .. tip:: With the shortcut :kbd:`Ctrl+K` you can easily access the bar.
 
 
-.. _backlink-interface-overview-1:
-
 |basic| |TY| 1
 -------------------------------------------------------------------------------
 
@@ -127,10 +125,12 @@ referring to the diagram above. See if you can identify their names and
 functions. You will become more familiar with these elements as you use them in
 the coming days.
 
-:ref:`Check your results <interface-overview-1>`
+.. admonition:: Answer
+   :class: dropdown
 
+   Refer back to the image showing the interface layout and check that you
+   remember the names and functions of the screen elements.
 
-.. _backlink-interface-overview-2:
 
 |basic| |TY| 2
 -------------------------------------------------------------------------------
@@ -138,13 +138,9 @@ the coming days.
 Try to find each of these tools on your screen. What is their purpose?
 
 1. |fileSaveAs|
-
 2. |zoomToLayer|
-
 3. |invertSelection|
-
-4. .. figure:: img/toggle_render.png
-
+4. |checkbox|:guilabel:`Render`
 5. |measure|
 
 .. note:: If any of these tools is not visible on the screen, try enabling
@@ -154,7 +150,14 @@ Try to find each of these tools on your screen. What is their purpose?
    arrow button in any such collapsed toolbar. You can see a tooltip with the
    name of any tool by holding your mouse over the tool for a while.
 
-:ref:`Check your results <interface-overview-2>`
+.. admonition:: Answer
+   :class: dropdown
+
+   #. :guilabel:`Save as`
+   #. :guilabel:`Zoom to layer(s)`
+   #. :guilabel:`Invert selection`
+   #. :guilabel:`Rendering on/off`
+   #. :guilabel:`Measure line`
 
 
 |WN|
@@ -174,6 +177,8 @@ lesson we will see how to load some common data types.
 .. |TY| replace:: Try Yourself
 .. |WN| replace:: What's Next?
 .. |basic| image:: /static/common/basic.png
+.. |checkbox| image:: /static/common/checkbox.png
+   :width: 1.3em
 .. |favourites| image:: /static/common/mIconFavourites.png
    :width: 1.5em
 .. |fileSaveAs| image:: /static/common/mActionFileSaveAs.png

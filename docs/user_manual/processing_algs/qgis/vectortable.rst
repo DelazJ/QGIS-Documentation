@@ -43,19 +43,28 @@ Parameters
    * - **Field name**
      - ``FIELD_NAME``
      - [string]
-       
+
        Default: 'AUTO'
      - Name of the field with autoincremental values
    * - **Start values at**
-       
+
        Optional
      - ``START``
      - [number]
-       
+
        Default: 0
      - Choose the initial number of the incremental count
-   * - **Group values by**
+   * - **Modulus value**
        
+       Optional
+     - ``MODULUS``
+     - [number]
+       
+       Default: 0
+     - Specifying an optional modulus value will restart the count to START
+       whenever the field value reaches the modulus value. ``0`` means no restart.
+   * - **Group values by**
+
        Optional
      - ``GROUP_FIELDS``
      - [tablefield: any] [list]
@@ -64,7 +73,7 @@ Parameters
        for each value returned by the combination of these
        fields.
    * - **Sort expression**
-       
+
        Optional
      - ``SORT_EXPRESSION``
      - [expression]
@@ -73,7 +82,7 @@ Parameters
    * - **Sort ascending**
      - ``SORT_ASCENDING``
      - [boolean]
-       
+
        Default: True
      - When a ``sort expression`` is set, use this option
        to control the order in which features are assigned
@@ -81,7 +90,7 @@ Parameters
    * - **Sort nulls first**
      - ``SORT_NULLS_FIRST``
      - [boolean]
-       
+
        Default: False
      - When a ``sort expression`` is set, use this option
        to set whether *Null* values are counted first or
@@ -89,18 +98,15 @@ Parameters
    * - **Incremented**
      - ``OUTPUT``
      - [same as input]
-       
+
        Default: ``[Create temporary layer]``
      - Specify the output vector layer with the auto increment
        field.
        One of:
-      
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-      
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -121,9 +127,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:addautoincrementalfield``
+**Algorithm ID**: ``native:addautoincrementalfield``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -191,13 +197,10 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer.
        One of:
-       
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-       
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -218,9 +221,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:addfieldtoattributestable``
+**Algorithm ID**: ``native:addfieldtoattributestable``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -275,14 +278,11 @@ Parameters
        Default: ``[Create temporary layer]``
      - Vector layer with the numeric field containing indexes.
        One of:
-      
-       * Skip Output
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-       
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
+
    * - **Class summary**
      - ``SUMMARY_OUTPUT``
      - [table]
@@ -291,14 +291,10 @@ Parameters
      - Specify the table to contain the summary of the class field
        mapped to the corresponding unique value.
        One of:
-      
-       * Skip Output
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-       
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 .......
@@ -318,17 +314,15 @@ Outputs
    * - **Class summary**
      - ``SUMMARY_OUTPUT``
      - [table]
-       
-       Default: ``[Skip Output]``
      - Table with summary of the class field mapped to the
        corresponding unique value.  
 
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:adduniquevalueindexfield``
+**Algorithm ID**: ``native:adduniquevalueindexfield``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -341,6 +335,10 @@ Adds X and Y (or latitude/longitude) fields to a point layer.
 The X/Y fields can be calculated in a different CRS to the layer
 (e.g. creating latitude/longitude fields for a layer in a projected
 CRS).
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>` 
+of point features
 
 Parameters
 ..........
@@ -380,12 +378,9 @@ Parameters
      - Specify the output layer.
        One of:
 
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -407,9 +402,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:addxyfieldstolayer``
+**Algorithm ID**: ``native:addxyfieldstolayer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -496,12 +491,9 @@ Parameters
      - Specify the vector layer with the new calculated
        field. One of:
        
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-       
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -524,7 +516,7 @@ Python code
 
 **Algorithm ID**: ``qgis:advancedpythonfieldcalculator``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -535,6 +527,8 @@ Drop field(s)
 -------------
 Takes a vector layer and generates a new one that has the same
 features but without the selected columns.
+
+.. seealso:: :ref:`qgisretainfields`
 
 Parameters
 ..........
@@ -558,17 +552,14 @@ Parameters
    * - **Remaining fields**
      - ``OUTPUT``
      - [same as input]
-       
+
        Default: ``[Create temporary layer]``
      - Specify the output vector layer with the remaining fields.
        One of:
-       
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-       
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -589,9 +580,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:deletecolumn``
+**Algorithm ID**: ``native:deletecolumn``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -652,12 +643,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
        
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-       
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -678,9 +666,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:explodehstorefield``
+**Algorithm ID**: ``native:explodehstorefield``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -720,14 +708,13 @@ Parameters
    * - **Destination folder**
      - ``FOLDER``
      - [folder]
-       
-       Default: ``[Save to a temporary folder]``
-     - Folder in which to store the output files.  One of:
-       
-       * Save to a Temporary Directory
-       * Save to Directory...
-       
-       The file encoding can also be changed here.
+
+       Default: ``[Save to temporary folder]``
+     - Folder in which to store the output files. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **directory_output_types**
+          :end-before: **end_directory_output_types**
 
 Outputs
 .......
@@ -748,73 +735,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:extractbinary``
+**Algorithm ID**: ``native:extractbinary``
 
-.. include:: qgis_algs_include.rst
-  :start-after: **algorithm_code_section**
-  :end-before: **end_algorithm_code_section**
-
-
-.. _qgisfeaturefilter:
-
-Feature filter
------------------------------
-Filters features from the input layer and redirects
-them to one or several outputs.
-If you do not know about any attribute names that are common to all
-possible input layers, filtering is only possible on the feature
-geometry and general record mechanisms, such as ``$id`` and ``uuid``.
-
-.. note:: This algorithm is only available from the
-  :ref:`Graphical modeler <processing.modeler>`.
-
-Parameters
-..........
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Input layer**
-     - ``INPUT``
-     - [vector: any]
-     - The input layer.
-   * - **Outputs and filters**
-       
-       (one or more)
-     - ``OUTPUT_<name of the filter>``
-     - [same as input]
-     - The output layers with filters (as many as there are filters).
-
-Outputs
-.......
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Output**
-       
-       (one or more)
-     - ``native:filter_1:OUTPUT_<name of filter>``
-     - [same as input]
-     - The output layers with filtered features (as many as there are
-       filters).
-
-Python code
-...........
-
-**Algorithm ID**: ``qgis:featurefilter``
-
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -889,8 +812,12 @@ Parameters
      - ``OUTPUT``
      - [vector: any]
        
-       Default: ``[Save to temporary file]``
+       Default: ``[Create temporary layer]``
      - Specification of the output layer.
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -911,9 +838,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:fieldcalculator``
+**Algorithm ID**: ``native:fieldcalculator``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -930,7 +857,14 @@ The original layer is not modified. A new layer is generated, which
 contains a modified attribute table, according to the provided fields
 mapping.
 
-Refactor layer fields allows to:
+.. note:: When using a template layer with :ref:`constraints <constraints>`
+  on fields, the information is displayed in the widget with a coloured
+  background and tooltip. Treat this information as a hint during configuration.
+  No constraints will be added on an output layer nor will they be checked
+  or enforced by the algorithm.
+
+
+The Refactor fields algorithm allows to:
 
 * Change field names and types
 * Add and remove fields
@@ -977,22 +911,14 @@ Parameters
 
        :guilabel:`Source expression` (``expression``) [expression]
          Field or expression from the input layer.
-     
+
        :guilabel:`Field name` (``name``) [string]
          Name of the field in the output layer.
          By default input field name is kept.
 
        :guilabel:`Type` (``type``) [enumeration]
          Data type of the output field.
-         One of:
-         
-         * Date (14)
-         * DateTime (16)
-         * Double (6)
-         * Integer (2)
-         * Integer64 (4)
-         * String (10)
-         * Boolean (1)
+         Available types depend on the output layer provider.
 
        :guilabel:`Length` (``length``) [number]
          Length of the output field.
@@ -1000,22 +926,26 @@ Parameters
        :guilabel:`Precision` (``precision``) [number]
          Precision of the output field.
 
-       Fields from another layer can be loaded into the field list
-       in :guilabel:`Load fields from layer`.
+       :guilabel:`Constraints` (``constraints``) [string]
+         When using a template layer, indicates whether there are constraints
+         applied to the template field. Hover over the cell to display the constraints.
+
+       :guilabel:`Load fields from template layer`
+         Allows to select a layer from the current project as a template
+         and (with :guilabel:`Load fields`) fill the above "Fields mapping" options
+         with its fields and their definitions.
+
    * - **Refactored**
      - ``OUTPUT``
      - [vector: any]
-       
+
        Default: ``[Create temporary layer]``
      - Specification of the output layer.
        One of:
-       
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-       
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1036,17 +966,17 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:refactorfields``
+**Algorithm ID**: ``native:refactorfields``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
 
 .. _qgisrenametablefield:
 
-Rename vector field
--------------------
+Rename field
+------------
 Renames an existing field from a vector layer.
 
 The original layer is not modified. A new layer is generated where
@@ -1072,7 +1002,7 @@ Parameters
      - The input vector layer
    * - **Field to rename**
      - ``FIELD``
-     - [string]
+     - [tablefield: any]
      - The field to be altered
    * - **New field name**
      - ``NEW_NAME``
@@ -1081,17 +1011,14 @@ Parameters
    * - **Renamed**
      - ``OUTPUT``
      - [vector: same as input]
-       
+
        Default: ``[Create temporary layer]``
      - Specification of the output layer.
        One of:
-       
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-       
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1114,7 +1041,75 @@ Python code
 
 **Algorithm ID**: ``qgis:renametablefield``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisretainfields:
+
+Retain fields
+-------------
+
+Takes a vector layer and generates a new one that retains only the selected fields.
+All other fields will be dropped.
+
+.. seealso:: :ref:`qgisdeletecolumn`
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layer**
+     - ``INPUT``
+     - [vector: any]
+     - The input vector layer
+   * - **Fields to retain**
+     - ``FIELDS``
+     - [tablefield: any][list]
+     - List of fields to keep in the layer
+   * - **Retained fields**
+     - ``OUTPUT``
+     - [vector: same as input]
+
+       Default: ``[Create temporary layer]``
+     - Specification of the output layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Retained fields**
+     - ``OUTPUT``
+     - [vector: same as input]
+     - Output layer with the retained fields
+
+Python code
+...........
+
+**Algorithm ID**: ``native:retainfields``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1156,16 +1151,13 @@ Parameters
    * - **Float from text**
      - ``OUTPUT``
      - [same as input]
-       
+
        Default: ``[Create Temporary Layer]``
      - Specify the output layer. One of:
-       
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-       
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_append**
+          :end-before: **end_layer_output_types_append**
 
 Outputs
 .......
@@ -1189,7 +1181,7 @@ Python code
 
 **Algorithm ID**: ``qgis:texttofloat``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1204,6 +1196,8 @@ Python code
    :width: 1.5em
 .. |arrowUp| image:: /static/common/mActionArrowUp.png
    :width: 1.5em
+.. |checkbox| image:: /static/common/checkbox.png
+   :width: 1.3em
 .. |clearText| image:: /static/common/mIconClearText.png
    :width: 1.5em
 .. |deleteAttribute| image:: /static/common/mActionDeleteAttribute.png

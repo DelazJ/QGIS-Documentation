@@ -35,13 +35,13 @@ choose a title for the new layout.
 
 To demonstrate how to create a map please follow the next instructions.
 
-#. On the left side, select the |addMap| :sup:`Add new map` toolbar button
+#. On the left side, select the |addMap| :sup:`Add map` toolbar button
    and draw a rectangle on the canvas holding down the left mouse button.
    Inside the drawn rectangle the QGIS map view to the canvas.
-#. Select the |scaleBar| :sup:`Add new scalebar` toolbar button and click
+#. Select the |scaleBar| :sup:`Add scalebar` toolbar button and click
    with the left mouse button on the print layout canvas. A scalebar will be
    added to the canvas.
-#. Select the |addLegend| :sup:`Add new legend` toolbar button and draw a
+#. Select the |addLegend| :sup:`Add legend` toolbar button and draw a
    rectangle on the canvas holding down the left mouse button.
    Inside the drawn rectangle the legend will be drawn.
 #. Select the |select| :sup:`Select/Move item` icon to select the map on
@@ -77,6 +77,7 @@ The :guilabel:`Layout Manager` is the main window to manage print layouts in the
 project. It gives you an overview of existing print layouts and reports in the
 project and offers tools to:
 
+* search for a layout;
 * add new print layout or new report from scratch, template or duplicating an
   existing one;
 * rename or delete any of them;
@@ -148,7 +149,7 @@ zoom in on an area and pan the view on the layout a well as buttons to
 select any layout item and to move the contents of the map item.
 
 
-figure_layout_overview_ shows the initial view of the print layout before
+:numref:`figure_layout_overview` shows the initial view of the print layout before
 any elements are added.
 
 .. _figure_layout_overview:
@@ -395,21 +396,30 @@ Add Item menu
 These are tools to create layout items. Each of them is deeply described
 in :ref:`layout_items` chapter.
 
-=================================================== ======================== =====================================
- Tool                                                Toolbar                    Reference
-=================================================== ======================== =====================================
- |addMap| :guilabel:`Add Map`                        :guilabel:`Toolbox`        :ref:`layout_map_item`
- |addImage| :guilabel:`Add Picture`                  :guilabel:`Toolbox`        :ref:`layout_picture_item`
- |label| :guilabel:`Add Label`                       :guilabel:`Toolbox`        :ref:`layout_label_item`
- |addLegend| :guilabel:`Add Legend`                  :guilabel:`Toolbox`        :ref:`layout_legend_item`
- |scaleBar| :guilabel:`Add Scale Bar`                :guilabel:`Toolbox`        :ref:`layout_scalebar_item`
- |northArrow| :guilabel:`Add North Arrow`            :guilabel:`Toolbox`        :ref:`layout_northarrow_item`
- |addBasicShape| :menuselection:`Add Shape -->`      :guilabel:`Toolbox`        :ref:`layout_basic_shape_item`
- |addArrow| :guilabel:`Add Arrow`                    :guilabel:`Toolbox`        :ref:`layout_arrow_item`
- |addNodesShape| :menuselection:`Add Node Item -->`  :guilabel:`Toolbox`        :ref:`layout_node_based_shape_item`
- |addHtml| :guilabel:`Add HTML`                      :guilabel:`Toolbox`        :ref:`layout_html_item`
- |openTable| :guilabel:`Add Attribute Table`         :guilabel:`Toolbox`        :ref:`layout_table_item`
-=================================================== ======================== =====================================
+========================================================= ======================== =====================================
+ Tool                                                      Toolbar                    Reference
+========================================================= ======================== =====================================
+ |addMap| :guilabel:`Add Map`                              :guilabel:`Toolbox`        :ref:`layout_map_item`
+ |add3DMap| :guilabel:`Add 3D Map`                         :guilabel:`Toolbox`        :ref:`layout_map3d_item`
+ |addImage| :guilabel:`Add Picture`                        :guilabel:`Toolbox`        :ref:`layout_picture_item`
+ |label| :guilabel:`Add Label`                             :guilabel:`Toolbox`        :ref:`layout_label_item`
+ :menuselection:`Add Dynamic Text -->`                                                :ref:`The Label Item <layout_label_main_properties>`
+ |addLegend| :guilabel:`Add Legend`                        :guilabel:`Toolbox`        :ref:`layout_legend_item`
+ |scaleBar| :guilabel:`Add Scale Bar`                      :guilabel:`Toolbox`        :ref:`layout_scalebar_item`
+ |northArrow| :guilabel:`Add North Arrow`                  :guilabel:`Toolbox`        :ref:`layout_northarrow_item`
+ |addBasicShape| :menuselection:`Add Shape -->`            :guilabel:`Toolbox`        :ref:`layout_basic_shape_item`
+ |addBasicRectangle| :menuselection:`--> Add Rectangle`    :guilabel:`Toolbox`        :ref:`layout_basic_shape_item`
+ |addBasicCircle| :menuselection:`--> Add Ellipse`         :guilabel:`Toolbox`        :ref:`layout_basic_shape_item`
+ |addBasicTriangle| :menuselection:`--> Add Triangle`      :guilabel:`Toolbox`        :ref:`layout_basic_shape_item`
+ |addMarker| :guilabel:`Add Marker`                        :guilabel:`Toolbox`
+ |addArrow| :guilabel:`Add Arrow`                          :guilabel:`Toolbox`        :ref:`layout_arrow_item`
+ |addNodesShape| :menuselection:`Add Node Item -->`        :guilabel:`Toolbox`        :ref:`layout_node_based_shape_item`
+ |addPolygon| :menuselection:`--> Add Polygon`             :guilabel:`Toolbox`        :ref:`layout_node_based_shape_item`
+ |addPolyline| :menuselection:`--> Add Polyline`           :guilabel:`Toolbox`        :ref:`layout_node_based_shape_item`
+ |addHtml| :guilabel:`Add HTML`                            :guilabel:`Toolbox`        :ref:`layout_html_item`
+ |addTable| :guilabel:`Add Attribute Table`                :guilabel:`Toolbox`        :ref:`layout_attribute_table_item`
+ |addManualTable| :guilabel:`Add Fixed Table`              :guilabel:`Toolbox`        :ref:`layout_fixed_table_item`
+========================================================= ======================== =====================================
 
 
 Atlas menu
@@ -588,9 +598,9 @@ The :guilabel:`Variables` lists all the variables available at
 the layout's level (which includes all global and project's variables).
 
 It also allows the user to manage layout-level variables. Click the
-|signPlus| button to add a new custom layout-level variable. Likewise,
+|symbologyAdd| button to add a new custom layout-level variable. Likewise,
 select a custom layout-level variable from the list and click the
-|signMinus| button to remove it.
+|symbologyRemove| button to remove it.
 
 More information on variables usage in the
 :ref:`General Tools <general_tools_variables>` section.
@@ -648,8 +658,9 @@ Updating page properties
 ........................
 
 Any page can be later customized through the Page :guilabel:`Item Properties`
-panel. Right-click on a page and select :guilabel:`Page Properties...`. The
-:guilabel:`Item Properties` panel opens with settings such as:
+panel. To access a page's properties, left-click on an empty section
+of the page or right-click on a page and select :guilabel:`Page Properties...`.
+The :guilabel:`Item Properties` panel opens with settings such as:
 
 * the :guilabel:`Page size` frame described above. You can modify each property
   using the data defined override options (see :ref:`atlas_data_defined_override`
@@ -698,7 +709,7 @@ The :guilabel:`Guides` panel allows creation of snap lines at specific
 locations:
 
 #. Select the :guilabel:`Page` you'd like to add the guides to
-#. Click the |signPlus| :sup:`Add new guide` button and enter the coordinates
+#. Click the |symbologyAdd| :sup:`Add new guide` button and enter the coordinates
    of the horizontal or vertical line. The origin is at the top left corner.
    Different units are available for this.
 
@@ -708,7 +719,7 @@ locations:
    It allows creation or removal of guides only in the current page.
    However, you can use the :guilabel:`Apply to All Pages` button to replicate
    the guide configuration of the current page to the other pages in the layout.
-#. To delete a guide, select it and press the |signMinus| :sup:`Remove selected
+#. To delete a guide, select it and press the |symbologyRemove| :sup:`Remove selected
    guide` button. Use :guilabel:`Clear All Guides` to remove all the guides
    in the current page.
 
@@ -768,7 +779,7 @@ any time you right-click in the print layout area:
 * |redo| :sup:`Restore last change`
 
 This can also be done by mouse click within the :guilabel:`Undo history`
-panel (see figure_layout_). The History panel lists the last actions done
+panel (see :numref:`figure_layout`). The History panel lists the last actions done
 within the print layout.
 Just select the point you want to revert to and once you do new action all
 the actions done after the selected one will be removed.
@@ -787,9 +798,17 @@ the actions done after the selected one will be removed.
    please add it also to the substitutions.txt file in the
    source folder.
 
+.. |add3DMap| image:: /static/common/mActionAdd3DMap.png
+   :width: 1.5em
 .. |addArrow| image:: /static/common/mActionAddArrow.png
    :width: 1.5em
+.. |addBasicCircle| image:: /static/common/mActionAddBasicCircle.png
+   :width: 1.5em
+.. |addBasicRectangle| image:: /static/common/mActionAddBasicRectangle.png
+   :width: 1.5em
 .. |addBasicShape| image:: /static/common/mActionAddBasicShape.png
+   :width: 1.5em
+.. |addBasicTriangle| image:: /static/common/mActionAddBasicTriangle.png
    :width: 1.5em
 .. |addHtml| image:: /static/common/mActionAddHtml.png
    :width: 1.5em
@@ -797,9 +816,19 @@ the actions done after the selected one will be removed.
    :width: 1.5em
 .. |addLegend| image:: /static/common/mActionAddLegend.png
    :width: 1.5em
+.. |addManualTable| image:: /static/common/mActionAddManualTable.png
+   :width: 1.5em
 .. |addMap| image:: /static/common/mActionAddMap.png
    :width: 1.5em
+.. |addMarker| image:: /static/common/mActionAddMarker.png
+   :width: 1.5em
 .. |addNodesShape| image:: /static/common/mActionAddNodesShape.png
+   :width: 1.5em
+.. |addPolygon| image:: /static/common/mActionAddPolygon.png
+   :width: 1.5em
+.. |addPolyline| image:: /static/common/mActionAddPolyline.png
+   :width: 1.5em
+.. |addTable| image:: /static/common/mActionAddTable.png
    :width: 1.5em
 .. |atlas| image:: /static/common/mIconAtlas.png
    :width: 1.5em
@@ -863,8 +892,6 @@ the actions done after the selected one will be removed.
    :width: 1.5em
 .. |northArrow| image:: /static/common/north_arrow.png
    :width: 1.5em
-.. |openTable| image:: /static/common/mActionOpenTable.png
-   :width: 1.5em
 .. |pan| image:: /static/common/mActionPan.png
    :width: 1.5em
 .. |raiseItems| image:: /static/common/mActionRaiseItems.png
@@ -887,11 +914,11 @@ the actions done after the selected one will be removed.
    :width: 1.5em
 .. |showAllLayers| image:: /static/common/mActionShowAllLayers.png
    :width: 1.5em
-.. |signMinus| image:: /static/common/symbologyRemove.png
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
    :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
+.. |symbologyRemove| image:: /static/common/symbologyRemove.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em
 .. |undo| image:: /static/common/mActionUndo.png
    :width: 1.5em

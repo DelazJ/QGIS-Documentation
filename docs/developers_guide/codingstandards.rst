@@ -478,6 +478,18 @@ header :file:`tests/code_layout/sipifyheader.expected.sip`. This will also be
 automatically tested on Travis as a unit test of the script itself.
 
 
+Settings
+========
+
+QGIS code base offers a mechanism to declare, register and use settings.
+
+* settings should be defined using one of the available implementations
+  (:api:`QgsSettingsEntryString <classQgsSettingsEntryString.html>`,
+  :api:`QgsSettingsEntryInteger <classQgsSettingsEntryInteger.html>`, …).
+* they are declared as ``const static`` either in a dedicated class or in the registry directly (core, gui, app, …).
+* they always must be added to the registry using ``QgsSettingsRegistry::addSettingsEntry``.
+* the setting key should be using a ``kebab-case``.
+
 Coding Style
 =============
 

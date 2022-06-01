@@ -22,11 +22,14 @@ Logging
 =======
 
 To log requests sent to the server, you have to set the following environment
-variables:
+variable:
+
+- :ref:`QGIS_SERVER_LOG_STDERR <qgis_server_log_stderr>`
+
+With the following variables the logging can be further customized:
 
 - :ref:`QGIS_SERVER_LOG_LEVEL <qgis_server_log_level>`
-- :ref:`QGIS_SERVER_LOG_FILE <qgis_server_log_file>`
-- :ref:`QGIS_SERVER_LOG_STDERR <qgis_server_log_stderr>`
+- :ref:`QGIS_SERVER_LOG_PROFILE <qgis_server_log_profile>`
 
 
 .. _`qgis-server-envvar`:
@@ -58,22 +61,9 @@ several ways to define these variables. This is fully described in
      - ''
      - All
 
-   * - QUERY_STRING
-     - The query string, normally passed by the web server. This variable can be
-       useful while testing QGIS server binary from the command line.
-
-       For example for testing a GetCapabilities request on the command line
-       to a project that also requires a PostgreSQL connection defined in a
-       pg_service.conf file:
-
-       .. code-block:: bash
-		
-        PGSERVICEFILE=/etc/pg_service.conf \
-	QUERY_STRING="MAP=/home/qgis/projects/world.qgs&SERVICE=WMS&REQUEST=GetCapabilities" \
-	/usr/lib/cgi-bin/qgis_mapserv.fcgi
-
-       The result should be either the content of the GetCapabilities response or,
-       if something is wrong, an error message.
+   * - QGIS_PLUGINPATH
+     - Useful if you are using Python plugins for the server, this sets the folder
+       that is searched for Python plugins.
      - ''
      - All
 
@@ -87,6 +77,65 @@ several ways to define these variables. This is fully described in
      - ''
      - All
 
+   * - QGIS_SERVER_API_RESOURCES_DIRECTORY
+     - Base directory for all OGC API (such as OAPIF/WFS3) static resources (HTML
+       templates, CSS, JS, ...)
+     - depends on packaging
+     - WFS
+
+   * - QGIS_SERVER_API_WFS3_MAX_LIMIT
+     - Maximum value for ``limit`` in a features request.
+     - 10000
+     - WFS
+
+   * - QGIS_SERVER_CACHE_DIRECTORY
+     - Specifies the network cache directory on the filesystem.
+     - ``cache`` in profile directory
+     - All
+
+   * - QGIS_SERVER_CACHE_SIZE
+     - Sets the network cache size in MB.
+     - 50 MB
+     - All
+
+   * - QGIS_SERVER_DISABLE_GETPRINT
+     - This is an option at the project level to improve project read time by disabling
+       loading of layouts.
+
+       Activating this option disables the QGIS WMS GetPrint request.
+       Set this QGIS project flag to not load layouts.
+     - false
+     - WMS
+
+   * - QGIS_SERVER_IGNORE_BAD_LAYERS
+     - "Bad" layers are layers that cannot be loaded. The default behavior of QGIS Server
+       is to consider the project as not available if it contains a bad layer.
+
+       The default behavior can be overridden by setting this variable to ``1`` or ``true``.
+       In this case, "bad" layers will just be ignored, and the project will be considered
+       valid and available.
+     - false
+     - All
+
+   * - QGIS_SERVER_LANDING_PAGE_PREFIX
+     - Prefix of the path component of the landing page base URL
+     - ""
+     - All
+
+   * - .. _qgis_server_landing_page_projects_directories:
+
+       QGIS_SERVER_LANDING_PAGE_PROJECTS_DIRECTORIES
+     - Directories used by the landing page service to find .qgs and .qgz projects
+     - ""
+     - All
+
+   * - .. _qgis_server_landing_page_projects_pg_connections:
+
+       QGIS_SERVER_LANDING_PAGE_PROJECTS_PG_CONNECTIONS
+     - PostgreSQL connection strings used by the landing page service to find projects
+     - ""
+     - All
+
    * - .. _qgis_server_log_file:
 
        QGIS_SERVER_LOG_FILE
@@ -94,30 +143,8 @@ several ways to define these variables. This is fully described in
        writing to file. File should be created automatically, just send some requests
        to server. If it's not there, check permissions.
 
-       .. warning:: QGIS_SERVER_LOG_FILE is deprecated since QGIS 3.4.
+       .. warning:: QGIS_SERVER_LOG_FILE is deprecated since QGIS 3.4, use QGIS_SERVER_LOG_STDERR instead.
          File logging support will be removed in QGIS 4.0.
-     - ''
-     - All
-
-   * - .. _qgis_server_log_stderr:
-
-       QGIS_SERVER_LOG_STDERR
-     - Activate logging to stderr. This variable  has no effect when ``QGIS_SERVER_LOG_FILE``
-       is set.
-
-       * ``0`` or ``false`` (case insensitive)
-       * ``1`` or ``true`` (case insensitive)
-     - false
-     - All
-
-   * - MAX_CACHE_LAYERS
-     - Specify the maximum number of cached layers (default: ``100``).
-     - 100
-     - All
-
-   * - QGIS_PLUGINPATH
-     - Useful if you are using Python plugins for the server, this sets the folder
-       that is searched for Python plugins.
      - ''
      - All
 
@@ -132,29 +159,28 @@ several ways to define these variables. This is fully described in
      - 0
      - All
 
-   * - QGIS_SERVER_PARALLEL_RENDERING
-     - Activates parallel rendering for WMS GetMap requests. It's disabled (``false``)
-       by default. Available values are:
+   * - .. _qgis_server_log_profile:
+
+       QGIS_SERVER_LOG_PROFILE
+     - Add detailed profile information to the logs, only effective when QGIS_SERVER_LOG_LEVEL=0
+     - false
+     - All
+
+   * - .. _qgis_server_log_stderr:
+
+       QGIS_SERVER_LOG_STDERR
+     - Activate logging to stderr. This variable  has no effect when ``QGIS_SERVER_LOG_FILE``
+       is set.
 
        * ``0`` or ``false`` (case insensitive)
        * ``1`` or ``true`` (case insensitive)
      - false
-     - WMS
+     - All
 
    * - QGIS_SERVER_MAX_THREADS
      - Number of threads to use when parallel rendering is activated. If value is ``-1`` it
        uses the number of processor cores.
      - -1
-     - All
-
-   * - QGIS_SERVER_CACHE_DIRECTORY
-     - Specifies the network cache directory on the filesystem. 
-     - ``cache`` in profile directory
-     - All
-
-   * - QGIS_SERVER_CACHE_SIZE
-     - Sets the network cache size in MB.
-     - 50 MB
      - All
 
    * - QGIS_SERVER_OVERRIDE_SYSTEM_LOCALE
@@ -164,6 +190,15 @@ several ways to define these variables. This is fully described in
      - ''
      - All
 
+   * - QGIS_SERVER_PARALLEL_RENDERING
+     - Activates parallel rendering for WMS GetMap requests. It's disabled (``false``)
+       by default. Available values are:
+
+       * ``0`` or ``false`` (case insensitive)
+       * ``1`` or ``true`` (case insensitive)
+     - false
+     - WMS
+
    * - QGIS_SERVER_SHOW_GROUP_SEPARATOR
      - Defines whether a group separator (e.g. thousand separator) should be used for
        numeric values (e.g. in GetFeatureInfo responses). The default value is ``0``.
@@ -172,33 +207,6 @@ several ways to define these variables. This is fully described in
        * ``1`` or ``true`` (case insensitive)
      - false
      - WMS
-
-   * - QGIS_SERVER_IGNORE_BAD_LAYERS
-     - "Bad" layers are layers that cannot be loaded. The default behavior of QGIS Server
-       is to consider the project as not available if it contains a bad layer.
-
-       The default behavior can be overridden by setting this variable to ``1`` or ``true``.
-       In this case, "bad" layers will just be ignored, and the project will be considered
-       valid and available.
-     - false
-     - All
-
-   * - QGIS_SERVER_WMS_MAX_HEIGHT / QGIS_SERVER_WMS_MAX_WIDTH
-     - Maximum height/width for a WMS request. The most conservative between this and the project one is used.
-       If the value is ``-1``, it means that there is no maximum set.
-     - -1
-     - WMS
-
-   * - QGIS_SERVER_API_RESOURCES_DIRECTORY
-     - Base directory for all OGC API (such as OAPIF/WFS3) static resources (HTML
-       templates, CSS, JS, ...)
-     - depends on packaging
-     - WFS
-
-   * - QGIS_SERVER_API_WFS3_MAX_LIMIT
-     - Maximum value for ``limit`` in a features request.
-     - 10000
-     - WFS
 
    * - QGIS_SERVER_TRUST_LAYER_METADATA
      - This is an option at the project level to improve project read time by using the vector
@@ -214,14 +222,31 @@ several ways to define these variables. This is fully described in
      - false
      - All
 
-   * - QGIS_SERVER_DISABLE_GETPRINT
-     - This is an option at the project level to improve project read time by disabling
-       loading of layouts.
-
-       Activating this option disables the QGIS WMS GetPrint request.
-       Set this QGIS project flag to not load layouts.
-     - false
+   * - QGIS_SERVER_WMS_MAX_HEIGHT / QGIS_SERVER_WMS_MAX_WIDTH
+     - Maximum height/width for a WMS request. The most conservative between this and the project one is used.
+       If the value is ``-1``, it means that there is no maximum set.
+     - -1
      - WMS
+
+   * - QUERY_STRING
+     - The query string, normally passed by the web server. This variable can be
+       useful while testing QGIS server binary from the command line.
+
+       For example for testing a GetCapabilities request on the command line
+       to a project that also requires a PostgreSQL connection defined in a
+       pg_service.conf file:
+
+       .. code-block:: bash
+
+        PGSERVICEFILE=/etc/pg_service.conf \
+	QUERY_STRING="MAP=/home/projects/world.qgs&SERVICE=WMS&REQUEST=GetCapabilities" \
+	/usr/lib/cgi-bin/qgis_mapserv.fcgi
+
+       The result should be either the content of the GetCapabilities response or,
+       if something is wrong, an error message.
+     - ''
+     - All
+
 
 Settings summary
 ================
@@ -235,7 +260,7 @@ For example with spawn-fcgi:
 .. code-block:: bash
 
  export QGIS_OPTIONS_PATH=/home/user/.local/share/QGIS/QGIS3/profiles/default/
- export QGIS_SERVER_LOG_FILE=/home/user/qserv.log
+ export QGIS_SERVER_LOG_STDERR=1
  export QGIS_SERVER_LOG_LEVEL=2
  spawn-fcgi -f /usr/lib/cgi-bin/qgis_mapserv.fcgi -s /tmp/qgisserver.sock -U www-data -G www-data -n
 
@@ -249,7 +274,7 @@ For example with spawn-fcgi:
 
     - QGIS_SERVER_LOG_LEVEL / '' (Log level): '2' (read from ENVIRONMENT_VARIABLE)
 
-    - QGIS_SERVER_LOG_FILE / '' (Log file): '/tmp/qserv.log' (read from ENVIRONMENT_VARIABLE)
+    - QGIS_SERVER_LOG_STDERR / '' (Activate/Deactivate logging to stderr): '1' (read from ENVIRONMENT_VARIABLE)
 
     - QGIS_PROJECT_FILE / '' (QGIS project file): '' (read from DEFAULT_VALUE)
 
@@ -266,42 +291,6 @@ In this particular case, we know that **QGIS_SERVER_MAX_THREADS** and
 **QGIS_OPTIONS_PATH** directory (which is defined through an environment variable).
 The corresponding entries in the ini file are **/qgis/max_threads** and
 **/qgis/parallel_rendering** and their values are **true** and **4** threads.
-
-
-.. _server_short_name:
-
-Short name for layers, groups and project
-=========================================
-
-A number of elements have both a ``<Name>`` and a ``<Title>``.
-The **Name** is a text string used for machine-to-machine
-communication while the **Title** is for the benefit of humans.
-
-For example, a dataset might have the descriptive Title
-“Maximum Atmospheric Temperature” and be requested using the abbreviated
-**Name** “ATMAX”. The user can set the title for layers, groups and projects.
-
-OWS name is based on the name used in the layer tree. This name is more a label
-for humans than a name for machine-to-machine communication. You can set a
-**Short name** for layers, groups or projects, to be used by QGIS Server as
-the layer identification name (in :ref:`LAYERS <wms-layers>` parameter for instance ).
-
-You can set title, short name and abstract for:
-
-* **Layers**: right-click on a layer and choose
-  :menuselection:`Properties... --> QGIS Server --> Description`.
-
-* **Groups**: right-click on a group and select :guilabel:`Set Group WMS data`
-
-  .. _figure_group_wms_data:
-
-  .. figure:: img/set_group_wms_data.png
-     :align: center
-
-     Set group WMS data dialog
-
-* **Project**: go to :menuselection:`Project --> Properties... --> QGIS Server -->
-  Service Capabilities`.
 
 
 Connection to service file

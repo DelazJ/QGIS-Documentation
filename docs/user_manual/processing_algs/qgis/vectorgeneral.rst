@@ -57,12 +57,10 @@ Parameters
      - Specify the output layer containing only the duplicates.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 ..........
@@ -83,9 +81,88 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:assignprojection``
+**Algorithm ID**: ``native:assignprojection``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisbatchnominatimgeocoder:
+
+Batch Nominatim geocoder
+------------------------
+
+Performs batch geocoding using the Nominatim service against an input
+layer string field.
+The output layer will have a point geometry reflecting the geocoded location
+as well as a number of attributes associated to the geocoded location.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>` 
+of point features
+
+.. note:: This algorithm is compliant with the `usage policy
+ <https://operations.osmfoundation.org/policies/nominatim/>`_ of the
+ Nominatim geocoding service provided by the OpenStreetMap Foundation.
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layer**
+     - ``INPUT``
+     - [vector: any]
+     - Vector layer to geocode the features
+   * - **Address field**
+     - ``FIELD``
+     - [tablefield: string]
+     - Field containing the addresses to geocode
+   * - **Geocoded**
+     - ``OUTPUT``
+     - [vector: point]
+
+       Default: ``[Create temporary layer]``
+     - Specify the output layer containing only the geocoded addresses.
+       One of:
+
+       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
+       * Save to File...
+       * Save to Geopackage...
+       * Save to Database Table...
+       * Append to Layer...
+
+       The file encoding can also be changed here.
+
+Outputs
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Geocoded**
+     - ``OUTPUT``
+     - [vector: point]
+     - Vector layer with point features corresponding to the geocoded addresses
+
+Python code
+...........
+
+**Algorithm ID**: ``native:batchnominatimgeocoder``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -152,9 +229,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:layertobookmarks``
+**Algorithm ID**: ``native:layertobookmarks``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -202,12 +279,10 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 ..........
@@ -228,9 +303,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:bookmarkstolayer``
+**Algorithm ID**: ``native:bookmarkstolayer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -287,9 +362,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:createattributeindex``
+**Algorithm ID**: ``native:createattributeindex``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -342,9 +417,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:createspatialindex``
+**Algorithm ID**: ``native:createspatialindex``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -410,7 +485,7 @@ Python code
 
 **Algorithm ID**: ``qgis:definecurrentprojection``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -427,7 +502,7 @@ the result layer.
 
 .. seealso:: :ref:`qgisdropgeometries`,
    :ref:`qgisremovenullgeometries`,
-   :ref:`qgisdeleteduplicatesbyattribute`
+   :ref:`qgisremoveduplicatesbyattribute`
 
 Parameters
 ..........
@@ -451,12 +526,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -485,14 +557,14 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:deleteduplicategeometries``
+**Algorithm ID**: ``native:deleteduplicategeometries``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
 
-.. _qgisdeleteduplicatesbyattribute:
+.. _qgisremoveduplicatesbyattribute:
 
 Delete duplicates by attribute
 -----------------------------------
@@ -536,12 +608,10 @@ Parameters
      - Specify the output layer containing the unique features.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
    * - **Filtered (duplicates)**
 
        Optional
@@ -552,13 +622,9 @@ Parameters
      - Specify the output layer containing only the duplicates.
        One of:
 
-       * Skip output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 ..........
@@ -598,14 +664,14 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:deleteduplicatesbyattribute``
+**Algorithm ID**: ``native:removeduplicatesbyattribute``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
 
-.. _qgisdetectdatasetchanges:
+.. _qgisdetectvectorchanges:
 
 Detect dataset changes
 ----------------------
@@ -667,36 +733,29 @@ Parameters
      - Specify the output vector layer containing the unchanged
        features. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
    * - **Added features**
      - ``ADDED``
      - [vector: same as Original layer]
      - Specify the output vector layer containing the added features.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
    * - **Deleted features**
      - ``DELETED``
      - [vector: same as Original layer]
      - Specify the output vector layer containing the deleted
        features. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -738,9 +797,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:detectdatasetchanges``
+**Algorithm ID**: ``native:detectvectorchanges``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -757,6 +816,7 @@ If the file is saved in a local folder, you can choose between many
 file formats.
 
 |checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 .. seealso:: :ref:`qgisdeleteduplicategeometries`,
    :ref:`qgisremovenullgeometries`
@@ -781,12 +841,9 @@ Parameters
      - [table]
      - Specify the output geometryless layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -808,9 +865,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:dropgeometries``
+**Algorithm ID**: ``native:dropgeometries``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -905,12 +962,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output layer created by the query. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -933,7 +987,114 @@ Python code
 
 **Algorithm ID**: ``qgis:executesql``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisdxfexport:
+
+Export layers to DXF
+--------------------
+
+Exports layers to DXF file. For each layer, you can choose a field whose values
+are used to split features in generated destination layers in DXF output.
+
+.. seealso:: :ref:`create_dxf_files`
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layers**
+     - ``LAYERS``
+     - [vector: any][list]
+     - Input vector layers to export
+   * - **Symbology mode**
+     - ``SYMBOLOGY_MODE``
+     - [enumeration]
+
+       Default: 0
+     - Type of symbology to apply to output layers. You can choose between:
+       
+       * 0 --- No Symbology
+       * 1 --- Feature Symbology
+       * 2 --- Symbol Layer Symbology
+       
+   * - **Symbology scale**
+     - ``SYMBOLOGY_SCALE``
+     - [scale]
+
+       Default: 1:1 000 000
+     - Default scale of data export.
+   * - **Encoding**
+     - ``ENCODING``
+     - [enumeration]
+     - Encoding to apply to layers.
+   * - **CRS**
+     - ``CRS``
+     - [crs]
+     - Choose the CRS for the output layer.
+   * - **Use layer title as name**
+     - ``USE_LAYER_TITLE``
+     - [boolean]
+
+       Default: False
+     - Name the output layer with the layer title (as set in QGIS) instead
+       of the layer name.
+   * - **Force 2D**
+     - ``FORCE_2D``
+     - [boolean]
+
+       Default: False
+     -
+   * - **Export labels as MTEXT elements**
+     - ``MTEXT``
+     - [boolean]
+
+       Default: False
+     - Exports labels as MTEXT or TEXT elements
+   * - **DXF**
+     - ``OUTPUT``
+     - [file]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output DXF file.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **DXF**
+     - ``OUTPUT``
+     - [file]
+     - :file:`.DXF` file containing the input layers
+
+Python code
+...........
+
+**Algorithm ID**: ``native:dxfexport``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -970,12 +1131,9 @@ Parameters
      - Specify the vector layer for the selected features.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -997,9 +1155,69 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:saveselectedfeatures``
+**Algorithm ID**: ``native:saveselectedfeatures``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisshpencodinginfo:
+
+Extract Shapefile encoding
+--------------------------
+
+Extracts the attribute encoding information embedded in a Shapefile.
+Both the encoding specified by an optional :file:`.cpg` file and
+any encoding details present in the :file:`.dbf` LDID header block are considered.
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input Layer**
+     - ``INPUT``
+     - [vector: any]
+     - ESRI Shapefile (:file:`.SHP`) Layer to extract the encoding information.
+
+Outputs
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Shapefile encoding**
+     - ``ENCODING``
+     - [string]
+     - Encoding information specified in the input file
+   * - **CPG encoding**
+     - ``CPG_ENCODING``
+     - [string]
+     - Encoding information specified in any optional :file:`.CPG` file
+   * - **LDID encoding**
+     - ``LDID_ENCODING``
+     - [string]
+     - Encoding information specified in :file:`.dbf` LDID header block
+
+Python code
+...........
+
+**Algorithm ID**: ``native:shpencodinginfo``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1043,14 +1261,11 @@ Parameters
      - ``TARGET_AREA``
      - [extent]
      - The area that the layer covers.
-       The options for specifying the extent are:
 
-       * Use Canvas Extent
-       * Select Extent on Canvas
-       * Use Layer Extent
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
 
-       It is also possible to provide the extent
-       coordinates directly (xmin, xmax, ymin, ymax).
    * - **CRS candidates**
      - ``OUTPUT``
      - [table]
@@ -1059,12 +1274,9 @@ Parameters
      - Specify the table (geometryless layer) for the CRS
        suggestions (EPSG codes). One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -1088,10 +1300,83 @@ Python code
 
 **Algorithm ID**: ``qgis:findprojection``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
+
+.. _qgisflattenrelationships:
+
+Flatten relationship
+--------------------
+
+Flattens a :ref:`relationship <vector_relations>` for a vector layer,
+exporting a single layer containing one parent feature per 
+related child feature. This master feature contains all the 
+attributes for the related features.
+This allows to have the relation as a plain table that can be e.g. exported to CSV.
+
+.. figure:: img/flatten_relationship.png
+  :align: center
+  :width: 100%
+
+  Form of a region with related children (left) - A duplicate region feature for each related child, with joined attributes (right)
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input Layer**
+     - ``INPUT``
+     - [vector: any]
+     - Layer with the relationship that should be de-normalized
+   * - **Flattened Layer**
+
+       Optional
+     - ``OUTPUT``
+     - [same as input]
+
+       Default: ``[Create temporary layer]``
+     - Specify the output (flattened) layer. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Outputs
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Flattened layer**
+     - ``OUTPUT``
+     - [same as input]
+     - A layer containing master features 
+       with all the attributes for the related features
+
+Python code
+...........
+
+**Algorithm ID**: ``native:flattenrelationships``
+
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+  
 
 .. _qgisjoinattributestable:
 
@@ -1181,12 +1466,10 @@ Parameters
      - Specify the output vector layer for the join.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
    * - **Unjoinable features from first layer**
      - ``NON_MATCHING``
      - [same as input]
@@ -1196,13 +1479,9 @@ Parameters
        features from first layer.
        One of:
 
-       * Skip output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 ..........
@@ -1239,9 +1518,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:joinattributestable``
+**Algorithm ID**: ``native:joinattributestable``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1264,6 +1543,13 @@ layer that are added to each feature from the first layer.
 .. seealso:: :ref:`qgisjoinbynearest`,
    :ref:`qgisjoinattributestable`, :ref:`qgisjoinbylocationsummary`
 
+Exploring spatial relations
+...........................
+
+.. include:: ../algs_include.rst
+   :start-after: **geometric_predicates**
+   :end-before: **end_geometric_predicates**
+
 Parameters
 ..........
 
@@ -1276,38 +1562,42 @@ Parameters
      - Name
      - Type
      - Description
-   * - **Input Layer**
+   * - **Join to features in**
      - ``INPUT``
      - [vector: any]
      - Input vector layer. The output layer will consist of
        the features of this layer with attributes from
        matching features in the second layer.
-   * - **Join layer**
-     - ``JOIN``
-     - [vector: any]
-     - The attributes of this vector layer will be **added**
-       to the source layer attribute table.
-   * - **Geometric predicate**
+   * - **Where the features**
      - ``PREDICATE``
      - [enumeration] [list]
 
        Default: [0]
-     - Select the geometric criteria. One or more of:
+     - Type of spatial relation the source feature should have with the target
+       feature so that they could be joined. One or more of:
 
-       * 0 --- intersects
-       * 1 --- contains
-       * 2 --- equals
-       * 3 --- touches
-       * 4 --- overlaps
-       * 5 --- within
-       * 6 --- crosses
+       * 0 --- intersect
+       * 1 --- contain
+       * 2 --- equal
+       * 3 --- touch
+       * 4 --- overlap
+       * 5 --- are within
+       * 6 --- cross
 
+       If more than one condition is chosen, at least one
+       of them (OR operation) has to be met for a feature
+       to be extracted.
+   * - **By comparing to**
+     - ``JOIN``
+     - [vector: any]
+     - The join layer. Features of this vector layer will **add** their attributes
+       to the source layer attribute table if they satisfy the spatial relationship.
    * - **Fields to add (leave empty to use all fields)**
 
        Optional
      - ``JOIN_FIELDS``
      - [tablefield: any] [list]
-     - Select the specific fields you want to add.
+     - Select the specific fields you want to add from the join layer.
        By default all the fields are added.
    * - **Join type**
      - ``METHOD``
@@ -1326,7 +1616,7 @@ Parameters
      - [boolean]
      
        Default: False
-     - Remove from the output the input layer records which could not
+     - Remove from the output the input layer's features which could not
        be joined
    * - **Joined field prefix**
 
@@ -1343,12 +1633,10 @@ Parameters
      - Specify the output vector layer for the join.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
    * - **Unjoinable features from first layer**
      - ``NON_MATCHING``
      - [same as input]
@@ -1358,13 +1646,9 @@ Parameters
        features from first layer.
        One of:
 
-       * Skip output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 ..........
@@ -1395,9 +1679,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:joinattributesbylocation``
+**Algorithm ID**: ``native:joinattributesbylocation``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1421,6 +1705,13 @@ etc).
 
 .. seealso:: :ref:`qgisjoinattributesbylocation`
 
+Exploring spatial relations
+...........................
+
+.. include:: ../algs_include.rst
+   :start-after: **geometric_predicates**
+   :end-before: **end_geometric_predicates**
+
 Parameters
 ..........
 
@@ -1433,38 +1724,43 @@ Parameters
      - Name
      - Type
      - Description
-   * - **Input Layer**
+   * - **Join to features in**
      - ``INPUT``
      - [vector: any]
      - Input vector layer. The output layer will consist of
        the features of this layer with attributes from
        matching features in the second layer.
-   * - **Join layer**
-     - ``JOIN``
-     - [vector: any]
-     - The attributes of this vector layer will be **added**
-       to the source layer attribute table.
-   * - **Geometric predicate**
+   * - **Where the features**
      - ``PREDICATE``
      - [enumeration] [list]
 
        Default: [0]
-     - Select the geometric criteria. One or more of:
+     - Type of spatial relation the source feature should have with the target
+       feature so that they could be joined. One or more of:
 
-       * 0 --- intersects
-       * 1 --- contains
-       * 2 --- equals
-       * 3 --- touches
-       * 4 --- overlaps
-       * 5 --- within
-       * 6 --- crosses
+       * 0 --- intersect
+       * 1 --- contain
+       * 2 --- equal
+       * 3 --- touch
+       * 4 --- overlap
+       * 5 --- are within
+       * 6 --- cross
 
+       If more than one condition is chosen, at least one
+       of them (OR operation) has to be met for a feature
+       to be extracted.
+   * - **By comparing to**
+     - ``JOIN``
+     - [vector: any]
+     - The join layer. Features of this vector layer will **add** summaries
+       of their attributes to the source layer attribute table if
+       they satisfy the spatial relationship.
    * - **Fields to summarize (leave empty to use all fields)**
 
        Optional
      - ``JOIN_FIELDS``
      - [tablefield: any] [list]
-     - Select the specific fields you want to add and summarize.
+     - Select the specific fields you want to add from the join layer.
        By default all the fields are added.
    * - **Summaries to calculate (leave empty to use all fields)**
 
@@ -1473,8 +1769,8 @@ Parameters
      - [enumeration] [list]
 
        Default: []
-     - Choose which type of summary you want to add to
-       each field and for each feature. One or more of:
+     - For each input feature, statistics are calculated on joined fields of
+       their matching features. One or more of:
 
        * 0 --- count
        * 1 --- unique
@@ -1501,7 +1797,7 @@ Parameters
      - [boolean]
      
        Default: False
-     - Remove from the output the input layer records which could not be joined
+     - Remove from the output the input layer's features which could not be joined
    * - **Joined layer**
      - ``OUTPUT``
      - [same as input]
@@ -1510,12 +1806,9 @@ Parameters
      - Specify the output vector layer for the join.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -1538,7 +1831,7 @@ Python code
 
 **Algorithm ID**: ``qgis:joinbylocationsummary``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1617,12 +1910,10 @@ Parameters
      - Specify the vector layer containing the joined features.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
    * - **Unjoinable features from first layer**
      - ``NON_MATCHING``
      - [same as input]
@@ -1631,13 +1922,9 @@ Parameters
      - Specify the vector layer containing the features that could
        not be joined. One of:
 
-       * Skip output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 .......
@@ -1674,9 +1961,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:joinbynearest``
+**Algorithm ID**: ``native:joinbynearest``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1688,10 +1975,10 @@ Merge vector layers
 Combines multiple vector layers of the **same geometry** type into a
 single one.
 
-If attributes tables are different, the attribute table of the
-resulting layer will contain the attributes from all input layers.
-Non-matching fields will be appended at the end of the attribute
-table.
+The attribute table of the resulting layer will contain the fields from all
+input layers. If fields with the same name but different types are found then
+the exported field will be automatically converted into a string type field.
+New fields storing the original layer name and source are also added.
 
 If any input layers contain Z or M values, then the output layer will
 also contain these values.
@@ -1742,12 +2029,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -1769,9 +2053,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:mergevectorlayers``
+**Algorithm ID**: ``native:mergevectorlayers``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1825,12 +2109,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -1851,9 +2132,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:orderbyexpression``
+**Algorithm ID**: ``native:orderbyexpression``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1901,9 +2182,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:repairshapefile``
+**Algorithm ID**: ``native:repairshapefile``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -1916,6 +2197,7 @@ Reprojects a vector layer in a different CRS. The reprojected layer
 will have the same features and attributes of the input layer.
 
 |checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 .. seealso:: :ref:`qgisassignprojection`,
    :ref:`qgisdefinecurrentprojection`, :ref:`qgisfindprojection`
@@ -1959,12 +2241,9 @@ Parameters
        Default: ``[Create temporary layer]``
      - Specify the output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -1985,24 +2264,130 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:reprojectlayer``
+**Algorithm ID**: ``native:reprojectlayer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
 
-.. _qgissetstyleforvectorlayer:
+.. _qgissavefeatures:
 
-Set style for vector layer
---------------------------
-Sets the style of a vector layer. The style must be defined in a
-QML file.
+Save vector features to file
+----------------------------
 
-No new output are created: the style is immediately assigned to the
-vector layer.
+Saves vector features to a specified file dataset.
 
-.. seealso:: :ref:`qgissetstyleforrasterlayer`
+For dataset formats supporting layers, an optional layer name parameter
+can be used to specify a custom string. Optional GDAL-defined dataset and
+layer options can be specified. For more information on this, read the online
+`GDAL documentation <https://gdal.org/drivers/vector/index.html>`_ on the format.
+
+Parameters
+..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Vector features**
+     - ``INPUT``
+     - [vector: any]
+     - Input vector layer.
+   * - **Saved features**
+     - ``OUTPUT``
+     - [same as input]
+
+       Default: ``[Save to temporary file]``
+     - Specify the file to save the features to. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Layer name**
+
+       Optional
+     - ``LAYER_NAME``
+     - [string]
+     - Name to use for the output layer
+   * - **GDAL dataset options**
+
+       Optional
+     - ``DATASOURCE_OPTIONS``
+     - [string]
+     - GDAL dataset creation options of the output format.
+       Separate individual options with semicolons.
+   * - **GDAL layer options**
+
+       Optional
+     - ``LAYER_OPTIONS``
+     - [string]
+     - GDAL layer creation options of the output format.
+       Separate individual options with semicolons.
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Saved features**
+     - ``OUTPUT``
+     - [same as input]
+     - Vector layer with the saved features.
+   * - **File name and path**
+     - ``FILE_PATH``
+     - [string]
+     - Output file name and path.
+   * - **Layer name**
+     - ``LAYER_NAME``
+     - [string]
+     - Name of the layer, if any.
+
+Python code
+...........
+
+**Algorithm ID**: ``native:savefeatures``
+
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgissetlayerencoding:
+
+Set layer encoding
+------------------
+
+Sets the encoding used for reading a layer's attributes.
+No permanent changes are made to the layer, rather it affects only
+how the layer is read during the current session.
+
+.. note:: Changing the encoding is only supported for some vector layer data sources.
 
 Parameters
 ..........
@@ -2015,17 +2400,17 @@ Parameters
      - Name
      - Type
      - Description
-   * - **Input Layer**
+   * - **Saved features**
      - ``INPUT``
      - [vector: any]
-     - Input vector layer you want to set the style for
-   * - **Style file**
-     - ``STYLE``
-     - [file]
-     - ``qml`` file of the style
+     - Vector layer to set the encoding.
+   * - **Encoding**
+     - ``ENCODING``
+     - [string]
+     - Text encoding to assign to the layer in the current QGIS session.
 
 Outputs
-..........
+.......
 
 .. list-table::
    :header-rows: 1
@@ -2035,17 +2420,17 @@ Outputs
      - Name
      - Type
      - Description
-   * - **Input Layer**
-     - ``INPUT``
+   * - **Output layer**
+     - ``OUTPUT``
      - [same as input]
-     - The input vector layer with the new style
+     - Input vector layer with the set encoding.
 
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:setstyleforvectorlayer``
+**Algorithm ID**: ``native:setlayerencoding``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2063,6 +2448,10 @@ output features.
 Geometries and other attributes remain unchanged in the output.
 Optionally, the separator string can be a regular expression
 for added flexibility.
+
+|checkbox| Allows
+:ref:`features in-place modification <processing_inplace_edit>` 
+of point, line, and polygon features
 
 Parameters
 ..........
@@ -2101,12 +2490,9 @@ Parameters
        Default: ``Create temporary layer``
      - Specify output vector layer. One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 ..........
@@ -2127,9 +2513,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:splitfeaturesbycharacter``
+**Algorithm ID**: ``native:splitfeaturesbycharacter``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2155,6 +2541,9 @@ It is the opposite operation of *merging*.
 Parameters
 ..........
 
+Basic parameters
+^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 20 20 20 40
@@ -2179,10 +2568,32 @@ Parameters
      - Specify the directory for the output layers.
        One of:
 
-       * Save to a Temporary Directory
-       * Save to Directory...
+       .. include:: ../algs_include.rst
+          :start-after: **directory_output_types**
+          :end-before: **end_directory_output_types**
 
-       The file encoding can also be changed here.
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Output file type**
+
+       Optional
+     - ``FILE_TYPE``
+     - [enumeration]
+
+       Default: ``gpkg`` in the dialog window
+     - Select the extension of the output files.
+       If not specified or invalid, the output files format will
+       be the one set in the "Default output vector layer extension"
+       Processing setting.
 
 Outputs
 ..........
@@ -2207,9 +2618,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:splitvectorlayer``
+**Algorithm ID**: ``native:splitvectorlayer``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -2258,9 +2669,9 @@ Outputs
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:truncatetable``
+**Algorithm ID**: ``native:truncatetable``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 

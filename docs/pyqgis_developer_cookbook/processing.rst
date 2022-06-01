@@ -1,6 +1,3 @@
-.. index:: Plugins; Processing algorithm
-.. _processing_plugin:
-
 .. highlight:: python
    :linenothreshold: 5
 
@@ -12,13 +9,17 @@
 
     iface = start_qgis()
 
+.. index:: Plugins; Processing algorithm
+.. _processing_plugin:
 
 ****************************
 Writing a Processing plugin
 ****************************
 
-.. contents::
-   :local:
+.. only:: html
+
+   .. contents::
+      :local:
 
 Depending on the kind of plugin that you are going to develop, it might be a better
 option to add its functionality as a Processing algorithm (or a set of them).

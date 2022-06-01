@@ -66,7 +66,7 @@ Ensure that yours is as well.
    page is still blank.
    It clearly lacks a map. Let's fix that!
 
-#. Click on the |addMap| :sup:`Add New Map` button. 
+#. Click on the |addMap| :sup:`Add Map` button.
 
    With this tool activated, you will be able to place a map on the
    page.
@@ -237,7 +237,7 @@ unwanted items.
 #. Uncheck the |unchecked| :guilabel:`Auto update` box, allowing you
    to directly modify the legend items
 #. Select the entry with :guilabel:`buildings`
-#. Delete it from the legend by clicking the |signMinus| button
+#. Delete it from the legend by clicking the |symbologyRemove| button
 
 You can also rename items.
 
@@ -361,11 +361,11 @@ layout items.
    :width: 1.5em
 .. |saveMapAsImage| image:: /static/common/mActionSaveMapAsImage.png
    :width: 1.5em
-.. |signMinus| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
 .. |symbologyEdit| image:: /static/common/symbologyEdit.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |symbologyRemove| image:: /static/common/symbologyRemove.png
+   :width: 1.5em
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em
 .. |unlockAll| image:: /static/common/mActionUnlockAll.png
    :width: 1.5em

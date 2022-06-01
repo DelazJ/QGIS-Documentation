@@ -2,6 +2,7 @@ from os import path, walk
 from sys import argv
 import json
 import re
+import html
 
 # To use this script clone the QGIS/QGIS repository, and checkout the release
 # and run:
@@ -18,7 +19,7 @@ else:
     qgis_repo_path = path.join(path.dirname(__file__), '..', '..', 'QGIS')
 help_folder = path.join(qgis_repo_path, 'resources/function_help/json')
 # expression help folder
-output_folder = path.join(path.dirname(__file__), '..', 'docs/user_manual/working_with_vector/expression_help')
+output_folder = path.join(path.dirname(__file__), '..', 'docs/user_manual/expressions/expression_help')
 
 def sphynxify_html(text, base_indent=0):
     filler = base_indent * ' '
@@ -29,10 +30,10 @@ def sphynxify_html(text, base_indent=0):
     text = re.sub(r"<br\s?\/?>", '\n\n'+ filler, text)
 
     # Format unsorted lists
-    text = text.replace('<ul>', '\n\n'+ filler)
+    text = text.replace('<ul>', '\n\n')
     text = text.replace('</ul>', '\n')
-    text = text.replace('<li>', '* ')
-    text = text.replace('</li>', '\n' + filler)
+    text = text.replace('<li>', filler + '* ')
+    text = text.replace('</li>', '\n')
 
     # Format bold and italic
     text = re.sub(r"<\/?b>", '**', text)
@@ -56,9 +57,17 @@ def sphynxify_html(text, base_indent=0):
     text = re.sub(r"<\/(thead|table)>", '', text)
 
     # Format <a> links
-    text = re.sub(r"<a href='(.*)'>(.*)</a>", r"`\2 <\1>`_", text)
+    text = re.sub(r"<a href='(.*?)'>(.*?)</a>", r"`\2 <\1>`_", text)
+
+    # Format html special characters (e.g. &lt;)
+    text = html.unescape(text)
 
     return text
+
+def escape_colliding_functions(f_name):
+    # Escape operators which are rst special characters
+
+    return ''.join(['\\', f_name]) if f_name in ['*', '-', '+', '||'] else f_name
 
 def format_function(function_dict):
     f_name = function_dict['name']
@@ -105,11 +114,20 @@ def format_variant(function_dict, f_name):
     # Prepare syntax and arguments strings
     syntax = f'   * - Syntax\n     - '
     if len(arg_syntax_list) > 0:
-        syntax += f'{f_name}({", ".join(arg_syntax_list)}{variable_args})\n'
+        if 'type' in function_dict and function_dict['type'] == 'operator':
+            if f_name =='[]':
+                syntax += f'[{arg_syntax_list[0]}]\n'
+            elif len(arg_syntax_list) == 1:
+                syntax += f'{f_name} {arg_syntax_list[0]}\n'
+            elif len(arg_syntax_list) == 2:
+                syntax += f'{arg_syntax_list[0]} {f_name} {arg_syntax_list[1]}\n'
+        else:
+            syntax += f'{f_name}({", ".join(arg_syntax_list)}{variable_args})\n'
+
         descriptions = '\n       * '.join(arg_description_list)
         arguments = (f"   * - Arguments\n"
                      f"     - * {descriptions}\n")
-    elif f_name.startswith("$"):
+    elif f_name.startswith("$") or ('type' in function_dict and function_dict['type'] == 'value'):
         syntax += f"{f_name}\n"
         arguments = ''
     else:
@@ -126,7 +144,11 @@ def format_variant(function_dict, f_name):
     if 'examples' in function_dict:
         ex_list = []
         for ex in function_dict['examples']:
-            example = f"``{ex['expression']}`` → {ex['returns']}"
+
+            # backticks do not escape backslash so let's do it before pulling example text
+            example_backslashed = ex['expression'].replace('\\\\', '\\')
+            example = f"``{sphynxify_html(example_backslashed)}`` → {ex['returns']}"
+
             if 'note' in ex:
                 example += f"\n\n         {sphynxify_html(ex['note'])}"
 
@@ -143,7 +165,7 @@ def format_variant(function_dict, f_name):
         v_description = ''
 
     if 'notes' in function_dict:
-        notes = f"\n\n.. note:: {function_dict['notes']}"
+        notes = f"\n\n.. note:: {sphynxify_html(function_dict['notes'])}"
     else:
         notes = ''
 
@@ -170,12 +192,13 @@ for file in filenames:
     with open(filepath) as f:
         data = json.load(f)
     #print(data)
+    data['filename'] = file.replace('op_', '')
     if data['type'] == 'group':
         groups[data['name']] = {'description': data['description'], 'func_list': []}
-    elif data['type'] == 'function' or data['type'] == 'expression':
+    elif data['type'] in ['function', 'expression', 'operator', 'value']:
         functions[data['name']] = data
     else:
-        print(f'{data["name"]} is not a group or a function. It is a {data["type"]}.')
+        print(f'{data["name"]} is not a group, a function, a value or an operator. It is a {data["type"]}.')
 
 # Distribute functions by the groups
 for f_name in functions.keys():
@@ -205,11 +228,10 @@ for g_name in groups:
                 f"   qgis/QGIS repository.\n\n")
         for f_name in func_list:
             f_description = sphynxify_html(functions[f_name]['description'])
-            f.write(f'.. {f_name}_section\n\n'
-                    f".. _expression_function_{g_name.replace(' ','_')}_{f_name}:\n\n"
-                    f"{f_name}\n"
-                    f"{'.'* len(f_name)}\n\n"
-                    f"{f_description}\n"
+            f.write(f".. _expression_function_{g_name.replace(' ','_')}_{functions[f_name]['filename']}:\n\n"
+                    f"{escape_colliding_functions(f_name)}\n"
+                    f"{'.'* (len(escape_colliding_functions(f_name)))}\n\n"
+                     f"{f_description}\n"
                     f"\n")
             text = format_function(functions[f_name])
             f.write(text)

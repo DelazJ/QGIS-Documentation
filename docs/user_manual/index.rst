@@ -6,7 +6,7 @@ QGIS User Guide
 
 .. toctree::
     :maxdepth: 2
-    :numbered:
+    :numbered: 4
 
     preamble/preamble
     preamble/foreword
@@ -19,11 +19,13 @@ QGIS User Guide
     introduction/qgis_configuration
     working_with_projections/working_with_projections
     introduction/general_tools
+    expressions/index
     style_library/index
     managing_data_source/index
     working_with_vector/index
     working_with_raster/index
     working_with_mesh/mesh_properties
+    working_with_vector_tiles/vector_tiles_properties
     print_composer/index
     working_with_ogc/ogc_client_support.rst
     working_with_gps/index

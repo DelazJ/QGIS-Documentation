@@ -21,7 +21,7 @@ Introducing QGIS projects
 =========================
 The state of your QGIS session is called a project.
 QGIS works on one project at a time.
-A settings can be project-specific or an application-wide default
+A setting can be project-specific or an application-wide default
 for new projects (see section :ref:`gui_options`).
 QGIS can save the state of your workspace into a
 :ref:`QGIS project file <qgisprojectfile>` using the menu options
@@ -48,7 +48,9 @@ At startup, a list of :guilabel:`Project Templates` and
 names and file paths (for up to ten projects).
 The :guilabel:`Recent Projects` list is handy to access recently used
 projects.
-Double-click an entry to open the project or project template.
+Double-click an entry to open the project or project template. Right-click
+an entry to :guilabel:`Pin to List`, :guilabel:`Open Directory...` or
+:guilabel:`Remove from List`.
 You can also add a layer to create a new project automatically.
 The lists will then disappear, giving way to the map canvas.
 
@@ -72,6 +74,7 @@ The information saved in a project file includes:
 * Layers added
 * Which layers can be queried
 * Layer properties, including symbolization and styles
+* Layer notes
 * Projection for the map view
 * Last viewed extent
 * Print layouts
@@ -163,6 +166,8 @@ You can:
   to auto-fix those that have the same broken file path.
 * |deleteSelected| :guilabel:`Remove Unavailable Layers` from the project.
 
+Launching QGIS from command line using the :ref:`skipbadlayers` option can
+help you skip the :guilabel:`Handle Unavailable Layers` dialog at startup.
 
 .. _`sec_output`:
 

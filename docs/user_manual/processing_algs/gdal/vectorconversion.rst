@@ -16,10 +16,13 @@ Converts any OGR-supported vector layer into another OGR-supported
 format.
 
 This algorithm is derived from the
-`ogr2ogr utility <https://gdal.org/ogr2ogr.html>`_.
+`ogr2ogr utility <https://gdal.org/programs/ogr2ogr.html>`_.
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -33,6 +36,32 @@ Parameters
      - ``INPUT``
      - [vector: any]
      - Input vector layer
+   * - **Converted**
+     - ``OUTPUT``
+     - [same as input]
+     - Specification of the output vector layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+       For ``Save to File``, the output format has to be specified.
+       All GDAL vector formats are supported.
+       For ``Save to a Temporary File`` the QGIS default vector format
+       will be used.
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -41,21 +70,6 @@ Parameters
 
        Default: '' (no additional options)
      - Additional GDAL creation options.
-   * - **Converted**
-     - ``OUTPUT``
-     - [same as input]
-     - Specification of the output vector layer.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here.
-
-       For ``Save to File``, the output format has to be specified.
-       All GDAL vector formats are supported.
-       For ``Save to a Temporary File`` the QGIS default vector format
-       will be used.
 
 Outputs
 .......
@@ -78,7 +92,7 @@ Python code
 
 **Algorithm ID**: ``gdal:convertformat``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -92,10 +106,13 @@ New values are assigned based on the attribute value of
 the overlapping vector feature.
 
 This algorithm is derived from the
-`GDAL rasterize utility <https://gdal.org/gdal_rasterize.html>`_.
+`GDAL rasterize utility <https://gdal.org/programs/gdal_rasterize.html>`_.
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -120,6 +137,18 @@ Parameters
       - ``FIELD``
       - [tablefield: numeric]
       - Defines the attribute field to use to set the pixels values
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    *  - **Add burn in values to existing raster values**
       - ``ADD``
       - [boolean]
@@ -158,7 +187,7 @@ Python code
 
 **Algorithm ID**: ``gdal:rasterize_over``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -172,10 +201,13 @@ The pixels to overwrite are chosen based on the supplied (overlapping)
 vector layer.
 
 This algorithm is derived from the
-`GDAL rasterize utility <https://gdal.org/gdal_rasterize.html>`_.
+`GDAL rasterize utility <https://gdal.org/programs/gdal_rasterize.html>`_.
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -200,6 +232,18 @@ Parameters
 
         Default: 0.0
       - The value to burn
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    *  - **Add burn in values to existing raster values**
       - ``ADD``
       - [boolean]
@@ -238,7 +282,7 @@ Python code
 
 **Algorithm ID**: ``gdal:rasterize_over_fixed_value``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -251,12 +295,15 @@ Converts vector geometries (points, lines and polygons) into a raster
 image.
 
 This algorithm is derived from the
-`GDAL rasterize utility <https://gdal.org/gdal_rasterize.html>`_.
+`GDAL rasterize utility <https://gdal.org/programs/gdal_rasterize.html>`_.
 
 **Default menu**: :menuselection:`Raster --> Conversion`
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -286,6 +333,16 @@ Parameters
 
        Default: 0.0
      - A fixed value to burn into a band for all features.
+   * - **Burn value extracted from the "Z" values of the feature**
+
+       Optional
+     - ``USE_Z``
+     - [boolean]
+
+       Default: False
+     - Indicates that a burn value should be extracted from the "Z" values of the feature.
+       Works with points and lines (linear interpolation along each segment).
+       For polygons, works properly only if they are flat (same Z value for all vertices)
    * - **Output raster size units**
      - ``UNITS``
      - [enumeration]
@@ -314,11 +371,18 @@ Parameters
        resolution (if size units is "Georeferenced units") of the
        output raster.
    * - **Output extent**
+
+       Optional
      - ``EXTENT``
      - [extent]
      - Extent of the output raster layer.
        If the extent is not specified, the minimum extent that covers
        the selected reference layer(s) will be used.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Assign a specified nodata value to output bands**
 
        Optional
@@ -327,6 +391,34 @@ Parameters
 
        Default: 0.0
      - Assigns a specified nodata value to output bands
+   * - **Rasterized**
+     - ``OUTPUT``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output raster layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+       For ``Save to File``, the output format has to be specified.
+       All GDAL raster formats are supported.
+       For ``Save to a Temporary File`` the QGIS default raster format
+       will be used.
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Additional creation options**
 
        Optional
@@ -339,6 +431,9 @@ Parameters
        compression...).
        For convenience, you can rely on predefined profiles (see
        :ref:`GDAL driver options section <gdal_createoptions>`).
+
+       For Batch Process: separate multiple options with a pipe
+       character (``|``).
    * - **Output data type**
      - ``DATA_TYPE``
      - [enumeration]
@@ -376,22 +471,6 @@ Parameters
      - Burns the fixed burn value, or the burn value associated
        with the first feature into all parts of the image not
        inside the provided polygon.
-   * - **Rasterized**
-     - ``OUTPUT``
-     - [raster]
-
-       Default: '[Save to temporary file]'
-     - Specification of the output raster layer.
-       One of:
-
-       * Save to a Temporary File
-       * Save to File...
-
-       The file encoding can also be changed here
-       For ``Save to File``, the output format has to be specified.
-       All GDAL raster formats are supported.
-       For ``Save to a Temporary File`` the QGIS default raster format
-       will be used.
 
 Outputs
 .......
@@ -414,6 +493,6 @@ Python code
 
 **Algorithm ID**: ``gdal:rasterize``
 
-.. include:: ../qgis/qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**

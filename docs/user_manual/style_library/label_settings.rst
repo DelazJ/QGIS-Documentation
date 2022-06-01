@@ -9,46 +9,105 @@
    .. contents::
       :local:
 
-Labels are textual information you can display on vector features. They add
-details you could not necessarily represent using symbols.
+Labels are textual information you can display on vector features or maps.
+They add details you could not necessarily represent using symbols.
+Two types of text-related items are available in QGIS:
 
-The :guilabel:`Style Manager` dialog allows you to create a set of labels or
-text formats (ie the appearance of the text, including font, size, colors,
-shadow, background...). Each of these items could later be applied to layers in
-the |labeling| :guilabel:`Labels` tab of the vector :guilabel:`Layer Properties`
-dialog or :guilabel:`Layer Styling` panel or using the |labeling| :sup:`Layer
-Labeling Options` button of the **Labels toolbar**. You can also directly
-configure them in the abovementioned dialogs.
+* :guilabel:`Text Format`: defines the appearance of the text, including
+  :ref:`font, size, colors <labels_text>`, :ref:`shadow <labels_shadow>`,
+  :ref:`background <labels_background>`, :ref:`buffer <labels_buffer>`, ...
 
-.. It could be nice to briefly expose the "label settings" tab of the style
- manager, with some sample of label settings in it.
+  They can be used to render texts over the map (layout/map title,
+  decorations, scale bar, ...), usually through the :ref:`font <font_selector>`
+  widget.
 
-The :guilabel:`Label Settings` dialog allows you to configure smart labeling
-for vector layers. Setting a label includes configuring the :ref:`text format
-<text_format>`, and how the label relates with the features or other labels
-(through :ref:`placement <labels_placement>`, :ref:`rendering <labels_rendering>`
-and :ref:`callout <labels_callouts>`).
+  To create a :guilabel:`Text Format` item:
+
+  #. Open the |styleManager| :guilabel:`Style Manager` dialog
+  #. Activate the :guilabel:`Text format` tab
+
+     .. _figure_textformats:
+
+     .. figure:: img/stylemanager_textformat.png
+        :align: center
+
+        Text formats in Style Manager dialog
+
+  #. Press the |symbologyAdd| :sup:`Add item` button. The :guilabel:`Text Format`
+     dialog opens for :ref:`configuration <text_format>`.
+     As usual, these properties are :ref:`data-definable <data_defined>`.
+
+* :guilabel:`Label Settings`: extend the text format settings with properties
+  related to the location or the interaction with other texts or features
+  (:ref:`callouts <labels_callouts>`, :ref:`placement <labels_placement>`,
+  :ref:`overlay, scale visibility <labels_rendering>`, mask ...).
+
+  They are used to configure smart labelling for vector layers through the
+  |labelingSingle| :guilabel:`Labels` tab of the vector :guilabel:`Layer Properties`
+  dialog or :guilabel:`Layer Styling` panel or using the |labelingSingle| :sup:`Layer
+  Labeling Options` button of the :ref:`Label toolbar <label_toolbar>`.
+
+  To create a :guilabel:`Label Settings` item:
+
+  #. Open the |styleManager| :guilabel:`Style Manager` dialog
+  #. Activate the :guilabel:`Label Settings` tab
+
+     .. _figure_label_settings:
+
+     .. figure:: img/stylemanager_labelsettings.png
+        :align: center
+
+        Label Settings in Style Manager dialog
+
+  #. Press the |symbologyAdd| :sup:`Add item` menu and select the entry corresponding
+     to the geometry type of the features you want to label.
+
+  The :guilabel:`Label Settings` dialog opens with the following properties.
+  As usual, these properties are :ref:`data-definable <data_defined>`.
+
 
 .. _text_format:
 
 Formatting the label text
 =========================
 
-To create text formats, you can:
+Whether you are configuring a :guilabel:`Text Format` or :guilabel:`Label Settings`
+item, you will be given the following options:
 
-#. Open the |styleManager| :guilabel:`Style Manager` dialog
-#. Activate the :guilabel:`Text format` tab
+.. list-table::
+   :header-rows: 1
+   :class: longtable
 
-   .. _figure_textformats:
-
-   .. figure:: img/stylemanager_textformat.png
-      :align: center
-
-      Text formats in Style Manager dialog
-
-#. Press the |signPlus| :sup:`Add item` button. The :guilabel:`Text Settings`
-   dialog opens with the following properties. As usual, these properties
-   are :ref:`data-definable <data_defined>`.
+   * - Properties tab
+     - Text format
+     - Label settings
+   * - :guilabel:`Text`
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Formatting`
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Buffer`
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Mask`
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Background`
+     - |checkbox|
+     - |checkbox|
+   * - :guilabel:`Shadow`
+     -
+     - |checkbox|
+   * - :guilabel:`Callout`
+     -
+     - |checkbox|
+   * - :guilabel:`Placement`
+     -
+     - |checkbox|
+   * - :guilabel:`Rendering`
+     -
+     - |checkbox|
 
 
 .. _labels_text:
@@ -56,12 +115,12 @@ To create text formats, you can:
 Text tab
 --------
 
-.. _figure_textsettings_text:
+.. _figure_label_text:
 
-.. figure:: img/textsettings_text.png
+.. figure:: img/label_text.png
    :align: center
 
-   Text settings - Text tab
+   Labels settings - Text tab
 
 In the |text| :guilabel:`Text` tab, you can set:
 
@@ -70,45 +129,83 @@ In the |text| :guilabel:`Text` tab, you can set:
   whether the text should be underlined or striked through
 * the :guilabel:`Size` in any :ref:`supported unit <unit_selector>`
 * the :guilabel:`Color`
-* and the :guilabel:`Opacity`.
+* the :guilabel:`Opacity`
+* and :guilabel:`Allow HTML Formatting`:
+  The HTML formatting option enables the proper rendering of some HTML tags to
+  customize the label. The supported tags are the HTML Color tags
+  (applied to text, underline, strikethrough, and overline).
 
-At the bottom, a text formats list widget shows a filterable list of text
-formats stored within your :ref:`style manager database <vector_style_manager>`.
-This allows you to easily set text formats to match styles saved in the local
-style database, and also to add a new text format to the style database based on
-the current settings. Press the :guilabel:`Save format...` button to store the
-current text format in the :guilabel:`Style Manager`, providing a name and tag(s).
+  In order to use the HTML formatting, you need to provide the HTML code
+  in the :guilabel:`Value` field. The expression is parsed and any supported
+  HTML tag overrides its corresponding setting in the labels properties.
+  They also combine well with other background, shadow, buffer... properties
+  of labels.
 
-Likewise, a label settings list widget is shown when configuring labels, allowing
-you to pick from the |styleManager| :sup:`Style Manager` widget or to add new
-styles to it.
+  Below an example of a HTML-based expression and rendering
+  (applies different colors and underline to the same label):
 
+  .. code:: html
+
+    format(
+      '<span style="color:blue">%1</span> ( <span style="color:red"><u>%2 ft</u></span> )',
+      title( lower( "Name" ) ),
+      round($length)
+    )
+
+  .. _figure_label_html_formatting:
+
+  .. figure:: img/label_HTML_formatting.png
+     :align: center
+
+     Labeling with HTML formatting enabled
+
+
+At the bottom of the tab, a widget shows a filterable list of compatible items
+stored in your :ref:`style manager database <vector_style_manager>`.
+This allows you to easily configure the current text format or label setting
+based on an existing one, and also save a new item to the style database:
+Press the :guilabel:`Save format...` or :guilabel:`Save settings...` button
+and provide a name and tag(s).
+
+.. note:: When configuring a :guilabel:`Label Settings` item, text format items
+ are also available in this widget. Select one to quickly overwrite the current
+ :ref:`textual properties <text_format>` of the label.
+ Likewise, you can create/overwrite a text format from there.
 
 .. _labels_formatting:
 
 Formatting tab
 --------------
 
-.. _figure_textsettings_formatting:
+.. _figure_label_formatting:
 
-.. figure:: img/textsettings_formatting.png
+.. figure:: img/label_formatting.png
    :align: center
 
-   Text settings - Formatting tab
+   Label settings - Formatting tab
 
 In the |labelformatting| :guilabel:`Formatting` tab, you can:
 
 * Use the :guilabel:`Type case` option to change the capitalization style of
-  the text. You have the possibility to render the text as :guilabel:`All
-  uppercase`, :guilabel:`All lowercase` or :guilabel:`Capitalize first letter`.
-  Note that the last option modifies only the first letter of each word and
-  leaves the other letters in the text untouched.
+  the text. You have the possibility to render the text as:
+
+  * :guilabel:`No change`
+  * :guilabel:`All uppercase`
+  * :guilabel:`All lowercase`
+  * :guilabel:`Title case`: modifies the first letter of each word into capital,
+    and turns the other letters into lower case if the original text is using
+    a single type case. In case of mixed type cases in the text, the other
+    letters are left untouched.
+  * :guilabel:`Force first letter to capital`: modifies the first letter of each
+    word into capital and leaves the other letters in the text untouched.
+
 * Under :guilabel:`Spacing`, change the space between words and between
   individual letters.
 * |checkbox| :guilabel:`Enable kerning` of the text font
 * Set the :guilabel:`Text orientation` which can be :guilabel:`Horizontal`
   or :guilabel:`Vertical`. It can also be :guilabel:`Rotation-based` when
-  setting a label.
+  setting a label (e.g., to properly label line features in :ref:`parallel
+  <labels_line_placement>` placement mode).
 * Use the :guilabel:`Blend mode` option to determine how your labels will mix
   with the map features below them (more details at :ref:`blend-modes`).
 * The |unchecked| :guilabel:`Apply label text substitutes` option allows you
@@ -125,13 +222,16 @@ In the |labelformatting| :guilabel:`Formatting` tab, you can:
     or the :guilabel:`Minimum line length`.
   * Decide the :guilabel:`Line Height`
   * Format the :guilabel:`Alignment`: typical values available are
-    :guilabel:`Left`, :guilabel:`Right` and :guilabel:`Center`.
+    :guilabel:`Left`, :guilabel:`Right`, :guilabel:`Justify` and :guilabel:`Center`.
 
     When setting point labels properties, the text alignment can also be
     :guilabel:`Follow label placement`. In that case, the alignment will depend
     on the final placement of the label relative to the point. E.g., if the
     label is placed to the left of the point, then the label will be right
     aligned, while if it is placed to the right, it will be left aligned.
+
+  .. note:: The :guilabel:`Multiple lines` formatting is not yet supported by curve based
+    :ref:`label placement <labels_placement>`. The options will then be deactivated.
 
 * For line labels you can include :guilabel:`Line direction symbol`
   to help determine the line directions, with symbols to use to indicate the
@@ -150,12 +250,12 @@ In the |labelformatting| :guilabel:`Formatting` tab, you can:
 Buffer tab
 ----------
 
-.. _figure_textsettings_buffer:
+.. _figure_label_buffer:
 
-.. figure:: img/textsettings_buffer.png
+.. figure:: img/label_buffer.png
    :align: center
 
-   Text settings - Buffer tab
+   Label settings - Buffer tab
 
 To create a buffer around the label, activate the |checkbox| :guilabel:`Draw
 text buffer` checkbox in the |labelbuffer| :guilabel:`Buffer` tab. Then you can:
@@ -190,18 +290,19 @@ the |unchecked| :guilabel:`Draw Background` checkbox and select
 the :guilabel:`Shape` type. It can be:
 
 * a regular shape such as :guilabel:`Rectangle`, :guilabel:`Square`,
-  :guilabel:`Circle` or :guilabel:`Ellipse`
+  :guilabel:`Circle` or :guilabel:`Ellipse` using full properties of a
+  :ref:`fill symbol <vector_fill_symbols>`
 * an :guilabel:`SVG` symbol from a file, a URL or embedded in the project
-  or style database (:ref:`more details <svg_paths>`)
+  or style database (:ref:`more details <embedded_file_selector>`)
 * or a :guilabel:`Marker Symbol` you can create or select from the
   :ref:`symbol library <vector_marker_symbols>`.
 
-.. _figure_textsettings_background:
+.. _figure_label_background:
 
-.. figure:: img/textsettings_background.png
+.. figure:: img/label_background.png
    :align: center
 
-   Text settings - Background tab
+   Label settings - Background tab
 
 Depending on the selected shape, you need to configure some of the following
 properties:
@@ -222,12 +323,9 @@ properties:
 * An :guilabel:`Opacity` of the background
 * A :guilabel:`Blend mode` to mix the background with the other items in the
   rendering (see :ref:`blend-modes`).
-* The :guilabel:`Fill color`, :guilabel:`Stroke color` and
-  :guilabel:`Stroke width` for shape types other than the marker symbol.
-  Use the :guilabel:`Load symbol parameters` to revert changes on an SVG symbol
-  to its default settings.
-* A :guilabel:`Pen join style`: it can be :guilabel:`Round`, :guilabel:`Miter`
-  or :guilabel:`Bevel` (applies to rectangle and square shapes only)
+* For SVG symbol, you can use its default properties (:guilabel:`Load symbol
+  parameters`) or set a custom :guilabel:`Fill color`, :guilabel:`Stroke color`
+  and :guilabel:`Stroke width`.
 * |unchecked| :guilabel:`Draw effects` to add advanced |paintEffects|
   :ref:`paint effects <draw_effects>` for improving text readability,
   eg through outer glows and blurs.
@@ -238,12 +336,12 @@ properties:
 Shadow tab
 ----------
 
-.. _figure_textsettings_shadow:
+.. _figure_label_shadow:
 
-.. figure:: img/textsettings_shadow.png
+.. figure:: img/label_shadow.png
    :align: center
 
-   Text settings - Shadow tab
+   Label settings - Shadow tab
 
 To add a shadow to the text, enable the |labelshadow| :guilabel:`Shadow`
 tab and activate the |checkbox| :guilabel:`Draw drop shadow`. Then you can:
@@ -291,11 +389,48 @@ tab and activate the |checkbox| :guilabel:`Draw drop shadow`. Then you can:
   will mix with the map components below them (more details at
   :ref:`blend-modes`).
 
+Configuring interaction with labels
+===================================
+
+Other than the text formatting settings exposed above, you can also set how labels
+interact with each others or with the features.
+
+
+.. _labels_mask:
+
+Mask tab
+--------
+
+The |labelmask| :guilabel:`Mask` tab allows you to define a mask area around
+the labels. This feature is very useful when you have overlapping symbols and
+labels with similar colors, and you want to make the labels visible.
+
+.. _figure_label_mask:
+
+.. figure:: img/label_mask.png
+   :align: center
+
+   Labels settings - Mask tab
+
+To create masking effects on labels:
+
+#. Activate the |checkbox| :guilabel:`Enable mask` checkbox in the |labelmask| tab.
+#. Then you can set:
+
+   * the mask's :guilabel:`Size` in the :ref:`supported units <unit_selector>`
+   * the :guilabel:`Opacity` of the mask area around the label
+   * a :guilabel:`Pen Join Style`
+   * :ref:`paint effects <draw_effects>` through the |checkbox|
+     :guilabel:`Draw effects` checkbox.
+
+#. Select this mask shape as a mask source in the overlapping layer properties
+   |labelmask| :guilabel:`Mask` tab (see :ref:`vector_mask_menu`).
+
 
 .. _labels_callouts:
 
 Callouts tab
-============
+------------
 
 A common practice when placing labels on a crowded map is to use **callouts** -
 labels which are placed outside (or displaced from) their associated feature
@@ -317,178 +452,295 @@ tab and activate the |checkbox| :guilabel:`Draw callouts`. Then you can:
 
    * :guilabel:`Simple lines`: a straight line, the shortest path
    * :guilabel:`Manhattan style`: a 90° broken line
+   * :guilabel:`Curved lines`: a curved line
+   * :guilabel:`Balloons`: a speech bubble surrounding the label and pointing
+     to the feature. It can have rounded corners.
 
-#. Select the :guilabel:`Line style` with full capabilities of a :ref:`line
-   symbol <vector_line_symbols>` including layer effects, and data-defined
-   settings
-#. Set the :guilabel:`Minimum length` of callout lines
+#. For a line-based callout:
+
+   #. Select the :guilabel:`Line style` with full capabilities of a :ref:`line
+      symbol <vector_line_symbols>` including layer effects, and data-defined
+      settings
+   #. If curved, you also define:
+
+      * the percentage of :guilabel:`Curvature` of the connection line
+      * and its :guilabel:`Orientation`: starting from the label to the feature,
+        it can be :guilabel:`Clockwise` or :guilabel:`Counter-clockwise`, or
+        :guilabel:`Automatic` (determining an optimal orientation for each label)
+   #. Set the :guilabel:`Minimum length` of callout lines
+   #. Check whether to |checkbox| :guilabel:`Draw lines to all feature parts`
+      from the feature's label
+   #. Set the :guilabel:`Label anchor point`: controls where the connector
+      line should join to the label text. Available options:
+
+      * :guilabel:`Closest point`
+      * :guilabel:`Centroid`
+      * Fixed position at the edge (:guilabel:`Top left`, :guilabel:`Top center`,
+        :guilabel:`Top right`, :guilabel:`Left middle`, :guilabel:`Right middle`,
+        :guilabel:`Bottom left`, :guilabel:`Bottom center` and :guilabel:`Bottom right`).
+   #. Set the :guilabel:`Offset from label area` option: controls the distance
+      from the label anchor point (where the callout line ends).
+      This avoids drawing lines right up against the text.
+
+#. For a balloon callout, you'd need to set:
+
+   * the :guilabel:`Fill style` with full capabilities of a :ref:`fill
+     symbol <vector_fill_symbols>` including layer effects, and data-defined
+     settings
+   * the :guilabel:`Corner radius` of the speech bubble
+   * the :guilabel:`Wedge width`: how large the bubble speech connection with
+     feature's pointer should be
+   * the :guilabel:`Margins` around the label's text
+
 #. Set the :guilabel:`Offset from feature` option: controls the distance
    from the feature (or its anchor point if a polygon) where callout lines end.
    Eg, this avoids drawing lines right up against the edges of the features.
-#. Set the :guilabel:`Offset from label area` option: controls the distance
-   from the label anchor point (where the callout line ends).
-   This avoids drawing lines right up against the text.
-#. |checkbox| :guilabel:`Draw lines to all feature parts` from the feature's
-   label
-#. Set the :guilabel:`Anchor point` for the (polygon) feature (the end
+#. Set the :guilabel:`Feature anchor point` for the (polygon) feature (the end
    point of the connector line). Available options:
 
    * :guilabel:`Pole of inaccessibility`
    * :guilabel:`Point on exterior`
    * :guilabel:`Point on surface`
    * :guilabel:`Centroid`
-#. Set the :guilabel:`Label anchor point`: controls where the connector
-   line should join to the label text. Available options:
+#. Set the :guilabel:`Blend mode`: controls the :ref:`blending <blend-modes>`
+   of the callout.
 
-   * :guilabel:`Closest point`
-   * :guilabel:`Label centroid`
-   * Fixed position at the edge (:guilabel:`Top left`, :guilabel:`Top center`,
-     :guilabel:`Top right`, :guilabel:`Left middle`, :guilabel:`Right middle`,
-     :guilabel:`Bottom left`, :guilabel:`Bottom center` and :guilabel:`Bottom right`).
-
+Under the :guilabel:`Data defined placement` group, coordinates of the
+:guilabel:`Origin` (on the label side) and/or :guilabel:`Destination`
+(on the feature side) points of the callout can be controlled.
+Callouts can also be controlled manually by using the |moveLabel|
+:sup:`Move Label, Diagram or Callout` tool in the :ref:`Labeling Toolbar
+<label_toolbar>`.
+The start and end points of each callout can be moved this way.
+The nodes should be highlighted when the mouse pointer is nearby.
+If needed the :kbd:`Shift` Key can be held during the movement.
+This will snap the point in a way that the angle between the two callout points
+increments by 15 degrees.
 
 .. _labels_placement:
 
 Placement tab
-=============
+-------------
 
 Choose the |labelplacement| :guilabel:`Placement` tab for configuring label placement
 and labeling priority. Note that the placement options differ according to the
 type of vector layer, namely point, line or polygon, and are affected by
 the global :ref:`PAL setting <automated_placement>`.
 
-.. _cartographic:
+.. _labels_point_placement:
 
 Placement for point layers
---------------------------
+..........................
 
-With the |radioButtonOn| :guilabel:`Cartographic` placement mode,
-point labels are generated with a better visual relationship with the
-point feature, following ideal cartographic placement rules. Labels can be
-placed at a set :guilabel:`Distance` either from the point feature itself
-or from the bounds of the symbol used to represent the feature.
-The latter option is especially useful when the symbol size isn't fixed,
-e.g. if it's set by a data defined size or when using different symbols
-in a categorized renderer.
+Point labels placement modes available are:
 
-By default, placements are prioritised in the following order:
+.. _cartographic:
 
-#. top right
-#. top left
-#. bottom right
-#. bottom left
-#. middle right
-#. middle left
-#. top, slightly right
-#. bottom, slightly left.
+* :guilabel:`Cartographic`: point labels are generated with a
+  better visual relationship with the point feature, following ideal
+  cartographic placement rules. Labels can be placed:
 
-Placement priority can, however, be customized or set for an individual
-feature using a data defined list of prioritised positions.
-This also allows only certain placements to be used, so e.g.
-for coastal features you can prevent labels being placed over the land.
+  * at a set :guilabel:`Distance` in :ref:`supported units <unit_selector>`,
+    either from the point feature itself or from the bounds of the symbol
+    used to represent the feature (set in :guilabel:`Distance offset from`).
+    The latter option is especially useful when the symbol size isn't fixed,
+    e.g. if it's set by a data defined size or when using different symbols
+    in a :ref:`categorized <categorized_renderer>` renderer.
+  * following a :guilabel:`Position priority` that can be customized or set for
+    an individual feature using a data defined list of prioritised positions.
+    This also allows only certain placements to be used, so e.g.
+    for coastal features you can prevent labels being placed over the land.
 
-The |radioButtonOn| :guilabel:`Around point` setting places the label in an
-equal radius (set in :guilabel:`Distance`) circle around the feature. The
-placement of the label can even be constrained using the :guilabel:`Quadrant`
-option.
+    By default, cartographic mode placements are prioritised in the following
+    order (respecting the `guidelines from Krygier and Wood (2011)
+    <https://www.researchgate.net/publication/44463780_Making_maps_a_visual_guide_to_map_design_for_GIS_John_Krygier_Denis_Wood>`_
+    and other cartographic textbooks):
 
-With the |radioButtonOn| :guilabel:`Offset from point`, labels are
-placed at a fixed offset from the point feature. You can select the
-:guilabel:`Quadrant` in which to place your label. You are also able to set
-the :guilabel:`Offset X,Y` distances between the points and their labels and
-can alter the angle of the label placement with the :guilabel:`Rotation`
-setting. Thus, placement in a selected quadrant with a defined rotation is
-possible.
+    #. top right
+    #. top left
+    #. bottom right
+    #. bottom left
+    #. middle right
+    #. middle left
+    #. top, slightly right
+    #. bottom, slightly left.
+
+* :guilabel:`Around Point`: labels are placed in a circle around the feature.
+  equal radius (set in :guilabel:`Distance`) circle around the feature.
+  The placement priority is clockwise from the "top right". The position can
+  be constrained using the data-defined :guilabel:`Quadrant` option.
+
+* :guilabel:`Offset from Point`: labels are placed at an :guilabel:`Offset X,Y`
+  distance from the point feature, in various units, or preferably over the
+  feature. You can use a data-defined :guilabel:`Quadrant` to constrain the
+  placement and can assign a :guilabel:`Rotation` to the label.
+
 
 .. _labels_line_placement:
 
 Placement for line layers
--------------------------
+.........................
 
-Label options for line layers include |radioButtonOn| :guilabel:`Parallel`,
-|radioButtonOff| :guilabel:`Curved` or |radioButtonOff| :guilabel:`Horizontal`.
-For the |radioButtonOn| :guilabel:`Parallel` and |radioButtonOff|
-:guilabel:`Curved` options, you can set the position to |checkbox|
-:guilabel:`Above line`, |checkbox| :guilabel:`On line` and |checkbox|
-:guilabel:`Below line`. It's possible to select several options at once. In
-that case, QGIS will look for the optimal label position. For Parallel and
-curved placement options, you can also use the line orientation for the
-position of the label. Additionally, you can define a :guilabel:`Maximum
-angle between curved characters` when selecting the |radioButtonOff|
-:guilabel:`Curved` option (see Figure_labels_placement_line).
+Label modes for line layers include:
+
+* :guilabel:`Parallel`: draws the label parallel to a generalised line
+  representing the feature, with preference for placement over straighter
+  portions of the line. You can define:
+
+  * :guilabel:`Allowed positions`: :guilabel:`Above line`, :guilabel:`On line`,
+    :guilabel:`Below line` and :guilabel:`Line orientation dependent position`
+    (placing the label at the left or the right of the line). It's possible to
+    select several options at once. In that case, QGIS will look for the optimal
+    label position.
+  * :guilabel:`Distance` between the label and the line
+* :guilabel:`Curved`: draws the label following the curvature of the line
+  feature. In addition to the parameters available with the :guilabel:`Parallel`
+  mode, you can set the :guilabel:`Maximum angle between curved characters`,
+  either inside or outside.
+* :guilabel:`Horizontal`: draws labels horizontally along the length of the
+  line feature.
 
 .. _figure_labels_placement_line:
 
 .. figure:: img/line_label_placement.png
    :align: center
 
-   Label placement examples in lines
+   Label placement examples for lines
 
-For all three placement options, in :guilabel:`Repeat`, you can set up a
-minimum distance for repeating labels. The distance can be in ``mm`` or in
-``map units``. Also, in :guilabel:`Overrun feature` you can specify the
-maximal allowable distance a label may run past the end (or start) of
-line features.
+Next to placement modes, you can set:
+
+* :guilabel:`Repeating Labels` :guilabel:`Distance` to display multiple
+  times the label over the length of the feature. The distance can be in
+  ``Millimeters``, ``Points``, ``Pixels``, ``Meters at scale``, ``Map Units``
+  and ``Inches``.
+* A :guilabel:`Label Overrun` :guilabel:`Distance` (not available for
+  horizontal mode): specifies the maximal allowable distance a label may run
+  past the end (or start) of line features. Increasing this value can allow
+  for labels to be shown for shorter line features.
+* :guilabel:`Label Anchoring`: controls the placement of the labels along the
+  line feature they refer to. Click on :guilabel:`Settings ...` to choose:
+
+  * the position along the line (as a ratio) which labels will be
+    placed close to. It can be data-defined and possible values are:
+
+    * |labelAnchorCenter| :guilabel:`Center of Line`
+    * |labelAnchorStart| :guilabel:`Start of Line`
+    * |labelAnchorEnd| :guilabel:`End of Line`
+    * or |labelAnchorCustom| :guilabel:`Custom...`.
+
+  * :guilabel:`Clipping`: Determines how the label placement on a line is calculated.
+    By default only the visible extent of the line is used but the whole extent
+    can be used to have more consistent results.
+  * :guilabel:`Placement Behavior`: use :guilabel:`Preferred Placement Hint`
+    to treat the label anchor only as a hint for the label placement.
+    By choosing :guilabel:`Strict`, labels are placed exactly on the label
+    anchor.
+
 
 Placement for polygon layers
-----------------------------
+............................
 
-You can choose one of the following options for placing labels in polygons
-(see figure_labels_placement_polygon_):
-
-* |radioButtonOn| :guilabel:`Offset from centroid`,
-* |radioButtonOff| :guilabel:`Horizontal (slow)`,
-* |radioButtonOff| :guilabel:`Around centroid`,
-* |radioButtonOff| :guilabel:`Free (slow)`,
-* |radioButtonOff| :guilabel:`Using perimeter`,
-* and |radioButtonOff| :guilabel:`Using perimeter (curved)`.
-
-In the :guilabel:`Offset from centroid` settings you can
-specify if the centroid is of the |radioButtonOn| :guilabel:`visible
-polygon` or |radioButtonOff| :guilabel:`whole polygon`. That means that
-either the centroid is used for the polygon you can see on the map or the
-centroid is determined for the whole polygon, no matter if you can see the
-whole feature on the map. You can place your label within a specific
-quadrant, and define offset and rotation.
-
-The :guilabel:`Around centroid` setting places the label at a specified
-distance around the centroid. Again, you can define |radioButtonOn|
-:guilabel:`visible polygon` or |radioButtonOff| :guilabel:`whole polygon`
-for the centroid.
-
-With the :guilabel:`Horizontal (slow)` or :guilabel:`Free (slow)` options,
-QGIS places at the best position either a horizontal or a rotated label inside
-the polygon.
-
-With the :guilabel:`Using perimeter` option, the label
-will be drawn next to the polygon boundary. The label will behave like the
-parallel option for lines. You can define a position and a distance for the
-label. For the position, |checkbox| :guilabel:`Above line`, |checkbox|
-:guilabel:`On line`, |checkbox| :guilabel:`Below line` and |checkbox|
-:guilabel:`Line orientation dependent position` are possible. You can
-specify the distance between the label and the polygon outline, as well as
-the repeat interval for the label.
-
-The :guilabel:`Using perimeter (curved)` option helps you draw the label along
-the polygon boundary, using a curved labeling. In addition to the parameters
-available with :guilabel:`Using perimeter` setting, you can set the
-:guilabel:`Maximum angle between curved characters polygon`, either inside
-or outside.
+You can choose one of the following modes for placing labels of polygons:
 
 .. _figure_labels_placement_polygon:
 
 .. figure:: img/polygon_label_placement.png
    :align: center
 
-   Label placement examples in polygons
+   Label placement examples for polygons
+
+
+* :guilabel:`Offset from Centroid`: labels are placed over the feature centroid
+  or at a fixed :guilabel:`Offset X,Y` distance (in :ref:`supported units
+  <unit_selector>`) from the centroid.
+  The reference centroid can be determined based on the
+  part of the polygon rendered in the map canvas (:guilabel:`visible polygon`)
+  or the :guilabel:`whole polygon`, no matter if you can see it. You can also:
+
+  * force the centroid point to lay inside their polygon
+  * place the label within a specific quadrant
+  * assign a rotation
+  * :guilabel:`Allow placing labels outside of polygons` when it is not
+    possible to place them inside the polygon. Thanks to data-defined properties,
+    this makes possible to either allow outside labels, prevent outside labels,
+    or force outside labels on a feature-by-feature basis.
+
+* :guilabel:`Around Centroid`: places the label within a preset distance around
+  the centroid, with a preference for the placement directly over the centroid.
+  Again, you can define whether the centroid is the one of the
+  :guilabel:`visible polygon` or the :guilabel:`whole polygon`, and whether
+  to force the centroid point inside the polygon.
+
+* :guilabel:`Horizontal`: places at the best position a horizontal label inside
+  the polygon. The preferred placement is further from the edges of the polygon.
+  It's possible to :guilabel:`Allow placing labels outside of polygons`.
+
+* :guilabel:`Free (Angled)`: places at the best position a rotated label
+  inside the polygon. The rotation respects the polygon's orientation and
+  the preferred placement is further from the edges of the polygon.
+  It's possible to :guilabel:`Allow placing labels outside of polygons`.
+
+* :guilabel:`Using Perimeter`: draws the label parallel to a generalised line
+  representing the polygon boundary, with preference for straighter portions
+  of the perimeter. You can define:
+
+  * :guilabel:`Allowed positions`: :guilabel:`Above line`, :guilabel:`On line`,
+    :guilabel:`Below line` and :guilabel:`Line orientation dependent position`
+    (placing the label at the left or the right of the polygon's boundary).
+    It's possible to select several options at once. In that case, QGIS will
+    look for the optimal label position.
+  * :guilabel:`Distance` between the label and the polygon's outline
+  * the :guilabel:`Repeating Labels` :guilabel:`Distance` to display multiple
+    times the label over the length of the perimeter.
+
+* :guilabel:`Using Perimeter (Curved)`: draws the label following the curvature
+  of the polygon's boundary. In addition to the parameters available with the
+  :guilabel:`Using Perimeter` mode, you can set the
+  :guilabel:`Maximum angle between curved characters polygon`, either inside
+  or outside.
+
+* :guilabel:`Outside Polygons`: always places labels outside the polygons,
+  at a set :guilabel:`Distance`
 
 Common placement settings
--------------------------
+.........................
 
 Some label placement settings are available for all layer geometry types:
 
+Geometry Generator
+^^^^^^^^^^^^^^^^^^
+
+The :guilabel:`Geometry Generator` section allows a user to alter the underlying
+geometry used to place and render the label, by using :ref:`expressions <vector_expressions>`.
+This can be useful to perform displacement of the geometry dynamically
+or to convert it to another geometry (type).
+
+In order to use the geometry generator:
+
+#. Check the |checkbox| :guilabel:`Geometry generator` option
+#. Enter the expression generating the geometry to rely on
+#. If relevant, select the geometry type of the expression output:
+   the label geometry-based settings such as placement or rendering
+   are updated to match the new geometry type capabilities.
+
+Some use cases include:
+
+* Use a geometry which is saved in another field "label_position"
+* Use the :ref:`generated geometry <geometry_generator_symbol>` from the symbology
+  also for labeling
+* Use the @map_scale variable to calculate distances / sizes be zoom level independent.
+* Combined with the curved placement mode, creates a circular label around a point feature::
+
+     exterior_ring(make_circle($geometry, 20))
+* Add a label at the start and the end of a line feature::
+
+    collect_geometries( start_point($geometry), end_point($geometry) )
+* Rely on a smoothed line of a river to get more room for label placement::
+
+    smooth( $geometry, iterations:=30, offset:=0.25, min_length:=10 )
+
 Data Defined
-............
+^^^^^^^^^^^^
 
 The :guilabel:`Data Defined` group provides direct control on labels
 placement, on a feature-by-feature basis. It relies on their attributes
@@ -500,11 +752,12 @@ or an expression to set:
   * :guilabel:`Horizontal`: it can be **Left**, **Center** or **Right**
   * the text :guilabel:`Vertical`: it can be **Bottom**, **Base**, **Half**,
     **Cap** or **Top**
-* the text :guilabel:`Rotation`. Check the :guilabel:`Preserve data rotation
-  values` entry if you want to keep the rotation value in the associated field
-  and apply it to the label, whether the label is pinned or not. If unchecked,
-  unpinning the label rotation is reset and its value cleared from the attribute
-  table.
+* the text :guilabel:`Rotation`. Different units can be defined for the
+  labeling rotation (e.g. ``degrees``, ``minutes of arc``, ``turns``).
+  Check the :guilabel:`Preserve data rotation values` entry if you want to keep
+  the rotation value in the associated field and apply it to the label, whether
+  the label is pinned or not. If unchecked, unpinning the label rotation is
+  reset and its value cleared from the attribute table.
   
   .. note:: Data-defined rotation with polygon features is currently supported
    only with the :guilabel:`Around centroid` placement mode.
@@ -518,7 +771,7 @@ or an expression to set:
 .. _`labels_priority`:
 
 Priority
-........
+^^^^^^^^
 
 In the :guilabel:`Priority` section you can define the placement priority rank
 of each label, ie if there are different diagrams or labels candidates for the
@@ -531,7 +784,7 @@ due to a greater weighted :ref:`obstacle feature <labels_obstacles>`.
 .. _`labels_obstacles`:
 
 Obstacles
-.........
+^^^^^^^^^
 
 In some contexts (eg, high density labels, overlapping features...), the
 labels placement can result in labels being placed over unrelated features.
@@ -539,12 +792,12 @@ labels placement can result in labels being placed over unrelated features.
 An obstacle is a feature over which QGIS avoids placing other features' labels
 or diagrams. This can be controlled from the :guilabel:`Obstacles` section:
 
-#. Activate the |checkbox| :guilabel:`Discourage labels and diagrams from covering features`
-   option to decide whether features of the layer should act as obstacles for
+#. Activate the |checkbox| :guilabel:`Features act as obstacles`
+   option to decide that features of the layer should act as obstacles for
    any label and diagram (including items from other features in the same layer).
 
    Instead of the whole layer, you can select a subset of features to use as
-   obstacles, using the |dataDefined| :sup:`data-defined override` control next
+   obstacles, using the |dataDefine| :sup:`Data-defined override` control next
    to the option.
 
 #. Use the :guilabel:`Settings` button to tweak the obstacle's weighting.
@@ -574,13 +827,13 @@ or diagrams. This can be controlled from the :guilabel:`Obstacles` section:
 .. _labels_rendering:
 
 Rendering tab
-=============
+-------------
 
 In the |render| :guilabel:`Rendering` tab, you can tune when the labels can
 be rendered and their interaction with other labels and features.
 
 Label options
--------------
+.............
 
 Under :guilabel:`Label options`:
 
@@ -615,12 +868,12 @@ Under :guilabel:`Label options`:
   **when rotation defined** or **always**.
 
 Feature options
----------------
+...............
 
 Under :guilabel:`Feature options`:
 
-* You can choose to :guilabel:`label every part of a multi-part feature`
-  and :guilabel:`limit the number of features to be labeled`.
+* You can choose to :guilabel:`Label every part of a multi-part features`
+  and :guilabel:`Limit number of features to be labeled to`.
 * Both line and polygon layers offer the option to set a minimum size for
   the features to be labeled, using :guilabel:`Suppress labeling of features
   smaller than`.
@@ -640,7 +893,15 @@ Under :guilabel:`Feature options`:
 
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-.. |dataDefined| image:: /static/common/mIconDataDefine.png
+.. |dataDefine| image:: /static/common/mIconDataDefine.png
+   :width: 1.5em
+.. |labelAnchorCenter| image:: /static/common/mActionLabelAnchorCenter.png
+   :width: 1.5em
+.. |labelAnchorCustom| image:: /static/common/mActionLabelAnchorCustom.png
+   :width: 1.5em
+.. |labelAnchorEnd| image:: /static/common/mActionLabelAnchorEnd.png
+   :width: 1.5em
+.. |labelAnchorStart| image:: /static/common/mActionLabelAnchorStart.png
    :width: 1.5em
 .. |labelbackground| image:: /static/common/labelbackground.png
    :width: 1.5em
@@ -650,25 +911,25 @@ Under :guilabel:`Feature options`:
    :width: 1.5em
 .. |labelformatting| image:: /static/common/labelformatting.png
    :width: 1.5em
-.. |labeling| image:: /static/common/labelingSingle.png
+.. |labelingSingle| image:: /static/common/labelingSingle.png
+   :width: 1.5em
+.. |labelmask| image:: /static/common/labelmask.png
    :width: 1.5em
 .. |labelplacement| image:: /static/common/labelplacement.png
    :width: 1.5em
 .. |labelshadow| image:: /static/common/labelshadow.png
    :width: 1.5em
+.. |moveLabel| image:: /static/common/mActionMoveLabel.png
+   :width: 1.5em
 .. |paintEffects| image:: /static/common/mIconPaintEffects.png
-   :width: 1.5em
-.. |radioButtonOff| image:: /static/common/radiobuttonoff.png
-   :width: 1.5em
-.. |radioButtonOn| image:: /static/common/radiobuttonon.png
    :width: 1.5em
 .. |render| image:: /static/common/render.png
    :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
 .. |styleManager| image:: /static/common/mActionStyleManager.png
+   :width: 1.5em
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
    :width: 1.5em
 .. |text| image:: /static/common/text.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em

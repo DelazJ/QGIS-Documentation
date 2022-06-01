@@ -18,15 +18,9 @@ layer.
 Only the parts of the features in the input layer that fall within the
 polygons of the overlay layer will be added to the resulting layer.
 
-.. _warning_difference:
-
-.. warning:: **Feature modification**
-
-   The attributes of the features are **not modified**, although
-   properties such as area or length of the features will be modified
-   by the clipping operation.
-   If such properties are stored as attributes, those attributes will
-   have to be manually updated.
+.. include:: ../algs_include.rst
+   :start-after: **warning_attributes**
+   :end-before: **end_warning_attributes**
 
 This algorithm uses spatial indexes on the providers, prepared
 geometries and apply a clipping operation if the geometry isn't wholly
@@ -40,6 +34,7 @@ contained by the mask geometry.
   clarity (right)
 
 |checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 **Default menu**: :menuselection:`Vector --> Geoprocessing Tools`
 
@@ -73,12 +68,10 @@ Parameters
        that are inside the overlay (clipping) layer.
        One of:
 
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -102,7 +95,7 @@ Python code
 
 **Algorithm ID**: ``qgis:clip``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -118,7 +111,9 @@ Input layer features that partially overlap the overlay layer
 feature(s) are split along the boundary of those feature(s) and only
 the portions outside the overlay layer features are retained.
 
-Attributes are not modified (see :ref:`warning <warning_difference>`).
+.. include:: ../algs_include.rst
+   :start-after: **warning_attributes**
+   :end-before: **end_warning_attributes**
 
 .. figure:: img/difference.png
   :align: center
@@ -128,6 +123,7 @@ Attributes are not modified (see :ref:`warning <warning_difference>`).
   clarity (right)
 
 |checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of point, line, and polygon features
 
 **Default menu**: :menuselection:`Vector --> Geoprocessing Tools`
 
@@ -166,12 +162,10 @@ Parameters
        input layer that are not inside the overlay layer.
        One of:
 
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -195,7 +189,7 @@ Python code
 
 **Algorithm ID**: ``qgis:difference``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -230,6 +224,11 @@ Parameters
      - ``EXTENT``
      - [extent]
      - Extent for clipping.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Clip features to extent**
      - ``CLIP``
      - [boolean]
@@ -248,12 +247,10 @@ Parameters
        that are inside the clip extent.
        One of:
 
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -276,7 +273,7 @@ Python code
 
 **Algorithm ID**: ``qgis:extractbyextent``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -291,7 +288,9 @@ features in the overlay layer.
 Features in the intersection layer are assigned the attributes of the
 overlapping features from both the input and overlay layers.
 
-Attributes are not modified (see :ref:`warning <warning_difference>`).
+.. include:: ../algs_include.rst
+   :start-after: **warning_attributes**
+   :end-before: **end_warning_attributes**
 
 .. figure:: img/intersection.png
   :align: center
@@ -363,12 +362,10 @@ Parameters
        overlay layer.
        One of:
 
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -393,7 +390,7 @@ Python code
 
 **Algorithm ID**: ``qgis:intersection``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -413,6 +410,9 @@ Creates point features where the lines from the two layers intersect.
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -449,14 +449,6 @@ Parameters
        Default: None
      - Field(s) of the intersect layer to keep in the output.
        If no fields are chosen all fields are taken.
-   * - **Intersect fields prefix**
-       
-       Optional
-     - ``OVERLAY_FIELDS_PREFIX``
-     - [string]
-     - Prefix to add to the field names of the intersect
-       layer's fields to avoid name collisions with fields
-       in the input layer.
    * - **Intersection**
      - ``OUTPUT``
      - [vector: point]
@@ -466,12 +458,30 @@ Parameters
        lines from the input and overlay layers.
        One of:
 
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Intersect fields prefix**
+
+       Optional
+     - ``INTERSECT_FIELDS_PREFIX``
+     - [string]
+     - Prefix to add to the field names of the intersect
+       layer's fields to avoid name collisions with fields
+       in the input layer.
 
 Outputs
 .......
@@ -494,7 +504,7 @@ Python code
 
 **Algorithm ID**: ``qgis:lineintersections``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -516,6 +526,7 @@ Output will contain multi geometries for split features.
   Split lines
 
 |checkbox| Allows :ref:`features in-place modification <processing_inplace_edit>`
+of line and polygon features
 
 Parameters
 ..........
@@ -546,12 +557,9 @@ Parameters
        from the input layer.
        One of:
 
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -575,7 +583,7 @@ Python code
 
 **Algorithm ID**: ``qgis:splitwithlines``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -590,7 +598,9 @@ layers but with the overlapping areas between the two layers removed.
 The attribute table of the symmetrical difference layer contains
 attributes and fields from both the input and overlay layers.
 
-Attributes are not modified (see :ref:`warning <warning_difference>`).
+.. include:: ../algs_include.rst
+   :start-after: **warning_attributes**
+   :end-before: **end_warning_attributes**
 
 .. figure:: img/symmetrical_difference.png
   :align: center
@@ -606,6 +616,9 @@ Attributes are not modified (see :ref:`warning <warning_difference>`).
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -624,30 +637,40 @@ Parameters
      - [vector: any]
      - Second layer to extract (parts of) features from.
        Ideally the geometry type should be the same as input layer.
-   * - **Overlay fields prefix**
-       
-       Optional
-     - ``OVERLAY_FIELDS_PREFIX``
-     - [string]
-     - Prefix to add to the field names of the overlay
-       layer's fields to avoid name collisions with fields
-       in the input layer.
    * - **Symmetrical difference**
      - ``OUTPUT``
      - [same as input]
-       
+
        Default: ``[Create temporary layer]``
      - Specify the layer to contain (the parts of) the features from
        the input and overlay layers that do not overlap features from
        the other layer.
        One of:
 
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Overlay fields prefix**
+
+       Optional
+     - ``OVERLAY_FIELDS_PREFIX``
+     - [string]
+     - Prefix to add to the field names of the overlay
+       layer's fields to avoid name collisions with fields
+       in the input layer.
 
 Outputs
 .......
@@ -671,7 +694,7 @@ Python code
 
 **Algorithm ID**: ``qgis:symmetricaldifference``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -721,6 +744,9 @@ attribute values from both layers for overlapping features.
 Parameters
 ..........
 
+Basic parameters
+^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 20 20 20 40
@@ -734,35 +760,45 @@ Parameters
      - [vector: any]
      - Input vector layer to split at any intersections.
    * - **Overlay layer**
-       
+
        Optional
      - ``OVERLAY``
      - [vector: any]
      - Layer that will be combined to the first one.
        Ideally the geometry type should be the same as input layer.
+   * - **Union**
+     - ``OUTPUT``
+     - [same as input]
+
+       Default: ``[Create temporary layer]``
+     - Specify the layer to contain the (split and duplicated)
+       features from the input layer and the overlay layer.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
    * - **Overlay fields prefix**
-       
+
        Optional
      - ``OVERLAY_FIELDS_PREFIX``
      - [string]
      - Prefix to add to the field names of the overlay
        layer's fields to avoid name collisions with fields
        in the input layer.
-   * - **Union**
-     - ``OUTPUT``
-     - [same as input]
-       
-       Default: ``[Create temporary layer]``
-     - Specify the layer to contain the (split and duplicated)
-       features from the input layer and the overlay layer.
-       One of:
-
-       * Create Temporary Layer
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table......
-
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -786,7 +822,7 @@ Python code
 
 **Algorithm ID**: ``qgis:union``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 

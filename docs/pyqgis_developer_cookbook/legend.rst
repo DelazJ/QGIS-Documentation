@@ -1,4 +1,3 @@
-
 .. highlight:: python
    :linenothreshold: 5
 
@@ -18,24 +17,25 @@
         assert vlayer.isValid()
         QgsProject.instance().addMapLayers([vlayer])
 
-The code snippets on this page need the following imports if you're outside the pyqgis console:
-
-.. testcode:: legend
-
-    from qgis.core import (
-        QgsProject,
-        QgsVectorLayer,
-    )
-
-
 .. _legendpy:
 
 *************************************
 Accessing the Table Of Contents (TOC)
 *************************************
 
-.. contents::
-   :local:
+.. hint:: The code snippets on this page need the following imports if you're outside the pyqgis console:
+
+  .. testcode:: legend
+
+    from qgis.core import (
+        QgsProject,
+        QgsVectorLayer,
+    )
+
+.. only:: html
+
+   .. contents::
+      :local:
 
 
 You can use different classes to access all the loaded layers in the TOC and
@@ -64,7 +64,7 @@ return a dictionary of the loaded layers:
 
 .. testoutput:: legend
 
-  {'countries_89ae1b0f_f41b_4f42_bca4_caf55ddbe4b6': <QgsMapLayer: 'countries' (ogr)>}
+  {'countries_89ae1b0f_f41b_4f42_bca4_caf55ddbe4b6': <QgsVectorLayer: 'countries' (ogr)>}
 
 The dictionary ``keys`` are the unique layer ids while the ``values`` are the
 related objects.
@@ -84,7 +84,7 @@ It is now straightforward to obtain any other information about the layers:
 
 .. testoutput:: legend
 
-  {'countries': <QgsMapLayer: 'countries' (ogr)>}
+  {'countries': <QgsVectorLayer: 'countries' (ogr)>}
 
 
 You can also query the TOC using the name of the layer:
@@ -134,7 +134,7 @@ We can retrieve one of the children:
 
 .. testoutput:: legend
 
-    <qgis._core.QgsLayerTreeLayer object at 0x7f1e1ea54168>
+    <QgsLayerTreeLayer: countries>
 
 Layers can also be retrieved using their (unique) ``id``:
 
@@ -162,7 +162,7 @@ methods that can be used to obtain more information about the TOC:
 
 .. testoutput:: legend
 
-    [<QgsMapLayer: 'countries' (ogr)>]
+    [<QgsVectorLayer: 'countries' (ogr)>]
 
 Now let’s add some layers to the project’s layer tree. There are two ways of doing
 that:
@@ -200,8 +200,8 @@ You can switch between :class:`QgsVectorLayer <qgis.core.QgsVectorLayer>` and
 
 .. testoutput:: legend
 
-    Layer node: <qgis._core.QgsLayerTreeLayer object at 0x7fecceb46ca8>
-    Map layer: <QgsMapLayer: 'countries' (ogr)>
+    Layer node: <QgsLayerTreeLayer: countries>
+    Map layer: <QgsVectorLayer: 'countries' (ogr)>
 
 
 Groups can be added with the :meth:`addGroup() <qgis.core.QgsLayerTreeGroup.addGroup>`

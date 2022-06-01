@@ -46,7 +46,7 @@ functionalities:
 * |moveItemContent| :sup:`Interactively edit map extent`: pan and
   zoom interactively
   within the map item
-* |labeling| :sup:`Labeling settings`: control feature label behaviour
+* |labelingSingle| :sup:`Labeling settings`: control feature label behaviour
   (placement, visibility...) in the layout map item extent:
 
   * set a :guilabel:`Margin from map edges`, a data definable distance from the
@@ -68,6 +68,35 @@ functionalities:
     are missing from the layout map (e.g. due to conflicts with other
     map labels or due to insufficient space to place the label) by
     highlighting them in a :ref:`predefined color <automated_placement>`.
+* |clip| :sup:`Clipping settings`: allows to clip the map item to the atlas
+  feature and to shape and polygon items:
+
+  * |checkbox| :guilabel:`Clip to atlas feature`: you can determine that
+    the layout map item will be clipped automatically to the current :ref:`atlas
+    feature <atlas_generation>`.
+
+    There are different clipping modes available:
+
+    * :guilabel:`Clip During Render Only`: applies a painter based clip,
+      so that portions of vector features which sit outside the atlas feature
+      become invisible
+    * :guilabel:`Clip Feature Before Render`: applies the clip before rendering
+      features, so borders of features which fall partially outside the atlas
+      feature will still be visible on the boundary of the atlas feature
+    * :guilabel:`Render Intersecting Features Unchanged`: renders all
+      features which intersect the current atlas feature, but without clipping their
+      their geometry.
+
+    You can |checkbox| :guilabel:`Force labels inside atlas feature`.
+    If you don't want to |radiobuttonoff| :guilabel:`Clip all layers` to the
+    atlas feature you can use the |radiobuttonon| :guilabel:`Clip selected layers`
+    option.
+  * |checkbox| :guilabel:`Clip to item`: it is possible to change the shape of the
+    map item by using a :ref:`shape <layout_basic_shape_item>` or :ref:`polygon
+    <layout_node_based_shape_item>` item from the print layout. When you
+    enable this option the map will be automatically clipped to the selected shape
+    in the combobox. Again, the above mentioned clipping modes are available and
+    labels can be forced to display only inside the clipping shape.
 
 
 .. _`layout_main_properties`:
@@ -75,7 +104,7 @@ functionalities:
 Main properties
 ---------------
 
-In the :guilabel:`Main properties` group (see figure_layout_map_) of the map
+In the :guilabel:`Main properties` group (see :numref:`figure_layout_map`) of the map
 :guilabel:`Item Properties` panel, available options are:
 
 * The :guilabel:`Update Preview` button to refresh the map item rendering if the view
@@ -101,7 +130,7 @@ that toggling visibility of the layers or modifying their style in the
 like any other item, you may want to add multiple map items to a print layout,
 there's a need to break this synchronization in order to allow showing
 different areas, layer combinations, at different scales...
-The :guilabel:`Layers` properties group (see figure_layout_map_layers_) helps
+The :guilabel:`Layers` properties group (see :numref:`figure_layout_map_layers`) helps
 you do that.
 
 .. _figure_layout_map_layers:
@@ -130,7 +159,7 @@ You can prevent this by using :guilabel:`Lock styles for layers`.
 
 Instead of using the current map canvas, you can also lock the layers of the
 map item to those of an existing map theme: select a map theme from the
-|showMapTheme| :sup:`Set layer list from a map theme` drop-down button, and the
+|showPresets| :sup:`Set layer list from a map theme` drop-down button, and the
 |checkbox| :guilabel:`Lock layers` is activated. The set of visible layers in
 the map theme is from now on used for the map item until you select another map
 theme or uncheck the |checkbox| :guilabel:`Lock layers` option. You then may
@@ -143,7 +172,7 @@ the map item will not be refreshed even if the map theme is updated (using the
 replace theme function) in QGIS' main window.
 
 Locked layers in the map item can also be :ref:`data-defined <data_defined>`,
-using the |dataDefined| icon beside the option. When used, this overrides the
+using the |dataDefine| icon beside the option. When used, this overrides the
 selection set in the drop-down list. You need to pass a list of layers
 separated by ``|`` character.
 The following example locks the map item to use only layers ``layer 1`` and
@@ -156,7 +185,7 @@ Extents
 -------
 
 The :guilabel:`Extents` group of the map item properties panel provides the
-following functionalities (see figure_layout_map_extents_):
+following functionalities (see :numref:`figure_layout_map_extents`):
 
 .. _figure_layout_map_extents:
 
@@ -168,16 +197,35 @@ following functionalities (see figure_layout_map_extents_):
 The **Extents** area displays ``X`` and ``Y`` coordinates of the area shown
 in the map item. Each of these values can be manually replaced, modifying the
 map canvas area displayed and/or map item size.
-Clicking the :guilabel:`Set to Map Canvas Extent` button sets the extent of the
-layout map item to the extent of the main map canvas.
-The button :guilabel:`View Extent in Map Canvas` does exactly the opposite; it
-updates the extent of the main map canvas to the extent of the layout map item.
+The extent can also be modified using tools at the top of the map item panel
+such as:
+
+* |setToCanvasExtent| :sup:`Set map canvas to match main canvas extent`
+* |setToCanvasScale| :sup:`Set map scale to match main canvas scale`
 
 You can also alter a map item extent using the |moveItemContent| :sup:`Move
 item content` tool: click-and-drag within the map item to modify its current
 view, keeping the same scale. With the |moveItemContent| tool enabled, use the
 mouse wheel to zoom in or out, modifying the scale of the shown map. Combine
 the movement with :kbd:`Ctrl` key pressed to have a smaller zoom.
+
+.. index:: Temporal, Print layout
+.. _mapitem_temporalrange:
+
+Temporal range
+--------------
+
+The :guilabel:`Temporal range` group of the map item properties panel provides the
+options to control layers rendering in the map item based on a temporal range.
+Only layers whose temporal properties overlap with the time range set by the
+:guilabel:`Start` and :guilabel:`End` dates are displayed in the map item.
+
+The associated data-defined widgets help make the time range dynamic, and
+allow outputting temporal :ref:`atlases <atlas_generation>`, i.e. automated maps
+with fixed spatial extent and whose contents vary based on time. For example,
+using as coverage layer a csv file with a start and end pair of fields and
+a number of rows representing date ranges, enable both the temporal range
+and control by atlas in the map item properties and hit atlas export.
 
 .. index:: Atlas
 .. _controlled_atlas:
@@ -213,7 +261,7 @@ coordinates, either in the map item projection or a different one. The
 :guilabel:`Grids` group provides the possibility to add several grids to a
 map item.
 
-* With the |signPlus| and |signMinus| buttons you can add or remove a selected
+* With the |symbologyAdd| and |symbologyRemove| buttons you can add or remove a selected
   grid;
 * With the |arrowUp| and |arrowDown| buttons you can move up and down a grid in
   the list, hence move it on top or bottom of another one, over the map item.
@@ -348,14 +396,14 @@ between two different maps extent and provides the following functionalities:
 
 To create an overview, select the map item on which you want to show the other
 map item's extent and expand the :guilabel:`Overviews` option in the
-:guilabel:`Item Properties` panel. Then press the |signPlus| button to add
+:guilabel:`Item Properties` panel. Then press the |symbologyAdd| button to add
 an overview.
 
-Initially this overview is named 'Overview 1' (see Figure_layout_map_overview_).
+Initially this overview is named 'Overview 1' (see :numref:`Figure_layout_map_overview`).
 You can:
 
 * Rename it with a double-click
-* With the |signPlus| and |signMinus| buttons, add or remove overviews
+* With the |symbologyAdd| and |symbologyRemove| buttons, add or remove overviews
 * With the |arrowUp| and |arrowDown| buttons, move an overview up and down in
   the list, placing it above or below other overviews in the map item
   (when they are at the same :ref:`stack position <overview_stack_position>`).
@@ -410,9 +458,11 @@ of the overview on the selected map frame. You can customize it with:
    :width: 1.5em
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-.. |dataDefined| image:: /static/common/mIconDataDefine.png
+.. |clip| image:: /static/common/mAlgorithmClip.png
    :width: 1.5em
-.. |labeling| image:: /static/common/labelingSingle.png
+.. |dataDefine| image:: /static/common/mIconDataDefine.png
+   :width: 1.5em
+.. |labelingSingle| image:: /static/common/labelingSingle.png
    :width: 1.5em
 .. |moveItemContent| image:: /static/common/mActionMoveItemContent.png
    :width: 1.5em
@@ -428,13 +478,13 @@ of the overview on the selected map frame. You can customize it with:
    :width: 1.5em
 .. |showBookmarks| image:: /static/common/mActionShowBookmarks.png
    :width: 1.5em
-.. |showMapTheme| image:: /static/common/mActionShowPresets.png
+.. |showPresets| image:: /static/common/mActionShowPresets.png
    :width: 1.5em
-.. |signMinus| image:: /static/common/symbologyRemove.png
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
    :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
+.. |symbologyRemove| image:: /static/common/symbologyRemove.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em
 .. |viewExtentInCanvas| image:: /static/common/mActionViewExtentInCanvas.png
    :width: 1.5em

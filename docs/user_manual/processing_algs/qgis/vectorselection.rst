@@ -74,12 +74,10 @@ Parameters
      - Specify the output vector layer for matching features.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
    * - **Extracted (non-matching)**
      - ``FAIL_OUTPUT``
      - [same as input]
@@ -89,11 +87,9 @@ Parameters
        features.
        One of:
 
-       * Skip Output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 .......
@@ -122,7 +118,7 @@ Python code
 
 **Algorithm ID**: ``qgis:extractbyattribute``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -169,12 +165,10 @@ Parameters
      - Specify the output vector layer for matching features.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
-       The file encoding can also be changed here.
    * - **Non-matching**
      - ``FAIL_OUTPUT``
      - [same as input]
@@ -184,11 +178,9 @@ Parameters
        features.
        One of:
 
-       * Skip Output
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types_skip**
+          :end-before: **end_layer_output_types_skip**
 
 Outputs
 .......
@@ -217,7 +209,7 @@ Python code
 
 **Algorithm ID**: ``qgis:extractbyexpression``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -233,11 +225,14 @@ The criteria for adding features to the resulting layer is based on
 the spatial relationship between each feature and the features in an
 additional layer.
 
-.. include:: qgis_algs_include.rst
+.. seealso:: :ref:`qgisselectbylocation`, :ref:`qgisextractwithindistance`
+
+Exploring spatial relations
+...........................
+
+.. include:: ../algs_include.rst
    :start-after: **geometric_predicates**
    :end-before: **end_geometric_predicates**
-
-.. seealso:: :ref:`qgisselectbylocation`
 
 Parameters
 ..........
@@ -260,8 +255,8 @@ Parameters
      - [enumeration] [list]
 
        Default: [0]
-     - Spatial condition for the selection.
-       One or more of:
+     - Type of spatial relation the input feature should have with an intersect
+       feature so that it could be selected. One or more of:
 
        * 0 --- intersect
        * 1 --- contain
@@ -289,10 +284,9 @@ Parameters
        features in the comparison layer.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -317,7 +311,97 @@ Python code
 
 **Algorithm ID**: ``qgis:extractbylocation``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisextractwithindistance:
+
+Extract within distance
+-----------------------
+
+Creates a new vector layer that only contains matching features from an
+input layer. Features are copied wherever they are within
+the specified maximum distance from the features in an additional reference layer.
+
+.. seealso:: :ref:`qgisselectwithindistance`, :ref:`qgisextractbylocation`
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Extract features from**
+     - ``INPUT``
+     - [vector: any]
+     - Input vector layer to copy features from
+   * - **By comparing to the features from**
+     - ``REFERENCE``
+     - [vector: any]
+     - Vector layer whose features closeness is used
+   * - **Where the features are within**
+     - ``DISTANCE``
+     - [number]
+
+       Default: 100
+     - The maximum distance around reference features
+       to select input features within
+   * - **Modify current selection by**
+     - ``METHOD``
+     - [enumeration]
+
+       Default: 0
+     - How the selection of the algorithm should be managed.
+       One of:
+
+       * 0 --- creating new selection
+       * 1 --- adding to current selection
+       * 2 --- selecting within current selection
+       * 3 --- removing from current selection
+   * - **Extracted (location)**
+     - ``OUTPUT``
+     - [same as input]
+
+       Default: ``[Create temporary layer]``
+     - Specify the output vector layer for the features that
+       are within the set distance from reference features.
+       One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Extracted (location)**
+     - ``OUTPUT``
+     - [same as input]
+     - Vector layer with features from the input layer matching
+       the condition of distance from reference features
+
+Python code
+...........
+
+**Algorithm ID**: ``native:extractwithindistance``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -376,12 +460,9 @@ Parameters
        selected features.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       Vector layer containing randomly selected features
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -405,7 +486,7 @@ Python code
 
 **Algorithm ID**: ``qgis:randomextract``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -471,12 +552,9 @@ Parameters
        selected features.
        One of:
 
-       * Create Temporary Layer (``TEMPORARY_OUTPUT``)
-       * Save to File...
-       * Save to Geopackage...
-       * Save to PostGIS Table...
-
-       The file encoding can also be changed here.
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
 
 Outputs
 .......
@@ -500,7 +578,7 @@ Python code
 
 **Algorithm ID**: ``qgis:randomextractwithinsubsets``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -573,7 +651,7 @@ Python code
 
 **Algorithm ID**: ``qgis:randomselection``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -658,7 +736,7 @@ Python code
 
 **Algorithm ID**: ``qgis:randomselectionwithinsubsets``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -729,8 +807,8 @@ Parameters
 
        * 0 --- creating new selection
        * 1 --- adding to current selection
-       * 2 --- selecting within current selection
-       * 3 --- removing from current selection
+       * 2 --- removing from current selection
+       * 3 --- selecting within current selection
 
 Outputs
 .......
@@ -753,7 +831,7 @@ Python code
 
 **Algorithm ID**: ``qgis:selectbyattribute``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -799,8 +877,8 @@ Parameters
 
        * 0 --- creating new selection
        * 1 --- adding to current selection
-       * 2 --- selecting within current selection
-       * 3 --- removing from current selection
+       * 2 --- removing from current selection
+       * 3 --- selecting within current selection
 
 Outputs
 .......
@@ -823,7 +901,7 @@ Python code
 
 **Algorithm ID**: ``qgis:selectbyexpression``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -838,13 +916,16 @@ The criteria for selecting features is based on the spatial
 relationship between each feature and the features in an additional
 layer.
 
-.. include:: qgis_algs_include.rst
-   :start-after: **geometric_predicates**
-   :end-before: **end_geometric_predicates**
-
 **Default menu**: :menuselection:`Vector --> Research Tools`
 
-.. seealso:: :ref:`qgisextractbylocation`
+.. seealso:: :ref:`qgisextractbylocation`, :ref:`qgisselectwithindistance`
+
+Exploring spatial relations
+...........................
+
+.. include:: ../algs_include.rst
+   :start-after: **geometric_predicates**
+   :end-before: **end_geometric_predicates**
 
 Parameters
 ..........
@@ -867,8 +948,8 @@ Parameters
      - [enumeration] [list]
 
        Default: [0]
-     - Spatial condition for the selection.
-       One or more of:
+     - Type of spatial relation the input feature should have with an intersect
+       feature so that it could be selected. One or more of:
 
        * 0 --- intersect
        * 1 --- contain
@@ -920,6 +1001,83 @@ Python code
 
 **Algorithm ID**: ``qgis:selectbylocation``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisselectwithindistance:
+
+Select within distance
+----------------------
+
+creates a selection in a vector layer.
+Features are selected wherever they are within the specified maximum
+distance from the features in an additional reference layer.
+
+.. seealso:: :ref:`qgisextractwithindistance`, :ref:`qgisselectbylocation`
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Select features from**
+     - ``INPUT``
+     - [vector: any]
+     - Input vector layer to select features from
+   * - **By comparing to the features from**
+     - ``REFERENCE``
+     - [vector: any]
+     - Vector layer whose features closeness is used
+   * - **Where the features are within**
+     - ``DISTANCE``
+     - [number]
+
+       Default: 100
+     - The maximum distance around reference features
+       to select input features
+   * - **Modify current selection by**
+     - ``METHOD``
+     - [enumeration]
+
+       Default: 0
+     - How the selection of the algorithm should be managed.
+       One of:
+
+       * 0 --- creating new selection
+       * 1 --- adding to current selection
+       * 2 --- selecting within current selection
+       * 3 --- removing from current selection
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layer**
+     - ``INPUT``
+     - [same as input]
+     - The input layer with features selected
+
+Python code
+...........
+
+**Algorithm ID**: ``native:selectwithindistance``
+
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**

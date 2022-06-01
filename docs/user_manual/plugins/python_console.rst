@@ -72,8 +72,9 @@ The console main features are:
 * :kbd:`Ctrl+Shift+Space` to view the command history: double-clicking a row
   will execute the command. The :guilabel:`Command History` dialog can also be
   accessed from context menu of input area;
-* Save and clear the command history. The history will be saved into the file
-  :file:`~/.qgis2/console_history.txt`;
+* Save and clear the command history. The history will be saved into the
+  :file:`console_history.txt` file under the active :ref:`user profile
+  <user_profiles>` folder;
 * Open :api:`QGIS C++ API <>` documentation by typing ``_api``;
 * Open :pyqgis:`QGIS Python API <>` documentation by typing ``_pyqgis``.
 * Open :ref:`PyQGIS Cookbook <PyQGIS-Developer-Cookbook>` by typing ``_cookbook``.
@@ -100,7 +101,7 @@ The Code Editor
 Use the |showEditorConsole| :sup:`Show Editor` button to enable the editor
 widget. It allows editing and saving Python files and offers advanced
 functionalities to manage your code (comment and uncomment code, check syntax,
-share the code via codepad.org and much more). Main features are:
+share the code via GitHub and much more). Main features are:
 
 * Code completion, highlighting syntax and calltips for the following APIs:
 
@@ -111,7 +112,7 @@ share the code via codepad.org and much more). Main features are:
   * osgeo-gdal-ogr
 
 * :kbd:`Ctrl+Space` to view the auto-completion list.
-* Sharing code snippets via codepad.org.
+* Sharing code snippets via :ref:`GitHub <console_options>`.
 * :kbd:`Ctrl+4` Syntax check.
 * Search bar (open it with the default Desktop Environment shortcut, usually
   :kbd:`Ctrl+F`):

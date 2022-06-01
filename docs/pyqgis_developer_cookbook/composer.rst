@@ -7,9 +7,15 @@
 
     iface = start_qgis()
 
-The code snippets on this page need the following imports:
+.. _layout:
 
-.. testcode:: composer
+**************************
+Map Rendering and Printing
+**************************
+
+.. hint:: The code snippets on this page need the following imports:
+
+  .. testcode:: composer
 
     import os
 
@@ -44,14 +50,10 @@ The code snippets on this page need the following imports:
         QSize,
     )
 
-.. _layout:
+.. only:: html
 
-**************************
-Map Rendering and Printing
-**************************
-
-.. contents::
-   :local:
+   .. contents::
+      :local:
 
 There are generally two approaches when input data should be rendered as a map:
 either do it quick way using `QgsMapRendererJob` or produce more fine-tuned
@@ -110,6 +112,7 @@ extent calculations you have to explicitly set the destination CRS
 .. testcode:: composer
 
   layers = [iface.activeLayer()]
+  settings = QgsMapSettings()
   settings.setLayers(layers)
   settings.setDestinationCrs(layers[0].crs())
 
@@ -137,22 +140,42 @@ class. Let us create an instance of it:
 
 .. testcode:: composer
 
-  project = QgsProject()
+  project = QgsProject.instance()
   layout = QgsPrintLayout(project)
   layout.initializeDefaults()
+
+This initializes the layout with some default settings, specifically by adding
+an empty A4 page to the layout. You can create layouts without calling the
+:meth:`initializeDefaults() <qgis.core.QgsLayout.initializeDefaults>` method,
+but you'll need to take care of adding pages to the layout yourself.
+
+The previous code creates a "temporary" layout that is not visible in the GUI.
+It can be handy to e.g. quickly add some items and export without modifying
+the project itself nor expose these changes to the user.
+If you want the layout to be saved/restored along with the project and
+available in the layout manager, then add:
+
+.. testcode:: composer
+
+  layout.setName("MyLayout")
+  project.layoutManager().addLayout(layout)
 
 Now we can add various elements (map, label, ...) to the layout. All these objects
 are represented by classes that inherit from the base :class:`QgsLayoutItem <qgis.core.QgsLayoutItem>` class.
 
 Here's a description of some of the main layout items that can be added to a layout.
 
-* map --- this item tells the libraries where to put the map itself. Here we
-  create a map and stretch it over the whole paper size
+* map --- Here we create a map of a custom size and render the current map canvas
 
   .. testcode:: composer
 
     map = QgsLayoutItemMap(layout)
-    layout.addItem(map)
+    # Set map item position and size (by default, it is a 0 width/0 height item placed at 0,0)
+    map.attemptMove(QgsLayoutPoint(5,5, QgsUnitTypes.LayoutMillimeters))
+    map.attemptResize(QgsLayoutSize(200,200, QgsUnitTypes.LayoutMillimeters))
+    # Provide an extent to render
+    map.zoomToExtent(iface.mapCanvas().extent())
+    layout.addLayoutItem(map)
 
 * label --- allows displaying labels. It is possible to modify its font, color,
   alignment and margin
@@ -162,7 +185,7 @@ Here's a description of some of the main layout items that can be added to a lay
     label = QgsLayoutItemLabel(layout)
     label.setText("Hello world")
     label.adjustSizeToText()
-    layout.addItem(label)
+    layout.addLayoutItem(label)
 
 * legend
 
@@ -170,7 +193,7 @@ Here's a description of some of the main layout items that can be added to a lay
 
     legend = QgsLayoutItemLegend(layout)
     legend.setLinkedMap(map) # map is an instance of QgsLayoutItemMap
-    layout.addItem(legend)
+    layout.addLayoutItem(legend)
 
 * scale bar
 
@@ -180,7 +203,7 @@ Here's a description of some of the main layout items that can be added to a lay
     item.setStyle('Numeric') # optionally modify the style
     item.setLinkedMap(map) # map is an instance of QgsLayoutItemMap
     item.applyDefaultSize()
-    layout.addItem(item)
+    layout.addLayoutItem(item)
 
 * arrow
 * picture
@@ -196,7 +219,7 @@ Here's a description of some of the main layout items that can be added to a lay
     polygon.append(QPointF(100.0, 200.0))
 
     polygonItem = QgsLayoutItemPolygon(polygon, layout)
-    layout.addItem(polygonItem)
+    layout.addLayoutItem(polygonItem)
 
     props = {}
     props["color"] = "green"

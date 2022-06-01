@@ -40,13 +40,12 @@ Parameters
      - ``EXTENT``
      - [extent]
      - Specify the extent of the output raster layer.
-       One of:
-       
-       * Use Canvas Extent
-       * Select Extent on Canvas
-       * Use Layer Extent...
-       
        It will internally be extended to a multiple of the tile size.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Tile size**
      - ``TILE_SIZE``
      - [number]
@@ -82,14 +81,13 @@ Parameters
    * - **Output layer**
      - ``OUTPUT``
      - [raster]
-       
-       Default: Save to temporary file
+
+       Default: ``[Save to temporary file]``
      - Specification of the output raster. One of:
-       
-       * Save to a Temporary File
-       * Save to File...
-       
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
 Outputs
 .......
@@ -112,16 +110,26 @@ Python code
 
 **Algorithm ID**: ``qgis:rasterize``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
 
-.. _qgiscreateconstantrasterlayer:
+.. _qgisfillnodata:
 
-Create constant raster layer
-----------------------------
-Generates a raster layer where all pixels have the same value.
+Fill NoData cells
+-----------------
+
+Resets the NoData values in the input raster to a chosen value, resulting in
+raster dataset with no NoData pixels.
+
+The algorithm respects the input raster data type, e.g. a floating point
+fill value will be truncated when applied to an integer raster.
+
+.. figure:: img/fill_nodata.png
+  :align: center
+
+  Filling NoData values (in grey) of a raster
 
 Parameters
 ..........
@@ -134,44 +142,32 @@ Parameters
      - Name
      - Type
      - Description
-   * - **Desired extent (xmin, xmax, ymin, ymax)**
-     - ``EXTENT``
-     - [extent]
-     - Specify the extent of the output raster layer.
-       One of:
-       
-       * Use Canvas Extent
-       * Select Extent on Canvas
-       * Use Layer Extent...
-       
-       It will internally be extended to a multiple of the tile size.
-   * - **Target CRS**
-     - ``TARGET_CRS``
-     - [crs]
-       
-       Default: Project CRS
-     - CRS for the output raster layer
-   * - **Pixel size**
-     - ``PIXEL_SIZE``
+   * - **Input raster**
+     - ``INPUT``
+     - [raster]
+     - The raster to process.
+   * - **Band number**
+     - ``BAND``
      - [number]
-       
-       Default: 0.1
-     - Pixel size (X=Y) in map units. Minimum value: 0.01
-   * - **Constant value**
-     - ``NUMBER``
-     - [number]
-       
+
        Default: 1
-     - Constant pixel value for the output raster layer.
-   * - **Constant**
+     - The band of the raster
+   * - **Fill value**
+     - ``FILL_VALUE``
+     - [number]
+
+       Default: 1.0
+     - Set the value to use for the NoData pixels
+   * - **Output raster**
      - ``OUTPUT``
      - [raster]
+
+       Default: ``[Save to temporary file]``
      - Specification of the output raster. One of:
-       
-       * Save to a Temporary File
-       * Save to File...
-       
-       The file encoding can also be changed here.
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
 
 Outputs
 .......
@@ -184,18 +180,17 @@ Outputs
      - Name
      - Type
      - Description
-   * - **Constant**
+   * - **Output raster**
      - ``OUTPUT``
      - [raster]
-     - Raster covering the desired extent with the specified pixel
-       size and value.
+     - The output raster layer with filled data cells.
 
 Python code
 ...........
 
-**Algorithm ID**: ``qgis:createconstantrasterlayer``
+**Algorithm ID**: ``native:fillnodata``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -224,13 +219,12 @@ Parameters
      - ``EXTENT``
      - [extent]
      - Specify the extent of the tiles.
-       One of:
-
-       * Use Canvas Extent
-       * Select Extent on Canvas
-       * Use Layer Extent...
-
        It will internally be extended to a multiple of the tile size.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Minimum zoom**
      - ``ZOOM_MIN``
      - [number]
@@ -318,11 +312,10 @@ Parameters
        Default: ``[Save to temporary folder]``
      - Specification of the output raster. One of:
 
-       * Skip Output
-       * Save to a Temporary Directory
-       * Save to Directory...
+       .. include:: ../algs_include.rst
+          :start-after: **directory_output_types_skip**
+          :end-before: **end_directory_output_types_skip**
 
-       The file encoding can also be changed here.
    * - **Output html (Leaflet)**
      - ``OUTPUT_HTML``
      - [html]
@@ -330,9 +323,9 @@ Parameters
        Default: ``[Save to temporary file]``
      - Specification of the output HTML file. One of:
 
-       * Skip Output
-       * Save to a Temporary File
-       * Save to File...
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types_skip**
+          :end-before: **end_file_output_types_skip**
 
 Outputs
 .......
@@ -359,7 +352,7 @@ Python code
 
 **Algorithm ID**: ``qgis:tilesxyzdirectory``
 
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
@@ -388,13 +381,12 @@ Parameters
      - ``EXTENT``
      - [extent]
      - Specify the extent of the tiles.
-       One of:
-
-       * Use Canvas Extent
-       * Select Extent on Canvas
-       * Use Layer Extent...
-
        It will internally be extended to a multiple of the tile size.
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
    * - **Minimum zoom**
      - ``ZOOM_MIN``
      - [number]
@@ -458,11 +450,10 @@ Parameters
        Default: ``[Save to temporary file]``
      - Specification of the output file. One of:
 
-       * Skip Output
-       * Save to a Temporary File
-       * Save to File...
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types_skip**
+          :end-before: **end_file_output_types_skip**
 
-       The file encoding can also be changed here.
 
 Outputs
 .......
@@ -485,64 +476,6 @@ Python code
 
 **Algorithm ID**: ``qgis:tilesxyzmbtiles``
 
-.. include:: qgis_algs_include.rst
-  :start-after: **algorithm_code_section**
-  :end-before: **end_algorithm_code_section**
-
-
-.. _qgissetstyleforrasterlayer:
-
-Set style for raster layer
---------------------------
-Sets the style of a raster layer. The style must be defined as a
-``QML`` file.
-
-No new output are created: the ``QML`` style is assigned to the raster
-layer chosen.
-
-.. seealso:: :ref:`qgissetstyleforvectorlayer`
-
-Parameters
-..........
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Raster layer**
-     - ``INPUT``
-     - [raster]
-     - The raster layer
-   * - **Style file**
-     - ``STYLE``
-     - [file]
-     - Path to the ``QML`` style file.
-  
-Outputs
-.......
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Raster layer**
-     - ``INPUT``
-     - [raster]
-     - The raster layer with the chosen style
-
-Python code
-...........
-
-**Algorithm ID**: ``qgis:setstyleforrasterlayer``
-
-.. include:: qgis_algs_include.rst
+.. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**

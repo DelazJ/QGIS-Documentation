@@ -36,7 +36,7 @@ features distant from one another. Buffer zones are often set up to protect the
 environment, protect residential and commercial zones from industrial accidents
 or natural disasters, or to prevent violence. Common types of buffer zones may
 be greenbelts between residential and commercial areas, border zones between
-countries (see figure_buffer_zone_), noise protection zones around airports, or
+countries (see :numref:`figure_buffer_zone`), noise protection zones around airports, or
 pollution protection zones along rivers.
 
 .. _figure_buffer_zone:
@@ -50,7 +50,7 @@ pollution protection zones along rivers.
 
 In a GIS Application, **buffer zones are** always represented as **vector
 polygons** enclosing other polygon, line or point features (see
-figure_point_buffer_, figure_line_buffer_, ).
+:numref:`figure_point_buffer`, :numref:`figure_line_buffer`, :numref:`figure_polygon_buffer`).
 
 .. _figure_point_buffer:
 
@@ -85,7 +85,7 @@ table for each feature. The numerical values have to be defined in map units
 according to the Coordinate Reference System (CRS) used with the data. For example,
 the width of a buffer zone along the banks of a river can vary depending on the
 intensity of the adjacent land use. For intensive cultivation the buffer distance
-may be bigger than for organic farming (see Figure figure_variable_buffer_ and
+may be bigger than for organic farming (see Figure :numref:`figure_variable_buffer` and
 Table table_buffer_attributes_).
 
 .. _figure_variable_buffer:
@@ -116,14 +116,14 @@ rivers based on information about the adjacent land use.
 Buffers around polyline features, such as rivers or roads, do not have to be on
 both sides of the lines. They can be on either the left side or the right side
 of the line feature. In these cases the left or right side is determined by the
-direction from the starting point to the end point of line during digitising.
+direction from the starting point to the end point of the line during digitising.
 
 Multiple buffer zones
 ---------------------
 
 A feature can also have more than one buffer zone. A nuclear power plant may be
 buffered with distances of 10, 15, 25 and 30 km, thus forming multiple rings
-around the plant as part of an evacuation plan (see figure_multiple_buffers_).
+around the plant as part of an evacuation plan (see :numref:`figure_multiple_buffers`).
 
 .. _figure_multiple_buffers:
 
@@ -140,7 +140,7 @@ Buffer zones often have dissolved boundaries so that there are no overlapping
 areas between the buffer zones. In some cases though, it may also be useful for
 boundaries of buffer zones to remain intact, so that each buffer zone is a
 separate polygon and you can identify the overlapping areas (see
-Figure figure_buffer_dissolve_).
+Figure :numref:`figure_buffer_dissolve`).
 
 .. _figure_buffer_dissolve:
 
@@ -158,7 +158,7 @@ Buffer zones around polygon features are usually extended outward from a polygon
 boundary but it is also possible to create a buffer zone inward from a polygon
 boundary. Say, for example, the Department of Tourism wants to plan a new road
 around Robben Island and environmental laws require that the road is at least
-200 meters inward from the coast line. They could use an inward buffer to find
+200 meters inward from the coastline. They could use an inward buffer to find
 the 200 m line inland and then plan their road not to go beyond that line.
 
 Common problems / things to be aware of
@@ -177,13 +177,13 @@ vector layer.
 More spatial analysis tools
 ===========================
 
-Buffering is a an important and often used spatial analysis tool but there are
+Buffering is an important and often used spatial analysis tool but there are
 many others that can be used in a GIS and explored by the user.
 
 **Spatial overlay** is a process that allows you to identify the relationships
 between two polygon features that share all or part of the same area. The output
 vector layer is a combination of the input features information (see
-figure_overlay_operations_).
+:numref:`figure_overlay_operations`).
 
 .. _figure_overlay_operations:
 
@@ -192,7 +192,7 @@ figure_overlay_operations_).
    :width: 30em
 
    Spatial overlay with two input vector layers (a_input = rectangle, b_input =
-   circle). The resulting vector layer is displayed green.
+   circle). The resulting vector layer is displayed in green.
 
 Typical spatial overlay examples are:
 
@@ -227,7 +227,7 @@ Here are some ideas for you to try with your learners:
 
 * Because of dramatic traffic increase, the town planners want to widen the main
   road and add a second lane. Create a buffer around the road to find properties
-  that fall within the buffer zone (see figure_buffer_road_).
+  that fall within the buffer zone (see :numref:`figure_buffer_road`).
 * For controlling protesting groups, the police want to establish a neutral zone
   to keep protesters at least 100 meters from a building. Create a buffer around
   a building and colour it so that event planners can see where the buffer area
@@ -254,7 +254,7 @@ Something to think about
 ========================
 
 If you don't have a computer available, you can use a toposheet and a compass to
-create buffer zones around buildings. Make small pencil marks at equal distance
+create buffer zones around buildings. Make small pencil marks at an equal distance
 all along your feature using the compass, then connect the marks using a ruler!
 
 Further reading

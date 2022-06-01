@@ -4,8 +4,10 @@
 IDE settings for writing and debugging plugins
 **********************************************
 
-.. contents::
-   :local:
+.. only:: html
+
+   .. contents::
+      :local:
 
 
 Although each programmer has his preferred IDE/Text editor, here are some
@@ -114,7 +116,7 @@ you should also create a batch file and use it to start Eclipse:
 
      call "C:\OSGeo4W\bin\o4w_env.bat"
      set PATH=%PATH%;C:\path\to\your\qgis_core.dll\parent\folder
-     C:\path\to\your\eclipse.exe
+     start /B C:\path\to\your\eclipse.exe
 
 Setting up Eclipse
 ------------------

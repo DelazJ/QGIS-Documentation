@@ -13,11 +13,12 @@ It is possible to add a frame that displays the contents of a website or even
 create and style your own HTML page and display it!
 You can add a picture with the |addHtml| :guilabel:`Add HTML` following
 :ref:`items creation instructions <create_layout_item>` and manipulate it the
-same way as exposed in :ref:`interact_layout_item`.
+same way as exposed in :ref:`interact_layout_item`. Note that the HTML scale is
+controlled by the layout export resolution at the time the HTML frame is created.
 
 The HTML item can be customized using its :guilabel:`Item Properties` panel.
 Other than the :ref:`items common properties <item_common_properties>`, this
-feature has the following functionalities (see figure_layout_html_):
+feature has the following functionalities (see :numref:`figure_layout_html`):
 
 
 .. _figure_layout_html:
@@ -32,7 +33,7 @@ HTML Source
 ------------
 
 The :guilabel:`HTML Source` group of the HTML frame :guilabel:`Item Properties`
-panel provides the following functionalities (see figure_layout_html_ppt_):
+panel provides the following functionalities (see :numref:`figure_layout_html_ppt`):
 
 .. _figure_layout_html_ppt:
 
@@ -43,7 +44,7 @@ panel provides the following functionalities (see figure_layout_html_ppt_):
 
 * In :guilabel:`URL` you can enter the URL of a webpage you copied from your
   Internet browser or select an HTML file using the :guilabel:`...` :sup:`Browse`
-  button. There is also the option to use the |dataDefined| :sup:`Data-defined
+  button. There is also the option to use the |dataDefine| :sup:`Data-defined
   override` button, to provide a URL from the contents of an attribute field of
   a table or using a regular expression.
 * In :guilabel:`Source` you can enter text in the textbox with some HTML tags or
@@ -64,7 +65,7 @@ Frames
 -------
 
 The :guilabel:`Frames` group of the HTML frame :guilabel:`Item Properties`
-panel provides the following functionalities (see figure_layout_html_frames_):
+panel provides the following functionalities (see :numref:`figure_layout_html_frames`):
 
 .. _figure_layout_html_frames:
 
@@ -103,7 +104,7 @@ Use smart page breaks and User style sheet
 
 The :guilabel:`Use smart page breaks` dialog and :guilabel:`User style sheet`
 dialog of the HTML frame :guilabel:`Item Properties` panel provides the
-following functionalities (see figure_layout_html_breaks_):
+following functionalities (see :numref:`figure_layout_html_breaks`):
 
 .. _figure_layout_html_breaks:
 
@@ -147,5 +148,5 @@ following functionalities (see figure_layout_html_breaks_):
    :width: 1.5em
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-.. |dataDefined| image:: /static/common/mIconDataDefine.png
+.. |dataDefine| image:: /static/common/mIconDataDefine.png
    :width: 1.5em

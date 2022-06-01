@@ -1,5 +1,7 @@
-[![HTML Build](https://github.com/qgis/QGIS-Documentation/workflows/HTML%20build/badge.svg?branch=master)](https://github.com/qgis/QGIS-Documentation/actions?query=branch%3Amaster+workflow%3A%22HTML+build%22)
-[![Doctest Build](https://github.com/qgis/QGIS-Documentation/workflows/Doctest%20build/badge.svg?branch=master)](https://github.com/qgis/QGIS-Documentation/actions?query=branch%3Amaster+workflow%3A%22Doctest+build%22)
+<img src="https://github.com/qgis/QGIS/blob/master/images/README-md/main_logo.png" width="300" alt="Our full logo">
+
+[![Docs Builds](https://github.com/qgis/QGIS-Documentation/workflows/Docs%20builds/badge.svg?branch=master)](https://github.com/qgis/QGIS-Documentation/actions/workflows/builds.yml?query=branch%3Amaster+event%3Apush)
+[![Doctest Build](https://github.com/qgis/QGIS-Documentation/workflows/Doctest%20build/badge.svg?branch=master)](https://github.com/qgis/QGIS-Documentation/actions/workflows/doctest.yml?query=branch%3Amaster+event%3Apush)
 [![Read the documentation](https://img.shields.io/badge/Read-the%20docs-green.svg)](https://docs.qgis.org/testing/)
 
 
@@ -15,6 +17,7 @@ The latest documentation is available at <https://docs.qgis.org/latest>
    * [Build on Windows](#build-on-windows)
    * [Build PDFs](#build-pdfs)
 * [Translating](#translating)
+* [Testing Python snippets](#testing-python-snippets)
 
 # Building the documentation
 
@@ -141,16 +144,16 @@ Or after you enabled the venv:
 make pdf
 ```
 
-For building PDFs you will need to install the XeLaTex compiler package `textlive-xetex` and GNU Freefont.
-
-```
-sudo apt install textlive-xetex fonts-freefont
-```
-
 If you want to build PDFs in a language other than English, you can use a similar syntax:
 
 ```
 make LANG=fr pdf
+```
+
+For building PDFs in English you will need to install the XeLaTex compiler package `texlive-xetex` and GNU Freefont.
+
+```
+sudo apt install texlive-xetex font-freefonts-otf
 ```
 
 For building translated PDFs, you may have to install the texlive extra package
@@ -166,46 +169,136 @@ Some languages will also need specific fonts installed:
 
 # Translating
 
-<http://www.sphinx-doc.org/en/master/usage/advanced/intl.html>
+We rely on the [Transifex platform](https://transifex.com) to store and coordinate
+our translation efforts. To be part of the translation team, please follow
+[becoming a translator](https://www.qgis.org/en/site/getinvolved/translate.html#becoming-a-translator).
 
-<https://pypi.org/project/sphinx-intl/>
+The process is automated using the [Transifex - GitHub integration system](https://docs.transifex.com/integrations/transifex-github-integration)
+and some custom scripts:
 
-<https://docs.transifex.com/integrations/transifex-github-integration>
+* The [transifex.yml](transifex.yml) configuration file:
+  provides way to retrieve the English source files and where to locate the translated ones.
 
-To update the english po files (which are being used as SOURCE files in transifex):
+  ---
+   **Note to Transifex administrators**
+
+   If after the integration system is setup for a new release, the translation strings fail to
+   (fully) upload to Transifex:
+
+   1. Run the [create_transifex_resources](scripts/create_transifex_resources.sh) script:
+      creates/updates the [.tx/config](.tx/config) file with formatted references of the English
+      source files and their translation in the GitHub repository and link them to
+      the resources in Transifex.
+   1. Force-push the translation files to Transifex
+      ```
+       tx push -f -t --no-interactive
+      ```
+  ---
+
+* The transifex integration bot: 
+  manages pulls and pushes of the strings, in other words:
+  - Tracks any changes of the English `*.po` resource files in GitHub
+    and automatically sends them to the Transifex platform
+  - When a resource is 100% translated, automatically sends back
+    the translated `*.po` file to GitHub, for build.
+* The [pofiles action](.github/workflows/pofiles.yml): creates/updates English `*.po` files
+  with recent changes in the source `*.rst` files. Feeds the transifex bot.
+
+
+Based on the above, translated strings are automatically available in released
+branch so building the docs in any translated locale is possible following
+the instructions in earlier sections:
+```
+make html LANG=yourlanguage
+```
+
+Sometimes, you may want to build the docs with new strings in a partially translated file.
+In this case, you need to manually pull the translations from Transifex to your local repository:
+
+1. Checkout locally the repository and target branch in git
+1. Prepare the environment
+   ```
+   python3 -m venv venv
+   source ./venv/bin/activate
+   pip install -r REQUIREMENTS.txt
+   ```
+1. Download the translated strings using the [minimize_translation script](scripts/minimize_translation.sh).
+   By default this pulls all the languages.
+   ```
+   ./scripts/minimize_translation.sh
+   ```
+   To pull a specific language (e.g. italian), do
+   ```
+   ./scripts/minimize_translation.sh -l it
+   ```
+
+   IMPORTANT: to be able to pull from transifex.com, you will need a credentials file. 
+   This file should be named: ``.transifexrc`` and easiest is to put it in your home dir. 
+   The file should contain this:
+   ```
+   [https://www.transifex.com]
+   hostname = https://www.transifex.com
+   password = yourtransifexpassword
+   token = 
+   username = yourtransifexusername
+   ```
+1. Build the docs in your language
+   ```
+   make html LANG=yourlanguage
+   ```
+1. Share the changes by opening a pull-request, allowing us to integrate
+   the new strings for the pulled language(s)
+
+# Testing Python snippets
+
+To test Python code snippets in the PyQGIS Cookbook, you need a *QGIS* installation.
+For this there are many options:
+
+* You can use your system *QGIS* installation with *Sphinx* from Python virtual environment:
+
+  ```
+  make -f venv.mk doctest
+  ```
+* You can use a manually built installation of *QGIS*. To do so, you need to:
+  1. Create a custom ``Makefile`` extension on top of the ``venv.mk`` file,
+     for example a ``user.mk`` file with the following content:
+
+     ```
+     # Root installation folder
+     QGIS_PREFIX_PATH = /home/user/apps/qgis-master
+
+     # Or build output folder
+     QGIS_PREFIX_PATH = /home/user/dev/QGIS-build-master/output
+
+     include venv.mk
+     ```
+
+  1. Then use it to run target ``doctest``:
+
+     ```
+     make -f user.mk doctest
+     ```
+* Or you can run target ``doctest`` inside the official *QGIS* docker image:
+
+  ```
+  make -f docker.mk doctest
+  ```
+
+Note that only code blocks with directive ``testcode`` are tested and it is possible to run tests setup code
+which does not appear in documentation with directive ``testsetup``, for example:
 
 ```
-# FIRST create the pot files in build/gettext (po file be based on those pot files)
-make gettext
-# then update the english po files only:
-sphinx-intl update -p build/gettext -l en
+ .. testsetup::
+
+     from qgis.core import QgsCoordinateReferenceSystem
+
+ .. testcode::
+
+     # SRID 4326 is allocated for WGS84
+     crs = QgsCoordinateReferenceSystem("EPSG:4326")
+     assert crs.isValid()
 ```
 
-To create the `.tx/config` file to push/pull using tx client do:
+For more information see *Sphinx* doctest extension documentation:
+https://www.sphinx-doc.org/en/master/usage/extensions/doctest.html
 
-```
-# Creating the txconfig is only to be done the first time (we have one now...)
-#sphinx-intl create-txconfig
-
-# Update list of resources (necessary when files were added or removed)
-sphinx-intl update-txconfig-resources --transifex-project-name qgis-documentation
-
-# Then (only Transifex admin) can push the po source files to Transifex
-tx push -fs --no-interactive #push the source (-s) files forcing (-f) overwriting the ones there without asking (--no-interactive)
-```
-
-To update all po files of all languages (Which we do not use here! This is done by Transifex):
-
-```
-export SPHINXINTL_LANGUAGE=de,nl, ...
-# is the same same as
-sphinx-intl <command> --language=de --language=nl ...
-```
-
-We created a script to create the transifex yaml files for github-transifex integrations.
-
-BUT we do not do this yet as there were some technical issues...
-
-```
-.\scripts\create_transifex_yaml.sh
-```

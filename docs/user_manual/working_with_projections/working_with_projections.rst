@@ -142,7 +142,7 @@ This default CRS is ``EPSG:4326`` (also known as "WGS 84"), and it is a global
 latitude/longitude based reference system.
 This default CRS can be changed via the :guilabel:`CRS for New Projects`
 setting in the :guilabel:`CRS` tab under :menuselection:`Settings -->` |options|
-:menuselection:`Options...` (see figure_projection_options_).
+:menuselection:`Options...` (see :numref:`figure_projection_options`).
 There is an option to automatically set the project's CRS
 to match the CRS of the first layer loaded into a new project, or alternatively
 you can select a different default CRS to use for all newly created projects.
@@ -264,7 +264,7 @@ only two parameters to define a user CRS:
 
 To create a new CRS:
 
-#. Click the |signPlus| :sup:`Add new CRS` button
+#. Click the |symbologyAdd| :sup:`Add new CRS` button
 #. Enter a descriptive name
 #. Select the format: it can be :guilabel:`Proj String` or :guilabel:`WKT`
 #. Add the CRS :guilabel:`Parameters`.
@@ -351,7 +351,7 @@ This customization is done in the :menuselection:`Settings -->` |options|
 * or defining a list of appropriate datum transformations to use as defaults
   when loading a layer to a project or reprojecting a layer.
 
-  Use the |signPlus| button to open the :guilabel:`Select Datum Transformations`
+  Use the |symbologyAdd| button to open the :guilabel:`Select Datum Transformations`
   dialog. Then:
 
   #. Choose the :guilabel:`Source CRS` of the layer, using the drop-down menu
@@ -371,9 +371,10 @@ This customization is done in the :menuselection:`Settings -->` |options|
 
      In some cases a transformation may not be available for use on your system.
      In this case, the transformation will still be shown (greyed) in this list
-     but can not be picked until you download and install the required package
-     of transformation support. Usually, a button is provided to download the
-     corresponding grid.
+     but can not be picked until you install the required package
+     of transformation support. Usually, a button is provided to download and
+     install the corresponding grid, which is then stored under the :file:`proj`
+     folder in the active :ref:`user profile <user_profiles>` directory.
 
   #. Find your preferred transformation and select it
   #. Set whether you |checkbox| :guilabel:`Allow fallback transforms if preferred
@@ -387,7 +388,7 @@ This customization is done in the :menuselection:`Settings -->` |options|
 
   From now, QGIS automatically uses the selected datum transformations for
   further transformation between these two CRSs until you remove
-  it (|signMinus|) from the list or change the entry (|toggleEditing|) in
+  it (|symbologyRemove|) from the list or change the entry (|toggleEditing|) in
   the list.
 
 Datum transformations set in the :menuselection:`Settings -->` |options|
@@ -419,11 +420,11 @@ to the current project only.
    :width: 1.5em
 .. |setProjection| image:: /static/common/mActionSetProjection.png
    :width: 1.5em
-.. |signMinus| image:: /static/common/symbologyRemove.png
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
    :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
+.. |symbologyRemove| image:: /static/common/symbologyRemove.png
    :width: 1.5em
 .. |toggleEditing| image:: /static/common/mActionToggleEditing.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em

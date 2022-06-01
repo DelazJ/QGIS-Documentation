@@ -303,7 +303,8 @@ steps necessary for QGIS to load the resources:
 * Authentication database's master password needs to be available
 
 When instantiating the authentication system, Server will create or use
-:file:`qgis-auth.db` in :file:`~/.qgis2/` or the directory defined by the
+:file:`qgis-auth.db` file in the active :ref:`user profile <user_profiles>`,
+or the  directory defined by the
 ``QGIS_AUTH_DB_DIR_PATH`` environment variable. It may be that the Server's user
 has no HOME directory, in which case, use the environment variable to define a
 directory that the Server's user has read/write permissions and is not located
@@ -350,7 +351,7 @@ allow you to override SSL errors, but with more granular control.
    not necessarily fix an issue with the validation of your client identity, and
    only your client identity's issuer or server administrator can fix the issue.
 
-You can pre-configure an SSL server configuration by clicking the |signPlus|
+You can pre-configure an SSL server configuration by clicking the |symbologyAdd|
 button. Alternatively, you can add a configuration when an SSL error occurs
 during a connection and you are presented with an **SSL Error** dialog (where
 the error can be ignored temporarily or saved to the database and ignored):
@@ -415,7 +416,7 @@ save the configuration to the database.
    :width: 1.5em
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
    :width: 1.5em
 .. |transformSettings| image:: /static/common/mActionTransformSettings.png
    :width: 1.5em

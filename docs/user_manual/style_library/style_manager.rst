@@ -62,10 +62,19 @@ previewed items organized into tabs:
   which store the font, color, buffers, shadows, and backgrounds of texts
   (i.e. all the formatting parts of the label settings, which for instance can
   be used in layouts);
-* |labeling| :guilabel:`Label settings` to manage :ref:`label settings
+* |labelingSingle| :guilabel:`Label settings` to manage :ref:`label settings
   <showlabels>`, which include the text formats and some layer-type specific
   settings such as label placement, priority, callouts, rendering...
+* |legend| :guilabel:`Legend Patch Shapes` to manage custom legend patch
+  shapes, which include :guilabel:`Marker`, :guilabel:`Line` and
+  :guilabel:`Fill` geometries.
+* |3d| :guilabel:`3D Symbols` to configure symbols with :ref:`3D properties
+  <3dsymbols>` (extrusion, shading, altitude, ...) for the features to render
+  in a :ref:`3D Map view <label_3dmapview>`
 
+You can arrange the Styles in |iconView| :guilabel:`Icon View` or in
+|openTable| :guilabel:`List View` on the bottom right side. In both views
+the tooltip shows a larger instance of the style.
 
 For each family of items, you can organize the elements into different categories,
 listed in the panel on the left:
@@ -77,10 +86,10 @@ listed in the panel on the left:
   An item can be tagged more than once. Select a tag in the list and the tabs
   are updated to show only their items that belong to it.
   To create a new tag you could later attach to a set of items, use the
-  :guilabel:`Add Tag...` button or select the |signPlus| :guilabel:`Add Tag...`
+  :guilabel:`Add Tag...` button or select the |symbologyAdd| :guilabel:`Add Tag...`
   from any tag contextual menu;
 * **Smart Group**: a smart group dynamically fetches its symbols according to
-  conditions set (see eg, figure_smart_group_). Click the :guilabel:`Add Smart Group...`
+  conditions set (see eg, :numref:`figure_smart_group`). Click the :guilabel:`Add Smart Group...`
   button to create smart groups. The dialog box allows you to enter an expression
   to filter the items to select (has a particular tag, have a string in its name,
   etc.). Any symbol, color ramp, text format or label setting that satisfies
@@ -111,7 +120,7 @@ categories, you can either:
   Editor` dialog.
   This option is also available in the contextual menu of the smart group.
 
-To remove a tag or a smart group, right-click on it and select the |signMinus|
+To remove a tag or a smart group, right-click on it and select the |symbologyRemove|
 :guilabel:`Remove` button. Note that this does not delete the items grouped in the
 category.
 
@@ -122,13 +131,13 @@ As seen earlier, style elements are listed under different tabs whose
 contents depend on the active category (tag, smart group, favorites...).
 When a tab is enabled, you can:
 
-* Add new items: press the |signPlus| :sup:`Add item` button and configure the
+* Add new items: press the |symbologyAdd| :sup:`Add item` button and configure the
   item following :ref:`symbols <symbol-selector>`, :ref:`color ramps
   <color-ramp>` or :ref:`text format and label <showlabels>` builder description.
 * Modify an existing item: select an item and press |symbologyEdit| :sup:`Edit
   item` button and configure as mentioned above. 
 * Delete existing items: to delete an element you no longer need, select it and
-  click |signMinus| :sup:`Remove item` (also available through right-click).
+  click |symbologyRemove| :sup:`Remove item` (also available through right-click).
   The item will be deleted from the local database.
 
 Note that the :guilabel:`All` tab provides access to these options for every type
@@ -244,6 +253,23 @@ database. Tags can be assigned to items. Also available through right-click,
 The dialog also allows to export single symbols as :file:`.PNG` or :file:`.SVG`
 files.
 
+
+Using the online repository
+...........................
+
+The QGIS project maintains a repository with a collection of styles shared by
+QGIS users. This is available at https://plugins.qgis.org/styles and can be
+accessed from the :guilabel:`Style Manager` dialog, pressing the |search|
+:guilabel:`Browse Online Styles` button at the bottom.
+
+From that repository, you can:
+
+#. Browse and search for any style items, based on their type or name
+#. Download the style file and unzip it
+#. Load the :file:`.xml` based file into your style database in QGIS,
+   using any of the aforementioned import methods.
+
+
 .. _color-ramp:
 
 Setting a Color Ramp
@@ -259,7 +285,7 @@ The Color ramp tab in the :guilabel:`Style Manager` dialog helps you preview
 different color ramps based on the category selected in the left panel.
 
 To create a custom color ramp, activate the Color ramp tab and click the
-|signPlus| :sup:`Add item` button. The button reveals a drop-down list to
+|symbologyAdd| :sup:`Add item` button. The button reveals a drop-down list to
 choose the ramp type:
 
 * :guilabel:`Gradient`: given a start and end colors, generate a color ramp which
@@ -301,36 +327,97 @@ choose the ramp type:
  stop` as well as :kbd:`DEL` key removes the selected color stop. 
 
 
+.. _legend_patch:
+
+Creating a Legend Patch Shape
+=============================
+
+To create a new Legend Patch Shape, activate the :guilabel:`Legend Patch Shapes` tab and
+click the |symbologyAdd| :sup:`Add item` button. The button reveals a drop-down
+list to choose the geometry type:
+
+* :guilabel:`Marker Legend Patch Shape...`: to use with point geometries.
+* :guilabel:`Line Legend Patch Shape...`: to use with line geometries.
+* :guilabel:`Fill Legend Patch Shape...`: to use with polygon geometries.
+
+All three options will show the same dialog.
+
+.. _figure_legend_patch:
+
+.. figure:: img/createLegendPatchShape.png
+   :align: center
+
+   Create a new Legend Patch Shape
+
+Only the shape type and displayed legend patch shapes will differ regarding
+to the chosen geometry type. The following options will be available:
+
+* :guilabel:`Shape`: define the shape of the legend patch shape as a
+  WKT string. Single and multipart geometries may be used, but no
+  GeometryCollection.
+* |checkbox| :guilabel:`Preserve aspect ratio`
+* |iconView| :guilabel:`Icon View` or |openTable| :guilabel:`List View` of
+  available legend patch shapes, filtered by tags.
+
+When the new Shape is defined you can :guilabel:`Save Legend Patch Shape...`
+or press :guilabel:`OK`, which will both lead to the same dialog.
+
+.. _figure_safe_legend_patch:
+
+.. figure:: img/safeLegendPatchShape.png
+   :align: center
+
+   Save a new Legend Patch Shape
+
+Here you have to choose a name, tags to describe the shape and if it should
+be added to favorites.
+
+If you press :guilabel:`Save...`, the shape is added to the list and you are directed
+back to the :guilabel:`New Legend Patch Shape` dialog to keep creating new shapes.
+
+
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
    If you need to create a new substitution manually,
    please add it also to the substitutions.txt file in the
    source folder.
 
+.. |3d| image:: /static/common/3d.png
+   :width: 1.5em
+.. |checkbox| image:: /static/common/checkbox.png
+   :width: 1.3em
 .. |color| image:: /static/common/color.png
 .. |fileOpen| image:: /static/common/mActionFileOpen.png
    :width: 1.5em
 .. |fileSave| image:: /static/common/mActionFileSave.png
    :width: 1.5em
-.. |labeling| image:: /static/common/labelingSingle.png
+.. |iconView| image:: /static/common/mActionIconView.png
    :width: 1.5em
+.. |labelingSingle| image:: /static/common/labelingSingle.png
+   :width: 1.5em
+.. |legend| image:: /static/common/legend.png
+   :width: 1.2em
 .. |lineLayer| image:: /static/common/mIconLineLayer.png
+   :width: 1.5em
+.. |openTable| image:: /static/common/mActionOpenTable.png
    :width: 1.5em
 .. |pointLayer| image:: /static/common/mIconPointLayer.png
    :width: 1.5em
 .. |polygonLayer| image:: /static/common/mIconPolygonLayer.png
    :width: 1.5em
+.. |search| image:: /static/common/search.png
+   :width: 1.5em
 .. |sharing| image:: /static/common/mActionSharing.png
-   :width: 1.5em
-.. |signMinus| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
    :width: 1.5em
 .. |styleManager| image:: /static/common/mActionStyleManager.png
    :width: 1.5em
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
+   :width: 1.5em
 .. |symbologyEdit| image:: /static/common/symbologyEdit.png
+   :width: 1.5em
+.. |symbologyRemove| image:: /static/common/symbologyRemove.png
    :width: 1.5em
 .. |text| image:: /static/common/text.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em

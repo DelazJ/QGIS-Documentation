@@ -17,16 +17,25 @@ choose :guilabel:`Properties` from the context menu. This will open the
 
 There are several tabs in the dialog:
 
-* |metadata| :ref:`Information <raster_information>`
-* |system| :ref:`Source <raster_sourcetab>`
-* |symbology| :ref:`Symbology <raster_symbology>`
-* |transparency| :ref:`Transparency <raster_transparency>`
-* |rasterHistogram| :ref:`Histogram <raster_histogram>`
-* |rendering| :ref:`Rendering <raster_rendering>`
-* |pyramids| :ref:`Pyramids <raster_pyramids>`
-* |editMetadata| :ref:`Metadata <raster_metadata>`
-* |legend| :ref:`Legend <raster_server>`
-* |overlay| :ref:`QGIS Server <raster_server>`
+.. list-table::
+
+  * - |metadata| :ref:`Information <raster_information>`
+    - |system| :ref:`Source <raster_sourcetab>`
+    - |symbology| :ref:`Symbology <raster_symbology>`:sup:`[1]`
+  * - |transparency| :ref:`Transparency <raster_transparency>`:sup:`[1]`
+    - |rasterHistogram| :ref:`Histogram <raster_histogram>`:sup:`[1]`
+    - |rendering| :ref:`Rendering <raster_rendering>`
+  * - |temporal| :ref:`Temporal <raster_temporal>`
+    - |pyramids| :ref:`Pyramids <raster_pyramids>`
+    - |editMetadata| :ref:`Metadata <raster_metadata>`
+  * - |legend| :ref:`Legend <raster_server>`
+    - |overlay| :ref:`QGIS Server <raster_server>`
+    - :ref:`External plugins <plugins>`:sup:`[2]` tabs
+
+:sup:`[1]` Also available in the :ref:`Layer styling panel <layer_styling_panel>`
+
+:sup:`[2]` :ref:`External plugins <plugins>` you install can optionally add tabs to this
+dialog. Those are not presented in this document. Refer to their documentation.
 
 
 .. tip:: **Live update rendering**
@@ -54,12 +63,17 @@ an interesting place to quickly grab summarized information and
 metadata for the current layer.
 Provided information are:
 
-* based on the provider of the layer (format of storage, path, data
-  type, extent, width/height, compression, pixel size, statistics on
-  bands, number of columns, rows and no-data values of the raster...);
-* picked from the :ref:`provided metadata <raster_metadata>`: access,
-  links, contacts, history... as well as dataset information (CRS,
-  Extent, bands...).
+* general such as name in the project, source path, list of auxiliary files,
+  last save time and size, the used provider
+* based on the provider of the layer: extent, width and height, data type,
+  GDAL driver, bands statistics
+* the Coordinate Reference System: name, units, method, accuracy, reference
+  (i.e. whether it's static or dynamic)
+* read from layer properties: data type, extent, width/height, compression,
+  pixel size, statistics on bands, number of columns, rows and no-data values
+  of the raster...
+* picked from the :ref:`filled metadata <raster_metadata>`: access, extents,
+  links, contacts, history...
 
 .. _raster_sourcetab:
 
@@ -97,11 +111,18 @@ the selected raster, including:
 Symbology Properties
 ====================
 
+The raster layer symbology tab is made of three different sections:
+
+* The :guilabel:`Band rendering` where you can control the renderer type to use
+* The :guilabel:`Layer rendering` to apply effects on rendered data
+* The :guilabel:`Resampling` methods to optimize rendering on map
+
 Band rendering
 --------------
 
-QGIS offers four different :guilabel:`Render types`.
-The choice of renderer depends on the data type.
+QGIS offers many different :guilabel:`Render types`.
+The choice of renderer depends on the data type and the
+information you'd like to highlight.
 
 #. :ref:`Multiband color <multiband_color>` - if the file comes
    with several bands (e.g. a satellite image with several bands).
@@ -117,6 +138,8 @@ The choice of renderer depends on the data type.
    (e.g. an elevation map).
 #. :ref:`Hillshade <hillshade_renderer>` - Creates hillshade from a
    band.
+#. :ref:`Contours <raster_contours>` - Generates contours on the
+   fly for a source raster band.
 
 
 .. _multiband_color:
@@ -194,7 +217,7 @@ contextual menu to:
    Raster Symbology - Paletted unique value rendering
 
 The pulldown menu, that opens when clicking the :guilabel:`...`
-(:guilabel:`Advanced options`) button below the color map to the
+(:sup:`Advanced options`) button below the color map to the
 right, offers color map loading
 (:guilabel:`Load Color Map from File...`) and exporting
 (:guilabel:`Export Color Map to File...`), and loading of classes
@@ -205,7 +228,7 @@ right, offers color map loading
 Singleband gray
 ...............
 
-This renderer allows you to render a single band layer with a
+This renderer allows you to render a layer using only one band with a
 :guilabel:`Color gradient`: 'Black to white' or 'White to black'.
 You can change the range of values to color (:guilabel:`Min` and
 :guilabel:`Max`) in the
@@ -222,6 +245,12 @@ to MinMax' and 'Clip to min max'.
 
    Raster Symbology - Singleband gray rendering
 
+Pixels are assigned a color based on the selected color gradient and the
+layer's legend (in the :guilabel:`Layers` panel and the layout :ref:`legend
+item <layout_legend_item>`) is displayed using a continuous color ramp.
+Press :guilabel:`Legend settings...` if you wish to tweak the settings.
+More details at :ref:`raster_legend_settings`.
+
 
 .. index:: Color map, Color interpolation, Discrete
 .. _label_colormaptab:
@@ -231,7 +260,7 @@ Singleband pseudocolor
 
 This is a render option for single-band files that include a
 continuous palette.
-You can also create color maps for a bands of a multiband raster.
+You can also create color maps for a band of a multiband raster.
 
 .. _figure_raster_pseudocolor:
 
@@ -241,56 +270,16 @@ You can also create color maps for a bands of a multiband raster.
    Raster Symbology - Singleband pseudocolor rendering
 
 
-Using a :guilabel:`Band` of the layer and a
-:ref:`values range <minmaxvalues>`, three types of color
-:guilabel:`Interpolation` are available:
+Using a :guilabel:`Band` of the layer and a :ref:`values range <minmaxvalues>`,
+you can now interpolate and assign representation color to pixels within classes.
+More at :ref:`color_ramp_shader`.
 
-* Discrete (a ``<=`` symbol appears in the header of the
-  :guilabel:`Value` column)
-* Linear
-* Exact (an ``=`` symbol appears in the header of the
-  :guilabel:`Value` column)
-
-The :guilabel:`Color ramp` drop down lists the available color ramps.
-You can create a new one and edit or save the currently selected one.
-The name of the color ramp will be saved in the configuration and in
-the QML file.
-
-The :guilabel:`Label unit suffix` is a label added after the value in
-the legend.
-
-For classification :guilabel:`Mode` |selectString| 'Equal interval',
-you only need to select the :guilabel:`number of classes`
-|selectNumber| and press the button :guilabel:`Classify`.
-For :guilabel:`Mode` |selectString| 'Continuous', QGIS creates
-classes automatically depending on :guilabel:`Min` and
-:guilabel:`Max`.
-
-The button |signPlus| :sup:`Add values manually` adds a value
-to the table.
-The button |signMinus| :sup:`Remove selected row` deletes a value from
-the table.
-Double clicking in the :guilabel:`Value` column lets you insert a
-specific value.
-Double clicking in the :guilabel:`Color` column opens the dialog
-:guilabel:`Change color`, where you can select a color to apply for
-that value.
-Further, you can also add labels for each color, but this value won't
-be displayed when you use the identify feature tool.
-
-Right-clicking over selected rows in the color table shows a
-contextual menu to:
-
-* :guilabel:`Change Color...` for the selection
-* :guilabel:`Change Opacity...` for the selection
-
-You can use the buttons |fileOpen| :sup:`Load color map from file`
-or |fileSaveAs| :sup:`Export color map to file` to load an existing
-color table or to save the color table for later use.
-
-The |checkbox| :guilabel:`Clip out of range values` allows QGIS to
-not render pixel greater than the :guilabel:`Max` value.
-
+Pixels are assigned a color based on the selected color ramp and the
+layer's legend (in the :guilabel:`Layers` panel and the layout :ref:`legend
+item <layout_legend_item>`) is displayed using a continuous color ramp.
+Press :guilabel:`Legend settings...` if you wish to tweak the settings
+or instead use a legend with separated classes (and colors).
+More details at :ref:`raster_legend_settings`.
 
 .. index:: Hillshade
 .. _hillshade_renderer:
@@ -319,6 +308,43 @@ Options:
 * |checkbox| :guilabel:`Multidirectional`: Specify if multidirectional
   hillshading is to be used (default is ``off``).
 
+.. _raster_contours:
+
+Contours
+........
+
+This renderer draws contour lines that are calculated on the fly from
+the source raster band.
+
+
+.. _figure_raster_contours:
+
+.. figure:: img/rasterContours.png
+   :align: center
+
+   Raster Symbology - Contours rendering
+
+Options:
+
+* :guilabel:`Input band`: the raster band to use.
+* :guilabel:`Contour interval`: the distance between two consecutive contour lines
+* :guilabel:`Contour symbol`: the :ref:`symbol <vector_line_symbols>` to apply
+  to the common contour lines.
+* :guilabel:`Index contour interval`: the distance between two consecutive
+  **index contours**, that is the lines shown in a distinctive manner for ease
+  of identification, being commonly printed more heavily than other contour
+  lines and generally labeled with a value along its course.
+* :guilabel:`Index contour symbol`: the symbol to apply to the index contour lines
+* :guilabel:`Input downscaling`: Indicates by how much the renderer will scale
+  down the request to the data provider (default is ``4.0``).
+
+  For example, if you generate contour lines on input raster block with the
+  same size as the output raster block, the generated lines would contain too
+  much detail. This detail can be reduced by the "downscale" factor, requesting
+  lower resolution of the source raster.
+  For a raster block 1000x500 with downscale 10, the renderer will request
+  raster 100x50 from provider. Higher downscale makes contour lines
+  more simplified (at the expense of losing some detail).
 
 .. _minmaxvalues:
 
@@ -371,22 +397,160 @@ on the:
   :guilabel:`Apply` button of the layer properties dialog in order
   to display the actual min and max values in the widgets.
 
+.. _color_ramp_shader:
 
-Color rendering
+Color ramp shader classification
+................................
+
+This method can be used to classify and represent scalar dataset (raster or
+mesh contour) based on their values.
+Given a :ref:`color ramp <color-ramp>` and a number of classes, it generates
+intermediate color map entries for class limits. Each color is mapped with a
+value interpolated from a range of values and according to a classification mode.
+The scalar dataset elements are then assigned their color based on their class.
+
+.. _figure_raster_colorrampshader:
+
+.. figure:: img/color_ramp_shader.png
+   :align: center
+
+   Classifying a dataset with a color ramp shader
+
+#. A :guilabel:`Min` and :guilabel:`Max` values must be defined and used to
+   interpolate classes bounds. By default QGIS detects them from the dataset
+   but they can be modified.
+#. The :guilabel:`Interpolation` entry defines how scalar elements are assigned
+   their color :
+
+   * :guilabel:`Discrete` (a ``<=`` symbol appears in the header of the
+     :guilabel:`Value` column): The color is taken from the closest color map
+     entry with equal or higher value
+   * :guilabel:`Linear`: The color is linearly interpolated from the color map
+     entries above and below the pixel value, meaning that to each dataset
+     value corresponds a unique color
+   * :guilabel:`Exact` (a ``=`` symbol appears in the header of the
+     :guilabel:`Value` column): Only pixels with value equal to a color map
+     entry are applied a color; others are not rendered.
+#. The :guilabel:`Color ramp` widget helps you select the color ramp to assign
+   to the dataset. As usual with :ref:`this widget <color_ramp_widget>`,
+   you can create a new one and edit or save the currently selected one.
+   The name of the color ramp will be saved in the configuration.
+#. The :guilabel:`Label unit suffix` adds a label after the value in
+   the legend, and the :guilabel:`Label precision` controls the number of
+   decimals to display.
+#. The classification :guilabel:`Mode` helps you define how values are
+   distributed across the classes:
+
+   * :guilabel:`Equal interval`: Provided the :guilabel:`Number of classes`,
+     limits values are defined so that the classes all have the same magnitude.
+   * :guilabel:`Continuous`: Classes number and color are fetched from
+     the color ramp stops; limits values are set following stops distribution
+     in the color ramp.
+   * :guilabel:`Quantile`: Provided the :guilabel:`Number of classes`, limits
+     values are defined so that the classes have the same number of elements.
+     Not available with :ref:`mesh layers <mesh_symbology_contours>`.
+#. You can then :guilabel:`Classify` or tweak the classes:
+
+   * The button |symbologyAdd| :sup:`Add values manually` adds a value to the table.
+   * The button |symbologyRemove| :sup:`Remove selected row` deletes selected values
+     from the table.
+   * Double clicking in the :guilabel:`Value` column lets you modify the class value.
+   * Double clicking in the :guilabel:`Color` column opens the dialog
+     :guilabel:`Change color`, where you can select a color to apply for
+     that value.
+   * Double clicking in the :guilabel:`Label` column to modify the label of
+     the class, but this value won't be displayed when you use the identify
+     feature tool.
+   * Right-clicking over selected rows in the color table shows a contextual
+     menu to :guilabel:`Change Color...` and :guilabel:`Change Opacity...`
+     for the selection.
+
+   You can use the buttons |fileOpen| :sup:`Load color map from file`
+   or |fileSaveAs| :sup:`Export color map to file` to load an existing
+   color table or to save the color table for later use.
+
+#. With linear :guilabel:`Interpolation`, you can also configure:
+
+   * |checkbox| :guilabel:`Clip out of range values`: By default, the linear
+     method assigns the first class (respectively the last class) color to
+     values in the dataset that are lower than the set :guilabel:`Min`
+     (respectively greater than the set :guilabel:`Max`) value.
+     Check this setting if you do not want to render those values.
+   * :guilabel:`Legend settings`, for display in the :guilabel:`Layers`
+     panel and the layout :ref:`legend item <layout_legend_item>`.
+     More details at :ref:`raster_legend_settings`.
+
+.. _raster_legend_settings:
+
+Customize raster legend
+.......................
+
+When applying a color ramp to a raster or a mesh layer, you may want to display
+a legend showing the classification. By default, QGIS displays a continuous
+color ramp with min and max values in the :guilabel:`Layers` panel and the
+layout :ref:`legend item <layout_legend_item>`. This can be customized using
+the :guilabel:`Legend settings` button in the classification widget.
+
+.. _figure_raster_legend_settings:
+
+.. figure:: img/raster_legend_settings.png
+   :align: center
+
+   Modifying a raster legend
+
+In this dialog, you can set whether to |checkbox|:guilabel:`Use continuous
+legend`: if unchecked, the legend displays separated colors corresponding to
+the different classes applied. This option is not available for raster
+:ref:`singleband gray <singleband_gray>` symbology.
+
+Checking the :guilabel:`Use continuous legend` allows you to configure both
+the labels and layout properties of the legend.
+
+**Labels**
+
+* Add a :guilabel:`Prefix` and a :guilabel:`Suffix` to the labels
+* Modify the :guilabel:`Minimum` and a :guilabel:`Maximum` values to show in
+  the legend
+* :ref:`Customize <number_formatting>` the :guilabel:`Number format`
+* :ref:`Customize <text_format>` the :guilabel:`Text format` to use in the
+  print layout legend.
+
+**Layout**
+
+* Control the :guilabel:`Orientation` of the legend color ramp; it can be
+  **Vertical** or **Horizontal**
+* Control the :guilabel:`Direction` of the values depending on the orientation:
+
+  * If vertical, you can display the **Maximum on top** or the **Minimum on top**
+  * If horizontal, you can display the **Maximum on right** or the **Minimum on right**
+
+
+Layer rendering
 ---------------
 
-For all kinds of :guilabel:`Band rendering`, the
-:guilabel:`Color rendering` set.
+Over the symbology type applied to the layer band(s), you can
+achieve special rendering effects for the whole raster file(s):
 
-You can achieve special rendering effects for your raster file(s)
-by using one of the blending modes (see :ref:`blend-modes`).
+* Use one of the blending modes (see :ref:`blend-modes`)
+* Set custom :guilabel:`Brightness`, :guilabel:`Saturation`,
+  :guilabel:`Gamma` and :guilabel:`Contrast` to colors.
+* With the |checkbox|:guilabel:`Invert colors`, the layer is rendered with
+  opposite colors. Handy, for example, to switch out-of-the box OpenStreetMap
+  tiles to dark mode.
+* Turn the layer to :guilabel:`Grayscale` option either 'By lightness',
+  'By luminosity' or 'By average'.
+* :guilabel:`Colorize` and adjust the :guilabel:`Strength` of
+  :guilabel:`Hue` in the color table
 
-Further settings can be made by modifying the :guilabel:`Brightness`,
-:guilabel:`Saturation` and :guilabel:`Contrast`.
-You can also use a :guilabel:`Grayscale` option, where you can choose
-between 'Off', 'By lightness', 'By luminosity' and 'By average'.
-For one :guilabel:`Hue` in the color table, you can modify the
-'Strength'.
+Press :guilabel:`Reset` to remove any custom changes to the layer rendering.
+
+.. _figure_raster_resampling:
+
+.. figure:: img/rasterRenderAndResampling.png
+   :align: center
+
+   Raster Symbology - Layer rendering and Resampling settings
+
 
 Resampling
 ----------
@@ -397,14 +561,6 @@ Resampling modes can optimize the appearance of the map.
 They calculate a new gray value matrix through a geometric
 transformation.
 
-.. _figure_raster_resampling:
-
-.. figure:: img/rasterRenderAndRessampling.png
-   :align: center
-
-   Raster Symbology - Color rendering and Resampling settings
-
-
 When applying the 'Nearest neighbour' method, the map can get a
 pixelated structure when zooming in.
 This appearance can be improved by using the 'Bilinear' or 'Cubic'
@@ -413,9 +569,6 @@ The effect is a smoother image.
 This method can be applied to for instance digital topographic
 raster maps.
 
-At the bottom of the :guilabel:`Symbology` tab, you can see a
-thumbnail of the layer, its legend symbol, and the palette.
-
 
 .. index:: Transparency
 .. _raster_transparency:
@@ -423,14 +576,18 @@ thumbnail of the layer, its legend symbol, and the palette.
 Transparency Properties
 =======================
 
-|transparency| QGIS has the ability to set the transparency level
+|transparency| QGIS provides capabilities to set the transparency level
 of a raster layer.
-Use the transparency slider |slider| to set to what extent the
+
+Use the :guilabel:`Global opacity` slider to set to what extent the
 underlying layers (if any) should be visible through the current
 raster layer.
 This is very useful if you overlay raster layers (e.g., a shaded
 relief map overlayed by a classified raster map).
 This will make the look of the map more three dimensional.
+The opacity of the raster can be data-defined, and vary e.g. depending on
+the visibility of another layer, by temporal variables, on different pages
+of an atlas, ...
 
 .. _figure_raster_transparency:
 
@@ -439,8 +596,12 @@ This will make the look of the map more three dimensional.
 
    Raster Transparency
 
+With |checkbox| :guilabel:`No data value` QGIS reports the original source
+no data value (if defined) which you can consider as is in the rendering.
 Additionally, you can enter a raster value that should be treated as
 an :guilabel:`Additional no data value`.
+The :guilabel:`Display no data as` color selector allows you to apply
+a custom color to no data pixels, instead of the default transparent rendering.
 
 An even more flexible way to customize the transparency is available
 in the :guilabel:`Custom transparency options` section:
@@ -450,7 +611,7 @@ in the :guilabel:`Custom transparency options` section:
 * Provide a list of pixels to make transparent with corresponding
   levels of transparency:
 
-  #. Click the |signPlus| :sup:`Add values manually` button.
+  #. Click the |symbologyAdd| :sup:`Add values manually` button.
      A new row will appear in the pixel list.
   #. Enter the **Red**, **Green** and **Blue** values of the pixel and
      adjust the **Percent Transparent** to apply.
@@ -532,7 +693,42 @@ In the |rendering| :guilabel:`Rendering` tab, it's possible to:
 .. figure:: img/rasterRendering.png
    :align: center
 
-   Raster Rendering
+   Raster Rendering Properties
+
+
+.. index:: Temporal
+.. _raster_temporal:
+
+Temporal Properties
+===================
+
+The |temporal| :guilabel:`Temporal` tab provides options to control
+the rendering of the layer over time. Such dynamic rendering requires the
+:ref:`temporal navigation <maptimecontrol>` to be enabled over the map canvas.
+
+.. _figure_raster_temporal:
+
+.. figure:: img/rasterTemporal.png
+   :align: center
+
+   Raster Temporal Properties
+
+Check the |checkbox| :guilabel:`Dynamic Temporal Control` option and
+set whether the layer redraw should be:
+
+* :guilabel:`Automatic`: the rendering is controlled by the underlying
+  data provider if it suppports temporal data handling. E.g. this can be used
+  with WMS-T layers or PostGIS rasters.
+
+  .. A bit more info on this automatic option would be necessary.
+   I guess it has to do with wms-t that I don't use so precision welcome
+
+* :guilabel:`Fixed time range`: only show the raster layer if the animation
+  time is within a :guilabel:`Start date` and :guilabel:`End date` range
+* :guilabel:`Redraw layer only`: the layer is redrawn at each new animation
+  frame. It's useful when the layer uses time-based expression values for
+  renderer settings (e.g. data-defined renderer opacity, to fade in/out
+  a raster layer).
 
 
 .. index:: Pyramids
@@ -597,8 +793,7 @@ Metadata Properties
 
 The |editMetadata| :guilabel:`Metadata` tab provides you with options
 to create and edit a metadata report on your layer.
-See :ref:`vector layer metadata properties <vectormetadatamenu>` for
-more information.
+See :ref:`metadatamenu` for more information.
 
 .. _figure_raster_metadata:
 
@@ -614,15 +809,25 @@ more information.
 Legend Properties
 =================
 
-The |legend| :guilabel:`Legend` tab provides you with a list of
-widgets you can embed within the layer tree in the Layers panel.
-The idea is to have a way to quickly access some actions that are
-often used with the layer (setup transparency, filtering, selection,
-style or other stuff...).
+The |legend| :guilabel:`Legend` tab provides you with advanced
+settings for the :ref:`Layers panel <label_legend>` and/or the :ref:`print
+layout legend <layout_legend_item>`. These options include:
 
-By default, QGIS provides a transparency widget but this can be
-extended by plugins that register their own widgets and assign
-custom actions to layers they manage.
+* Depending on the symbology applied to the layer, you may end up with several
+  entries in the legend, not necessarily readable/useful to display.
+  The :guilabel:`Legend placeholder image` helps you :ref:`select an image
+  <embedded_file_selector>` for replacement, displayed both in the
+  :guilabel:`Layers` panel and the print layout legend.
+* The |legend| :guilabel:`Embedded widgets in Legend` provides you with a list
+  of widgets you can embed within the layer tree in the Layers panel.
+  The idea is to have a way to quickly access some actions that are
+  often used with the layer (setup transparency, filtering, selection,
+  style or other stuff...).
+
+  By default, QGIS provides a transparency widget but this can be
+  extended by plugins that register their own widgets and assign
+  custom actions to layers they manage.
+
 
 .. _figure_raster_legend:
 
@@ -640,7 +845,7 @@ QGIS Server Properties
 
 From the |overlay| :guilabel:`QGIS Server` tab, information can
 be provided for :guilabel:`Description`, :guilabel:`Attribution`,
-:guilabel:`MetadataUrl` and :guilabel:`LegendUrl`.
+:guilabel:`Metadata URL` and :guilabel:`Legend URL`.
 
 .. _figure_raster_server:
 
@@ -688,20 +893,17 @@ be provided for :guilabel:`Description`, :guilabel:`Attribution`,
    :width: 1.5em
 .. |rendering| image:: /static/common/rendering.png
    :width: 1.5em
-.. |selectNumber| image:: /static/common/selectnumber.png
-   :width: 2.8em
-.. |selectString| image:: /static/common/selectstring.png
-   :width: 2.5em
 .. |setProjection| image:: /static/common/mActionSetProjection.png
    :width: 1.5em
-.. |signMinus| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |slider| image:: /static/common/slider.png
 .. |symbology| image:: /static/common/symbology.png
    :width: 2em
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
+   :width: 1.5em
+.. |symbologyRemove| image:: /static/common/symbologyRemove.png
+   :width: 1.5em
 .. |system| image:: /static/common/system.png
+   :width: 1.5em
+.. |temporal| image:: /static/common/temporal.png
    :width: 1.5em
 .. |transparency| image:: /static/common/transparency.png
    :width: 1.5em

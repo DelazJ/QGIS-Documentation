@@ -18,10 +18,15 @@
         assert vlayer.isValid()
         QgsProject.instance().addMapLayers([vlayer])
 
+.. _geometry:
 
-The code snippets on this page need the following imports if you're outside the pyqgis console:
+*****************
+Geometry Handling
+*****************
 
-.. testcode:: geometry
+.. hint:: The code snippets on this page need the following imports if you're outside the pyqgis console:
+
+ .. testcode:: geometry
 
     from qgis.core import (
       QgsGeometry,
@@ -33,17 +38,14 @@ The code snippets on this page need the following imports if you're outside the 
       QgsVectorLayer,
       QgsDistanceArea,
       QgsUnitTypes,
+      QgsCoordinateTransform,
+      QgsCoordinateReferenceSystem
     )
 
-.. _geometry:
+.. only:: html
 
-
-*****************
-Geometry Handling
-*****************
-
-.. contents::
-   :local:
+   .. contents::
+      :local:
 
 Points, linestrings and polygons that represent a spatial feature are commonly
 referred to as geometries. In QGIS they are represented with the
@@ -211,7 +213,54 @@ vector type. Here's an example on how to use these accessors:
    and :meth:`y() <qgis.core.QgsPoint.y>` methods.
 
 For multipart geometries there are similar accessor functions:
-:meth:`asMultiPoint() <qgis.core.QgsGeometry.asMultiPoint>`, :meth:`asMultiPolyline() <qgis.core.QgsGeometry.asMultiPolyline>` and :meth:`asMultiPolygon() <qgis.core.QgsGeometry.asMultiPolygon>`.
+:meth:`asMultiPoint() <qgis.core.QgsGeometry.asMultiPoint>`,
+:meth:`asMultiPolyline() <qgis.core.QgsGeometry.asMultiPolyline>`
+and :meth:`asMultiPolygon() <qgis.core.QgsGeometry.asMultiPolygon>`.
+
+
+It is possible to iterate over all the parts of a geometry,
+regardless of the geometry's type. E.g.
+
+.. testcode:: geometry
+
+  geom = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
+  for part in geom.parts():
+    print(part.asWkt())
+
+.. testoutput:: geometry
+
+  Point (0 0)
+  Point (1 1)
+  Point (2 2)
+
+.. testcode:: geometry
+
+  geom = QgsGeometry.fromWkt( 'LineString( 0 0, 10 10 )' )
+  for part in geom.parts():
+    print(part.asWkt())
+
+.. testoutput:: geometry
+
+  LineString (0 0, 10 10)
+
+It's also possible to modify each part of the geometry using
+:meth:`QgsGeometry.parts() <qgis.core.QgsGeometry.parts>` method.
+
+.. testcode:: geometry
+
+    geom = QgsGeometry.fromWkt( 'MultiPoint( 0 0, 1 1, 2 2)' )
+    for part in geom.parts():
+      part.transform(QgsCoordinateTransform(
+        QgsCoordinateReferenceSystem("EPSG:4326"),
+        QgsCoordinateReferenceSystem("EPSG:3111"),
+        QgsProject.instance())
+      )
+
+    print(geom.asWkt())
+
+.. testoutput:: geometry
+
+    MultiPoint ((-10334726.79314761981368065 -5360105.10101188533008099),(-10462133.82917750626802444 -5217484.34365727473050356),(-10589398.51346865110099316 -5072020.358805269934237))
 
 
 .. index:: Geometry; Predicates and operations
@@ -254,10 +303,10 @@ The following code assumes ``layer`` is a :class:`QgsVectorLayer <qgis.core.QgsV
 .. testoutput:: geometry
 
     Zambia
-    Area:  62.822790653431205
+    Area:  62.822790653431014
     Perimeter:  50.65232014052552
     Zimbabwe
-    Area:  33.41113559136521
+    Area:  33.41113559136511
     Perimeter:  26.608288555013935
 
 Now you have calculated and printed the areas and perimeters of the geometries.
@@ -297,13 +346,13 @@ The following code assumes ``layer`` is a :class:`QgsVectorLayer
 .. testoutput:: geometry
 
     Zambia
-    Perimeter (m): 5539361.250080013
-    Area (m2): 752000605894.2937
-    Area (km2): 752000.6058942936
+    Perimeter (m): 5539361.250294596
+    Area (m2): 751989035032.9031
+    Area (km2): 751989.0350329031
     Zimbabwe
-    Perimeter (m): 2865021.3323912495
-    Area (m2): 389250992553.95465
-    Area (km2): 389250.99255395465
+    Perimeter (m): 2865021.332507607
+    Area (m2): 389267821381.6009
+    Area (km2): 389267.82138160086
 
 Alternatively, you may want to know the distance and bearing between two points.
 
@@ -323,7 +372,7 @@ Alternatively, you may want to know the distance and bearing between two points.
 .. testoutput:: geometry
   :hide:
 
-  Distance in meters:  5154172.923937496
+  Distance in meters:  5154172.923936774
 
 You can find many example of algorithms that are included in QGIS and use these
 methods to analyze and transform vector data. Here are some links to the code

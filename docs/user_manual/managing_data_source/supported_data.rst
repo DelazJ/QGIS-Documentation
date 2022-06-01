@@ -52,9 +52,9 @@ Many of the features and tools available in QGIS work the same,
 regardless the vector data source.
 However, because of the differences in format specifications
 (GeoPackage, ESRI Shapefile, MapInfo and MicroStation file formats,
-AutoCAD DXF, PostGIS, SpatiaLite, DB2, Oracle Spatial, MSSQL
-Spatial databases, and many more), QGIS may handle some of their
-properties differently.
+AutoCAD DXF, PostGIS, SpatiaLite, Oracle Spatial, MSSQL
+Spatial, SAP HANA Spatial databases and many more), QGIS may handle some of
+their properties differently.
 Support is provided by the
 `OGR Simple Feature Library <https://gdal.org/drivers/vector/index.html>`_.
 This section describes how to work with these specificities.
@@ -306,6 +306,10 @@ have trouble loading a PostgreSQL table into QGIS, the information below may
 help you understand QGIS messages and give you directions for modifying
 the PostgreSQL table or view definition to allow QGIS to load it.
 
+.. note::
+
+   A PostgreSQL database can also store QGIS projects.
+
 Primary key
 ...........
 
@@ -336,6 +340,11 @@ key or with a unique constraint, preferably indexed).
 As for table, a checkbox **Select at id** is activated by default
 (see above for the meaning of the checkbox).
 It can make sense to disable this option when you use expensive views.
+
+.. note:: **PostgreSQL foreign table**
+
+   PostgreSQL foreign tables are not explicitely supported by the PostgreSQL
+   provider and will be handled like a view.
 
 .. _layer_style_backup:
 
@@ -510,7 +519,7 @@ Many GIS packages don't wrap vector maps with a geographic reference system
 (http://postgis.refractions.net/documentation/manual-2.0/ST_Shift_Longitude.html).
 As result, if we open such a map in QGIS, we could see two widely
 separated locations, that should appear near each other.
-In Figure_vector_crossing_, the tiny point on the far left of the map
+In :numref:`Figure_vector_crossing`, the tiny point on the far left of the map
 canvas (Chatham Islands) should be within the grid, to the right of
 the New Zealand main islands.
 
@@ -607,7 +616,7 @@ come from GDAL which is responsible for the writing of the file:
 
 Besides GeoJSON there is also an option to export to
 "GeoJSON - Newline Delimited"
-(see https://gdal.org/drv_geojsonseq.html).
+(see https://gdal.org/drivers/vector/geojsonseq.html).
 Instead of a FeatureCollection with Features, you can stream one type
 (probably only Features) sequentially separated with newlines.
 
@@ -623,55 +632,57 @@ GeoJSON - Newline Delimited has some specific Layer options availabe too:
   Files are given the :file:`.json` extension if extension is not provided.
 
 
-.. index:: DB2 Spatial
-.. _label_db2_spatial:
+.. index:: SAP HANA Spatial
+.. _label_hana_spatial:
 
-DB2 Spatial Layers
-------------------
+SAP HANA Spatial Layers
+-----------------------
 
-IBM DB2 for Linux, Unix and Windows (DB2 LUW), IBM DB2 for z/OS (mainframe)
-and IBM DashDB products allow
-users to store and analyse spatial data in relational table columns.
-The DB2 provider for QGIS supports the full range of visualization, analysis
-and manipulation of spatial data in these databases.
+This section contains some details on how QGIS accesses SAP HANA layers. Most of
+the time, QGIS should simply provide you with a list of database tables and
+views that can be loaded, and it will load them on request. However, if you have
+trouble loading an SAP HANA table or view into QGIS, the information below may
+help you understand the root cause and assist in resolving the issue.
 
-.. _DB2 z/OS KnowledgeCenter: https://www.ibm.com/support/knowledgecenter/en/SSEPEK_11.0.0/spatl/src/tpc/spatl_db2sb03.html
-.. _DB2 LUW KnowledgeCenter: https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.spatial.topics.doc/doc/db2sb03.html
-.. _DB2 DashDB KnowledgeCenter: https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.db2.luw.spatial.topics.doc/doc/csbp1001.html
-.. _DB2 Spatial Tutorial: https://www.ibm.com/developerworks/data/tutorials/dm-1202db2spatialdata1/
+Feature Identification
+......................
 
-User documentation on these capabilities can be found at the
-`DB2 z/OS KnowledgeCenter`_, `DB2 LUW KnowledgeCenter`_
-and `DB2 DashDB KnowledgeCenter`_.
+If you'd like to use all of QGIS' feature editing capabilities, QGIS must be
+able to unambiguously identify each feature in a layer. Internally, QGIS uses a
+64-bit signed integer to identify features, whereas the negative range is
+reserved for special purposes.
 
-For more information about working with the DB2 spatial capabilities,
-check out the `DB2 Spatial Tutorial`_ on IBM DeveloperWorks.
+Therefore, the SAP HANA provider requires a unique key that can be mapped to a
+positive 64-bit integer to fully support QGIS' feature editing capabilities. If
+it is not possible to create such a mapping, you might still view the features,
+but editing might not work.
 
-The DB2 provider currently only supports the Windows environment
-through the Windows ODBC driver.
+Adding tables
+^^^^^^^^^^^^^
 
-The client running QGIS needs to have one of the following installed:
+When adding a table as a layer, the SAP HANA provider uses the table's primary
+key to map it to a unique feature id. Therefore, to have full feature editing
+support, you need to have a primary key to your table definition.
 
-* DB2 LUW
-* IBM Data Server Driver Package
-* IBM Data Server Client
+The SAP HANA provider supports multi-column primary keys, but if you'd like to
+get the best performance, your primary key should be a single column of type
+``INTEGER``.
 
-To open a DB2 data in QGIS, see the :ref:`browser_panel` or
-:ref:`vector_loading_database` section. 
+Adding views
+^^^^^^^^^^^^
 
-If you are accessing a DB2 LUW database on the same machine or using DB2 LUW as
-a client, the DB2 executables and supporting files need to be included in the
-Windows path.
-This can be done by creating a batch file like the following with
-the name **db2.bat** and including it in the directory
-**%OSGEO4W_ROOT%/etc/ini**::
+When adding a view as a layer, the SAP HANA provider cannot automatically
+identify columns that unambiguously identify a feature. Furthermore, some views
+are read-only and cannot be edited.
 
-	@echo off
-	REM Point the following to where DB2 is installed
-	SET db2path=C:\Program Files (x86)\sqllib
-	REM This should usually be ok - modify if necessary
-	SET gskpath=C:\Program Files (x86)\ibm\gsk8
-	SET Path=%db2path%\BIN;%db2path%\FUNCTION;%gskpath%\lib64;%gskpath%\lib;%path%
+To have full feature editing support, the view must be updatable (check column
+``IS_READ_ONLY`` in system view ``SYS.VIEWS`` for the view in question) and you
+must manually provide QGIS with one or more columns that identify a feature. The
+columns can be given by using
+:menuselection:`Layer --> Add Layer --> Add SAP HANA Spatial Layer` and then
+selecting the columns in the :guilabel:`Feature id` column. For best
+performance, the :guilabel:`Feature id` value should be a single ``INTEGER``
+column.
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE

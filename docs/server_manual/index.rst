@@ -8,12 +8,14 @@ QGIS Server Guide/Manual
 
 .. toctree::
   :maxdepth: 2
-  :numbered:
+  :numbered: 3
 
   introduction
   getting_started
   services
+  catalog
   plugins
   config
   development_server
   containerized_deployment
+  faq

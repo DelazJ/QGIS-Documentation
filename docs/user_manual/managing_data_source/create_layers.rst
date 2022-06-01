@@ -46,7 +46,7 @@ To create a new GeoPackage layer, press the |newGeoPackageLayer|
 :menuselection:`Layer --> Create Layer -->` menu or from the
 :guilabel:`Data Source Manager` toolbar.
 The :guilabel:`New GeoPackage Layer` dialog will be displayed as shown in
-figure_create_geopackage_.
+:numref:`figure_create_geopackage`.
 
 .. _figure_create_geopackage:
 
@@ -104,7 +104,7 @@ To create a new ESRI Shapefile format layer, press the |newVectorLayer|
 :menuselection:`Layer --> Create Layer -->` menu or from the
 :guilabel:`Data Source Manager` toolbar.
 The :guilabel:`New Shapefile Layer` dialog will be displayed as shown in
-figure_create_shapefile_.
+:numref:`figure_create_shapefile`.
 
 #. Provide a path and file name using the
    :guilabel:`...` button next to :guilabel:`File name`. QGIS will
@@ -150,7 +150,7 @@ To create a new SpatiaLite layer, press the |newSpatiaLiteLayer|
 :menuselection:`New SpatiaLite Layer...` button in the :menuselection:`Layer
 --> Create Layer -->` menu or from the :guilabel:`Data Source Manager` toolbar.
 The :guilabel:`New SpatiaLite Layer` dialog will be displayed as shown in
-Figure_create_spatialite_.
+:numref:`Figure_create_spatialite`.
 
 .. _figure_create_spatialite:
 
@@ -174,7 +174,8 @@ To add fields to the layer you are creating:
 
 #. Enter the :guilabel:`Name` of the field
 #. Select the data :guilabel:`Type`. Supported types are :guilabel:`Text data`,
-   :guilabel:`Whole number` and :guilabel:`Decimal number`.
+   :guilabel:`Whole number`, :guilabel:`Decimal number`, :guilabel:`Date` and
+   :guilabel:`Date time`.
 #. Click on the |newAttribute| :guilabel:`Add to Fields List` button
 #. Reproduce the steps above for each field you need to add
 #. Once you are happy with the attributes, click :guilabel:`OK`.
@@ -189,24 +190,73 @@ Further management of SpatiaLite layers can be done with :ref:`DB Manager
 <dbmanager>`.
 
 
+.. index:: New Mesh layer
+.. _vector_create_mesh:
+
+Creating a new Mesh layer
+--------------------------
+
+To create a new Mesh layer, press the |newMeshLayer|
+:menuselection:`New Mesh Layer...` button in the
+:menuselection:`Layer --> Create Layer -->` menu or from the
+:guilabel:`Data Source Manager` toolbar.
+The :guilabel:`New Mesh Layer` dialog will be displayed as shown in
+:numref:`figure_create_mesh`.
+
+.. _figure_create_mesh:
+
+.. figure:: img/editNewMesh.png
+   :align: center
+
+   Creating a New Mesh layer dialog
+
+#. The first step is to indicate the mesh file location. This can be done
+   by pressing the :guilabel:`...` button to the right of the
+   :guilabel:`File name` field and select an existing mesh file
+   or create a new one.
+#. Provide a name (:guilabel:`Layer name`), i.e. the name the layer is
+   displayed with in the :guilabel:`Layers` panel
+#. Select the :guilabel:`File format`: currently supported mesh file formats
+   are ``2DM Mesh File (*.2dm)``, ``Selafin File (*.slf)`` and ``UGRID (*.nc)``.
+#. Indicate the :ref:`Coordinate Reference System <crs_selector>` to assign
+   to the dataset
+#. The above steps will generate an empty layer that you can afterwards
+   digitize vertices and add dataset groups to.
+   It's however also possible to initialize the layer with an existing mesh layer,
+   i.e. populate the new layer with vertices or faces from the other.
+   To do so:
+
+   #. Check |checkbox| :guilabel:`Initialize Mesh using`
+   #. and select either a :guilabel:`Mesh from the current project`
+      or :guilabel:`Mesh from a file`. Informations on the selected mesh file
+      are displayed for checkup.
+
+   Note that only the frame of the mesh layer is transferred to the new layer;
+   their datasets are not copied.
+
+
 .. index:: New GPX layer
 .. _vector_create_gpx:
 
 Creating a new GPX layer
 -------------------------
 
-To create a new GPX file, you first need to load the GPS plugin.
-:menuselection:`Plugins -->` |showPluginManager| :menuselection:`Plugin
-Manager...` opens the Plugin Manager Dialog. Activate the |checkbox|
-:guilabel:`GPS Tools` checkbox.
+To create a new GPX file:
 
-When this plugin is loaded, choose
-:menuselection:`Create Layer -->` |createGPX|
-:menuselection:`Create new GPX Layer...` from the :menuselection:`Layer` menu.
-In the dialog, choose where to save the new file and press :guilabel:`Save`.
-Three new layers are added to the :guilabel:`Layers Panel`:
-``waypoints``, ``routes`` and ``tracks``.
+#. Select :menuselection:`Create Layer -->` |createGPX|
+   :menuselection:`New GPX Layer...` from the :menuselection:`Layer` menu.
+#. In the dialog, choose where to save the new file, name it and press :guilabel:`Save`.
+#. Three new layers are added to the :guilabel:`Layers Panel`:
 
+   * a point layer to digitize locations (``waypoints``) with fields storing
+     the name, elevation, comment, description, source, url and url name
+   * a line layer to digitize sequences of locations that make up a planned
+     route (``routes``) with fields storing the name, symbol, number, comment,
+     description, source, url, url name
+   * and a line layer to track the receiver’s movement over time (``tracks``)
+     with fields storing the name, symbol, number, comment, description, source,
+     url, url name.
+#. You can now edit any of them as described in section :ref:`sec_edit_existing_layer`.
 
 .. index:: New Temporary Scratch layer
 .. _vector_new_scratch_layer:
@@ -224,7 +274,7 @@ To create a new Temporary Scratch layer, choose the |createMemory|
 :menuselection:`Layer --> Create Layer -->` menu or in the :guilabel:`Data
 Source Manager` toolbar.
 The :guilabel:`New Temporary Scratch Layer` dialog will be displayed as shown in
-figure_create_temporary_. Then:
+:numref:`figure_create_temporary`. Then:
 
 #. Provide the :guilabel:`Layer name`
 #. Select the :guilabel:`Geometry type`. Here you can create a:
@@ -310,8 +360,8 @@ Among the common parameters for raster and vector are:
   example database-like formats such as GeoPackage, SpatiaLite or Open Document
   Spreadsheets).
 * :guilabel:`CRS`: can be changed to reproject the data
-* :guilabel:`Extent` (possible values are **layer**, **Map view** or
-  **user-defined** extent)
+* :guilabel:`Extent`: restricts the extent of the input that is to be exported
+  using the :ref:`extent_selector <extent_selector>` widget
 * :guilabel:`Add saved file to map`: to add the new layer to the canvas
 
 However, some parameters are specific to raster and vector formats:
@@ -358,6 +408,13 @@ Depending on the format of export, some of these options may be available:
   ``value map``, you can keep the displayed values in the layer by checking
   |checkbox| :guilabel:`Replace all selected raw fields values by displayed
   values`.
+* :guilabel:`Persist layer metadata`: ensures that any layer :ref:`metadata
+  <vectormetadatamenu>` present in the source layer will be copied and stored:
+
+  * in the newly created layer, if the output is of GeoPackage format
+  * as a :file:`.qmd` file along with the output layer, for other formats.
+    Note that file-based formats supporting more than one dataset
+    (e.g. SpatiaLite, DXF,...) may have unintended behavior.
 * :guilabel:`Symbology export`: can be used mainly for DXF export and for all
   file formats who manage OGR feature styles (see note below) as DXF, KML, tab
   file formats:
@@ -700,13 +757,13 @@ when used in conjunction with this spatial index syntax.
    :width: 1.5em
 .. |newGeoPackageLayer| image:: /static/common/mActionNewGeoPackageLayer.png
    :width: 1.5em
+.. |newMeshLayer| image:: /static/common/mActionNewMeshLayer.png
+   :width: 1.5em
 .. |newSpatiaLiteLayer| image:: /static/common/mActionNewSpatiaLiteLayer.png
    :width: 1.5em
 .. |newVectorLayer| image:: /static/common/mActionNewVectorLayer.png
    :width: 1.5em
 .. |setProjection| image:: /static/common/mActionSetProjection.png
    :width: 1.5em
-.. |showPluginManager| image:: /static/common/mActionShowPluginManager.png
-   :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em

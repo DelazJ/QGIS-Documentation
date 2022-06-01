@@ -1,10 +1,11 @@
 |LS| Serving WMS
 ===============================================================================
 
-Let's download the `Training demo data <https://github.com/qgis/QGIS-Training-Data/archive/v2.0.zip>`_
-and unzip the files in the :file:`qgis-server-tutorial-data` subdirectory to
-any directory. We recommend that you simply create a :file:`/home/qgis/projects`
-directory and put your files there in order to avoid possible permissions problems.
+The data used for this exercise are available in the :file:`qgis-server-tutorial-data`
+subdirectory of the :ref:`training data <data_downloadlink>` you downloaded.
+For convenience and to avoid possible permissions problems, we will assume
+that these files are stored in :file:`/home/qgis/projects` directory.
+Hence, adapt the following instructions to your path.
 
 The demo data contains a QGIS project named :file:`world.qgs` that is already
 prepared to be served with QGIS Server.
@@ -165,8 +166,8 @@ returned image type to ``image/png``.
 |moderate| |FA| Use Filter, Opacities and Styles parameters
 -------------------------------------------------------------------------------
 
-Let's do another request that adds another layer, some of the
-:ref:`extra-getmap-parameters`, **FILTER** and **OPACITIES**, but also
+Let's do another request that adds another layer, some
+:ref:`basic parameters <services_basics>`, **FILTER** and **OPACITIES**, but also
 uses the standard STYLES parameter.
 
 .. code-block:: bash
@@ -199,9 +200,9 @@ to render only **Germany** and **Italy** from the countries layer.
 |moderate| |FA| Use Redlining
 -------------------------------------------------------------------------------
 
-Let's do another GetMap request that makes use of the :ref:`qgisserver-redlining`
-feature and of the **SELECTION** parameter detailed in the
-:ref:`extra-getmap-parameters` section:
+Let's do another GetMap request that makes use of the :ref:`redlining
+<wms_redlining>` feature and of the **SELECTION** parameter detailed in the
+:ref:`Basics <services_basics>` section:
 
 .. code-block:: bash
 
@@ -241,7 +242,7 @@ GetPrint requests
 -----------------
 
 One very nice feature of QGIS Server is that it makes use of the QGIS Desktop
-print layouts. You can learn about it in the :ref:`server_wms_getprint` section.
+print layouts. You can learn about it in the :ref:`wms_getprint` section.
 
 If you open the :file:`world.qgs` project with QGIS Desktop you will find a
 print layout named ``Population distribution``. A simplified ``GetPrint``

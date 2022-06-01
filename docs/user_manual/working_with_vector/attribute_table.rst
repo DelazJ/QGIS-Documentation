@@ -23,7 +23,7 @@ Foreword: Spatial and non-spatial tables
 
 QGIS allows you to load spatial and non-spatial layers. This currently includes
 tables supported by OGR and delimited text, as well as the PostgreSQL, MSSQL,
-SpatiaLite, DB2 and Oracle provider. All loaded layers are listed in
+SpatiaLite and Oracle provider. All loaded layers are listed in
 the :guilabel:`Layers` panel. Whether a layer is spatially enabled or not
 determines whether you can interact with it on the map.
 
@@ -94,6 +94,7 @@ following functionality:
    "|zoomToSelected|", "Zoom map to the selected rows", "", ":kbd:`Ctrl+J`"
    "|newAttribute|", "New field", "Add a new field to the data source", ":kbd:`Ctrl+W`"
    "|deleteAttribute|", "Delete field", "Remove a field from the data source"
+   "|editTable|", "Organize columns", "Show/hide fields from the attribute table"
    "|calculateField|", "Open field calculator", "Update field for many features in a row", ":kbd:`Ctrl+I`"
    "|conditionalFormatting|", "Conditional formatting", "Enable table formatting"
    "|dock|", "Dock attribute table", "Allows to dock/undock the attribute table"
@@ -118,6 +119,9 @@ QGIS provides two view modes to easily manipulate data in the attribute table:
 
 * The |openTable| :sup:`Table view`, displays values of multiple features in a
   tabular mode, each row representing a feature and each column a field.
+  A right-click on the column header allows you to :ref:`configure the table
+  display <configure_table_columns>` while a right-click on a cell provides
+  :ref:`interaction with the feature <interacting_features_table>`.
 * The |formView| :sup:`Form view` shows :ref:`feature identifiers
   <maptips>` in a first panel and displays only the attributes of the clicked
   identifier in the second one.
@@ -127,12 +131,16 @@ QGIS provides two view modes to easily manipulate data in the attribute table:
   The pull-down also includes the last 10 expressions for re-use.
   Form view uses the layer fields configuration
   (see :ref:`vector_attributes_menu`).
+
   You can browse through the feature identifiers with the arrows on the bottom
-  of the first panel. Once you markered the feature in yellow in the list it
-  is selected in yellow on the canvas. Use the |zoomToSelected| on top of the
-  attribute table to zoom to the feature. Clicking on an entry in the list 
-  (without using the rectangles) makes a feature flash in red color once so you
-  can see where it is situated.
+  of the first panel. The features attributes update in the second panel as you
+  go. It's also possible to identify or move to the active feature in the map
+  canvas with pushing down any of the button at the bottom:
+
+  * |highlightFeature| :sup:`Highlight current feature` if visible in the
+    map canvas
+  * |panTo| :sup:`Automatically pan to current feature`
+  * |zoomTo| :sup:`Zoom to current feature`
 
 You can switch from one mode to the other by clicking the corresponding icon at
 the bottom right of the dialog.
@@ -157,23 +165,13 @@ Configuring the columns
 -----------------------
 
 Right-click in a column header when in table view to have access to tools that
-help you configure what can be displayed in the attribute table and how.
+help you control:
 
-Hiding and organizing columns and enabling actions
-..................................................
+* the :ref:`column(s) size <resize_columns>`
+* the :ref:`column(s) visibility and order <organize_columns>`
+* the :ref:`sort order of the data <sort_columns>`
 
-By right-clicking in a column header, you can choose to hide it from the
-attribute table. To change several columns behavior at once, unhide a column or
-change the order of the columns, choose :guilabel:`Organize columns ...`.
-In the new dialog, you can:
-
-* check/uncheck columns you want to show or hide
-* drag-and-drop items to reorder the columns in the attribute table. Note that
-  this change is for the table rendering and does not alter the fields order in
-  the layer datasource
-* enable a new virtual :guilabel:`Actions` column that displays in each row a
-  drop-down box or button list of actions for each row, see :ref:`actions_menu`
-  for more information about actions.
+.. _resize_columns:
 
 Resizing columns widths
 .......................
@@ -183,11 +181,37 @@ select either:
 
 * :guilabel:`Set width...` to enter the desired value. By default, the current
   value is displayed in the widget
+* :guilabel:`Set all column widths...` to the same value
 * :guilabel:`Autosize` to resize at the best fit the column.
+* :guilabel:`Autosize all columns`
 
-It can also be changed by dragging the boundary on the right of the column
+A column size can also be changed by dragging the boundary on the right of its
 heading. The new size of the column is maintained for the layer, and restored at
 the next opening of the attribute table.
+
+.. _organize_columns:
+
+Hiding and organizing columns and enabling actions
+..................................................
+
+By right-clicking in a column header, you can choose to :guilabel:`Hide column`
+from the attribute table (in "table view" mode).
+For more advanced controls, press the |editTable| :sup:`Organize columns...`
+button from the dialog toolbar or choose :guilabel:`Organize columns...`
+in a column header contextual menu.
+In the new dialog, you can:
+
+* check/uncheck columns you want to show or hide: a hidden column will
+  disappear from every instances of the attribute table dialog until it is
+  actively restored.
+* drag-and-drop items to reorder the columns in the attribute table. Note that
+  this change is for the table rendering and does not alter the fields order in
+  the layer datasource
+* add a new virtual :guilabel:`Actions` column that displays in each row a
+  drop-down box or a button list of enabled actions.
+  See :ref:`actions_menu` for more information about actions.
+
+.. _sort_columns:
 
 Sorting columns
 ...............
@@ -196,8 +220,8 @@ The table can be sorted by any column, by clicking on the column header. A
 small arrow indicates the sort order (downward pointing means descending
 values from the top row down, upward pointing means ascending values from
 the top row down).
-You can also choose to sort the rows with the :guilabel:`sort` option of the
-column header context menu and write an expression, e.g. to sort the row
+You can also choose to sort the rows with the :guilabel:`Sort...` option of the
+column header context menu and write an expression. E.g. to sort the rows
 using multiple columns you can write ``concat(col0, col1)``.
 
 In form view, features identifier can be sorted using the |sort| :guilabel:`Sort
@@ -256,6 +280,7 @@ Adding new rule opens a form to define:
 
 .. index::
    pair: Attributes; Selection
+.. _interacting_features_table:
 
 Interacting with features in an attribute table
 ===============================================
@@ -318,18 +343,28 @@ only these records in the table. This can be easily done using the
 :guilabel:`Show Selected Features` item from the drop-down list at the bottom
 left of the attribute table dialog. This list offers the following filters:
 
-* :guilabel:`Show All Features`
-* :guilabel:`Show Selected Features`
-* :guilabel:`Show Features visible on map`
-* :guilabel:`Show Edited and New Features`
+* |openTable| :guilabel:`Show All Features`
+* |openTableSelected| :guilabel:`Show Selected Features` - same as using
+  :guilabel:`Open Attribute Table (Selected Features)` from the :guilabel:`Layer`
+  menu or the :guilabel:`Attributes Toolbar` or pressing :kbd:`Shift+F6`
+* |openTableVisible| :guilabel:`Show Features visible on map` - same as using
+  :guilabel:`Open Attribute Table (Visible Features)` from the :guilabel:`Layer`
+  menu or the :guilabel:`Attributes Toolbar` or pressing :kbd:`Ctrl+F6`
+* |openTableEdited| :guilabel:`Show Edited and New Features` - same as using
+  :guilabel:`Open Attribute Table (Edited and New Features)` from the :guilabel:`Layer`
+  menu or the :guilabel:`Attributes Toolbar`
 * :guilabel:`Field Filter` - allows the user to filter based on value of a field:
-  choose a column from a list, type a value and press :kbd:`Enter` to filter.
-  Then, only the matching features are shown in the attribute table.
+  choose a column from a list, type or select a value and press :kbd:`Enter` to filter.
+  Then, only the features matching ``num_field = value`` or ``string_field ilike '%value%'``
+  expression are shown in the attribute table. You can check |checkbox|
+  :guilabel:`Case sensitive` to be less permissive with strings.
 * :guilabel:`Advanced filter (Expression)` - Opens the expression builder
   dialog. Within it, you can create :ref:`complex expressions
   <vector_expressions>` to match table rows.
   For example, you can filter the table using more than one field.
   When applied, the filter expression will show up at the bottom of the form.
+* :menuselection:`Stored filter expressions -->`: a shortcut to :ref:`saved
+  expressions <store_filter>` frequently used for filtering your attribute table.
 
 It is also possible to :ref:`filter features using forms <filter_select_form>`.
 
@@ -348,6 +383,27 @@ It is also possible to :ref:`filter features using forms <filter_select_form>`.
   <tip_table_filtering>` for a how-to), selecting :guilabel:`Show Features
   Visible on Map` on a new canvas extent updates the spatial restriction.
 
+.. index:: Expression filter
+.. _store_filter:
+
+Storing filter expressions
+----------------------------
+
+Expressions you use for attribute table filtering can be saved for further calls.
+When using :guilabel:`Field Filter` or :guilabel:`Advanced Filter (expression)`
+entries, the expression used is displayed in a text widget in the bottom of the
+attribute table dialog. Press the |handleStoreFilterExpressionUnchecked|
+:sup:`Save expression with text as name` next to the box to save the expression
+in the project. Pressing the drop-down menu next to the button allows to save
+the expression with a custom name (:guilabel:`Save expression as...`).
+Once a saved expression is displayed, the |handleStoreFilterExpressionChecked|
+button is triggered and its drop-down menu allows you to :guilabel:`Edit the
+expression` and name if any, or :guilabel:`Delete stored expression`.
+
+Saved filter expressions are saved in the project and available through the
+:guilabel:`Stored filter expressions` menu of the attribute table.
+They are different from the :ref:`user expressions <user_expressions_functions>`,
+shared by all projects of the active user profile.
 
 .. _filter_select_form:
 
@@ -369,7 +425,7 @@ and selecting modes.
 
     Attribute table filtered by the filter form
 
-When selecting / filtering features from the attribute table, there is a :guilabel:`Filter features` 
+When selecting / filtering features from the attribute table, there is a :guilabel:`Filter features`
 button that allows defining and refining filters. Its use triggers the
 :guilabel:`Advanced filter (Expression)` option and displays the corresponding
 filter expression in an editable text widget at the bottom of the form.
@@ -466,7 +522,7 @@ to a new field (that can be a :ref:`virtual <virtual_field>` one).
 
 The field calculator is available on any layer that supports edit.
 When you click on the field calculator icon the dialog opens (see
-figure_field_calculator_). If the layer is not in edit mode, a warning is
+:numref:`figure_field_calculator`). If the layer is not in edit mode, a warning is
 displayed and using the field calculator will cause the layer to be put in
 edit mode before the calculation is made.
 
@@ -506,7 +562,9 @@ A short example illustrates how field calculator works when using the
 #. Set the :guilabel:`Output field length` to ``10`` and the :guilabel:`Precision`
    to ``3``
 #. Double click on ``$length`` in the :guilabel:`Geometry` group to add the length
-   of the geometry into the Field calculator expression box.
+   of the geometry into the Field calculator expression box (you will begin to see
+   a preview of the output, up to 60 characters, below the expression box updating 
+   in real-time as the expression is assembled).
 #. Complete the expression by typing ``/ 1000`` in the Field calculator
    expression box and click :guilabel:`OK`.
 #. You can now find a new :guilabel:`length_km` field in the attribute table.
@@ -685,7 +743,7 @@ Defining 1-N relations
 
 The first thing we are going to do is to let QGIS know about the relations
 between the layers. This is done in :menuselection:`Project --> Properties...`.
-Open the :guilabel:`Relations` tab and click on |signPlus| :guilabel:`Add Relation`.
+Open the :guilabel:`Relations` tab and click on |symbologyAdd| :guilabel:`Add Relation`.
 
 * **Name** is going to be used as a title. It should be a human readable string,
   describing, what the relation is used for. We will just call say **airport_relation**
@@ -701,7 +759,7 @@ Open the :guilabel:`Relations` tab and click on |signPlus| :guilabel:`Add Relati
   .. note:: Sometimes, you need more than a single field to uniquely identify
    features in a layer. Creating a relation with such a layer requires
    a **composite key**, ie more than a single pair of matching
-   fields. Use the |signPlus| :sup:`Add new field pair as part of a composite
+   fields. Use the |symbologyAdd| :sup:`Add new field pair as part of a composite
    foreign key` button to add as many pairs as necessary.
 
 * **Id** will be used for internal purposes and has to be unique. You may need
@@ -712,7 +770,9 @@ Open the :guilabel:`Relations` tab and click on |signPlus| :guilabel:`Add Relati
   and the child layer. The default :guilabel:`Association` type means that
   the parent layer is *simply* linked to the child one while the
   :guilabel:`Composition` type allows you to duplicate also the child features
-  when duplicating the parent ones.
+  when duplicating the parent ones and on deleting a feature the children are
+  deleted as well, resulting in cascade over all levels (means children of children
+  of... are deleted as well).
 
 .. _figure_relations_manager:
 
@@ -721,7 +781,7 @@ Open the :guilabel:`Relations` tab and click on |signPlus| :guilabel:`Add Relati
 
    Adding a relation between regions and airports layers
 
-From the :guilabel:`Relations` tab, you can also press the |signPlus|
+From the :guilabel:`Relations` tab, you can also press the |symbologyAdd|
 :guilabel:`Discover Relation` button to fetch the relations available from
 the providers of the loaded layers. This is possible for layers stored in
 data providers like PostgreSQL or SpatiaLite.
@@ -752,25 +812,26 @@ a table. And there are also some buttons available. Let's review them shortly:
   toggles the edit mode of the airport layer, although we are in the feature
   form of a feature from the region layer. But the table is representing
   features of the airport layer.
-* The |saveEdits| button is for saving all the edits.
-* The |newTableRow| button will add a new record to the airport layer attribute table.
-  And it will assign the new airport to the current region by default.
-* The |capturePoint| is the same as |newTableRow| but lets you digitize the
-  airport geometry in the map canvas beforehand. Note that the icon will change according
-  to geometry type.
-* The |duplicateFeature| button allows you to copy one or more child features.
-* The |deleteSelectedFeatures| button will delete the selected airport
-  permanently.
-* The |link| symbol will open a new dialog where you can select any existing
+* The |saveEdits| button is for saving all the edits in the child layer (airport).
+* The |capturePoint| button lets you digitize the airport geometry in the map canvas and
+  assigns the new feature to the current region by default.
+  Note that the icon will change according to the geometry type.
+* The |newTableRow| button adds a new record to the airport layer attribute table
+  and assigns the new feature to the current region by default. The geometry can
+  be drawn later with the :guilabel:`Add part` digitizing tool.
+* The |duplicateFeature| button allows you to copy and paste one or more child
+  features within the child layer. They can later be assigned to a different
+  parent feature or have their attributes modified.
+* The |deleteSelectedFeatures| button deletes the selected airport(s) permanently.
+* The |link| symbol opens a new dialog where you can select any existing
   airport which will then be assigned to the current region. This may be handy
   if you created the airport on the wrong region by accident.
-* The |unlink| symbol will unlink the selected airport from the current region,
+* The |unlink| symbol unlinks the selected airport(s) from the current region,
   leaving them unassigned (the foreign key is set to NULL) effectively.
 * With the |zoomToSelected| button you can zoom the map to the selected child
   features.
-* The two buttons |formView| and |openTable| to the right switch between table
-  view and form view where the later let's you view all the airports in their
-  respective form.
+* The two buttons |formView| and |openTable| to the right switch between the :ref:`table
+  view and form view <attribute_table_view>` of the related child features.
 
 In the above example the referencing layer has geometries (so it isn't just
 an alphanumeric table) so the above steps will create an entry in the layer
@@ -818,8 +879,8 @@ you to assign the current airport to another region.
 Moreover if you toggle the editing mode of the airport layer, the ``fk_region``
 field has also an autocompleter function: while typing you will see all the
 values of the ``id`` field of the region layer.
-Here it is possible to digitize a polygon for the region layer using the |signPlus| button
-if you chose the option ``Allow adding new features`` in the 
+Here it is possible to digitize a polygon for the region layer using the |symbologyAdd| button
+if you chose the option ``Allow adding new features`` in the
 :menuselection:`Properties --> Attributes Form` menu of the airport layer.
 
 The child layer can also be used in the :ref:`select_by_value` tool in
@@ -827,7 +888,7 @@ order to select features of the parent layer based on attributes of their childr
 
 In :numref:`figure_select_by_value`, all the regions where the mean
 altitude of the airports is greater than 500 meters above sea level
-are selected. 
+are selected.
 
 You will find that many different aggregation functions are available in the form.
 
@@ -850,19 +911,19 @@ N-M relations are many-to-many relations between two tables. For instance, the
 companies and an airline company flies to several airports.
 
 This SQL code creates the three tables we need for an N-M relationship in
-a PostgreSQL/PostGIS schema named *locations*. You can run the code using the 
+a PostgreSQL/PostGIS schema named *locations*. You can run the code using the
 :menuselection:`Database --> DB Manager…` for PostGIS or external tools such as `pgAdmin
-<https://www.pgadmin.org>`_. The airports table stores the ``airports`` layer and the airlines 
-table stores the ``airlines`` layer. In both tables few fields are used for 
+<https://www.pgadmin.org>`_. The airports table stores the ``airports`` layer and the airlines
+table stores the ``airlines`` layer. In both tables few fields are used for
 clarity. The *tricky* part is the ``airports_airlines`` table. We need it to list all
-airlines for all airports (or vice versa). This kind of table is known 
-as a *pivot table*. The *constraints* in this table force that an airport can be 
+airlines for all airports (or vice versa). This kind of table is known
+as a *pivot table*. The *constraints* in this table force that an airport can be
 associated with an airline only if both already exist in their layers.
 
 .. code-block:: sql
 
    CREATE SCHEMA locations;
-   
+
    CREATE TABLE locations.airports
    (
       id serial NOT NULL,
@@ -901,13 +962,14 @@ associated with an airline only if both already exist in their layers.
          DEFERRABLE INITIALLY DEFERRED
     );
 
-Instead of PostgreSQL you can also use GeoPackage. In this case, the three tables 
-can be created manually using the :menuselection:`Database --> DB Manager…`. In 
+Instead of PostgreSQL you can also use GeoPackage. In this case, the three tables
+can be created manually using the :menuselection:`Database --> DB Manager…`. In
 GeoPackage there are no schemas so the *locations* prefix is not needed.
 
-Foreign key constraints in ``airports_airlines`` table can´t be created using :menuselection:`Table --> Create Table…` 
-or :menuselection:`Table --> Edit Table…` so they should be created using :menuselection:`Database --> SQL Window…`.
-GeoPackage doesn't support *ADD CONSTRAINT* statements so the ``airports_airlines`` 
+Foreign key constraints in ``airports_airlines`` table can´t be created using
+:menuselection:`Table --> Create Table…` or :menuselection:`Table --> Edit Table…`
+so they should be created using :menuselection:`Database --> SQL Window…`.
+GeoPackage doesn't support *ADD CONSTRAINT* statements so the ``airports_airlines``
 table should be created in two steps:
 
 #. Set up the table only with the ``id`` field using :menuselection:`Table --> Create Table…`
@@ -917,12 +979,12 @@ table should be created in two steps:
 
       ALTER TABLE airports_airlines
          ADD COLUMN airport_fk INTEGER
-         REFERENCES airports (id) 
-         ON DELETE CASCADE 
-         ON UPDATE CASCADE 
+         REFERENCES airports (id)
+         ON DELETE CASCADE
+         ON UPDATE CASCADE
          DEFERRABLE INITIALLY DEFERRED;
-   
-      ALTER TABLE airports_airlines 
+
+      ALTER TABLE airports_airlines
          ADD COLUMN airline_fk INTEGER
          REFERENCES airlines (id)
          ON DELETE CASCADE
@@ -935,9 +997,9 @@ as explained above:
 * a relation between ``airlines`` table and the pivot table;
 * and a second one between ``airports`` table and the pivot table.
 
-An easier way to do it (only for PostgreSQL) is using the :guilabel:`Discover Relations` 
+An easier way to do it (only for PostgreSQL) is using the :guilabel:`Discover Relations`
 in :menuselection:`Project --> Properties --> Relations`. QGIS will automatically read
-all relations in your database and you only have to select the two you need. Remember 
+all relations in your database and you only have to select the two you need. Remember
 to load the three tables in the QGIS project first.
 
 .. _figure_setup_relations:
@@ -949,7 +1011,7 @@ to load the three tables in the QGIS project first.
 
 In case you want to remove an ``airport`` or an ``airline``, QGIS won't remove
 the associated record(s) in ``airports_airlines`` table. This task will be made by
-the database if we specify the right *constraints* in the pivot table creation as 
+the database if we specify the right *constraints* in the pivot table creation as
 in the current example.
 
 .. note:: **Combining N-M relation with automatic transaction group**
@@ -958,9 +1020,9 @@ in the current example.
   --> Data Sources -->` when working on such context. QGIS should be able to
   add or update row(s) in all tables (airlines, airports and the pivot tables).
 
-Finally we have to select the right cardinalilty in the 
-:menuselection:`Layer Properties --> Attributes Form` for the ``airports`` and 
-``airlines`` layers. For the first one we should choose the **airlines (id)** option 
+Finally we have to select the right cardinality in the
+:menuselection:`Layer Properties --> Attributes Form` for the ``airports`` and
+``airlines`` layers. For the first one we should choose the **airlines (id)** option
 and for the second one the **airports (id)** option.
 
 .. _figure_cardinality:
@@ -971,8 +1033,8 @@ and for the second one the **airports (id)** option.
    Set relationship cardinality
 
 Now you can associate an airport with an airline (or an airline with an airport)
-using :guilabel:`Add child feature` or :guilabel:`Link existing child feature` 
-in the subforms. A record will automatically be inserted in the ``airports_airlines`` 
+using :guilabel:`Add child feature` or :guilabel:`Link existing child feature`
+in the subforms. A record will automatically be inserted in the ``airports_airlines``
 table.
 
 .. _figure_relationship_working:
@@ -984,18 +1046,232 @@ table.
 
 .. note:: Using **Many to one relation** cardinality
 
-  Sometimes hiding the pivot table in an N-M relationship is not 
-  desirable. Mainly because there are attributes in the relationship that can only 
+  Sometimes hiding the pivot table in an N-M relationship is not
+  desirable. Mainly because there are attributes in the relationship that can only
   have values when a relationship is established. If your tables are layers (have
-  a geometry field) it could be interesting to activate the :guilabel:`On map identification` 
-  option (:menuselection:`Layer Properties --> Attributes Form --> Available widgets --> Fields`) 
+  a geometry field) it could be interesting to activate the :guilabel:`On map identification`
+  option (:menuselection:`Layer Properties --> Attributes Form --> Available widgets --> Fields`)
   for the foreign key fields in the pivot table.
 
 .. note:: **Pivot table primary key**
 
-  Avoid using multiple fields in the primary key in a pivot table. QGIS assumes a single 
+  Avoid using multiple fields in the primary key in a pivot table. QGIS assumes a single
   primary key so a constraint like ``constraint airports_airlines_pkey primary key (airport_fk, airline_fk)``
   will not work.
+
+
+.. index:: Polymorphic relation; Relation
+.. _polymorphic_relation:
+
+Introducing polymorphic relations
+---------------------------------
+
+Polymorphic relations are special case of 1-N relations, where a single referencing (document) layer contains
+the features for multiple referenced layers. This differs from normal relations which require different
+referencing layer for each referenced layer. A single referencing (document) layer is achieved by adding an adiditonal
+``layer_field`` column in the referencing (document) layer that stores information to identify the referenced layer. In
+its most simple form, the referencing (document) layer will just insert the layer name of the referenced layer into
+this field.
+
+To be more precise, a polymorphic relation is a set of normal relations having the same referencing
+layer but having the referenced layer dynamically defined. The polymorphic setting of the layer is solved by using
+an expression which has to match some properties of the referenced layer like the table name, layer id, layer name.
+
+Imagine we are going to the park and want to take pictures of different species of ``plants`` and ``animals``
+we see there. Each plant or animal has multiple pictures associated with it, so if we use the normal 1:N
+relations to store pictures, we would need two separate tables, ``animal_images`` and ``plant_images``.
+This might not be a problem for 2 tables, but imagine if we want to take separate pictures for mushrooms, birds etc.
+
+Polymorphic relations solve this problem as all the referencing features are stored in the same table ``documents``.
+For each feature the referenced layer is stored in the ``referenced_layer`` field and the referenced
+feature id in the ``referenced_fk`` field.
+
+
+Defining polymorphic relations
+..............................
+
+First, let QGIS know about the polymorphic relations between the layers. This is
+done in :menuselection:`Project --> Properties...`.
+Open the :guilabel:`Relations` tab and click on the little down arrow next to the |symbologyAdd|
+:guilabel:`Add Relation` button, so you can select the :guilabel:`Add Polymorphic Relation` option
+from the newly appeared dropdown.
+
+.. _figure_define_polymorphic_relation:
+
+.. figure:: img/relations9.png
+   :align: center
+
+   Adding a polymorphic relation using ``documents`` layer as referencing and ``animals`` and ``plants`` as referenced layers.
+
+
+* **Id** will be used for internal purposes and has to be unique. You may need
+  it to build :ref:`custom forms <customize_form>`. If
+  you leave it empty, one will be generated for you but you can assign one
+  yourself to get one that is easier to handle
+
+* **Referencing Layer (Child)** also considered as child layer, is the one with
+  the foreign key field on it. In our case, this is the ``documents`` layer. For
+  this layer you need to add a referencing field which points to the other
+  layer, so this is ``referenced_fk``.
+
+  .. note:: Sometimes, you need more than a single field to uniquely identify
+   features in a layer. Creating a relation with such a layer requires
+   a **composite key**, ie more than a single pair of matching
+   fields. Use the |symbologyAdd| :sup:`Add new field pair as part of a composite
+   foreign key` button to add as many pairs as necessary.
+
+* **Layer Field** is the field in the referencing table that stores the result of the evaluated
+  layer expression which is the referencing table that this feature belongs to. In our example,
+  this would be the ``referenced_layer`` field.
+
+* **Layer expression** evaluates to a unique identifier of the layer. This can be the layer name
+  ``@layer_name``, the layer id ``@layer_id``, the layer's table name ``decode_uri(@layer, 'table')``
+  or anything that can uniquely identifies a layer.
+
+* **Relationship strength** sets the strength of the generated relations between the parent
+  and the child layer. The default :guilabel:`Association` type means that
+  the parent layer is *simply* linked to the child one while the
+  :guilabel:`Composition` type allows you to duplicate also the child features
+  when duplicating the parent ones and on deleting a feature the children are
+  deleted as well, resulting in cascade over all levels (means children of children
+  of... are deleted as well).
+
+* **Referenced Layers** also considered as parent layers, are those with
+  the primary key, pointed to, so here they would be ``plants`` and ``animals`` layers. You need to define
+  the primary key of the referenced layers from the dropdown, so it is ``fid``. Note that the definition of a
+  valid primary key requires all the referenced layers to have a field with that name. If there is no such field
+  you cannot save a polymorphic relation.
+
+Once added, the polymorphic relation can be edited via the :guilabel:`Edit Polymorphic Relation` menu entry.
+
+.. _figure_list_polymorphic_relations:
+
+.. figure:: img/relations10.png
+   :align: center
+
+   Preview of the newly created polymorphic relation and it's child relations for animals and plants.
+
+
+The example above uses the following database schema:
+
+.. code-block:: sql
+
+   CREATE SCHEMA park;
+
+   CREATE TABLE park.animals
+   (
+      fid serial NOT NULL,
+      geom geometry(Point, 4326) NOT NULL,
+      animal_species text NOT NULL,
+      CONSTRAINT animals_pkey PRIMARY KEY (fid)
+   );
+
+   CREATE INDEX animals_geom_idx ON park.animals USING gist (geom);
+
+   CREATE TABLE park.plants
+   (
+      fid serial NOT NULL,
+      geom geometry(Point, 4326) NOT NULL,
+      plant_species text NOT NULL,
+      CONSTRAINT plants_pkey PRIMARY KEY (fid)
+   );
+
+   CREATE INDEX plants_geom_idx ON park.plants USING gist (geom);
+
+   CREATE TABLE park.documents
+   (
+      fid serial NOT NULL,
+      referenced_layer text NOT NULL,
+      referenced_fk integer NOT NULL,
+      image_filename text NOT NULL,
+      CONSTRAINT documents_pkey PRIMARY KEY (fid)
+   );
+
+.. index:: External Storage, WebDAV
+.. _external_storage:
+
+Storing and fetching an external resource
+==========================================
+
+A field may target a resource stored on an external storage system. Attribute forms can be configured
+so they act as a client to an external storage system in order to store and fetch those resources, on
+users demand, directly from the forms.
+
+.. _external_storage_configuration:
+
+Configuring an external storage
+-------------------------------
+
+In order to setup an external storage, you have to first configure it from the vector
+:ref:`attribute form properties <edit_widgets>` and select the :guilabel:`Attachment` widget.
+
+.. _figure_external_storage_configuration:
+
+.. figure:: img/external_storage_configuration.png
+   :align: center
+
+   Editing a WebDAV external storage for a given field
+
+From the :guilabel:`Attachment` widget, you have to first select the :guilabel:`Storage type`:
+
+* :guilabel:`Select Existing File`: The target URL already exists. When
+  you select a resource, no store operation is achieved, the attribute is simply updated with the URL.
+
+* :guilabel:`Simple Copy`: Stores a copy of the resource on a file disk destination
+  (which could be a local or network shared file system) and the attribute is updated with the path to
+  the copy.
+
+* :guilabel:`WebDAV Storage`: The resource is pushed to a HTTP server supporting the
+  `WebDAV <https://en.wikipedia.org/wiki/WebDAV>`_ protocol and the attribute is updated with
+  its URL. `Nextcloud <https://nextcloud.com/>`_, `Pydio <https://pydio.com/>`_
+  or other file hosting software support this protocol.
+
+Then, you have to set up the :guilabel:`Store URL` parameter, which provides the URL to be used when a new
+resource needs to be stored. It's possible to set up an expression using the
+:ref:`data defined override widget <data_defined>` in order to have specific values according to
+feature attributes.
+
+The variable **@selected_file_path** could be used in that expression and represent the absolute
+file path of the user selected file (using the file selector or drag'n drop).
+
+.. note::
+
+   Using the **WebDAV** external storage, if the URL ends with a "/", it is considered as a folder and
+   the selected file name will be appended to get the final URL.
+
+
+If the external storage system needs to, it's possible to configure an
+:ref:`authentication <authentication>`.
+
+.. _external_storage_use:
+
+Using an external storage
+-------------------------
+
+Once configured, you can select a local file using the button :guilabel:`...` when editing a feature's attribute.
+Depending on the configured :ref:`storage type <external_storage_configuration>`, the file
+will be stored on the external storage system (except if :guilabel:`Select existing file` has been
+selected) and the field will be updated with the new resource URL.
+
+.. _figure_external_storage_store:
+
+.. figure:: img/external_storage_store.png
+   :align: center
+
+   Storing a file to a WebDAV external storage
+
+.. note::
+
+   User can also achieve the same result if he drags and drops a file on the whole attachment
+   widget.
+
+Use the |taskCancel| :sup:`Cancel` button to abort the storing process.
+It's possible to configure a viewer using the :guilabel:`Integrated document viewer`
+so the resource will be automatically fetched from the external storage system and
+displayed directly below the URL.
+The above |warning| icon indicates that the resource cannot be fetched
+from the external storage system. In that case, more details might appear in the
+:ref:`log_message_panel`.
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
@@ -1032,6 +1308,8 @@ table.
    :width: 1.5em
 .. |editPaste| image:: /static/common/mActionEditPaste.png
    :width: 1.5em
+.. |editTable| image:: /static/common/mActionEditTable.png
+   :width: 1.5em
 .. |expression| image:: /static/common/mIconExpression.png
    :width: 1.5em
 .. |expressionSelect| image:: /static/common/mIconExpressionSelect.png
@@ -1042,6 +1320,12 @@ table.
    :width: 1.5em
 .. |formView| image:: /static/common/mActionFormView.png
    :width: 1.2em
+.. |handleStoreFilterExpressionChecked| image:: /static/common/mActionHandleStoreFilterExpressionChecked.png
+   :width: 1.5em
+.. |handleStoreFilterExpressionUnchecked| image:: /static/common/mActionHandleStoreFilterExpressionUnchecked.png
+   :width: 1.5em
+.. |highlightFeature| image:: /static/common/mActionHighlightFeature.png
+   :width: 1.5em
 .. |invertSelection| image:: /static/common/mActionInvertSelection.png
    :width: 1.5em
 .. |link| image:: /static/common/mActionLink.png
@@ -1060,6 +1344,14 @@ table.
    :width: 1.5em
 .. |openTable| image:: /static/common/mActionOpenTable.png
    :width: 1.5em
+.. |openTableEdited| image:: /static/common/mActionOpenTableEdited.png
+   :width: 1.5em
+.. |openTableSelected| image:: /static/common/mActionOpenTableSelected.png
+   :width: 1.5em
+.. |openTableVisible| image:: /static/common/mActionOpenTableVisible.png
+   :width: 1.5em
+.. |panTo| image:: /static/common/mActionPanTo.png
+   :width: 1.5em
 .. |panToSelected| image:: /static/common/mActionPanToSelected.png
    :width: 1.5em
 .. |radioButtonOff| image:: /static/common/radiobuttonoff.png
@@ -1074,15 +1366,21 @@ table.
    :width: 1.5em
 .. |selectedToTop| image:: /static/common/mActionSelectedToTop.png
    :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
 .. |sort| image:: /static/common/sort.png
+   :width: 1.5em
+.. |symbologyAdd| image:: /static/common/symbologyAdd.png
+   :width: 1.5em
+.. |taskCancel| image:: /static/common/mTaskCancel.png
    :width: 1.5em
 .. |toggleEditing| image:: /static/common/mActionToggleEditing.png
    :width: 1.5em
 .. |undo| image:: /static/common/mActionUndo.png
    :width: 1.5em
 .. |unlink| image:: /static/common/mActionUnlink.png
+   :width: 1.5em
+.. |warning| image:: /static/common/mIconWarning.png
+   :width: 1.5em
+.. |zoomTo| image:: /static/common/mActionZoomTo.png
    :width: 1.5em
 .. |zoomToSelected| image:: /static/common/mActionZoomToSelected.png
    :width: 1.5em
