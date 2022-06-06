@@ -161,6 +161,7 @@ if html_context['isTesting']:
     tags.add('testing')
 
 sitemap_locales = cfg['supported_languages'].split()
+sitemap_url_scheme = "{version}{lang}{link}"
 version_list = cfg['version_list'].replace(' ', '').split(',')
 docs_url = 'https://docs.qgis.org/'
 
