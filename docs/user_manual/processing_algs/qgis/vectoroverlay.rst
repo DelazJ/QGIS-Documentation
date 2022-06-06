@@ -1050,7 +1050,7 @@ attribute values from both layers for overlapping features.
    .. note::
    For ``multiunion(A,B,C,...)`` algorithm, if there are overlaps among
    geometries of any layer, these are not
-   resolved: you need to do ``union(union(A,B,...))`` to resolve all
+   resolved: you need to do ``union(multiunion(A,B,C...))`` to resolve all
    overlaps, i.e. run single layer ``union(X)`` on the produced result
    ``X=union(A,B,...)``.
 
