@@ -1037,7 +1037,7 @@ creating a layer containing all the portions from both input and
 overlay layers. Features on the same layer will not split each other.
 The attribute table of the Union layer is filled with attribute values
 from the respective original layer for non-overlapping features, and
-attribute values from both layers for overlapping features.
+attribute values from overlay layers for overlapping features.
 
 .. todo: Add an image
     .. figure:: img/multiunion.png
