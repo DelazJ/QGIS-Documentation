@@ -1052,7 +1052,7 @@ attribute values from overlay layers for overlapping features.
    geometries of any layer, these are not
    resolved: you need to do ``union(multiunion(A,B,C...))`` to resolve all
    overlaps, i.e. run single layer ``union(X)`` on the produced result
-   ``X=union(A,B,...)``.
+   ``X=multiunion(A,B,C,...)``.
 
 
 .. seealso:: :ref:`qgisunion`, :ref:`qgisclip`, :ref:`qgisdifference`,
