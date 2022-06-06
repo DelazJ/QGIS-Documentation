@@ -57,6 +57,7 @@ extensions = [
     'sphinx.ext.extlinks',
     'sphinxext.rediraffe',
     'sphinx_togglebutton',
+    'sphinx_sitemap',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -86,6 +87,10 @@ numfig = True
 #
 #html_theme = 'alabaster'
 html_theme = 'rtd_qgis'
+
+# The base URL which points to the root of the HTML documentation.
+# It is used to indicate the location of document using The Canonical Link Relation.
+html_baseurl = 'https://docs.qgis.org/'
 
 # https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html#theme-options
 # rtd / read the docs theme options:
@@ -155,7 +160,7 @@ if html_context['isTesting'] or html_context['outdated']:
 if html_context['isTesting']:
     tags.add('testing')
 
-supported_languages = cfg['supported_languages'].split()
+sitemap_locales = cfg['supported_languages'].split()
 version_list = cfg['version_list'].replace(' ', '').split(',')
 docs_url = 'https://docs.qgis.org/'
 
@@ -189,7 +194,7 @@ context = {
     # 'READTHEDOCS': True,
     'version_downloads': True,
     'versions': [[v, docs_url+v] for v in version_list],
-    'supported_languages': [[l, docs_url+version+'/'+l] for l in supported_languages],
+    'supported_languages': [[l, docs_url+version+'/'+l] for l in sitemap_locales],
     'downloads': [['PDF', docs_url+version+'/pdf'], ['HTML', docs_url+version+'/zip']],
 
     # Do not display for outdated releases
