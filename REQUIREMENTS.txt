@@ -2,6 +2,7 @@ Sphinx
 sphinx-intl
 sphinx_rtd_theme
 sphinx-intl[transifex]
+sphinx-sitemap
 sphinxext-rediraffe
 sphinx_togglebutton
 transifex-client
