@@ -1355,8 +1355,7 @@ By default, QGIS provides some default and ready-to-use XYZ Tiles services:
 * |xyz| :guilabel:`Mapzen Global Terrain`, allowing an immediate
   access to global DEM source for the projects.
   More details and resources at https://registry.opendata.aws/terrain-tiles/
-* |xyz| :guilabel:`OpenStreetMap` to access the world 
-  `OpenStreetMap <https://www.openstreetmap.org>`_ 2D map.
+* |xyz| :guilabel:`OpenStreetMap` to access the world 2D map.
   :numref:`figure_xyz_tiles_openstreetmap` shows the dialog with the OpenStreetMap
   XYZ Tile service configuration.
 
