@@ -365,7 +365,7 @@ this table.
   https://opencache.statkart.no/gatekeeper/gk/gk.open_wmts?\
     service=WMTS&request=GetCapabilities
 
-Seleting a layer to load, it is also possible to apply an
+Selecting a layer to load, it is also possible to apply an
 :ref:`Interpretation method <interpretation>`, converting it into a raster layer
 of single band float type, ready for styling using QGIS usual
 :ref:`raster renderers <raster_rendering>`.
