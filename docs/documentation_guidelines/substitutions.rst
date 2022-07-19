@@ -327,7 +327,7 @@ Icon                            Substitution                        Icon        
 |properties|                    ``|properties|``                    |deleteSelected|                ``|deleteSelected|``
 |browserExpand|                 ``|browserExpand|``                 |browserCollapse|               ``|browserCollapse|``
 |codeEditor|                    ``|codeEditor|``                    |add|                           ``|add|``
-|relations|                     ``|relations|``                     |layoutItem3DMap|               ``|LayoutItem3DMap|``
+|relations|                     ``|relations|``                     |layoutItem3DMap|               ``|layoutItem3DMap|``
 ==============================  ==================================  ==============================  ==================================
 
 
