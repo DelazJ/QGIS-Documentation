@@ -1697,7 +1697,7 @@ panel` to manage the map canvas :ref:`temporal navigation <maptimecontrol>`.
 Terrain Properties
 ------------------
 
-The |layoutItem3Dmap| :guilabel:`Terrain` tab helps you configure default settings
+The |layoutItem3DMap| :guilabel:`Terrain` tab helps you configure default settings
 for the terrain and elevation. When any new :ref:`3d map <label_3dmapview>`
 is created in the project, the map will default to using the same terrain
 settings as are defined for the project.
@@ -2228,7 +2228,7 @@ in the QGIS user profile.
    :width: 1.5em
 .. |keyboardShortcuts| image:: /static/common/mActionKeyboardShortcuts.png
    :width: 1.5em
-.. |layoutItem3Dmap| image:: /static/common/mLayoutItem3Dmap.png
+.. |layoutItem3DMap| image:: /static/common/mLayoutItem3DMap.png
    :width: 1.5em
 .. |nix| image:: /static/common/nix.png
    :width: 1em
