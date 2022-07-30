@@ -2191,8 +2191,8 @@ directly linked to a particular field (like the HTML/QML widgets or the
       * |checkbox| :guilabel:`Show as Group Box`: converts a tab into a top-level group box
         and vice versa
       * in case of a group box, set whether at the form opening,
-        it should show as :guilabel:`Collapsed` for every features,
-        or only for those matching an expression` (:guilabel:`Control collapsed by expression`).
+        it should |checkbox| :guilabel:`Collapse` for every features,
+        or only for those matching a :guilabel:`Collapsing expression`.
       * configure the :guilabel:`Style` look of the container, with custom :guilabel:`Background color`,
         label color and font properties
    #. You can create and embed as many containers as you want by pressing again
