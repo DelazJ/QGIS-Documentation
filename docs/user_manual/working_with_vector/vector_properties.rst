@@ -272,6 +272,73 @@ symbols appropriately. For each data type (points, lines and polygons), vector
 symbol layer types are available. Depending on the chosen renderer, the dialog
 provides different additional sections.
 
+
+.. list-table:: Features rendering types 
+   :class: longtable
+   
+   * - Name
+     - Purpose
+     - Use case
+     - Supported Geometry Type
+   * - |nullSymbol| :ref:`No Symbols <no_symbol_renderer>`
+     - Hides features of the layer using an invisible symbol
+     -
+     - Point, Line, Polygon of single or multi parties
+   * - |singleSymbol| :ref:`Single Symbol <single_symbol_renderer>`
+     - Renders all the features using the same symbol
+     -
+     - Point, Line, Polygon of single or multi parties
+   * - |categorizedSymbol| :ref:`Categorized <categorized_renderer>`
+     - Groups features into qualitative classes and assigns same symbol to each class' elements
+       Renders features with symbols corresponding to an attribute
+     -
+     - Point, Line, Polygon of single or multi parties
+   * - |graduatedSymbol| :ref:`Graduated <graduated_renderer>`
+     - Renders features with symbols whose size or color represents a quantitative
+       difference between the numerical ranges they belong to
+     -
+     - Point, Line, Polygon of single or multi-parties
+   * - |ruleBasedSymbol| :ref:`Rule-Based <rule_based_rendering>`
+     - Custom rendering that can combine different renderers
+     -
+     - Point, Line, Polygon of single or multi parties
+   * - |pointDisplacementSymbol| :ref:`Point Displacement <point_displacement>`
+     - 
+     -
+     - Single Point
+   * - |pointClusterSymbol| :ref:`Point Cluster <point_cluster>`
+     - 
+     -
+     - Single Point
+   * - |heatmapSymbol| :ref:`Heatmap <heatmap>`
+     - Renders the density of point features as a continuous color gradient
+     - 
+     - Point
+   * - |mergedFeatures| :ref:`Merged Features <merged_renderer>`
+     -
+     -
+     - Single or multi-parties Polygon
+   * - |invertedSymbol| :ref:`Inverted Polygons <inverted_polygon_renderer>`
+     -
+     -
+     - Single or multi-parties Polygon
+   * - |25dSymbol| :ref:`2.5D <2.5_D_rendering>`
+     -
+     -
+     - Single or multi-parties Polygon
+   * - :ref:`Embedded Symbols <embedded_renderer>`     
+     - Displays embedded per-feature styling information for formats that support it.
+     -
+     - Point, Line, Polygon of single or multi parties
+
+Combining symbols properties with aforementioned rendering types, you can create
+more such as:
+
+* Scale-based symbology: symbols properties vary depending on the map canvas scale
+* Proportional symbols: symbol size reflects the value of the features; no grouping.
+* multivariate analysis:
+* advanced symbologies: data-defined XXX
+
 .. note::
 
    If you change the renderer type when setting the style of a vector layer the
@@ -947,9 +1014,15 @@ units).
 Embedded Renderer
 ....................
 
-The :guilabel:`Embedded Symbols` renderer allows to display the 'native'
-symbology of a provided datasource. This is mostly the case with :file:`KML`
-and :file:`TAB` datasets that have predefined symbology.
+Some vector data formats have native support for embedding feature styling information,
+such as with :file:`KML` and MapInfo :file:`TAB` files. These formats allow embedded
+symbology to be set on a feature-by-feature basis.
+The :guilabel:`Embedded Symbols` renderer allows to display that 'native' symbology
+in QGIS, viewing features with the closest possible match to their original symbology.
+
+Switching the rendering type to |categorizedSymbol| :guilabel:`Categorized Symbol` or
+|ruleBasedSymbol| :guilabel:`Rule-based Symbol` creates corresponding classes/rules
+for features, allowing further tweaks with QGIS native symbols.
 
 
 .. index:: Layer rendering, Sort features, Z-level
