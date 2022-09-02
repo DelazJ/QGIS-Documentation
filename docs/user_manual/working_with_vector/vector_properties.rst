@@ -260,17 +260,7 @@ Features rendering
 ------------------
 
 The renderer is responsible for drawing a feature together with the correct
-symbol. Regardless layer geometry type, there are four common types of
-renderers: single symbol, categorized, graduated and rule-based. For point
-layers, there are point displacement, point cluster and heatmap renderers available while
-polygon layers can also be rendered with the merged features, inverted polygons and 2.5 D renderers.
-
-There is no continuous color renderer, because it is in fact only a special
-case of the graduated renderer. The categorized and graduated renderers can be
-created by specifying a symbol and a color ramp - they will set the colors for
-symbols appropriately. For each data type (points, lines and polygons), vector
-symbol layer types are available. Depending on the chosen renderer, the dialog
-provides different additional sections.
+symbol.
 
 
 .. list-table:: Features rendering types 
@@ -278,30 +268,34 @@ provides different additional sections.
    
    * - Name
      - Purpose
-     - Use case
+     - Mapping use case
      - Supported Geometry Type
    * - |nullSymbol| :ref:`No Symbols <no_symbol_renderer>`
      - Hides features of the layer using an invisible symbol
-     -
-     - Point, Line, Polygon of single or multi parties
+     - 
+     - Point, Line, Polygon
    * - |singleSymbol| :ref:`Single Symbol <single_symbol_renderer>`
      - Renders all the features using the same symbol
-     -
-     - Point, Line, Polygon of single or multi parties
+     - 
+     - Point, Line, Polygon
    * - |categorizedSymbol| :ref:`Categorized <categorized_renderer>`
      - Groups features into qualitative classes and assigns same symbol to each class' elements
        Renders features with symbols corresponding to an attribute
      -
-     - Point, Line, Polygon of single or multi parties
+     - Point, Line, Polygon
    * - |graduatedSymbol| :ref:`Graduated <graduated_renderer>`
      - Renders features with symbols whose size or color represents a quantitative
        difference between the numerical ranges they belong to
-     -
-     - Point, Line, Polygon of single or multi-parties
+     - Continuous color:
+
+       Size based:
+       
+       Proportional:
+     - Point, Line, Polygon
    * - |ruleBasedSymbol| :ref:`Rule-Based <rule_based_rendering>`
      - Custom rendering that can combine different renderers
      -
-     - Point, Line, Polygon of single or multi parties
+     - Point, Line, Polygon
    * - |pointDisplacementSymbol| :ref:`Point Displacement <point_displacement>`
      - 
      -
@@ -317,27 +311,34 @@ provides different additional sections.
    * - |mergedFeatures| :ref:`Merged Features <merged_renderer>`
      -
      -
-     - Single or multi-parties Polygon
+     - Polygon
    * - |invertedSymbol| :ref:`Inverted Polygons <inverted_polygon_renderer>`
      -
      -
-     - Single or multi-parties Polygon
+     - Polygon
    * - |25dSymbol| :ref:`2.5D <2.5_D_rendering>`
      -
      -
-     - Single or multi-parties Polygon
+     - Polygon
    * - :ref:`Embedded Symbols <embedded_renderer>`     
      - Displays embedded per-feature styling information for formats that support it.
      -
-     - Point, Line, Polygon of single or multi parties
+     - Point, Line, Polygon
 
-Combining symbols properties with aforementioned rendering types, you can create
-more such as:
+You can overload any of these default renderers with the layer or symbols properties
+and create much more complex and fine tuned map reenderings. These can be:
 
 * Scale-based symbology: symbols properties vary depending on the map canvas scale
 * Proportional symbols: symbol size reflects the value of the features; no grouping.
 * multivariate analysis:
-* advanced symbologies: data-defined XXX
+* advanced symbologies: density points, fill
+
+There is no continuous color renderer, because it is in fact only a special
+case of the graduated renderer. The categorized and graduated renderers can be
+created by specifying a symbol and a color ramp - they will set the colors for
+symbols appropriately. For each data type (points, lines and polygons), vector
+symbol layer types are available. Depending on the chosen renderer, the dialog
+provides different additional sections.
 
 .. note::
 
