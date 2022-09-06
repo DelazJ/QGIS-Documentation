@@ -1362,9 +1362,216 @@ To add layout extent(s):
 Annotation Tools
 ----------------
 
-Annotations are information added to the map canvas and shown within a
-balloon. This information can be of different types. You can add annotations by
-:menuselection:`Edit --> Add Annotation --> Type of Annotation`:
+Annotations are another type of elements added onto the map canvas to provide
+additional information that can not be depicted by the rendered layers.
+Unlike :ref:`labels <vector_labels_tab>` that rely on attribute values stored
+in vector layers, annotations are independent details, stored within the project
+file itself.
+
+Two families of annotations are available in QGIS:
+
+* **Feature annotations**: they are actual georeferenced features of text, marker,
+  line or polygon type stored within a special layer type called "annotation layer".
+  The size is thus scaled with the map canvas.
+* **Balloon annotations**: these are individuals annotations of text, form or image
+  type placed inside a bubble. The size is independent from the map canvas scale,
+  and its position can be anchored.
+
+* Every annotation item is completely geo-referenced and tied to a particular geographic location. 
+  Moving your map, changing the scale or changing projection won’t cause your annotations to 
+  jump around the map. 
+
+.. tip:: **Layout the map with annotations**
+
+  You can print or export annotations with your map to various formats using:
+
+  * map canvas export tools available in the :menuselection:`Project` menu
+  * :ref:`print layout <create-output>`, in which case you need to check
+    :guilabel:`Draw map canvas items` in the corresponding map item properties
+
+
+Annotations Toolbar
+...................
+
+The :guilabel:`Annotations Toolbar` provides a set of tools to create and interact
+with both families of annotations.
+
+.. list-table:: Annotations toolbar actions (To remove???)
+   :header-rows: 1
+   :widths: 20 65 15
+   :class: longtable
+
+   * - Tool
+     - Usage
+     - Scope
+   * - |newlayerAnnotation| :sup:`New Annotation Layer`
+     - Create a new layer to store annotations
+     - Feature annotations
+   * - :sup:`Main Annotation Layer Properties`
+     - Control settings of the Main Annotation Layer 
+     - Feature annotations
+   * - |select| :sup:`Modify Annotations`
+     - Select, move, resize and modify symbology properties of annotations.
+     - Feature annotations
+   * - |addPolygon| :sup:`Create Polygon`
+     - Creates a new polygon
+     - Feature annotations
+   * - |addPolyline| :sup:`Create Line`
+     - Creates a new polyline
+     - Feature annotations
+   * - |addMarker| :sup:`Create Marker`
+     - Creates a new marker
+     - Feature annotations
+   * - |label| :sup:`Create Text at Point`
+     - Creates a new text label
+     - Feature annotations
+   * - |textAnnotation| :sup:`Text Annotation`
+     - for custom formatted text
+     - Balloon annotations
+   * - |htmlAnnotation| :sup:`HTML Annotation`
+     - Place the content of an :file:`html` file
+     - Balloon annotations
+   * - |svgAnnotation| :sup:`SVG Annotation`
+     - add an :file:`SVG` symbol
+     - Balloon annotations
+   * - |formAnnotation| :sup:`Form Annotation`
+     - Display attributes of a vector layer in a customized
+       :file:`ui` file (see :numref:`figure_custom_annotation`).
+     - Balloon annotations
+   * - |annotation| :sup:`Move Annotation`
+     - Adjust annotation element size or position
+     - Balloon annotations
+
+Annotations can be selected when an annotation tool is enabled. Then they can be
+moved by dragging the map marker. Or you can use the |select| :sup:`Modify Annotations` tool 
+to move the balloon on the map canvas. You can use this tool also, to modify nodes 
+of existing polygons or polylines.
+When an annotation item is selected, you can move it by pressing
+the cursor keys. It has the same interaction pattern like the layout items:
+
+* shift + cursor key = big movement
+* alt + cursor key = 1 px movement
+
+Creating new line and polygon annotation items, are supported by the vector feature capture tools, 
+for drawing line and polygon features (Snapping, tracing, CAD dock, etc.). When you use |label| :sup:`Create Text at Point`
+it is possible to add a framework for map tools.
+
+To delete an annotation, select it and either press the :kbd:`Del` or :kbd:`Backspace` button, 
+or double-click it and press the :guilabel:`Delete` button in the properties dialog.
+
+Feature Annotations
+...................
+
+Feature annotations are stored in **annotation layers**. Unlike conventional
+layers, an annotation layer is available only in the current project and can
+contain features of different types (text, marker, line, polygon).
+Also, the layer does not have a symbology associated, but instead each feature
+can be symbolized on an item-by-item basis, through :guilabel:`Layer Styling` panel.
+
+.. list-table:: Annotations Toolbar actions for feature annotations
+   :header-rows: 1
+   :widths: 30 70
+   :class: longtable
+
+   * - Tool
+     - Usage
+   * - |newlayerAnnotation| :sup:`New Annotation Layer`
+     - Create a new layer to store annotations
+   * - :sup:`Main Annotation Layer Properties`
+     - Control settings of the Main Annotation Layer 
+   * - |select| :sup:`Modify Annotations`
+     - Select, move, resize and modify symbology properties of annotations.
+   * - |addPolygon| :sup:`Create Polygon`
+     - Creates a new polygon
+   * - |addPolyline| :sup:`Create Line`
+     - Creates a new polyline
+   * - |addMarker| :sup:`Create Marker`
+     - Creates a new marker
+   * - |label| :sup:`Create Text at Point`
+     - Creates a new text label
+
+
+
+Two types of annotation layer are available in QGIS:
+
+* A common :guilabel:`Annotation Layer`: you can create one using
+  the |newlayerAnnotation| :sup:`New Annotation Layer` tool.
+  It is listed in the :guilabel:`Layers` panel, allowing you to control its features'
+  visibility, move it to show above or below particular layers in your mape,
+  like any common layer. Double-click the layer and you can access its properties.
+* The :guilabel:`Main Annotation Layer`: By default, this is where annotations are
+  stored when no annotation layer is available in the project or is selected at
+  creation time. This layer is always drawn on the very top of your map and
+  you won't see it listed in in the :guilabel:`Layers` panel alongside your other
+  layers in your project, meaning that its features are always visible.
+  The :guilabel:`Main Annotation Layer Properties` entry on the :guilabel:`Annotations`
+  toolbar helps you open its properties dialog. 
+
+Properties
+^^^^^^^^^^^
+
+The properties dialog of an annotation layer provides the following tabs:
+
+* :guilabel:`Information`: a read-only dialog representing an interesting
+  place to quickly grab summarized information and metadata on the current layer.
+* :guilabel:`Source`: defines general settings for the vector layer. You can:
+
+  * Set a :guilabel:`Layer name` different from the layer filename that will be
+    used to identify the layer in the project (in the :guilabel:`Layers Panel`, with
+    expressions, ...)
+  * Display the layer's :ref:`Assigned Coordinate Reference System (CRS) <layer_crs>`:
+    you can change the layer's CRS, selecting a recently used one
+    in the drop-down list or clicking on |setProjection| :sup:`Select CRS` button
+    (see :ref:`crs_selector`). Use this process only if the CRS applied to the
+    layer is a wrong one or if none was applied.
+
+* :guilabel:`Rendering`:
+
+  * You can set the :guilabel:`Maximum (inclusive)` and :guilabel:`Minimum
+    (exclusive)` scale, defining a range of scale in which features will be
+    visible. Out of this range, they are hidden. The |mapIdentification|
+    :sup:`Set to current canvas scale` button helps you use the current map
+    canvas scale as boundary of the range visibility.
+    See :ref:`label_scaledepend` for more information.
+  * :guilabel:`Opacity`: You can make the underlying layer in
+    the map canvas visible with this tool. Use the slider to adapt the visibility
+    of your vector layer to your needs. You can also make a precise definition of
+    the percentage of visibility in the menu beside the slider.
+  * :guilabel:`Blending mode` at the :guilabel:`Layer` level: You can achieve
+    special rendering effects with these tools that you may previously only
+    know from graphics programs. The pixels of your overlaying and underlying
+    layers are mixed through the settings described in :ref:`blend-modes`.
+  * Apply :ref:`paint effects <draw_effects>` on all the layer features with the
+    :guilabel:`Draw Effects` button.
+
+Interaction
+^^^^^^^^^^^
+
+Unlike common layers, an annotation layer does not need to be active before you
+select its features. Simply grab the |select| :sup:`Modify Annotations` tool and
+you will be able to interact with any feature annotation:
+
+* **Select**: simply left-click on the annotation
+* **Move**: Left click on a selected annotation item to start moving it. A right-click
+  or pressing :kbd:`Esc` key cancels the move, while a second left click will confirm
+  the move. The displacement can also be controlled pressing the cursor keys:
+
+  * :kbd:`Shift` + cursor key for big movement
+  * :kbd:`Alt` + cursor key for ``1 px`` movement
+* **Modify geometry**: for line or polygon annotations, left-click on a vertex of the geometry,
+  move and click again
+* **Change symbology**: a selected annotation will display its :guilabel:`Symbology` properties
+  in the :guilabel:`Layer styling` panel. Depending on the type, you can then edit it
+  using full capabilities of the :ref:`symbol <symbol-selector>` or the
+  :ref:`text format <text_format>`.
+* **Delete**: Pressing the :kbd:`Del` key while an annotation is selected will delete that annotation
+
+
+Balloon annotations
+...................
+
+You can add balloon annotations through :menuselection:`Edit --> Add Annotation -->`
+menu or from the :guilabel:`Annotations Toolbar`:
 
 * |textAnnotation| :sup:`Text Annotation` for custom formatted text
 * |htmlAnnotation| :sup:`HTML Annotation` to place the content of an :file:`html` file
@@ -1375,6 +1582,7 @@ balloon. This information can be of different types. You can add annotations by
   but displayed in an annotation item. Also see this video
   https://www.youtube.com/watch?v=0pDBuSbQ02o&feature=youtu.be&t=2m25s
   from Tim Sutton for more information.
+* |annotation| :sup:`Move Annotation` to adjust annotation element size or position
 
 .. _figure_custom_annotation:
 
@@ -1389,7 +1597,7 @@ balloon. This information can be of different types. You can add annotations by
  about showing what an annotation looks like.
  Annotation dialog will need to be shown only when it's described (which is done below)
 
-To add an annotation, select the corresponding tool and click on the map canvas.
+To add a balloon-based annotation, select the corresponding tool and click on the map canvas.
 An empty balloon is added. Double-click on it and a dialog opens with various
 options. This dialog is almost the same for all the annotation types:
 
@@ -1414,45 +1622,34 @@ options. This dialog is almost the same for all the annotation types:
 .. figure:: img/annotation.png
    :align: center
 
-   Annotation text dialog
+   A ballon annotation text dialog
 
-Annotation Layers
-.................
+To delete an annotation, select it and either press the :kbd:`Del` or :kbd:`Backspace` button, 
+or double-click it and press the :guilabel:`Delete` button in the properties dialog.
 
-* All Annotations are added to those called |layerAnnotation| :guilabel:`annotation layers`. 
-* They are not linked to any external dataset, but to a single QGIS project only. 
-* Every annotation item is completely geo-referenced and tied to a particular geographic location. 
-  Moving your map, changing the scale or changing projection won’t cause your annotations to 
-  jump around the map. 
-* You can style the annotation items on an item-by-item basis,through 
-  the QGIS “Layer Styling” dock.
+.. note::
+   If you press :kbd:`Ctrl+T` while a balloon :guilabel:`Annotation` tool (move annotation,
+   text annotation, form annotation) is active, the visibility states of the items
+   are inverted.
 
-* By default, any newly created annotation item will be added to a special 
-  main annotation layer.This one is always drawn on the very top of your map. 
-* You won't see it listed alongside your other layers in your project.
-* You can control opacity or blend mode in the  “Main Annotation Layer Properties” 
-  option from the annotations toolbar. 
+.. It looks like the tip works only with text annotation elements. Others are not toogled on/off.
 
-* It is possible to create your own secondary annotation layers, 
-  from the annotations toolbar. Select “New Annotation Layer” and a 
-  new annotation layer will be added to your project. 
-* Unlike the main annotation layer, you’ll see any secondary annotation layers appear in the 
-  list of your project’s layers. You can toggle their visibility, rename them, and even 
-  reposition them to control whether the annotations show above or below particular layers in your map!
 
 Annotation Toolbar
 ..................
 
-To customize your annotation items, you can use the :guilabel:`annotation toolbar`.
+To customize your annotation items, you can use the :guilabel:`Annotation Toolbar`.
 
 * |newlayerAnnotation| :sup:`New Annotation Layer`: will add a new annotation layer.
+  
   You can control settings of Main Annotation Layer in :sup:`Main Annotation Layer Properties`. 
-* |select| :sup:`Modify Annotations`: allows you to move and edit existing annotation items or geometric nodes
+* |select| :sup:`Modify Annotations`: allows you to select, move or resize annotations.
+  A selected annotation displays in the :guilabel:`Styling Panel` its :guilabel:`Symbology`
+  properties that you can edit
 * |addPolygon| :sup:`Create Polygon`: creates a new polygon
 * |addPolyline| :sup:`Create Line`: creates a new polyline
 * |addMarker| :sup:`Create Marker`: creates a new marker
 * |label| :sup:`Create Text at Point`: creates a new text label
-* |textAnnotation| :sup:`Annotation Type`: choose type of annoation item
 
 Annotations can be selected when an annotation tool is enabled. Then they can be
 moved by dragging the map marker. Or you can use the |select| :sup:`Modify Annotations` tool 
@@ -1470,12 +1667,6 @@ it is possible to add a framework for map tools.
 
 To delete an annotation, select it and either press the :kbd:`Del` or :kbd:`Backspace` button, 
 or double-click it and press the :guilabel:`Delete` button in the properties dialog.
-
-.. note::
-   If you press :kbd:`Ctrl+T` while an :guilabel:`Annotation` tool (move annotation,
-   text annotation, form annotation) is active, the visibility states of the items
-   are inverted.
-
 
 .. tip:: **Layout the map with annotations**
 
@@ -3111,6 +3302,8 @@ The values presented in the varying size assistant above will set the size
    :width: 1.5em
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em
+.. |setProjection| image:: /static/common/mActionSetProjection.png
+   :width: 1.5em
 .. |sharing| image:: /static/common/mActionSharing.png
    :width: 1.5em
 .. |sharingExport| image:: /static/common/mActionSharingExport.png
