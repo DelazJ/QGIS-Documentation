@@ -169,14 +169,20 @@ def format_variant(function_dict, f_name):
     else:
         notes = ''
 
+    if 'warnings' in function_dict:
+        warnings = f"\n\n.. warning:: {sphynxify_html(function_dict['warnings'])}"
+    else:
+        warnings = ''
+
     text = (f"{v_description}"
             f".. list-table::\n"
             f"   :widths: 15 85\n"
             f"\n"
+            f"{notes}"
+            f"{warnings}"
             f"{syntax}"
             f"{arguments}"
             f"{examples}"
-            f"{notes}"
             f"\n\n\n")
     return text
 
