@@ -96,20 +96,21 @@ def create_image_subst():
     filename_pattern = re.compile(r"^(mAction|mIcon|icon|renderer|mAlgorithm|m)([A-Z\d]\w+)")
     img_subs_dict = dict()
     i=0
-    exception_subst=[]#'CRS.png', 'mAction.png']
+    exception_subst=['CRS', 'mAction']
     for root, dirs, files in walk(image_folder):
 
         for name in files:
             # normalize the substitution spelling
             # i.e. start with a lower character, remove extension,
             # and remove -_ characters that we followed by an upper character
-            if name not in exception_subst:
+            filename = path.splitext(name)[0]
+            if filename not in exception_subst:
                 new_subst = re.sub('([_-])(\w)', lambda match: match.group(2).upper(),
-                                   re.sub('(\.\w*)', '',
-                                          re.sub(filename_pattern,'\g<2>', name)))
+                                   #re.sub('(\.\w*)', '',
+                                          re.sub(filename_pattern,'\g<2>', filename))#)
                 new_subst = new_subst[0].lower() + new_subst[1:]
             else:
-                new_subst = name
+                new_subst = filename #re.sub('(\.\w*)', '', name)
 
             img_subs_dict[new_subst] = path.relpath(path.join(root, name), path.dirname(image_folder))
             #if i<5 and name.startswith('mAction'):
