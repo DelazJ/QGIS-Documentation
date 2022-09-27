@@ -560,7 +560,7 @@ layers rendering in the map canvas.
 * |checkbox| :guilabel:`By default new layers added to the map should be
   displayed`: unchecking this option can be handy when loading multiple layers
   to avoid each new layer being rendered in the canvas and slow down the process
-* Set the |checkbox| :guilabel:`Maximum cores to use for map rendering`
+* Set the :guilabel:`Maximum cores to use for map rendering`
 * The map canvas renders in the background onto a separate image and at each
   :guilabel:`Map update interval` (defaults to 250 ms), the content from this
   (off-screen) image will be taken to update the visible screen representation.
