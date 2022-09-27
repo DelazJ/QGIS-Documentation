@@ -590,7 +590,8 @@ for rendering vector layers.
 
 * |checkbox| :guilabel:`Enable Feature Simplification by Default for Newly Added
   Layers`: you simplify features' geometry (fewer nodes) and as a result, they
-  display more quickly. Be aware that this can cause rendering inconsistencies:
+  display more quickly. Be aware that this can cause rendering inconsistencies.
+  Available settings are:
 
   * :guilabel:`Simplification threshold (higher values result in more simplification)` 
   * :guilabel:`Simplification algorithm`: This option performs a local

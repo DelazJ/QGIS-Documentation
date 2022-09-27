@@ -692,7 +692,7 @@ Working with the map canvas
    single: Rendering; Suspending
 .. _`redraw_events`:
 
-Controlling Map Rendering
+Controlling map rendering
 -------------------------
 
 By default, QGIS renders all visible layers whenever the map canvas is
