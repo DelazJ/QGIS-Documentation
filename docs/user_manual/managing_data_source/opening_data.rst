@@ -130,7 +130,7 @@ At the top of the Browser panel, you find some buttons that help you to:
   a new widget is added at the bottom of the panel showing, if applicable,
   metadata for the selected item.
 
-The entries in the :guilabel:`Browser` panel are organised
+The entries in the :guilabel:`Browser` panel are organized
 hierarchically, and there are several top level entries:
 
 #. :guilabel:`Favorites` where you can place shortcuts to often used locations
@@ -800,7 +800,7 @@ GRASS
 Working with GRASS vector data is described in section :ref:`sec_grass`.
 
 
-.. index:: Database tools, MSSQL Spatial
+.. index:: Database tools, MS SQL Spatial
 .. _db_tools:
 
 Database related tools
@@ -1146,6 +1146,15 @@ Renaming a Vector Table (MS SQL)
 
 * In :guilabel:`Browser Panel`, right-click the table and select :menuselection:`Manage --> Rename Layer`.
 * In :guilabel:`DB Manager`, select the table, then choose :menuselection:`Table --> Rename`.
+
+
+
+.. _figure_new_sqlserver_connection:
+
+.. figure:: img/newsqlserverconnection.png
+   :align: center
+
+   Create a New SQL Server Connection Dialog
 
 
 .. _create_hana_connection:
