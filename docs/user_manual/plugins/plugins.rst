@@ -61,10 +61,13 @@ At the bottom of the left panel, the |transformSettings| :guilabel:`Settings` ta
 is the main place you can configure which plugins can be displayed in your application.
 You can use the following options:
 
-* |checkbox| :guilabel:`Check for Updates on Startup`. Whenever an installed
-  plugin has update available, QGIS will inform you :guilabel:`Every Time QGIS
-  starts`, :guilabel:`Once a Day`, :guilabel:`Every 3 Days`, :guilabel:`Every
-  Week`, :guilabel:`Every 2 Weeks` or :guilabel:`Every month`.
+* |checkbox| :guilabel:`Check for Updates on Startup`. The whole plugins list
+  is updated every 3 days or at opening the :guilabel:`Plugin Manager` dialog.
+  Whenever an installed
+  plugin has update available, QGIS will inform you at every startup until
+  you update.
+ 
+  If the setting is unchecked, you will be notified in at most 3 days later.
 * |checkbox| :guilabel:`Show also Experimental Plugins`. QGIS will show you
   plugins in early stages of development, which are generally unsuitable for
   production use. For these plugins, you can install either the stable or
@@ -115,8 +118,8 @@ available tabs can be:
   and the core plugins that are installed by default and you can not uninstall
 * |plugin| :guilabel:`Not installed`: shows uninstalled or not yet installed
   plugins in the enabled repositories
-* |plugin-new| :guilabel:`New`: shows plugins released since the last
-  :guilabel:`Check for Updates on Startup`
+* |plugin-new| :guilabel:`New`: shows plugins released in the last three days
+  or since the last opening of the :guilabel:`Plugin Manager` dialog.
 * |plugin-upgrade| :guilabel:`Upgradeable`: shows installed plugins that have
   published a more recent version in the repository
 * |pluginIncompatible| :guilabel:`Invalid`: shows all installed plugins that are
