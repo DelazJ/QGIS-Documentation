@@ -478,41 +478,70 @@ or fine-tune the symbols rendering:
 Graduated Renderer
 ..................
 
-The |graduatedSymbol| :guilabel:`Graduated` renderer is used to render
-all the features from a layer, using an user-defined symbol whose color or size
-reflects the assignment of a selected feature's attribute to a class.
+The |graduatedSymbol| :guilabel:`Graduated` renderer represents features
+of a layer with a user-defined symbol whose color or size varies depending
+on a numeric range (a class) their attribute falls into.
 
-Like the Categorized Renderer, the Graduated Renderer allows you
-to define rotation and size scale from specified columns.
+To create a graduated rendering for a layer:
 
-Also, analogous to the Categorized Renderer, it allows you to select:
+#. Set the :guilabel:`Value` of classification, i.e. the information you want to represent.
+   It can be an existing field or an :ref:`expression <vector_expressions>` you can type in the box
+   or build using the associated |expression| button.
+   Using expressions for graduating avoids the need to create a field for symbology purposes only
+   (eg, if your classification criteria are derived from one or more attributes).
+   It should return numeric values.
+#. Configure the rendering :ref:`Symbol <symbol-selector>`,
+   which will be used as base symbol for all the classes.
+#. Under :guilabel:`Legend format`, provide the template for the legend text
+   (in both :guilabel:`Layers` panel and print layout) associated with each classification.
+   Use ``%1`` and ``%2`` to respectively refer to the lower and upper bounds of the range.
+   The :guilabel:`Precision` defines the number of decimals and
+   check |checkbox| :guilabel:`Trim` to remove trailing zeros.
+#. Indicate the :guilabel:`Method` of calculation for the symbol.
+   It can be based on:
 
-* The value (using the fields listbox or the |expression|
-  :sup:`Set value expression` function)
-* The symbol (using the Symbol selector dialog)
-* The legend format and the precision
-* The method to use to change the symbol: color or size
-* The colors (using the color Ramp list) if the color method is selected
-* The size (using the size domain and its unit)
+   * the color using a :guilabel:`Color ramp`, i.e. the range of colors
+     from which the color applied to each symbol is selected.
+     Besides the common options of the :ref:`color ramp widget <color_ramp_widget>`,
+     you can apply a |unchecked| :guilabel:`Random Color Ramp` to the categories.
+     You can click the :guilabel:`Shuffle Random Colors` entry to regenerate a new set of random colors
+     if you are not satisfied.
+     Available for all geometry types.
+   * the :guilabel:`Size` XXX and its unit
+     Available for point or line geometry types only.
 
-Then you can use the Histogram tab which shows an interactive histogram of the
-values from the assigned field or expression. Class breaks can be moved or
-added using the histogram widget.
+#. Click on the :guilabel:`Classify` button to create classes
+   from the distinct values of the provided field or expression.
+#. :guilabel:`Apply` the changes if the :ref:`live update <layer_styling_panel>` is not in use
+   and each feature on the map canvas will be rendered with the symbol of its class.
+
+
+Then you can use the :guilabel:`Histogram` tab which shows an interactive histogram
+of the values from the assigned field or expression.
+Class breaks can be moved or added using the histogram widget.
 
 .. note::
 
-   You can use Statistical Summary panel to get more information on your vector
-   layer. See :ref:`statistical_summary`.
+   You can use the :ref:`Statistical Summary <statistical_summary>` panel
+   to get more information on your vector layer.
 
-Back to the Classes tab, you can specify the number of classes and also the
-mode for classifying features within the classes (using the Mode list). The
-available modes are:
+Back to the :guilabel:`Classes` tab, you can specify the number of classes
+and also the :guilabel:`Mode` for classifying features within the classes.
+The available modes are:
 
-* Equal Count (Quantile): each class will have the same number of elements
+* Equal Count (Quantile): Given a number of :guilabel:`Classes`,
+  sets classes limits so that they all have the same number of elements
   (the idea of a boxplot).
-* Equal Interval: each class will have the same size (e.g. with the values
-  from 1 to 16 and four classes, each class will have a size of four).
-* Logarithmic scale: suitable for data with a wide range of values.
+* Equal Interval: Given a number of :guilabel:`Classes`,
+  sets classes limits so that they all have the same size
+  (e.g. with the values from 1 to 20 and four classes, each class will have a size of five).
+
+  .. ADD DETAILS ON SYMMETRIC CLASSIFICATION!!!
+
+* Fixed Interval: Sets number of classes given an :guilabel:`Interval size`
+  for each (e.g. with the values from 1 to 20 and an interval of four,
+  five classes will be created).
+* Logarithmic Scale: suitable for data with a wide range of values.
   Narrow classes for low values and wide classes for large values (e.g. for
   decimal numbers with range [0..100] and two classes, the first class will
   be from 0 to 10 and the second class from 10 to 100).
@@ -528,8 +557,8 @@ available modes are:
 The listbox in the center part of the :guilabel:`Symbology` tab lists the classes
 together with their ranges, labels and symbols that will be rendered.
 
-Click on **Classify** button to create classes using the chosen mode. Each
-classes can be disabled unchecking the checkbox at the left of the class name.
+Click on :guilabel:`Classify` button to create classes using the chosen mode.
+Each classes can be disabled unchecking the checkbox at the left of the class name.
 
 To change symbol, value and/or label of the class, just double click
 on the item you want to change.
@@ -570,12 +599,11 @@ the major_rivers layer of the QGIS sample dataset.
 Proportional Symbol and Multivariate Analysis
 .............................................
 
-Proportional Symbol and Multivariate Analysis are not
-rendering types available from the Symbology rendering drop-down list.
-However with the :ref:`data-defined override <data_defined>` options applied
-over any of the previous
-rendering options, QGIS allows you to display your point and line data with
-such representation.
+Proportional Symbol and Multivariate Analysis are not rendering types
+available from the Symbology rendering drop-down list.
+However with the :ref:`data-defined override <data_defined>` options
+applied over any of the previous rendering options,
+QGIS allows you to display your point and line data with such representation.
 
 **Creating proportional symbol**
 
@@ -598,9 +626,9 @@ To apply a proportional rendering:
 
 You can choose to display the proportional symbols in the :ref:`Layers panel
 <label_legend>` and the :ref:`print layout legend item <layout_legend_item>`:
-unfold the :guilabel:`Advanced` drop-down list at the bottom of the main dialog of
-the :guilabel:`Symbology` tab and select **Data-defined size legend...** to
-configure the legend items (see :ref:`data_defined_size_legend` for details).
+unfold the :guilabel:`Advanced` drop-down list at the bottom of the main dialog
+of the :guilabel:`Symbology` tab and select :guilabel:`Data-defined size legend...`
+to configure the legend items (see :ref:`data_defined_size_legend` for details).
 
 **Creating multivariate analysis**
 
@@ -619,10 +647,10 @@ The simplest way to create multivariate analysis in QGIS is to:
    #. Rescale the size or width of the symbol layer using the |dataDefine|
       :ref:`data defined override <data_defined>` widget as seen above.
 
-Like the proportional symbol, the scaled symbology can be added to the layer
-tree, on top of the categorized or graduated classes symbols using the
-:ref:`data defined size legend <data_defined_size_legend>` feature. And
-both representation are also available in the print layout legend item.
+Like the proportional symbol, the scaled symbology can be added to the layer tree,
+on top of the categorized or graduated classes symbols
+using the :ref:`data defined size legend <data_defined_size_legend>` feature.
+And both representation are also available in the print layout legend item.
 
 .. _figure_symbology_multivariate:
 
