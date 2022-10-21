@@ -377,10 +377,10 @@ QGIS installation path:
 * on macOS: :command:`export PYTHONPATH=/<qgispath>/Contents/Resources/python`
 
 Now, the path to the PyQGIS modules is known, but they depend on
-the ``qgis_core`` and ``qgis_gui`` libraries (the Python modules serve
-only as wrappers). The path to these libraries may be unknown to the
-operating system, and then you will get an import error again (the message
-might vary depending on the system)::
+the :mod:`qgis_core <core>` and :mod:`qgis_gui <gui>` libraries (the Python
+modules serve only as wrappers). The path to these libraries may be unknown
+to the operating system, and then you will get an import error again
+(the message might vary depending on the system)::
 
   >>> import qgis.core
   ImportError: libqgis_core.so.3.2.0: cannot open shared object file:
