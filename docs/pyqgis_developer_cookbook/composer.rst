@@ -37,6 +37,7 @@ Map Rendering and Printing
         QgsUnitTypes,
         QgsProject,
         QgsFillSymbol,
+        QgsAbstractValidityCheck,
         check,
     )
 
