@@ -264,7 +264,7 @@ Checking layout validity
 
 A layout is a made of a set of interconnected items and it can happen that these connections are broken during modifications
 (a legend connected to a removed map, an image item with missing source file,...)
-or you may want to apply custom constraints on the layut items.
+or you may want to apply custom constraints to the layout items.
 The :class:`QgsAbstractValidityCheck <qgis.core.QgsAbstractValidityCheck>` helps you achieve this.
 
 A basic check looks like:
