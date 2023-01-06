@@ -127,7 +127,7 @@ Print layout is a very handy tool if you would like to do a more sophisticated
 output than the simple rendering shown above. It is possible
 to create complex map layouts consisting of map views, labels, legend, tables
 and other elements that are usually present on paper maps. The layouts can be
-then exported to PDF, raster images or directly printed on a printer.
+then exported to PDF, SVG, raster images or directly printed on a printer.
 
 The layout consists of a bunch of classes. They all belong to the core
 library. QGIS application has a convenient GUI for placement of the elements,
@@ -333,8 +333,8 @@ To export a layout, the :class:`QgsLayoutExporter <qgis.core.QgsLayoutExporter>`
    exporter = QgsLayoutExporter(layout)
    exporter.exportToPdf(pdf_path, QgsLayoutExporter.PdfExportSettings())
 
-Use the :meth:`exportToImage() <qgis.core.QgsLayoutExporter.exportToImage>`
-in case you want to export to an image instead of a PDF file.
+Use :meth:`exportToSvg() <qgis.core.QgsLayoutExporter.exportToSvg>` or :meth:`exportToImage() <qgis.core.QgsLayoutExporter.exportToImage>`
+in case you want to export to respectively an SVG or image file instead of a PDF file.
 
 Exporting a layout atlas
 ------------------------
