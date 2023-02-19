@@ -20,11 +20,14 @@ SOURCEPOFILES='locale'
 
 # Pull translations of all languages from Transifex,
 # fetching only the strings that are really translated and not the whole file
-tx pull --mode onlytranslated $LANG
+tx pull --mode onlytranslated --use-git-timestamps $LANG
+
+#echo `git status`
 
 # The onlytranslated mode actually pulls all the existing files
 # (with only the file header when no string has been translated yet)
 # so let's remove those files that have no translated string (except for English)
+echo 'cleaning downloaded files...'
 for POFILE in `find $SOURCEPOFILES -type f -not -path "*/en/*" -name '*.po'`
 do
   # if only 'msgstr ""' appears in the file (with no text between quotes),
@@ -38,6 +41,11 @@ do
   fi;
 done
 
+echo -e 'Files cleaned.\nRemoving empty folders...'
+
 #remove the resulting empty folders
 find $SOURCEPOFILES -type d -empty -delete
 
+echo 'Folders removed.'
+
+echo `git status`

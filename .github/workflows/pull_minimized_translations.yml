@@ -1,0 +1,55 @@
+name: Pull translations
+# Download partially translated files from Transifex
+
+on:
+  # push:
+   # branches:
+    #  - release_3.22
+
+  schedule: #run at 04:00 UTC on Wednesday
+    - cron:  '0 4 * * 3'
+
+  workflow_dispatch:
+
+jobs:
+  pull_translation:
+
+    #if: github.repository_owner == 'qgis'
+    runs-on: ubuntu-latest
+    env:
+      TRANSIFEX_PASSWORD: ${{ secrets.TRANSIFEX_PASSWORD }}
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+
+    - name: Install Transifex client
+      run: |
+          curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+
+    - shell: bash
+      name: create .transifexrc file
+      run: |
+        sudo echo -e "[https://www.transifex.com]\nrest_hostname = https://rest.api.transifex.com\ntoken = $TRANSIFEX_PASSWORD" > ~/.transifexrc
+
+    - name: Download and sanitize files and folders
+      run: bash ./scripts/minimize_translation.sh -l fr
+
+    - name: Show changes
+      run: echo `git status`
+
+    - name: Commit the changes in the PO files
+      id: "auto-commit-action"
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: 'Load translated strings'
+
+    - name: "Inform that changes have been made"
+      if: steps.auto-commit-action.outputs.changes_detected == 'true'
+      run: echo "Changes committed!"
+
+    - name: "Inform that no changes were performed"
+      if: steps.auto-commit-action.outputs.changes_detected == 'false'
+      run: echo "No Changes detected!"
