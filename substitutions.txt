@@ -1,19 +1,11 @@
 # Substitutions below are sorted and should be in lowerCamelCase
 # NOTE that for inline images (like button and menu icons inline in text) you HAVE TO make a substitution
 
-.. |24To8Bits| image:: /static/common/24-to-8-bits.png
-   :width: 1.5em
-.. |25dSymbol| image:: /static/common/renderer25dSymbol.png
-   :width: 1.5em
+# Text replacement
+
 .. |330| replace:: ``NEW in 3.30``
 .. |332| replace:: ``NEW in 3.32``
 .. |334| replace:: ``NEW in 3.34``
-.. |3d| image:: /static/common/3d.png
-   :width: 1.5em
-.. |3dNavigation| image:: /static/common/mAction3DNavigation.png
-   :width: 1.3em
-.. |8To24Bits| image:: /static/common/8-to-24-bits.png
-   :width: 1.5em
 .. |CURRENT| replace:: 3.28
 .. |FA| replace:: Follow Along:
 .. |FR| replace:: Further Reading
@@ -24,6 +16,28 @@
 .. |RF| replace:: Results For
 .. |TY| replace:: Try Yourself
 .. |WN| replace:: What's Next?
+.. |degrees| unicode:: 0x00B0
+   :ltrim:
+.. |largeLandUseArea| replace:: Bontebok National Park
+.. |localCRS| replace:: ``WGS 84 / UTM 34S``
+.. |majorUrbanName| replace:: Swellendam
+.. |outofdate| replace:: `Despite our constant efforts, information beyond this line may not be updated for QGIS 3. Refer to https://qgis.org/pyqgis/master for the python API documentation or, give a hand to update the chapters you know about. Thanks.`
+.. |schoolAreaType1| replace:: athletics field
+.. |srtmFileName| replace:: :file:`srtm_41_19_4326.tif`
+.. |toolbox| replace:: :menuselection:`Processing --> Toolbox`
+
+# Icons replacement
+
+.. |24To8Bits| image:: /static/common/24-to-8-bits.png
+   :width: 1.5em
+.. |25dSymbol| image:: /static/common/renderer25dSymbol.png
+   :width: 1.5em
+.. |3d| image:: /static/common/3d.png
+   :width: 1.5em
+.. |3dNavigation| image:: /static/common/mAction3DNavigation.png
+   :width: 1.3em
+.. |8To24Bits| image:: /static/common/8-to-24-bits.png
+   :width: 1.5em
 .. |action| image:: /static/common/action.png
    :width: 2em
 .. |actionRun| image:: /static/common/mAction.png
@@ -286,8 +300,6 @@
    :width: 1.5em
 .. |dbSchema| image:: /static/common/mIconDbSchema.png
    :width: 1.5em
-.. |degrees| unicode:: 0x00B0
-   :ltrim:
 .. |delaunay| image:: /static/common/mAlgorithmDelaunay.png
    :width: 1.5em
 .. |deleteAttribute| image:: /static/common/mActionDeleteAttribute.png
@@ -628,7 +640,6 @@
    :width: 1.5em
 .. |labelshadow| image:: /static/common/labelshadow.png
    :width: 1.5em
-.. |largeLandUseArea| replace:: Bontebok National Park
 .. |layoutItem3DMap| image:: /static/common/mLayoutItem3DMap.png
    :width: 1.5em
 .. |layoutManager| image:: /static/common/mActionLayoutManager.png
@@ -660,7 +671,6 @@
    :width: 2.5em
 .. |loadGCPpoints| image:: /static/common/mActionLoadGCPpoints.png
    :width: 1.5em
-.. |localCRS| replace:: ``WGS 84 / UTM 34S``
 .. |localHistogramStretch| image:: /static/common/mActionLocalHistogramStretch.png
    :width: 1.5em
 .. |lockItems| image:: /static/common/mActionLockItems.png
@@ -675,7 +685,6 @@
    :width: 1.5em
 .. |lowerItems| image:: /static/common/mActionLowerItems.png
    :width: 1.5em
-.. |majorUrbanName| replace:: Swellendam
 .. |makepermanent| image:: /static/common/mIndicatorMemory.png
    :width: 1.5em
 .. |mapIdentification| image:: /static/common/mActionMapIdentification.png
@@ -835,7 +844,6 @@
 .. |otb| image:: /static/common/otb.png
    :width: 1.5em
 .. |otto| image:: img/otto_dassau.png
-.. |outofdate| replace:: `Despite our constant efforts, information beyond this line may not be updated for QGIS 3. Refer to https://qgis.org/pyqgis/master for the python API documentation or, give a hand to update the chapters you know about. Thanks.`
 .. |overlay| image:: /static/common/overlay.png
    :width: 1.5em
 .. |ows| image:: /static/common/mIconOws.png
@@ -1034,7 +1042,6 @@
    :width: 1.5em
 .. |scaleFeature| image:: /static/common/mActionScaleFeature.png
    :width: 1.5em
-.. |schoolAreaType1| replace:: athletics field
 .. |search| image:: /static/common/search.png
    :width: 1.5em
 .. |select| image:: /static/common/mActionSelect.png
@@ -1139,7 +1146,6 @@
    :width: 1.5em
 .. |sqlQueryBuilder| image:: /static/common/sqlquerybuilder.png
    :width: 1.5em
-.. |srtmFileName| replace:: :file:`srtm_41_19_4326.tif`
 .. |stackedBar| image:: /static/common/stacked-bar.png
    :width: 1.5em
 .. |start| image:: /static/common/mActionStart.png
@@ -1209,7 +1215,6 @@
    :width: 1.5em
 .. |toggleSelectedLayers| image:: /static/common/mActionToggleSelectedLayers.png
    :width: 1.5em
-.. |toolbox| replace:: :menuselection:`Processing --> Toolbox`
 .. |topologicalEditing| image:: /static/common/mIconTopologicalEditing.png
    :width: 1.5em
 .. |topologyChecker| image:: /static/common/mActionTopologyChecker.png
