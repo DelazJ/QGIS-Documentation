@@ -43,6 +43,7 @@ Using Vector Layers
       QgsVectorFileWriter,
       QgsWkbTypes,
       QgsSpatialIndex,
+      QgsSpatialIndexKDBush,
       QgsVectorLayerUtils
     )
 
@@ -636,10 +637,10 @@ Using Spatial Index
 Spatial indexes can dramatically improve the performance of your code if you
 need to do frequent queries to a vector layer. Imagine, for instance, that you
 are writing an interpolation algorithm, and that for a given location you need
-to know the 10 closest points from a points layer, in order to use those point
+to know the 10 closest features from a layer, in order to use those features
 for calculating the interpolated value. Without a spatial index, the only way
-for QGIS to find those 10 points is to compute the distance from each and every
-point to the specified location and then compare those distances. This can be a
+for QGIS to find those 10 features is to compute the distance from each and every
+feature to the specified location and then compare those distances. This can be a
 very time consuming task, especially if it needs to be repeated for several
 locations. If a spatial index exists for the layer, the operation is much more
 effective.
@@ -651,50 +652,59 @@ of a given person is to read from the beginning until you find it.
 Spatial indexes are not created by default for a QGIS vector layer, but you can
 create them easily. This is what you have to do:
 
-* create spatial index using the :class:`QgsSpatialIndex <qgis.core.QgsSpatialIndex>`
-  class:
+#. create spatial index using the :class:`QgsSpatialIndex <qgis.core.QgsSpatialIndex>` class:
 
-  .. testcode:: vectors
+   .. testcode:: vectors
 
-     index = QgsSpatialIndex()
+    index = QgsSpatialIndex()
 
-* add features to index --- index takes :class:`QgsFeature <qgis.core.QgsFeature>` object and adds it
-  to the internal data structure. You can create the object manually or use
-  one from a previous call to the provider's
-  :meth:`getFeatures() <qgis.core.QgsVectorDataProvider.getFeatures>` method.
+#. add features to index --- index takes :class:`QgsFeature <qgis.core.QgsFeature>` object
+   and adds it to the internal data structure.
+   You can create the object manually or use one from a previous call to the provider's
+   :meth:`getFeatures() <qgis.core.QgsVectorDataProvider.getFeatures>` method.
 
-  .. testcode:: vectors
+   .. testcode:: vectors
 
-     index.addFeature(feat)
+    index.addFeature(feat)
 
-* alternatively, you can load all features of a layer at once using bulk loading
+   Alternatively (much faster), you can load all features of a layer at once using bulk loading
 
-  .. testcode:: vectors
+   .. testcode:: vectors
 
-     index = QgsSpatialIndex(layer.getFeatures())
+    vlayer = QgsVectorLayer("testdata/airports.shp", "airports", "ogr")
+    index = QgsSpatialIndex(vlayer.getFeatures())
 
-* once spatial index is filled with some values, you can do some queries
+#. once spatial index is filled with some values, you can do some queries
 
-  .. testcode:: vectors
+   .. testcode:: vectors
 
     # returns array of feature IDs of five nearest features
     nearest = index.nearestNeighbor(QgsPointXY(25.4, 12.7), 5)
+    print(nearest)
 
-    # returns array of IDs of features which intersect the rectangle
-    intersect = index.intersects(QgsRectangle(22.5, 15.3, 23.1, 17.2))
+    # returns array of IDs of features which intersect an extent
+    intersect = index.intersects(QgsRectangle(10.5, 8.3, 23.1, 17.2))
+    print(intersect)
 
-You can also use the :class:`QgsSpatialIndexKDBush <qgis.core.QgsSpatialIndexKDBush>`
-spatial index. This index is similar to the *standard* :class:`QgsSpatialIndex <qgis.core.QgsSpatialIndex>`
-but:
+   .. testoutput:: vectors
 
-* supports **only** single point features
-* is **static** (no additional features can be added to the index after the
-  construction)
-* is **much faster!**
-* allows direct retrieval of the original feature’s points, without requiring
-  additional feature requests
-* supports true *distance based* searches, i.e. return all points within a
-  radius from a search point
+    [583, 712, 405, 453, 156]
+    [314, 156, 712]
+
+You can also use the static but much faster
+:class:`QgsSpatialIndexKDBush <qgis.core.QgsSpatialIndexKDBush>` spatial index
+(only on simple point features):
+
+.. testcode:: vectors
+
+    # returns number of feature IDs within a distance of 20 layer units
+    kIndex = QgsSpatialIndexKDBush(vlayer.getFeatures())
+    neighbors = kIndex.within(QgsPointXY(25.4, 12.7), 20)
+    print(len(neighbors))
+
+.. testoutput:: vectors
+
+    42
 
 .. index:: Vector layers; utils
 
