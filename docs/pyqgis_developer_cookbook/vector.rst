@@ -43,6 +43,7 @@ Using Vector Layers
       QgsVectorFileWriter,
       QgsWkbTypes,
       QgsSpatialIndex,
+      QgsSpatialIndexKDBush,
       QgsVectorLayerUtils
     )
 
@@ -627,10 +628,10 @@ Using Spatial Index
 Spatial indexes can dramatically improve the performance of your code if you
 need to do frequent queries to a vector layer. Imagine, for instance, that you
 are writing an interpolation algorithm, and that for a given location you need
-to know the 10 closest points from a points layer, in order to use those point
+to know the 10 closest features from a layer, in order to use those features
 for calculating the interpolated value. Without a spatial index, the only way
-for QGIS to find those 10 points is to compute the distance from each and every
-point to the specified location and then compare those distances. This can be a
+for QGIS to find those 10 features is to compute the distance from each and every
+feature to the specified location and then compare those distances. This can be a
 very time consuming task, especially if it needs to be repeated for several
 locations. If a spatial index exists for the layer, the operation is much more
 effective.
@@ -658,11 +659,11 @@ create them easily. This is what you have to do:
 
      index.addFeature(feat)
 
-* alternatively, you can load all features of a layer at once using bulk loading
+* alternatively (much faster), you can load all features of a layer at once using bulk loading
 
   .. testcode:: vectors
 
-     index = QgsSpatialIndex(layer.getFeatures())
+     index = QgsSpatialIndex(vlayer.getFeatures())
 
 * once spatial index is filled with some values, you can do some queries
 
@@ -670,22 +671,31 @@ create them easily. This is what you have to do:
 
     # returns array of feature IDs of five nearest features
     nearest = index.nearestNeighbor(QgsPointXY(25.4, 12.7), 5)
+    print(nearest)
 
     # returns array of IDs of features which intersect the rectangle
-    intersect = index.intersects(QgsRectangle(22.5, 15.3, 23.1, 17.2))
+    intersect = index.intersects(QgsRectangle(10.5, 8.3, 23.1, 17.2))
+    print(intersect)
 
-You can also use the :class:`QgsSpatialIndexKDBush <qgis.core.QgsSpatialIndexKDBush>`
-spatial index. This index is similar to the *standard* :class:`QgsSpatialIndex <qgis.core.QgsSpatialIndex>`
-but:
+  .. testoutput:: vectors
 
-* supports **only** single point features
-* is **static** (no additional features can be added to the index after the
-  construction)
-* is **much faster!**
-* allows direct retrieval of the original feature’s points, without requiring
-  additional feature requests
-* supports true *distance based* searches, i.e. return all points within a
-  radius from a search point
+    [583, 712, 405, 453, 156]
+    [314, 156, 712]
+
+You can also use the static but much faster
+:class:`QgsSpatialIndexKDBush <qgis.core.QgsSpatialIndexKDBush>` spatial index
+(only on simple point features):
+
+.. testcode:: vectors
+
+    # returns number of feature IDs within a distance of 20 layer units
+    kIndex = QgsSpatialIndexKDBush(vlayer.getFeatures())
+    neighbors = kIndex.within(QgsPointXY(25.4, 12.7), 20)
+    print(len(neighbors))
+
+.. testoutput:: vectors
+
+    42
 
 .. index:: Vector layers; utils
 
@@ -981,7 +991,7 @@ The following example code illustrates creating and populating a memory provider
   # add a feature
   fet = QgsFeature()
   fet.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(10,10)))
-  fet.setAttributes(["Johny", 2, 0.3])
+  fet.setAttributes(["Johnny", 2, 0.3])
   pr.addFeatures([fet])
 
   # update layer's extent when new features have been added
@@ -1008,7 +1018,7 @@ Finally, let's check whether everything went well
     fields: 3
     features: 1
     extent: 10.0 10.0 10.0 10.0
-    F: 1 ['Johny', 2, 0.3] <QgsPointXY: POINT(10 10)>
+    F: 1 ['Johnny', 2, 0.3] <QgsPointXY: POINT(10 10)>
 
 .. index:: Vector layers; Symbology
 
