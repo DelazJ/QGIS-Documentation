@@ -18,19 +18,19 @@ jobs:
             ]
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-#  apply-label:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/github-script@v6
-#        if: contains(github.event.comment.body, "QGIS version: 3.28")
-#        with:
-#          script: |
-#            github.rest.issues.addLabels({
- #             issue_number: context.issue.number,
- #             owner: context.repo.owner,
- #             repo: context.repo.repo,
- #             labels: ['3.28']
- #           })
+  apply-label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        if: contains(github.event.comment.body, "QGIS version: 3.28")
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['3.28', 'enhancement']
+            })
             
   assign-milestone:
     runs-on: ubuntu-latest
@@ -38,7 +38,8 @@ jobs:
 
     steps:
       - uses: zoispag/action-assign-milestone@v1
-        if: github.event.label.name == '3.28'
+        #if: contains(github.event.comment.body, "QGIS version: 3.28")
+        #github.event.label.name == '3.28'
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           milestone: 'QGIS 3.28'
