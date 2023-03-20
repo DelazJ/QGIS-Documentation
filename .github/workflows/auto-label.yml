@@ -41,4 +41,4 @@ jobs:
         if: contains(github.event.issue.labels.*.name, "3.28")
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          milestone: '3.28'
+          milestone: 'QGIS 3.28'
