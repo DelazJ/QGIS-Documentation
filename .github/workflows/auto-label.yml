@@ -1,11 +1,7 @@
-
-
-
-
 name: "Set Issue Label for issues from main QGIS repo"
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
 
 jobs:
   test:
@@ -21,3 +17,28 @@ jobs:
               {"keywords": ["QGIS version: 3.34"], "labels": ["3.34"]}
             ]
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+#  apply-label:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/github-script@v6
+#        if: contains(github.event.comment.body, "QGIS version: 3.28")
+#        with:
+#          script: |
+#            github.rest.issues.addLabels({
+ #             issue_number: context.issue.number,
+ #             owner: context.repo.owner,
+ #             repo: context.repo.repo,
+ #             labels: ['3.28']
+ #           })
+            
+  assign-milestone:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - uses: zoispag/action-assign-milestone@v1
+        if: contains(github.event.issue.labels.*.name, "3.28")
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          milestone: '3.28'
