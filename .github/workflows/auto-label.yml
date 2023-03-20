@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - uses: zoispag/action-assign-milestone@v1
-        if: contains(github.event.issue.labels.*.name, "3.28")
+        if: github.event.label.name == '3.28'
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           milestone: 'QGIS 3.28'
