@@ -30,6 +30,7 @@ jobs:
   milestoning:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix: 
         activelabels: ["3.30", "3.32", "3.34"]
     steps:
@@ -47,16 +48,20 @@ jobs:
   labelage:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix: 
         activelabels: ["3.30", "3.32", "3.34"]
     steps:
       - id: assign-labels
         uses: actions/github-script@v6
         with:
-          #if: ${{contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))}}
-          if: "${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}"
+          #if: ${{ contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))}}
+          if: |
+            ${{ contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}') }}
           script: |
+            echo '${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}'
             echo "${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}"
+            echo `${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}`
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
