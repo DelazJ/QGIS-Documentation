@@ -26,14 +26,14 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-           if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then
+           #if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then
              github.rest.issues.addLabels({
              issue_number: context.issue.number,
              owner: context.repo.owner,
              repo: context.repo.repo,
-             labels: ["${{ matrix.activelabels }}"]
+             labels: ['${{ matrix.activelabels }}']
              })
-           fi
+          # fi
 
 
   assign-milestone:
