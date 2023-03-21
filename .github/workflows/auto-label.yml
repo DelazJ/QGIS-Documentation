@@ -23,17 +23,17 @@ jobs:
       matrix: 
         activelabels: ["3.30", "3.32", "3.34"]
     steps:
-      - id: assign-labels
       - uses: actions/github-script@v6
-        with: |
-         if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then
-           github.rest.issues.addLabels({
-           issue_number: context.issue.number,
-           owner: context.repo.owner,
-           repo: context.repo.repo,
-           labels: ${{ matrix.activelabels }}
-           })
-         fi
+        with:
+          script: |
+           if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then
+             github.rest.issues.addLabels({
+             issue_number: context.issue.number,
+             owner: context.repo.owner,
+             repo: context.repo.repo,
+             labels: ${{ matrix.activelabels }}
+             })
+           fi
 
 
   assign-milestone:
@@ -49,4 +49,4 @@ jobs:
               repo: context.repo.repo,
               milestone: 3
             })
-            
+
