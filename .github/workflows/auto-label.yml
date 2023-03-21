@@ -53,7 +53,8 @@ jobs:
       - id: assign-labels
         uses: actions/github-script@v6
         with:
-          if: ${{contains(github.event.comment.body, 'QGIS version':' ${{ matrix.activelabels }}')}}
+          if: ${{contains(github.event.commits[0].message, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))}}
+          # ${{contains(github.event.comment.body, 'QGIS version':' ${{ matrix.activelabels }}')}}
           script: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
