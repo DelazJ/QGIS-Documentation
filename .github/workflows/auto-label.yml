@@ -54,9 +54,9 @@ jobs:
     steps:
       - id: assign-labels
         uses: actions/github-script@v6
+        if: contains(github.event.comment.body, 'QGIS version ${{ matrix.activelabels }}')
         with:
           #if: contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
-          if: contains(github.event.comment.body, 'QGIS version ${{ matrix.activelabels }}')
           script: |
             echo "contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))"
             echo '${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}'
