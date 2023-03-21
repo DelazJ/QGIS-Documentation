@@ -53,16 +53,16 @@ jobs:
       - id: assign-labels
         uses: actions/github-script@v6
         with:
-          if: ${{contains(github.event.commits[0].message, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))}}
-          # ${{contains(github.event.comment.body, 'QGIS version':' ${{ matrix.activelabels }}')}}
+          #if: ${{contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))}}
+          if: "${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}"
           script: |
+            echo "${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}"
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               labels: ['Feedback', '${{ matrix.activelabels }}' ]
             })
-            fi
 
         #if: contains(github.event.comment.body, "QGIS version: 3.28")
 #    if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then
