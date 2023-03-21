@@ -24,10 +24,7 @@ jobs:
         activelabels: ["3.30", "3.32", "3.34"]
     steps:
       - id: assign-labels
-        uses: actions/github-script@v6
-        with:
-          script: |
-            if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then
+        run: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
@@ -38,7 +35,6 @@ jobs:
 
       - id: assign-milestone
         uses: actions/github-script@v6
-        #if: contains(github.event.comment.body, "QGIS version: 3.28")
         with:
           script: |
             github.rest.issues.addLabels({
@@ -48,3 +44,4 @@ jobs:
               labels: ['${{ matrix.activelabels }}']
             })
 
+#    if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then
