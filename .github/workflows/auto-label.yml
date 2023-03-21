@@ -41,7 +41,7 @@ jobs:
               repo: context.repo.repo,
               milestone: 3
             })
-            fi
+
 
       - id: assign-milestone
         uses: actions/github-script@v6
