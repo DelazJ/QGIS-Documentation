@@ -25,7 +25,7 @@ jobs:
     steps:
       - id: assign-labels
         run: |
-            github.rest.issues.addLabels({
+            github.rest.issues.update({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
