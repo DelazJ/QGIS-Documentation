@@ -27,22 +27,7 @@ jobs:
               labels: ['Triage']
             })
             
-  assignation:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: 
-        activelabels: [3.30, 3.32, 3.34]
-    steps:
-      - id: assign-labels
-        run: |
-            github.rest.issues.update({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              milestone: 3
-            })
-
-  labelage:
+  milestoning:
     runs-on: ubuntu-latest
     strategy:
       matrix: 
@@ -52,11 +37,29 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            github.rest.issues.update({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              milestone: 2
+            })
+            
+  labelage:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        activelabels: [3.30, 3.32, 3.34]
+    steps:
+      - id: assign-labels
+        uses: actions/github-script@v6
+        with:
+          script: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: ['Triage']
+              labels: ['Feedback']
             })
 
+        #if: contains(github.event.comment.body, "QGIS version: 3.28")
 #    if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then
