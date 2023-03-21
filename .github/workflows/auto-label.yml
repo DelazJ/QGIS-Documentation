@@ -11,11 +11,30 @@ jobs:
         with:
           title-or-body: "both"
           parameters: |
-            [ {"keywords": ["QGIS version: 3.30"], "labels": ["3.30"]},
-              {"keywords": ["QGIS version: 3.32"], "labels": ["3.32"]},
-              {"keywords": ["QGIS version: 3.34"], "labels": ["3.34"]}
+            [ {"keywords": ["QGIS version: 3.30"], "labels": ["3.20"]},
+              {"keywords": ["QGIS version: 3.32"], "labels": ["3.22"]},
+              {"keywords": ["QGIS version: 3.34"], "labels": ["3.24"]}
             ]
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+  assign-labels:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        activelabels: ["3.30", "3.32", "3.34"]
+    steps:
+      - id: assign-labels
+      - uses: actions/github-script@v6
+        with: |
+         if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then
+           github.rest.issues.addLabels({
+           issue_number: context.issue.number,
+           owner: context.repo.owner,
+           repo: context.repo.repo,
+           labels: ${{ matrix.activelabels }}
+           })
+         fi
+
 
   assign-milestone:
     runs-on: ubuntu-latest
