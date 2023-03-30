@@ -2,7 +2,11 @@ name: "Set Issue Label for issues from main QGIS repo"
 on:
   issues:
     types: [opened, reopened, closed]
-
+env:
+  BODY: ${{ github.event.comment.body }}
+  TITLE: ${{ github.event.issue.title }}
+  TEXTE: ${{ github.event.issue.body }}
+  
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -35,7 +39,11 @@ jobs:
         activelabels: ["3.30", "3.32", "3.34"]
     steps:
       - id: echo-body
-        run: echo ${{ github.event.comment.body }}
+        run: |
+          echo ${{ BODY }}
+          echo ${{ TEXTE }}
+          echo ${{ TITLE }}
+          
       - id: assign-milestone
         uses: actions/github-script@v6
         with:
@@ -50,21 +58,48 @@ jobs:
   labelage:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      #fail-fast: false
       matrix: 
         activelabels: ["3.30", "3.32", "3.34"]
     steps:
     
+
+      # get the issue body
+      - name: Get issue body as JSON
+        id: get_issue_info
+        uses: octokit/request-action@v2.x
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          route: GET /repos/DelazJ/QGIS-Documentation/issues/{issue_number}/comments #{comment_id}
+          issue_number: ${{ github.event.issue.number }}
+          per_page: 1
+
       - id: find-version
         name: Find target version
         run: |
            
+# VERSION=(sed -n 's/^QGIS version: \([[:digit:]]\.[[:digit:]]+) .*/\1/p' <<< ${ le body de l'issue })
+# echo "version=${VERSION}" >> $GITHUB_OUTPUT
+
+# For example, contains(fromJSON('["push", "pull_request"]'), github.event_name) returns true if github.event_name is "push" or "pull_request"
+# if: contains(fromJSON('["3.30", "3.32", "3.34"]'), ${{ version }})
+
+
+      # extract body from json output
+      - name: Get PR body as text
+        id: get_pr_body
+        uses: gr2m/get-json-paths-action@v1.x
+        with:
+          json: ${{ steps.get_pr_info.outputs.data }}
+          body: "body"
+          
       - id: echo-body
-        run: echo ${{ github.event.comment.body }}
+        run: echo ${{ BODY }}
       
       - id: assign-labels
         uses: actions/github-script@v6
-        if: contains(github.event.comment.body, "QGIS version ${{ matrix.activelabels }}")
+        #if: contains(github.event.comment.body, "QGIS version ${{ matrix.activelabels }}")
         with:
           #if: contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
           script: |
