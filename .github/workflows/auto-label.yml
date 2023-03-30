@@ -40,7 +40,6 @@ jobs:
     steps:
       - id: echo-body
         run: |
-         # echo ${{ BODY }}
           echo ${{ TEXTE }}
           echo ${{ TITLE }}
           
@@ -94,8 +93,8 @@ jobs:
           json: ${{ steps.get_pr_info.outputs.data }}
           body: "body"
           
-      - id: echo-body
-        run: echo ${{ BODY }}
+     # - id: echo-body
+     #   run: echo ${{ BODY }}
       
       - id: assign-labels
         uses: actions/github-script@v6
