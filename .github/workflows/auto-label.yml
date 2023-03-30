@@ -35,7 +35,7 @@ jobs:
         activelabels: ["3.30", "3.32", "3.34"]
     steps:
       - id: echo-body
-        run: echo "${{ github.event.comment.body }}"
+        run: echo ${{ github.event.comment.body }}
       - id: assign-milestone
         uses: actions/github-script@v6
         with:
@@ -55,8 +55,12 @@ jobs:
         activelabels: ["3.30", "3.32", "3.34"]
     steps:
     
+      - id: find-version
+        name: Find target version
+        run: |
+           
       - id: echo-body
-        run: echo "${{ github.event.comment.body }}"
+        run: echo ${{ github.event.comment.body }}
       
       - id: assign-labels
         uses: actions/github-script@v6
