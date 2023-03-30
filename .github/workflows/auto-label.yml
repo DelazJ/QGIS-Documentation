@@ -45,6 +45,7 @@ jobs:
           echo ${{ github.event.issue.body }}
           
       - id: assign-milestone
+        name: Assign milestone
         uses: actions/github-script@v6
         with:
           script: |
@@ -77,8 +78,9 @@ jobs:
 
       - id: find-version
         name: Find target version
-        run: |  
-          VERSION=(sed -n 's/^QGIS version: \([[:digit:]]\.[[:digit:]]+) .*/\1/p' <<< ${{ github.event.issue.body }})
+        run: |
+          echo ${{ github.event.issue.number }}
+          VERSION=(sed -r 's/^QGIS version: \([[:digit:]]\.[[:digit:]]+) .*/\1/p' <<< ${{ github.event.issue.body }})
           echo "la version est ${VERSION}"
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
 
