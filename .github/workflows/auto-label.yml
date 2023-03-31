@@ -73,9 +73,12 @@ jobs:
       - id: find-version
         name: Find target version
         run: |
-          echo ${{ github.event.issue.number }}
-          VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ env.BODY }}") 
-          echo "la version est ${VERSION}"
+          echo "${{ contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':')) }}"
+
+
+        # echo ${{ github.event.issue.number }}
+          # VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ env.BODY }}") 
+          # echo "la version est ${VERSION}"
           
         # echo "version=${VERSION}" >> $GITHUB_OUTPUT
           
@@ -103,7 +106,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: ['Feedback', '${{ steps.find-version.outputs.version }}' ]
+              labels: ['Feedback', '${{ matrix.activelabels }}' ]
             })
 
           # echo "contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))"
