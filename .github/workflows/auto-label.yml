@@ -1,8 +1,10 @@
 name: "Set Issue Label for issues from main QGIS repo"
+# Also add corresponding milestone to the issue
 on:
   issues:
     types: [opened, reopened, closed]
-# env:
+env:
+  MILESTONE: 2 # See https://api.github.com/repos/qgis/QGIS-Documentation/milestones
 #   BODY: ${{ github.event.issue.body }} # comment.body semble inconnu
 #   TITLE: ${{ github.event.issue.title }}
 #   TEXTE: ${{ github.event.issue.body }}
@@ -11,7 +13,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: Naturalclar/issue-action@v2.0.2
+      - id: add-label
+        name: Add label
+        uses: Naturalclar/issue-action@v2.0.2
         with:
           title-or-body: "both"
           parameters: |
@@ -21,7 +25,9 @@ jobs:
             ]
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - uses: actions/github-script@v6
+      - id: add-lab2
+        name: Assign Label 2
+        uses: actions/github-script@v6
         with:
           script: |
             github.rest.issues.addLabels({
@@ -31,6 +37,20 @@ jobs:
               labels: ['Triage']
             })
             
+      - id: assign-milestone
+        name: Assign milestone
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.update({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              milestone: ${{ MILESTONE }}
+            })
+        
+ 
+
   milestoning:
     runs-on: ubuntu-latest
     # strategy:
@@ -44,17 +64,7 @@ jobs:
           echo ${{ github.event.issue.title }}
           echo ${{ github.event.issue.body }}
           
-      - id: assign-milestone
-        name: Assign milestone
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.update({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              milestone: 2
-            })
+
             
   labelage:
     runs-on: ubuntu-latest
