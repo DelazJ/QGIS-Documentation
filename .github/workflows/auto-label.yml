@@ -7,23 +7,22 @@ env:
   MILESTONE: 2 # See https://api.github.com/repos/qgis/QGIS-Documentation/milestones
   BODY: ${{ github.event.issue.body }}
   TITLE: ${{ github.event.issue.title }}
-#   TEXTE: ${{ github.event.issue.body }}
   
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - id: add-label
-        name: Add label
-        uses: Naturalclar/issue-action@v2.0.2
-        with:
-          title-or-body: "both"
-          parameters: |
-            [ {"keywords": ["QGIS version: 3.30"], "labels": ["3.20"]},
-              {"keywords": ["QGIS version: 3.32"], "labels": ["3.22"]},
-              {"keywords": ["QGIS version: 3.34"], "labels": ["3.24"]}
-            ]
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+#      - id: add-label
+#        name: Add label
+#        uses: Naturalclar/issue-action@v2.0.2
+#        with:
+#          title-or-body: "both"
+#          parameters: |
+#            [ {"keywords": ["QGIS version: 3.30"], "labels": ["3.20"]},
+#              {"keywords": ["QGIS version: 3.32"], "labels": ["3.22"]},
+#              {"keywords": ["QGIS version: 3.34"], "labels": ["3.24"]}
+#            ]
+#          github-token: "${{ secrets.GITHUB_TOKEN }}"
 
       - id: add-lab2
         name: Assign Label 2
@@ -106,12 +105,12 @@ jobs:
       - id: textensortie
         run: |
           echo "${{ steps.find_version.outputs.search_string }}"
-          echo "contains(${{ env.BODY }}, ${{ steps.find_version.outputs.search_string }})"
-          echo "${{contains(${{ env.BODY }}, ${{ steps.find_version.outputs.search_string }})}}"
+          echo "contains($BODY, ${{ steps.find_version.outputs.search_string }})"
+          echo "$(contains($BODY, ${{ steps.find_version.outputs.search_string }}))"
  
       - id: assign-labels
         uses: actions/github-script@v6
-        if: contains(${{ env.BODY }}, ${{ steps.find_version.outputs.search_string }})
+        if: contains( $BODY, ${{ steps.find_version.outputs.search_string }})
         with:
           # if: contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
           script: |
