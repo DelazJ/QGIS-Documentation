@@ -75,6 +75,10 @@ jobs:
           echo "QGIS version: ${{ matrix.activelabels }}"
           SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
           echo "SEARCHER ${SEARCH_STRING}"
+          VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ env.BODY }}") 
+          echo "la version est ${VERSION}"
+
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
           echo "search_string=${SEARCH_STRING}" >> $GITHUB_OUTPUT
           
        # echo "commits=$(echo ${COMMITS_MESSAGES} | tr -d '\n' )" >> $GITHUB_OUTPUT
@@ -104,16 +108,15 @@ jobs:
       
       - id: textensortie
         run: |
-          echo "${{ steps.find_version.outputs.search_string }}"
+          if contains(echo "${{ steps.find_version.outputs.search_string }}"
           echo "contains($BODY, ${{ steps.find_version.outputs.search_string }})"
-          echo "$(contains($BODY, ${{ steps.find_version.outputs.search_string }}))"
  
       - id: assign-labels
         uses: actions/github-script@v6
-        if: contains( $BODY, ${{ steps.find_version.outputs.search_string }})
+        #if: contains( $BODY, ${{ steps.find_version.outputs.search_string }})
         with:
-          # if: contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
           script: |
+            if
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
@@ -121,6 +124,7 @@ jobs:
               labels: ['Feedback', '${{ matrix.activelabels }}' ]
             })
 
+          # if: contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
           # echo "contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))"
           # echo '${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}'
           # echo "${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}"
