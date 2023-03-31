@@ -39,7 +39,7 @@ jobs:
             
       - id: assign-milestone
         name: Assign milestone
-        if: add-label
+        # if: add-label
         uses: actions/github-script@v6
         with:
           script: |
