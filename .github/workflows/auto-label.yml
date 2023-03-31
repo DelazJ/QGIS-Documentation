@@ -49,41 +49,24 @@ jobs:
               repo: context.repo.repo,
               milestone: ${{ env.MILESTONE }}
             })
-        
- 
-
-  milestoning:
-    runs-on: ubuntu-latest
-    # strategy:
-    #   fail-fast: false
-    #   matrix: 
-    #     activelabels: ["3.30", "3.32", "3.34"]
-    steps:
-      - id: echo-body
-        name: Return issue contents
-        run: |
-          echo "${{ env.BODY }}"
-          echo "${{ env.TITLE }}"
-          
-
+  
             
   labelage:
     runs-on: ubuntu-latest
-    # strategy:
-    #   fail-fast: false
-    #   matrix: 
-    #     activelabels: ["3.30", "3.32", "3.34"]
+    strategy:
+      fail-fast: false
+      matrix: 
+        activelabels: ["3.30", "3.32", "3.34"]
+
     steps:
     
-
-      # get the issue body
       - name: Get issue body as JSON
         id: get_issue_info
         uses: octokit/request-action@v2.x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          route: GET /repos/DelazJ/QGIS-Documentation/issues/{issue_number}/comments #{comment_id}
+          route: GET /repos/DelazJ/QGIS-Documentation/issues/{issue_number}/comments # {comment_id}
           issue_number: ${{ github.event.issue.number }}
           per_page: 1
 
@@ -91,7 +74,7 @@ jobs:
         name: Find target version
         run: |
           echo ${{ github.event.issue.number }}
-          VERSION=$(sed -iE 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ github.event.issue.body }}") 
+          VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ env.BODY }}") 
           echo "la version est ${VERSION}"
           
         # echo "version=${VERSION}" >> $GITHUB_OUTPUT
@@ -112,9 +95,9 @@ jobs:
       
       - id: assign-labels
         uses: actions/github-script@v6
-        #if: contains(github.event.comment.body, "QGIS version ${{ matrix.activelabels }}")
+        if: "${{contains(github.event.issue.body, 'QGIS version: ${{ matrix.activelabels }}')"
         with:
-          #if: contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
+          #if: contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
           script: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
