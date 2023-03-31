@@ -62,8 +62,8 @@ jobs:
       - id: echo-body
         name: Return issue contents
         run: |
-          echo ${{ env.BODY }}
-          echo ${{ env.TITLE }}
+          echo "${{ env.BODY }}"
+          echo "${{ env.TITLE }}"
           
 
             
@@ -91,7 +91,7 @@ jobs:
         name: Find target version
         run: |
           echo ${{ github.event.issue.number }}
-          VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ github.event.issue.body }}") 
+          VERSION=$(sed -iE 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ github.event.issue.body }}") 
           echo "la version est ${VERSION}"
           
         # echo "version=${VERSION}" >> $GITHUB_OUTPUT
