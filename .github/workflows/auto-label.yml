@@ -73,7 +73,11 @@ jobs:
       - id: find-version
         name: Find target version
         run: |
-          echo "${{ contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':')) }}"
+          echo "QGIS version: ${{ matrix.activelabels }}"
+          
+          
+          
+       # "echo "${{ contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':')) }}"
 
 
         # echo ${{ github.event.issue.number }}
