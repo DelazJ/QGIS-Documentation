@@ -95,7 +95,7 @@ jobs:
       
       - id: assign-labels
         uses: actions/github-script@v6
-        if: "${{ contains(github.event.issue.body, 'QGIS version: ${{ matrix.activelabels }}') }}"
+        if: ${{ contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':')) }}
         with:
           #if: contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
           script: |
