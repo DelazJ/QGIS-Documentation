@@ -103,6 +103,10 @@ jobs:
       #     json: ${{ steps.get_pr_info.outputs.data }}
       #     body: "body"
       
+      - id: textensortie
+        run: |
+          echo "${{ steps.find_version.outputs.search_string }}"
+      
       - id: assign-labels
         uses: actions/github-script@v6
         if: contains(github.event.issue.body, ${{ steps.find_version.outputs.search_string }})
