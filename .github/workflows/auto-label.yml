@@ -60,23 +60,24 @@ jobs:
 
     steps:
     
-      - name: Get issue body as JSON
-        id: get_issue_info
-        uses: octokit/request-action@v2.x
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          route: GET /repos/DelazJ/QGIS-Documentation/issues/{issue_number}/comments # {comment_id}
-          issue_number: ${{ github.event.issue.number }}
-          per_page: 1
+#      - name: Get issue body as JSON
+#        id: get_issue_info
+#        uses: octokit/request-action@v2.x
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          route: GET /repos/DelazJ/QGIS-Documentation/issues/{issue_number}/comments # {comment_id}
+#          issue_number: ${{ github.event.issue.number }}
+#          per_page: 1
 
-      - id: find-version
+      - id: find_version
         name: Find target version
         run: |
           echo "QGIS version: ${{ matrix.activelabels }}"
+          echo "SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}") >> $GITHUB_OUTPUT
           
-          
-          
+       # echo "commits=$(echo ${COMMITS_MESSAGES} | tr -d '\n' )" >> $GITHUB_OUTPUT
+         
        # "echo "${{ contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':')) }}"
 
 
@@ -102,9 +103,9 @@ jobs:
       
       - id: assign-labels
         uses: actions/github-script@v6
-        if: ${{ contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':')) }}
+        if: ${{ contains(github.event.issue.body, ${{ steps.find_version.outputs.search_string }}) }}
         with:
-          #if: contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
+          # if: contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
           script: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
