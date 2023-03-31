@@ -74,7 +74,9 @@ jobs:
         name: Find target version
         run: |
           echo "QGIS version: ${{ matrix.activelabels }}"
-          echo "search_string=$(echo "QGIS version: ${{ matrix.activelabels }}") >> $GITHUB_OUTPUT
+          SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
+          echo "SEARCHER ${SEARCH_STRING}"
+          echo "search_string=${SEARCH_STRING}" >> $GITHUB_OUTPUT
           
        # echo "commits=$(echo ${COMMITS_MESSAGES} | tr -d '\n' )" >> $GITHUB_OUTPUT
          
