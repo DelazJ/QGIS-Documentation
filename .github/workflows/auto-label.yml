@@ -5,8 +5,8 @@ on:
     types: [opened, reopened, closed]
 env:
   MILESTONE: 2 # See https://api.github.com/repos/qgis/QGIS-Documentation/milestones
-#   BODY: ${{ github.event.issue.body }} # comment.body semble inconnu
-#   TITLE: ${{ github.event.issue.title }}
+  BODY: ${{ github.event.issue.body }}
+  TITLE: ${{ github.event.issue.title }}
 #   TEXTE: ${{ github.event.issue.body }}
   
 jobs:
@@ -39,6 +39,7 @@ jobs:
             
       - id: assign-milestone
         name: Assign milestone
+        if: add-label
         uses: actions/github-script@v6
         with:
           script: |
@@ -61,8 +62,8 @@ jobs:
       - id: echo-body
         name: Return issue contents
         run: |
-          echo ${{ github.event.issue.title }}
-          echo ${{ github.event.issue.body }}
+          echo ${{ env.BODY }}
+          echo ${{ env.TITLE }}
           
 
             
@@ -90,10 +91,13 @@ jobs:
         name: Find target version
         run: |
           echo ${{ github.event.issue.number }}
-          VERSION=$(sed -r 's/^QGIS version: ([[:digit:]]\.[[:digit:]]+) .*/\1/p' <<< "${{ github.event.issue.body }}")
+          VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/gs;t;d' <<< "${{ github.event.issue.body }}") 
           echo "la version est ${VERSION}"
-          echo "version=${VERSION}" >> $GITHUB_OUTPUT
-
+          
+        # echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          
+# awk -F'BEGIN:|END:' '{print $2}' <<< "${{ env.BODY }}"
+# $(sed -r 's/^QGIS version: ([[:digit:]]\.[[:digit:]]+) .*/\1/p' <<< "${{ github.event.issue.body }}")          
 # For example, contains(fromJSON('["push", "pull_request"]'), github.event_name) returns true if github.event_name is "push" or "pull_request"
 # if: contains(fromJSON('["3.30", "3.32", "3.34"]'), ${{ version }})
 
