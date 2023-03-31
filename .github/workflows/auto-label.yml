@@ -106,10 +106,12 @@ jobs:
       - id: textensortie
         run: |
           echo "${{ steps.find_version.outputs.search_string }}"
-      
+          echo "contains(${{ env.BODY }}, ${{ steps.find_version.outputs.search_string }})"
+          echo "${{contains(${{ env.BODY }}, ${{ steps.find_version.outputs.search_string }})}}"
+ 
       - id: assign-labels
         uses: actions/github-script@v6
-        if: contains(github.event.issue.body, ${{ steps.find_version.outputs.search_string }})
+        if: contains(${{ env.BODY }}, ${{ steps.find_version.outputs.search_string }})
         with:
           # if: contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
           script: |
