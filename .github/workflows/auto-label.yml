@@ -91,7 +91,7 @@ jobs:
         name: Find target version
         run: |
           echo ${{ github.event.issue.number }}
-          VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/gs;t;d' <<< "${{ github.event.issue.body }}") 
+          VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ github.event.issue.body }}") 
           echo "la version est ${VERSION}"
           
         # echo "version=${VERSION}" >> $GITHUB_OUTPUT
