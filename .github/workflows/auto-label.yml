@@ -3,21 +3,135 @@
 
 
 name: "Set Issue Label for issues from main QGIS repo"
+# Also add corresponding milestone to the issue
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened, closed]
+env:
+  MILESTONE: 2 # See https://api.github.com/repos/qgis/QGIS-Documentation/milestones
+  BODY: ${{ github.event.issue.body }}
+  TITLE: ${{ github.event.issue.title }}
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: Naturalclar/issue-action@v2.0.2
+#      - id: add-label
+#        name: Add label
+#        uses: Naturalclar/issue-action@v2.0.2
+#        with:
+#          title-or-body: "both"
+#          parameters: |
+#            [ {"keywords": ["QGIS version: 3.30"], "labels": ["3.20"]},
+#              {"keywords": ["QGIS version: 3.32"], "labels": ["3.22"]},
+#              {"keywords": ["QGIS version: 3.34"], "labels": ["3.24"]}
+#            ]
+#          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - id: add-lab2
+        name: Assign Label 2
+        uses: actions/github-script@v6
         with:
-          title-or-body: "both"
-          parameters: |
-            [ {"keywords": ["QGIS version: 3.28"], "labels": ["3.28"]},
-              {"keywords": ["QGIS version: 3.30"], "labels": ["3.30"]},
-              {"keywords": ["QGIS version: 3.32"], "labels": ["3.32"]},
-              {"keywords": ["QGIS version: 3.34"], "labels": ["3.34"]}
-            ]
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['Triage']
+            })
+            
+      - id: assign-milestone
+        name: Assign milestone
+        # if: add-label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.update({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              milestone: ${{ env.MILESTONE }}
+            })
+  
+            
+  labelage:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: 
+        activelabels: ["3.30", "3.32", "3.34"]
+
+    steps:
+    
+#      - name: Get issue body as JSON
+#        id: get_issue_info
+#        uses: octokit/request-action@v2.x
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          route: GET /repos/DelazJ/QGIS-Documentation/issues/{issue_number}/comments # {comment_id}
+#          issue_number: ${{ github.event.issue.number }}
+#          per_page: 1
+
+      - id: find_version
+        name: Find target version
+        run: |
+          echo "QGIS version: ${{ matrix.activelabels }}"
+          SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
+          echo "SEARCHER ${SEARCH_STRING}"
+          VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ env.BODY }}") 
+          echo "la version est ${VERSION}"
+
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "search_string=${SEARCH_STRING}" >> $GITHUB_OUTPUT
+          
+       # echo "commits=$(echo ${COMMITS_MESSAGES} | tr -d '\n' )" >> $GITHUB_OUTPUT
+         
+       # "echo "${{ contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':')) }}"
+
+
+        # echo ${{ github.event.issue.number }}
+          # VERSION=$(sed -E 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/$1/g;t;d' <<< "${{ env.BODY }}") 
+          # echo "la version est ${VERSION}"
+          
+        # echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          
+# awk -F'BEGIN:|END:' '{print $2}' <<< "${{ env.BODY }}"
+# $(sed -r 's/^QGIS version: ([[:digit:]]\.[[:digit:]]+) .*/\1/p' <<< "${{ github.event.issue.body }}")          
+# For example, contains(fromJSON('["push", "pull_request"]'), github.event_name) returns true if github.event_name is "push" or "pull_request"
+# if: contains(fromJSON('["3.30", "3.32", "3.34"]'), ${{ version }})
+
+
+      # # extract body from json output
+      # - name: Get PR body as text
+      #   id: get_pr_body
+      #   uses: gr2m/get-json-paths-action@v1.x
+      #   with:
+      #     json: ${{ steps.get_pr_info.outputs.data }}
+      #     body: "body"
+      
+      - id: textensortie
+        run: |
+          if contains(echo "${{ steps.find_version.outputs.search_string }}"
+          echo "contains($BODY, ${{ steps.find_version.outputs.search_string }})"
+ 
+      - id: assign-labels
+        uses: actions/github-script@v6
+        #if: contains( $BODY, ${{ steps.find_version.outputs.search_string }})
+        with:
+          script: |
+            if
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['Feedback', '${{ matrix.activelabels }}' ]
+            })
+
+          # if: contains(github.event.issue.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))
+          # echo "contains(github.event.comment.body, format('QGIS version{0} ${{ matrix.activelabels }}', ':'))"
+          # echo '${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}'
+          # echo "${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}"
+          # echo `${{contains(github.event.comment.body, 'QGIS version: ${{ matrix.activelabels }}')}}`
+        #if: contains(github.event.comment.body, "QGIS version: 3.28")
+#    if [[ contains(github.event.comment.body, "QGIS version: ${{ matrix.activelabels }}") ]]; then

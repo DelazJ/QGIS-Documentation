@@ -10,11 +10,11 @@ on:
 jobs:
   pull_translation:
 
-    if: github.repository_owner == 'qgis'
+    #if: github.repository_owner == 'qgis'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # only pull to the translated branch
+        # only pull to the branch we translate
         target_branch: [release_3.28]
     env:
       TRANSIFEX_PASSWORD: ${{ secrets.TRANSIFEX_PASSWORD }}
@@ -37,7 +37,7 @@ jobs:
         sudo echo -e "[https://www.transifex.com]\nrest_hostname = https://rest.api.transifex.com\ntoken = $TRANSIFEX_PASSWORD" > ~/.transifexrc
 
     - name: Download and sanitize files and folders
-      run: bash ./scripts/minimize_translation.sh
+      run: bash ./scripts/minimize_translation.sh -l de, it
 
 #    - name: Show changes
 #      run: echo `git status`

@@ -10,20 +10,17 @@ on:
 jobs:
   ReportTranslationStats:
 
-    if: github.repository_owner == 'qgis'
+    #if: github.repository_owner == 'qgis'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target_branch: [master, release_3.28]
     env:
       TRANSIFEX_PASSWORD: ${{ secrets.TRANSIFEX_PASSWORD }}
+      BACKPORT_BRANCH: "release_3.28"
 
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
       with:
         fetch-depth: 1
-        ref: ${{ matrix.target_branch }}
 
     - name: Set up Python 3.7
       uses: actions/setup-python@v4
@@ -36,24 +33,18 @@ jobs:
     - name: Report statistics
       run: python3 ./scripts/load_tx_stats.py $TRANSIFEX_PASSWORD
 
-    - name: Commit changes to LTR
-      if: github.ref != 'refs/heads/master'
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Update statistics of translation
-
     - id: create_pr
-      if: github.ref == 'refs/heads/master'
-      name: Create Pull Request for master
+      name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
         commit-message: Update statistics of translation
         title: Update statistics of translation
         delete-branch: true
-        labels: Translation
+        labels: |
+          backport $BACKPORT_BRANCH
+          Translation
 
     - name: Enable Pull Request Automerge
-      if: github.ref == 'refs/heads/master'
       run: gh pr merge --rebase --auto "${{ steps.create_pr.outputs.pull-request-number }}"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
