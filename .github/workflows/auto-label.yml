@@ -9,7 +9,7 @@ on:
     types: [opened, reopened, closed]
 env:
   MILESTONE: 2 # See https://api.github.com/repos/qgis/QGIS-Documentation/milestones
-  BODY: "${{ github.event.issue.body }}"
+  BODY: ${{ github.event.issue.body }}
 
 jobs:
   test:
@@ -34,8 +34,8 @@ jobs:
       - id: add_labels_2
         name: Assign Label 2
         run: |
-          LABEL=$(echo "${{ env.BODY }}" | sed -n -r 's/.*^QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/')
-          echo "${LABEL}"
+          LABEL=$(echo "${{ env.BODY }}" | sed -n -r 's/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/')
+          echo "label: ${LABEL}"
           
  #         SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
  #         echo "texte: $SEARCH_STRING"
