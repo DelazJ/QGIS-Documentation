@@ -20,7 +20,7 @@ jobs:
     steps:
       - id: set_versions
         run: |
-          VERSIONS=$(echo "versions={\"branch\":[\"3.30\", \"3.32\", \"3.34\"]}")
+          VERSIONS=$(echo "[\"3.30\", \"3.32\", \"3.34\"]")
            echo "les versions: ${VERSIONS}"
            echo "versions=${VERSIONS}" >> $GITHUB_OUTPUT
            
