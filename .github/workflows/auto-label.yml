@@ -35,7 +35,7 @@ jobs:
         name: Assign Label 2
         run: |
           SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
-          RECHERCHE=$(grep -c $SEARCH_STRING ${{ env.BODY }})
+          RECHERCHE=$(echo ${{ env.BODY }} | grep -c $SEARCH_STRING)
           echo "recherche: $RECHERCHE"
           
           
