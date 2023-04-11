@@ -51,7 +51,7 @@ jobs:
         name: Assign Label
         # if: contains( ${{ steps.set_versions.outputs.versions }}, ${{ steps.find_labels.outputs.label }} ) && ${{ steps.find_labels.outputs.label }}
         run: |
-          if echo "${{ steps.set_versions.outputs.versions }}" | grep -w "${{ steps.find_labels.outputs.label }}"; then
+          if echo "${{ needs.job1.outputs.versions }}" | grep -w "${{ steps.find_labels.outputs.label }}"; then
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
