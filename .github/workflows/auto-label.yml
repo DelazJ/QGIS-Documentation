@@ -35,7 +35,7 @@ jobs:
         name: Assign Label 2
         run: |
           SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
-          RECHERCHE=`grep -s $SEARCH_STRING ${{ env.BODY }}`
+          RECHERCHE=$(grep -s $SEARCH_STRING ${{ env.BODY }})
           echo "cherche $SEARCH_STRING: $RECHERCHE"
           if -z $RECHERCHE then;
             github.rest.issues.addLabels({
