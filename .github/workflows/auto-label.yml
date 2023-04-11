@@ -34,9 +34,13 @@ jobs:
       - id: add_labels_2
         name: Assign Label 2
         run: |
-          SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
-          RECHERCHE=$(echo ${{ env.BODY }} | grep -c $SEARCH_STRING)
-          echo "recherche: $RECHERCHE"
+          LABEL=$(sed -r 's/^QGIS version: ([[:digit:]]\.[[:digit:]]+)/\1/' <<< ${{ env.BODY }}
+          echo ${LABEL}
+          
+ #         SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
+ #         echo "texte: $SEARCH_STRING"
+ #         RECHERCHE=$(echo ${{ env.BODY }} | grep -c $SEARCH_STRING)
+ #         echo "recherche: $RECHERCHE"
           
           
  #         if -z $RECHERCHE then;
