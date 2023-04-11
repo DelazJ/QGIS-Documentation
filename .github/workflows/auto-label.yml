@@ -12,14 +12,23 @@ env:
   BODY: ${{ github.event.issue.body }}
 
 jobs:
+
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.set_versions.outputs.versions }}
+    steps:
+      - id: set_versions
+        run: |
+          VERSIONS=$(echo "versions={\"branch\":[\"3.30\", \"3.32\", \"3.34\"]}")
+           echo "les versions: ${VERSIONS}"
+           echo "versions=${VERSIONS}" >> $GITHUB_OUTPUT
+           
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix: 
-        activelabels: ["3.30", "3.32", "3.34"]
-
-    steps:
-      - id: add_labels
+    needs: job1
+    steps:        
+      - id: add_triage_labels
         name: Assign Label
         uses: actions/github-script@v6
         with:
@@ -31,11 +40,24 @@ jobs:
               labels: ['Triage']
             })
 
-      - id: add_labels_2
-        name: Assign Label 2
+      - id: find_labels
+        name: Find existing label
         run: |
           LABEL=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
           echo "label: ${LABEL}"
+          echo "label=${LABEL}" >> $GITHUB_OUTPUT
+          
+      - id: add_labels
+        name: Assign Label
+        if: contains( ${{ steps.set_versions.outputs.versions }}, ${{ steps.find_labels.outputs.label }} )
+        run: |
+          github.rest.issues.addLabels({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels: [${{ steps.find_labels.outputs.label }}]
+          })
+          
           
  #         SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
  #         echo "texte: $SEARCH_STRING"
