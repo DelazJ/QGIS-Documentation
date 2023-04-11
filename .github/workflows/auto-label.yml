@@ -49,7 +49,7 @@ jobs:
           
       - id: add_labels
         name: Assign Label
-        if: contains( ${{ steps.set_versions.outputs.versions }}, ${{ steps.find_labels.outputs.label }} )
+        if: contains( ${{ steps.set_versions.outputs.versions }}, ${{ steps.find_labels.outputs.label }} ) && ${{ steps.find_labels.outputs.label }}
         run: |
           github.rest.issues.addLabels({
             issue_number: context.issue.number,
