@@ -31,7 +31,7 @@ jobs:
               labels: ['Triage']
             })
 
-      - id: add_labels 2
+      - id: add_labels_2
         name: Assign Label 2
         run: |
           SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
