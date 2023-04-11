@@ -35,7 +35,7 @@ jobs:
         name: Assign Label 2
         run: |
           LABEL=$(echo ${{ env.BODY }} | sed -n 's/.*^QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/')
-          echo ${LABEL}
+          echo "${LABEL}"
           
  #         SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
  #         echo "texte: $SEARCH_STRING"
