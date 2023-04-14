@@ -9,7 +9,7 @@ on:
     types: [opened, reopened, closed]
 env:
   MILESTONE: 2 # See https://api.github.com/repos/qgis/QGIS-Documentation/milestones
-  BODY: ${{ github.event.issue.body }}
+  BODY: "${{ github.event.issue.body }}"
 
 jobs:
 
