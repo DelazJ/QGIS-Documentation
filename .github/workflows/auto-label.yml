@@ -71,7 +71,7 @@ jobs:
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                labels: ["3.34"]
+                labels: ["${{ steps.find_labels.outputs.label }}"]
               })
         
    
