@@ -66,12 +66,12 @@ jobs:
 
       - id: add_labels
         name: Assign Label
-        if: ${{ contains(steps.find_labels.outputs.available , "present")}}
+        if: ${{ contains(steps.find_labels.outputs.available, 'present') }}
         uses: actions/github-script@v6
         with:
           script: |
               echo "${{ steps.find_labels.outputs.available }}";
-              echo "contains(${{ steps.find_labels.outputs.available }} , "present")";
+              echo "contains(${{ steps.find_labels.outputs.available }} , 'present')";
               github.rest.issues.addLabels({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
