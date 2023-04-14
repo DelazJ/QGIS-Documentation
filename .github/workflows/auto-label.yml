@@ -45,7 +45,7 @@ jobs:
         run: |
           LABEL=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
           echo "label: ${LABEL}"
-          if [[ "${LABEL}" = "" ]]; then
+          if [[ -z $(echo "${LABEL}") ]]; then
             AVAILABLE='true';
             echo "available true: ${AVAILABLE}"
           else
