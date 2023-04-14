@@ -40,33 +40,47 @@ jobs:
               labels: ["Triage"]
             })
 
+#      - id: find_labels (works nicely)
+#        name: Find existing label
+#        run: |
+#          LABEL=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
+#          echo "label: ${LABEL}"
+#          if [[ -z "${LABEL}" ]]; then
+#            AVAILABLE="absent";
+#            echo "available false: ${AVAILABLE}"
+#          else
+#            AVAILABLE="present";
+#            echo "available true: ${AVAILABLE}"
+#          fi
+#          echo "label=${LABEL}" >> $GITHUB_OUTPUT
+#          echo "available=${AVAILABLE}" >> $GITHUB_OUTPUT;
+        
+
       - id: find_labels
         name: Find existing label
         run: |
           LABEL=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
           echo "label: ${LABEL}"
           if [[ -z "${LABEL}" ]]; then
-            AVAILABLE="absent";
-            echo "available false: ${AVAILABLE}"
-          else
-            AVAILABLE="present";
-            echo "available true: ${AVAILABLE}"
+            echo "label=${LABEL}" >> $GITHUB_OUTPUT
           fi
-          echo "label=${LABEL}" >> $GITHUB_OUTPUT
-          echo "available=${AVAILABLE}" >> $GITHUB_OUTPUT;
-        
-        
-#      - id: counter
- #       shell: bash
-  #      run: |
-   #       if ((a == 1)); then
-    #        echo "$( echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}" | wc -l)"
-     #       echo "countversions=$( echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}" | wc -l)" >> $GITHUB_OUTPUT
-      #    fi
+          
+#      - id: add_labels (works nicely)
+#        name: Assign Label
+#        if: ${{ steps.find_labels.outputs.available == 'present' }}
+#        uses: actions/github-script@v6
+#        with:
+#          script: |
+#              github.rest.issues.addLabels({
+#                issue_number: context.issue.number,
+#                owner: context.repo.owner,
+#                repo: context.repo.repo,
+#                labels: ["${{ steps.find_labels.outputs.label }}"]
+#              })
 
       - id: add_labels
         name: Assign Label
-        if: ${{ steps.find_labels.outputs.available == 'present' }}
+        if: ${{ steps.find_labels.outputs.label }}
         uses: actions/github-script@v6
         with:
           script: |
@@ -76,8 +90,8 @@ jobs:
                 repo: context.repo.repo,
                 labels: ["${{ steps.find_labels.outputs.label }}"]
               })
-        
-   
+
+
   #          if echo "${{ needs.job1.outputs.versions }}" | grep -c "${{ steps.find_labels.outputs.label }}"; then
   #          fi                echo "${{ steps.find_labels.outputs.available }}";
   #            echo "contains(${{ steps.find_labels.outputs.available }} , 'present')";
