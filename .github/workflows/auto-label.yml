@@ -48,11 +48,12 @@ jobs:
           echo "label=${LABEL}" >> $GITHUB_OUTPUT
           if [[ -z "${LABEL}" ]]; then
             echo "available=true" >> $GITHUB_OUTPUT;
+            echo "available true: ${available}"
           else
             echo "available=false" >> $GITHUB_OUTPUT;
+            echo "available faux: ${available}"
           fi
-          echo "label: $label"
-          echo "available: $available"
+          echo "label: ${LABEL}"
         
         
 #      - id: counter
