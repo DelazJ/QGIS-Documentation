@@ -30,9 +30,7 @@ jobs:
     steps:        
       - id: add_triage_labels
         name: Assign Label
-        uses: actions/github-script@v6
-        with:
-          script: |
+        run: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
