@@ -49,20 +49,22 @@ jobs:
           
       - id: add_labels
         name: Assign Label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            if echo "${{ needs.job1.outputs.versions }}" | grep -c "${{ steps.find_labels.outputs.label }}"; then
+              echo "${{ needs.job1.outputs.versions }}"
+              echo $(echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}")
+              github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: ["3.34"]
+              })
+            fi  
+          
+          
         # if: contains( ${{ steps.set_versions.outputs.versions }}, ${{ steps.find_labels.outputs.label }} ) && ${{ steps.find_labels.outputs.label }}
-        run: |
-          if echo "${{ needs.job1.outputs.versions }}" | grep -c "${{ steps.find_labels.outputs.label }}"; then
-            echo "${{ needs.job1.outputs.versions }}"
-            echo $(echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}")
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ["3.34"]
-            })
-          fi  
-          
-          
  #         SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}") ge 0
  #         echo "texte: $SEARCH_STRING"
  #         RECHERCHE=$(echo ${{ env.BODY }} | grep -c $SEARCH_STRING)
