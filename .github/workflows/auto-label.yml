@@ -46,10 +46,10 @@ jobs:
           LABEL=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
           echo "label: ${LABEL}"
           if [[ -z "${LABEL}" ]]; then
-            AVAILABLE='false';
+            AVAILABLE="absent";
             echo "available false: ${AVAILABLE}"
           else
-            AVAILABLE='true';
+            AVAILABLE="present";
             echo "available true: ${AVAILABLE}"
           fi
           echo "label=${LABEL}" >> $GITHUB_OUTPUT
@@ -66,12 +66,12 @@ jobs:
 
       - id: add_labels
         name: Assign Label
-        if: contains(${{ steps.find_labels.outputs.available }} , 'true')
+        if: ${{ contains(steps.find_labels.outputs.available , "present")}}
         uses: actions/github-script@v6
         with:
           script: |
-              echo "${{ steps.find_labels.outputs.available }}"
-              echo "contains(${{ steps.find_labels.outputs.available }} , 'true')"
+              echo "${{ steps.find_labels.outputs.available }}";
+              echo "contains(${{ steps.find_labels.outputs.available }} , "present")";
               github.rest.issues.addLabels({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
