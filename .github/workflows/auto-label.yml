@@ -50,7 +50,7 @@ jobs:
       - id: counter
         shell: bash
         run: |
-          echo "countversions=$( echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}" | wc -l) >> $GITHUB_OUTPUT
+          echo "countversions=$( echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}" | wc -l)" >> $GITHUB_OUTPUT
 
       - id: add_labels
         name: Assign Label
