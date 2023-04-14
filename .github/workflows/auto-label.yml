@@ -57,7 +57,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               labels: [ "${{ steps.find_labels.outputs.label }}" ]
-            })
+            });
           fi  
           
           
