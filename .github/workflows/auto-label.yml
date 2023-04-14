@@ -52,7 +52,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            if echo "${{ needs.job1.outputs.versions }}" | grep -c "${{ steps.find_labels.outputs.label }}"; then
+            if (echo "${{ needs.job1.outputs.versions }}" | grep -c "${{ steps.find_labels.outputs.label }}") {
               echo "${{ needs.job1.outputs.versions }}"
               echo $(echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}")
               github.rest.issues.addLabels({
@@ -61,7 +61,8 @@ jobs:
                 repo: context.repo.repo,
                 labels: ["3.34"]
               })
-            fi  
+            }
+        # fi  
           
           
         # if: contains( ${{ steps.set_versions.outputs.versions }}, ${{ steps.find_labels.outputs.label }} ) && ${{ steps.find_labels.outputs.label }}
