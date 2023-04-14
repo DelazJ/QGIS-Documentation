@@ -37,7 +37,7 @@ jobs:
             echo "label=${LABELS}" >> $GITHUB_OUTPUT
             echo "label2: ${label}"
           else
-            echo "no automatic labeling";
+            echo "no automatic labeling"
           fi
 
       - id: assign_version
