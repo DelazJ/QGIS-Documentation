@@ -33,7 +33,7 @@ jobs:
         run: |
           LABELS=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
           echo "label: ${LABELS}"
-          if [[ -z "${LABELS}" ]]; then
+          if [[ -n "${LABELS}" ]]; then
             echo "label=${LABELS}" >> $GITHUB_OUTPUT
             echo "label2: ${label}"
           else
