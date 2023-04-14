@@ -45,15 +45,15 @@ jobs:
         run: |
           LABEL=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
           echo "label: ${LABEL}"
-          echo "label=${LABEL}" >> $GITHUB_OUTPUT
           if [[ -z "${LABEL}" ]]; then
-            echo "available=true" >> $GITHUB_OUTPUT;
-            echo "available true: ${available}"
+            AVAILABLE='true';
+            echo "available true: ${AVAILABLE}"
           else
-            echo "available=false" >> $GITHUB_OUTPUT;
-            echo "available faux: ${available}"
+            AVAILABLE='false';
+            echo "available faux: ${AVAILABLE}"
           fi
-          echo "label: ${LABEL}"
+          echo "label=${LABEL}" >> $GITHUB_OUTPUT
+          echo "available=${AVAILABLE}" >> $GITHUB_OUTPUT;
         
         
 #      - id: counter
