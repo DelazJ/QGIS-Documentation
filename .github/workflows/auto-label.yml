@@ -46,20 +46,27 @@ jobs:
           LABEL=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
           echo "label: ${LABEL}"
           echo "label=${LABEL}" >> $GITHUB_OUTPUT
-          
-      - id: counter
-        shell: bash
-        run: |
-          echo "countversions=$( echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}" | wc -l)" >> $GITHUB_OUTPUT
+          if [[ "${LABEL}" != '' ]]; then
+            echo "available=true" >> $GITHUB_OUTPUT;
+          else
+            echo "available=false" >> $GITHUB_OUTPUT;
+          fi
+        
+        
+#      - id: counter
+ #       shell: bash
+  #      run: |
+   #       if ((a == 1)); then
+    #        echo "$( echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}" | wc -l)"
+     #       echo "countversions=$( echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}" | wc -l)" >> $GITHUB_OUTPUT
+      #    fi
 
       - id: add_labels
         name: Assign Label
         uses: actions/github-script@v6
-        if: ${{ steps.counter.outputs.countversions }} ge '0'
+        if: ${{ steps.find_labels.outputs.available }} == 'true'
         with:
           script: |
-              echo "${{ needs.job1.outputs.versions }}"
-              echo $(echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}")
               github.rest.issues.addLabels({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
@@ -70,6 +77,8 @@ jobs:
    
   #          if echo "${{ needs.job1.outputs.versions }}" | grep -c "${{ steps.find_labels.outputs.label }}"; then
   #          fi  
+#              echo "${{ needs.job1.outputs.versions }}"
+ #             echo $(echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}")
          
         # if: contains( ${{ steps.set_versions.outputs.versions }}, ${{ steps.find_labels.outputs.label }} ) && ${{ steps.find_labels.outputs.label }}
  #         SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}") ge 0
