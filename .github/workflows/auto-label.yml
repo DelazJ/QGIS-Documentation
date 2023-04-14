@@ -31,9 +31,13 @@ jobs:
       - id: find_version_label
         name: Find Target version
         run: |
-          LABEL=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
-          if [[ -z "${LABEL}" ]]; then
-            echo "label=${LABEL}" >> $GITHUB_OUTPUT
+          LABELS=$(echo "${{ env.BODY }}" | sed -n -r "s/.*QGIS version: ([[:digit:]]\.[[:digit:]]+).*/\1/p")
+          echo "label: ${LABELS}"
+          if [[ -z "${LABELS}" ]]; then
+            echo "label=${LABELS}" >> $GITHUB_OUTPUT;
+            echo "label2: ${label}"
+          else
+            echo "no automatic labeling";
           fi
 
       - id: assign_version
