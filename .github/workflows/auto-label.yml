@@ -29,8 +29,10 @@ jobs:
     needs: job1
     steps:        
       - id: add_triage_labels
-        name: Assign Label
-        run: |
+        name: Assign Triage Label
+        uses: actions/github-script@v6
+        with:
+          script: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
@@ -45,12 +47,17 @@ jobs:
           echo "label: ${LABEL}"
           echo "label=${LABEL}" >> $GITHUB_OUTPUT
           
+      - id: counter
+        shell: bash
+        run: |
+          echo "countversions=$( echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}" | wc -l) >> $GITHUB_OUTPUT
+
       - id: add_labels
         name: Assign Label
         uses: actions/github-script@v6
+        if: ${{ steps.counter.outputs.countversions }} ge '0'
         with:
           script: |
-            if (echo "${{ needs.job1.outputs.versions }}" | grep -c "${{ steps.find_labels.outputs.label }}") {
               echo "${{ needs.job1.outputs.versions }}"
               echo $(echo "${{ needs.job1.outputs.versions }}" | grep "${{ steps.find_labels.outputs.label }}")
               github.rest.issues.addLabels({
@@ -59,10 +66,11 @@ jobs:
                 repo: context.repo.repo,
                 labels: ["3.34"]
               })
-            }
-        # fi  
-          
-          
+        
+   
+  #          if echo "${{ needs.job1.outputs.versions }}" | grep -c "${{ steps.find_labels.outputs.label }}"; then
+  #          fi  
+         
         # if: contains( ${{ steps.set_versions.outputs.versions }}, ${{ steps.find_labels.outputs.label }} ) && ${{ steps.find_labels.outputs.label }}
  #         SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}") ge 0
  #         echo "texte: $SEARCH_STRING"
