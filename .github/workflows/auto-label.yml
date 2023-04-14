@@ -51,14 +51,17 @@ jobs:
         name: Assign Label
         # if: contains( ${{ steps.set_versions.outputs.versions }}, ${{ steps.find_labels.outputs.label }} ) && ${{ steps.find_labels.outputs.label }}
         run: |
-          if echo "${{ needs.job1.outputs.versions }}" | grep -w "${{ steps.find_labels.outputs.label }}"; then
+            echo "${{ needs.job1.outputs.versions }}"
+            echo $(echo "${{ needs.job1.outputs.versions }}" | grep -w "${{ steps.find_labels.outputs.label }}")
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: ["${{ steps.find_labels.outputs.label }}"]
+              labels: [${{ steps.find_labels.outputs.label }}]
             })
-          fi  
+            
+        # if echo "${{ needs.job1.outputs.versions }}" | grep -w "${{ steps.find_labels.outputs.label }}"; then
+        # fi  
           
           
  #         SEARCH_STRING=$(echo "QGIS version: ${{ matrix.activelabels }}")
