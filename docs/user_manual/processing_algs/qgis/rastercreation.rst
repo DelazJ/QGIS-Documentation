@@ -91,13 +91,9 @@ Advanced parameters
      - [enumeration]
      - Defines the data type of the output raster file. Options:
 
-       * 0 --- Byte
-       * 1 --- Integer16
-       * 2 --- Unsigned Integer16
-       * 3 --- Integer32
-       * 4 --- Unsigned Integer32
-       * 5 --- Float32
-       * 6 --- Float64
+       .. include:: ../algs_include.rst
+          :start-after: **raster_data_types_simplified**
+          :end-before: **end_raster_data_types_simplified**
 
 Outputs
 .......
@@ -205,12 +201,10 @@ Advanced parameters
      - [enumeration]
      - Defines the data type of the output raster file. Options:
 
-       * 0 --- Integer16
-       * 1 --- Unsigned Integer16
-       * 2 --- Integer32
-       * 3 --- Unsigned Integer32
-       * 4 --- Float32
-       * 5 --- Float64
+       .. include:: ../algs_include.rst
+          :start-after: **raster_data_types_simplifiednobyte**
+          :end-before: **end_raster_data_types_simplifiednobyte**
+
    * - **N**
      - ``N``
      - [number]
@@ -564,12 +558,10 @@ Advanced parameters
      - [enumeration]
      - Defines the data type of the output raster file. Options:
 
-       * 0 --- Integer16
-       * 1 --- Unsigned Integer16
-       * 2 --- Integer32
-       * 3 --- Unsigned Integer32
-       * 4 --- Float32
-       * 5 --- Float64
+       .. include:: ../algs_include.rst
+          :start-after: **raster_data_types_simplifiednobyte**
+          :end-before: **end_raster_data_types_simplifiednobyte**
+
    * - **Probability**
      - ``PROBABILITY``
      - [number]
@@ -683,12 +675,10 @@ Advanced parameters
      - [enumeration]
      - Defines the data type of the output raster file. Options:
 
-       * 0 --- Integer16
-       * 1 --- Unsigned Integer16
-       * 2 --- Integer32
-       * 3 --- Unsigned Integer32
-       * 4 --- Float32
-       * 5 --- Float64
+       .. include:: ../algs_include.rst
+          :start-after: **raster_data_types_simplifiednobyte**
+          :end-before: **end_raster_data_types_simplifiednobyte**
+
    * - **Distribution parameter k**
      - ``K_PARAMETER``
      - [number]
@@ -928,12 +918,10 @@ Advanced parameters
      - [enumeration]
      - Defines the data type of the output raster file. Options:
 
-       * 0 --- Integer16
-       * 1 --- Unsigned Integer16
-       * 2 --- Integer32
-       * 3 --- Unsigned Integer32
-       * 4 --- Float32
-       * 5 --- Float64
+       .. include:: ../algs_include.rst
+          :start-after: **raster_data_types_simplifiednobyte**
+          :end-before: **end_raster_data_types_simplifiednobyte**
+
    * - **Mean**
      - ``MEAN``
      - [number]
@@ -1048,13 +1036,10 @@ Advanced parameters
      - [enumeration]
      - Defines the data type of the output raster file. Options:
 
-       * 0 --- Byte
-       * 1 --- Integer16
-       * 2 --- Unsigned Integer16
-       * 3 --- Integer32
-       * 4 --- Unsigned Integer32
-       * 5 --- Float32
-       * 6 --- Float64
+       .. include:: ../algs_include.rst
+          :start-after: **raster_data_types_simplified**
+          :end-before: **end_raster_data_types_simplified**
+
    * - **Lower bound for random number range**
      - ``LOWER_BOUND``
      - [number]

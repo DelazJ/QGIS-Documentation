@@ -225,6 +225,53 @@ Notes on algorithms
 Raster data types
 =================
 
+
+Simplified list (without byte)
+------------------------------
+
+.. **raster_data_types_simplifiednobyte**
+
+.. The following section is included in raster based algorithms such as
+ qgiscreaterandombinomialrasterlayer, qgiscreaterandomgeometricrasterlayer,
+ qgiscreaterandomnegativebinomialrasterlayer, qgiscreaterandompoissonrasterlayer
+
+
+* 0 --- Integer16
+* 1 --- Unsigned Integer16
+* 2 --- Integer32
+* 3 --- Unsigned Integer32
+* 4 --- Float32
+* 5 --- Float64
+
+Available options depend on the GDAL version built with QGIS
+(see :menuselection:`Help --> About` menu)
+
+.. **end_raster_data_types_simplifiednobyte**
+
+
+Simplified list
+---------------
+
+.. **raster_data_types_simplified**
+
+.. The following section is included in raster based algorithms such as
+ qgiscreateconstantrasterlayer, qgiscreaterandomuniformrasterlayer
+
+
+* 0 --- Byte
+* 1 --- Integer16
+* 2 --- Unsigned Integer16
+* 3 --- Integer32
+* 4 --- Unsigned Integer32
+* 5 --- Float32
+* 6 --- Float64
+
+Available options depend on the GDAL version built with QGIS
+(see :menuselection:`Help --> About` menu)
+
+.. **end_raster_data_types_simplified**
+
+
 Without user input (native)
 ---------------------------
 
