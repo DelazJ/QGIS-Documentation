@@ -1,14 +1,9 @@
 name: Update English PO files for translation
 
-on:
-  push:
-    branches:
-      - release_3.28
-    paths:
-      - 'docs/**'
 
-  schedule: #run at 02:00 UTC on Wednesday
-    - cron:  '00 02 * * 03'
+on:
+  schedule: #run every day at 02:00 UTC
+    - cron:  '00 02 * * *'
 
   workflow_dispatch:
 
@@ -19,9 +14,12 @@ jobs:
   prepare_translation:
 
     permissions:
-      contents: write  # for stefanzweifel/git-auto-commit-action to push code in repo
+      contents: write  # for git push code in repo
     if: github.repository_owner == 'qgis'
     runs-on: ubuntu-latest
+    env:
+      # Branch we are translating
+      TARGET_BRANCH: "release_3.28"
 
     steps:
     - name: Harden Runner
@@ -32,7 +30,7 @@ jobs:
     - name: checkout
       uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
       with:
-        ref: release_3.28
+        ref: ${{ env.TARGET_BRANCH }}
 
     - name: Set up Python 3.9
       uses: actions/setup-python@57ded4d7d5e986d7296eab16560982c6dd7c923b # v4.6.0
@@ -52,16 +50,13 @@ jobs:
           # Remove obsolete strings from the generated *.po files
           find locale/en/LC_MESSAGES/docs/ -type f -name '*.po' -exec sed -i '/^#~ /,/^$/d' {} \;
 
-    - name: Commit the changes in the PO files      
-      id: "auto-commit-action"
-      uses: stefanzweifel/git-auto-commit-action@3ea6ae190baf489ba007f7c92608f33ce20ef04a # v4.16.0
-      with:
-        commit_message: Update English PO files
-
-    - name: "Inform that changes have been made"
-      if: steps.auto-commit-action.outputs.changes_detected == 'true'
-      run: echo "Changes committed!"
-
-    - name: "Inform that no changes were performed"
-      if: steps.auto-commit-action.outputs.changes_detected == 'false'
-      run: echo "No Changes detected!"
+    - name: Create strings for translation if any
+      run: |
+        git config --global user.name 'Transifex update'
+        git config --global user.email 'tx-update@users.noreply.github.com'
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        if git add locale/* && git commit -m "Update English PO files"; then
+          git push
+        else
+         echo "No Changes detected!"
+        fi
