@@ -1,8 +1,9 @@
 |LS| Combining the Analyses
 ===============================================================================
 
-Using the vectorized results of the raster analysis will allow you to select
-only those buildings on suitable terrain.
+Now that we have the results of the terrain analysis available in vector format,
+they can be used to solve the problem of which terrain we should consider
+for the residential development.
 
 **The goal for this lesson:** To use the vectorized terrain results to select
 suitable plots.
