@@ -643,41 +643,41 @@ of a given person is to read from the beginning until you find it.
 Spatial indexes are not created by default for a QGIS vector layer, but you can
 create them easily. This is what you have to do:
 
-* create spatial index using the :class:`QgsSpatialIndex <qgis.core.QgsSpatialIndex>`
-  class:
+#. create spatial index using the :class:`QgsSpatialIndex <qgis.core.QgsSpatialIndex>` class:
 
-  .. testcode:: vectors
+   .. testcode:: vectors
 
-     index = QgsSpatialIndex()
+    index = QgsSpatialIndex()
 
-* add features to index --- index takes :class:`QgsFeature <qgis.core.QgsFeature>` object and adds it
-  to the internal data structure. You can create the object manually or use
-  one from a previous call to the provider's
-  :meth:`getFeatures() <qgis.core.QgsVectorDataProvider.getFeatures>` method.
+#. add features to index --- index takes :class:`QgsFeature <qgis.core.QgsFeature>` object
+   and adds it to the internal data structure.
+   You can create the object manually or use one from a previous call to the provider's
+   :meth:`getFeatures() <qgis.core.QgsVectorDataProvider.getFeatures>` method.
 
-  .. testcode:: vectors
+   .. testcode:: vectors
 
-     index.addFeature(feat)
+    index.addFeature(feat)
 
-* alternatively (much faster), you can load all features of a layer at once using bulk loading
+   alternatively (much faster), you can load all features of a layer at once using bulk loading
 
-  .. testcode:: vectors
+   .. testcode:: vectors
 
-     index = QgsSpatialIndex(vlayer.getFeatures())
+    vlayer = QgsVectorLayer("testdata/airports.shp", "airports", "ogr")
+    index = QgsSpatialIndex(vlayer.getFeatures())
 
-* once spatial index is filled with some values, you can do some queries
+#. once spatial index is filled with some values, you can do some queries
 
-  .. testcode:: vectors
+   .. testcode:: vectors
 
     # returns array of feature IDs of five nearest features
     nearest = index.nearestNeighbor(QgsPointXY(25.4, 12.7), 5)
     print(nearest)
 
-    # returns array of IDs of features which intersect the rectangle
+    # returns array of IDs of features which intersect an extent
     intersect = index.intersects(QgsRectangle(10.5, 8.3, 23.1, 17.2))
     print(intersect)
 
-  .. testoutput:: vectors
+   .. testoutput:: vectors
 
     [583, 712, 405, 453, 156]
     [314, 156, 712]
