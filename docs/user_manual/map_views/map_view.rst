@@ -980,37 +980,35 @@ QGIS provides four means of measuring geometries:
 * the vector analysis tool: :menuselection:`Vector --> Geometry Tools -->
   Export/Add Geometry Columns`
 
-Measuring works within projected coordinate systems (e.g., UTM) and unprojected
-data. The first three measuring tools behave equally to global project settings:
+Measuring works within projected coordinate systems (e.g., UTM) and unprojected data.
+The first three measuring tools behave equally to global project settings:
 
-* Unlike most other GIS, the default measurement metric is
-  ellipsoidal, using the ellipsoid defined in
-  :menuselection:`Project --> Properties... --> General`. This is true both
-  when geographic and projected coordinate systems are defined for the project.
-* If you want to calculate the projected/planimetric area or distance using cartesian
-  maths, the measurement ellipsoid has to be set to "None/Planimetric"
-  (:menuselection:`Project --> Properties... --> General`). However,
-  with a geographic (ie unprojected) CRS defined for the data and project, area and
-  distance measurement will be ellipsoidal.
+* Unlike most other GIS, the default measurement metric is ellipsoidal,
+  using the ellipsoid defined in :menuselection:`Project --> Properties... --> General`.
+  This is true both when geographic and projected coordinate systems are defined for the project.
+* If you want to calculate the projected/planimetric area or distance using cartesian maths,
+  the measurement ellipsoid has to be set to "None/Planimetric" (:menuselection:`Project --> Properties... --> General`).
+  However, with a geographic (ie unprojected) CRS defined for the data and project,
+  area and distance measurement will be ellipsoidal.
 
-However, neither the identify tool nor the field calculator will transform your
-data to the project CRS before measuring. If you want to achieve this, you have
-to use the vector analysis tool: :menuselection:`Vector --> Geometry Tools -->
-Add Geometry Attributes...`. Here, measurement is planimetric, unless
-you choose the ellipsoidal measurement.
+However, neither the identify tool nor the field calculator will transform your data
+to the project CRS before measuring.
+If you want to achieve this, you have to use the vector analysis tool:
+:menuselection:`Vector --> Geometry Tools --> Add Geometry Attributes...`.
+Here, measurement is planimetric, unless you choose the ellipsoidal measurement.
 
 Measure length, areas, bearings and angles interactively
 --------------------------------------------------------
 
 Click the |measure| icon in the Attribute toolbar to begin measurements.
-The down arrow near the icon switches between
-|measure| length, |measureArea| area, |measureBearing| bearing or |measureAngle| angle.
+The down arrow near the icon switches between |measure| length,
+|measureArea| area, |measureBearing| bearing or |measureAngle| angle.
 The default unit used in the dialog is the one set in :menuselection:`Project -->
 Properties... --> General` menu.
 
-For the :guilabel:`Measure Line` and the :guilabel:`Measure Area` the
-measurements can be done in |radioButtonOn| :guilabel:`Cartesian` or
-|radioButtonOn| :guilabel:`Ellipsoidal` measure.
+For the :guilabel:`Measure Line` and the :guilabel:`Measure Area`
+the measurements can be done in |radioButtonOn| :guilabel:`Cartesian`
+or |radioButtonOn| :guilabel:`Ellipsoidal` measure.
 
 .. note:: **Configuring the measure tool**
 
@@ -1023,11 +1021,11 @@ measurements can be done in |radioButtonOn| :guilabel:`Cartesian` or
    :menuselection:`Project --> Properties... --> General` menu, and by the
    selection made in the measurement widget.
 
-All measuring modules use the snapping settings from the digitizing module (see
-section :ref:`snapping_tolerance`). So, if you want
-to measure exactly along a line feature, or around a polygon feature, first set
-its layer snapping tolerance. Now, when using the measuring
-tools, each mouse click (within the tolerance setting) will snap to that layer.
+All measuring modules use the snapping settings from the digitizing module
+(see section :ref:`snapping_tolerance`).
+So, if you want to measure exactly along a line feature, or around a polygon feature,
+first set its layer snapping tolerance.
+Now, when using the measuring tools, each mouse click (within the tolerance setting) will snap to that layer.
 
 .. index::
    single: Measure; Distances
@@ -1035,11 +1033,13 @@ tools, each mouse click (within the tolerance setting) will snap to that layer.
    single: Measure; Angles
 
 The |measure| :sup:`Measure Line` measures distances between given points.
-The tool then allows you to click points on the map. Each segment length,
-as well as the total, shows up in the measure window.
-To stop measuring, click the right mouse button. Now it is possible
-to copy all your line measurements at once to the clipboard using the
-:guilabel:`Copy All` button.
+The tool then allows you to click points on the map.
+Each segment length, as well as the total, shows up in the measure window.
+To stop measuring, click the right mouse button.
+Now it is possible to copy all your line measurements at once to the clipboard
+using the :guilabel:`Copy All` button.
+Copied information and their formatting depend on settings under
+:menuselection:`Options --> Map tools --> Measure tool Copy settings`
 
 Note that you can use the drop-down list near the total to change
 the measurement units interactively while working with the measure tool ('Meters', 'Kilometers', 'Feet', 'Yards',

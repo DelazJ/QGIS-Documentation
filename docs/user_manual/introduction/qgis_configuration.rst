@@ -769,6 +769,16 @@ This tab offers some options regarding the behavior of the :ref:`Identify tool <
   'Gon/gradians', 'Minutes of arc', 'Seconds of arc', 'Turns/revolutions',
   milliradians (SI definition) or mil (NATO/military definition)
 
+**Measure tool Copy settings**
+
+In this section, you can set parameters to use when copying results
+from the :ref:`measure tools <sec_measure>` dialog.
+You can set:
+
+* whether to |checkbox| :guilabel:`Include header`
+* the :guilabel:`Separator`character(s) to use: comma, semi-colon, tab, colon,
+  space or custom string
+
 **Coordinate and Bearing Display**
 
 This section provides ways to :guilabel:`Configure`:
