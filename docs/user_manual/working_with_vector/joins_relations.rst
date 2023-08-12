@@ -658,6 +658,32 @@ The example above uses the following database schema:
       CONSTRAINT documents_pkey PRIMARY KEY (fid)
    );
 
+.. _`relational_widgets`:
+
+Forms and widgets for relational datasets
+=========================================
+
+.. todo: identify the concerned widgets / fix their GUI / describe
+
+QGIS provides a wide range of functions and tools to handle related objects and forms.
+
+Depending on the type of connection you have to manipulate, QGIS provides different types of widgets to use in attribute forms and tables.
+
+The most simple example is not even a real join but the possibility offered by QGIS
+to set a value list directly in the attribute form using the :ref:`Value Map widget <edit_widgets>`
+to define mapping values manually or using a CSV or layer import.
+
+The second example is to use the :ref:`Value Relation widget <edit_widgets>`
+to define a relation between an attribute and another attribute contained in another layer.
+
+.. One of the most simple example is the value list where one attribute (foreign key) of a table
+ is used to create a link to another table which is composed of values.
+
+ .. Once a relation is created in the project properties, it can be used in the
+ layers forms widget Relation Reference
+ /working_with_vector/vector_properties.html#edit-widgets
+ or used in the field expression calculator to design some powerful queries and features.
+
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
