@@ -85,7 +85,7 @@ There are many kinds of datatypes. Let's focus on the most common:
 * ``String`` - to store free-form text data
 * ``Integer`` - to store whole numbers
 * ``Real`` - to store decimal numbers
-* ``Date`` - to store Horst's birthday so no one forgets
+* ``Date`` - to store birthdays for example
 * ``Boolean`` - to store simple true/false values
 
 You can tell the database to allow you to also store nothing in a field. If

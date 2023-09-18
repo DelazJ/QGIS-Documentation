@@ -58,7 +58,7 @@ hectare from the :file:`sample_plots_results` layer.
 You can calculate the average of a field in a vector layer using the
 :guilabel:`Basic statistics` tool:
 
-#. Open :menuselection:`Vector --> Analysis Tools --> Basic statistics for Fields`.
+#. Open :menuselection:`Vector --> Analysis Tools --> Basic statistics for fields...`.
 #. Select ``sample_plots_results`` as the :guilabel:`Input Vector Layer`.
 #. Select ``Vol`` as :guilabel:`Target field`.
 #. Click :guilabel:`OK`.
@@ -86,8 +86,8 @@ What you need is to get the averages of the sample plots that are falling
 within each of the forest stands. When you want to combine information based
 on their relative locations, you perform a spatial join:
 
-#. Open the  :menuselection:`Vector --> Data Management --> Join attributes
-   by location` tool.
+#. Open the :menuselection:`Vector --> Data Management Tools --> Join attributes
+   by location...` tool.
 #. Set ``forest_stands_2012`` as the :guilabel:`Target vector layer`.
    The layer you want the results for.
 #. Set ``sample_plots_results`` as the :guilabel:`Join vector layer`.

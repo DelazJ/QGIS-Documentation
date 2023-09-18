@@ -71,7 +71,7 @@ information visit the `GRASS website <https://grass.osgeo.org/grass82/manuals/gr
 GRASS needs to create a ``Location``, which describes the maximum extent of the
 geographic area you'll be working in, also known as Grass ``Region``.
 
-.. note:: the Region is extremely important for GRASS because it describes the
+.. note:: The Region is extremely important for GRASS because it describes the
   area in which all layers will be taken into account for GRASS. Everything
   that is outside will not be considered. Don't worry, you can always change the
   extent of the GRASS Region after the Location has been created
@@ -146,7 +146,7 @@ You can easily **drag and drop** layers from a folder to the GRASS Mapset.
 Let's try to import the :file:`roads` layer into the ``grass_mapset`` Mapset
 of the ``SouthAfrica`` Location.
 
-Go to the Browser, and simply drag the :file:`roads` layer  from the
+Go to the Browser, and simply drag the :file:`roads` layer from the
 :file:`training_data.gpkg` GeoPackage file into the ``grass_mapset`` Mapset.
 
 .. figure:: img/grass_browser_import.png
