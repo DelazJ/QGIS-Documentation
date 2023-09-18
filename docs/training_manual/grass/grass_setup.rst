@@ -76,7 +76,7 @@ information visit the `GRASS website <https://grass.osgeo.org/grass82/manuals/gr
 GRASS needs to create a ``Location``, which describes the maximum extent of the
 geographic area you'll be working in, also known as Grass ``Region``.
 
-.. note:: the Region is extremely important for GRASS because it describes the
+.. note:: The Region is extremely important for GRASS because it describes the
   area in which all layers will be taken into account for GRASS. Everything
   that is outside will not be considered. Don't worry, you can always change the
   extent of the GRASS Region after the Location has been created
@@ -151,14 +151,14 @@ You can easily **drag and drop** layers from a folder to the GRASS Mapset.
 Let's try to import the :file:`roads` layer into the ``grass_mapset`` Mapset
 of the ``SouthAfrica`` Location.
 
-Go to the Browser, and simply drag the :file:`roads` layer  from the
+Go to the Browser, and simply drag the :file:`roads` layer from the
 :file:`training_data.gpkg` GeoPackage file into the ``grass_mapset`` Mapset.
 
 .. figure:: img/grass_browser_import.png
    :align: center
 
-That's it! If you expand the Mapset you will see the imported :file:`roads`
-layer. You can now load in QGIS the imported layer like all the other layers.
+That's it! If you expand the Mapset you will see the imported :file:`roads` layer.
+You can now load in QGIS the imported layer like all the other layers.
 
 .. tip:: You can also load layers from the Layer Legend Panel to Mapset in the
   Browser Panel. This will speed up incredibly your workflow!
@@ -269,8 +269,8 @@ Let's close the Mapset by clicking on the :guilabel:`Close Mapset` button of the
 |basic| |FA| Using the GRASS plugin
 ...............................................................................
 
-#. Click on the :guilabel:`Plugins --> GRASS --> Open Mapset` menu next to the
-   :guilabel:`Plugins --> GRASS --> New Mapset` menu that we saw in the previous section.
+#. Click on the :menuselection:`Plugins --> GRASS --> Open Mapset` menu next to the
+   :menuselection:`Plugins --> GRASS --> New Mapset` menu that we saw in the previous section.
 
 #. Browse to the GRASS database folder: be careful! You must choose the parent folder,
    not the GRASS Mapset one. Indeed GRASS will read all the ``Locations`` of the

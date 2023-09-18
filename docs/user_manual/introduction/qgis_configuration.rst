@@ -282,7 +282,7 @@ or when a layer without a CRS is loaded.
 * |radioButtonOn| :guilabel:`Leave as unknown CRS (take no action)`
 * |radioButtonOff| :guilabel:`Prompt for CRS`
 * |radioButtonOff| :guilabel:`Use project CRS`
-* |radioButtonOff| :guilabel:`Use default layer CRS`
+* |radioButtonOff| :guilabel:`Use the default CRS for layers`
 
 .. _crs_inaccuracies:
 

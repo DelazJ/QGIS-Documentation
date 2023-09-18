@@ -67,15 +67,15 @@ Basic parameters
      - Raster layers to evaluate.
        If multiband rasters are used in the data raster stack, the algorithm
        will always perform the analysis on the first band of the rasters
-   * - **Method**
+   * - **Linear interpolation method**
      - ``METHOD``
      - [enumeration]
 
        Default: 0
      - Method for percentile calculation:
 
-       * 0 --- Inclusive linear interpolation (PERCENTRANK.INC)
-       * 1 --- Exclusive linear interpolation (PERCENTRANK.EXC)
+       * 0 --- Inclusive (PERCENTRANK.INC)
+       * 1 --- Exclusive (PERCENTRANK.EXC)
    * - **Value**
      - ``VALUE``
      - [number]
@@ -402,7 +402,7 @@ Basic parameters
 
        Default: 1
      - Band of the "value raster layer" to compare to
-   * - **Method**
+   * - **linear interpolation method**
      - ``METHOD``
      - [enumeration]
 

@@ -1764,15 +1764,12 @@ Basic parameters
 
        Default: 0.0
      - The maximum distance to be generated.
-       The nodata value will be used for pixels beyond
-       this distance.
-       If a nodata value is not provided, the output
-       band will be queried for its nodata value.
+       The nodata value will be used for pixels beyond this distance.
+       If a nodata value is not provided, the output band will be queried for its nodata value.
        If the output band does not have a nodata value,
        then the value 65535 will be used.
-       Distance is interpreted according to the value of
-       *Distance units*.
-   * - **Value to be applied to all pixels that are within the maxdist of target pixels**
+       Distance is interpreted according to the value of *Distance units*.
+   * - **Value to apply to all pixels that are within the maximum distance**
 
        Optional
      - ``REPLACE``
