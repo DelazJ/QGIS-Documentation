@@ -65,17 +65,22 @@ Also, the date of creation will adapt dynamically.
 
      @layout_pageheight -  @sw_layout_height_header -  @sw_layout_margin * 2
 
-#. We will also create a grid containing the coordinates of the main
-   canvas map extent.
-   Go to :guilabel:`Item Properties` again and choose the
-   :guilabel:`Grids` section.
-   Insert a grid by clicking the |symbologyAdd| button.
-   Click on :guilabel:`Modify grid ...` and set the
-   :guilabel:`Interval` for :guilabel:`X`, :guilabel:`Y` and
-   :guilabel:`Offset` according to the map scale you chose in the
-   QGIS main canvas.
-   The :guilabel:`Grid type` :guilabel:`Cross` is very well suited
-   for our purposes.
+#. We will also create a grid containing the coordinates of the main canvas map extent.
+
+   #. Go to :guilabel:`Item Properties` again and choose the :guilabel:`Grids` section.
+   #. Insert a grid by clicking the |symbologyAdd| button.
+   #. Click on :guilabel:`Modify grid ...`
+   #. Under the :guilabel:`Appearance` group
+
+      #. The :guilabel:`Grid type` :guilabel:`Cross` is very well suited for our purposes.`
+      #. Select ``Use map CRS`` as :guilabel:`CRS` and ``Map units`` as :guilabel:`Interval`
+      #. Enter ``0.05`` for :guilabel:`X` and :guilabel:`Y`.
+         This represents the distance in the map unit (°) between two consecutive grid references,
+         meaning that it will vary on the paper depending on the map scale.
+   #. Check the |checkbox| :guilabel:`Draw coordinates` to display coordinates along the map frame.
+      The default values can be used or, for convenience, you can use ``Vertical ascending``
+      for both the :guilabel:`Top` and :guilabel:`Bottom` sides
+      or limit the :guilabel:`Coordinate precision` to ``2``.
 
 |moderate| |FA| Creating the dynamic header
 -------------------------------------------------------------------------------
@@ -325,6 +330,8 @@ far.
    :width: 1.5em
 .. |addNodesShape| image:: /static/common/mActionAddNodesShape.png
    :width: 1.5em
+.. |checkbox| image:: /static/common/checkbox.png
+   :width: 1.3em
 .. |dataDefineExpressionOn| image:: /static/common/mIconDataDefineExpressionOn.png
    :width: 1.5em
 .. |label| image:: /static/common/mActionLabel.png
