@@ -2472,6 +2472,14 @@ They can be used to enhance the appearance of the form or to display dynamically
 
      A preview of your image is displayed on the right.
 
+  .. note:: When a blob is used within a HTML widget, in a form or attribute table,
+    right-click on it and you can:
+
+    * :guilabel:`Open image`
+    * :guilabel:`Save image`
+    * :guilabel:`Copy image`
+    * :guilabel:`Copy image address`
+
 * :guilabel:`QML Widget`: embeds a Qt QML_ document, displaying graphical elements in the attribute form.
   Beside the custom :guilabel:`Title` of the added widget and whether it should be shown or not,
   you can select from predefined :guilabel:`QML code` elements:
