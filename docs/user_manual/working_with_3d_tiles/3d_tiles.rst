@@ -13,13 +13,14 @@ Working with 3D Tiles
 What are 3D Tiles?
 ======================
 
-3D tiles are specification for streaming and rendering large-scale 3D
-geospatial datasets. They use a hierarchical structure to efficiently manage 
-and display 3D content, optimising performance by dynamically loading
-appropriate levels of detail. This technology is widely used in urban 
-planning, architecture, simulation, gaming, and virtual reality, providing
-a standardised and interoperable solution for visualising complex geographical
-data. Read :ref:`3d_tiles` for more details.
+3D tiles are specification for streaming and rendering large-scale 3D geospatial datasets.
+They use a hierarchical structure to efficiently manage and display 3D content,
+optimising performance by dynamically loading appropriate levels of detail.
+This technology is widely used in urban planning, architecture, simulation, gaming,
+and virtual reality, providing a standardised and interoperable solution
+for visualising complex geographical data.
+
+..  Read :ref:`3d_tiles` for more details.
 
 
 .. _figure_3d_tiles_example:
@@ -148,15 +149,6 @@ want to get a quick overview of the data.
 
    3D Tiles - textured and wireframe 
 
-To view the data you can open |new3DMap| :guilabel:`New 3D map view`.
-
-.. _figure_3d_tiles_map_view:
-
-.. figure:: img/3d_tiles_map_view.png
-   :align: center
-
-   3D Map View  
-
 From the :guilabel:`Symbology` tab, you can also set some options that 
 invariably act on all features of the layer:
 
@@ -182,6 +174,15 @@ invariably act on all features of the layer:
 
 3D View Properties
 ------------------
+
+To view the data you can open |new3DMap| :guilabel:`New 3D map view`.
+
+.. _figure_3d_tiles_map_view:
+
+.. figure:: img/3d_tiles_map_view.png
+   :align: center
+
+   3D Map View  
 
 * :guilabel:`Maximum screen space error` determines the threshold for swapping
   terrain tiles with more detailed ones (and vice versa) - i.e. how soon the 3D 
