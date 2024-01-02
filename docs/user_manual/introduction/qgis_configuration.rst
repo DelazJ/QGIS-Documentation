@@ -1216,6 +1216,11 @@ https://doc.qt.io/archives/qt-5.9/qnetworkproxy.html#ProxyType-enum
    Using proxies can sometimes be tricky. It is useful to proceed by 'trial and
    error' with the above proxy types, to check if they succeed in your case.
 
+.. to reuse later when/if the content is moved to the gps chapter?:
+  Read :ref:`gps_configurations` for more details.
+
+
+
 .. index:: GPS
 .. _gps_options:
 

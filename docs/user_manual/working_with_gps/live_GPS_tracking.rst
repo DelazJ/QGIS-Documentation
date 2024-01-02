@@ -18,9 +18,16 @@ connecting QGIS and the GPS receiver.
 .. Anything else people need to know here for stepping in live tracking ???????
 
 
+.. _gps_configurations:
 
+Configuring a GPS device
+------------------------
 
+Under :menuselection:`Settings -->` |options| :menuselection:`Options -->`
+|gps| :menuselection:`GPS -->` menu, you can specify global settings
+to control behaviour of GPS devices when used with QGIS:
 
+HERE I WILL MOVE SETTINGS --> OPTIONS --> GPS DESCRIPTION
 
 
 .. _gps_toolbar:
