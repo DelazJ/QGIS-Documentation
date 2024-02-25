@@ -15,6 +15,7 @@ Loads a JSON formatted string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - from_json(string)
@@ -36,6 +37,7 @@ Creates a map from a hstore-formatted string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - hstore_to_map(string)
@@ -56,6 +58,7 @@ Returns a map containing all the keys and values passed as pair of parameters.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map(key1, value1, key2, value2, ...)
@@ -78,6 +81,7 @@ Returns all the keys of a map as an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_akeys(map)
@@ -98,6 +102,7 @@ Returns all the values of a map as an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_avals(map)
@@ -118,6 +123,7 @@ Returns a map containing all the entries of the given maps. If two maps contain 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_concat(map1, map2, ...)
@@ -138,6 +144,7 @@ Returns a map with the given key and its corresponding value deleted.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_delete(map, key)
@@ -159,6 +166,7 @@ Returns TRUE if the given key exists in the map.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_exist(map, key)
@@ -180,6 +188,7 @@ Returns the value of a map, given its key. Returns NULL if the key does not exis
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_get(map, key)
@@ -202,6 +211,7 @@ Returns a map with an added key/value. If the key already exists, its value is o
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_insert(map, key, value)
@@ -225,6 +235,7 @@ Returns a map with all keys prefixed by a given string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_prefix_keys(map, prefix)
@@ -246,6 +257,7 @@ Merge map elements into a hstore-formatted string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_to_hstore(map)
@@ -266,6 +278,7 @@ Merge map elements into a HTML definition list string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_to_html_dl(map)
@@ -286,6 +299,7 @@ Merge map elements into a HTML table string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_to_html_table(map)
@@ -306,6 +320,7 @@ Create a JSON formatted string from a map, array or other value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_json(value)
@@ -329,6 +344,7 @@ Note that the plus sign '+' is not converted.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - url_encode(map)

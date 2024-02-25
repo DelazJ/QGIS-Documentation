@@ -15,6 +15,7 @@ Remainder of division. Takes the sign of the dividend.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a % b
@@ -39,6 +40,7 @@ Multiplication of two values
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a * b
@@ -61,6 +63,7 @@ Addition of two values. If one of the values is NULL the result will be NULL.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a + b
@@ -85,6 +88,7 @@ Subtraction of two values. If one of the values is NULL the result will be NULL.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a - b
@@ -108,6 +112,7 @@ Division of two values
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a / b
@@ -130,6 +135,7 @@ Floor division of two values
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a // b
@@ -151,6 +157,7 @@ Compares two values and evaluates to 1 if the left value is less than the right 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a < b
@@ -174,6 +181,7 @@ Compares two values and evaluates to 1 if the left value is less or equal than t
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a <= b
@@ -197,6 +205,7 @@ Compares two values and evaluates to 1 if they are not equal.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a <> b
@@ -221,6 +230,7 @@ Compares two values and evaluates to 1 if they are equal.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a = b
@@ -245,6 +255,7 @@ Compares two values and evaluates to 1 if the left value is greater than the rig
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a > b
@@ -268,6 +279,7 @@ Compares two values and evaluates to 1 if the left value is greater or equal tha
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a >= b
@@ -291,6 +303,7 @@ Returns TRUE when conditions a and b are true.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a AND b
@@ -315,6 +328,7 @@ Returns TRUE if value is within the specified range. The range is considered inc
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - value BETWEEN lower_bound AND higher_bound
@@ -342,6 +356,7 @@ Returns TRUE if the first parameter matches case-insensitive the supplied patter
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - string/number ILIKE pattern
@@ -377,6 +392,7 @@ Returns TRUE if value is found within a list of values.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a IN b
@@ -399,6 +415,7 @@ Returns TRUE if a is the same as b.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a IS b
@@ -425,6 +442,7 @@ Returns TRUE if a is not the same as b.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a IS NOT b
@@ -448,6 +466,7 @@ Returns TRUE if the first parameter matches the supplied pattern. Works with num
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - string/number LIKE pattern
@@ -478,6 +497,7 @@ Negates a condition.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - NOT a
@@ -499,6 +519,7 @@ Returns TRUE if value is not within the specified range. The range is considered
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - value NOT BETWEEN lower_bound AND higher_bound
@@ -526,6 +547,7 @@ Returns TRUE when condition a or b is true.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a OR b
@@ -549,6 +571,7 @@ Index operator. Returns an element from an array or map value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - [index]
@@ -573,6 +596,7 @@ Power of two values.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a ^ b
@@ -599,6 +623,7 @@ If one of the values is NULL the result will be NULL. See the CONCAT function fo
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - a || b
@@ -623,6 +648,7 @@ Performs a regular expression match on a string value. Backslash characters must
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - string ~ regex

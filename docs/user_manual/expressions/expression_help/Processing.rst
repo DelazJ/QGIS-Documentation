@@ -15,6 +15,7 @@ Returns the value of a processing algorithm input parameter.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - parameter(name)

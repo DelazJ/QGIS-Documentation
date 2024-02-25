@@ -15,6 +15,7 @@ Returns the area of the current mesh face. The area calculated by this function 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $face_area
@@ -33,6 +34,7 @@ Returns the index of the current mesh face.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $face_index
@@ -51,6 +53,7 @@ Returns the current vertex as a point geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $vertex_as_point
@@ -69,6 +72,7 @@ Returns the index of the current mesh vertex.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $vertex_index
@@ -87,6 +91,7 @@ Returns the X coordinate of the current mesh vertex.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $vertex_x
@@ -105,6 +110,7 @@ Returns the Y coordinate of the current mesh vertex.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $vertex_y
@@ -123,6 +129,7 @@ Returns the Z value of the current mesh vertex.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $vertex_z

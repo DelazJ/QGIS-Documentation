@@ -15,6 +15,7 @@ Gets an environment variable and returns its content as a string. If the variabl
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - env(name)
@@ -37,6 +38,7 @@ Evaluates an expression which is passed in a string. Useful to expand dynamic pa
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - eval(expression)
@@ -58,6 +60,7 @@ Evaluates a template which is passed in a string. Useful to expand dynamic param
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - eval_template(template)
@@ -78,6 +81,7 @@ Returns TRUE if a specified layer is visible.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_layer_visible(layer)
@@ -98,6 +102,7 @@ Returns the mime type of the binary data.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - mime_type(bytes)
@@ -119,6 +124,7 @@ Returns the value stored within a specified variable.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - var(name)
@@ -139,6 +145,7 @@ This function sets a variable for any expression code that will be provided as 3
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - with_variable(name, value, expression)

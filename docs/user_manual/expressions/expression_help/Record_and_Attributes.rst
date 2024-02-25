@@ -19,6 +19,7 @@ Returns the value of an attribute from the current feature.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - attribute(attribute_name)
@@ -34,6 +35,7 @@ Allows the target feature and attribute name to be specified.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - attribute(feature, attribute_name)
@@ -59,6 +61,7 @@ Returns a map of all attributes from the current feature.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - attributes()
@@ -72,6 +75,7 @@ Allows the target feature to be specified.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - attributes(feature)
@@ -92,6 +96,7 @@ Returns the current feature being evaluated. This can be used with the 'attribut
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $currentfeature
@@ -114,6 +119,7 @@ If called with no parameters, the function will evaluate the display expression 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - display_expression()
@@ -127,6 +133,7 @@ If called with a 'feature' parameter only, the function will evaluate the specif
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - display_expression(feature)
@@ -142,6 +149,7 @@ If the function is called with both a layer and a feature, it will evaluate the 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - display_expression(layer, feature, [evaluate=true])
@@ -167,6 +175,7 @@ Returns a feature's unique ID, or NULL if the feature is not valid.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - feature_id(feature)
@@ -191,6 +200,7 @@ Along with the layer ID, a single column and value are specified.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - get_feature(layer, attribute, value)
@@ -208,6 +218,7 @@ Along with the layer ID, a map containing the columns (key) and their respective
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - get_feature(layer, attribute)
@@ -229,6 +240,7 @@ Returns the feature with an id on a layer.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - get_feature_by_id(layer, feature_id)
@@ -250,6 +262,7 @@ Returns the feature id of the current row. **WARNING: This function is deprecate
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $id
@@ -268,6 +281,7 @@ Returns TRUE if a specific feature attribute meets all constraints.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_attribute_valid(attribute, [feature], [layer], [strength])
@@ -294,6 +308,7 @@ Returns TRUE if a feature meets all field constraints.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_feature_valid([feature], [layer], [strength])
@@ -323,6 +338,7 @@ If called with no parameters, the function will return TRUE if the current featu
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_selected()
@@ -336,6 +352,7 @@ If called with a 'feature' parameter only, the function returns TRUE if the spec
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_selected(feature)
@@ -353,6 +370,7 @@ If the function is called with both a layer and a feature, it will return TRUE i
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_selected(layer, feature)
@@ -379,6 +397,7 @@ If called with no parameters, the function will evaluate the maptip of the curre
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - maptip()
@@ -392,6 +411,7 @@ If called with a 'feature' parameter only, the function will evaluate the specif
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - maptip(feature)
@@ -407,6 +427,7 @@ If the function is called with both a layer and a feature, it will evaluate the 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - maptip(layer, feature, [evaluate=true])
@@ -432,6 +453,7 @@ Returns the number of selected features on a given layer. By default works on th
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - num_selected([layer=current layer])
@@ -459,6 +481,7 @@ If called with no parameters, the function will return the representation of the
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - represent_attributes()
@@ -472,6 +495,7 @@ If called with a 'feature' parameter only, the function will return the represen
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - represent_attributes(feature)
@@ -487,6 +511,7 @@ If called with a 'layer' and a 'feature' parameter, the function will return the
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - represent_attributes(layer, feature)
@@ -508,6 +533,7 @@ Returns the configured representation value for a field value. It depends on the
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - represent_value(value, [fieldName])
@@ -558,6 +584,7 @@ When the database parameter is a layer and the layer is in transaction mode, the
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - sqlite_fetch_and_increment(database, table, id_field, filter_attribute, filter_value, [default_values])
@@ -586,6 +613,7 @@ Generates a Universally Unique Identifier (UUID) for each row using the Qt `QUui
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - uuid([format='WithBraces'])

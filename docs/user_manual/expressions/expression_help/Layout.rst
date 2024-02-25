@@ -15,6 +15,7 @@ Returns a map of variables from a layout item inside this print layout.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - item_variables(id)
@@ -35,6 +36,7 @@ Returns a list of credit (usage rights) strings for the layers shown in a layout
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - map_credits([id], [include_layer_names=false], [layer_name_separator=': '])

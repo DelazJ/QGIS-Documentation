@@ -176,6 +176,7 @@ def format_variant(function_dict, f_name):
     text = (f"{v_description}"
             f".. list-table::\n"
             f"   :widths: 15 85\n"
+            f"   :class: longtable\n"
             f"\n"
             f"{syntax}"
             f"{arguments}"

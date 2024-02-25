@@ -15,6 +15,7 @@ Returns the absolute value of a number.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - abs(value)
@@ -35,6 +36,7 @@ Returns the inverse cosine of a value in radians.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - acos(value)
@@ -55,6 +57,7 @@ Returns the inverse sine of a value in radians.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - asin(value)
@@ -75,6 +78,7 @@ Returns the inverse tangent of a value in radians.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - atan(value)
@@ -95,6 +99,7 @@ Returns the inverse tangent of dy/dx by using the signs of the two arguments to 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - atan2(dy, dx)
@@ -116,6 +121,7 @@ Rounds a number upwards.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - ceil(value)
@@ -137,6 +143,7 @@ Restricts an input value to a specified range.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - clamp(minimum, input, maximum)
@@ -167,6 +174,7 @@ Returns cosine of an angle.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - cos(angle)
@@ -187,6 +195,7 @@ Converts from radians to degrees.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - degrees(radians)
@@ -208,6 +217,7 @@ Returns exponential of an value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - exp(value)
@@ -228,6 +238,7 @@ Rounds a number downwards.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - floor(value)
@@ -249,6 +260,7 @@ Returns the natural logarithm of a value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - ln(value)
@@ -270,6 +282,7 @@ Returns the value of the logarithm of the passed value and base.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - log(base, value)
@@ -292,6 +305,7 @@ Returns the value of the base 10 logarithm of the passed expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - log10(value)
@@ -313,6 +327,7 @@ Returns the largest value in a set of values.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - max(value1, value2, ...)
@@ -334,6 +349,7 @@ Returns the smallest value in a set of values.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - min(value1, value2, ...)
@@ -355,6 +371,7 @@ Returns value of pi for calculations.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - pi()
@@ -373,6 +390,7 @@ Converts from degrees to radians.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - radians(degrees)
@@ -394,6 +412,7 @@ Returns a random integer within the range specified by the minimum and maximum a
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - rand(min, max, [seed=NULL])
@@ -418,6 +437,7 @@ Returns a random float within the range specified by the minimum and maximum arg
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - randf([min=0.0], [max=1.0], [seed=NULL])
@@ -442,6 +462,7 @@ Rounds a number to number of decimal places.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - round(value, [places=0])
@@ -467,6 +488,7 @@ Transforms a given value from an input domain to an output range using an expone
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - scale_exponential(value, domain_min, domain_max, range_min, range_max, exponent)
@@ -497,6 +519,7 @@ Transforms a given value from an input domain to an output range using linear in
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - scale_linear(value, domain_min, domain_max, range_min, range_max)
@@ -527,6 +550,7 @@ Transforms a given value from an input domain to an output range using a polynom
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - scale_polynomial(value, domain_min, domain_max, range_min, range_max, exponent)
@@ -557,6 +581,7 @@ Returns the sine of an angle.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - sin(angle)
@@ -577,6 +602,7 @@ Returns square root of a value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - sqrt(value)
@@ -597,6 +623,7 @@ Returns the tangent of an angle.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - tan(angle)

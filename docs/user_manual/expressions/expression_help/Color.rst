@@ -15,6 +15,7 @@ Returns a string representation of a color based on its cyan, magenta, yellow an
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_cmyk(cyan, magenta, yellow, black)
@@ -38,6 +39,7 @@ Returns a string representation of a color based on its cyan, magenta, yellow, b
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_cmyka(cyan, magenta, yellow, black, alpha)
@@ -62,6 +64,7 @@ Applies a grayscale filter and returns a string representation from a provided c
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_grayscale_average(color)
@@ -82,6 +85,7 @@ Returns a string representation of a color based on its hue, saturation, and lig
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_hsl(hue, saturation, lightness)
@@ -104,6 +108,7 @@ Returns a string representation of a color based on its hue, saturation, lightne
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_hsla(hue, saturation, lightness, alpha)
@@ -127,6 +132,7 @@ Returns a string representation of a color based on its hue, saturation, and val
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_hsv(hue, saturation, value)
@@ -149,6 +155,7 @@ Returns a string representation of a color based on its hue, saturation, value a
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_hsva(hue, saturation, value, alpha)
@@ -172,6 +179,7 @@ Returns a string representing a color mixing the red, green, blue, and alpha val
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_mix_rgb(color1, color2, ratio)
@@ -194,6 +202,7 @@ Returns a specific component from a color string, e.g., the red component or alp
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_part(color, component)
@@ -234,6 +243,7 @@ Returns a string representation of a color based on its red, green, and blue com
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_rgb(red, green, blue)
@@ -256,6 +266,7 @@ Returns a string representation of a color based on its red, green, blue, and al
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - color_rgba(red, green, blue, alpha)
@@ -279,6 +290,7 @@ Returns a gradient ramp from a map of color strings and steps.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - create_ramp(map, [discrete=false])
@@ -302,6 +314,7 @@ Returns a darker (or lighter) color string
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - darker(color, factor)
@@ -329,6 +342,7 @@ Returns a lighter (or darker) color string
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - lighter(color, factor)
@@ -356,6 +370,7 @@ Returns a color from the project's color scheme.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - project_color(name)
@@ -380,6 +395,7 @@ Returns a string representing a color from a saved ramp
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - ramp_color(ramp_name, value)
@@ -398,6 +414,7 @@ Returns a string representing a color from an expression-created ramp
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - ramp_color(ramp, value)
@@ -419,6 +436,7 @@ Sets a specific color component for a color string, e.g., the red component or a
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - set_color_part(color, component, value)

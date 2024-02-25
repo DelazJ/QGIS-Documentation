@@ -15,6 +15,7 @@ Returns the unicode code associated with the first character of a string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - ascii(string)
@@ -35,6 +36,7 @@ Returns the character associated with a unicode code.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - char(code)
@@ -55,6 +57,7 @@ Concatenates several strings to one. NULL values are converted to empty strings.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - concat(string1, string2, ...)
@@ -78,6 +81,7 @@ Format a string using supplied arguments.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - format(string, arg1, arg2, ...)
@@ -100,6 +104,7 @@ Formats a date type or string into a custom string format. Uses Qt date/time for
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - format_date(datetime, format, [language])
@@ -167,6 +172,7 @@ Returns a number formatted with the locale separator for thousands. By default t
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - format_number(number, [places=0], [language], [omit_group_separators=false], [trim_trailing_zeroes=false])
@@ -194,6 +200,7 @@ Returns a substring that contains the *n* leftmost characters of the string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - left(string, length)
@@ -219,6 +226,7 @@ Returns the number of characters in a string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - length(string)
@@ -234,6 +242,7 @@ Calculate the length of a geometry line object. Calculations are always planimet
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - length(geometry)
@@ -254,6 +263,7 @@ Converts a string to lower case letters.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - lower(string)
@@ -274,6 +284,7 @@ Returns a string padded on the left to the specified width, using a fill charact
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - lpad(string, width, fill)
@@ -297,6 +308,7 @@ Removes the longest string containing only the specified characters (a space by 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - ltrim(string, [characters=' '])
@@ -321,6 +333,7 @@ Return the first matching position matching a regular expression within an unico
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - regexp_match(input_string, regex)
@@ -343,6 +356,7 @@ Returns a string with the supplied regular expression replaced.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - regexp_replace(input_string, regex, replacement)
@@ -367,6 +381,7 @@ Returns the portion of a string which matches a supplied regular expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - regexp_substr(input_string, regex)
@@ -392,6 +407,7 @@ Returns a string with the supplied string or array of strings replaced by a stri
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - replace(string, before, after)
@@ -411,6 +427,7 @@ Returns a string with the supplied map keys replaced by paired values. Longer ma
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - replace(string, map)
@@ -433,6 +450,7 @@ Returns a substring that contains the *n* rightmost characters of the string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - right(string, length)
@@ -454,6 +472,7 @@ Returns a string padded on the right to the specified width, using a fill charac
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - rpad(string, width, fill)
@@ -477,6 +496,7 @@ Removes the longest string containing only the specified characters (a space by 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - rtrim(string, [characters=' '])
@@ -501,6 +521,7 @@ Return the first matching position of a substring within another string, or 0 if
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - strpos(haystack, needle)
@@ -523,6 +544,7 @@ Returns a part of a string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - substr(string, start, [length])
@@ -552,6 +574,7 @@ Converts all words of a string to title case (all words lower case with leading 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - title(string)
@@ -572,6 +595,7 @@ Converts a number to string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_string(number)
@@ -592,6 +616,7 @@ Removes all leading and trailing whitespace (spaces, tabs, etc) from a string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - trim(string)
@@ -612,6 +637,7 @@ Converts a string to upper case letters.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - upper(string)
@@ -632,6 +658,7 @@ Returns a string wrapped to a maximum/minimum number of characters.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - wordwrap(string, wrap_length, [delimiter_string])

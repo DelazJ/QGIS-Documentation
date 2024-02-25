@@ -15,6 +15,7 @@ Returns the last captured value (or values as a map for sensors which report mul
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - sensor_data(name, [expiration])

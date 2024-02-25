@@ -15,6 +15,7 @@ Returns the Hamming distance between two strings. This equates to the number of 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - hamming_distance(string1, string2)
@@ -41,6 +42,7 @@ The Levenshtein distance is a measure of the similarity between two strings. Sma
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - levenshtein(string1, string2)
@@ -64,6 +66,7 @@ Returns the longest common substring between two strings. This substring is the 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - longest_common_substring(string1, string2)
@@ -87,6 +90,7 @@ Returns the Soundex representation of a string. Soundex is a phonetic matching a
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - soundex(string)

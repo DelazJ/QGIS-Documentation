@@ -15,6 +15,7 @@ Takes a layer and decodes the uri of the underlying data provider. It depends on
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - decode_uri(layer, [part])
@@ -40,6 +41,7 @@ Returns a matching layer property or metadata value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - layer_property(layer, property)
@@ -91,6 +93,7 @@ Loads a layer by source URI and provider name.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - load_layer(uri, provider)

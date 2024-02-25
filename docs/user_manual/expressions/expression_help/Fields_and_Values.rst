@@ -15,6 +15,7 @@ Equates to a NULL value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - NULL

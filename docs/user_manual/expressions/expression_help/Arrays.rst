@@ -15,6 +15,7 @@ Returns an array containing all the values passed as parameter.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array(value1, value2, ...)
@@ -36,6 +37,7 @@ Returns TRUE if an array contains all the values of a given array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_all(array_a, array_b)
@@ -58,6 +60,7 @@ Returns an array with the given value added at the end.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_append(array, value)
@@ -79,6 +82,7 @@ Returns an array containing all the given arrays concatenated.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_cat(array1, array2, ...)
@@ -99,6 +103,7 @@ Returns TRUE if an array contains the given value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_contains(array, value)
@@ -120,6 +125,7 @@ Counts the number of occurrences of a given value in an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_count(array, value)
@@ -141,6 +147,7 @@ Returns an array containing distinct values of the given array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_distinct(array)
@@ -161,6 +168,7 @@ Returns an array with only the items for which the expression evaluates to true.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_filter(array, expression, [limit=0])
@@ -186,6 +194,7 @@ Returns the lowest index (0 for the first one) of a value within an array. Retur
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_find(array, value)
@@ -208,6 +217,7 @@ Returns the first value of an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_first(array)
@@ -228,6 +238,7 @@ Returns an array with the given expression evaluated on each item.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_foreach(array, expression)
@@ -251,6 +262,7 @@ Returns the Nth value (0 for the first one) or the last -Nth value (-1 for the l
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_get(array, pos)
@@ -273,6 +285,7 @@ Returns an array with the given value added at the given position.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_insert(array, pos, value)
@@ -295,6 +308,7 @@ Returns TRUE if at least one element of array1 exists in array2.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_intersect(array1, array2)
@@ -316,6 +330,7 @@ Returns the last value of an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_last(array)
@@ -336,6 +351,7 @@ Returns the number of elements of an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_length(array)
@@ -356,6 +372,7 @@ Returns the most common values in an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_majority(array, [option='all'])
@@ -394,6 +411,7 @@ Returns the maximum value of an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_max(array)
@@ -414,6 +432,7 @@ Returns the mean of arithmetic values in an array. Non numeric values in the arr
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_mean(array)
@@ -435,6 +454,7 @@ Returns the median of arithmetic values in an array. Non arithmetic values in th
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_median(array)
@@ -456,6 +476,7 @@ Returns the minimum value of an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_min(array)
@@ -476,6 +497,7 @@ Returns the less common values in an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_minority(array, [option='all'])
@@ -514,6 +536,7 @@ Returns an array with the given value added at the beginning.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_prepend(array, value)
@@ -535,6 +558,7 @@ Returns an array sorted using the ordering specified in another array. Values wh
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_prioritize(array, array_prioritize)
@@ -557,6 +581,7 @@ Returns an array with all the entries of the given value removed.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_remove_all(array, value)
@@ -578,6 +603,7 @@ Returns an array with the item at the given index removed. Supports positive (0 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_remove_at(array, pos)
@@ -604,6 +630,7 @@ Returns an array with the supplied value or array of values replaced by another 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_replace(array, before, after)
@@ -623,6 +650,7 @@ Returns an array with the supplied map keys replaced by their paired values.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_replace(array, map)
@@ -644,6 +672,7 @@ Returns the given array with array values in reversed order.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_reverse(array)
@@ -664,6 +693,7 @@ Returns a portion of the array. The slice is defined by the start_pos and end_po
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_slice(array, start_pos, end_pos)
@@ -693,6 +723,7 @@ Returns the provided array with its elements sorted.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_sort(array, [ascending=true])
@@ -716,6 +747,7 @@ Returns the sum of arithmetic values in an array. Non numeric values in the arra
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_sum(array)
@@ -736,6 +768,7 @@ Concatenates array elements into a string separated by a delimiter and using opt
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_to_string(array, [delimiter=','], [empty_value=''])
@@ -762,6 +795,7 @@ Creates an array containing a sequence of numbers.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - generate_series(start, stop, [step=1])
@@ -787,6 +821,7 @@ Splits a geometry into simpler geometries in an array.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - geometries_to_array(geometry)
@@ -810,6 +845,7 @@ Returns an array of all strings captured by capturing groups, in the order the g
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - regexp_matches(string, regex, [empty_value=''])
@@ -835,6 +871,7 @@ Splits string into an array using supplied delimiter and optional string for emp
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - string_to_array(string, [delimiter=','], [empty_value=''])

@@ -15,6 +15,7 @@ Only usable in an embedded form context, this function returns the current, unsa
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - current_parent_value(field_name)
@@ -35,6 +36,7 @@ Returns the current, unsaved value of a field in the form or table row currently
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - current_value(field_name)

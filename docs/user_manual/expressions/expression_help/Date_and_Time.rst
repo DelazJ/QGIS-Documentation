@@ -29,6 +29,7 @@ The difference is returned as an ``Interval`` and needs to be used with one of t
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - age(datetime1, datetime2)
@@ -51,6 +52,7 @@ Returns a datetime whose date and time are the number of milliseconds, msecs, th
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - datetime_from_epoch(int)
@@ -75,6 +77,7 @@ Extracts the day from a date or datetime.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - day(date)
@@ -90,6 +93,7 @@ Calculates the length in days of an interval.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - day(interval)
@@ -112,6 +116,7 @@ Returns the day of the week for a specified date or datetime. The returned value
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - day_of_week(date)
@@ -132,6 +137,7 @@ Returns the interval in milliseconds between the unix epoch and a given date val
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - epoch(date)
@@ -152,6 +158,7 @@ Formats a date type or string into a custom string format. Uses Qt date/time for
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - format_date(datetime, format, [language])
@@ -223,6 +230,7 @@ Extracts the hour part from a time or datetime.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - hour(datetime)
@@ -238,6 +246,7 @@ Calculates the length in hours of an interval.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - hour(interval)
@@ -260,6 +269,7 @@ Creates a date value from year, month and day numbers.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_date(year, month, day)
@@ -282,6 +292,7 @@ Creates a datetime value from year, month, day, hour, minute and second numbers.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_datetime(year, month, day, hour, minute, second)
@@ -307,6 +318,7 @@ Creates an interval value from year, month, weeks, days, hours, minute and secon
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_interval([years=0], [months=0], [weeks=0], [days=0], [hours=0], [minutes=0], [seconds=0])
@@ -337,6 +349,7 @@ Creates a time value from hour, minute and second numbers.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_time(hour, minute, second)
@@ -363,6 +376,7 @@ Extracts the minutes part from a time or datetime.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - minute(datetime)
@@ -378,6 +392,7 @@ Calculates the length in minutes of an interval.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - minute(interval)
@@ -404,6 +419,7 @@ Extracts the month part from a date or datetime.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - month(date)
@@ -419,6 +435,7 @@ Calculates the length in months of an interval.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - month(interval)
@@ -440,6 +457,7 @@ Returns the current date and time. The function is static and will return consis
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - now()
@@ -462,6 +480,7 @@ Extracts the seconds part from a time or datetime.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - second(datetime)
@@ -477,6 +496,7 @@ Calculates the length in seconds of an interval.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - second(interval)
@@ -499,6 +519,7 @@ Converts a string into a date object. An optional format string can be provided 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_date(string, [format], [language])
@@ -525,6 +546,7 @@ Converts a string into a datetime object. An optional format string can be provi
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_datetime(string, [format], [language])
@@ -551,6 +573,7 @@ Converts a string to an interval type. Can be used to take days, hours, month, e
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_interval(string)
@@ -573,6 +596,7 @@ Converts a string into a time object. An optional format string can be provided 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_time(string, [format], [language])
@@ -603,6 +627,7 @@ Extracts the week number from a date or datetime.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - week(date)
@@ -618,6 +643,7 @@ Calculates the length in weeks of an interval.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - week(interval)
@@ -643,6 +669,7 @@ Extracts the year part from a date or datetime.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - year(date)
@@ -658,6 +685,7 @@ Calculates the length in years of an interval.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - year(interval)

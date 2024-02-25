@@ -15,6 +15,7 @@ Returns the base name of the file without the directory or file suffix.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - base_file_name(path)
@@ -35,6 +36,7 @@ Retrieves exif tag values from an image file.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - exif(path, [tag])
@@ -58,6 +60,7 @@ Returns TRUE if a file path exists.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - file_exists(path)
@@ -78,6 +81,7 @@ Returns the name of a file (including the file extension), excluding the directo
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - file_name(path)
@@ -98,6 +102,7 @@ Returns the directory component of a file path. This does not include the file n
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - file_path(path)
@@ -118,6 +123,7 @@ Returns the size (in bytes) of a file.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - file_size(path)
@@ -138,6 +144,7 @@ Returns the file suffix (extension) from a file path.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - file_suffix(path)
@@ -158,6 +165,7 @@ Returns TRUE if a path corresponds to a directory.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_directory(path)
@@ -179,6 +187,7 @@ Returns TRUE if a path corresponds to a file.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_file(path)

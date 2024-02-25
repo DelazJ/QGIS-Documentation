@@ -15,6 +15,7 @@ Decodes a string in the Base64 encoding into a binary value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - from_base64(string)
@@ -35,6 +36,7 @@ Creates a hash from a string with a given method. One byte (8 bits) is represent
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - hash(string, method)
@@ -69,6 +71,7 @@ Creates a md5 hash from a string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - md5(string)
@@ -89,6 +92,7 @@ Creates a sha256 hash from a string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - sha256(string)
@@ -109,6 +113,7 @@ Encodes a binary value into a string, using the Base64 encoding.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_base64(value)
@@ -129,6 +134,7 @@ Converts a string into a date object. An optional format string can be provided 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_date(string, [format], [language])
@@ -155,6 +161,7 @@ Converts a string into a datetime object. An optional format string can be provi
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_datetime(string, [format], [language])
@@ -181,6 +188,7 @@ Converts a degree, minute, second coordinate to its decimal equivalent.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_decimal(value)
@@ -201,6 +209,7 @@ Converts a coordinate to degree, minute.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_dm(coordinate, axis, precision, [formatting=])
@@ -228,6 +237,7 @@ Converts a coordinate to degree, minute, second.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_dms(coordinate, axis, precision, [formatting=])
@@ -255,6 +265,7 @@ Converts a string to integer number. Nothing is returned if a value cannot be co
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_int(string)
@@ -275,6 +286,7 @@ Converts a string to an interval type. Can be used to take days, hours, month, e
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_interval(string)
@@ -297,6 +309,7 @@ Converts a string to a real number. Nothing is returned if a value cannot be con
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_real(string)
@@ -317,6 +330,7 @@ Converts a number to string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_string(number)
@@ -337,6 +351,7 @@ Converts a string into a time object. An optional format string can be provided 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - to_time(string, [format], [language])

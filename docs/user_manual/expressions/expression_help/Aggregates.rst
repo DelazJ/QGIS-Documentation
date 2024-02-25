@@ -15,6 +15,7 @@ Returns an aggregate value calculated using features from another layer.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - aggregate(layer, aggregate, expression, [filter], [concatenator=''], [order_by])
@@ -75,6 +76,7 @@ Returns an array of aggregated values from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - array_agg(expression, [group_by], [filter], [order_by])
@@ -100,6 +102,7 @@ Returns the multipart geometry of aggregated geometries from an expression
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - collect(expression, [group_by], [filter])
@@ -125,6 +128,7 @@ Returns all aggregated strings from a field or expression joined by a delimiter.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - concatenate(expression, [group_by], [filter], [concatenator], [order_by])
@@ -151,6 +155,7 @@ Returns all unique strings from a field or expression joined by a delimiter.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - concatenate_unique(expression, [group_by], [filter], [concatenator], [order_by])
@@ -177,6 +182,7 @@ Returns the count of matching features.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - count(expression, [group_by], [filter])
@@ -201,6 +207,7 @@ Returns the count of distinct values.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - count_distinct(expression, [group_by], [filter])
@@ -225,6 +232,7 @@ Returns the count of missing (NULL) values.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - count_missing(expression, [group_by], [filter])
@@ -249,6 +257,7 @@ Returns the calculated inter quartile range from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - iqr(expression, [group_by], [filter])
@@ -273,6 +282,7 @@ Returns the aggregate majority of values (most commonly occurring value) from a 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - majority(expression, [group_by], [filter])
@@ -297,6 +307,7 @@ Returns the maximum length of strings from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - max_length(expression, [group_by], [filter])
@@ -321,6 +332,7 @@ Returns the aggregate maximum value from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - maximum(expression, [group_by], [filter])
@@ -345,6 +357,7 @@ Returns the aggregate mean value from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - mean(expression, [group_by], [filter])
@@ -369,6 +382,7 @@ Returns the aggregate median value from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - median(expression, [group_by], [filter])
@@ -393,6 +407,7 @@ Returns the minimum length of strings from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - min_length(expression, [group_by], [filter])
@@ -417,6 +432,7 @@ Returns the aggregate minimum value from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - minimum(expression, [group_by], [filter])
@@ -441,6 +457,7 @@ Returns the aggregate minority of values (least occurring value) from a field or
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - minority(expression, [group_by], [filter])
@@ -465,6 +482,7 @@ Returns the calculated first quartile from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - q1(expression, [group_by], [filter])
@@ -489,6 +507,7 @@ Returns the calculated third quartile from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - q3(expression, [group_by], [filter])
@@ -513,6 +532,7 @@ Returns the aggregate range of values (maximum - minimum) from a field or expres
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - range(expression, [group_by], [filter])
@@ -537,6 +557,7 @@ Returns an aggregate value calculated using all matching child features from a l
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - relation_aggregate(relation, aggregate, expression, [concatenator=''], [order_by])
@@ -593,6 +614,7 @@ Returns the aggregate standard deviation value from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - stdev(expression, [group_by], [filter])
@@ -617,6 +639,7 @@ Returns the aggregate summed value from a field or expression.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - sum(expression, [group_by], [filter])

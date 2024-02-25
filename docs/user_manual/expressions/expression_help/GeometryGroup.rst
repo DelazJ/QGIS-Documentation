@@ -15,6 +15,7 @@ Returns the geometry after an affine transformation. Calculations are in the Spa
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - affine_transform(geometry, delta_x, delta_y, rotation_z, scale_x, scale_y, [delta_z=0], [delta_m=0], [scale_z=1], [scale_m=1])
@@ -48,6 +49,7 @@ Returns the bisector angle (average angle) to the geometry for a specified verte
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - angle_at_vertex(geometry, vertex)
@@ -69,6 +71,7 @@ Applies a dash pattern to a geometry, returning a MultiLineString geometry which
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - apply_dash_pattern(geometry, pattern, [start_rule=no_rule], [end_rule=no_rule], [adjustment=both], [pattern_offset=0])
@@ -97,6 +100,7 @@ Returns the area of the current feature. The area calculated by this function re
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $area
@@ -115,6 +119,7 @@ Returns the area of a geometry polygon object. Calculations are always planimetr
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - area(geometry)
@@ -135,6 +140,7 @@ Returns the north-based azimuth as the angle in radians measured clockwise from 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - azimuth(point_a, point_b)
@@ -157,6 +163,7 @@ Returns the north-based bearing as the angle in radians measured clockwise on th
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - bearing(point_a, point_b, [source_crs], [ellipsoid])
@@ -183,6 +190,7 @@ Returns the closure of the combinatorial boundary of the geometry (ie the topolo
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - boundary(geometry)
@@ -204,6 +212,7 @@ Returns a geometry which represents the bounding box of an input geometry. Calcu
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - bounds(geometry)
@@ -231,6 +240,7 @@ Returns the height of the bounding box of a geometry. Calculations are in the Sp
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - bounds_height(geometry)
@@ -252,6 +262,7 @@ Returns the width of the bounding box of a geometry. Calculations are in the Spa
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - bounds_width(geometry)
@@ -273,6 +284,7 @@ Returns a geometry that represents all points whose distance from this geometry 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - buffer(geometry, distance, [segments=8], [cap='round'], [join='round'], [miter_limit=2])
@@ -306,6 +318,7 @@ Creates a buffer along a line geometry where the buffer diameter varies accordin
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - buffer_by_m(geometry, [segments=8])
@@ -335,6 +348,7 @@ Returns the geometric center of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - centroid(geometry)
@@ -355,6 +369,7 @@ Returns a closed line string of the input line string by appending the first poi
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - close_line(geometry)
@@ -376,6 +391,7 @@ Returns the point on geometry1 that is closest to geometry2.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - closest_point(geometry1, geometry2)
@@ -401,6 +417,7 @@ Geometry parts are specified as separate arguments to the function.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - collect_geometries(geometry1, geometry2, ...)
@@ -416,6 +433,7 @@ Geometry parts are specified as an array of geometry parts.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - collect_geometries(array)
@@ -436,6 +454,7 @@ Returns the combination of two geometries.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - combine(geometry1, geometry2)
@@ -458,6 +477,7 @@ Returns a possibly concave polygon that contains all the points in the geometry
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - concave_hull(geometry, target_percent, [allow_holes=False])
@@ -482,6 +502,7 @@ Tests whether a geometry contains another. Returns TRUE if and only if no points
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - contains(geometry1, geometry2)
@@ -504,6 +525,7 @@ Returns the convex hull of a geometry. It represents the minimum convex geometry
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - convex_hull(geometry)
@@ -524,6 +546,7 @@ Tests whether a geometry crosses another. Returns TRUE if the supplied geometrie
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - crosses(geometry1, geometry2)
@@ -546,6 +569,7 @@ Takes a polygon or line layer geometry and generates a new one in which the geom
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - densify_by_count(geometry, vertices)
@@ -567,6 +591,7 @@ Takes a polygon or line layer geometry and generates a new one in which the geom
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - densify_by_distance(geometry, distance)
@@ -588,6 +613,7 @@ Returns a geometry that represents that part of geometry1 that does not intersec
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - difference(geometry1, geometry2)
@@ -609,6 +635,7 @@ Tests whether geometries do not spatially intersect. Returns TRUE if the geometr
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - disjoint(geometry1, geometry2)
@@ -631,6 +658,7 @@ Returns the minimum distance (based on spatial reference) between two geometries
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - distance(geometry1, geometry2)
@@ -652,6 +680,7 @@ Returns the distance along the geometry to a specified vertex.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - distance_to_vertex(geometry, vertex)
@@ -673,6 +702,7 @@ Returns the last node from a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - end_point(geometry)
@@ -693,6 +723,7 @@ Creates a point geometry from the exif geotags of an image file.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - exif_geotag(path)
@@ -713,6 +744,7 @@ Extends the start and end of a linestring geometry by a specified amount. Lines 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - extend(geometry, start_distance, end_distance)
@@ -736,6 +768,7 @@ Returns a line string representing the exterior ring of a polygon geometry. If t
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - exterior_ring(geometry)
@@ -756,6 +789,7 @@ Returns an extruded version of the input (Multi-)Curve or (Multi-)Linestring geo
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - extrude(geometry, x, y)
@@ -779,6 +813,7 @@ Returns a copy of the geometry with the x and y coordinates swapped. Useful for 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - flip_coordinates(geometry)
@@ -800,6 +835,7 @@ Forces a geometry to respect the convention where exterior rings are counter-clo
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - force_polygon_ccw(geometry)
@@ -820,6 +856,7 @@ Forces a geometry to respect the convention where exterior rings are clockwise, 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - force_polygon_cw(geometry)
@@ -840,6 +877,7 @@ Forces a geometry to respect the Right-Hand-Rule, in which the area that is boun
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - force_rhr(geometry)
@@ -860,6 +898,7 @@ Returns a geometry from a GML representation of geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - geom_from_gml(gml)
@@ -880,6 +919,7 @@ Returns a geometry created from a Well-Known Binary (WKB) representation.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - geom_from_wkb(binary)
@@ -900,6 +940,7 @@ Returns a geometry created from a Well-Known Text (WKT) representation.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - geom_from_wkt(text)
@@ -920,6 +961,7 @@ Returns the Well-Known Binary (WKB) representation of a geometry
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - geom_to_wkb(geometry)
@@ -940,6 +982,7 @@ Returns the Well-Known Text (WKT) representation of the geometry without SRID me
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - geom_to_wkt(geometry, [precision=8])
@@ -965,6 +1008,7 @@ Returns the geometry of the current feature. Can be used for processing with oth
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $geometry
@@ -983,6 +1027,7 @@ Returns a feature's geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - geometry(feature)
@@ -1005,6 +1050,7 @@ Returns a specific geometry from a geometry collection, or NULL if the input geo
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - geometry_n(geometry, index)
@@ -1026,6 +1072,7 @@ Returns a string value describing the type of a geometry (Point, Line or Polygon
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - geometry_type(geometry)
@@ -1061,6 +1108,7 @@ If the default approximate provided by this method is insufficient, specify the 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - hausdorff_distance(geometry1, geometry2, [densify_fraction])
@@ -1087,6 +1135,7 @@ Returns the inclination measured from the zenith (0) to the nadir (180) on point
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - inclination(point_a, point_b)
@@ -1111,6 +1160,7 @@ Returns a specific interior ring from a polygon geometry, or NULL if the geometr
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - interior_ring_n(geometry, index)
@@ -1132,6 +1182,7 @@ Returns a geometry that represents the shared portion of two geometries.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - intersection(geometry1, geometry2)
@@ -1154,6 +1205,7 @@ Tests whether a geometry intersects another. Returns TRUE if the geometries spat
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - intersects(geometry1, geometry2)
@@ -1176,6 +1228,7 @@ Tests whether a geometry's bounding box overlaps another geometry's bounding box
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - intersects_bbox(geometry1, geometry2)
@@ -1198,6 +1251,7 @@ Returns TRUE if a line string is closed (start and end points are coincident), o
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_closed(geometry)
@@ -1219,6 +1273,7 @@ Returns TRUE if a geometry is empty (without coordinates), false if the geometry
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_empty(geometry)
@@ -1242,6 +1297,7 @@ Returns TRUE if a geometry is NULL or empty (without coordinates) or false other
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_empty_or_null(geometry)
@@ -1266,6 +1322,7 @@ Returns TRUE if the geometry is of Multi type.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_multipart(geometry)
@@ -1287,6 +1344,7 @@ Returns TRUE if a geometry is valid; if it is well-formed in 2D according to the
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - is_valid(geometry)
@@ -1308,6 +1366,7 @@ Returns the length of a linestring. If you need the length of a border of a poly
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $length
@@ -1330,6 +1389,7 @@ Returns the number of characters in a string.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - length(string)
@@ -1345,6 +1405,7 @@ Calculate the length of a geometry line object. Calculations are always planimet
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - length(geometry)
@@ -1365,6 +1426,7 @@ Calculates the 3D length of a geometry line object. If the geometry is not a 3D 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - length3D(geometry)
@@ -1385,6 +1447,7 @@ Returns the angle parallel to the geometry at a specified distance along a lines
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - line_interpolate_angle(geometry, distance)
@@ -1406,6 +1469,7 @@ Returns the point interpolated by a specified distance along a linestring geomet
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - line_interpolate_point(geometry, distance)
@@ -1429,12 +1493,13 @@ Returns the distance along a linestring corresponding to the closest position th
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - line_locate_point(geometry, point)
    * - Arguments
      - * **geometry** - a linestring geometry
-       * **point** - point geometry to locate closest position on linestring to
+       * **point** - point geometry to locate the closest position on linestring
    * - Examples
      - * ``line_locate_point(geometry:=geom_from_wkt('LineString(0 0, 10 0)'),point:=geom_from_wkt('Point(5 0)'))`` → 5.0
 
@@ -1450,6 +1515,7 @@ Returns a LineString or MultiLineString geometry, where any connected LineString
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - line_merge(geometry)
@@ -1471,6 +1537,7 @@ Returns the portion of a line (or curve) geometry which falls between the specif
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - line_substring(geometry, start_distance, end_distance)
@@ -1493,6 +1560,7 @@ Returns the m (measure) value of a point geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - m(geometry)
@@ -1513,6 +1581,7 @@ Retrieves a m coordinate of the geometry, or NULL if the geometry has no m value
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - m_at(geometry, vertex)
@@ -1534,6 +1603,7 @@ Returns the maximum m (measure) value of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - m_max(geometry)
@@ -1555,6 +1625,7 @@ Returns the minimum m (measure) value of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - m_min(geometry)
@@ -1576,6 +1647,7 @@ Returns the angle of the long axis (clockwise, in degrees from North) of the ori
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - main_angle(geometry)
@@ -1596,6 +1668,7 @@ Creates a circular polygon.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_circle(center, radius, [segments=36])
@@ -1622,6 +1695,7 @@ Creates an elliptical polygon.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_ellipse(center, semi_major_axis, semi_minor_axis, azimuth, [segments=36])
@@ -1654,6 +1728,7 @@ Line vertices are specified as separate arguments to the function.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_line(point1, point2, ...)
@@ -1670,6 +1745,7 @@ Line vertices are specified as an array of points.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_line(array)
@@ -1690,6 +1766,7 @@ Creates a point geometry from an x and y (and optional z and m) value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_point(x, y, [z], [m])
@@ -1717,6 +1794,7 @@ Creates a point geometry from an x, y coordinate and m value.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_point_m(x, y, m)
@@ -1739,6 +1817,7 @@ Creates a polygon geometry from an outer ring and optional series of inner ring 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_polygon(outerRing, [innerRing1], [innerRing2], ...)
@@ -1763,6 +1842,7 @@ Creates a rectangle from 3 points.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_rectangle_3points(point1, point2, point3, [option=0])
@@ -1789,6 +1869,7 @@ Creates a regular polygon.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_regular_polygon(center, radius, number_sides, [circle=0])
@@ -1815,6 +1896,7 @@ Creates a square from a diagonal.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_square(point1, point2)
@@ -1837,6 +1919,7 @@ Creates a triangle polygon.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_triangle(point1, point2, point3)
@@ -1860,6 +1943,7 @@ Returns a valid geometry or an empty geometry if the geometry could not be made 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - make_valid(geometry, [method=structure], [keep_collapsed=false])
@@ -1887,6 +1971,7 @@ Returns the minimal enclosing circle of a geometry. It represents the minimum ci
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - minimal_circle(geometry, [segments=36])
@@ -1911,6 +1996,7 @@ Returns a multipoint geometry consisting of every node in the input geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - nodes_to_points(geometry, [ignore_closing_nodes=false])
@@ -1935,6 +2021,7 @@ Returns the number of geometries in a geometry collection, or the number of part
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - num_geometries(geometry)
@@ -1956,6 +2043,7 @@ Returns the number of interior rings in a polygon or geometry collection, or NUL
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - num_interior_rings(geometry)
@@ -1976,6 +2064,7 @@ Returns the number of vertices in a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - num_points(geometry)
@@ -1996,6 +2085,7 @@ Returns the number of rings (including exterior rings) in a polygon or geometry 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - num_rings(geometry)
@@ -2016,6 +2106,7 @@ Returns a geometry formed by offsetting a linestring geometry to the side. Dista
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - offset_curve(geometry, distance, [segments=8], [join=1], [miter_limit=2.0])
@@ -2045,6 +2136,7 @@ Orders the parts of a MultiGeometry by a given criteria
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - order_parts(geometry, orderby, [ascending=true])
@@ -2070,6 +2162,7 @@ Returns a geometry which represents the minimal oriented bounding box of an inpu
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - oriented_bbox(geometry)
@@ -2090,6 +2183,7 @@ Tests whether a geometry overlaps another. Returns TRUE if the geometries share 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - overlaps(geometry1, geometry2)
@@ -2116,6 +2210,7 @@ Read more on the underlying GEOS "Contains" predicate, as described in PostGIS `
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - overlay_contains(layer, [expression], [filter], [limit], [cache=false])
@@ -2151,6 +2246,7 @@ Read more on the underlying GEOS "Crosses" predicate, as described in PostGIS `S
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - overlay_crosses(layer, [expression], [filter], [limit], [cache=false])
@@ -2186,6 +2282,7 @@ Read more on the underlying GEOS "Disjoint" predicate, as described in PostGIS `
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - overlay_disjoint(layer, [expression], [filter], [limit], [cache=false])
@@ -2221,6 +2318,7 @@ Read more on the underlying GEOS "Equals" predicate, as described in PostGIS `ST
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - overlay_equals(layer, [expression], [filter], [limit], [cache=false])
@@ -2256,6 +2354,7 @@ Read more on the underlying GEOS "Intersects" predicate, as described in PostGIS
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - overlay_intersects(layer, [expression], [filter], [limit], [cache=false], [min_overlap], [min_inscribed_circle_radius], [return_details], [sort_by_intersection_size])
@@ -2308,6 +2407,7 @@ Note: This function can be slow and consume a lot of memory for large layers.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - overlay_nearest(layer, [expression], [filter], [limit=1], [max_distance], [cache=false])
@@ -2345,6 +2445,7 @@ Read more on the underlying GEOS "Touches" predicate, as described in PostGIS `S
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - overlay_touches(layer, [expression], [filter], [limit], [cache=false])
@@ -2380,6 +2481,7 @@ Read more on the underlying GEOS "Within" predicate, as described in PostGIS `ST
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - overlay_within(layer, [expression], [filter], [limit], [cache=false])
@@ -2411,6 +2513,7 @@ Returns the perimeter length of the current feature. The perimeter calculated by
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $perimeter
@@ -2429,6 +2532,7 @@ Returns the perimeter of a geometry polygon object. Calculations are always plan
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - perimeter(geometry)
@@ -2449,6 +2553,7 @@ Returns a specific node from a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - point_n(geometry, index)
@@ -2470,6 +2575,7 @@ Returns a point guaranteed to lie on the surface of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - point_on_surface(geometry)
@@ -2490,6 +2596,7 @@ Calculates the approximate pole of inaccessibility for a surface, which is the m
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - pole_of_inaccessibility(geometry, tolerance)
@@ -2511,6 +2618,7 @@ Returns a point projected from a start point using a distance, a bearing (azimut
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - project(point, distance, azimuth, [elevation])
@@ -2540,6 +2648,7 @@ Returns the Dimensional Extended 9 Intersection Model (DE-9IM) representation of
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - relate(geometry, geometry)
@@ -2556,6 +2665,7 @@ Tests whether the DE-9IM relationship between two geometries matches a specified
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - relate(geometry, geometry, pattern)
@@ -2578,6 +2688,7 @@ Reverses the direction of a line string by reversing the order of its vertices.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - reverse(geometry)
@@ -2598,6 +2709,7 @@ Returns a rotated version of a geometry. Calculations are in the Spatial Referen
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - rotate(geometry, rotation, [center=NULL], [per_part=false])
@@ -2630,6 +2742,7 @@ Calculates how close a polygon shape is to a circle. The function Returns TRUE w
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - roundness(geometry)
@@ -2651,6 +2764,7 @@ Returns a scaled version of a geometry. Calculations are in the Spatial Referenc
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - scale(geometry, x_scale, y_scale, [center])
@@ -2677,6 +2791,7 @@ Returns a multi line geometry consisting of a line for every segment in the inpu
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - segments_to_lines(geometry)
@@ -2697,6 +2812,7 @@ Returns a collection containing paths shared by the two input geometries. Those 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - shared_paths(geometry1, geometry2)
@@ -2719,6 +2835,7 @@ Returns the shortest line joining geometry1 to geometry2. The resultant line wil
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - shortest_line(geometry1, geometry2)
@@ -2740,6 +2857,7 @@ Simplifies a geometry by removing nodes using a distance based threshold (ie, th
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - simplify(geometry, tolerance)
@@ -2761,6 +2879,7 @@ Simplifies a geometry by removing nodes using an area based threshold (ie, the V
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - simplify_vw(geometry, tolerance)
@@ -2782,6 +2901,7 @@ Returns a geometry formed by buffering out just one side of a linestring geometr
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - single_sided_buffer(geometry, distance, [segments=8], [join=1], [miter_limit=2.0])
@@ -2811,6 +2931,7 @@ Returns the sinuosity of a curve, which is the ratio of the curve length to the 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - sinuosity(geometry)
@@ -2832,6 +2953,7 @@ Smooths a geometry by adding extra nodes which round off corners in the geometry
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - smooth(geometry, [iterations=1], [offset=0.25], [min_length=-1], [max_angle=180])
@@ -2858,6 +2980,7 @@ Constructs square/rectangular waves along the boundary of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - square_wave(geometry, wavelength, amplitude, [strict=False])
@@ -2883,6 +3006,7 @@ Constructs randomized square/rectangular waves along the boundary of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - square_wave_randomized(geometry, min_wavelength, max_wavelength, min_amplitude, max_amplitude, [seed=0])
@@ -2910,6 +3034,7 @@ Returns the first node from a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - start_point(geometry)
@@ -2930,6 +3055,7 @@ Returns the direct/euclidean distance between the first and last vertex of a geo
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - straight_distance_2d(geometry)
@@ -2951,6 +3077,7 @@ Returns a geometry that represents the portions of two geometries that do not in
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - sym_difference(geometry1, geometry2)
@@ -2972,6 +3099,7 @@ Creates a buffer along a line geometry where the buffer diameter varies evenly o
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - tapered_buffer(geometry, start_width, end_width, [segments=8])
@@ -3003,6 +3131,7 @@ Tests whether a geometry touches another. Returns TRUE if the geometries have at
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - touches(geometry1, geometry2)
@@ -3025,6 +3154,7 @@ Returns the geometry transformed from a source CRS to a destination CRS.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - transform(geometry, source_auth_id, dest_auth_id)
@@ -3047,6 +3177,7 @@ Returns a translated version of a geometry. Calculations are in the Spatial Refe
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - translate(geometry, dx, dy)
@@ -3075,6 +3206,7 @@ Constructs triangular waves along the boundary of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - triangular_wave(geometry, wavelength, amplitude, [strict=False])
@@ -3100,6 +3232,7 @@ Constructs randomized triangular waves along the boundary of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - triangular_wave_randomized(geometry, min_wavelength, max_wavelength, min_amplitude, max_amplitude, [seed=0])
@@ -3127,6 +3260,7 @@ Returns a geometry that represents the point set union of the geometries.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - union(geometry1, geometry2)
@@ -3148,6 +3282,7 @@ Constructs rounded (sine-like) waves along the boundary of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - wave(geometry, wavelength, amplitude, [strict=False])
@@ -3173,6 +3308,7 @@ Constructs randomized curved (sine-like) waves along the boundary of a geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - wave_randomized(geometry, min_wavelength, max_wavelength, min_amplitude, max_amplitude, [seed=0])
@@ -3200,6 +3336,7 @@ Returns a wedge shaped buffer originating from a point geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - wedge_buffer(center, azimuth, width, outer_radius, [inner_radius=0.0])
@@ -3226,6 +3363,7 @@ Tests whether a geometry is within another. Returns TRUE if the geometry1 is com
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - within(geometry1, geometry2)
@@ -3248,6 +3386,7 @@ Returns the x coordinate of the current point feature. If the feature is a multi
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $x
@@ -3266,6 +3405,7 @@ Returns the x coordinate of a point geometry, or the x coordinate of the centroi
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - x(geometry)
@@ -3287,6 +3427,7 @@ Retrieves a x coordinate of the current feature's geometry. **WARNING: This func
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $x_at(vertex)
@@ -3307,6 +3448,7 @@ Retrieves a x coordinate of the geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - x_at(geometry, vertex)
@@ -3328,6 +3470,7 @@ Returns the maximum x coordinate of a geometry. Calculations are in the spatial 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - x_max(geometry)
@@ -3348,6 +3491,7 @@ Returns the minimum x coordinate of a geometry. Calculations are in the spatial 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - x_min(geometry)
@@ -3368,6 +3512,7 @@ Returns the y coordinate of the current point feature. If the feature is a multi
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $y
@@ -3386,6 +3531,7 @@ Returns the y coordinate of a point geometry, or the y coordinate of the centroi
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - y(geometry)
@@ -3407,6 +3553,7 @@ Retrieves a y coordinate of the current feature's geometry. **WARNING: This func
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $y_at(vertex)
@@ -3427,6 +3574,7 @@ Retrieves a y coordinate of the geometry.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - y_at(geometry, vertex)
@@ -3448,6 +3596,7 @@ Returns the maximum y coordinate of a geometry. Calculations are in the spatial 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - y_max(geometry)
@@ -3468,6 +3617,7 @@ Returns the minimum y coordinate of a geometry. Calculations are in the spatial 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - y_min(geometry)
@@ -3488,6 +3638,7 @@ Returns the z value of the current point feature if it is 3D. If the feature is 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - $z
@@ -3506,6 +3657,7 @@ Returns the z coordinate of a point geometry, or NULL if the geometry has no z v
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - z(geometry)
@@ -3526,6 +3678,7 @@ Retrieves a z coordinate of the geometry, or NULL if the geometry has no z value
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - z_at(geometry, vertex)
@@ -3547,6 +3700,7 @@ Returns the maximum z coordinate of a geometry, or NULL if the geometry has no z
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - z_max(geometry)
@@ -3571,6 +3725,7 @@ Returns the minimum z coordinate of a geometry, or NULL if the geometry has no z
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - z_min(geometry)

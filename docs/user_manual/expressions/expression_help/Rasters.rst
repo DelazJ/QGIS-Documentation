@@ -15,6 +15,7 @@ Returns a map with the fields names as keys and the raster attribute table value
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - raster_attributes(layer, band, value)
@@ -37,6 +38,7 @@ Returns statistics from a raster layer.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - raster_statistic(layer, band, property)
@@ -71,6 +73,7 @@ Returns the raster value found at the provided point.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - raster_value(layer, band, point)

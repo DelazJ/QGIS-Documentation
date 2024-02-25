@@ -31,6 +31,7 @@ END
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Arguments
      - * **WHEN condition** - A condition expression to evaluate
@@ -54,6 +55,7 @@ This function can take any number of arguments.
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - coalesce(expression1, expression2, ...)
@@ -77,6 +79,7 @@ Tests a condition and returns a different result depending on the conditional ch
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - if(condition, result_when_true, result_when_false)
@@ -105,6 +108,7 @@ Returns a NULL value if value1 equals value2; otherwise it returns value1. This 
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - nullif(value1, value2)
@@ -128,6 +132,7 @@ Return the first matching position matching a regular expression within an unico
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - regexp_match(input_string, regex)
@@ -150,6 +155,7 @@ Tries an expression and returns its value if error-free. If the expression retur
 
 .. list-table::
    :widths: 15 85
+   :class: longtable
 
    * - Syntax
      - try(expression, [alternative])
