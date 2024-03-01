@@ -368,13 +368,13 @@ otherwise Python will complain::
   >>> import qgis.core
   ImportError: No module named qgis.core
 
-This can be fixed by setting the ``PYTHONPATH`` environment variable. In
-the following commands, ``<qgispath>`` should be replaced with your actual
+This can be fixed by setting the ``PYTHONPATH`` environment variable.
+In the following commands, :file:`{qgispath}` should be replaced with your actual
 QGIS installation path:
 
-* on Linux: :command:`export PYTHONPATH=/<qgispath>/share/qgis/python`
-* on Windows: :command:`set PYTHONPATH=c:\\<qgispath>\\python`
-* on macOS: :command:`export PYTHONPATH=/<qgispath>/Contents/Resources/python`
+* on Linux: :command:`export PYTHONPATH=/{qgispath}/share/qgis/python`
+* on Windows: :command:`set PYTHONPATH=c:\\{qgispath}\\python`
+* on macOS: :command:`export PYTHONPATH=/{qgispath}/Contents/Resources/python`
 
 Now, the path to the PyQGIS modules is known, but they depend on
 the ``qgis_core`` and ``qgis_gui`` libraries (the Python modules serve

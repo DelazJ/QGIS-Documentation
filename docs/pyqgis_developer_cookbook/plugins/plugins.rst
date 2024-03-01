@@ -303,6 +303,7 @@ a list of those methods:
 * :meth:`addPluginToVectorMenu() <qgis.gui.QgisInterface.addPluginToVectorMenu>`
 * :meth:`addPluginToDatabaseMenu() <qgis.gui.QgisInterface.addPluginToDatabaseMenu>`
 * :meth:`addPluginToWebMenu() <qgis.gui.QgisInterface.addPluginToWebMenu>`
+* :meth:`addPluginToMeshMenu() <qgis.gui.QgisInterface.addPluginToMeshMenu>`
 
 All of them have the same syntax as the
 :meth:`addPluginToMenu() <qgis.gui.QgisInterface.addPluginToMenu>` method.
