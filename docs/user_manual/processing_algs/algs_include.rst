@@ -25,8 +25,7 @@ Python Code Sample
     import processing
     processing.run("algorithm_id", {parameter_dictionary})
 
-The *algorithm id* is displayed when you hover over the algorithm in
-the Processing Toolbox.
+The *algorithm id* is displayed when you hover over the algorithm in the Processing Toolbox.
 The *parameter dictionary* provides the parameter NAMEs and values.
 See :ref:`processing_console` for details on how to run processing algorithms
 from the Python console.
@@ -53,7 +52,7 @@ Directory
 
 .. **directory_output_types_skip**
 
-* Skip Output
+* :abbr:`Skip Output (Avoids generating the output)`
 * Save to a Temporary Directory
 * Save to Directory
 
@@ -72,9 +71,9 @@ File
 
 .. **file_output_types_skip**
 
-* Skip Output
+* :abbr:`Skip Output (Avoids generating the output)`
 * Save to a Temporary File
-* Save to File…
+* :abbr:`Save to File… (Stores the output in a file on disk)`
 
 .. **end_file_output_types_skip**
 
@@ -83,10 +82,12 @@ Layer
 
 .. **layer_output_types**
 
-* Create Temporary Layer (``TEMPORARY_OUTPUT``)
-* Save to File…
-* Save to Geopackage…
-* Save to Database Table…
+* :abbr:`Create Temporary Layer (Saves the output in a temporary scratch layer.
+  Be aware that temporary scratch layers are not saved by default in QGIS project
+  and can be lost.)` (``TEMPORARY_OUTPUT``)
+* :abbr:`Save to File… (Stores the output in a file on disk)`
+* :abbr:`Save to Geopackage… (Stores the output in a table of an existing or new GeoPackage database)`
+* :abbr:`Save to Database Table… (Stores the output in a table of an already connected database)`
 
 The file encoding can also be changed here.
 
@@ -95,11 +96,15 @@ The file encoding can also be changed here.
 
 .. **layer_output_types_append**
 
-* Create Temporary Layer (``TEMPORARY_OUTPUT``)
-* Save to File…
-* Save to Geopackage…
-* Save to Database Table…
-* Append to Layer…
+* :abbr:`Create Temporary Layer (Saves the output in a temporary scratch layer.
+  Be aware that temporary scratch layers are not saved by default in QGIS project
+  and can be lost.)` (``TEMPORARY_OUTPUT``)
+* :abbr:`Save to File… (Stores the output in a file on disk)`
+* :abbr:`Save to Geopackage… (Stores the output in a table of an existing or new GeoPackage database)`
+* :abbr:`Save to Database Table… (Stores the output in a table of an already connected database)`
+* :abbr:`Append to Layer… (Adds the output to an existing table or layer.
+  A field mapping panel opens, allowing to manually set how fields are mapped
+  to the destination layer's fields)`
 
 The file encoding can also be changed here.
 
@@ -108,11 +113,13 @@ The file encoding can also be changed here.
 
 .. **layer_output_types_skip**
 
-* Skip Output
-* Create Temporary Layer (``TEMPORARY_OUTPUT``)
-* Save to File…
-* Save to Geopackage…
-* Save to Database Table…
+* :abbr:`Skip Output (Avoids generating the output)`
+* :abbr:`Create Temporary Layer (Saves the output in a temporary scratch layer.
+  Be aware that temporary scratch layers are not saved by default in QGIS project
+  and can be lost.)` (``TEMPORARY_OUTPUT``)
+* :abbr:`Save to File… (Stores the output in a file on disk)`
+* :abbr:`Save to Geopackage… (Stores the output in a table of an existing or new GeoPackage database)`
+* :abbr:`Save to Database Table… (Stores the output in a table of an already connected database)`
 
 The file encoding can also be changed here.
 
