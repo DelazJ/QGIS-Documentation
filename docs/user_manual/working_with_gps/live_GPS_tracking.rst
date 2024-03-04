@@ -147,39 +147,56 @@ In the |metadata| :sup:`Position` tab, if the GPS is receiving signals from sate
 you will see your position in latitude, longitude and altitude
 together with additional attributes.
 
-.. _figure_gps_position:
+.. table:: GPS tracking position and additional attributes
+   :widths: 60 40
 
-.. figure:: img/gpstrack_main.png
-   :align: center
-
-   GPS tracking position and additional attributes
-
-
-* :guilabel:`Latitude`
-* :guilabel:`Longitude`
-* :guilabel:`Altitude (Geoid)`: Altitude/elevation above or below the mean sea level
-* :guilabel:`Altitude (WGS 84 ellipsoid)`: Altitude/elevation above or below
-  the WGS-84 Earth ellipsoid
-* :guilabel:`Geoidal separation`: Difference between the WGS-84 Earth ellipsoid
-  and mean sea level (geoid), ``-`` means mean sea level is below ellipsoid
-* :guilabel:`Time of fix`
-* :guilabel:`Speed`: Ground speed
-* :guilabel:`Direction`: Bearing measured in degrees clockwise from true north
-  to the direction of travel
-* :guilabel:`HDOP`: Horizontal dilution of precision
-* :guilabel:`VDOP`: Vertical dilution of precision
-* :guilabel:`PDOP`: Dilution of precision
-* :guilabel:`H accuracy`: Horizontal accuracy in meters
-* :guilabel:`V accuracy`: Vertical accuracy in meters
-* :guilabel:`3D accuracy`: 3D Root Mean Square (RMS) in meters
-* :guilabel:`Mode`: GPS receiver configuration 2D/3D mode, can be ``automatic`` or ``manual``
-* :guilabel:`Dimensions`: Position fix dimension, can be ``2D``, ``3D`` or ``No fix``
-* :guilabel:`Quality`: Positioning quality indicator
-* :guilabel:`Status`: Position fix status, can be ``Valid`` or ``Invalid``
-* :guilabel:`Satellites`: Count of satellites used in obtaining the fix
-* :guilabel:`Total track length`: Total distance of current GPS track
-* :guilabel:`Distance from start of track`: Direct distance from first vertex
-  in current GPS track to latest vertex
+   +-----------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | Attributes                                                                                                | Figure                                                             |
+   +===========================================================================================================+====================================================================+
+   | :guilabel:`Latitude`                                                                                      | .. _figure_gps_position:                                           |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Longitude`                                                                                     | .. figure:: img/gpstrack_main.png                                  |
+   +-----------------------------------------------------------------------------------------------------------+    :align: center                                                  +
+   | :guilabel:`Altitude (Geoid)`: Altitude/elevation above or below the mean sea level                        |    :scale: 100%                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Altitude (WGS 84 ellipsoid)`: Altitude/elevation above or below the WGS-84 Earth ellipsoid     |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Geoidal separation`: Difference between the WGS-84 Earth ellipsoid and mean sea level (geoid), |                                                                    |
+   | ``-`` means mean sea level is below ellipsoid                                                             |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Time of fix`                                                                                   |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Speed`: Ground speed                                                                           |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Direction`: Bearing measured in degrees clockwise from true north to the direction of travel   |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`HDOP`: Horizontal dilution of precision                                                        |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`VDOP`: Vertical dilution of precision                                                          |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`PDOP`: Dilution of precision                                                                   |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`H accuracy`: Horizontal accuracy in meters                                                     |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`V accuracy`: Vertical accuracy in meters                                                       |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`3D accuracy`: 3D Root Mean Square (RMS) in meters                                              |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Mode`: GPS receiver configuration 2D/3D mode, can be ``automatic`` or ``manual``               |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Dimensions`: Position fix dimension, can be ``2D``, ``3D`` or ``No fix``                       |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Quality`: Positioning quality indicator                                                        |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Status`: Position fix status, can be ``Valid`` or ``Invalid``                                  |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Satellites`: Count of satellites used in obtaining the fix                                     |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Total track length`: Total distance of current GPS track                                       |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+                                                                    +
+   | :guilabel:`Distance from start of track`: Direct distance from first vertex                               |                                                                    |
+   | in current GPS track to latest vertex                                                                     |                                                                    |
+   +-----------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
 
 Signal
