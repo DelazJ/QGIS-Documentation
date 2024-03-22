@@ -112,8 +112,8 @@ At the top of the :guilabel:`Elevation Profile` panel, a toolbar provides you wi
      - Allows to render distances in the profile chart with units other than the map canvas units.
    * - :menuselection:`--> Tolerance`
      -
-     - Sets how far from the actual profile line a point can reside within to be included in the results.
-       Uses the map units and is ignored by other layer or geometry types.
+     - Sets how far a feature can be from the actual profile line to get included in the results.
+       Uses the map units and is ignored by non-vector based layer type.
    * - |dock| :sup:`Dock Elevation Profile View`
      -
      - Switch between docked and floating status of the view
@@ -193,8 +193,15 @@ To create a profile view, you can:
 
 #. Under |options| :sup:`Options` drop-down menu, you can set the :guilabel:`Tolerance` value.
    This value is used to create a flat buffer around the elevation profile line, visible in the main map canvas.
-   Any visible point feature overlapping that buffer will be captured in the plot canvas.
+   Any visible feature (point, line, polygon) overlapping that buffer will be captured in the plot canvas.
 
+   .. caution:: **Setting tolerance for polygon layer disables extrusion**
+
+    In the :guilabel:`Elevation` properties tab of a layer, it is possible to :guilabel:`Enable extrusion`.
+    This works fine for points or lines in any case.
+    But, when tolerance is enabled and for 3D lines or 3D polygons, extrusion is not trivial
+    because it is equivalent to represent a 3D object (the 3D polygon is re-projected into a 2D polygon in the elevation profile view but with the extrusion dimension).
+    Thus right now the polygon extrusion is disabled when tolerance is enabled.
 
 .. _`elevation_profile_interaction`:
 
