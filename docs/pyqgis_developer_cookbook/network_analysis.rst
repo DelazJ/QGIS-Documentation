@@ -167,7 +167,7 @@ And tell the director about this strategy
 
 .. testcode:: network_analysis
 
-  director = QgsVectorLayerDirector(vectorLayer, -1, '', '', '', 3)
+  director = QgsVectorLayerDirector(vectorLayer, -1, '', '', '', QgsVectorLayerDirector.DirectionBoth)
   director.addStrategy(strategy)
 
 Now we can use the builder, which will create the graph. The :class:`QgsGraphBuilder
