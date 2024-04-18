@@ -71,7 +71,8 @@ Sampling the data
 ......................................................................
 
 To create a sample dataset from the raster, you'll need to use the
-:menuselection:`Raster Analysis --> Sample raster values` algorithm. This tool samples the raster at the locations of the points and
+:menuselection:`Raster Analysis --> Sample raster values` algorithm.
+This tool samples the raster at the locations of the points and
 adds the raster values in new field(s) depending on the number of bands in the raster.
 
 #. Open the :guilabel:`Sample raster values` algorithm dialog

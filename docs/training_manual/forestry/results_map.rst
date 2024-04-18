@@ -16,57 +16,56 @@ using a hillshade raster as background.
 :abbr:`★☆☆ (Basic level)` Follow Along: Preparing the Map Data
 -------------------------------------------------------------------------------
 
-Open the QGIS project from the parameters calculations lesson, :kbd:`forest_inventory.qgs`.
-Keep at least the following layers:
+#. Open the QGIS project from the parameters calculations lesson, :file:`forest_inventory.qgs`.
+#. Keep at least the following layers:
 
-* :kbd:`forest_stands_2012_results`.
-* :kbd:`basic_map`.
-* :kbd:`rautjarvi_aerial`.
-* :kbd:`lakes` (if you don't have it, add it from the :kbd:`exercise_data\\forestry\\` folder).
+   * :guilabel:`forest_stands_2012_results`
+   * :guilabel:`basic_map`
+   * :guilabel:`rautjarvi_aerial`
+   * :guilabel:`lakes` (if you don't have it, add it from the :file:`exercise_data\\forestry\\` folder)
 
 You are going to present the average volumes of your forest stands in a map.
-If you open the :guilabel:`Attribute table` for the :kbd:`forest_stands_2012_results`
-layer, you can see the :kbd:`NULL` values for the stands without information.
+If you open the :guilabel:`Attribute table` for the :guilabel:`forest_stands_2012_results`
+layer, you can see the ``NULL`` values for the stands without information.
 To be able to get also those stands into your symbology you should change the
-:kbd:`NULL` values to, for example, :kbd:`-999`, knowing that those negative
+``NULL`` values to, for example, ``-999``, knowing that those negative
 numbers mean there is no data for those polygons.
 
-For the :kbd:`forest_stands_2012_results` layer:
+For the :guilabel:`forest_stands_2012_results` layer:
 
-* Open the :guilabel:`Attribute table` and enable editing.
-* Select the polygons with :kbd:`NULL` values.
-* Use the calculator to update the values of the :kbd:`MEANVol` field to
-  :kbd:`-999` only for the selected features.
-* Disable editing and save the changes.
+#. Open the :guilabel:`Attribute table` and enable editing.
+#. Select the polygons with ``NULL`` values.
+#. Use the calculator to update the values of the :guilabel:`MEANVol` field to
+   ``-999`` only for the selected features.
+#. Disable editing and save the changes.
 
 Now you can use a saved style for this layer:
 
-* Go to the :guilabel:`Symbology` tab.
-* Click on :menuselection:`Style --> Load Style...`.
-* Select the :kbd:`forest_stands_2012_results.qml` from the :kbd:`exercise_data\\forestry\\results\\` folder.
-* Click :guilabel:`OK`.
+#. Go to the :guilabel:`Symbology` tab.
+#. Click on :menuselection:`Style --> Load Style...`.
+#. Select the :file:`forest_stands_2012_results.qml`
+   from the :file:`exercise_data\\forestry\\results\\` folder.
+#. Click :guilabel:`OK`.
 
-.. figure:: img/styling_forest_results.png
-   :align: center
+   .. figure:: img/styling_forest_results.png
+      :align: center
 
-Your map will look something like this:
+#. Your map will look something like this:
 
-.. figure:: img/results_styles_applied.png
-   :align: center
+   .. figure:: img/results_styles_applied.png
+      :align: center
 
 
 :abbr:`★☆☆ (Basic level)` Try Yourself: Try Different Blending Modes
 -------------------------------------------------------------------------------
 
-The style you loaded:
-
-.. figure:: img/styling_forest_results.png
-   :align: center
-
-is using the :kbd:`Hard light` mode for the :guilabel:`Layer blending mode`.
+The style you loaded is using the :guilabel:`Hard light` mode for the :guilabel:`Layer blending mode`.
 Note that the different modes apply different filters combining the underlying
 and overlying layers, in this case the hillshade raster and your forest stands
 are used. You can read about these modes in the :ref:`User Guide <blend-modes>`.
+
+.. figure:: img/styling_forest_results.png
+   :align: center
 
 Try with different modes and see the differences in your map. Then choose the
 one you like better for your final map.
@@ -75,21 +74,22 @@ one you like better for your final map.
 :abbr:`★☆☆ (Basic level)` Try Yourself: Using a Layout Template to Create the Map result
 ------------------------------------------------------------------------------------------
 
-Use a template prepared in advanced to present the results. The template
-:kbd:`forest_map.qpt` is located in the :kbd:`exercise_data\\forestry\\results\\`
-folder. Load it using the :menuselection:`Project --> Layout Manager...` dialog.
+Use a template prepared in advance to present the results. The template
+:file:`forest_map.qpt` is located in the :file:`exercise_data\\forestry\\results\\` folder.
 
-.. figure:: img/final_map_template.png
-   :align: center
+#. Load it using the :menuselection:`Project --> Layout Manager...` dialog.
 
-Open the print layout and edit the final map to get a result you are happy with.
+   .. figure:: img/final_map_template.png
+      :align: center
 
-The map template you are using will give a map similar to this one:
+#. Open the print layout and edit the final map to get a result you are happy with.
 
-.. figure:: img/final_map.png
-   :align: center
+#. The map template you are using will give a map similar to this one:
 
-Save your QGIS project for future references.
+   .. figure:: img/final_map.png
+      :align: center
+
+#. Save your QGIS project for future references.
 
 In Conclusion
 -------------------------------------------------------------------------------

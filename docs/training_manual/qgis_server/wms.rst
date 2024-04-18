@@ -277,21 +277,26 @@ understanding about the possibilities.
 
 You can install it like this:
 
-* As user ``qgis`` go to the home directory with ``cd /home/qgis``.
-* Download the QWC project from `here <https://github.com/qgis/QGIS-Web-Client/archive/master.zip>`_ and unzip it.
-* Make a symbolic link to the ``/var/www/html`` directory as it's the ``DocumentRoot`` that
-  we've setup in the virtual host configuration. If you unzipped the archive under
-  :file:`/home/qgis/Downloads/QGIS-Web-Client-master` we can do that with
-  ``sudo ln -s /home/qgis/Downloads/QGIS-Web-Client-master /var/www/html/``.
-* Access http://qgisplatform.demo/QGIS-Web-Client-master/site/qgiswebclient.html?map=/home/qgis/projects/world.qgs
-  from your Web browser.
+#. As user ``qgis`` go to the home directory with ``cd /home/qgis``.
+#. Download the QWC project from `its repository <https://github.com/qgis/QGIS-Web-Client/archive/master.zip>`_
+   and unzip it.
+#. Make a symbolic link to the :file:`/var/www/html` directory as it's the ``DocumentRoot`` that
+   we've setup in the virtual host configuration. If you unzipped the archive under
+   :file:`/home/qgis/Downloads/QGIS-Web-Client-master` we can do that with:
 
-Now you should be able to see the Map as in the following figure:
+   .. code-block::
 
-.. figure:: img/qwc.jpg
-   :align: center
+     sudo ln -s /home/qgis/Downloads/QGIS-Web-Client-master /var/www/html/`.
 
-   QGIS Web Client consuming the world.qgs project
+#. Access http://qgisplatform.demo/QGIS-Web-Client-master/site/qgiswebclient.html?map=/home/qgis/projects/world.qgs
+   from your Web browser.
+
+#. Now you should be able to see the Map as in the following figure:
+
+   .. figure:: img/qwc.jpg
+      :align: center
+
+      QGIS Web Client consuming the world.qgs project
 
 If you click the Print button in QWC you can interactively create ``GetPrint``
 requests. You can also click the ``?`` icon in the QWC to access the available
