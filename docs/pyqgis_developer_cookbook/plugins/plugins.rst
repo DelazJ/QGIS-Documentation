@@ -102,7 +102,7 @@ plugin such as its name, description etc. This information is stored in :file:`m
 =====================  ========  =============================================================
 Metadata name          Required  Notes
 =====================  ========  =============================================================
-name                   True      a short string  containing the name of the plugin
+name                   True      a short string containing the name of the plugin
 qgisMinimumVersion     True      dotted notation of minimum QGIS version
 qgisMaximumVersion     False     dotted notation of maximum QGIS version
 description            True      short text which describes the plugin, no HTML allowed
@@ -130,8 +130,8 @@ server                 False     boolean flag, :const:`True` or :const:`False`, 
                                  the plugin has a server interface
 hasProcessingProvider  False     boolean flag, :const:`True` or :const:`False`, determines if
                                  the plugin provides processing algorithms
-supportsQt6            False     boolean flag, :const:`True` or :const:`False`, determines if
-                                 the plugin can be run on QGIS built with Qt6
+qtMinimumVersion       False     dotted notation of minimum supported Qt version. Defaults to 5.
+qtMaximumVersion       False     dotted notation of maximum supported Qt version. Defaults to 5.
 =====================  ========  =============================================================
 
 By default, plugins are placed in the :menuselection:`Plugins` menu (we will see
