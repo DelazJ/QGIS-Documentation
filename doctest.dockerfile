@@ -7,4 +7,4 @@ RUN . /opt/venv/bin/activate &&  pip3 install -r /documentation/REQUIREMENTS.txt
 
 WORKDIR /documentation
 
-CMD make doctest
+CMD . /opt/venv/bin/activate && make doctest
