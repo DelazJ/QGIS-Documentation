@@ -6,12 +6,12 @@ RUN python3 -m venv venv
 #RUN virtualenv venv
 # Install requirement first to use caching
 COPY REQUIREMENTS.txt /documentation/REQUIREMENTS.txt
-RUN /bin/bash -c "source /venv/bin/activate && pip3 install -r /documentation/REQUIREMENTS.txt && deactivate"
+#RUN /bin/bash -c "source /venv/bin/activate && pip3 install -r /documentation/REQUIREMENTS.txt"
 
 WORKDIR /documentation
 
-CMD make doctest
-
+#CMD make doctest
+CMD ["/bin/bash", "-c", "source /venv/bin/activate;pip3 install -r /documentation/REQUIREMENTS.txt;make doctest;deactivate"]
 
 # ENV VIRTUAL_ENV /venv
 # RUN python3 -m venv $VIRTUAL_ENV
