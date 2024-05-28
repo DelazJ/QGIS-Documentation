@@ -9,5 +9,5 @@ COPY REQUIREMENTS.txt /documentation/REQUIREMENTS.txt
 RUN pip3 install -r /documentation/REQUIREMENTS.txt
 
 WORKDIR /documentation
-
+CMD echo `which pip3`
 CMD make doctest
