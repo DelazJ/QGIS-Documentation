@@ -127,7 +127,7 @@ tx_force_pull_translations:
 	tx pull -f --parallel --mode onlytranslated -l $(subst $(space),$(comma),$(subst en$(space),,$(subst zh_,zh-,$(LANGUAGES)))) ;
 
 doctest-gh:
-	. docsenv/bin/activate
+	. /docsenv/bin/activate
 	LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
