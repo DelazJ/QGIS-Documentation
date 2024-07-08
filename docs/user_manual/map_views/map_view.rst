@@ -1199,6 +1199,7 @@ capabilities:
   * |checkbox| :guilabel:`Show annotations`
   * |checkbox| :guilabel:`Show cursor position`
   * |unchecked| :guilabel:`Show main canvas extent`
+  * |elevation| :guilabel:`Show elevation controller`
   * |checkbox| :guilabel:`Show labels`: allows to hide labels regardless
     they are set in the displayed layers' properties
   * :guilabel:`Change map CRS...`

@@ -2143,10 +2143,7 @@ by the :ref:`elevation profile <label_elevation_profile_view>` tool.
   then the vertical CRS used for the project will be the vertical component of the project CRS.
   If your project CRS is horizontal, then you can select a specific vertical CRS by clicking on the |setProjection| :sup:`Select CRS`.
 * :guilabel:`Elevation Range`: helps you define the :guilabel:`Lower` and :guilabel:`Upper` limits
-  for the elevation controller in the project.
-
-  .. todo: add url to elevation controller chapter, i.e.
-   for the :ref:`elevation controller <elevation_controller>` in the project.
+  for the :ref:`elevation controller <elevation_controller>` in the project.
 
 * :guilabel:`Terrain` and elevation options are available for:
 
