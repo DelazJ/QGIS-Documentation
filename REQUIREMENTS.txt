@@ -1,4 +1,4 @@
-pdflatex
+#pdflatex
 pyYAML
 Sphinx==7.2.6
 sphinx_copybutton
