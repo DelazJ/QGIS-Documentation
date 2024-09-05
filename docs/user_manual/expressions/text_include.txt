@@ -1,0 +1,20 @@
+
+Texts For Include
+=================
+
+.. _functions_group_toc
+..  Used to display local TOC for expression functions groups
+  within a collapsible widget, only on html build
+
+.. only:: html
+
+  .. admonition:: Show/hide list of functions
+     :class: dropdown
+
+     .. only:: html
+     
+      .. contents::
+         :local:
+         :class: toc_columns
+
+.. _end_functions_group_toc
