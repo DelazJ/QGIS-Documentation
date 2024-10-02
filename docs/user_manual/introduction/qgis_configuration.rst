@@ -2142,6 +2142,9 @@ by the :ref:`elevation profile <label_elevation_profile_view>` tool.
 * :guilabel:`Vertical Reference System`: If the CRS of your project is compound one (including a Z dimension),
   then the vertical CRS used for the project will be the vertical component of the project CRS.
   If your project CRS is horizontal, then you can select a specific vertical CRS by clicking on the |setProjection| :sup:`Select CRS`.
+
+  When set, the :guilabel:`Vertical CRS` is used by default for new 3D map views,
+  elevation profile views and Z value of some layer types in the "Identify results" panel.
 * :guilabel:`Elevation Range`: helps you define the :guilabel:`Lower` and :guilabel:`Upper` limits
   for the :ref:`elevation controller <elevation_controller>` in the project.
 
