@@ -89,7 +89,7 @@ Result:
     "people_street_id_fkey" FOREIGN KEY (street_id) REFERENCES streets(id)
 
 
-Try Yourself: :abbr:`★★☆ (Moderate level)`
+:abbr:`★★☆ (Moderate level)` Try Yourself: Add a spatial index
 -------------------------------------------------------------------------------
 Modify the cities table so its geometry column is spatially indexed.
 
@@ -122,15 +122,15 @@ Remember to install the postgis extensions:
 
   psql -d postgis_demo -c "CREATE EXTENSION postgis;"
 
-Next, import the data provided in the :kbd:`exercise_data/postgis/` directory.
+Next, import the data provided in the :file:`exercise_data/postgis/` directory.
 Refer back to the previous lesson for instructions, but remember that you'll
 need to create a new PostGIS connection to the new database. You can import from
 the terminal or via DB Manager. Import the files into the following database
 tables:
 
-- :kbd:`points.shp` into :kbd:`building`
-- :kbd:`lines.shp` into :kbd:`road`
-- :kbd:`polygons.shp` into :kbd:`region`
+- :file:`points.shp` into :guilabel:`building`
+- :file:`lines.shp` into :guilabel:`road`
+- :file:`polygons.shp` into :guilabel:`region`
 
 Load these three database layers into QGIS via the :guilabel:`Add PostGIS
 Layers` dialog, as usual. When you open their attribute tables, you'll note

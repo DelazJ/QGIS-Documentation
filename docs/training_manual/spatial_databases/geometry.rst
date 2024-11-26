@@ -11,17 +11,17 @@ understanding how the database is assembled.
 entities directly in PostgreSQL/PostGIS.
 
 
-Creating Linestrings
+:abbr:`★★☆ (Moderate level)` Follow Along: Creating Linestrings
 -------------------------------------------------------------------------------
 
-Going back to our :kbd:`address` database, let's get our streets table matching
+Going back to our ``address`` database, let's get our streets table matching
 the others; i.e., having a constraint on the geometry, an index and an entry in
 the geometry_columns table.
 
-Try Yourself: :abbr:`★★☆ (Moderate level)`
--------------------------------------------------------------------------------
+:abbr:`★★☆ (Moderate level)` Try Yourself: Create a line geometry column
+................................................................................
 
-* Modify the :kbd:`streets` table so that it has a geometry column of type
+* Modify the ``streets`` table so that it has a geometry column of type
   ST_LineString.
 * Don't forget to do the accompanying update to the geometry columns
   table!
@@ -45,23 +45,25 @@ Try Yourself: :abbr:`★★☆ (Moderate level)`
       (geom);
 
 
-Now let's insert a linestring into our streets table. In this case we will
-update an existing street record:
+:abbr:`★★☆ (Moderate level)` Follow Along: Update line features
+................................................................................
 
-.. code-block:: sql
+#. Now let's insert a linestring into our streets table. In this case we will
+   update an existing street record:
 
-  update streets
-  set geom = 'SRID=4326;LINESTRING(20 -33, 21 -34, 24 -33)'
-  where streets.id=2;
+   .. code-block:: sql
 
-Take a look at the results in QGIS. (You may need to right-click on the streets
-layer in the 'Layers' panel, and choose 'Zoom to layer extent'.)
+     update streets
+     set geom = 'SRID=4326;LINESTRING(20 -33, 21 -34, 24 -33)'
+     where streets.id=2;
 
-Now create some more streets entries - some in QGIS and some from the command
-line.
+#. Take a look at the results in QGIS. (You may need to right-click on the streets
+   layer in the 'Layers' panel, and choose 'Zoom to layer extent'.)
+
+#. Now create some more streets entries - some in QGIS and some from the command line.
 
 
-Creating Polygons
+:abbr:`★★☆ (Moderate level)` Follow Along: Creating Polygons
 -------------------------------------------------------------------------------
 
 Creating polygons is just as easy. One thing to remember is that by definition,
@@ -89,17 +91,16 @@ dataset into QGIS, opening its attribute table, and selecting the new entry.
 Note how the two new polygons behave like one polygon.
 
 
-Exercise: Linking Cities to People
+:abbr:`★★☆ (Moderate level)` Follow Along: Linking Cities to People
 -------------------------------------------------------------------------------
 
 For this exercise you should do the following:
 
-* Delete all data from your people table.
-* Add a foreign key column to people that references the primary key of
-  the cities table.
-* Use QGIS to capture some cities.
-* Use SQL to insert some new people records, ensuring that each has
-  an associated street and city.
+#. Delete all data from your people table.
+#. Add a foreign key column to people that references the primary key of the cities table.
+#. Use QGIS to capture some cities.
+#. Use SQL to insert some new people records, ensuring that each has
+   an associated street and city.
 
 Your updated people schema should look something like this:
 
@@ -179,23 +180,20 @@ Your updated people schema should look something like this:
 
 
 
-Looking at Our Schema
--------------------------------------------------------------------------------
-
 By now our schema should be looking like this:
 
 .. figure:: img/final_schema.png
    :align: center
 
 
-Try Yourself: :abbr:`★★★ (Advanced level)`
+:abbr:`★★★ (Advanced level)` Try Yourself: Creating convex hull of data
 -------------------------------------------------------------------------------
 
 Create city boundaries by computing the minimum convex hull of all addresses
 for that city and computing a buffer around that area.
 
 
-Access Sub-Objects
+:abbr:`★★☆ (Moderate level)` Follow Along: Access Sub-Objects
 -------------------------------------------------------------------------------
 
 With the SFS-Model functions, you have a wide variety of options to access
@@ -220,14 +218,14 @@ way:
         from myPolygonTable) as foo;
 
 
-Data Processing
+:abbr:`★★☆ (Moderate level)` Follow Along: Data Processing
 -------------------------------------------------------------------------------
 
 PostGIS supports all OGC SFS/MM standard conform functions. All these functions
 start with ``ST_``.
 
-Clipping
--------------------------------------------------------------------------------
+:abbr:`★★☆ (Moderate level)` Follow Along: Clipping
+................................................................................
 
 To clip a subpart of your data you can use the ``ST_INTERSECT()`` function.
 To avoid empty geometries, use:
@@ -249,8 +247,8 @@ To avoid empty geometries, use:
 .. figure:: img/qgis_002.png
    :align: center
 
-Building Geometries from Other Geometries
--------------------------------------------------------------------------------
+:abbr:`★★☆ (Moderate level)` Follow Along: Building Geometries from Other Geometries
+.....................................................................................
 
 From a given point table, you want to generate a linestring. The order of the
 points is defined by their :kbd:`id`. Another ordering method could be a
@@ -279,14 +277,9 @@ real-world sense to do this.
 .. figure:: img/qgis_007.png
    :align: center
 
-Geometry Cleaning
--------------------------------------------------------------------------------
 
-You can get more information for this topic in `this blog entry
-<https://gisforthought.com/projects/postgis_tutorial/validity.html>`_.
-
-Differences between tables
--------------------------------------------------------------------------------
+:abbr:`★★☆ (Moderate level)` Follow Along: Differences between tables
+.....................................................................................
 
 To detect the difference between two tables with the same structure, you can
 use the PostgreSQL keyword ``EXCEPT``:
@@ -300,8 +293,8 @@ use the PostgreSQL keyword ``EXCEPT``:
 As the result, you will get all records from table_a which are not stored in
 table_b.
 
-Tablespaces
--------------------------------------------------------------------------------
+:abbr:`★★☆ (Moderate level)` Follow Along: Tablespaces
+.....................................................................................
 
 You can define where postgres should store its data on disk by creating
 tablespaces:
