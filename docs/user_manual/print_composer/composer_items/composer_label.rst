@@ -196,6 +196,17 @@ should be surrounded by ``[%`` and ``%]`` in the :guilabel:`Main properties` fra
 
     x_min( map_get( item_variables( 'Map 1' ), 'map_extent' ) )
 
+* Return the name of the airports currently visible in ``Map 1``:
+
+  ::
+
+    aggregate( layer := 'airports',
+               aggregate := 'concatenate',
+               expression := "NAME",
+               filter := contains( map_get( item_variables( 'Map 1' ), 'map_extent' ), $geometry ),
+               concatenator := ', '
+             )
+
 * Retrieve the name of the layers in the current layout ``Map 1`` item,
   and formats in one name by line:
 
