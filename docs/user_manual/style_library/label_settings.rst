@@ -175,22 +175,52 @@ Examples of supported HTML tags:
 
     <sup style="font-size:33pt">my superscript text</sup>
 
+* Structuring a block of text using header tags (such as ``h1``, ``h2``, ...),
+  or paragraphs (with ``p``, ``div``, ``br``):
+
+  .. code-block:: html
+
+    <div class="myDiv">
+      <h2>QGIS always rocks!!</h2>
+      <p>Let's dive into details of its nice features.</p>
+    </div>
+
+* Image insertion: any image format readable by QGIS can be used in HTML label content.
+  It can be served from local file paths, http links, or base64 embedded content,
+  using the ``src="xxx"`` attribute.
+  Image sizes can be specified via the ``width="##"`` and ``height="##"`` attributes, in ``points`` unit.
+  If width or height is not specified it will automatically be calculated from the original image size.
+  Images are placed inline only, not as floating images, and not on curved text labels.
+
+  .. code-block:: html
+
+    <img src="qgis.png" width=40 height=60><i>is nice and extra</i>
+
 Examples of supported CSS properties:
 
 * Font properties (``color``, ``font-family``, ``font-size``, ``font-weight``, ``font-style``, ``word-spacing``).
   Note that ``word-spacing`` will always use unit points.
 * Text decorations such as underline, overline and line-through (``text-decoration``)
-* Text alignment (``vertical-align``)
+* Text alignment (``vertical-align``, ``text-align``)
 
-CSS properties can be set on HTML tags with the style attribute.
-The HTML tag ``span`` does not apply any formatting to text by itself
-and is ideal if you just want to apply CSS styling.
-A CSS property name and its value are separated by a colon (``:``). 
-Multiple CSS properties are separated by semicolon (``;``), e.g.:
+* CSS properties can be set on HTML tags with the ``style`` attribute.
+  The HTML tag ``span`` does not apply any formatting to text by itself
+  and is ideal if you just want to apply CSS styling.
+  A CSS property name and its value are separated by a colon (``:``). 
+  Multiple CSS properties are separated by semicolon (``;``), e.g.:
 
-.. code-block:: html
+  .. code-block:: html
 
-  <span style="text-decoration:underline;color:blue;word-spacing:20">I will be displayed as blue underlined text with increased space between words</span>
+    <span style="text-decoration:underline;color:blue;word-spacing:20">I will be displayed as blue underlined text with increased space between words</span>
+
+
+* Background properties such as ``background-color`` and ``background-image``.
+  They are supported for block items (e.g. ``div``) or inline items (e.g. ``span``)
+  For images, the CSS should be formatted as ``background-image: url(xx)``.
+  It supports local file paths, http links, or base64 embedded content.
+  Backgrounds are not supported for curved text and are always rendered
+  above any background shape for the label, and below drop shadows/buffers properties.
+
 
 Below an example of a HTML-based expression and rendering
 (applies different colors and underline to the same label):
