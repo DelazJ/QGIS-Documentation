@@ -154,7 +154,9 @@ Allow HTML Formatting
 With :guilabel:`Allow HTML Formatting` enabled, you need to provide the HTML code in the :guilabel:`Value` field.
 Use whitespaces instead of tabs for any kind of indentation.
 The expression is parsed and any supported HTML tag overrides its corresponding setting in the labels properties.
-An exhaustive list of the supported subset of HTML tags and CSS properties can be found `here <https://doc.qt.io/qt-5/richtext-html-subset.html>`_.
+Because it is impossible to list and detail every HTML tag and CSS property QGIS currently supports,
+we invite you to explore and test in your labels
+`the ones supported <https://doc.qt.io/qt-5/richtext-html-subset.html>`_ by the underlying Qt library.
 
 Examples of supported HTML tags:
 
