@@ -2227,8 +2227,22 @@ feature. The assistant allows you to:
   * for the others, the minimum and maximum values to apply to the selected
     property as well as the size/angle/opacity value for ignored or NULL source
     features
-  * for size properties, the :guilabel:`Scale method` of representation which can
-    be **Flannery**, **Exponential**, **Surface**, **Radius** or **Linear**
+  * for size properties, the :guilabel:`Scale method` of representation which can be:
+
+    * **Radius**: the *diameter" of the symbol varies linearly
+      between the :guilabel:`Size from` and the :guilabel:`Size to`
+      when the :guilabel:`source` expression value varies from :guilabel:`value from` and :guilabel:`value to`
+    * **Surface**: since human perceives visualy the "intensity"/"strength" of a symbol
+      by its area relative to another rather than its relative "diameter",
+      this method scales the size according to the square root of the "source" expression,
+      therefore scaling the area of the symbol linearly
+between the :guilabel:`Size from` and the :guilabel:`Size to`
+      when the :guilabel:`source` expression value varies from :guilabel:`value from` and :guilabel:`value to`
+    * **Flannery**: I did not read the paper, but apparently the perception of relative intensity as the area of the symbol is not exactly what happens in our brain, and thus the nice and simple square root (power 0.5) is replaced by a power 0.57.
+    * **Exponential**: same principle, but the user can choose the exact power that is used for scaling
+    * **Linear**
+
+
   * the :guilabel:`Exponent` to use for data scaling when the :guilabel:`Scale
     method` is of exponential type or when tweaking the opacity
 
