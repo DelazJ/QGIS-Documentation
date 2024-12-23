@@ -2227,20 +2227,26 @@ feature. The assistant allows you to:
   * for the others, the minimum and maximum values to apply to the selected
     property as well as the size/angle/opacity value for ignored or NULL source
     features
-  * for size properties, the :guilabel:`Scale method` of representation which can be:
+  * for size properties, the :guilabel:`Scale method` of representation.
+    For each returned value of :guilabel:`Source` field or expression
+    falling between :guilabel:`Value from` and :guilabel:`value to`,
+    QGIS will scale onto the :guilabel:`Size from` and :guilabel:`Size to` range values.
+    The result
 
-    * **Radius**: the *diameter" of the symbol varies linearly
-      between the :guilabel:`Size from` and the :guilabel:`Size to`
-      when the :guilabel:`source` expression value varies from :guilabel:`value from` and :guilabel:`value to`
-    * **Surface**: since human perceives visualy the "intensity"/"strength" of a symbol
-      by its area relative to another rather than its relative "diameter",
-      this method scales the size according to the square root of the "source" expression,
+    * **Radius**: a linear interpolation is used and the obtained size represents the diameter of the symbol.
+    * **Surface**: since human visualy perceives the "intensity"/"strength" of a symbol
+      more by its area relative to another rather than its relative "diameter",
+      this method scales the size according to the square root of the :guilabel:`Source` value,
       therefore scaling the area of the symbol linearly
-between the :guilabel:`Size from` and the :guilabel:`Size to`
-      when the :guilabel:`source` expression value varies from :guilabel:`value from` and :guilabel:`value to`
-    * **Flannery**: I did not read the paper, but apparently the perception of relative intensity as the area of the symbol is not exactly what happens in our brain, and thus the nice and simple square root (power 0.5) is replaced by a power 0.57.
-    * **Exponential**: same principle, but the user can choose the exact power that is used for scaling
-    * **Linear**
+      between the :guilabel:`Size from` and the :guilabel:`Size to`
+      when the :guilabel:`Source` expression value varies from :guilabel:`value from` and :guilabel:`value to`
+    * **Flannery**: I did not read the paper, but apparently the perception of relative intensity
+      as the area of the symbol is not exactly what happens in our brain,
+      and thus the nice and simple square root (power 0.5) is replaced by a power 0.57.
+
+      This --> circles!
+    * **Exponential**: same principle as "Flannery", but you can choose the exact power
+      that is used for scaling
 
 
   * the :guilabel:`Exponent` to use for data scaling when the :guilabel:`Scale
