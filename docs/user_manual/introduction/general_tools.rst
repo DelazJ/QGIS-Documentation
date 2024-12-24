@@ -2203,38 +2203,50 @@ Using the data-defined assistant interface
 
 When the |dataDefine| :sup:`Data-defined override` button is associated with a
 size, a rotation, an opacity or a color property, it has an :guilabel:`Assistant...`
-option that helps you change how the data is applied to the parameter for each
-feature. The assistant allows you to:
+option that helps you change how the data is applied to the parameter for each feature.
+Basically, QGIS will scale a range of input values over a range of output values,
+and render each feature with their corresponding ouput value.
 
-* Define the :guilabel:`Input` data, ie:
+The assistant allows you to:
+
+* Define the :guilabel:`Source` data, i.e.:
 
   * :guilabel:`Source`: the attribute to represent, using a field or an |expression|
     :ref:`expression <vector_expressions>`
-  * the range of values to represent: you can manually enter the values or use
-    the |refresh| :sup:`Fetch value range from layer` button to fill
-    these fields automatically with the minimum and maximum values returned by
-    the :guilabel:`Source` expression applied to your data
-* |unchecked| :guilabel:`Apply transform curve`: by default, output values (see
-  below for setting) are applied to input features following a linear scale.
+  * the range of values to represent: press the |refresh| :sup:`Fetch value range from layer` button
+    to fill these fields automatically with the minimum and maximum values returned
+    by the :guilabel:`Source` expression applied to your data or manually enter the limits.
+    Symbols whose values are out of the set range will be represented with
+    the property of the closest limit output range limit.
+* |unchecked| :guilabel:`Apply transform curve`: by default, output values
+  are applied to input features following a specific scaling method (see below for setting).
   You can override this logic: enable the transform option, click on the
-  graphic to add break point(s) and drag the point(s) to apply a custom
-  distribution.
-* Define the :guilabel:`Output` values: the options vary according to the
-  parameter to define. You can globally set:
+  graphic to add break point(s) and drag the point(s) to apply a custom distribution.
+* Define the :guilabel:`Output` values: the options depend on the property to define.
+  You can globally set:
 
-  * for a color setting, the :ref:`color ramp <color-ramp>` to apply to values
-    and the single color to use for NULL values
-  * for the others, the minimum and maximum values to apply to the selected
-    property as well as the size/angle/opacity value for ignored or NULL source
-    features
-  * for size properties, the :guilabel:`Scale method` of representation.
-    For each returned value of :guilabel:`Source` field or expression
-    falling between :guilabel:`Value from` and :guilabel:`value to`,
-    QGIS will scale onto the :guilabel:`Size from` and :guilabel:`Size to` range values.
-    The result
+  * for colors: a linear interpolation of source values is done
+    over a given :ref:`color ramp <color-ramp>` in order to assign each symbol the correct color.
+    A color to use for symbols with NULL values can also be given.
+  * for rotation: a linear interpolation is done over a range of minimum and maximum angles
+    in order to assign each symbol the correct rotation.
+    An angle to use for symbols with NULL values can also be given.
+  * for opacity: a polynomial interpolation is done over a range of minimum and maximum opacity values.
+    The :guilabel:`Exponent` field dictates the way source values are mapped to the output range.
+    Values greater than '1' will cause the output values distribution to start slowly
+    before accelerating as the source values approach their maximum.
+    Smaller exponents (less than 1) will do the opposite.
+    An opacity value to use for symbols with NULL values can also be given.
+  * for size properties, an interpolation is also done over a range of minimum and maximum values
+    in order to assign each symbol the correct size "diameter", in the selected unit.
+    The :guilabel:`Scale method` field controls how the interpolation is done
+    and what the output value represents.
 
-    * **Radius**: a linear interpolation is used and the obtained size represents the diameter of the symbol.
-    * **Surface**: since human visualy perceives the "intensity"/"strength" of a symbol
+    * **Radius**: a linear interpolation is used and the obtained size represents the "diameter" of the symbol.
+    * **Surface**: this method scales the size according to the square root of the source values,
+      therefore scaling the area of the symbol linearly
+
+      since human visualy perceives the "intensity"/"strength" of a symbol
       more by its area relative to another rather than its relative "diameter",
       this method scales the size according to the square root of the :guilabel:`Source` value,
       therefore scaling the area of the symbol linearly
@@ -2246,10 +2258,15 @@ feature. The assistant allows you to:
 
       This --> circles!
     * **Exponential**: same principle as "Flannery", but you can choose the exact power
-      that is used for scaling
+      that is used for scaling;
+      the :guilabel:`Exponent` field dictates the way source values are mapped to the output range.
+      Values greater than '1' will cause the output values distribution to start slowly
+      before accelerating as the source values approach their maximum.
+      Smaller exponents (less than 1) will do the opposite.
 
+     Voir https://tutoqgis.cnrs.fr/10_01_representation.php#X11c et préparer une frise de ce type
 
-  * the :guilabel:`Exponent` to use for data scaling when the :guilabel:`Scale
+  .. To remove:: * the :guilabel:`Exponent` to use for data scaling when the :guilabel:`Scale
     method` is of exponential type or when tweaking the opacity
 
 When compatible with the property, a live-update preview is displayed in the
@@ -2263,11 +2280,11 @@ right-hand side of the dialog to help you control the value scaling.
    Scaling feature size based on passengers field's value
 
 The values presented in the varying size assistant above will set the size
-'Data-defined override' with:
+'Data-defined override' with the editable formula below:
 
 ::
 
- coalesce(scale_exp("passengers", 9, 2000, 1, 10, 0.57), 0)
+ coalesce(scale_polynomial("passengers", 9, 2000, 1, 10, 0.57), 0)
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
