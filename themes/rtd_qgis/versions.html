@@ -18,14 +18,14 @@ with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_
       <dl>
         <dt>{{ _('Languages') }}</dt>
         {% for slug, url in supported_languages %}
-          <dd><a href="{{ url }}/{{ pagename }}.html">{{ slug }}</a></dd>
+          <dd><a href="{{ url }}/{{ pagename }}.html{{ hash }}">{{ slug }}</a></dd>
         {% endfor %}
       </dl>
 
       <dl>
         <dt>{{ _('Versions') }}</dt>
         {% for slug, url in versions %}
-          <dd><a href="{{ url }}/{{ language }}/{{ pagename }}.html">{{ slug }}</a></dd>
+          <dd><a href="{{ url }}/{{ language }}/{{ pagename }}.html{{ hash }}">{{ slug }}</a></dd>
         {% endfor %}
       </dl>
 
