@@ -168,7 +168,7 @@ Layers
 
 .. testcode:: cheat_sheet
 
-    layer = iface.addVectorLayer("testdata/data/data.gpkg|layername=airports", "Airports layer", "ogr")
+    layer = iface.addVectorLayer("testdata/data.gpkg|layername=airports", "Airports layer", "ogr")
     if not layer or not layer.isValid():
         print("Layer failed to load!")
 

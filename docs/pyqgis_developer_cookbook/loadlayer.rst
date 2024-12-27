@@ -59,7 +59,7 @@ For a geopackage vector layer:
 .. testcode:: loadlayer
 
  # get the path to a geopackage
- path_to_gpkg = "testdata/data/data.gpkg"
+ path_to_gpkg = "testdata/data.gpkg"
  # append the layername part
  gpkg_airports_layer = path_to_gpkg + "|layername=airports"
  vlayer = QgsVectorLayer(gpkg_airports_layer, "Airports layer", "ogr")
@@ -107,7 +107,7 @@ providers:
 
     .. testcode:: loadlayer
 
-      uri = "testdata/data/data.gpkg|layername=airports"
+      uri = "testdata/data.gpkg|layername=airports"
       vlayer = QgsVectorLayer(uri, "layer_name_you_like", "ogr")
       QgsProject.instance().addMapLayer(vlayer)
 
@@ -266,8 +266,8 @@ by default). To load a raster from a file, specify its filename and display name
 
 .. testcode:: loadlayer
 
- # get the path to a tif file  e.g. /home/project/data/srtm.tif
- path_to_tif = "qgis-projects/python_cookbook/data/srtm.tif"
+ # get the path to a tif file  e.g. /home/project/srtm.tif
+ path_to_tif = "qgis-projects/python_cookbook/srtm.tif"
  rlayer = QgsRasterLayer(path_to_tif, "SRTM layer name")
  if not rlayer.isValid():
      print("Layer failed to load!")
@@ -276,9 +276,9 @@ To load a raster from a geopackage:
 
 .. testcode:: loadlayer
 
- # get the path to a geopackage  e.g. /home/project/data/data.gpkg
+ # get the path to a geopackage  e.g. /home/project/data.gpkg
  path_to_gpkg = os.path.join(os.getcwd(), "testdata", "sublayers.gpkg")
- # gpkg_raster_layer = "GPKG:/home/project/data/data.gpkg:srtm"
+ # gpkg_raster_layer = "GPKG:/home/project/data.gpkg:srtm"
  gpkg_raster_layer = "GPKG:" + path_to_gpkg + ":srtm"
 
  rlayer = QgsRasterLayer(gpkg_raster_layer, "layer name you like", "gdal")

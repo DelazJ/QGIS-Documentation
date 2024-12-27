@@ -123,7 +123,7 @@ layers for the canvas.
 
 .. testcode:: canvas
 
-  vlayer = QgsVectorLayer("testdata/data/data.gpkg|layername=airports", "Airports layer", "ogr")
+  vlayer = QgsVectorLayer("testdata/data.gpkg|layername=airports", "Airports layer", "ogr")
   if not vlayer.isValid():
       print("Layer failed to load!")
 

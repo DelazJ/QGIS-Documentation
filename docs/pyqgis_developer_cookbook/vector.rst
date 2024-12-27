@@ -73,7 +73,7 @@ by calling :meth:`fields() <qgis.core.QgsVectorLayer.fields>` on a
 
 .. testcode:: vectors
 
-    vlayer = QgsVectorLayer("testdata/data/data.gpkg|layername=airports", "Airports layer", "ogr")
+    vlayer = QgsVectorLayer("testdata/data.gpkg|layername=airports", "Airports layer", "ogr")
     for field in vlayer.fields():
         print(field.name(), field.typeName())
 
@@ -103,7 +103,7 @@ methods you can easily get both:
 
 .. testcode:: vectors
 
-    vlayer = QgsVectorLayer("testdata/data/data.gpkg|layername=airports", "Airports layer", "ogr")
+    vlayer = QgsVectorLayer("testdata/data.gpkg|layername=airports", "Airports layer", "ogr")
     print(vlayer.displayField())
 
 
@@ -710,7 +710,7 @@ field:
 
 .. testcode:: vectors
 
-    vlayer = QgsVectorLayer("testdata/data/data.gpkg|layername=airports", "Airports layer", "ogr")
+    vlayer = QgsVectorLayer("testdata/data.gpkg|layername=airports", "Airports layer", "ogr")
     feat = QgsVectorLayerUtils.createFeature(vlayer)
 
 
@@ -719,7 +719,7 @@ you to quickly get the values of a field or expression:
 
 .. testcode:: vectors
 
-    vlayer = QgsVectorLayer("testdata/data/data.gpkg|layername=airports", "Airports layer", "ogr")
+    vlayer = QgsVectorLayer("testdata/data.gpkg|layername=airports", "Airports layer", "ogr")
     # select only the first feature to make the output shorter
     vlayer.selectByIds([1])
     val = QgsVectorLayerUtils.getValues(vlayer, "NAME", selectedOnly=True)
@@ -1237,7 +1237,7 @@ arrangement)
 
   from qgis.PyQt import QtGui
 
-  myVectorLayer = QgsVectorLayer("testdata/data/data.gpkg|layername=airports", "Airports layer", "ogr")
+  myVectorLayer = QgsVectorLayer("testdata/data.gpkg|layername=airports", "Airports layer", "ogr")
   myTargetField = 'scalerank'
   myRangeList = []
   myOpacity = 1
