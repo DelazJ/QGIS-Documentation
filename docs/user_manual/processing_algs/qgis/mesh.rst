@@ -847,6 +847,74 @@ Python code
   :end-before: **end_algorithm_code_section**
 
 
+.. _qgissurfacetopolygon:
+
+Surface to polygon
+------------------
+
+Exports a polygon file containing mesh layer boundary.
+It may contain holes and it may be a multi-part polygon.
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input mesh layer**
+     - ``SOURCE_DATA``
+     - [mesh]
+     - Mesh layer to export the boundary
+   * - **Output coordinate system**
+
+       Optional
+     - ``CRS_OUTPUT``
+     - [crs]
+     - Coordinate Reference System to assign to the output
+   * - **Output vector layer**
+     - ``OUTPUT``
+     - [vector: polygon]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output file. One of:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Output vector layer**
+     - ``OUTPUT``
+     - [vector: polygon]
+     - Vector layer with polygon feature representing the bounding box
+       of the mesh layer.
+
+Python code
+...........
+
+**Algorithm ID**: ``native:surfacetopolygon``
+
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
 .. _qgistinmeshcreation:
 
 TIN mesh creation
