@@ -19,7 +19,7 @@ SITEDIR         = /site
 VERSION         = testing
 
 # needed for Sphinx > 4.5?
-export LC_ALL=C.UTF-8
+export LC_ALL=C
 
 # Put it first so that "make" without argument is like "make help".
 help:
