@@ -55,8 +55,10 @@ jobs:
     - name: Download and sanitize files and folders
       run: bash ./scripts/minimize_translation.sh
 
-    # - name: Show changes
-    #   run: echo `git status`
+    - name: Show changes
+      run: |
+        echo "Number of files: `git status -s | wc -l`"
+        echo "List of files: `git status -s`"
 
     - name: Load translations if any
       run: |
