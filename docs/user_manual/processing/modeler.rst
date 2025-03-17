@@ -57,6 +57,10 @@ Model menu
      - :kbd:`F5`
      - |checkbox|
      - Executes the model
+   * - |runSelected| :guilabel:`Run Selected Steps...`
+     - :kbd:`Shift+F5`
+     -
+     - Runs only the selected steps in a model, allowing to run a subset of the model
    * - :guilabel:`Reorder Model Inputs...`
      -
      -
@@ -479,14 +483,20 @@ model comments. Comments are visible only in the modeler canvas and not
 in the final algorithm dialog; they can be hidden by deactivating
 :menuselection:`View --> Show Comments`.
 
-You can run your algorithm any time by clicking on the |start| :sup:`Run model` button.
-When using the editor to execute a model, any non-default values will be
-saved in the inputs. This means that executing the model at a later time from
-the editor will have the dialog prefilled with those values on any subsequent run.
+You can run your algorithm any time by clicking on:
 
-In order to use the algorithm from the toolbox, it has to be saved
-and the modeler dialog closed, to allow the toolbox to refresh its
-contents.
+* |start| :sup:`Run Model...`:
+  When using the editor to execute a model, any non-default values will be
+  saved in the inputs. This means that executing the model at a later time from
+  the editor will have the dialog prefilled with those values on any subsequent run.
+* |runSelected| :sup:`Run Selected Steps`: allows to run a subset of the model.
+  The initial state will be taken from any previous executions of the model through the designer,
+  so results from previous steps in the model are available for the selected steps.
+  This makes it possible to fix parts of a large model,
+  without having to constantly run the entire model to test.
+  Especially useful when earlier steps in the model are time consuming.
+* In order to use the algorithm from the toolbox, it has to be saved
+  and the modeler dialog closed, to allow the toolbox to refresh its contents.
 
 
 Documenting your model
@@ -602,53 +612,63 @@ menu like the one shown next:
 
    Modeler Right Click
 
-Selecting the :guilabel:`Remove` option will cause the selected
-algorithm to be removed.
-An algorithm can be removed only if there are no other algorithms
-depending on it.
-That is, if no output from the algorithm is used in a different one as
-input.
-If you try to remove an algorithm that has others depending on it, a
-warning message like the one you can see below will be shown:
+* Selecting the :guilabel:`Remove` option will cause the selected algorithm to be removed.
+  An algorithm can be removed only if there are no other algorithms
+  depending on it.
+  That is, if no output from the algorithm is used as input in a different one.
+  If you try to remove an algorithm that has others depending on it,
+  a warning message like the one you can see below will be shown:
 
-.. _figure_cannot_delete_alg:
+  .. _figure_cannot_delete_alg:
 
-.. figure:: img/cannot_delete_alg.png
-   :align: center
+  .. figure:: img/cannot_delete_alg.png
+     :align: center
 
-   Cannot Delete Algorithm
+     Cannot Delete Algorithm
 
-Selecting the :guilabel:`Edit...` option will show the parameter dialog
-of the algorithm, so you can change the inputs and parameter values.
-Not all input elements available in the model will appear as
-available inputs.
-Layers or values generated at a more advanced step in the workflow
-defined by the model will not be available if they cause circular
-dependencies.
+* Selecting the :guilabel:`Edit...` option will show the parameter dialog
+  so you can change the inputs and parameter values.
+  Not all input elements available in the model will appear as available inputs.
+  Layers or values generated at a more advanced step in the workflow
+  defined by the model will not be available if they cause circular dependencies.
 
-Select the new values and click on the :guilabel:`OK` button as usual.
-The connections between the model elements will change in the modeler
-canvas accordingly.
+  Select the new values and click on the :guilabel:`OK` button as usual.
+  The connections between the model elements will change in the modeler canvas accordingly.
 
-The :guilabel:`Add comment...` allows you to add a comment to the algorithm to
-better describe the behavior.
+* The :guilabel:`Add comment...` allows you to add a comment to the algorithm
+  to better describe the behavior.
 
-A model can be run partially by deactivating some of its algorithms.
-To do it, select the :guilabel:`Deactivate` option in the context menu
-that appears when right-clicking on an algorithm element.
-The selected algorithm, and all the ones in the model that depend on it
-will be displayed in grey and will not be executed as part of the model.
+* A model can be run partially by deactivating some of its algorithms.
+  To do it, select the :guilabel:`Deactivate` option in the context menu
+  that appears when right-clicking on an algorithm element.
+  The selected algorithm, and all the ones in the model that depend on it
+  will be displayed in grey and will not be executed as part of the model.
 
-.. _figure_cannot_model_deactivate:
+  .. _figure_cannot_model_deactivate:
 
-.. figure:: img/deactivated.png
-   :align: center
+  .. figure:: img/deactivated.png
+     :align: center
 
-   Model With Deactivated Algorithms
+     Model With Deactivated Algorithms
 
-When right-clicking on an algorithm that is not active, you will
-see a :guilabel:`Activate` menu option that you can use to reactivate
-it.
+  When right-clicking on an algorithm that is not active, you will
+  see a :guilabel:`Activate` menu option that you can use to reactivate it.
+
+* When editing a model through the designer (and after having run that model),
+  right-clicking any child step in the model allows to select :guilabel:`View Output Layers`.
+  This will add the output layers from that step as new layers in the current QGIS project.
+
+  This action is available for ALL child algorithms in the model,
+  even if the model is not configured to use the outputs from those children as model outputs.
+  This is designed as a helpful debugging action. If a model fails (or gives unexpected results),
+  you can then trace through the model and view the outputs for suspected problematic steps.
+  It avoids the need to add temporary outputs to a model and re-run to test.
+
+  Additionally, this action is always available after running the model,
+  EVEN if the model itself failed (e.g., because of a misconfigured step later in the model).
+
+* The :guilabel:`View Log` action helps you see the log for each child algorithm
+  after you've closed down the algorithm dialog.
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
@@ -694,6 +714,8 @@ it.
 .. |qgsProjectFile| image:: /static/common/mIconQgsProjectFile.png
    :width: 1.5em
 .. |redo| image:: /static/common/mActionRedo.png
+   :width: 1.5em
+.. |runSelected| image:: /static/common/mActionRunSelected.png
    :width: 1.5em
 .. |saveAsPDF| image:: /static/common/mActionSaveAsPDF.png
    :width: 1.5em
