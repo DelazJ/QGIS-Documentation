@@ -13,10 +13,12 @@ The processing history
 
 Every time you execute an algorithm, information about the process is
 stored in the history manager.
+Grouped by month in a tree-like display, the...
 The date and time of the execution are saved, along with the
 parameters used, making it is easy to track and control all the work
-that has been developed using the Processing framework, and to
-reproduce it.
+that has been developed using the Processing framework, and to reproduce it.
+Use a tree display for processing history entries, where the root item for each entry shows the full algorithm log when clicked,
+and the python/qgis_process commands are instead shown as child items
 
 .. _figure_history:
 
