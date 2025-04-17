@@ -51,7 +51,7 @@ Parameters
 
    * - **Output**
      - ``OUTPUT``
-     - [vector: any]
+     - [vector: point, line]
 
        Default: ``[Save to temporary file]``
      - Specification of the output GPX file. One of:
@@ -74,7 +74,7 @@ Outputs
      - Description
    * - **Output layer**
      - ``OUTPUT_LAYER``
-     - [vector: any]
+     - [vector: point, line]
      - Output layer with data in GPX standard format
 
 Python code
@@ -125,7 +125,7 @@ Parameters
 
    * - **Output**
      - ``OUTPUT``
-     - [vector: point or line]
+     - [vector: point, line]
 
        Default: ``[Save to temporary file]``
      - Specification of the output file. One of:
@@ -148,7 +148,7 @@ Outputs
      - Description
    * - **Output**
      - ``OUTPUT``
-     - [vector: any]
+     - [vector: point, line]
      - Output layer with converted GPX features
 
 Python code
@@ -206,7 +206,7 @@ Parameters
 
    * - **Output**
      - ``OUTPUT``
-     - [vector: any]
+     - [vector: point, line]
 
        Default: ``[Save to temporary file]``
      - Specification of the output file. One of:
@@ -229,7 +229,7 @@ Outputs
      - Description
    * - **Output layer**
      - ``OUTPUT_LAYER``
-     - [vector: any]
+     - [vector: point, line]
      - Output layer with data in GPX standard format
 
 Python code

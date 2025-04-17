@@ -290,6 +290,14 @@ Parameters
           :start-after: **extent_options**
           :end-before: **end_extent_options**
 
+   * - **Buffer around tiles in map unit**
+
+       Optional
+     - ``EXTENT_BUFFER``
+     - [numeric: double]
+
+       Default: 0.0
+     - Distance of overlap distance between two consecutive tiles ???
    * - **Tile size**
      - ``TILE_SIZE``
      - [numeric: integer]

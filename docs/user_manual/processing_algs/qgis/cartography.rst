@@ -228,7 +228,7 @@ Parameters
      - Description
    * - **Input layer**
      - ``INPUT``
-     - [vector: any]
+     - [vector: any] <-- is it normal that geometryless layer is available here?
      - Vector layer to apply a categorized style to
    * - **Categorize using expression**
      - ``FIELD``

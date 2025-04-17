@@ -427,14 +427,13 @@ Basic parameters
      - [numeric: double]
 
        Default: 10.0
-     - Radius of the circular neighbourhood. Units can be specified
-       here.
+     - Radius of the circular neighbourhood. Units can be specified here.
    * - **Pixel size**
      - ``PIXEL_SIZE``
      - [numeric: double]
 
        Default: 10.0
-     - Pixel size of the output raster layer in layer units.
+     - Pixel size of the output raster layer. Units can be specified here.
        The raster has square pixels.
    * - **Line density raster**
      - ``OUTPUT``

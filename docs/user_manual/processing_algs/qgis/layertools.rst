@@ -162,8 +162,9 @@ Python code
 Extract layer extent
 --------------------
 
-Generates a vector layer with the minimum bounding box (rectangle with
-N-S orientation) that covers all the input features.
+Generates a vector layer with the minimum bounding box
+(rectangle with N-S orientation) that covers all the input features.
+Optionally, the extent can be enlarged to a rounded value.
 
 The output layer contains a single bounding box for the whole input layer.
 
@@ -177,6 +178,9 @@ The output layer contains a single bounding box for the whole input layer.
 Parameters
 ..........
 
+Basic parameters
+^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 20 20 20 40
@@ -185,10 +189,10 @@ Parameters
      - Name
      - Type
      - Description
-   * - **Layer**
+   * - **Input layer**
      - ``INPUT``
      - [layer]
-     - Input layer
+     - The layer to generate the bounding box for.
    * - **Extent**
      - ``OUTPUT``
      - [vector: polygon]
@@ -200,6 +204,27 @@ Parameters
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
           :end-before: **end_layer_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Round values to**
+     - ``ROUND_TO``
+     - [numeric: double]
+
+       Default: 0.0
+     - Units can be specified here.
+
+       .. unable to understand what this actually represents
+        (https://github.com/qgis/QGIS/blob/a96509d9a5879442f23a868db91102d9113535dc/src/analysis/processing/qgsalgorithmextentfromlayer.cpp#L116)
 
 Outputs
 .......
@@ -215,8 +240,10 @@ Outputs
    *  - **Extent**
       - ``OUTPUT``
       - [vector: polygon]
-      - Output (polygon) vector layer with the extent
-        (minimum bounding box)
+      - Output (polygon) vector layer with a feature representing the bounding box of input features.
+        Provided information are the minimum and maximum x and y coordinates,
+        the x and y coordinates of the center point,
+        the area, perimeter, height and weight of the polygon feature.
 
 Python code
 ...........

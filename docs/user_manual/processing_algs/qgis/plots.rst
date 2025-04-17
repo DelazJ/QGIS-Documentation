@@ -229,8 +229,8 @@ Basic parameters
      - Description
    * - **Profile curve**
      - ``CURVE``
-     - [vector: line]
-     - The line layer representing the profile curve along which the elevation profile will be generated
+     - [vector: line] ???
+     - The line layer (???) representing the profile curve along which the elevation profile will be generated
    * - **Map layers**
      - ``MAP_LAYERS``
      - [layer] [list]
@@ -509,6 +509,8 @@ Python code
 Raster layer histogram
 ----------------------
 Generates a histogram with the values of a raster layer.
+
+.. PR: GUI: le raster ne peut avoir plusieurs bandes ??
 
 Parameters
 ..........
