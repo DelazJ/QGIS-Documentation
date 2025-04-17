@@ -910,7 +910,8 @@ Advanced parameters
 
        Default: 1000.0 (kilometers)
      - Distance between consecutive vertices (in kilometers).
-       A smaller distance results in a denser, more accurate line
+       A smaller distance results in a denser, more accurate line.
+       A unit can be selected.
    * - **Split lines at antimeridian (±180 degrees longitude)**
      - ``ANTIMERIDIAN_SPLIT``
      - [boolean]

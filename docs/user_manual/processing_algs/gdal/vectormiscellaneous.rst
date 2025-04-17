@@ -31,7 +31,7 @@ Parameters
      - Description
    * - **Input datasources**
      - ``INPUT``
-     - [vector: any] [list]
+     - [vector: any] [list] --> no geom included?
      - Select the vector layers you want to use to build
        the virtual vector
    * - **Create "unioned" VRT**
@@ -108,7 +108,7 @@ Basic parameters
      - Description
    * - **Input layer**
      - ``INPUT``
-     - [vector: any]
+     - [vector: geometry] <-- why not allowing nogeom?
      - OGR-supported input vector layer
    * - **SQL expression**
      - ``SQL``

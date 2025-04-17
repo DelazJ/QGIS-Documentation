@@ -584,7 +584,7 @@ Parameters
      - Description
    * - **Input layer**
      - ``INPUT``
-     - [vector: any]
+     - [vector: geometry] <-- does not allow geometryless layer, unlike "random extract" alg?
      - Vector layer to select the features from
    * - **ID field**
      - ``FIELD``
@@ -674,7 +674,7 @@ Parameters
      - Description
    * - **Input layer**
      - ``INPUT``
-     - [vector: any]
+     - [vector: geometry] <-- does not allow geometryless layer, unlike "random extract" alg?
      - Vector layer for the selection
    * - **Method**
      - ``METHOD``
@@ -755,7 +755,7 @@ Parameters
      - Description
    * - **Input layer**
      - ``INPUT``
-     - [vector: any]
+     - [vector: geometry] <-- does not allow geometryless layer, unlike "random extract" alg?
      - Vector layer to select features in
    * - **ID field**
      - ``FIELD``

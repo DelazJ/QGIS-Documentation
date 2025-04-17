@@ -908,7 +908,7 @@ Parameters
      - Description
    * - **Additional input datasources (called input1, .., inputN in the query)**
      - ``INPUT_DATASOURCES``
-     - [vector: any] [list]
+     - [vector: geometry] [list] #unable to use and create a geometry less layer?
      - List of layers to query. In the SQL editor you can
        refer these layers with their **real** name or also
        with **input1**, **input2**, **inputN** depending
@@ -1962,7 +1962,7 @@ Parameters
    * - **Maximum distance**
      - ``MAX_DISTANCE``
      - [numeric: double]
-     - Maximum search distance
+     - Maximum search distance. Units can be selected.
    * - **Joined layer**
 
        Optional
@@ -2072,7 +2072,7 @@ Parameters
      - Description
    * - **Input Layers**
      - ``LAYERS``
-     - [vector: any] [list]
+     - [vector: any] [list] <-- Allows geometryless layers? with crs?
      - The layers that are to be merged into a single layer.
        Layers should be of the same geometry type.
    * - **Destination CRS**

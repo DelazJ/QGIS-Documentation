@@ -63,7 +63,8 @@ Basic parameters
      - [numeric: double] |dataDefine|
 
        Default: 1.0
-     - Distance between two consecutive offset copies
+     - Distance between two consecutive offset copies.
+       Unit can be selected.
    * - **Offset lines**
      - ``OUTPUT``
      - [vector: line]

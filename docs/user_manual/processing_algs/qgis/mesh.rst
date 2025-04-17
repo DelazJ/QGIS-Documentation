@@ -945,7 +945,10 @@ Parameters
    * - **Input layers**
      - ``SOURCE_DATA``
      - [vector: any] [list]
-     - Vector layers to combine to generate the mesh layer 
+     - Vector layers to combine to generate the mesh layer
+
+       .. to refactor and match with IDW/TIN Interpolation algs
+
    * - **Vector layer**
      - GUI ONLY
      - [vector: any] [list]

@@ -190,14 +190,15 @@ Advanced parameters
 
        Default: 0.0
      - Two lines with nodes closer than the specified
-       tolerance are considered connected
+       tolerance are considered connected.
+       A unit can be specified.
 
 .. **end_network_advanced_parameters**
 
 .. list-table::
    :widths: 20 20 20 40
 
-   * - **Include upper/lower bound points**
+   * - **Include upper/lower bound points** -- a désoptionaliser
      - ``INCLUDE_BOUNDS``
      - [boolean]
 
@@ -216,6 +217,7 @@ Advanced parameters
        If a point is further from the network than this distance it will be treated as non-routable.
        If not set, endpoints will be snapped to the nearest point on the network layer,
        regardless of how far away from the network they actually are.
+       A unit can be specified.
 
 Outputs
 .......
@@ -491,6 +493,7 @@ Advanced parameters
        If the end point is further from the network than this distance an error will be raised.
        If not set, points will be snapped to the nearest point on the network layer,
        regardless of how far away from the network they actually are.
+       A unit can be specified.
 
 Outputs
 .......
@@ -623,6 +626,7 @@ Advanced parameters
        If an end feature is further from the network than this distance it will be treated as non-routable.
        If not set, points will be snapped to the nearest point on the network layer,
        regardless of how far away from the network they actually are.
+       A unit can be set.
 
 Outputs
 .......
@@ -736,6 +740,7 @@ Advanced parameters
        If either point is further from the network than this distance an error will be raised.
        If not set, points will be snapped to the nearest point on the network layer,
        regardless of how far away from the network they actually are.
+       A unit can be set.
 
 Outputs
 .......
