@@ -17,7 +17,8 @@ or writing accompanying world files (for raster only). The basic
 approach to georeferencing a layer is to locate points on it for which
 you can accurately determine coordinates.
 
-**Features**
+The Toolbar
+-----------
 
 .. index::
    single: Tools; Georeferencer tools
@@ -52,7 +53,27 @@ you can accurately determine coordinates.
 | |localHistogramStretch|        | Local histogram stretch      |                               |                               |
 +--------------------------------+------------------------------+-------------------------------+-------------------------------+
 
-Table Georeferencer: Georeferencer Tools
+.. table:: Georeferencer Tools
+
+.. _configure_georeferencer:
+
+Configure the georeferencer panel
+---------------------------------
+
+You can customize the behavior of the georeferencer in :menuselection:`Settings 
+--> Configure Georeferencer` (or use keyboard shortcut :kbd:`Ctrl+P`). 
+
+* Under :guilabel:`Point Tip` you can use the checkboxes to toggle displaying GCP 
+  IDs and X/Y coordinates in both the Georeferencer window and the main map canvas. 
+* :guilabel:`Residual Units` controls whether residual units are given in pixels 
+  or map units
+* :guilabel:`PDF Report` allows you to set margin size in mm for the report export
+* :guilabel:`PDF Map` allows you to choose a paper size for the map export
+* Finally, you can activate to |checkbox| :guilabel:`Show Georeferencer window 
+  docked`. 
+  This will dock the Georeferencer window in the main QGIS window rather than 
+  showing it as a separate window that can be minimized. 
+
 
 Georeferencing raster layer
 ---------------------------
@@ -341,26 +362,6 @@ Clicking on the :guilabel:`Source properties` option in the :guilabel:`Settings`
 menu opens the :ref:`Raster Layer properties <raster_properties_dialog>`
 or :ref:`Vector Layer properties <vector_properties_dialog>` depending on the
 type of layer you are georeferencing.
-
-.. _configure_georeferencer:
-
-Configure the georeferencer
----------------------------
-
-You can customize the behavior of the georeferencer in :menuselection:`Settings 
---> Configure Georeferencer` (or use keyboard shortcut :kbd:`Ctrl+P`). 
-
-* Under :guilabel:`Point Tip` you can use the checkboxes to toggle displaying GCP 
-  IDs and X/Y coordinates in both the Georeferencer window and the main map canvas. 
-* :guilabel:`Residual Units` controls whether residual units are given in pixels 
-  or map units
-* :guilabel:`PDF Report` allows you to set margin size in mm for the report export
-* :guilabel:`PDF Map` allows you to choose a paper size for the map export
-* Finally, you can activate to |checkbox| :guilabel:`Show Georeferencer window 
-  docked`. 
-  This will dock the Georeferencer window in the main QGIS window rather than 
-  showing it as a separate window that can be minimized. 
-
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
