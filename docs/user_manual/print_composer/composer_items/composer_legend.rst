@@ -57,8 +57,6 @@ In Main properties you can:
    (@map_id, @map_scale, @map_extent...) are also accessible from data-defined
    properties of the legend.
 
-* Wrap the text of the legend on a given character: each time the character
-  appears, it's replaced with a line break;
 * Set the symbols and text placement in the legend: the :guilabel:`Arrangement`
   can be :guilabel:`Symbols on left` or :guilabel:`Symbols on right`. The default
   value depends on the locale in use (right-to-left based or not).
@@ -67,6 +65,44 @@ In Main properties you can:
   unchecked, then the legend will never resize and instead just stick to
   whatever size the user has set. Any content which doesn't fit the size
   is cropped out.
+
+Word wrapping
+-------------
+
+The :guilabel:`Word wrapping` group of the legend :guilabel:`Item Properties`
+panel provides the following functionalities:
+
+.. _figure_layout_word_wrapping:
+
+.. figure:: img/legend_wordwrapping.png
+   :align: center
+
+   Legend's word wrapping group
+
+* Wrap the text of the legend on a given character: each time the character appears,
+  it's replaced with a line break;
+* Allow legend text to be automatically wrapped after a set line length (in millimeters).
+  The :guilabel:`Maximum length` can be set as as static or data-defined value.
+  This can prevent very wide auto-generated legends.
+
+  **Examples**:
+
+  * Control legend width based on layout page orientation
+
+    ::
+
+     IF( @layout_pageheight >= @layout_pagewidth, 35, 70 )
+
+  * Set the legend column width at 60mm when a specific layer is rendered in the linked map
+
+    ::
+
+     CASE WHEN
+       array_contains(
+         map_get( item_variables('legend_1'), 'map_layer_ids' ),
+         'a_specific_layer_id' )
+     THEN 60
+     END
 
 Legend items
 ------------
