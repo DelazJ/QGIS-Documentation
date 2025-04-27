@@ -81,9 +81,12 @@ panel provides the following functionalities:
 
 * Wrap the text of the legend on a given character: each time the character appears,
   it's replaced with a line break;
-* Allow legend text to be automatically wrapped after a set line length (in millimeters).
-  The :guilabel:`Maximum length` can be set as as static or data-defined value.
-  This can prevent very wide auto-generated legends.
+* Allow legend text to be automatically wrapped after a set line length (in millimeters),
+  preventing very wide auto-generated legends.
+  The :guilabel:`Maximum length` can be set as a static or data-defined value,
+  convenient for dynamic layouts which adjust legend size
+  based on for example page orientation or displayed features,
+  or atlases where you may want to tweak the legend appearance on different pages.
 
   **Examples**:
 
@@ -91,9 +94,9 @@ panel provides the following functionalities:
 
     ::
 
-     IF( @layout_pageheight >= @layout_pagewidth, 35, 70 )
+     IF( @layout_pageheight >= @layout_pagewidth, 35, 80 )
 
-  * Set the legend column width at 60mm when a specific layer is rendered in the linked map
+  * Set the legend column width when a specific layer is displayed in the linked map
 
     ::
 
