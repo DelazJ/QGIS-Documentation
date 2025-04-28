@@ -37,7 +37,6 @@ Supported formats include:
 *  Mesh data (TINs and regular grids are supported). See :ref:`label_meshdata`.
 *  Vector tiles
 *  GRASS raster and vector data from GRASS databases (location/mapset).
-   See section :ref:`sec_grass`.
 *  Online spatial data served as OGC Web Services, including WMS,
    WMTS, WCS, WFS, and WFS-T. See section :ref:`working_with_ogc`.
 
@@ -101,11 +100,9 @@ You can perform spatial data analysis on spatial databases and other
 OGR-supported formats. QGIS currently offers vector analysis, raster
 analysis, sampling, geoprocessing, geometry and database management
 tools.
-You can also use the integrated GRASS tools, which include the
-complete GRASS functionality of more than 400 modules (see section
-:ref:`sec_grass`). Or, you can work with the Processing plugin, which
+You can work with the Processing plugin, which
 provides a powerful geospatial analysis framework to call native and
-third-party algorithms from QGIS, such as GDAL, SAGA, GRASS, OTB, R,
+third-party algorithms from QGIS, such as GDAL, GRASS, SAGA, OTB, R,
 and more (see section :ref:`sec_processing_intro`).
 All analysis functions are run in the background, allowing you to
 continue your work before the processing has finished.
@@ -138,11 +135,11 @@ Core plugins include:
 #. Geometry Checker (check geometries for errors)
 #. Georeferencer GDAL (add projection information to rasters using GDAL)
 #. GPS Tools (load and import GPS data)
-#. GRASS (integrate GRASS GIS)
 #. MetaSearch Catalogue Client (interacting with metadata catalog services
    supporting the OGC Catalog Service for the Web (CSW) standard)
 #. Offline Editing (allow offline editing and synchronizing with databases)
 #. Processing (the spatial data processing framework for QGIS)
+#. GRASS GIS Processing (algorithms and tools for use within the QGIS Processing framework)
 #. Topology Checker (find topological errors in vector layers)
 
 
