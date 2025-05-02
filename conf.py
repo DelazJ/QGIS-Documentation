@@ -72,7 +72,7 @@ exclude_patterns = [
     'venv',
     '.github',
     'docs/user_manual/expressions/expression_help/*',
-    'docs/about/index.rst',
+   # 'docs/about/index.rst',
 ]
 
 # -- Internationalisation ----------------------------------------------------

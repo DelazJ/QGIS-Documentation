@@ -1,18 +1,20 @@
 :orphan:
 
-.. This file is required for PDF builds
+.. only:: latex
 
-**********************************
- About QGIS
-**********************************
+   .. This file is required for PDF builds
 
-.. toctree::
-   :maxdepth: 2
+   **********************************
+   About QGIS
+   **********************************
 
-   preamble
-   foreword
-   conventions
-   features
-   help_and_support
-   contributors
-   license/index
+   .. toctree::
+      :maxdepth: 2
+
+      preamble
+      foreword
+      conventions
+      features
+      help_and_support
+      contributors
+      license/index
