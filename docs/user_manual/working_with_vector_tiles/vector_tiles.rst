@@ -220,39 +220,3 @@ Metadata Properties
 The |editMetadata| :guilabel:`Metadata` tab provides you with options
 to create and edit a metadata report on your layer.
 See :ref:`metadatamenu` for more information.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addVectorTileLayer| image:: /static/common/mActionAddVectorTileLayer.png
-   :width: 1.5em
-.. |editMetadata| image:: /static/common/editmetadata.png
-   :width: 1.2em
-.. |labelingSingle| image:: /static/common/labelingSingle.png
-   :width: 1.5em
-.. |mapIdentification| image:: /static/common/mActionMapIdentification.png
-   :width: 1.5em
-.. |metadata| image:: /static/common/metadata.png
-   :width: 1.5em
-.. |rendering| image:: /static/common/rendering.png
-   :width: 1.5em
-.. |search| image:: /static/common/search.png
-   :width: 1.5em
-.. |setProjection| image:: /static/common/mActionSetProjection.png
-   :width: 1.5em
-.. |symbology| image:: /static/common/symbology.png
-   :width: 2em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyEdit| image:: /static/common/symbologyEdit.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
-.. |system| image:: /static/common/system.png
-   :width: 1.5em
-.. |unchecked| image:: /static/common/unchecked.png
-   :width: 1.3em

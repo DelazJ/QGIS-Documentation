@@ -418,37 +418,3 @@ may have its own specific set of transformations specified via the
 :guilabel:`CRS` tab of the :guilabel:`Project properties` dialog
 (:menuselection:`Project --> Properties...`). These settings apply
 to the current project only.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |clearConsole| image:: /static/common/iconClearConsole.png
-   :width: 1.5em
-.. |clearItem| image:: /static/common/mIconClearItem.png
-   :width: 1.5em
-.. |customProjection| image:: /static/common/mActionCustomProjection.png
-   :width: 1.5em
-.. |indicatorNoCRS| image:: /static/common/mIndicatorNoCRS.png
-   :width: 1.5em
-.. |options| image:: /static/common/mActionOptions.png
-   :width: 1em
-.. |radioButtonOff| image:: /static/common/radiobuttonoff.png
-   :width: 1.5em
-.. |radioButtonOn| image:: /static/common/radiobuttonon.png
-   :width: 1.5em
-.. |setProjection| image:: /static/common/mActionSetProjection.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
-.. |toggleEditing| image:: /static/common/mActionToggleEditing.png
-   :width: 1.5em
-.. |unchecked| image:: /static/common/unchecked.png
-   :width: 1.3em

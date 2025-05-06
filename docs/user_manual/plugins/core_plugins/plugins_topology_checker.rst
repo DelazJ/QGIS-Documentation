@@ -120,29 +120,3 @@ Use :guilabel:`Filter errors by rule` menu to filter the errors to a specific er
 Check |checkbox|:guilabel:`Show errors on the canvas` to show error location on the canvas.
 Clicking a row in the table will zoom the map canvas to the concerned feature,
 where you can use :ref:`QGIS digitizing tools <editingvector>` to fix the error.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |options| image:: /static/common/mActionOptions.png
-   :width: 1em
-.. |pluginInstalled| image:: /static/common/plugin-installed.png
-   :width: 1.5em
-.. |showPluginManager| image:: /static/common/mActionShowPluginManager.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
-.. |topologyChecker| image:: /static/common/mActionTopologyChecker.png
-   :width: 1.5em
-.. |validateAll| image:: /static/common/mActionValidateAll.png
-   :width: 1.5em
-.. |validateExtent| image:: /static/common/mActionValidateExtent.png
-   :width: 1.5em

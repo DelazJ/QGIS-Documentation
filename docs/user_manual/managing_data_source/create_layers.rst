@@ -799,37 +799,3 @@ box. Example:
 
 Spatial binary predicates like ``ST_Intersects`` are sped up significantly
 when used in conjunction with this spatial index syntax.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addPart| image:: /static/common/mActionAddPart.png
-   :width: 1.5em
-.. |addVirtualLayer| image:: /static/common/mActionAddVirtualLayer.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |createMemory| image:: /static/common/mActionCreateMemory.png
-   :width: 1.5em
-.. |indicatorMemory| image:: /static/common/mIndicatorMemory.png
-   :width: 1.5em
-.. |newAttribute| image:: /static/common/mActionNewAttribute.png
-   :width: 1.5em
-.. |newGeoPackageLayer| image:: /static/common/mActionNewGeoPackageLayer.png
-   :width: 1.5em
-.. |newGpx| image:: /static/common/mActionNewGpx.png
-   :width: 1.5em
-.. |newMeshLayer| image:: /static/common/mActionNewMeshLayer.png
-   :width: 1.5em
-.. |newSpatiaLiteLayer| image:: /static/common/mActionNewSpatiaLiteLayer.png
-   :width: 1.5em
-.. |newVectorLayer| image:: /static/common/mActionNewVectorLayer.png
-   :width: 1.5em
-.. |setProjection| image:: /static/common/mActionSetProjection.png
-   :width: 1.5em
-.. |unchecked| image:: /static/common/unchecked.png
-   :width: 1.3em

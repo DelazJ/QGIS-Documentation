@@ -153,29 +153,3 @@ Below the zoom action when clicking on the table row, you can:
 
 Finally, you can choose which :guilabel:`Attribute to use when merging features
 by attribute value`.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |fromSelectedFeature| image:: /static/common/mActionFromSelectedFeature.png
-   :width: 1em
-.. |geometryChecker| image:: /static/common/geometrychecker.png
-   :width: 1.5em
-.. |options| image:: /static/common/mActionOptions.png
-   :width: 1em
-.. |radioButtonOff| image:: /static/common/radiobuttonoff.png
-   :width: 1.5em
-.. |radioButtonOn| image:: /static/common/radiobuttonon.png
-   :width: 1.5em
-.. |selectNumber| image:: /static/common/selectnumber.png
-   :width: 2.8em
-.. |selectString| image:: /static/common/selectstring.png
-   :width: 2.5em
-.. |success| image:: /static/common/mIconSuccess.png
-   :width: 1em

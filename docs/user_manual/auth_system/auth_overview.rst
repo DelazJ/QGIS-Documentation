@@ -364,19 +364,3 @@ configs in the authentication database, similar to how Firefox works.
 However, no wall against PyQGIS access has been defined.
 This may lead to issues where a user downloads/installs a malicious PyQGIS plugin
 or standalone app that gains access to authentication credentials.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |options| image:: /static/common/mActionOptions.png
-   :width: 1em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyEdit| image:: /static/common/symbologyEdit.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em

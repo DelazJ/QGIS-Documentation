@@ -104,22 +104,3 @@ In Conclusion
 Knowing how to navigate the Map Canvas is important, as it allows one to explore
 and visually inspect the layers. This could be done for initial data exploration,
 or to validate output of a spatial analysis.
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |pan| image:: /static/common/mActionPan.png
-   :width: 1.5em
-.. |zoomFullExtent| image:: /static/common/mActionZoomFullExtent.png
-   :width: 1.5em
-.. |zoomIn| image:: /static/common/mActionZoomIn.png
-   :width: 1.5em
-.. |zoomLast| image:: /static/common/mActionZoomLast.png
-   :width: 1.5em
-.. |zoomNext| image:: /static/common/mActionZoomNext.png
-   :width: 1.5em
-.. |zoomOut| image:: /static/common/mActionZoomOut.png
-   :width: 1.5em

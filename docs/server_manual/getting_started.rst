@@ -1059,15 +1059,3 @@ QGIS Server. It helps you to build a highly customized map viewer with layer
 selection, feature info, etc.. Also many plugins are available like authentication or
 print service, the full list is available in this `repository
 <https://github.com/qwc-services>`_.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em

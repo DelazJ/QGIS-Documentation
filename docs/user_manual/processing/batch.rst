@@ -188,25 +188,3 @@ To execute the batch process once you have introduced all the necessary values,
 just click on :guilabel:`Run`. The :guilabel:`Log` panel is activated and
 displays details and steps of the execution process. Progress of the global
 batch task will be shown in the progress bar in the lower part of the dialog.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |calculateField| image:: /static/common/mActionCalculateField.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |fileOpen| image:: /static/common/mActionFileOpen.png
-   :width: 1.5em
-.. |fileSave| image:: /static/common/mActionFileSave.png
-   :width: 1.5em
-.. |processingAlgorithm| image:: /static/common/processingAlgorithm.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em

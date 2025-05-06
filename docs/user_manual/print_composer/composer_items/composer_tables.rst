@@ -423,29 +423,3 @@ the following functionalities (see :numref:`figure_layout_table_frames`):
   other layout items, maps, scalebars, legends etc. will not be visible in the result.
 * Activate |checkbox| :guilabel:`Don't draw background if frame is empty`
   prevents the background to be drawn when the table frame has no contents.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addManualTable| image:: /static/common/mActionAddManualTable.png
-   :width: 1.5em
-.. |addTable| image:: /static/common/mActionAddTable.png
-   :width: 1.5em
-.. |arrowDown| image:: /static/common/mActionArrowDown.png
-   :width: 1.5em
-.. |arrowUp| image:: /static/common/mActionArrowUp.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |dataDefine| image:: /static/common/mIconDataDefine.png
-   :width: 1.5em
-.. |expression| image:: /static/common/mIconExpression.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em

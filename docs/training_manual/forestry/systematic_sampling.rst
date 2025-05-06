@@ -197,23 +197,3 @@ What's Next?
 In the next lesson you will see how to use the Atlas capabilities in QGIS to
 automatically generate detailed maps that the field teams will be using to
 navigate to the sample plots assigned to them.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |calculateField| image:: /static/common/mActionCalculateField.png
-   :width: 1.5em
-.. |gdal| image:: /static/common/gdal.png
-   :width: 1.5em
-.. |labelbuffer| image:: /static/common/labelbuffer.png
-   :width: 1.5em
-.. |labelingSingle| image:: /static/common/labelingSingle.png
-   :width: 1.5em
-.. |regularPoints| image:: /static/common/mAlgorithmRegularPoints.png
-   :width: 1.5em
-.. |toggleEditing| image:: /static/common/mActionToggleEditing.png
-   :width: 1.5em

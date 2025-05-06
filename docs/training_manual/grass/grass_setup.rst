@@ -316,20 +316,3 @@ What's Next?
 
 Now that the data is imported into GRASS, we can look at the advanced analysis
 operations that GRASS offers.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |grassLogo| image:: /static/common/grasslogo.png
-   :width: 1.5em
-.. |grassMapsetOpen| image:: /static/common/grass_mapset_open.png
-   :width: 1.5em
-.. |grassTools| image:: /static/common/grass_tools.png
-   :width: 1.5em
-.. |srtmFileName| replace:: :file:`srtm_41_19_4326.tif`
-.. |win| image:: /static/common/win.png
-   :width: 1em

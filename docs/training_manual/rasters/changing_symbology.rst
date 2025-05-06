@@ -188,17 +188,3 @@ What's Next?
 
 Now that we can see our data displayed properly, let's investigate how we can
 analyze it further.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |contextHelp| image:: /static/common/mActionContextHelp.png
-   :width: 1.5em
-.. |symbology| image:: /static/common/symbology.png
-   :width: 2em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em

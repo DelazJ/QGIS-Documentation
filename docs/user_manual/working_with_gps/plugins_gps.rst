@@ -123,23 +123,3 @@ the GPS download and upload algorithms.
    be sure that the data stored in the GPX file uses WGS 84 (latitude/longitude).
    QGIS expects this, and it is the official GPX specification.
    See `GPX 1.1 Schema Documentation <https://www.topografix.com/GPX/1/1/>`_.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addGpsLayer| image:: /static/common/mActionAddGpsLayer.png
-   :width: 1.5em
-.. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
-   :width: 1.5em
-.. |gps| image:: /static/common/mIconGps.png
-   :width: 1.5em
-.. |options| image:: /static/common/mActionOptions.png
-   :width: 1em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em

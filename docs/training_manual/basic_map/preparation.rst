@@ -258,29 +258,3 @@ Now you're familiar with the basic function of the :guilabel:`Open Data Source M
 button, but what about all the others? How does this interface work? Before we
 go on, let's take a look at some basic interaction with the QGIS interface.
 This is the topic of the next lesson.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
-   :width: 1.5em
-.. |dbSchema| image:: /static/common/mIconDbSchema.png
-   :width: 1.5em
-.. |fileOpen| image:: /static/common/mActionFileOpen.png
-   :width: 1.5em
-.. |fileSaveAs| image:: /static/common/mActionFileSaveAs.png
-   :width: 1.5em
-.. |geoPackage| image:: /static/common/mGeoPackage.png
-   :width: 1.5em
-.. |newGeoPackageLayer| image:: /static/common/mActionNewGeoPackageLayer.png
-   :width: 1.5em
-.. |polygonLayer| image:: /static/common/mIconPolygonLayer.png
-   :width: 1.5em
-.. |radioButtonOn| image:: /static/common/radiobuttonon.png
-   :width: 1.5em
-.. |spatialite| image:: /static/common/mIconSpatialite.png
-   :width: 1.5em

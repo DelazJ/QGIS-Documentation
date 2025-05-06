@@ -70,12 +70,3 @@ Camera pose
 
 The :guilabel:`Set from a 3D View...` pull-down menu lets you
 populate the items with the parameters of a 3D View.
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |add3DMap| image:: /static/common/mActionAdd3DMap.png
-   :width: 1.5em

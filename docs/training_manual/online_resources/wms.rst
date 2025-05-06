@@ -263,20 +263,3 @@ Now that you've added an inactive map as a backdrop, you'll be glad to know
 that it's also possible to add features (such as the other vector layers you
 added before). Adding features from remote servers is possible by using a Web
 Feature Service (WFS). That's the topic of the next lesson.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addWmsLayer| image:: /static/common/mActionAddWmsLayer.png
-   :width: 1.5em
-.. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
-   :width: 1.5em
-.. |majorUrbanName| replace:: Swellendam
-.. |search| image:: /static/common/search.png
-   :width: 1.5em
-.. |setProjection| image:: /static/common/mActionSetProjection.png
-   :width: 1.5em

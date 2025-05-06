@@ -176,21 +176,3 @@ By default, QGIS is installed with two algorithm providers:
 
 Installed plugins that provide Processing algorithms may also have their provider 
 listed in this group, with custom settings.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |menu| image:: /static/common/menu.png
-   :width: 1.5em
-.. |processingAlgorithm| image:: /static/common/processingAlgorithm.png
-   :width: 1.5em
-.. |processingModel| image:: /static/common/processingModel.png
-   :width: 1.5em
-.. |pythonFile| image:: /static/common/mIconPythonFile.png
-   :width: 1.5em

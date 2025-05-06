@@ -469,31 +469,3 @@ What's Next?
 
 In the next lesson, you will see how you can use LiDAR data to create a DEM and
 then use it to enhance your data and maps visibility.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addMap| image:: /static/common/mActionAddMap.png
-   :width: 1.5em
-.. |atlas| image:: /static/common/mIconAtlas.png
-   :width: 1.5em
-.. |calculateField| image:: /static/common/mActionCalculateField.png
-   :width: 1.5em
-.. |fileSave| image:: /static/common/mActionFileSave.png
-   :width: 1.5em
-.. |layoutManager| image:: /static/common/mActionLayoutManager.png
-   :width: 1.5em
-.. |northArrow| image:: /static/common/north_arrow.png
-   :width: 1.5em
-.. |refresh| image:: /static/common/mActionRefresh.png
-   :width: 1.5em
-.. |select| image:: /static/common/mActionSelect.png
-   :width: 1.5em
-.. |setToCanvasExtent| image:: /static/common/mActionSetToCanvasExtent.png
-   :width: 1.5em
-.. |vectorGrid| image:: /static/common/vector_grid.png
-   :width: 1.5em

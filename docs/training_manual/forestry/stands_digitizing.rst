@@ -399,33 +399,3 @@ You could start doing different analysis with your brand new dataset, but you
 might be more interested in performing analysis in a dataset more up to date.
 The topic of the next lesson will be the creation of forest stands using current
 aerial photos and the addition of some relevant information to your dataset.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addDelimitedTextLayer| image:: /static/common/mActionAddDelimitedTextLayer.png
-   :width: 1.5em
-.. |avoidIntersectionsLayers| image:: /static/common/mActionAvoidIntersectionsLayers.png
-   :width: 1.5em
-.. |capturePolygon| image:: /static/common/mActionCapturePolygon.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |openTable| image:: /static/common/mActionOpenTable.png
-   :width: 1.5em
-.. |pointLayer| image:: /static/common/mIconPointLayer.png
-   :width: 1.5em
-.. |polygonLayer| image:: /static/common/mIconPolygonLayer.png
-   :width: 1.5em
-.. |snapping| image:: /static/common/mIconSnapping.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |toggleEditing| image:: /static/common/mActionToggleEditing.png
-   :width: 1.5em
-.. |topologicalEditing| image:: /static/common/mIconTopologicalEditing.png
-   :width: 1.5em

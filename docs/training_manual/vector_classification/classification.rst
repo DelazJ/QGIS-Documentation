@@ -386,32 +386,3 @@ What's Next?
 
 Now we have a nice-looking map, but how are we going to get it out of
 QGIS and into a format we can print out, or make into an image or PDF? That's the topic of the next lesson!
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |calculateField| image:: /static/common/mActionCalculateField.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |equalCount| image:: /static/common/mClassificationEqualCount.png
-   :width: 1.5em
-.. |expression| image:: /static/common/mIconExpression.png
-   :width: 1.5em
-.. |majorUrbanName| replace:: Swellendam
-.. |newAttribute| image:: /static/common/mActionNewAttribute.png
-   :width: 1.5em
-.. |radioButtonOn| image:: /static/common/radiobuttonon.png
-   :width: 1.5em
-.. |saveEdits| image:: /static/common/mActionSaveEdits.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
-.. |toggleEditing| image:: /static/common/mActionToggleEditing.png
-   :width: 1.5em

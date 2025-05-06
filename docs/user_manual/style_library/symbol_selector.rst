@@ -944,37 +944,3 @@ There are two ways to handle animated symbols:
        :width: 100%
 
        Animated marker when map is configured as animation
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |dataDefine| image:: /static/common/mIconDataDefine.png
-   :width: 1.5em
-.. |duplicateLayer| image:: /static/common/mActionDuplicateLayer.png
-   :width: 1.5em
-.. |iconView| image:: /static/common/mActionIconView.png
-   :width: 1.5em
-.. |locked| image:: /static/common/locked.png
-   :width: 1.5em
-.. |lockedGray| image:: /static/common/lockedGray.png
-   :width: 1.2em
-.. |openTable| image:: /static/common/mActionOpenTable.png
-   :width: 1.5em
-.. |paintEffects| image:: /static/common/mIconPaintEffects.png
-   :width: 1.5em
-.. |refresh| image:: /static/common/mActionRefresh.png
-   :width: 1.5em
-.. |selectString| image:: /static/common/selectstring.png
-   :width: 2.5em
-.. |styleManager| image:: /static/common/mActionStyleManager.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em

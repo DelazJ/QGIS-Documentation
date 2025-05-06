@@ -402,21 +402,3 @@ the **Python Console** by running the following code (replace
 
 This will open an SSL error dialog if any errors occur, where you can choose to
 save the configuration to the database.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |fileSave| image:: /static/common/mActionFileSave.png
-   :width: 1.5em
-.. |metadata| image:: /static/common/metadata.png
-   :width: 1.5em
-.. |selectString| image:: /static/common/selectstring.png
-   :width: 2.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |transformSettings| image:: /static/common/mActionTransformSettings.png
-   :width: 1.5em

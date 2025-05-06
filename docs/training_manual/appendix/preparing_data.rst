@@ -230,18 +230,3 @@ The tokens you need to replace are as follows:
   with the filename of your SRTM DEM file.
 * ``localCRS``: this defaults to ``WGS 84 / UTM 34S``. You should replace
   this with the correct CRS for your region.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |extents| image:: /static/common/extents.png
-   :width: 1.5em
-.. |indicatorMemory| image:: /static/common/mIndicatorMemory.png
-   :width: 1.5em
-.. |majorUrbanName| replace:: Swellendam
-.. |zoomToLayer| image:: /static/common/mActionZoomToLayer.png
-   :width: 1.5em

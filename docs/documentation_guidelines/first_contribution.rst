@@ -644,27 +644,3 @@ Further reading
   lines help you squash these commits to a smaller number and more meaningful
   commit messages. Some details at `Using git rebase on the command line
   <https://docs.github.com/en/get-started/using-git/using-git-rebase-on-the-command-line>`_
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |deleteSelected| image:: /static/common/mActionDeleteSelected.png
-   :width: 1.5em
-.. |githubBluePlus| image:: /static/common/githubBluePlus.png
-   :width: 1.5em
-.. |githubBranch| image:: /static/common/githubBranch.png
-   :width: 8em
-.. |githubCantMerge| image:: /static/common/githubCantMerge.png
-   :width: 12em
-.. |githubEditPencil| image:: /static/common/githubEditPencil.png
-   :width: 2em
-.. |githubFilesChanged| image:: /static/common/githubFilesChanged.png
-   :width: 8em
-.. |githubFork| image:: /static/common/githubFork.png
-   :width: 4em
-.. |githubSuggestions| image:: /static/common/githubSuggestions.png
-   :width: 1.5em

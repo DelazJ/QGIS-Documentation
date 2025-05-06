@@ -334,17 +334,3 @@ What's Next?
 Now that you've done all kinds of vector data creation, you will
 learn how to analyze the data to solve problems.
 That is the topic of the next module.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |actionRun| image:: /static/common/mAction.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em

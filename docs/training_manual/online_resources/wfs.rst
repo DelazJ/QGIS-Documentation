@@ -161,17 +161,3 @@ What's Next?
 -------------------------------------------------------------------------------
 
 Next, you'll see how to use QGIS Server to provide OGC services.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
-   :width: 1.5em
-.. |indicatorFilter| image:: /static/common/mIndicatorFilter.png
-   :width: 1.5em
-.. |wfs| image:: /static/common/mIconWfs.png
-   :width: 1.5em

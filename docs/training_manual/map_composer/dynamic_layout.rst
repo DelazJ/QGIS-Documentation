@@ -308,31 +308,3 @@ What's Next?
 On the next page, you will be given an assignment to complete.
 This will allow you to practice the techniques you have learned so
 far.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addBasicShape| image:: /static/common/mActionAddBasicShape.png
-   :width: 1.5em
-.. |addImage| image:: /static/common/mActionAddImage.png
-   :width: 1.5em
-.. |addNodesShape| image:: /static/common/mActionAddNodesShape.png
-   :width: 1.5em
-.. |dataDefineExpressionOn| image:: /static/common/mIconDataDefineExpressionOn.png
-   :width: 1.5em
-.. |label| image:: /static/common/mActionLabel.png
-   :width: 1.5em
-.. |newLayout| image:: /static/common/mActionNewLayout.png
-   :width: 1.5em
-.. |northArrow| image:: /static/common/north_arrow.png
-   :width: 1.5em
-.. |refresh| image:: /static/common/mActionRefresh.png
-   :width: 1.5em
-.. |scaleBar| image:: /static/common/mActionScaleBar.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em

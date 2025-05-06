@@ -861,32 +861,3 @@ the four suitable areas that are closest to the university
 highlighted.
 Follow all the best practices for cartography in creating your output
 map.
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addOgrLayer| image:: /static/common/mActionAddOgrLayer.png
-   :width: 1.5em
-.. |addRasterLayer| image:: /static/common/mActionAddRasterLayer.png
-   :width: 1.5em
-.. |calculateField| image:: /static/common/mActionCalculateField.png
-   :width: 1.5em
-.. |capturePoint| image:: /static/common/mActionCapturePoint.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
-   :width: 1.5em
-.. |fileSave| image:: /static/common/mActionFileSave.png
-   :width: 1.5em
-.. |projectionEnabled| image:: /static/common/mIconProjectionEnabled.png
-   :width: 1.5em
-.. |radioButtonOn| image:: /static/common/radiobuttonon.png
-   :width: 1.5em
-.. |saveEdits| image:: /static/common/mActionSaveEdits.png
-   :width: 1.5em
-.. |toggleEditing| image:: /static/common/mActionToggleEditing.png
-   :width: 1.5em

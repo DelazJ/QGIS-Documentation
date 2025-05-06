@@ -288,29 +288,3 @@ in the future, but you still need to get more information about the forest.
 In the next lesson, you will see how to plan a set of sampling plots to
 inventory the forest area you just digitized, and get the overall estimate
 of forest parameters.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |avoidIntersectionsLayers| image:: /static/common/mActionAvoidIntersectionsLayers.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |openTable| image:: /static/common/mActionOpenTable.png
-   :width: 1.5em
-.. |pointLayer| image:: /static/common/mIconPointLayer.png
-   :width: 1.5em
-.. |polygonLayer| image:: /static/common/mIconPolygonLayer.png
-   :width: 1.5em
-.. |snapping| image:: /static/common/mIconSnapping.png
-   :width: 1.5em
-.. |symbology| image:: /static/common/symbology.png
-   :width: 2em
-.. |toggleEditing| image:: /static/common/mActionToggleEditing.png
-   :width: 1.5em
-.. |topologicalEditing| image:: /static/common/mIconTopologicalEditing.png
-   :width: 1.5em

@@ -165,25 +165,3 @@ What's Next?
 
 Now that you are familiar with the basics of the QGIS interface, in the next 
 lesson we will see how to load some common data types.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |favourites| image:: /static/common/mIconFavourites.png
-   :width: 1.5em
-.. |fileSaveAs| image:: /static/common/mActionFileSaveAs.png
-   :width: 1.5em
-.. |invertSelection| image:: /static/common/mActionInvertSelection.png
-   :width: 1.5em
-.. |measure| image:: /static/common/mActionMeasure.png
-   :width: 1.5em
-.. |qgsProjectFile| image:: /static/common/mIconQgsProjectFile.png
-   :width: 1.5em
-.. |zoomToLayer| image:: /static/common/mActionZoomToLayer.png
-   :width: 1.5em

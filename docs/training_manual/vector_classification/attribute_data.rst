@@ -178,17 +178,3 @@ What's Next?
 Different attributes are useful for different purposes. Some of them can be
 represented directly as text for the map user to see. You'll learn how to do
 this in the next lesson.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |deselectActiveLayer| image:: /static/common/mActionDeselectActiveLayer.png
-   :width: 1.5em
-.. |openTable| image:: /static/common/mActionOpenTable.png
-   :width: 1.5em
-.. |selectRectangle| image:: /static/common/mActionSelectRectangle.png
-   :width: 1.5em

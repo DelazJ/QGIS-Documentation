@@ -366,30 +366,3 @@ Features in a GIS layer aren't just pictures, but objects in space. For
 example, adjacent polygons know where they are in relation to one another. This
 is called **topology**. In the next lesson you'll see an example of why this can
 be useful.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |captureLine| image:: /static/common/mActionCaptureLine.png
-   :width: 1.5em
-.. |capturePolygon| image:: /static/common/mActionCapturePolygon.png
-   :width: 1.5em
-.. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
-   :width: 1.5em
-.. |raster| image:: /static/common/mIconRaster.png
-   :width: 1.5em
-.. |saveEdits| image:: /static/common/mActionSaveEdits.png
-   :width: 1.5em
-.. |schoolAreaType1| replace:: athletics field
-.. |toggleEditing| image:: /static/common/mActionToggleEditing.png
-   :width: 1.5em
-.. |undo| image:: /static/common/mActionUndo.png
-   :width: 1.5em
-.. |vertexToolActiveLayer| image:: /static/common/mActionVertexToolActiveLayer.png
-   :width: 1.5em
-.. |zoomIn| image:: /static/common/mActionZoomIn.png
-   :width: 1.5em

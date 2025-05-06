@@ -378,19 +378,3 @@ What's Next?
 Now that we have covered vector analysis, why not see what can be
 done with rasters?
 That is what we will do in the next module!
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |editCopy| image:: /static/common/mActionEditCopy.png
-   :width: 1.5em
-.. |fileSave| image:: /static/common/mActionFileSave.png
-   :width: 1.5em
-.. |radioButtonOn| image:: /static/common/radiobuttonon.png
-   :width: 1.5em
-.. |sum| image:: /static/common/mActionSum.png
-   :width: 1.2em

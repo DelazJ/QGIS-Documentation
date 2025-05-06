@@ -30,12 +30,3 @@ locate suitable farm properties for this new residential development.
    basic_analysis
    network_analysis
    spatial_statistics
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |majorUrbanName| replace:: Swellendam

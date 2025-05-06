@@ -261,16 +261,3 @@ that QGIS can perform.
 However, you can also direct it to perform custom actions that you
 define.
 This is the subject of the next lesson.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |identify| image:: /static/common/mActionIdentify.png
-   :width: 1.5em
-.. |majorUrbanName| replace:: Swellendam
-.. |options| image:: /static/common/mActionOptions.png
-   :width: 1em

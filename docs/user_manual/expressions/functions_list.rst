@@ -1492,15 +1492,3 @@ usage (feature selection, field calculator, generic), recently applied expressio
 are added to the corresponding list (up to ten expressions), sorted from
 more to less recent.
 This makes it easy to quickly retrieve and reapply previously used expressions.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |calculateField| image:: /static/common/mActionCalculateField.png
-   :width: 1.5em
-.. |expressionSelect| image:: /static/common/mIconExpressionSelect.png
-   :width: 1.5em

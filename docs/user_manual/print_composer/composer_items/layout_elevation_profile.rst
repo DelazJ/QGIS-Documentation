@@ -88,19 +88,3 @@ in which the elevation profile plot is actually displayed:
 * a :guilabel:`Background` fill symbol
 * a :guilabel:`Border` line symbol
 * the margins from the elevation profile item border
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |copyProfileSettings| image:: /static/common/mActionCopyProfileSettings.png
-   :width: 1.5em
-.. |elevationProfile| image:: /static/common/mActionElevationProfile.png
-   :width: 1.5em
-.. |refresh| image:: /static/common/mActionRefresh.png
-   :width: 1.5em
-.. |unchecked| image:: /static/common/unchecked.png
-   :width: 1.3em

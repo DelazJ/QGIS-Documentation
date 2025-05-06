@@ -173,13 +173,3 @@ will display numbers in bold when they are a multiple of 500:
    -- is a multiple of 500
 
    @scale_value % 500 = 0
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |scaleBar| image:: /static/common/mActionScaleBar.png
-   :width: 1.5em

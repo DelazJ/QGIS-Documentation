@@ -150,31 +150,3 @@ Moreover, in this mode, you are able to add nodes to an existing shape:
 double-click on a segment and a node is added at the place you click.
 Finally, you can remove the currently selected node by
 hitting the :kbd:`Del` key.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addArrow| image:: /static/common/mActionAddArrow.png
-   :width: 1.5em
-.. |addBasicCircle| image:: /static/common/mActionAddBasicCircle.png
-   :width: 1.5em
-.. |addBasicRectangle| image:: /static/common/mActionAddBasicRectangle.png
-   :width: 1.5em
-.. |addBasicShape| image:: /static/common/mActionAddBasicShape.png
-   :width: 1.5em
-.. |addBasicTriangle| image:: /static/common/mActionAddBasicTriangle.png
-   :width: 1.5em
-.. |addNodesShape| image:: /static/common/mActionAddNodesShape.png
-   :width: 1.5em
-.. |addPolygon| image:: /static/common/mActionAddPolygon.png
-   :width: 1.5em
-.. |addPolyline| image:: /static/common/mActionAddPolyline.png
-   :width: 1.5em
-.. |degrees| unicode:: 0x00B0
-   :ltrim:
-.. |editNodesShape| image:: /static/common/mActionEditNodesShape.png
-   :width: 1.5em

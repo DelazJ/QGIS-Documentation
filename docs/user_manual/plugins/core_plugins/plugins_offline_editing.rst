@@ -62,19 +62,3 @@ To use the plugin:
    :align: center
 
    Create an offline project
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |indicatorOffline| image:: /static/common/mIndicatorOffline.png
-   :width: 1.5em
-.. |offlineEditingCopy| image:: /static/common/offline_editing_copy.png
-   :width: 1.5em
-.. |offlineEditingSync| image:: /static/common/offline_editing_sync.png
-   :width: 1.5em

@@ -273,13 +273,3 @@ like this:
    view = self.iface.layerTreeView()
    view.layerTreeModel().refreshLayerLegend(view.currentLegendNode())
    view.currentNode().setExpanded(True)
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |fileOpen| image:: /static/common/mActionFileOpen.png
-   :width: 1.5em

@@ -187,25 +187,3 @@ share the code via GitHub and much more). Main features are:
    To save the state of console's widgets you have to close the Python
    Console from the close button. This allows you to save the geometry to be
    restored to the next start.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |clearConsole| image:: /static/common/iconClearConsole.png
-   :width: 1.5em
-.. |dock| image:: /static/common/dock.png
-   :width: 1.5em
-.. |helpContents| image:: /static/common/mActionHelpContents.png
-   :width: 1.5em
-.. |options| image:: /static/common/mActionOptions.png
-   :width: 1em
-.. |runConsole| image:: /static/common/iconRunConsole.png
-   :width: 1.5em
-.. |showEditorConsole| image:: /static/common/iconShowEditorConsole.png
-   :width: 1.5em
-.. |start| image:: /static/common/mActionStart.png
-   :width: 1.5em

@@ -305,39 +305,3 @@ Spacing can greatly help denote the groupement of items in the legend and their 
 
 :guilabel:`Spacing` around and before title, groups, subgroups, symbols, labels, boxes, columns
 and lines can be customized through this dialog.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addGroup| image:: /static/common/mActionAddGroup.png
-   :width: 1.5em
-.. |addLegend| image:: /static/common/mActionAddLegend.png
-   :width: 1.5em
-.. |arrowDown| image:: /static/common/mActionArrowDown.png
-   :width: 1.5em
-.. |arrowUp| image:: /static/common/mActionArrowUp.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |collapseTree| image:: /static/common/mActionCollapseTree.png
-   :width: 1.5em
-.. |expandTree| image:: /static/common/mActionExpandTree.png
-   :width: 1.5em
-.. |expression| image:: /static/common/mIconExpression.png
-   :width: 1.5em
-.. |expressionFilter| image:: /static/common/mIconExpressionFilter.png
-   :width: 1.5em
-.. |selectNumber| image:: /static/common/selectnumber.png
-   :width: 2.8em
-.. |sum| image:: /static/common/mActionSum.png
-   :width: 1.2em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyEdit| image:: /static/common/symbologyEdit.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
-   :width: 1.5em

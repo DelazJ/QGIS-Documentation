@@ -790,34 +790,3 @@ still hidden. The next lesson will explain how to represent this data on your
 map.
 
 .. note::  Did you remember to save your map recently?
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |arrowDown| image:: /static/common/mActionArrowDown.png
-   :width: 1.5em
-.. |categorizedSymbol| image:: /static/common/rendererCategorizedSymbol.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |labelingSingle| image:: /static/common/labelingSingle.png
-   :width: 1.5em
-.. |labelmask| image:: /static/common/labelmask.png
-   :width: 1.5em
-.. |majorUrbanName| replace:: Swellendam
-.. |rendering| image:: /static/common/rendering.png
-   :width: 1.5em
-.. |symbology| image:: /static/common/symbology.png
-   :width: 2em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |unchecked| image:: /static/common/unchecked.png
-   :width: 1.3em
-.. |zoomIn| image:: /static/common/mActionZoomIn.png
-   :width: 1.5em
-.. |zoomOut| image:: /static/common/mActionZoomOut.png
-   :width: 1.5em

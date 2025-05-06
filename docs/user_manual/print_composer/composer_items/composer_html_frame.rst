@@ -136,17 +136,3 @@ following functionalities (see :numref:`figure_layout_html_breaks`):
      }
 
 * Use the :guilabel:`Update HTML` button to see the result of the style sheet settings.
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |addHtml| image:: /static/common/mActionAddHtml.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |dataDefine| image:: /static/common/mIconDataDefine.png
-   :width: 1.5em

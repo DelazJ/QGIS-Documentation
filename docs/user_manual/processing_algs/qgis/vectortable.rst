@@ -1246,25 +1246,3 @@ Python code
 .. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |arrowDown| image:: /static/common/mActionArrowDown.png
-   :width: 1.5em
-.. |arrowUp| image:: /static/common/mActionArrowUp.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |clearText| image:: /static/common/mIconClearText.png
-   :width: 1.5em
-.. |deleteAttribute| image:: /static/common/mActionDeleteAttribute.png
-   :width: 1.5em
-.. |invertSelection| image:: /static/common/mActionInvertSelection.png
-   :width: 1.5em
-.. |newAttribute| image:: /static/common/mActionNewAttribute.png
-   :width: 1.5em

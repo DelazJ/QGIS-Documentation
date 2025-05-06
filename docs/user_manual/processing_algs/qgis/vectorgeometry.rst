@@ -7481,33 +7481,3 @@ Python code
 .. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
-
-
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
-.. |arrowDown| image:: /static/common/mActionArrowDown.png
-   :width: 1.5em
-.. |arrowUp| image:: /static/common/mActionArrowUp.png
-   :width: 1.5em
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |clearText| image:: /static/common/mIconClearText.png
-   :width: 1.5em
-.. |dataDefine| image:: /static/common/mIconDataDefine.png
-   :width: 1.5em
-.. |deleteAttribute| image:: /static/common/mActionDeleteAttribute.png
-   :width: 1.5em
-.. |identify| image:: /static/common/mActionIdentify.png
-   :width: 1.5em
-.. |newAttribute| image:: /static/common/mActionNewAttribute.png
-   :width: 1.5em
-.. |remove| image:: /static/common/mActionRemove.png
-   :width: 1.5em
-.. |success| image:: /static/common/mIconSuccess.png
-   :width: 1em
-.. |taskCancel| image:: /static/common/mTaskCancel.png
-   :width: 1.5em

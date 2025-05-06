@@ -35,12 +35,6 @@ About the authors & contributors
 +----------------+----------------------------------------------------------------------+
 
 
-.. Substitutions definitions - AVOID EDITING PAST THIS LINE
-   This will be automatically updated by the find_set_subst.py script.
-   If you need to create a new substitution manually,
-   please add it also to the substitutions.txt file in the
-   source folder.
-
 .. |lerato| image:: img/lerato_nsibande.png
 .. |marcelle| image:: img/marcelle_sutton.png
 .. |otto| image:: img/otto_dassau.png
