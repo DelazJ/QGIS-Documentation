@@ -241,6 +241,8 @@ rst_prolog = r"""
       .. important::
         Translation is a community effort :ref:`you can join <translation_guidelines>`.
         This page is currently translated at |translation progress|.
+
+    .. include:: /substitutions.txt
     """
 
 # A list of warning codes to suppress arbitrary warning messages.
