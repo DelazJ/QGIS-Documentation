@@ -10,7 +10,7 @@ Texts For Include
 .. only:: html
 
   .. admonition:: Show/hide list of functions
-     :class: dropdown
+     :collapsible:
 
      .. only:: html
 
