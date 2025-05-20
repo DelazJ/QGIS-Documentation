@@ -1450,7 +1450,7 @@ Hover over a rule to preview its details.
    .. figure:: img/labelplacementrules.gif
       :align: center
 
-      Overview of labeling rules interaction
+      Overview of labeling rules interactionFF
 
 
 .. index:: Labels; Automated placement
