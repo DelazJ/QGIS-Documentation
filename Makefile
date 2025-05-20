@@ -58,7 +58,8 @@ latex:
 	# A tag -t $LANG is used in the building process to allow for dynamic
 	# settings in the conf.py. For example, for korean we need to use other
 	# latex_elements and we use a if tags.has('ko') expression to overwrite the defaults
-	$(SPHINXBUILD) -b latex -t $(LANG) "$(SOURCEDIR)" "$(BUILDDIR)/latex/$(LANG)" $(SPHINXINTLOPTS) $(0)
+	$(SPHINXBUILD) -b latex -t $(LANG) "$(SOURCEDIR)" "$(BUILDDIR)/latex/$(LANG)" $(SPHINXINTLOPTS) $(0);\
+    find "$(BUILDDIR)/latex/$(LANG)" -maxdepth 1 -type f -name '*.tex' -printf x | wc -c
 
 
 pdf: latex
@@ -87,7 +88,7 @@ pdf: latex
 			if [ "$(LATEXCOMPILER)" != "xelatex" ]  && [ -f "$$TEXFILE.dvi" ]; then \
                                 echo "Starting dvipdfmx..."; \
 				dvipdfmx -q $$TEXFILE.dvi; fi; \
-                                echo "did dvipdfmx process correctly"; \
+                        echo "did dvipdfmx process correctly"; \
 			mkdir -p ../../pdf/$(LANG); \
                         echo "let move the file"; \
 			mv $$TEXFILE.pdf ../../pdf/$(LANG)/QGIS-$(VERSION)-$$TEXFILE-$(LANG).pdf || true; \
