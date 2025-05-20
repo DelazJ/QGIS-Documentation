@@ -58,7 +58,7 @@ latex:
 	# A tag -t $LANG is used in the building process to allow for dynamic
 	# settings in the conf.py. For example, for korean we need to use other
 	# latex_elements and we use a if tags.has('ko') expression to overwrite the defaults
-	$(SPHINXBUILD) -b latex -t $(LANG) "$(SOURCEDIR)" "$(BUILDDIR)/latex/$(LANG)" $(SPHINXINTLOPTS) $(0)
+	$(SPHINXBUILD) -b latex -t $(LANG) "$(SOURCEDIR)" "$(BUILDDIR)/latex/$(LANG)" $(SPHINXINTLOPTS) $(0) --verbose
 
 
 pdf: latex
