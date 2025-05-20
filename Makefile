@@ -79,11 +79,19 @@ pdf: latex
 			cd $(BUILDDIR)/latex/$(LANG); \
 			echo $$TEXFILE; \
 			$(LATEXCOMPILER) -interaction=batchmode -shell-escape $$TEXFILE.tex; \
+                        echo "Processed nicely 1"; \
 			$(LATEXCOMPILER) -interaction=batchmode -shell-escape $$TEXFILE.tex; \
+                        echo "Processed nicely 2"; \
+			$(LATEXCOMPILER) -interaction=batchmode -shell-escape $$TEXFILE.tex; \
+                        echo "Processed nicely 3"; \
 			if [ "$(LATEXCOMPILER)" != "xelatex" ]  && [ -f "$$TEXFILE.dvi" ]; then \
+                                echo "Starting dvipdfmx..."; \
 				dvipdfmx -q $$TEXFILE.dvi; fi; \
+                                echo "did dvipdfmx process correctly"; \
 			mkdir -p ../../pdf/$(LANG); \
+                        echo "let move the file"; \
 			mv $$TEXFILE.pdf ../../pdf/$(LANG)/QGIS-$(VERSION)-$$TEXFILE-$(LANG).pdf || true; \
+                        echo "We should be done now"; \
 		done
 
 zip:
