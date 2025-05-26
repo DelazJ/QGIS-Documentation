@@ -22,79 +22,83 @@ These layers have two problems:
 
 Both of them are easily solvable with the appropriate geoalgorithms.
 
-First, we create a rectangle defining the area that we want. To do it,
-we create a layer containing the bounding box of the layer with the limits
-of the city area, and then we buffer it, so as to have a raster layer that
-covers a bit more that the strictly necessary.
+#. First, we create a rectangle defining the area that we want.
+   To do it, we create a layer containing the bounding box of the layer with the limits
+   of the city area, and then we buffer it, so as to have a raster layer that
+   covers a bit more that the strictly necessary.
 
-To calculate the bounding box , we can use the *Polygon from layer extent* algorithm
+   #. To calculate the bounding box , we can use the *Polygon from layer extent* algorithm
 
-.. figure:: img/cutting_merging/bbox.png
+      .. figure:: img/cutting_merging/bbox.png
 
-To buffer it, we use the *Fixed distance buffer* algorithm, with the following parameter values.
+   #. To buffer it, we use the *Buffer* algorithm, with the following parameter values.
 
-.. figure:: img/cutting_merging/buffer_dialog.png
+      .. figure:: img/cutting_merging/buffer_dialog.png
 
-.. warning:: Syntax changed in recent versions; set both Distance and Arc vertex to .25
+      .. warning:: Syntax changed in recent versions; set both Distance and Arc vertex to .25
 
-Here is the resulting bounding box obtained using the parameters shown above
+      .. what does the above mean?
 
-.. figure:: img/cutting_merging/buffer.png
+      Here is the resulting bounding box obtained using the parameters shown above
 
-It is a rounded box, but we can easily get the equivalent box with square angles,
-by running the *Polygon from layer extent* algorithm on it. We could have buffered
-the city limits first, and then calculate the extent rectangle, saving one step.
+      .. figure:: img/cutting_merging/buffer.png
 
-.. figure:: img/cutting_merging/buffer_squared.png
+      It is a rounded box, but we can easily get the equivalent box with square angles,
+      by running the *Polygon from layer extent* algorithm on it. We could have buffered
+      the city limits first, and then calculate the extent rectangle, saving one step.
 
-You will notice that the rasters has a different projection from the vector.
-We should therefore reproject them before proceeding further, using the
-*Warp (reproject)* tool.
+      .. figure:: img/cutting_merging/buffer_squared.png
 
-.. figure:: img/cutting_merging/warp.png
+      You will notice that the raster has a different projection from the vector.
+      We should therefore reproject them before proceeding further,
+      using the *Warp (reproject)* tool.
 
-.. note:: Recent versions have a more complex interface. Make sure at least
- one compression method is selected.
+      .. figure:: img/cutting_merging/warp.png
 
-With this layer that contains the bounding box of the raster layer that we want
-to obtain, we can crop both of the raster layers, using the *Clip raster with
-polygon* algorithm.
+      .. note:: Recent versions have a more complex interface. Make sure at least
+       one compression method is selected.
 
-.. figure:: img/cutting_merging/clip.png 
+#. With this layer that contains the bounding box of the raster layer that we want
+   to obtain, we can crop both of the raster layers, using the *Clip raster with
+   polygon* algorithm.
 
-Once the layers have been cropped, they can be merged using the SAGA *Mosaic raster layers* algorithm.
+   .. figure:: img/cutting_merging/clip.png 
 
-.. figure:: img/cutting_merging/merge.png
+#. Once the layers have been cropped, they can be merged using the SAGA *Mosaic raster layers* algorithm.
 
-.. note:: You can save time merging first and then cropping, and you will avoid
- calling the clipping algorithm twice. However, if there are several layers to
- merge and they have a rather big size, you will end up with a large layer than
- it can later be difficult to process. In that case, you might have to call the
- clipping algorithm several times, which might be time consuming, but don't worry,
- we will soon see that there are some additional tools to automate that operation.
- In this example, we just have two layers, so you shouldn't worry about that now.
+   .. use instead the GDAL --> Raster Miscellaneous --> Merge algorithm?
 
-With that, we get the final DEM we want.
+   .. figure:: img/cutting_merging/merge.png
 
-.. figure:: img/cutting_merging/finaldem.png
+   .. note:: You can save time merging first and then cropping, and you will avoid
+    calling the clipping algorithm twice. However, if there are several layers to
+    merge and they have a rather big size, you will end up with a large layer than
+    it can later be difficult to process. In that case, you might have to call the
+    clipping algorithm several times, which might be time consuming, but don't worry,
+    we will soon see that there are some additional tools to automate that operation.
+    In this example, we just have two layers, so you shouldn't worry about that now.
 
-Now it is time to compute the slope layer.
+#. With that, we get the final DEM we want.
 
-A slope layer can be computed with the *Slope, Aspect, Curvature* algorithm,
-but the DEM obtained in the last step is not suitable as input, since elevation
-values are in meters but cellsize is not expressed in meters (the layer uses a
-CRS with geographic coordinates). A reprojection is needed.
-To reproject a raster layer, the *Warp (reproject)* algorithm can be used again.
-We reproject into a CRS with meters as units (e.g. 3857), so we can then
-correctly calculate the slope, with either SAGA or GDAL.
+   .. figure:: img/cutting_merging/finaldem.png
 
-With the new DEM, slope can now be computed.
+#. Now it is time to compute the slope layer.
 
-.. figure:: img/cutting_merging/slope.png
+   A slope layer can be computed with the *Slope, Aspect, Curvature* algorithm,
+   but the DEM obtained in the last step is not suitable as input, since elevation
+   values are in meters but cellsize is not expressed in meters (the layer uses a
+   CRS with geographic coordinates). A reprojection is needed.
+   To reproject a raster layer, the *Warp (reproject)* algorithm can be used again.
+   We reproject into a CRS with meters as units (e.g. 3857), so we can then
+   correctly calculate the slope, with either SAGA or GDAL.
 
-And here is the resulting slope layer.
+   With the new DEM, slope can now be computed.
 
-.. figure:: img/cutting_merging/slopereproj.png
+   .. figure:: img/cutting_merging/slope.png
+
+   And here is the resulting slope layer.
+
+   .. figure:: img/cutting_merging/slopereproj.png
 
 The slope produced by the *Slope, Aspect, Curvature* algorithm can be expressed
 in degrees or radians; degrees are a more practical and common unit.
@@ -107,7 +111,7 @@ you could use the raster calculator that we have already used).
 Reprojecting the converted slope layer back with the *Reproject raster layer*,
 we get the final layer we wanted.
 
-.. warning:: todo: Add image
+.. .. warning:: todo: Add image
 
 The reprojection processes might have caused the final layer to contain data
 outside the bounding box that we calculated in one of the first steps.

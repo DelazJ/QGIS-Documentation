@@ -22,7 +22,6 @@ Contents:
    second_alg
    crs
    selection
-   first_saga_alg
    log
    no_data
    vector_calculator
