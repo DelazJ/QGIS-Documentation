@@ -179,8 +179,8 @@ QGIS has different raster calculators available:
 * In processing:
 
   * :menuselection:`Raster Analysis --> Raster calculator`
+  * :menuselection:`Raster Analysis --> Raster calculator (virtual)`
   * :menuselection:`GDAL --> Raster miscellaneous --> Raster calculator`
-  * :menuselection:`SAGA --> Raster calculus --> Raster calculator`
 
 Each tool is leading to the same results, but the syntax may be
 slightly different and the availability of operators may vary.
