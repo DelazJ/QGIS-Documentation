@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: QGIS Documentation 3.34\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 02:18+0000\n"
+"POT-Creation-Date: 2025-05-23 07:49+0000\n"
 "PO-Revision-Date: 2025-02-27 21:34+0000\n"
 "Last-Translator: Tomas Straupis, 2025\n"
 "Language-Team: Lithuanian (https://app.transifex.com/qgis/teams/6144/lt/)\n"
@@ -331,8 +331,12 @@ msgstr "Numatytas: ``[Kurti laikiną sluoksnį]``"
 
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:67
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:316
-msgid "Specify the output line layer for the service area. One of:"
-msgstr "Nurodykite išvesties sluoksnį aptarnavimo plotui. Vienas iš:"
+msgid ""
+"Specify the output line layer for the service area. :ref:`One of "
+"<output_parameter_widget>`:"
+msgstr ""
+"Nurodykite išvesties linijų sluoksnį aptarnavimo plotui. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 msgid "Skip Output"
@@ -361,7 +365,7 @@ msgstr "Įrašyti į duombazės lentelę..."
 #: ../../docs/user_manual/processing_algs/algs_include.rst:8
 #: ../../docs/user_manual/processing_algs/algs_include.rst:9
 msgid "The file encoding can also be changed here."
-msgstr "Šia taipogi galima pakeisti failo koduotę."
+msgstr "Čia taipogi galima pakeisti failo koduotę."
 
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:74
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:231
@@ -394,10 +398,11 @@ msgstr "Numatytas: ``[Praleisti išvestį]``"
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:79
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:330
 msgid ""
-"Specify the output point layer for the service area boundary nodes. One of:"
+"Specify the output point layer for the service area boundary nodes. "
+":ref:`One of <output_parameter_widget>`:"
 msgstr ""
-"Nurodykite išvesties taškų sluoksnį aptarnavimo ploto ribų taškams. Vienas "
-"iš:"
+"Nurodykite išvesties taškų sluoksnį aptarnavimo ploto ribiniams taškams. "
+":ref:`Vienas iš <output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:86
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:457
@@ -420,11 +425,11 @@ msgstr "``OUTPUT_NON_ROUTABLE``"
 msgid ""
 "Specify the output which will be used to store any input features which "
 "could not be routed (e.g., those which are too far from the network layer). "
-"One of:"
+":ref:`One of <output_parameter_widget>`:"
 msgstr ""
 "Nurodykite išvestį, kurioje bus saugomi bet kurie įvesties geoobjektai, iki "
 "kurių nepavyko numaršrutizuoti (pvz. kurie yra per toli nuo tinklo "
-"sluoksnio). Vienas iš:"
+"sluoksnio). :ref:`Vienas iš <output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:100
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:338
@@ -511,7 +516,7 @@ msgstr "``VALUE_FORWARD``"
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:144
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:153
 msgid "[string]"
-msgstr "[string]"
+msgstr "[tekstas]"
 
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:36
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:45
@@ -804,11 +809,91 @@ msgstr ""
 "Daugiau informacijos apie tai, kaip vykdyti apdorojimo algoritmus Pythono "
 "konsolėje rasite skyriuje :ref:`processing_console`."
 
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:259
+msgid "Service area (from point)"
+msgstr "Aptarnavimo plotas (nuo taško)"
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:260
+msgid ""
+"Returns all the edges or parts of edges of a network that can be reached "
+"within a given distance or time, starting from a point feature. This allows "
+"the evaluation of accessibility within a network, e.g., what are the places "
+"I can navigate to on a road network without spending a cost greater than a "
+"given value (the cost can be distance or time)."
+msgstr ""
+"Grąžina visas kraštines ar jų dalis tinklo, kurį galima pasiekti nurodytu "
+"atstumu ar per nurodytą laiką iš taškinio geoobjekto. Tai leidžia įvertinti "
+"pasiekiamumą tinkle, pavyzdžiui, į kokias vietas galima nuvykti kelių tinklu"
+" neišleidžiant daugiau nei nurodytą reikšmę (kaina gali būti atstumas arba "
+"laikas)."
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:281
+msgid "**Vector layer representing the network**"
+msgstr "**Vektorinis sluoksnis reprezentuojantis tinklą**"
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:294
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:565
+msgid "**Start point**"
+msgstr "**Pradžios taškas**"
+
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:295
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:566
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:695
 msgid "``START_POINT``"
 msgstr "``START_POINT``"
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:296
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:440
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:567
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:696
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:703
+msgid "[coordinates]"
+msgstr "[koordinatės]"
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:297
+msgid "Coordinate of the point to calculate the service area around."
+msgstr "Koordinatės taško, aplink kurį reikia skaičiuoti aptarnavimo plotą."
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:299
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:443
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:570
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:699
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:706
+msgid ""
+"Press the :guilabel:`...` button next to the option and click on the canvas "
+"to fill the parameter with the clicked point coordinate."
+msgstr ""
+"Spauskite greta parinkties esantį mygtuką :guilabel:`...` ir tada spauskite "
+"drobėje, kad užpildytumėte parametrą parinkto taško koordinatėmis."
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:305
+msgid "Default: 0.O"
+msgstr "Numatyta: 0.O"
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:354
+msgid ""
+"Specifies an optional limit on the distance from the start point to the "
+"network layer. If the point is further from the network than this distance "
+"an error will be raised. If not set, the point will be snapped to the "
+"nearest point on the network layer, regardless of how far away from the "
+"network it actually is."
+msgstr ""
+"Nurodo neprivalomą atstumą nuo pradžios taško iki tinklo sluoksnio. Jei "
+"taškas yra toliau nuo tinklo nei šis atstumas, bus registruojama klaida. "
+"Nenurodžius, taškas bus pritrauktas prie artimiausio taško tinklo "
+"sluoksnyje, nepriklausomai nuo to, kaip toli jis realiai yra nuo tinklo."
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:385
+msgid ""
+"Line layer representing the parts of the network that can be serviced by the"
+" start point, for the given cost."
+msgstr ""
+"Linijos sluoksnis, reprezentuojantis tinklo dalis, kurias gali aptarnauti "
+"pradžios taškas už nurodytą kainą."
+
+#: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:391
+msgid "**Algorithm ID**: ``native:serviceareafrompoint``"
+msgstr "**Algoritmo ID**: ``native:serviceareafrompoint``"
 
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:439
 #: ../../docs/user_manual/processing_algs/qgis/networkanalysis.rst:702

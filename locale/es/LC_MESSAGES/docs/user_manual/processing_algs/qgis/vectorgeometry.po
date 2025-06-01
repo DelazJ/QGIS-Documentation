@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: QGIS Documentation 3.34\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 02:45+0000\n"
+"POT-Creation-Date: 2025-05-23 07:49+0000\n"
 "PO-Revision-Date: 2025-02-27 21:35+0000\n"
 "Last-Translator: Eric Armijo, 2025\n"
 "Language-Team: Spanish (https://app.transifex.com/qgis/teams/6144/es/)\n"
@@ -1500,11 +1500,6 @@ msgstr "[la misma que la entrada]"
 msgid "Default: ``[Create temporary layer]``"
 msgstr "Predeterminado: ``[Crear capa temporal]``"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:68
-msgid "Specify the output (input copy with geometry) layer. One of:"
-msgstr ""
-"Especificar la capa de salida (copia de la entrada con geometría). Una de:"
-
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 #: ../../docs/user_manual/processing_algs/algs_include.rst:4
 msgid "Create Temporary Layer (``TEMPORARY_OUTPUT``)"
@@ -2056,8 +2051,11 @@ msgstr "**Transformado**"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6107
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6917
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7283
-msgid "Specify the output vector layer. One of:"
-msgstr "Especifica la capa vectorial saliente. Una de:"
+msgid ""
+"Specify the output vector layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Especifique la capa del vector de salida. :ref:`Una de "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:7
 msgid "Append to Layer…"
@@ -2357,12 +2355,13 @@ msgid ""
 "For certain field types, e.g. lists, this parameter helps refine the "
 "specific ``type`` of the data. It is automatically set in the GUI but may be"
 " needed if you're running the algorithm in Python or from the command line. "
-"One of:"
+":ref:`One of <output_parameter_widget>`:"
 msgstr ""
-"Para ciertos tipos de campo, por ejemplo listas, este parámetro ayuda a "
-"refinar el ``tipo`` específico de los datos. Se establece automáticamente en"
-" la GUI, pero puede ser necesario si está ejecutando el algoritmo en Python "
-"o desde la línea de comandos. Uno de:"
+"Para ciertos tipos de campos, por ejemplo, listas, este parámetro ayuda a "
+"refinar el «tipo» específico de los datos. Se establece automáticamente en "
+"la interfaz gráfica de usuario, pero puede ser necesario si se ejecuta el "
+"algoritmo en Python o desde la línea de comandos. :ref:`Uno de "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:6
 msgid "2 --- Integer list"
@@ -2418,10 +2417,6 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:385
 msgid "**Aggregated**"
 msgstr "**Agregado**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:367
-msgid "Specify the output (aggregate) layer One of:"
-msgstr "Especifique la capa de salida (agregada) Una de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:388
 msgid "Multigeometry vector layer with the aggregated values"
@@ -2506,10 +2501,6 @@ msgstr "**Perímetro**"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:464
 msgid "[vector: point, line]"
 msgstr "[vector: punto, línea]"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:444
-msgid "Specify the output (boundary) layer. One of:"
-msgstr "Especifique la capa de salida (perímetro). Una de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:465
 msgid "Boundaries from the input layer (point for line, and line for polygon)"
@@ -2621,10 +2612,6 @@ msgstr "**Límites**"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7473
 msgid "[vector: polygon]"
 msgstr "[vectorial: poligonal]"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:516
-msgid "Specify the output (bounding box) layer. One of:"
-msgstr "Especifique la capa de salida (cuadro delimitador). Uno de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:537
 msgid ""
@@ -2962,13 +2949,6 @@ msgstr ""
 msgid "**Buffered**"
 msgstr "**Buffered**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:683
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6332
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7008
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7360
-msgid "Specify the output (buffer) layer. One of:"
-msgstr "Especifica la capa saliente (buffer). Una de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:691
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2172
 msgid "Advanced parameters"
@@ -3113,10 +3093,6 @@ msgstr "**Centroides**"
 msgid "[vector: point]"
 msgstr "[vector: punto]"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:800
-msgid "Specify the output (centroid) layer. One of:"
-msgstr "Especifica la capa de salida (centroide). Una de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:821
 msgid "Output point vector layer (centroids)"
 msgstr "Capa vectorial saliente de puntos (centroides)"
@@ -3248,14 +3224,6 @@ msgstr "**Salida Válida**"
 msgid "``VALID_OUTPUT``"
 msgstr "``VALID_OUTPUT``"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:907
-msgid ""
-"Specify the vector layer to contain a copy of the valid features of the "
-"source layer. One of:"
-msgstr ""
-"Especifique la capa vectorial para que contenga una copia de las geometrías "
-"válidas de la capa fuente. Uno de:"
-
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 msgid "Skip Output"
 msgstr "Saltar salida"
@@ -3270,16 +3238,6 @@ msgstr "**Salida Inválida**"
 msgid "``INVALID_OUTPUT``"
 msgstr "``INVALID_OUTPUT``"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:919
-msgid ""
-"Vector layer containing copy of the invalid features of the source layer "
-"with the field  ``_errors`` listing the summary of the error(s) found. One "
-"of:"
-msgstr ""
-"Capa vectorial que contiene una copia de las geometrías no válidas de la "
-"capa fuente con el campo ``_errors`` que enumera el resumen de los error(es)"
-" encontrados. Uno de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:927
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:957
 msgid "**Error output**"
@@ -3289,15 +3247,6 @@ msgstr "**Salida Error**"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:958
 msgid "``ERROR_OUTPUT``"
 msgstr "``ERROR_OUTPUT``"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:932
-msgid ""
-"Point layer of the exact position of the validity problems detected with the"
-" ``message`` field describing the error(s) found. One of:"
-msgstr ""
-"Capa de puntos de la posición exacta de los problemas de validez detectados "
-"con el campo mensaje ``message`` que describe los error(es) encontrados. Uno"
-" de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:953
 msgid "**Count of errors**"
@@ -3465,12 +3414,6 @@ msgstr "**Coleccionadas**"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1130
 msgid "Vector layer with collected geometries"
 msgstr "Capa vectorial con las geometrías recopiladas"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1148
-msgid "Specify the output vector layer for the collected geometries. One of:"
-msgstr ""
-"Especifica la capa vetorial saliente para las geometrías recopiladas. Una "
-"de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1159
 msgid "**Algorithm ID**: ``native:collect``"
@@ -3932,8 +3875,9 @@ msgstr "El punto puede ser especificado clickando en el canvas del mapa."
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2722
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3002
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7081
-msgid "Specify the output layer. One of:"
-msgstr "Especificar la capa saliente. una de:"
+msgid "Specify the output layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Especifica la capa de salida. :ref:`Una de <output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1626
 msgid "The output point vector layer containing the input point."
@@ -4588,14 +4532,6 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6043
 msgid "**Updated**"
 msgstr "**Actualizado**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2297
-msgid ""
-"Specify the output vector layer (with Z values from the raster layer). One "
-"of:"
-msgstr ""
-"Especifica la capa vectorial saliente (con valores Z desde la capa ráster). "
-"Uno de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2318
 msgid "The output vector layer with Z values from the raster layer"
@@ -5578,15 +5514,6 @@ msgstr ""
 msgid "**Split**"
 msgstr "**Cortar**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3430
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3777
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3910
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5021
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5531
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6754
-msgid "Specify the output line vector layer. One of:"
-msgstr "Especifica la capa vectorial lineal de salida. Uno de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3450
 msgid "The output line vector layer split at the antimeridian."
 msgstr "La capa vectorial lineal saliente cortada en el antimeridiano."
@@ -5837,19 +5764,6 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3705
 msgid "**Parts**"
 msgstr "**Partes**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3688
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3843
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4009
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4086
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4179
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4258
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4452
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4543
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4875
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4950
-msgid "Specify the output polygon vector layer. One of:"
-msgstr "Especifica la capa vectorial poligonal saliente. Una de :"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3708
 msgid ""
@@ -6252,10 +6166,6 @@ msgstr ""
 msgid "Default: 8"
 msgstr "Preestablecido: 8"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4381
-msgid "Specify the output (offset) layer. One of:"
-msgstr "Especifica la capa saliente (compensada) Una de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4402
 msgid "Output (offset) line layer"
 msgstr "Capa saliente lineal (compensada)"
@@ -6386,11 +6296,6 @@ msgstr "**Crear punto en la superficie de cada parte**"
 msgid "If checked, a point will be created for each part of the geometry."
 msgstr ""
 "Si está marcada, un punto será creado para cada parte de la geometría."
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4616
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5096
-msgid "Specify the output point vector layer. One of:"
-msgstr "Especifica la capa vectorial saliente de puntos. Una de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4636
 msgid "The output point vector layer."
@@ -6770,10 +6675,6 @@ msgstr ":ref:`qgisaggregate`, :ref:`qgiscollect`"
 msgid "**Multiparts**"
 msgstr "**Multipartes**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5168
-msgid "Specify the output multipart vector layer. One of:"
-msgstr "Especifica la salida  de la capa vectorial multiparte. Una de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5188
 msgid "The output multipart vector layer"
 msgstr "La capa vectorial multiparte saliente"
@@ -7021,14 +6922,6 @@ msgstr "``REMOVE_EMPTY``"
 msgid "**Non null geometries**"
 msgstr "**Geometrías no nulas**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5445
-msgid ""
-"Specify the output vector layer for the non-NULL (and non-empty) geometries."
-" One of:"
-msgstr ""
-"Especificar la capa vectorial saliente para las geometrías no-NULL (y no-"
-"vacías). Una de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5453
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5478
 msgid "**Null geometries**"
@@ -7042,12 +6935,6 @@ msgstr "``NULL_OUTPUT``"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5459
 msgid "Default: ``[Skip output]``"
 msgstr "Preestablecido: ``[Omitir salida]``"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5460
-msgid ""
-"Specify the output vector layer for the NULL (and empty) geometries. One of:"
-msgstr ""
-"Especificar la capa vectorial saliente para las geometrías NULL. Una del:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5481
 msgid "Output vector layer (for NULL and, if chosen, empty geometries)"
@@ -7142,11 +7029,6 @@ msgstr ""
 msgid "**Rotated**"
 msgstr "**Rotado**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5615
-msgid "Specify the output vector layer (with rotated geometries). One of:"
-msgstr ""
-"Especifica la capa vectorial salient (con geometrías rotadas). Una de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5636
 msgid "The output vector layer with rotated geometries"
 msgstr "La capa vecotiral saliente con las geometrías rotadas"
@@ -7185,11 +7067,6 @@ msgstr "El algoritmo devuelve NULL para entidades poligonales multiparte."
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5681
 msgid "**Roundness**"
 msgstr "**Redondez**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5686
-msgid "Specify the output vector layer (with roundness field). One of:"
-msgstr ""
-"Especifica la salida de la capa vectorial (con el campo redondez). Uno de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5707
 msgid "The output vector layer with roundness value in a field"
@@ -7253,12 +7130,6 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5856
 msgid "**Segmentized**"
 msgstr "**Segmentado**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5762
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5838
-msgid "Specify the output vector layer (with segmentized geometries). One of:"
-msgstr ""
-"Especificar la capa vectorial saliente (con geometrías segmentadas). Una de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5783
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5859
@@ -7419,11 +7290,6 @@ msgstr "Capa ráster con valores M"
 msgid "The raster band from which the M values are taken"
 msgstr "La bana ráster desde la cual los valores M son tomados"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6025
-msgid "Specify the output vector layer (with updated M values). One of:"
-msgstr ""
-"Especificar la capa vectorial saliente (con valores M actualizados). Uno de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6046
 msgid "The output vector layer (with updated M values)"
 msgstr "La capa vectorial saliente (con valores M actualizados)"
@@ -7565,10 +7431,6 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6223
 msgid "**Simplified**"
 msgstr "**Simplificado**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6205
-msgid "Specify the output (simplified) vector layer. One of:"
-msgstr "Especificar la capa saliente vectorial (simplificada). Uno de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6226
 msgid "The output (simplified) vector layer"
@@ -7752,10 +7614,6 @@ msgstr "Cada nodo por debajo de este valor se suavizará"
 msgid "**Smoothed**"
 msgstr "**Suavizado**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6446
-msgid "Specify the output (smoothed) layer. One of:"
-msgstr "Especifica la capa saliente (suavizada). Una de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6467
 msgid "Output (smoothed) vector layer"
 msgstr "Capa vectorial saliente (suavizada)"
@@ -7927,11 +7785,6 @@ msgstr "7 --- Ajustar a nodos de anclaje (solo una capa)"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6597
 msgid "**Snapped geometry**"
 msgstr "**Geometría ajustada**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6579
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6679
-msgid "Specify the output (snapped) layer. One of:"
-msgstr "Especifica la capa saliente (ajustada). Una de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6600
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6700
@@ -8156,10 +8009,6 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6866
 msgid "**Subdivided**"
 msgstr "**Subdividido**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6847
-msgid "Specify the output (subdivided) vector layer. One of:"
-msgstr "Especifica la capa vectorial saliente (subdividida). Una de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6869
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7304
@@ -8403,10 +8252,6 @@ msgstr "2 --- Ambos"
 msgid "**Transect**"
 msgstr "**Transecto**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7184
-msgid "Specify the output line layer. One of:"
-msgstr "Especifica la cappa lineal saliente. Una de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7205
 msgid "Output line layer"
 msgstr "Capa lineal saliente"
@@ -8593,10 +8438,6 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7471
 msgid "**Voronoi polygons**"
 msgstr "**Polígonos Voronoi**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7453
-msgid "Specify the output layer (with the Voronoi polygons). One of:"
-msgstr "Especifique la capa de salida (con los polígonos Voronoi). Uno de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7474
 msgid "Voronoi polygons of the input point vector layer"

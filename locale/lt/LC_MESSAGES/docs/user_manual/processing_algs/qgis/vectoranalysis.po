@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: QGIS Documentation 3.34\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 02:18+0000\n"
+"POT-Creation-Date: 2025-05-23 12:16+0000\n"
 "PO-Revision-Date: 2025-02-27 21:34+0000\n"
 "Last-Translator: Tomas Straupis, 2025\n"
 "Language-Team: Lithuanian (https://app.transifex.com/qgis/teams/6144/lt/)\n"
@@ -391,8 +391,12 @@ msgstr "Numatytas: ``[Kurti laikiną sluoksnį]``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:52
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1700
-msgid "Specify the output table for the generated statistics. One of:"
-msgstr "Nurodykite išvesties lentelę sukurtai statistikai. Vienas iš:"
+msgid ""
+"Specify the output table for the generated statistics. :ref:`One of "
+"<output_parameter_widget>`:"
+msgstr ""
+"Nurodykite išvesties lentelę sukurtai statistikai. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 #: ../../docs/user_manual/processing_algs/algs_include.rst:4
@@ -417,7 +421,7 @@ msgstr "Įrašyti į duombazės lentelę..."
 #: ../../docs/user_manual/processing_algs/algs_include.rst:8
 #: ../../docs/user_manual/processing_algs/algs_include.rst:9
 msgid "The file encoding can also be changed here."
-msgstr "Šia taipogi galima pakeisti failo koduotę."
+msgstr "Čia taipogi galima pakeisti failo koduotę."
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:58
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:87
@@ -447,8 +451,12 @@ msgid "Default: ``[Save to temporary file]``"
 msgstr "Numatytas: ``[Įrašyti į laikiną failą]``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:65
-msgid "Specification of the file for the calculated statistics. One of:"
-msgstr "Paskaičiuotos statistikos failo specifikacija. Vienas iš:"
+msgid ""
+"Specification of the file for the calculated statistics. :ref:`One of "
+"<output_parameter_widget>`:"
+msgstr ""
+"Paskaičiuotos statistikos failo specifikacija. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 msgid "Skip Output"
@@ -738,6 +746,43 @@ msgstr ""
 "Daugiau informacijos apie tai, kaip vykdyti apdorojimo algoritmus Pythono "
 "konsolėje rasite skyriuje :ref:`processing_console`."
 
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:185
+msgid "Climb along line"
+msgstr "Pakilimas linija"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:187
+msgid ""
+"Calculates the total climb and descent along line geometries. The input "
+"layer must have Z values present. If Z values are not available, the  "
+":ref:`qgissetzfromraster` algorithm may be used to add Z values from a DEM "
+"layer."
+msgstr ""
+"Skaičiuoja bendrą pakilimą ar nusileidimą palei linijos geometriją. Įvesties"
+" sluoksnis turi turėti Z reikšmes. Jei Z reikšmių nėra, galima naudoti "
+"algoritmą :ref:`qgissetzfromraster` Z reikšmių užpildymui pagal DEM "
+"sluoksnį."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:192
+msgid ""
+"The output layer is a copy of the input layer with additional fields that "
+"contain the total climb (``climb``), total descent (``descent``), the "
+"minimum elevation (``minelev``) and the maximum elevation (``maxelev``) for "
+"each line geometry. If the input layer contains fields with the same names "
+"as these added fields, they will be renamed (field names will be altered to "
+"\"name_2\", \"name_3\", etc, finding the first non-duplicate name)."
+msgstr ""
+"Išvesties sluoksnis yra įvesties sluoksnio kopija su papildomai laukais, "
+"kuriuose yra bendras pakilimas (``climb``), bendras nusileidimas "
+"(``descent``), minimalus aukštis (``minelev``) ir maksimalus aukštis "
+"(``maxelev``) kiekvienai linijos geometrijai. Jei įvesties sluoksnyje yra "
+"laukai su tokiais pačiais pavadinimais, kaip nurodyti, jie bus pervadinti "
+"(laukų pavadinimai bus pakeisti į \"pavadinimas_2\", \"pavadinimas_3\", ir "
+"t.t., randant pirmą nepasikartojantį pavadinimą)."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:211
+msgid "**Line layer**"
+msgstr "**Linijų sluoksnis**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:212
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:410
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:527
@@ -766,21 +811,82 @@ msgstr "``INPUT``"
 msgid "[vector: line]"
 msgstr "[vektorius: linija]"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:214
+msgid "Line layer to calculate the climb for. Must have Z values"
+msgstr ""
+"Linijų sluoksnis, kuriam reikia skaičiuoti pakilimą. Privalo turėti Z "
+"reikšmes"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:215
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:237
+msgid "**Climb layer**"
+msgstr "**Pakilimo sluoksnis**"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:220
+msgid ""
+"Specification of the output (line) layer. :ref:`One of "
+"<output_parameter_widget>`:"
+msgstr ""
+"Išvesties (linijų) sluoksnio specifikacija. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:240
+msgid ""
+"Line layer containing new attributes with the results from climb "
+"calculations."
+msgstr "Linijų sluoksnis su naujais pakilimo skaičiavimo atributais."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:242
+msgid "**Total climb**"
+msgstr "**Bendras pakilimas**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:243
 msgid "``TOTALCLIMB``"
 msgstr "``TOTALCLIMB``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:245
+msgid "The sum of the climb for all the line geometries in the input layer"
+msgstr "Pakilimo suma visoms įvesties sluoksnio geometrijoms"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:247
+msgid "**Total descent**"
+msgstr "**Bendras nusileidimas**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:248
 msgid "``TOTALDESCENT``"
 msgstr "``TOTALDESCENT``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:250
+msgid "The sum of the descent for all the line geometries in the input layer"
+msgstr "Nusileidimo suma visoms įvesties sluoksnio geometrijoms"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:252
+msgid "**Minimum elevation**"
+msgstr "**Minimalus aukštis**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:253
 msgid "``MINELEVATION``"
 msgstr "``MINELEVATION``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:255
+msgid "The minimum elevation for the geometries in the layer"
+msgstr "Minimalus sluoksnio geometrijų aukštis"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:256
+msgid "**Maximum elevation**"
+msgstr "**Maksimalus aukštis**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:257
 msgid "``MAXELEVATION``"
 msgstr "``MAXELEVATION``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:259
+msgid "The maximum elevation for the geometries in the layer"
+msgstr "Maksimalus sluoksnio geometrijų aukštis"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:264
+msgid "**Algorithm ID**: ``qgis:climbalongline``"
+msgstr "**Algoritmo ID**: ``qgis:climbalongline``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1918
 msgid "checkbox"
@@ -829,6 +935,10 @@ msgstr "[vector: point]"
 msgid "``WEIGHT``"
 msgstr "``WEIGHT``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:328
+msgid "**Class field**"
+msgstr "**Klasės laukas**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:331
 msgid "``CLASSFIELD``"
 msgstr "``CLASSFIELD``"
@@ -850,7 +960,14 @@ msgstr "``FIELD``"
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1864
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1870
 msgid "[string]"
-msgstr "[string]"
+msgstr "[tekstas]"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:349
+msgid ""
+"Specification of the output layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Išvesties sluoksnio specifikacija. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:7
 msgid "Append to Layer…"
@@ -982,8 +1099,12 @@ msgid "``NEAREST_POINTS``"
 msgstr "``NEAREST_POINTS``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:578
-msgid "Specification of the output vector layer. One of:"
-msgstr "Išvesties vektorinio sluoksnio specifikacija. Vienas iš:"
+msgid ""
+"Specification of the output vector layer. :ref:`One of "
+"<output_parameter_widget>`:"
+msgstr ""
+"Išvesties vektorinio sluoksnio specifikacija. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:645
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:649
@@ -1102,14 +1223,25 @@ msgstr "``POINT_COUNT``"
 msgid "``Z_SCORE``"
 msgstr "``Z_SCORE``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1363
+msgid "The input layer."
+msgstr "Įvesties sluoksnis."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1364
+msgid "**Overlay layers**"
+msgstr "**Perdengimo sluoksniai**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1365
 msgid "``LAYERS``"
 msgstr "``LAYERS``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1373
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1497
-msgid "Specify the output vector layer. One of:"
-msgstr "Nurodykite išvesties vektorinį sluoksnį. Vienas iš:"
+msgid ""
+"Specify the output vector layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Nurodykite išvesties vektorinį sluoksnį :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1391
 msgid "**Grid size**"

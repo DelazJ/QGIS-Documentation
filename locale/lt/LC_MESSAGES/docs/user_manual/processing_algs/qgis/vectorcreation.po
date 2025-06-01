@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: QGIS Documentation 3.34\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 12:20+0000\n"
+"POT-Creation-Date: 2025-05-23 07:49+0000\n"
 "PO-Revision-Date: 2025-02-27 21:33+0000\n"
 "Last-Translator: Tomas Straupis, 2025\n"
 "Language-Team: Lithuanian (https://app.transifex.com/qgis/teams/6144/lt/)\n"
@@ -451,9 +451,12 @@ msgid "Default: ``[Create temporary layer]``"
 msgstr "Numatytas: ``[Kurti laikiną sluoksnį]``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:72
-msgid "Specify the output line layer with offset features. One of:"
+msgid ""
+"Specify the output line layer with offset features. :ref:`One of "
+"<output_parameter_widget>`:"
 msgstr ""
-"Nurodykite išvesties linijų sluoksnį su paslinktais geoobjektais. Vienas iš:"
+"Nurodykite išvesties linijų sluoksnį su paslinktais geoobjektais. "
+":ref:`Vienas iš <output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 #: ../../docs/user_manual/processing_algs/algs_include.rst:4
@@ -789,10 +792,11 @@ msgstr "[toks pat, kaip įvestis]"
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:234
 msgid ""
 "Output vector layer with translated (moved) copies of the features. The "
-"original features are also copied. One of:"
+"original features are also copied. :ref:`One of <output_parameter_widget>`:"
 msgstr ""
-"Išvesties vektorinis sluoksnis su pakeistomis (paslinktomis) geoobjektų "
-"kopijomis. Nukopijuojami ir pradiniai geoobjektai. Vienas iš:"
+"Išvesties linijų sluoksnis su pakeistomis (pastumtomis) geoobjektų "
+"kopijomis. Originalūs geoobjektai irgi nukopijuojami. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:256
 msgid ""
@@ -806,9 +810,80 @@ msgstr ""
 msgid "**Algorithm ID**: ``native:arraytranslatedfeatures``"
 msgstr "**Algoritmo ID**: ``native:arraytranslatedfeatures``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:273
+msgid "Create grid"
+msgstr "Kurti tinklelį"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:274
+msgid ""
+"Creates a vector layer with a grid covering a given extent. Grid cells can "
+"have different shapes:"
+msgstr ""
+"Sukuria vektorinį sluoksnį su tinkleliu, dengiančiu nurodytą apimtį. "
+"Tinklelio celės gali būti įvairių formų:"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:280
+msgid ""
+"Different grid cell shapes applied to the same extent, without overlaps"
+msgstr ""
+"Skirtingos tinklelio celių formos, taikomos tai pačiai apimčiai, be "
+"persidengimų"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:282
+msgid ""
+"The size and/or placement of each element in the grid is defined using a "
+"horizontal and vertical spacing. The CRS of the output layer must be "
+"defined. The grid extent and the spacing values must be expressed in the "
+"coordinates and units of this CRS."
+msgstr ""
+"Kiekvieno tinklelio elemento dydis ir/ar vieta nurodoma naudojant "
+"horizontalų ir vertikalų atstumą. Reikia nurodyti išvesties sluoksnio CRS. "
+"Tinklelio apimties ir tarpų reikšmės turi būti išreikštos CRS koordinatėmis "
+"ir vienetais."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:288
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:969
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1078
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1344
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1773
+msgid "**Default menu**: :menuselection:`Vector --> Research Tools`"
+msgstr "**Numatytas meniu**: :menuselection:`Vektorius --> Tyrimo įrankiai`"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:302
+msgid "**Grid type**"
+msgstr "**Tinklelio tipas**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:303
 msgid "``TYPE``"
 msgstr "``TYPE``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:307
+msgid "Shape of the grid. One of:"
+msgstr "Tinklelio forma. Vienas iš:"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:309
+msgid "0 --- Point"
+msgstr "0 --- Taškas"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:310
+msgid "1 --- Line"
+msgstr "1 --- Linija"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:311
+msgid "2 --- Rectangle (polygon)"
+msgstr "2 --- Stačiakampis (poligonas)"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:312
+msgid "3 --- Diamond (polygon)"
+msgstr "3 --- Deimantas (poligonas)"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:313
+msgid "4 --- Hexagon (polygon)"
+msgstr "4 --- Šešiakampis (poligonas)"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:315
+msgid "**Grid extent**"
+msgstr "**Tinklelio apimtis**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:316
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:986
@@ -821,6 +896,10 @@ msgstr "``EXTENT``"
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1789
 msgid "[extent]"
 msgstr "[apimtis]"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:318
+msgid "Extent of the grid"
+msgstr "Tinklelio apimtis"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 msgid "Available methods are:"
@@ -865,21 +944,57 @@ msgstr ""
 msgid "Enter the coordinates as ``xmin, xmax, ymin, ymax``"
 msgstr "Įveskite koordinates kaip ``xmin, xmax, ymin, ymax``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:324
+msgid "**Horizontal spacing**"
+msgstr "**Horizontalus dydis**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:325
 msgid "``HSPACING``"
 msgstr "``HSPACING``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:329
+msgid "Size of a grid cell on the X-axis"
+msgstr "Tinklelio celės dydis X-ašyje"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:330
+msgid "**Vertical spacing**"
+msgstr "**Vertikalus dydis**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:331
 msgid "``VSPACING``"
 msgstr "``VSPACING``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:335
+msgid "Size of a grid cell on the Y-axis"
+msgstr "Tinklelio celės dydis Y-ašyje"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:336
+msgid "**Horizontal overlay**"
+msgstr "**Horizontalus persidengimas**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:337
 msgid "``HOVERLAY``"
 msgstr "``HOVERLAY``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:341
+msgid "Overlay distance between two consecutive grid cells on the X-axis"
+msgstr "Persidengimo tarp dviejų greta esančių tinklelio celių dydis X ašyje."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:343
+msgid "**Vertical overlay**"
+msgstr "**Vertikalus persidengimas**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:344
 msgid "``VOVERLAY``"
 msgstr "``VOVERLAY``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:348
+msgid "Overlay distance between two consecutive grid cells on the Y-axis"
+msgstr "Persidengimo tarp dviejų greta esančių tinklelio celių dydis Y ašyje."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:350
+msgid "**Grid CRS**"
+msgstr "**Tinklelio CRS**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:351
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1823
@@ -892,6 +1007,57 @@ msgstr "``CRS``"
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1824
 msgid "[crs]"
 msgstr "[crs]"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:354
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1010
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1826
+msgid "Default: *Project CRS*"
+msgstr "Numatyta: *Projekto CRS*"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:355
+msgid "Coordinate reference system to apply to the grid"
+msgstr "Tinkleliui taikoma koordinačių atskaitos sistema"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:356
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:378
+msgid "**Grid**"
+msgstr "**Tinklelis**"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:361
+msgid "Resulting vector grid layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Gautas vektorinis tinklelio sluoksnis. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:381
+msgid ""
+"Resulting vector grid layer. The output geometry type (point, line or "
+"polygon) depends on the :guilabel:`Grid type`. Features are created from top"
+" to bottom, left to right. The attribute table is filled with:"
+msgstr ""
+"Gautas vektorinis tinklelio sluoksnis. Išvesties geometrijų tipas (taškas, "
+"linija ar poligonas) priklauso nuo :guilabel:`Tinklelio tipo`. Geoobjektai "
+"kuriami nuo viršaus žemyn ir iš kairės į dešinę. Atributų lentelė užpildoma:"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:386
+msgid "an ``id``"
+msgstr "``id``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:387
+msgid "coordinates on the ``left``, ``right``, ``top`` and ``bottom`` sides"
+msgstr "kraštų koordinatės ``left``, ``right``, ``top`` ir ``bottom``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:388
+msgid ""
+"and their placement in the grid: ``row_index`` and ``column_index`` "
+"(available for point, rectangle and hexagon grid types)"
+msgstr ""
+"vieta tinklelyje: ``row_index`` ir ``column_index`` (pateikiama taško, "
+"stačiakampio ir šešiakampio tinklelio tipams)"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:394
+msgid "**Algorithm ID**: ``native:creategrid``"
+msgstr "**Algoritmo ID**: ``native:creategrid``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:427
 msgid "[vector: any]"
@@ -948,6 +1114,10 @@ msgstr "**Paskirties CRS**"
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1007
 msgid "``TARGET_CRS``"
 msgstr "``TARGET_CRS``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:453
+msgid "Default: ``EPSG:4326``"
+msgstr "Numatytoji: ``EPSG:4326``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:459
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:481
@@ -1021,6 +1191,12 @@ msgstr "Įvesties poligonų vektorinis sluoksnis"
 msgid "``FOLDER``"
 msgstr "``FOLDER``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:669
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:815
+#: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:842
+msgid "[folder]"
+msgstr "[aplankas]"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:672
 msgid "``RECURSIVE``"
 msgstr "``RECURSIVE``"
@@ -1086,6 +1262,14 @@ msgstr "``GROUP_EXPRESSION``"
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:841
 msgid "``OUTPUT_TEXT_DIR``"
 msgstr "``OUTPUT_TEXT_DIR``"
+
+#: ../../docs/user_manual/processing_algs/algs_include.rst:4
+msgid "Save to a Temporary Directory"
+msgstr "Įrašyti į laikiną aplanką"
+
+#: ../../docs/user_manual/processing_algs/algs_include.rst:5
+msgid "Save to Directory"
+msgstr "Įrašyti į aplanką"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:891
 msgid ":ref:`qgisrandompointsonlines`"
@@ -1246,7 +1430,7 @@ msgstr "``FIELD_NAME``"
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1641
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1715
 msgid "[string]"
-msgstr "[string]"
+msgstr "[tekstas]"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorcreation.rst:1797
 msgid "``SPACING``"

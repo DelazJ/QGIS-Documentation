@@ -135,7 +135,7 @@ msgstr "``DATABASE``"
 #: ../../docs/user_manual/processing_algs/qgis/database.rst:551
 #: ../../docs/user_manual/processing_algs/qgis/database.rst:608
 msgid "[string]"
-msgstr "[string]"
+msgstr "[tekstas]"
 
 #: ../../docs/user_manual/processing_algs/qgis/database.rst:44
 #: ../../docs/user_manual/processing_algs/qgis/database.rst:53

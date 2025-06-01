@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: QGIS Documentation 3.34\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 02:45+0000\n"
+"POT-Creation-Date: 2025-05-23 07:49+0000\n"
 "PO-Revision-Date: 2025-02-27 21:35+0000\n"
 "Last-Translator: Tomas Straupis, 2025\n"
 "Language-Team: Lithuanian (https://app.transifex.com/qgis/teams/6144/lt/)\n"
@@ -1495,9 +1495,12 @@ msgid "Default: ``[Create temporary layer]``"
 msgstr "Numatytas: ``[Kurti laikiną sluoksnį]``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:68
-msgid "Specify the output (input copy with geometry) layer. One of:"
+msgid ""
+"Specify the output (input copy with geometry) layer. :ref:`One of "
+"<output_parameter_widget>`:"
 msgstr ""
-"Nurodykite išvesties (įvesties kopija su geometrija) sluoksnį. Vienas iš:"
+"Nurodykite išvesties (įvesties kopijos su geometrija) sluoksnį. :ref:`Vienas"
+" iš <output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 #: ../../docs/user_manual/processing_algs/algs_include.rst:4
@@ -2005,7 +2008,7 @@ msgstr ""
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:189
 msgid "**Rotation around z-axis (degrees counter-clockwise)**"
-msgstr "**Sukimas aplink z-aš (laipsniai prieš laikrodžio rodyklę)**"
+msgstr "**Sukimas aplink z-ašį (laipsniai prieš laikrodžio rodyklę)**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:190
 msgid "``ROTATION_Z``"
@@ -2052,8 +2055,11 @@ msgstr "**Transformuotas**"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6107
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6917
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7283
-msgid "Specify the output vector layer. One of:"
-msgstr "Nurodykite išvesties vektorinį sluoksnį. Vienas iš:"
+msgid ""
+"Specify the output vector layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Nurodykite išvesties vektorinį sluoksnį :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:7
 msgid "Append to Layer…"
@@ -2376,12 +2382,12 @@ msgid ""
 "For certain field types, e.g. lists, this parameter helps refine the "
 "specific ``type`` of the data. It is automatically set in the GUI but may be"
 " needed if you're running the algorithm in Python or from the command line. "
-"One of:"
+":ref:`One of <output_parameter_widget>`:"
 msgstr ""
 "Kai kuriems laukų tipams, pvz. sąrašams, šis parametras padeda geriau "
 "apibrėžti kai kurių duomenų ``type``. Jis automatiškai nustatomas GUI, bet "
 "gali būti naudingas, jei jūs paleidžiate algoritmą Python'e arba komandinėje"
-" eilutėje. Vienas iš:"
+" eilutėje. :ref:`Vienas iš <output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:6
 msgid "2 --- Integer list"
@@ -2438,8 +2444,12 @@ msgid "**Aggregated**"
 msgstr "**Agreguoti**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:367
-msgid "Specify the output (aggregate) layer One of:"
-msgstr "Nurodykite išvesties (agreguotą) sluoksnį. Vienas iš:"
+msgid ""
+"Specify the output (aggregate) layer :ref:`One of "
+"<output_parameter_widget>`:"
+msgstr ""
+"Nurodykite išvesties (agreguotą) sluoksnį :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:388
 msgid "Multigeometry vector layer with the aggregated values"
@@ -2452,6 +2462,39 @@ msgstr "**Algoritmo ID**: ``native:aggregate``"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:403
 msgid "Boundary"
 msgstr "Ribos"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:404
+msgid ""
+"Returns the closure of the combinatorial boundary of the input geometries "
+"(i.e. the topological boundary of the geometry)."
+msgstr ""
+"Grąžina įvesties geometrijų kombinatorinių ribų uždarą lotą (t.y. "
+"geometrinos topologinę ribą)."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:407
+msgid "Only for polygon and line layers."
+msgstr "Tik poligonų ir linijų sluoksniams"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:409
+msgid ""
+"For **polygon geometries** , the boundary consists of all the lines making "
+"up the rings of the polygon."
+msgstr ""
+"**Poligonų geometrijų** riba sudaryta iš visų linijų, sudarančių poligono "
+"žiedus."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:415
+msgid "Boundaries (black dashed line) of the source polygon layer"
+msgstr "Pradinio poligonų sluoksnio ribos (juodos punktyrinės linijos)"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:417
+msgid "For **lines geometries**, the boundaries are their end points."
+msgstr "**Linijų geometrijų“ ribos yra jų pabaigos taškai."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:422
+msgid "Boundary layer (red points) for lines. In yellow a selected feature."
+msgstr ""
+"Linijų ribų sluoksnis (raudoni taškai). Geltonas - parinktas geoobjektas."
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:437
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:509
@@ -2467,10 +2510,45 @@ msgstr "Ribos"
 msgid "[vector: line, polygon]"
 msgstr "[vektorius: linija, poligonas]"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:438
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:510
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1952
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2043
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3601
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4518
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4685
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5749
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5824
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6179
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6420
+msgid "Input line or polygon vector layer"
+msgstr "Įvesties linijų ar poligonų vektorinis sluoksnis"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:439
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:462
 msgid "**Boundary**"
 msgstr "**Riba**"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:441
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:464
+msgid "[vector: point, line]"
+msgstr "[vektorius: taškai, linijos]"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:444
+msgid ""
+"Specify the output (boundary) layer. :ref:`One of "
+"<output_parameter_widget>`:"
+msgstr ""
+"Nurodykite išvesties (ribų) sluoksnį. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:465
+msgid "Boundaries from the input layer (point for line, and line for polygon)"
+msgstr "Įvesties ribų sluoksnis (taškai linijoms, linija poligonams)"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:471
+msgid "**Algorithm ID**: ``native:boundary``"
+msgstr "**Algoritmo ID**: ``native:boundary``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:494
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4057
@@ -2926,6 +3004,10 @@ msgstr "``ANGLE``"
 msgid ":ref:`qgispointtolayer`"
 msgstr ":ref:`qgispointtolayer`"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1521
+msgid "**Extent (xmin, xmax, ymin, ymax)**"
+msgstr "**Apimtis (xmin, xmax, ymin, ymax)**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1523
 msgid "[extent]"
 msgstr "[apimtis]"
@@ -2982,6 +3064,18 @@ msgstr "**Apimtis**"
 msgid ":ref:`qgisextenttolayer`"
 msgstr ":ref:`qgisextenttolayer`"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1593
+msgid "[coordinates]"
+msgstr "[koordinatės]"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1605
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2722
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3002
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7081
+msgid "Specify the output layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Nurodykite išvesties sluoksnį. :ref:`Vienas iš <output_parameter_widget>`:"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1673
 msgid "``AZIMUTH``"
 msgstr "``AZIMUTH``"
@@ -3015,6 +3109,15 @@ msgstr "Pasirinktinis"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1703
 msgid "``INNER_RADIUS``"
 msgstr "``INNER_RADIUS``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1775
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4864
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:5348
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6191
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6516
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:7433
+msgid "**Tolerance**"
+msgstr "**Tolerancija**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:1778
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:4865
@@ -3214,6 +3317,11 @@ msgstr "``END_DISTANCE``"
 msgid "``SUMMARIES``"
 msgstr "``SUMMARIES``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2690
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2970
+msgid "Default: [0]"
+msgstr "Numatytas: [0]"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2712
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2992
 msgid "``COLUMN_PREFIX``"
@@ -3223,7 +3331,7 @@ msgstr "``COLUMN_PREFIX``"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2807
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:2993
 msgid "[string]"
-msgstr "[string]"
+msgstr "[tekstas]"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3083
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3184
@@ -3242,6 +3350,10 @@ msgstr ":ref:`qgischeckvalidity`"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3493
 msgid "``OUTPUT_GEOMETRY``"
 msgstr "``OUTPUT_GEOMETRY``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3503
+msgid "1 --- Line"
+msgstr "1 --- Linija"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3507
 msgid "``WITH_Z``"
@@ -3279,6 +3391,11 @@ msgstr "[skaičius: sveikas skaičius] |dataDefine|"
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3743
 msgid ":ref:`qgisextendlines`"
 msgstr ":ref:`qgisextendlines`"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3905
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3927
+msgid "**Merged**"
+msgstr "**Sulietas**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:3965
 msgid ":ref:`qgisminimumenclosingcircle`"
@@ -3408,6 +3525,11 @@ msgstr ""
 ":ref:`qgiscoveragesimplify`, :ref:`qgissmoothgeometry`, "
 ":ref:`qgisdensifygeometries`, :ref:`qgisdensifygeometriesgivenaninterval`"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6200
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6223
+msgid "**Simplified**"
+msgstr "**Supaprastinta**"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6252
 msgid ":ref:`qgisbuffer`"
 msgstr ":ref:`qgisbuffer`"
@@ -3433,6 +3555,10 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6422
 msgid "``ITERATIONS``"
 msgstr "``ITERATIONS``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6432
+msgid "Default: 0.25"
+msgstr "Numatyta: 0.25"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectorgeometry.rst:6436
 msgid "``MAX_ANGLE``"

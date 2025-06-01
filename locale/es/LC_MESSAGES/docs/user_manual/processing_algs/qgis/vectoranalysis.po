@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: QGIS Documentation 3.34\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 02:18+0000\n"
+"POT-Creation-Date: 2025-05-23 12:16+0000\n"
 "PO-Revision-Date: 2025-02-27 21:34+0000\n"
 "Last-Translator: Eric Armijo, 2025\n"
 "Language-Team: Spanish (https://app.transifex.com/qgis/teams/6144/es/)\n"
@@ -373,12 +373,6 @@ msgstr "[vector: tabla]"
 msgid "Default: ``[Create temporary layer]``"
 msgstr "Predeterminado: ``[Crear capa temporal]``"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:52
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1700
-msgid "Specify the output table for the generated statistics. One of:"
-msgstr ""
-"Especifique la tabla de salida para las estadísticas generadas. Uno de:"
-
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 #: ../../docs/user_manual/processing_algs/algs_include.rst:4
 msgid "Create Temporary Layer (``TEMPORARY_OUTPUT``)"
@@ -425,10 +419,6 @@ msgstr "[html]"
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:64
 msgid "Default: ``[Save to temporary file]``"
 msgstr "Predeterinado: ``[Save to temporary file]``"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:65
-msgid "Specification of the file for the calculated statistics. One of:"
-msgstr "Especificación del archivo para las estadísticas calculadas. Uno de:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 msgid "Skip Output"
@@ -789,10 +779,6 @@ msgstr "Capa lineal sobre la cual calcular el ascenso. Debe tener valores Z"
 msgid "**Climb layer**"
 msgstr "**Capa de ascenso**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:220
-msgid "Specification of the output (line) layer. One of:"
-msgstr "Especificación de la capa de salida (línea). Uno de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:240
 msgid ""
 "Line layer containing new attributes with the results from climb "
@@ -1044,8 +1030,11 @@ msgid "The name of the field to store the count of points"
 msgstr "El nombre del campo donde almacenar el número de puntos"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:349
-msgid "Specification of the output layer. One of:"
-msgstr "Especificación de la capa saliente. Una de:"
+msgid ""
+"Specification of the output layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Especificación de la capa de salida. :ref:`Una de "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:7
 msgid "Append to Layer…"
@@ -1164,12 +1153,6 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1643
 msgid "**Clusters**"
 msgstr "**Clusters**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:431
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1591
-msgid "Specify the vector layer for the result of the clustering. One of:"
-msgstr ""
-"Especifique la capa vectorial para las entidades seleccionadas. Una de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:438
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:896
@@ -1433,8 +1416,12 @@ msgid "**Distance matrix**"
 msgstr "**Matriz de distancia**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:578
-msgid "Specification of the output vector layer. One of:"
-msgstr "Especificación de la capa vectorial saliente. Una de:"
+msgid ""
+"Specification of the output vector layer. :ref:`One of "
+"<output_parameter_widget>`:"
+msgstr ""
+"Especificación de la capa vectorial de salida. :ref:`Una de "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:598
 msgid ""
@@ -1572,13 +1559,6 @@ msgstr "4 --- Unidades de capa"
 msgid "**Hub distance**"
 msgstr "**Distancia al centro**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:675
-msgid ""
-"Specify the output line vector layer connecting the matching points. One of:"
-msgstr ""
-"Especifique la capa de vector de línea de salida que conecta los puntos "
-"coincidentes. Uno de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:696
 msgid ""
 "Line vector layer with the attributes of the input features, the identifier "
@@ -1610,12 +1590,6 @@ msgstr ""
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:720
 msgid ":ref:`qgisdistancetonearesthublinetohub`, :ref:`qgisjoinbynearest`"
 msgstr ":ref:`qgisdistancetonearesthublinetohub`, :ref:`qgisjoinbynearest`"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:767
-msgid "Specify the output point vector layer with the nearest hub. One of:"
-msgstr ""
-"Especifique la capa vectorial de puntos de salida con el centro más cercano."
-" Uno de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:788
 msgid ""
@@ -1794,10 +1768,6 @@ msgstr ""
 msgid "**Hub lines**"
 msgstr "**Líneas de centro**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:889
-msgid "Specify the output hub line vector layer. One of:"
-msgstr "Especifica la capa vectorial lineal de salida. Uno de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:907
 msgid "**Distance between vertices (geodesic lines only)**"
 msgstr "**Distancia entre vértices (solo líneas geodésicas)**"
@@ -1901,12 +1871,6 @@ msgstr "[vectorial: igual que la entrada]"
 msgid "Default:``[Create temporary layer]``"
 msgstr "Predeterminado: ``[Create temporary layer]``"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:996
-msgid "Specify the output vector layer for generated the clusters. One of:"
-msgstr ""
-"Especifica la capa vectorial saliente para entidades no coincidentes. Una "
-"de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1043
 msgid ""
 "Vector layer containing the original features with fields specifying the "
@@ -1943,11 +1907,6 @@ msgstr "``FIELDS``"
 msgid "**Unique values**"
 msgstr "**Valores únicos**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1090
-msgid "Specify the summary table layer with unique values. One of:"
-msgstr ""
-"Especifique la capa de la tabla de resumen con valores únicos. Uno de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1096
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1125
 msgid "**HTML report**"
@@ -1957,14 +1916,6 @@ msgstr "**Informe HTML**"
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1280
 msgid "Default:``[Save to temporary file]``"
 msgstr "Predeterminado: ``[Save to temporary file]``"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1103
-msgid ""
-"HTML report of unique values in the :menuselection:`Processing --> Results "
-"viewer`. One of:"
-msgstr ""
-"Informe HTML de valores únicos en  :menuselection:`Processing --> Results "
-"viewer`. Uno de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1124
 msgid "Summary table layer with unique values"
@@ -2071,10 +2022,6 @@ msgstr "Campo único sobre el que se realizará el cálculo de la media"
 msgid "**Mean coordinates**"
 msgstr "**Coordenadas medias**"
 
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1199
-msgid "Specify the (point vector) layer for the result. One of:"
-msgstr "Especifique la capa (vector de punto) para el resultado. Uno de:"
-
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1219
 msgid "Resulting point(s) layer"
 msgstr "Capa de punto(s) resultante"
@@ -2144,11 +2091,6 @@ msgstr "Capa vectorial de puntos para calcular las estadísticas"
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1299
 msgid "**Nearest neighbour**"
 msgstr "**Vecino mas próximo**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1281
-msgid "Specification of the HTML file for the computed statistics. One of:"
-msgstr ""
-"Especificación del archivo HTML para las estadísticas calculadas. Uno de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1302
 msgid "HTML file with the computed statistics"
@@ -2248,8 +2190,11 @@ msgstr "**Superposición**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1373
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1497
-msgid "Specify the output vector layer. One of:"
-msgstr "Especifica la capa vectorial saliente. Una de:"
+msgid ""
+"Specify the output vector layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Especifique la capa del vector de salida. :ref:`Una de "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1391
 msgid "**Grid size**"
@@ -2760,12 +2705,6 @@ msgstr "Nombre del campo para el recuento de líneas"
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1896
 msgid "**Line length**"
 msgstr "**Longitud de Línea**"
-
-#: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1879
-msgid "Specify the output polygon layer with generated statistics. One of:"
-msgstr ""
-"Especifique la capa de polígono de salida con las estadísticas generadas. "
-"Uno de:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectoranalysis.rst:1899
 msgid "Polygon output layer with fields of lines length and line count"

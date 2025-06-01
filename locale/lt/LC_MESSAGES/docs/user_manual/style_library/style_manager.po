@@ -5,9 +5,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 # 
 # Translators:
-# Tomas Straupis, 2025
 # Harrissou Sant-anna, 2025
 # Transifex Bot <>, 2025
+# Tomas Straupis, 2025
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-27 20:20+0100\n"
 "PO-Revision-Date: 2025-02-27 21:34+0000\n"
-"Last-Translator: Transifex Bot <>, 2025\n"
+"Last-Translator: Tomas Straupis, 2025\n"
 "Language-Team: Lithuanian (https://app.transifex.com/qgis/teams/6144/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,9 +40,59 @@ msgstr ""
 msgid "The Style Manager"
 msgstr "Stilių tvarkyklė"
 
+#: ../../docs/user_manual/style_library/style_manager.rst:18
+msgid "The Style Manager dialog"
+msgstr "Stilių tvarkyklės dialogas"
+
+#: ../../docs/user_manual/style_library/style_manager.rst:20
+msgid ""
+"The :guilabel:`Style Manager` is the place where you can manage and create "
+"generic style items. These are symbols, color ramps, text formats or label "
+"settings that can be used to symbolize features, layers or print layouts. "
+"They are stored in the :file:`symbology-style.db` database under the active "
+":ref:`user profile <user_profiles>` and shared with all the project files "
+"opened with that profile. Style items can also be shared with others thanks "
+"to the export/import capabilities of the :guilabel:`Style Manager` dialog."
+msgstr ""
+":guilabel:`Stilių tvarkyklė` - tai vieta, kur jūs galite valdyti ir kurti "
+"bendrus stilių elementus. Tai yra simboliai, spalvų rampos, teksto formatai "
+"ar užrašų nustatymai, kuriuos galite naudoti simbolizuojant geoobjektus, "
+"sluoksnius ar spausdinimo išdėstymus. Jie saugomi duomenų bazėje "
+":file:`symbology-style.db`, kuri yra aktyvaus :ref:`naudotojo profilyje "
+"<user_profiles>` ir ji bendra visiems projektams, atveriamiems su tuo "
+"profiliu. Stilių elementus galima bendrinti su kitais, naudojant "
+"eksportavimo/importavimo savybes :guilabel:`Stilių tvarkyklės` dialoge."
+
+#: ../../docs/user_manual/style_library/style_manager.rst:29
+msgid "You can open that modeless dialog either:"
+msgstr "Jūs galite atverti nemodalinį dialogą:"
+
+#: ../../docs/user_manual/style_library/style_manager.rst:31
+msgid ""
+"from the :menuselection:`Settings -->` |styleManager| :menuselection:`Style "
+"Manager...` menu"
+msgstr ""
+"per meniu :menuselection:`Nustatymai -->` |styleManager| "
+":menuselection:`Stilių tvarkyklė...`"
+
 #: ../../docs/user_manual/style_library/style_manager.rst:438
 msgid "styleManager"
 msgstr "styleManager"
+
+#: ../../docs/user_manual/style_library/style_manager.rst:33
+msgid ""
+"with the |styleManager| :sup:`Style Manager` button from the Project toolbar"
+msgstr "projekto įrankinės mygtuku |styleManager| :sup:`Stilių tvarkyklė`"
+
+#: ../../docs/user_manual/style_library/style_manager.rst:34
+msgid ""
+"or with the |styleManager| :sup:`Style Manager` button from a vector "
+":menuselection:`Layer Properties -->` menu (while :ref:`configuring a symbol"
+" <symbol-selector>` or :ref:`formatting a text <showlabels>`)."
+msgstr ""
+"arba mygtuku |styleManager| :sup:`Stilių tvarkyklė` iš meniu "
+":menuselection:`Sluoksnio savybės -->` (kai :ref:`konfigūruojate simbolį "
+"<symbol-selector>` ar :ref:`formatuojate tekstą <showlabels>`)."
 
 #: ../../docs/user_manual/style_library/style_manager.rst:440
 msgid "symbologyAdd"

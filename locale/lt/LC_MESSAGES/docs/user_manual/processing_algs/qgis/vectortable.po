@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: QGIS Documentation 3.34\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 02:18+0000\n"
+"POT-Creation-Date: 2025-05-23 07:49+0000\n"
 "PO-Revision-Date: 2025-02-27 21:33+0000\n"
 "Last-Translator: Tomas Straupis, 2025\n"
 "Language-Team: Lithuanian (https://app.transifex.com/qgis/teams/6144/lt/)\n"
@@ -518,10 +518,12 @@ msgid "Default: ``[Create temporary layer]``"
 msgstr "Numatytas: ``[Kurti laikiną sluoksnį]``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:103
-msgid "Specify the output vector layer with the auto increment field. One of:"
+msgid ""
+"Specify the output vector layer with the auto increment field. :ref:`One of "
+"<output_parameter_widget>`:"
 msgstr ""
-"Nurodykite išvesties vektorinį sluoksnį su automatiškai didėjančiu lauku. "
-"Vienas iš:"
+"Nurodykite išvesties vektorinį sluoksnį su automatiškai didinamos reikšmės "
+"lauku. :ref:`Vienas iš <output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 #: ../../docs/user_manual/processing_algs/algs_include.rst:4
@@ -550,7 +552,7 @@ msgstr "Pridėti į sluoksnį..."
 #: ../../docs/user_manual/processing_algs/algs_include.rst:8
 #: ../../docs/user_manual/processing_algs/algs_include.rst:9
 msgid "The file encoding can also be changed here."
-msgstr "Šia taipogi galima pakeisti failo koduotę."
+msgstr "Čia taipogi galima pakeisti failo koduotę."
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:112
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:224
@@ -788,9 +790,11 @@ msgid "**Added**"
 msgstr "**Papildytas**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:216
-#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:673
-msgid "Specify the output vector layer. One of:"
-msgstr "Nurodykite išvesties vektorinį sluoksnį. Vienas iš:"
+msgid ""
+"Specify the output vector layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Nurodykite išvesties vektorinį sluoksnį :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:237
 msgid "Vector layer with new field added"
@@ -799,6 +803,42 @@ msgstr "Vektorinis sluoksnis su pridėti nauju lauku"
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:242
 msgid "**Algorithm ID**: ``native:addfieldtoattributestable``"
 msgstr "**Algoritmo ID**: ``native:addfieldtoattributestable``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:252
+msgid "Add unique value index field"
+msgstr "Pridėti unikalios reikšmės indekso lauką"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:253
+msgid "Takes a vector layer and an attribute and adds a new numeric field."
+msgstr ""
+"Nurodytam vektoriniam sluoksniui ir atributui prideda naują skaičiaus lauką."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:255
+msgid ""
+"Values in this field correspond to values in the specified attribute, so "
+"features with the same value for the attribute will have the same value in "
+"the new numeric field."
+msgstr ""
+"Šio lauko reikšmės atitinka nurodyto atributo reikšmes, taigi geoobjektai su"
+" tokia pačia atributo reikšme turės tą pačią reikšmę naujame skaičiaus "
+"lauke."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:259
+msgid ""
+"This creates a numeric equivalent of the specified attribute, which defines "
+"the same classes."
+msgstr ""
+"Tai sukuria skaitmeninį nurodyto atributo ekvivalentą, kuris apibrėžia tas "
+"pačias klases."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:280
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:376
+msgid "The input layer."
+msgstr "Įvesties sluoksnis."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:281
+msgid "**Class field**"
+msgstr "**Klasės laukas**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:282
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:655
@@ -815,9 +855,46 @@ msgstr "``FIELD``"
 msgid "[tablefield: any]"
 msgstr "[tablefield: any]"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:284
+msgid ""
+"Features that have the same value for this field will get the same index."
+msgstr ""
+"Geoobjektasi, kurie turi tą pačią šio lauko reikšmę turės tą patį indeksą."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:286
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:801
+msgid "**Output field name**"
+msgstr "**Išvesties lauko pavadinimas**"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:290
+msgid "Default: 'NUM_FIELD'"
+msgstr "Numatytas: 'NUM_FIELD'"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:291
+msgid "Name of the new field containing the indexes."
+msgstr "Naujo lauko su indeksu pavadinimas."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:292
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:328
+msgid "**Layer with index field**"
+msgstr "**Sluoksnis su indekso lauku**"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:297
+msgid ""
+"Vector layer with the numeric field containing indexes. :ref:`One of "
+"<output_parameter_widget>`:"
+msgstr ""
+"Vektorinis sluoksnis su skaitmeniniu lauku turinčiu indeksus. :ref:`Vienas "
+"iš <output_parameter_widget>`:"
+
 #: ../../docs/user_manual/processing_algs/algs_include.rst:3
 msgid "Skip Output"
 msgstr "Praleisti išvestį"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:304
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:332
+msgid "**Class summary**"
+msgstr "**Klasės suvestinė**"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:305
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:333
@@ -832,6 +909,29 @@ msgstr "[vektorius: lentelė]"
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:308
 msgid "Default: ``[Skip output]``"
 msgstr "Numatytas: ``[Praleisti išvestį]``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:309
+msgid ""
+"Specify the table to contain the summary of the class field mapped to the "
+"corresponding unique value. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Nurodykite lentelę, kuri turės klasės lauko suvestinę susietą su atitinkama "
+"unikalia reikšme. :ref:`Vienas iš <output_parameter_widget>`:"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:331
+msgid "Vector layer with the numeric field containing indexes."
+msgstr "Vektorinis sluoksnis su skaitiniu lauku turinčiu indeksus."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:335
+msgid ""
+"Table with summary of the class field mapped to the corresponding unique "
+"value."
+msgstr ""
+"Lentelė su klasės lauko suvestine susieta su atitinkama unikalia reikšme."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:341
+msgid "**Algorithm ID**: ``native:adduniquevalueindexfield``"
+msgstr "**Algoritmo ID**: ``native:adduniquevalueindexfield``"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:357
 msgid ""
@@ -863,10 +963,20 @@ msgstr "[crs]"
 msgid "``PREFIX``"
 msgstr "``PREFIX``"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:396
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:1218
+msgid "Specify the output layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Nurodykite išvesties sluoksnį. :ref:`Vienas iš <output_parameter_widget>`:"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:458
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:653
 msgid "Input vector layer"
 msgstr "Įvesties vektorinis sluoksnis"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:494
+msgid "Default: 3"
+msgstr "Numatytas: 3"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:499
 msgid "``GLOBAL``"
@@ -897,6 +1007,10 @@ msgstr "``EXPECTED_FIELDS``"
 msgid "Default: ''"
 msgstr "Numatytas: ''"
 
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:673
+msgid "Specify the output vector layer. One of:"
+msgstr "Nurodykite išvesties vektorinį sluoksnį. Vienas iš:"
+
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:734
 msgid "``FILENAME``"
 msgstr "``FILENAME``"
@@ -905,6 +1019,23 @@ msgstr "``FILENAME``"
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:760
 msgid "``FOLDER``"
 msgstr "``FOLDER``"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:739
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:761
+msgid "[folder]"
+msgstr "[aplankas]"
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:741
+msgid "Default: ``[Save to temporary folder]``"
+msgstr "Numatytas: ``[Įrašyti į laikiną aplanką]``"
+
+#: ../../docs/user_manual/processing_algs/algs_include.rst:3
+msgid "Save to a Temporary Directory"
+msgstr "Įrašyti į laikiną aplanką"
+
+#: ../../docs/user_manual/processing_algs/algs_include.rst:4
+msgid "Save to Directory"
+msgstr "Įrašyti į aplanką"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:837
 msgid "``NEW_FIELD``"
@@ -1031,12 +1162,12 @@ msgid ""
 "For certain field types, e.g. lists, this parameter helps refine the "
 "specific ``type`` of the data. It is automatically set in the GUI but may be"
 " needed if you're running the algorithm in Python or from the command line. "
-"One of:"
+":ref:`One of <output_parameter_widget>`:"
 msgstr ""
 "Kai kuriems laukų tipams, pvz. sąrašams, šis parametras padeda geriau "
 "apibrėžti kai kurių duomenų ``type``. Jis automatiškai nustatomas GUI, bet "
 "gali būti naudingas, jei jūs paleidžiate algoritmą Python'e arba komandinėje"
-" eilutėje. Vienas iš:"
+" eilutėje. :ref:`Vienas iš <output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/algs_include.rst:6
 msgid "2 --- Integer list"
@@ -1073,6 +1204,15 @@ msgstr ":guilabel:`Tikslumas` (``precision``) [skaičius: sveikas skaičius]"
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:981
 msgid "Precision of the output field."
 msgstr "Išvesties laiko tikslumas."
+
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:1005
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:1078
+#: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:1146
+msgid ""
+"Specification of the output layer. :ref:`One of <output_parameter_widget>`:"
+msgstr ""
+"Išvesties sluoksnio specifikacija. :ref:`Vienas iš "
+"<output_parameter_widget>`:"
 
 #: ../../docs/user_manual/processing_algs/qgis/vectortable.rst:1047
 msgid ":ref:`qgisrefactorfields`"

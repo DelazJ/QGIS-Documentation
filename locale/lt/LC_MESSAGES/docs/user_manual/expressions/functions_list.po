@@ -1514,13 +1514,45 @@ msgstr ""
 msgid "collect"
 msgstr "collect"
 
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:99
+msgid ""
+"Returns the multipart geometry of aggregated geometries from an expression"
+msgstr ""
+"Grąžina pagal išraišką gautų geometrijų agreguotą kelių dalių geometriją"
+
 #: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:105
 msgid "collect(expression, [group_by], [filter])"
 msgstr "collect(expression, [group_by], [filter])"
 
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:109
+msgid "**expression** - geometry expression to aggregate"
+msgstr "**expression** - agreguojama geometrijos išraiška"
+
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:113
+msgid "``collect( @geometry )`` → multipart geometry of aggregated geometries"
+msgstr ""
+"``collect( @geometry )`` → agreguotų geometrijų kelių dalių geometrija"
+
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:114
+msgid ""
+"``collect( centroid(@geometry), group_by:=\"region\", filter:= \"use\" = "
+"'civilian' )`` → aggregated centroids of the civilian features based on "
+"their region value"
+msgstr ""
+"``collect( centroid(@geometry), group_by:=\"region\", filter:= \"use\" = "
+"'civilian' )`` → pagal regiono reikšmę ištrauktų civilinių geoobjektų "
+"agreguoti centroidai"
+
 #: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:122
 msgid "concatenate"
 msgstr "concatenate"
+
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:124
+msgid ""
+"Returns all aggregated strings from a field or expression joined by a "
+"delimiter."
+msgstr ""
+"Grąžina visas agreguotas eilutes iš lauko ar išraiškos, sujungtos skirtuku."
 
 #: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:130
 msgid ""
@@ -1528,9 +1560,31 @@ msgid ""
 msgstr ""
 "concatenate(expression, [group_by], [filter], [concatenator], [order_by])"
 
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:137
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:163
+msgid ""
+"**concatenator** - optional string to use to join values. Empty by default."
+msgstr ""
+"**concatenator** - neprivaloma eilutės, kurią reikia naudoti jungiant "
+"reikšmes. Pagal nutylėjimą tuščia."
+
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:140
+msgid ""
+"``concatenate(\"town_name\",group_by:=\"state\",concatenator:=',')`` → comma"
+" separated list of town_names, grouped by state field"
+msgstr ""
+"``concatenate(\"miesto_pavadinimas\",group_by:=\"valstybė\",concatenator:=',')``"
+" → kableliais atskirtas sąrašas miestų pavadinimų, sugrupuotų pagal "
+"valstybės lauką"
+
 #: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:148
 msgid "concatenate_unique"
 msgstr "concatenate_unique"
+
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:150
+msgid ""
+"Returns all unique strings from a field or expression joined by a delimiter."
+msgstr "Grąžina unikalias eilutes iš laukų ar išraiškų, sujungtų skirtuku"
 
 #: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:156
 msgid ""
