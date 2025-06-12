@@ -7,25 +7,34 @@ import json
 import re
 import html
 
-# To use this script clone the QGIS/QGIS repository, and checkout the release
+# To use this script clone the qgis/QGIS repository, and checkout the release
 # and run:
 #
-# python3 populate_expression.py [path/to/qgis/repository]
+# python3 populate_expression.py [path/to/qgis/QGIS/repository]
 #
 # If no argument is given, the script assumes that the QGIS repository is in the
 # same folder as the QGIS-Documentation repository
 
-# Determine the folder where the json files are
 if len(argv) > 1:
     qgis_repo_path = argv[1]
 else:
     qgis_repo_path = path.join(path.dirname(__file__), '..', '..', 'QGIS')
+    if not path.isdir(qgis_repo_path):
+        qgis_repo_path = fetch_repo_from_online()
+
+# Determine the folder where the json files are
 help_folder = path.join(qgis_repo_path, 'resources/function_help/json')
 # expression help folder
 output_folder = path.join(path.dirname(__file__), '..', 'docs/user_manual/expressions/expression_help')
 # images file location
 img_list_file = path.join(path.dirname(__file__), '..', 'docs/user_manual/expressions/expression_help/img/images_list.json')
 algorithm_folder = path.join(path.dirname(__file__), '..', 'docs/user_manual/processing_algs')
+
+def fetch_repo_from_online:
+"""
+Download the qgis/QGIS repository
+"""
+
 
 def sphynxify_html(text, base_indent=0):
     filler = base_indent * ' '
