@@ -11,8 +11,8 @@ Vector geometry
 
 .. _qgisexportaddgeometrycolumns:
 
-Add geometry attributes
------------------------
+Add geometry area and perimeter
+----------------------------------------------
 Computes geometric properties of the features in a vector layer and
 includes them in the output layer.
 
