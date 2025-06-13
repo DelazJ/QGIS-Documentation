@@ -200,8 +200,9 @@ Also a layer or a group of layers can be dragged across several QGIS instances.
 .. note:: The Z-ordering behavior can be overridden by the
    :ref:`Layer Order <layer_order>` panel.
 
-Depending on the item selected in the panel,
-a right-click shows a dedicated set of options presented below.
+Depending on the item selected in the panel, a right-click shows a dedicated set of options presented below.
+Some of these entries are not available when multiple selections are made
+(e.g., :guilabel:`Filter`, :guilabel:`Rename`, :guilabel:`Properties`).
 
 .. table updated with https://tableconvert.com/excel-to-restructuredtext
 .. table:: Contextual menus from :guilabel:`Layers` panel items
@@ -1427,7 +1428,7 @@ Save in database
 .................
 
 Vector layer styles can also be stored in a database if the layer datasource is a
-database provider. Supported formats are PostGIS, GeoPackage, SpatiaLite, MS SQL Server
+database provider. Supported formats are PostgreSQL, GeoPackage, SpatiaLite, MS SQL Server
 and Oracle. The layer style is saved inside a table (named :file:`layer_styles`)
 in the database. Click on :menuselection:`Save Style... --> Save in database`
 then fill in the dialog to define a style name, add a description, a :file:`.ui`

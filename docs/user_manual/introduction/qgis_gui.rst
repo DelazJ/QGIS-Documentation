@@ -878,7 +878,7 @@ copy or paste layer properties (style, scale, CRS...).
      - :guilabel:`Manage Layers`
      - :ref:`vector_loading_csv`
    * - :menuselection:`-->` |addPostgisLayer|
-       :guilabel:`Add PostGIS Layer...`
+       :guilabel:`Add PostgreSQL Layer...`
      - :kbd:`Ctrl+Shift+D`
      - :guilabel:`Manage Layers`
      - :ref:`db_tools`
@@ -1138,7 +1138,7 @@ Plugins
      -
      -
      - :ref:`managing_plugins`
-   * - "|pythonFile| :guilabel:`Python Console`
+   * - |pythonFile| :guilabel:`Python Console`
      - :kbd:`Ctrl+Alt+P`
      - :guilabel:`Plugins`
      - :ref:`console`

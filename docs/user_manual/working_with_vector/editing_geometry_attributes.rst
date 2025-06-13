@@ -9,7 +9,7 @@
    .. contents::
       :local:
 
-QGIS has various capabilities for editing OGR, SpatiaLite, PostGIS,
+QGIS has various capabilities for editing OGR, SpatiaLite, PostgreSQL,
 MS SQL Server and Oracle Spatial vector layers and tables.
 They can be of 2D or 3D geometry type.
 
@@ -1598,6 +1598,11 @@ In order to trim or extend existing geometries:
    In the case of a trim, you must select the part that should be shortened.
 #. When both segments are in 3D, the tool performs an interpolation on
    the limit segment to get the Z value.
+#. If you need to use the same target segment for trimming or extending many features:
+
+   #. Press :kbd:`Shift` while selecting the target limit segment.
+   #. Click consecutively on the segments to modify and each will be trimmed
+      or extended accordingly.
 
 .. attention:: Pay attention to the modified geometry while using the |trimExtend|
   :sup:`Trim/Extend` tool. Depending on the inputs, it can create invalid
@@ -1647,7 +1652,7 @@ on the curve and a radius:
 .. note:: **Curved geometries are stored as such only in compatible data provider**
 
    Although QGIS allows to digitize curved geometries within any editable
-   data format, you need to be using a data provider (e.g. PostGIS, memory
+   data format, you need to be using a data provider (e.g. PostgreSQL, memory
    layer, GML or WFS) that supports curves to have features stored as
    curved, otherwise QGIS segmentizes the circular arcs.
 

@@ -199,7 +199,7 @@ Basic parameters
 
        Optional
      - ``NODATA``
-     - [number: double]
+     - [numeric: double]
 
        Default: Not set
      - Sets NoData value for output bands.
@@ -209,7 +209,7 @@ Basic parameters
 
        Optional
      - ``TARGET_RESOLUTION``
-     - [number: double]
+     - [numeric: double]
 
        Default: Not set
      - Defines the output file resolution of reprojection result
@@ -219,7 +219,7 @@ Basic parameters
 
        Default: ``[Save to temporary file]``
      - Specification of the output raster layer.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**

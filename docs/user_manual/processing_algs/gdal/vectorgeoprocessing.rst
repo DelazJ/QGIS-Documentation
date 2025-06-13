@@ -41,7 +41,7 @@ Basic parameters
      - The name of the input layer geometry column to use
    * - **Buffer distance**
      - ``DISTANCE``
-     - [number: double]
+     - [numeric: double]
 
        Default: 10.0
      - Minimum: 0.0
@@ -73,7 +73,7 @@ Basic parameters
      - [vector: polygon]
 
        Default: ``[Save to temporary file]``
-     - Specify the output buffer layer. One of:
+     - Specify the output buffer layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -170,7 +170,7 @@ Basic parameters
      - [same as input]
 
        Default: ``[Save to temporary file]``
-     - Specify the output (clipped) layer. One of:
+     - Specify the output (clipped) layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -259,7 +259,7 @@ Basic parameters
      - [same as input]
 
        Default: ``[Save to temporary file]``
-     - The output (masked) layer. One of:
+     - The output (masked) layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -358,7 +358,7 @@ Basic parameters
      - [same as input]
 
        Default: ``[Save to temporary file]``
-     - Specify the output layer. One of:
+     - Specify the output layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
          :start-after: **file_output_types**
@@ -487,7 +487,7 @@ Basic parameters
      - The name of the input layer geometry column to use
    * - **Offset distance (left-sided: positive, right-sided: negative)**
      - ``DISTANCE``
-     - [number: double]
+     - [numeric: double]
 
        Default: 10.0
      -
@@ -496,7 +496,7 @@ Basic parameters
      - [vector: line]
 
        Default: ``[Save to temporary file]``
-     - Specify the output line layer. One of:
+     - Specify the output line layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -582,7 +582,7 @@ Basic parameters
      - The name of the input layer geometry column to use
    * - **Buffer distance**
      - ``DISTANCE``
-     - [number: double]
+     - [numeric: double]
 
        Default: 10.0
      -
@@ -623,7 +623,7 @@ Basic parameters
      - [vector: polygon]
 
        Default: ``[Save to temporary file]``
-     - Specify the output buffer layer. One of:
+     - Specify the output buffer layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -709,7 +709,7 @@ Basic parameters
      - The name of the input layer geometry column to use
    * - **Distance from line start represented as a fraction of line length**
      - ``DISTANCE``
-     - [number: double]
+     - [numeric: double]
 
        Default: 0.5
      -
@@ -719,7 +719,7 @@ Basic parameters
 
        Default: ``[Save to temporary file]``
      - Specify the output point layer.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**

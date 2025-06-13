@@ -202,7 +202,7 @@ Basic parameters
 
        Default: ``[Save to temporary file]``
      - Specification of the output raster layer.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -358,7 +358,7 @@ Basic parameters
      -
    * - **Web viewer to generate**
      - ``VIEWER``
-     - [enumerate]
+     - [enumeration]
 
        Default: 0
      - One of:
@@ -389,7 +389,7 @@ Basic parameters
      - [folder]
 
        Default: ``[Save to temporary folder]``
-     - Specify the output folder for the tiles. One of:
+     - Specify the output folder for the tiles. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **directory_output_types**
@@ -570,7 +570,7 @@ Basic parameters
 
        Default: ``[Save to temporary file]``
      - Specification of the output raster layer.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -591,7 +591,7 @@ Advanced parameters
 
        Optional
      - ``NODATA_INPUT``
-     - [number: double]
+     - [numeric: double]
 
        Default: Not set
      - Ignores pixels from files being merged in with this pixel value
@@ -599,7 +599,7 @@ Advanced parameters
 
        Optional
      - ``NODATA_OUTPUT``
-     - [number: double]
+     - [numeric: double]
 
        Default: Not set
      - Assigns the specified NoData value to output bands.
@@ -689,7 +689,7 @@ Basic parameters
      - [raster]
 
        Default: ``[Save to temporary file]``
-     - Specify the output (sharpened) raster layer. One of:
+     - Specify the output (sharpened) raster layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -904,7 +904,7 @@ Basic parameters
 
        Optional
      - ``NO_DATA``
-     - [number: double]
+     - [numeric: double]
 
        Default: Not set
      - Value to use for NoData
@@ -948,7 +948,7 @@ Basic parameters
      - [raster]
 
        Default: ``[Save to temporary file]``
-     - Specify the output (calculated) raster layer. One of:
+     - Specify the output (calculated) raster layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -1083,7 +1083,7 @@ Basic parameters
 
        Default: ``[Save to temporary file]``
      - Specify the HTML file for output.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -1170,25 +1170,25 @@ Basic parameters
      - The input raster files
    * - **Tile width**
      - ``TILE_SIZE_X``
-     - [number: integer]
+     - [numeric: integer]
 
        Default: 256
      - Width of the tiles in pixels (minimum 0)
    * - **Tile height**
      - ``TILE_SIZE_Y``
-     - [number: integer]
+     - [numeric: integer]
 
        Default: 256
      - Height of the tiles in pixels (minimum 0)
    * - **Overlap in pixels between consecutive tiles**
      - ``OVERLAP``
-     - [number: integer]
+     - [numeric: integer]
 
        Default: 0
      -
    * - **Number of pyramid levels to build**
      - ``LEVELS``
-     - [number: integer]
+     - [numeric: integer]
 
        Default: 1
      - Minimum: 0
@@ -1198,7 +1198,7 @@ Basic parameters
 
        Default: ``[Save to temporary folder]``
      - Specify the output folder for the tiles.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **directory_output_types**
@@ -1209,7 +1209,7 @@ Basic parameters
      - [file]
 
        Default: ``[Skip output]``
-     - Specify the output file for the tiles. One of:
+     - Specify the output file for the tiles. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types_skip**
@@ -1401,7 +1401,7 @@ Basic parameters
 
        Default: ``[Save to temporary file]``
      - Specify the polygon vector layer to write the index to.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
@@ -1512,19 +1512,19 @@ Basic parameters
      - The location of the observer
    * - **Observer height**
      - ``OBSERVER_HEIGHT``
-     - [number: double]
+     - [numeric: double]
 
        Default: 1.0
      - The altitude of the observer, in the DEM units
    * - **Target height**
      - ``TARGET_HEIGHT``
-     - [number: double]
+     - [numeric: double]
 
        Default: 1.0
      - The altitude of the target element, in the DEM units
    * - **Maximum distance from observer to compute visibility**
      - ``MAX_DISTANCE``
-     - [number: double]
+     - [numeric: double]
 
        Default: 100.0
      - Maximum distance from observer to compute visibility,
@@ -1534,7 +1534,7 @@ Basic parameters
      - [raster]
 
        Default: ``[Save to temporary file]``
-     - Output raster layer. One of:
+     - Output raster layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**

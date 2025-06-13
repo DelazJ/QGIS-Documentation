@@ -45,8 +45,8 @@ Layer Coordinate Reference Systems
 
 In order to correctly project data into a specific target CRS, either your data
 must contain information about its coordinate reference system or you will need
-to manually assign the correct CRS to the layer. For PostGIS layers, QGIS uses
-the spatial reference identifier that was specified when that PostGIS layer was
+to manually assign the correct CRS to the layer. For PostgreSQL layers, QGIS uses
+the spatial reference identifier that was specified when that PostgreSQL layer was
 created. For data supported by GDAL, QGIS relies on the presence of a
 recognized means of specifying the CRS. For instance, for the Shapefile format
 this is a file containing an ESRI Well-Known Text (:index:`WKT`)
@@ -183,12 +183,10 @@ Available options are:
   to overlay them regardless of their original CRS. Use of units and ellipsoid setting
   are available and make sense and you can perform calculations accordingly.
 
-Whenever you select a new CRS for your QGIS project, the measurement units will automatically be
-changed in the :guilabel:`General` tab of the :guilabel:`Project properties` dialog
-(:menuselection:`Project --> Properties...`) to match the selected CRS. For instance,
-some CRSs define their coordinates in feet instead of meters, so setting your QGIS
-project to one of these CRSs will also set your project to measure using feet by
-default.
+If you change your project's CRS and want the units (for distance and area)
+to match the units defined by the CRS, make sure you have selected :guilabel:`Map units` in the relevant settings,
+in the :guilabel:`General` tab of the :menuselection:`Project --> Properties…` dialog.
+
 
 .. tip:: **Setting the project CRS from a layer**
 

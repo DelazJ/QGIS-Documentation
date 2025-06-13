@@ -39,7 +39,7 @@ Important OGC specifications supported by QGIS are:
 OGC services are increasingly being used to exchange geospatial data between
 different GIS implementations and data stores. QGIS can deal with the above
 specifications as a client, being **SFS** (through support of the PostgreSQL
-/ PostGIS data provider, see section :ref:`label_postgis`).
+data provider, see section :ref:`label_postgis`).
 
 You can also share your maps and data through the WMS, WMTS, WFS, WFS-T and WCS protocols
 using a webserver with :ref:`QGIS Server <QGIS-Server-manual>`, UMN MapServer or
@@ -769,6 +769,8 @@ To be able to load a WFS Layer, first create a connection to the WFS server:
 
    * Indicate the WFS version of the server.
      If unknown, press the :guilabel:`Detect` button to automatically retrieve it.
+   * Select the :guilabel:`Preferred HTTP method` to use for requests.
+     The default is :guilabel:`GET`, but you can also select :guilabel:`POST`.
    * Define the :guilabel:`maximum number of features` retrieved in a single GetFetFeature request.
      If empty, no limit is set.
    * And depending on the WFS version, indicate whether to:

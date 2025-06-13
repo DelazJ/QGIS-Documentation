@@ -18,7 +18,7 @@ It is commonly used to store various types of data, including:
 * Other types of data, such as land cover, soil types, rainfall and many others.
 
 Raster data can be stored in several supported formats, including GeoTIFF,
-ERDAS Imagine, ArcInfo ASCII GRID, PostGIS Raster and others.
+ERDAS Imagine, ArcInfo ASCII GRID, PostgreSQL Raster and others.
 See more at :ref:`opening_data`.
 
 To view and set the properties for a raster layer, double click on
@@ -681,7 +681,7 @@ in the :guilabel:`Custom transparency options` section:
   The button |fileOpen| :sup:`Import from file` loads your transparency
   settings and applies them to the current raster layer.
 
-    .. only:: html
+  .. only:: html
 
     .. figure:: img/tolerances_for_pixel_values.gif
        :align: center
@@ -860,7 +860,7 @@ set whether the layer redraw should be:
 
 * :guilabel:`Automatic`: the rendering is controlled by the underlying
   data provider if it suppports temporal data handling. E.g. this can be used
-  with WMS-T layers or PostGIS rasters.
+  with WMS-T layers or PostgreSQL rasters.
 
   .. A bit more info on this automatic option would be necessary.
    I guess it has to do with wms-t that I don't use so precision welcome

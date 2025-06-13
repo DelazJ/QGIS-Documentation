@@ -69,7 +69,7 @@ Basic parameters
      - [vector: line]
 
        Default: ``[Create temporary layer]``
-     - Specify the output line layer with offset features. One of:
+     - Specify the output line layer with offset features. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types_append**
@@ -233,7 +233,7 @@ Parameters
        Default: ``[Create temporary layer]``
      - Output vector layer with translated (moved) copies
        of the features.
-       The original features are also copied. One of:
+       The original features are also copied. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types_append**
@@ -358,7 +358,7 @@ Parameters
      - [vector: geometry]
 
        Default: ``[Create temporary layer]``
-     - Resulting vector grid layer. One of:
+     - Resulting vector grid layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -392,6 +392,147 @@ Python code
 ...........
 
 **Algorithm ID**: ``native:creategrid``
+
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgisextenttolayer:
+
+Create layer from extent
+------------------------
+Creates a new vector layer that contains a single feature with
+geometry matching the extent of the input layer.
+
+It can be used in models to convert a literal extent (``xmin``,
+``xmax``, ``ymin``, ``ymax`` format) into a layer which can be used
+for other algorithms which require a layer based input.
+
+.. seealso:: :ref:`qgispointtolayer`
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Extent (xmin, xmax, ymin, ymax)**
+     - ``INPUT``
+     - [extent]
+     - Input extent
+
+       .. include:: ../algs_include.rst
+          :start-after: **extent_options**
+          :end-before: **end_extent_options**
+
+   * - **Extent**
+     - ``OUTPUT``
+     - [vector: polygon]
+
+       Default: ``[Create temporary layer]``
+     - Specify the output vector layer. :ref:`One of <output_parameter_widget>`:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Extent**
+     - ``OUTPUT``
+     - [vector: polygon]
+     - The output (extent) vector layer
+
+Python code
+...........
+
+**Algorithm ID**: ``native:extenttolayer``
+
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
+.. _qgispointtolayer:
+
+Create layer from point
+-----------------------------
+
+Creates a new vector layer that contains a single feature with
+geometry matching a point parameter.
+It can be used in models to convert a point into a point layer for
+algorithms which require a layer based input.
+
+.. seealso:: :ref:`qgisextenttolayer`
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Point**
+     - ``INPUT``
+     - [coordinates]
+     - Input point, including CRS info
+       (example: ``397254,6214446 [EPSG:32632]``).
+
+       If the CRS is not provided, the Project CRS will be used.
+
+       The point can be specified by clicking on the map canvas.
+   * - **Point**
+     - ``OUTPUT``
+     - [vector: point]
+
+       Default: ``[Create temporary layer]``
+     - Specify the output layer.
+       :ref:`One of <output_parameter_widget>`:
+
+       .. include:: ../algs_include.rst
+          :start-after: **layer_output_types**
+          :end-before: **end_layer_output_types**
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Point**
+     - ``OUTPUT``
+     - [vector: point]
+     - The output point vector layer containing the input point.
+
+Python code
+...........
+
+**Algorithm ID**: ``native:pointtolayer``
 
 .. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
@@ -459,7 +600,7 @@ Parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - Specify the resulting point layer. One of:
+     - Specify the resulting point layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -530,7 +671,7 @@ Parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - Resulting point layer with pixel centroids. One of:
+     - Resulting point layer with pixel centroids. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -604,7 +745,7 @@ Parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - Resulting point layer of pixel centroids. One of:
+     - Resulting point layer of pixel centroids. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -682,7 +823,7 @@ Parameters
 
        Default: ``[Create temporary layer]``
      - Specify the point vector layer for the geotagged photos.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types_skip**
@@ -696,7 +837,7 @@ Parameters
 
        Default: ``[Skip output]``
      - Specify the table of unreadable or non-geotagged photos.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types_skip**
@@ -802,7 +943,7 @@ Parameters
      - [vector: line]
 
        Default: ``[Create temporary layer]``
-     - Specify the line vector layer of the path. One of:
+     - Specify the line vector layer of the path. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -816,7 +957,7 @@ Parameters
 
        Default: ``[Skip output]``
      - Specify the directory that will contain the description
-       files of points and paths. One of:
+       files of points and paths. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **directory_output_types_skip**
@@ -922,7 +1063,7 @@ Parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - The output random points. One of:
+     - The output random points. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -1014,7 +1155,7 @@ Basic parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - The output random points. One of:
+     - The output random points. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -1112,7 +1253,7 @@ Parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - The output random points. One of:
+     - The output random points. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -1228,7 +1369,7 @@ Basic parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - The output random points. One of:
+     - The output random points. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -1392,7 +1533,7 @@ Parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - The output random points. One of:
+     - The output random points. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -1508,7 +1649,7 @@ Basic parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - The output random points. One of:
+     - The output random points. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -1648,7 +1789,7 @@ Parameters
 
        Default: ``[Create temporary layer]``
      - Specify the resulting point layer of pixels centroids.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -1722,7 +1863,7 @@ Parameters
 
        Default: ``[Create temporary layer]``
      - Specify the resulting polygon layer of pixel extents.
-       One of:
+       :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
@@ -1830,7 +1971,7 @@ Parameters
      - [vector: point]
 
        Default: ``[Create temporary layer]``
-     - Specify the output regular point layer. One of:
+     - Specify the output regular point layer. :ref:`One of <output_parameter_widget>`:
 
        .. include:: ../algs_include.rst
           :start-after: **layer_output_types**
