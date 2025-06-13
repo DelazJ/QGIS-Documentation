@@ -42,7 +42,7 @@ jobs:
 
     - name: Install Transifex client
       run: |
-          curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+          curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash -s -- 1.6.17
           mv tx LICENSE -t /usr/local/bin/
 
     - shell: bash
@@ -55,8 +55,11 @@ jobs:
     - name: Download and sanitize files and folders
       run: bash ./scripts/minimize_translation.sh
 
-    # - name: Show changes
-    #   run: echo `git status`
+    - name: Report changed files
+      run: |
+        diff_files=`git status -s`
+        echo "List of files:"; echo "$diff_files"
+        echo "Number of files: `echo "$diff_files" | wc -l`"
 
     - name: Load translations if any
       run: |
