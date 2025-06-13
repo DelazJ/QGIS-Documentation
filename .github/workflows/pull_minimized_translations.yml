@@ -42,7 +42,7 @@ jobs:
 
     - name: Install Transifex client
       run: |
-          curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash -s -- 1.6.17
+          curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
           mv tx LICENSE -t /usr/local/bin/
 
     - shell: bash
