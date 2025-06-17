@@ -66,7 +66,7 @@ msgstr ""
 
 #: ../../docs/user_manual/style_library/symbol_selector.rst:28
 msgid "and settings to configure the selected symbol layer in the tree."
-msgstr "ir medyje pažymėto simbolio sluoksnio konfigūravimo nustatymai."
+msgstr "ir medyje parinkto simbolio sluoksnio konfigūravimo nustatymai."
 
 #: ../../docs/user_manual/style_library/symbol_selector.rst:33
 msgid "The symbol layer tree"
@@ -106,7 +106,7 @@ msgstr "symbologyAdd"
 
 #: ../../docs/user_manual/style_library/symbol_selector.rst:44
 msgid "|symbologyRemove| remove the selected symbol layer"
-msgstr "|symbologyRemove| išimti pažymėti simbolio sluoksnį"
+msgstr "|symbologyRemove| išimti parinktą simbolio sluoksnį"
 
 #: ../../docs/user_manual/style_library/symbol_selector.rst:979
 msgid "symbologyRemove"
@@ -209,29 +209,238 @@ msgstr ""
 " dydį visuose įtrauktuose :ref:`simbolio sluoksnių <symbol_layer>` "
 "matmenyse."
 
+#: ../../docs/user_manual/style_library/symbol_selector.rst:84
+msgid ""
+"The :ref:`Data-defined override <data_defined>` button next to the width, "
+"size or rotation parameters is inactive when setting the symbol from the "
+"Style manager dialog. When the symbol is connected to a map layer, this "
+"button helps you create :ref:`proportional or multivariate analysis "
+"<proportional_symbols>` rendering."
+msgstr ""
+":ref:`Nuo duomenų priklausančio permušimo <data_defined>` mygtukas, esantis "
+"greta pločio, dydžio ar pasukimo paramtrų yra neaktyvus, kai simbolis "
+"nustatomas iš Stilių tvarkyklės dialogo. Kai simbolis prijungiamas prie "
+"žemėlapio sluoksnio, šis mygtukas padeda jums sukurti :ref:`santykinės ar "
+"kelių kintamųjų analizės <proportional_symbols>` braižymą."
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:89
+msgid ""
+"A preview of the :ref:`symbols library <vector_style_manager>`: Symbols of "
+"the same type are shown and, through the editable drop-down list just above,"
+" can be filtered by free-form text or by :ref:`categories <group_symbols>`. "
+"You can also update the list of symbols using the |styleManager| :sup:`Style"
+" Manager` button and open the eponym dialog. There, you can use any "
+"capabilities as exposed in :ref:`vector_style_manager` section."
+msgstr ""
+":ref:`Simbolių bibliotekos <vector_style_manager>` peržiūra: rodomi to "
+"paties tipo simboliai ir per aukščiau keičiamą iškrentantį sąrašą gali būti "
+"filtruojami laisvos formos tekstu arba :ref:`kategorijomis <group_symbols>`."
+" Jūs galite atnaujinti simbolių sąrašą naudodami mygtuką |styleManager| "
+":sup:`Stilių tvarkyklė` ir atverdami eponimų dialogą. Ten jūs galite naudoti"
+" bet kokias galimybes, aprašytas skiltyje :ref:`vector_style_manager`."
+
 #: ../../docs/user_manual/style_library/symbol_selector.rst:975
 msgid "styleManager"
 msgstr "styleManager"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:96
+msgid "The symbols are displayed either:"
+msgstr "Simboliai rodomi arba:"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:98
+msgid ""
+"in an icon list (with thumbnail, name and associated tags) using the "
+"|openTable| :sup:`List View` button below the frame;"
+msgstr ""
+"piktogramų sąraše (su miniatiūra, pavadinimu ir susijusiomis žymomis) "
+"naudojant po sekcija esantį mygtuką |openTable| :sup:`Sąrašo vaizdas`;"
 
 #: ../../docs/user_manual/style_library/symbol_selector.rst:967
 msgid "openTable"
 msgstr "openTable"
 
+#: ../../docs/user_manual/style_library/symbol_selector.rst:100
+msgid "or as icon preview using the |iconView| :sup:`Icon View` button."
+msgstr ""
+"arba piktogramų peržiūroje naudojant mygtuką  |iconView| :sup:`Piktogramų "
+"vaizdas`."
+
 #: ../../docs/user_manual/style_library/symbol_selector.rst:961
 msgid "iconView"
 msgstr "iconView"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:102
+msgid ""
+"Press the :guilabel:`Save Symbol` button to open the :guilabel:`Save New "
+"Symbol` dialog. Here, you can choose the :guilabel:`Destination` where you "
+"want to add the symbol being edited, give it a :guilabel:`Name` and add "
+":guilabel:`Tag(s)`. You also have the option to |checkbox| :sup:`Add to "
+"favorites` your new symbol."
+msgstr ""
+"Spauskite mygtuką :guilabel:`Įrašyti simbolį`, kad atvertumėte dialogą "
+":guilabel:`Įrašyti naują simbolį`. Čia galite parinkti :guilabel:`Paskirtį`,"
+" kur norite pridėti keičiamą simbolį, nurodykite jam :guilabel:`Pavadinimą` "
+"ir add :guilabel:`Žymą(s)`. Jūs taipogi galite jūsų naują simbolį |checkbox|"
+" :sup:`Pridėti į parankinius`."
 
 #: ../../docs/user_manual/style_library/symbol_selector.rst:955
 msgid "checkbox"
 msgstr "checkbox"
 
+#: ../../docs/user_manual/style_library/symbol_selector.rst:106
+msgid "With the :guilabel:`Advanced` |selectString| option, you can:"
+msgstr "Su parinktimi :guilabel:`Sudėtingesni` |selectString|, jūs galite:"
+
 #: ../../docs/user_manual/style_library/symbol_selector.rst:973
 msgid "selectString"
 msgstr "selectString"
 
+#: ../../docs/user_manual/style_library/symbol_selector.rst:108
+msgid "for line and fill symbols, :guilabel:`Clip features to canvas extent`."
+msgstr ""
+"linijų ir pildymo simboliams :guilabel:`Apkarpyti geoobjektus pagal drobės "
+"apimtį`."
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:112
+msgid ""
+"for fill symbols, :guilabel:`Force right-hand rule orientation`: allows "
+"forcing rendered fill symbols to follow the standard \"right hand rule\" for"
+" ring orientation (i.e, polygons where the exterior ring is clockwise, and "
+"the interior rings are all counter-clockwise)."
+msgstr ""
+"pildymo simboliams :guilabel:`Priverstinai taikyti dešinės rankos "
+"orientacijos taisyklę`: leidžia priversti, kad braižomi simboliai atitiktų "
+"standartinę „dešinės rankos taisyklę“ žiedų orientacijai (t.y. poligonų "
+"išorinis žiedas eina pagal laikrodžio rodyklę, o vidiniai žiedai - prieš "
+"laikrodžio rodyklę)."
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:117
+msgid ""
+"The orientation fix is applied while rendering only, and the original "
+"feature geometry is unchanged. This allows for creation of fill symbols with"
+" consistent appearance, regardless of the dataset being rendered and the "
+"ring orientation of individual features."
+msgstr ""
+"Orientacija taisoma tik braižymui, pradinė geoobjekto geometrija nekeičiama."
+" Tai leidžia kurti pildymo simbolius su stabilia išvaizda, nepriklausomai "
+"nuo braižomo duomenų rinkinio ir konkrečių geoobjektų žiedų orientacijos."
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:124
+msgid ""
+"for marker symbols, the :guilabel:`Buffer settings...` enables addition of a"
+" halo effect around the marker symbol in order to make it more readable "
+"against different backgrounds. The buffer is calculated and drawn using the "
+"shape of ALL the symbol layers in the marker. You can adjust the "
+":guilabel:`Size`, :guilabel:`Join style` and :guilabel:`Symbol` of display."
+msgstr ""
+"žymeklių simboliams :guilabel:`Buferio nustatymai...` aplink žymeklio "
+"simbolį įjungia papildomą spindėjimo efektą, taip jį padarant skaitomu virš "
+"įvairių fonų. Buferis skaičiuojamas ir braižomas naudojant VISŲ žymeklio "
+"simbolio sluoksnių formą. Jūs galite keisti rodymo :guilabel:`Dydį`, "
+":guilabel:`Jungimo stilių` ir :guilabel:`Simbolį`."
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:129
+msgid ""
+"Depending on the :ref:`symbology <vector_style_menu>` of the layer a symbol "
+"is being applied to, additional settings are available in the "
+":guilabel:`Advanced` menu:"
+msgstr ""
+"Priklausomai nuo sluoksnio :ref:`simbologijos <vector_style_menu>` ir "
+"taikomo simbolio, meniu :guilabel:`Sudėtingesni` galimi papildomi "
+"nustatymai:"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:132
+msgid ""
+":ref:`Symbol levels... <Symbols_levels>` to define the order of symbols "
+"rendering"
+msgstr ""
+":ref:`Simbolių lygiai... <Symbols_levels>` norint apibrėžti simbolių "
+"braižymo rikiuotę"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:133
+msgid ":ref:`Data-defined Size Legend <data_defined_size_legend>`"
+msgstr ""
+":ref:`Nuo duomenų priklausanti dydžio legenda <data_defined_size_legend>`"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:134
+msgid ""
+":guilabel:`Match to Saved Symbols...` and :guilabel:`Match to Symbols from "
+"File...` to automatically :ref:`assign symbols to classes "
+"<categorized_advanced_menu>`"
+msgstr ""
+":guilabel:`Atitikti įrašytiems simboliams...` ir :guilabel:`Atitikti "
+"simboliams iš failo...` automatiniam :ref:`simbolių priskyrimui klasėms "
+"<categorized_advanced_menu>`"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:136
+msgid ":ref:`Animation settings <animation_settings>`"
+msgstr ":ref:`Animacijos nustatymai <animation_settings>`"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:141
+msgid "The symbol layer"
+msgstr "Simbolių sluoksnis"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:143
+msgid ""
+"At a lower level of the tree, you can customize the symbol layers. The "
+"available symbol layer types depend on the upper symbol type. You can apply "
+"on the symbol layer |paintEffects| :ref:`paint effects <draw_effects>` to "
+"enhance its rendering."
+msgstr ""
+"Žemesniame medžio lygmenyje jūs galite konfigūruoti simbolių sluoksnius. "
+"Galimi simbolių sluoksnių tipai priklauso nuo aukštesnio simbolio tipo. "
+"Galite taikyti simbolio sluoksnio |paintEffects| :ref:`paišymo efektus "
+"<draw_effects>`, kad pagerintumėte jo braižymą."
+
 #: ../../docs/user_manual/style_library/symbol_selector.rst:969
 msgid "paintEffects"
 msgstr "paintEffects"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:147
+msgid ""
+"Because describing all the options of all the symbol layer types would not "
+"be possible, only particular and significant ones are mentioned below."
+msgstr ""
+"Kadangi aprašyti visų simbolių sluoksnių tipų visas parinktis yra neįmanoma,"
+" žemiau aprašome tik kelias svarbias."
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:151
+msgid "Common parameters"
+msgstr "Bendri parametrai"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:153
+msgid ""
+"Some common options and widgets are available to build a symbol layer, "
+"regardless it's of marker, line or fill sub-type:"
+msgstr ""
+"Simbolių sluoksnio kūrimui, nepriklausomai nuo jo žymeklių, linijų ar "
+"pildymo potipio, teikiamos kelios bendro parinktis ir valdikliai:"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:156
+msgid ""
+"the :ref:`color selector <color-selector>` widget to ease color manipulation"
+msgstr ""
+":ref:`spalvų parinkimo <color-selector>` valdiklis lengvam spalvų valdymui"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:157
+msgid ""
+":guilabel:`Units`: it can be **Millimeters**, **Points**, **Pixels**, "
+"**Meters at Scale**, **Map units** or **Inches** (see :ref:`unit_selector` "
+"for more details)"
+msgstr ""
+":guilabel:`Vienetai`: gali būti **Milimetrai**, **Taškai**, **Pikseliai**, "
+"**Metrai pagal mastelį**, **Žemėlapio vienetai** ar **Coliai** (daugiau "
+"informacijos rasite :ref:`unit_selector`)"
+
+#: ../../docs/user_manual/style_library/symbol_selector.rst:160
+msgid ""
+"the |dataDefine| :sup:`Data-defined override` widget near almost all "
+"options, extending capabilities of customizing each symbol (see "
+":ref:`data_defined` for more information)"
+msgstr ""
+"|dataDefine| :sup:`Nuo duomenų priklausančių permušimų` valdiklis prie "
+"beveik visų parinkčių, praplečiantis kiekvieno simbolio tinkinimo galimybes "
+"(daugiau informacijos rasite skyriuje :ref:`data_defined`)"
 
 #: ../../docs/user_manual/style_library/symbol_selector.rst:957
 msgid "dataDefine"

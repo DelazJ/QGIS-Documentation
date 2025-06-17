@@ -3144,9 +3144,17 @@ msgid ""
 msgstr ""
 "La manière de définir chaque propriété est décrite ici : :ref:`showlabels`."
 
+#: ../../docs/user_manual/working_with_vector/vector_properties.rst:1380
+msgid "Configuring project labeling rules"
+msgstr "Configuration des règles d'étiquetage du projet"
+
 #: ../../docs/user_manual/working_with_vector/vector_properties.rst:1409
 msgid "Press :guilabel:`OK`."
 msgstr "Pressez :guilabel:`OK`."
+
+#: ../../docs/user_manual/working_with_vector/vector_properties.rst:1410
+msgid "Add as many rules as necessary."
+msgstr "Ajoutez autant de règles que nécessaire."
 
 #: ../../docs/user_manual/working_with_vector/vector_properties.rst:1431
 msgid "Setting the automated placement engine"
@@ -4395,6 +4403,14 @@ msgstr ""
 "couleur et taille de diagramme) sont également affichés dans la légende de "
 "la disposition d'impression, à côté de la symbologie des couches."
 
+#: ../../docs/user_manual/working_with_vector/vector_properties.rst:2084
+msgid "Stacked Diagrams"
+msgstr "Diagrammes empilés"
+
+#: ../../docs/user_manual/working_with_vector/vector_properties.rst:2095
+msgid "Population pyramids built for each layer feature"
+msgstr "Pyramide des âges construit pour chaque entité de la couche"
+
 #: ../../docs/user_manual/working_with_vector/vector_properties.rst:2117
 msgid "Masks Properties"
 msgstr "Onglet Masques"
@@ -4602,10 +4618,10 @@ msgid ""
 ":guilabel:`Add Field` dialog, for supported OGR formats (GeoPackage and ESRI"
 " File Geodatabase)."
 msgstr ""
-"Lors de la création de :newAttribute| :sup:`Nouveau champ`, l'option "
-":guilabel:`Comment` n'est disponible que pour les sources de données qui "
-"autorisent l'édition de commentaires (voir :ref:`database_entries` pour plus"
-" de détails). Vous pouvez également définir des alias dans la boîte de "
+"Lors de la création de |newAttribute| :sup:`Nouveau champ`, l'option "
+":guilabel:`Commentaire` n'est disponible que pour les sources de données qui"
+" autorisent l'édition de commentaires (voir :ref:`database_entries` pour "
+"plus de détails). Vous pouvez également définir des alias dans la boîte de "
 "dialogue :guilabel:`Add Field`, pour les formats OGR supportés (GeoPackage "
 "et ESRI File Geodatabase)."
 
@@ -4943,6 +4959,10 @@ msgstr ""
 "un nouvel onglet ou groupe au formulaire`. Les champs et autres groupes y "
 "seront affichés."
 
+#: ../../docs/user_manual/working_with_vector/vector_properties.rst:2349
+msgid "Then set the properties of the container, i.e.:"
+msgstr "Ensuite, définissez les propriétés du conteneur, c'est-à-dire :"
+
 #: ../../docs/user_manual/working_with_vector/vector_properties.rst:2351
 msgid "the :guilabel:`Label`: the title that will be used for the container"
 msgstr "Le :guilabel:`Label` : le titre qui sera utilisé pour le conteneur"
@@ -5116,6 +5136,14 @@ msgstr ""
 #: ../../docs/user_manual/working_with_vector/vector_properties.rst:2413
 msgid "Other Widgets"
 msgstr "Autres Widgets"
+
+#: ../../docs/user_manual/working_with_vector/vector_properties.rst:2426
+msgid "Double-click on the :guilabel:`HTML Widget` to configure it."
+msgstr "Double-cliquez sur :guilabel:`Widget HTML` afin de le configurer."
+
+#: ../../docs/user_manual/working_with_vector/vector_properties.rst:2427
+msgid "Change the default :guilabel:`Title` or hide it."
+msgstr "Modifiez le :guilabel:`Titre` par défaut ou cachez-le."
 
 #: ../../docs/user_manual/working_with_vector/vector_properties.rst:2481
 msgid "Using custom ui-file"

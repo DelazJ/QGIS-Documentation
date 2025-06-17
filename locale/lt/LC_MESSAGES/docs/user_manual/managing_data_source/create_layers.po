@@ -112,6 +112,10 @@ msgstr "createMemory"
 msgid "indicatorMemory"
 msgstr "indicatorMemory"
 
+#: ../../docs/user_manual/managing_data_source/create_layers.rst:354
+msgid "Common parameters"
+msgstr "Bendri parametrai"
+
 #: ../../docs/user_manual/managing_data_source/create_layers.rst:810
 msgid "addPart"
 msgstr "addPart"

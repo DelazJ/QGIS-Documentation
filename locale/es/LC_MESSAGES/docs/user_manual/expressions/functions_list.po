@@ -5,18 +5,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 # 
 # Translators:
-# Eric Armijo, 2025
 # Harrissou Sant-anna, 2025
 # Transifex Bot <>, 2025
+# Eric Armijo, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: QGIS Documentation 3.34\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-14 21:23+0000\n"
+"POT-Creation-Date: 2025-06-13 08:26+0000\n"
 "PO-Revision-Date: 2025-02-27 21:34+0000\n"
-"Last-Translator: Transifex Bot <>, 2025\n"
+"Last-Translator: Eric Armijo, 2025\n"
 "Language-Team: Spanish (https://app.transifex.com/qgis/teams/6144/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -840,6 +840,16 @@ msgstr "count_distinct"
 #: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:553
 msgid "count_missing"
 msgstr "count_missing"
+
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:32
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:554
+msgid "minimum or min"
+msgstr "mínimo o min"
+
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:33
+#: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:555
+msgid "maximum or max"
+msgstr "máximo o max"
 
 #: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:30
 #: ../../docs/user_manual/expressions/expression_help/Aggregates.rst:34
@@ -2284,6 +2294,16 @@ msgstr "Devuelve una matriz con la expresión dada evaluada en cada elemento."
 msgid "array_foreach(array, expression)"
 msgstr "array_foreach(array, expression)"
 
+#: ../../docs/user_manual/expressions/expression_help/Arrays.rst:236
+msgid ""
+"**expression** - an expression to evaluate on each item. The variable "
+"`@element` will be replaced by the current value and the variable `@counter`"
+" by the current index (starting with 0)."
+msgstr ""
+"**expresión**: una expresión que se evaluará en cada elemento. La variable "
+"`@element` se sustituirá por el valor actual y la variable `@counter` por el"
+" índice actual (empezando por 0)."
+
 #: ../../docs/user_manual/expressions/expression_help/Arrays.rst:238
 msgid ""
 "``array_foreach(array('a','b','c'),upper(@element))`` → [ 'A', 'B', 'C' ]"
@@ -2293,6 +2313,10 @@ msgstr ""
 #: ../../docs/user_manual/expressions/expression_help/Arrays.rst:239
 msgid "``array_foreach(array(1,2,3),@element + 10)`` → [ 11, 12, 13 ]"
 msgstr "``array_foreach(array(1,2,3),@element + 10)`` → [ 11, 12, 13 ]"
+
+#: ../../docs/user_manual/expressions/expression_help/Arrays.rst:240
+msgid "``array_foreach(array(1,2,3),@element + @counter)`` → [ 1, 3, 5 ]"
+msgstr "``array_foreach(array(1,2,3),@element + @counter)`` → [ 1, 3, 5 ]"
 
 #: ../../docs/user_manual/expressions/expression_help/Arrays.rst:248
 msgid "array_get"
@@ -2833,6 +2857,14 @@ msgstr ""
 "``array_replace(array('APP', 'SHOULD', "
 "'ROCK'),map('APP','QGIS','SHOULD','DOES'))`` → [ 'QGIS', 'DOES', 'ROCK' ]"
 
+#: ../../docs/user_manual/expressions/functions_list.rst:64
+msgid ""
+"Further reading: :ref:`expression_function_String_replace`, "
+":ref:`expression_function_String_regexp_replace`"
+msgstr ""
+"Más información: :ref:`expression_function_String_replace`, "
+":ref:`expression_function_String_regexp_replace`"
+
 #: ../../docs/user_manual/expressions/expression_help/Arrays.rst:6
 msgid "array_reverse"
 msgstr "array_reverse"
@@ -3016,6 +3048,10 @@ msgstr "``array_to_string(array(1,2,3),'-')`` → '1-2-3'"
 msgid "``array_to_string(array('1','','3'),',','0')`` → '1,0,3'"
 msgstr "``array_to_string(array('1','','3'),',','0')`` → '1,0,3'"
 
+#: ../../docs/user_manual/expressions/functions_list.rst:71
+msgid "Further reading: :ref:`expression_function_Arrays_string_to_array`"
+msgstr "Más información: :ref:`expression_function_Arrays_string_to_array`"
+
 #: ../../docs/user_manual/expressions/expression_help/Arrays.rst:6
 msgid "generate_series"
 msgstr "generate_series"
@@ -3064,6 +3100,14 @@ msgstr "geometries_to_array(geometry)"
 msgid "**geometry** - the input geometry"
 msgstr "**geometry** - la geometría de entrada"
 
+#: ../../docs/user_manual/expressions/expression_help/Arrays.rst:43
+msgid ""
+"``geometries_to_array(geom_from_wkt('MultiPoint (1 2, 5 21)'))`` → An array "
+"containing 'Point (1 2)' and 'Point (5 21)'"
+msgstr ""
+"``geometries_to_array(geom_from_wkt(“MultiPoint (1 2, 5 21)”))`` → Una "
+"matriz que contiene «Point (1 2)» y «Point (5 21)»."
+
 #: ../../docs/user_manual/expressions/expression_help/Arrays.rst:44
 msgid ""
 "``geometries_to_array(geom_from_wkt('GeometryCollection (Polygon ((5 8, 4 1,"
@@ -3073,6 +3117,16 @@ msgstr ""
 "``geometries_to_array(geom_from_wkt('GeometryCollection (Polygon ((5 8, 4 1,"
 " 3 2, 5 8)),LineString (3 2, 4 2))'))`` → una matriz de geometrías "
 "poligonales y lineales"
+
+#: ../../docs/user_manual/expressions/expression_help/Arrays.rst:45
+msgid ""
+"``geom_to_wkt(geometries_to_array(geom_from_wkt('GeometryCollection (Polygon"
+" ((5 8, 4 1, 3 2, 5 8)),LineString (3 2, 4 2))'))[0])`` → 'Polygon ((5 8, 4 "
+"1, 3 2, 5 8))'"
+msgstr ""
+"``geom_to_wkt(geometries_to_array(geom_from_wkt('GeometryCollection (Polygon"
+" ((5 8, 4 1, 3 2, 5 8)),LineString (3 2, 4 2))'))[0])`` → 'Polygon ((5 8, 4 "
+"1, 3 2, 5 8))'"
 
 #: ../../docs/user_manual/expressions/expression_help/Arrays.rst:46
 msgid ""
@@ -3123,6 +3177,14 @@ msgstr ""
 "``regexp_matches('key=>','(.*)=>(.*)','empty value')`` → [ 'key', 'empty "
 "value' ]"
 
+#: ../../docs/user_manual/expressions/functions_list.rst:77
+msgid ""
+"Further reading: :ref:`expression_function_String_substr`, "
+":ref:`expression_function_String_regexp_substr`"
+msgstr ""
+"Más información: :ref:`expression_function_String_substr`, "
+":ref:`expression_function_String_regexp_substr`"
+
 #: ../../docs/user_manual/expressions/expression_help/Arrays.rst:6
 msgid "string_to_array"
 msgstr "string_to_array"
@@ -3159,6 +3221,10 @@ msgstr "``string_to_array('1,2,3',',')`` → [ '1', '2', '3' ]"
 #: ../../docs/user_manual/expressions/expression_help/Arrays.rst:23
 msgid "``string_to_array('1,,3',',','0')`` → [ '1', '0', '3' ]"
 msgstr "``string_to_array('1,,3',',','0')`` → [ '1', '0', '3' ]"
+
+#: ../../docs/user_manual/expressions/functions_list.rst:84
+msgid "Further reading: :ref:`expression_function_Arrays_array_to_string`"
+msgstr "Más información: :ref:`expression_function_Arrays_array_to_string`"
 
 #: ../../docs/user_manual/expressions/functions_list.rst:91
 msgid "Color Functions"
@@ -3257,6 +3323,22 @@ msgstr "``color_cmyka(100,50,0,10,200)`` → '0,115,230,200'"
 #: ../../docs/user_manual/expressions/expression_help/Color.rst:59
 msgid "color_cmykf"
 msgstr "color_cmykf"
+
+#: ../../docs/user_manual/expressions/expression_help/Color.rst:61
+msgid ""
+"Returns a color object based on its cyan, magenta, yellow, black and alpha "
+"components."
+msgstr ""
+"Devuelve un objeto de color basado en sus componentes cian, magenta, "
+"amarillo, negro y alfa."
+
+#: ../../docs/user_manual/expressions/expression_help/Color.rst:67
+msgid "color_cmykf(cyan, magenta, yellow, black, [alpha=1.0])"
+msgstr "color_cmykf(cyan, magenta, yellow, black, [alpha=1.0])"
+
+#: ../../docs/user_manual/expressions/expression_help/Color.rst:71
+msgid "**cyan** - cyan component as a float value from 0.0 to 1.0"
+msgstr "**cyan**: componente cian como valor flotante entre 0,0 y 1,0."
 
 #: ../../docs/user_manual/expressions/expression_help/Color.rst:85
 msgid "color_grayscale_average"
