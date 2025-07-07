@@ -114,6 +114,9 @@ the selected raster, including:
   If you wish to reproject your data, use a reprojection algorithm
   from Processing or
   :ref:`Save it as new dataset <general_saveas>`.
+* The :guilabel:`Layer source` option displays the path to the underlying file on disk.
+  Pressing :guilabel:`...` :sup:`Browse`, you can select another file,
+  replacing the existing one in the project.
 
 .. _figure_raster_properties:
 

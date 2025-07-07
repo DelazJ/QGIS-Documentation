@@ -122,8 +122,8 @@ Settings
 * Depending on the data format, select the :guilabel:`Data source encoding` if not
   correctly detected by QGIS.
 
-Coordinate Reference System and Geometry
-----------------------------------------
+Coordinate Reference System
+---------------------------
 
 * Displays the layer's :ref:`Assigned Coordinate Reference System (CRS) <layer_crs>`.
   You can change the layer's CRS, selecting a recently used one
@@ -132,7 +132,18 @@ Coordinate Reference System and Geometry
   layer is a wrong one or if none was applied.
   If you wish to reproject your data into another CRS, rather use layer reprojection
   algorithms from Processing or :ref:`Save it into another layer <general_saveas>`.
-* :guilabel:`Create spatial index` (only for OGR-supported formats).
+
+Layer source and Geometry
+-------------------------
+
+* Available when the layer provider is not of a database type,
+  the :guilabel:`Layer source` option displays the path to the underlying file on disk.
+  Pressing :guilabel:`Browse`, you can select another file,
+  replacing the existing one in the project.
+  Their attribute fields don't need to be the same
+  but make sure they both have the same geometry type.
+* :guilabel:`Create spatial index` (only for OGR-supported formats): helps speeding
+  layer rendering and features' geometry retrieval.
 * :guilabel:`Update extents` information for a layer.
 
 .. index:: Query builder
