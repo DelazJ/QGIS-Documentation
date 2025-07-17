@@ -415,7 +415,7 @@ Software requirements
 The easiest way to create and manage all the translation files is to install `Qt Linguist`_.
 In a Debian-based GNU/Linux environment you can install it typing::
 
-  sudo apt install qttools5-dev-tools
+  sudo apt install qt6-tools-dev-tools
 
 
 Files and directory
@@ -624,8 +624,10 @@ done with :command:`pyrcc5` command:
     executable explicitly you should be able to find it at
     :file:`<Your QGIS Install Directory>\\bin\\pyrcc5.exe`.
 
-.. _Qt Linguist: https://doc.qt.io/qt-5/qtlinguist-index.html
+.. _Qt Linguist: https://doc.qt.io/qt-6/qtlinguist-index.html
 .. _GitHub workflows: https://docs.github.com/en/actions/writing-workflows
 .. _Gitlab-CI: https://docs.gitlab.com/ci/
 .. _Transifex: https://www.transifex.com
 .. _qgis-plugin-ci: https://opengisch.github.io/qgis-plugin-ci/
+
+.. pyrcc5 or 6? How?

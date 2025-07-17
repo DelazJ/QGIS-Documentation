@@ -1235,8 +1235,7 @@ Excluding some URLs can be added to the text box below the proxy settings (see
 the string listed in this text box.
 
 If you need more detailed information about the different proxy settings,
-please refer to the manual of the underlying QT library documentation at
-https://doc.qt.io/archives/qt-5.9/qnetworkproxy.html#ProxyType-enum
+please refer to the manual of the underlying QT library documentation at `ProxyType-enum`_.
 
 .. tip:: **Using Proxies**
 
@@ -1992,9 +1991,6 @@ for your project. After you load the ICC profile, you can choose to |fileSave| :
 to a file on disk or to |deleteSelected| :guilabel:`Remove selected ICC Profile`.
 Once applied, QGIS will enforce the selected color model to ensure
 consistent color representation.
-
-.. note:: Note that the :guilabel:`ICC Profile` option
-  will only be visible if QGIS is built with Qt 6.8.0 or higher.
 
 There is also an additional section where you can define specific colors for the
 running project. Like the :ref:`global colors <colors_options>`, you can:
@@ -2826,6 +2822,7 @@ in the QGIS user profile.
 * Project templates must be deployed in the :file:`project_templates` directory.
 * Custom Python macros must be deployed in the :file:`python` directory.
 
+.. _`ProxyType-enum`: https://doc.qt.io/qt-6/qnetworkproxy.html#ProxyType-enum
 .. _`PROJ 8.0`: https://proj.org/en/8.0/
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE

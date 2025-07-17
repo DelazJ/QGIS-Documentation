@@ -73,7 +73,7 @@ The Console input area main features are:
 
   * Python
   * PyQGIS
-  * PyQt5
+  * PyQt6
   * QScintilla2
   * osgeo-gdal-ogr
 
@@ -147,7 +147,7 @@ share the code via GitHub and much more). Main features are:
 
   * Python
   * PyQGIS
-  * PyQt5
+  * PyQt6
   * QScintilla2
   * osgeo-gdal-ogr
 
