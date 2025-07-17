@@ -415,7 +415,7 @@ Software requirements
 The easiest way to create and manage all the translation files is to install `Qt Linguist`_.
 In a Debian-based GNU/Linux environment you can install it typing::
 
-  sudo apt install qttools5-dev-tools
+  sudo apt install qt6-tools-dev-tools
 
 
 Files and directory
@@ -607,24 +607,24 @@ resources for the GUI, such as icons:
 
 It is good to use a prefix that will not collide with other plugins or any
 parts of QGIS, otherwise you might get resources you did not want. Now you
-just need to generate a Python file that will contain the resources. It's
-done with :command:`pyrcc5` command:
+just need to generate a Python file that will contain the resources.
+It's done with Qt :command:`rcc` command:
 
 ::
 
-  pyrcc5 -o resources.py resources.qrc
+  rcc -g python -o resources.py resources.qrc
 
 .. note::
 
-    In Windows environments, attempting to run the :command:`pyrcc5` from
+    In Windows environments, attempting to run the :command:`rcc` from
     Command Prompt or Powershell will probably result in the error "Windows
     cannot access the specified device, path, or file [...]".  The easiest
     solution is probably to use the OSGeo4W Shell but if you are comfortable
     modifying the PATH environment variable or specifiying the path to the
     executable explicitly you should be able to find it at
-    :file:`<Your QGIS Install Directory>\\bin\\pyrcc5.exe`.
+    :file:`<Your QGIS Install Directory>\\apps\\Qt6\\bin\\rcc.exe`.
 
-.. _Qt Linguist: https://doc.qt.io/qt-5/qtlinguist-index.html
+.. _Qt Linguist: https://doc.qt.io/qt-6/qtlinguist-index.html
 .. _GitHub workflows: https://docs.github.com/en/actions/writing-workflows
 .. _Gitlab-CI: https://docs.gitlab.com/ci/
 .. _Transifex: https://www.transifex.com
