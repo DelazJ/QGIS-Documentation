@@ -385,9 +385,14 @@ nitpick_ignore = [
 
 # Add doctest configuration
 
+# A list of directories that will be added to sys.path
+# when the doctest builder is used.
 doctest_path = ['/usr/share/qgis/python/plugins/',
                 os.path.join(os.getcwd(), 'testdata', 'processing')]
-
+# Controls whether successes are reported.
+doctest_show_successes = False
+# Python code that is treated like it were put in a testsetup directive
+# for every file that is tested, and for every group. 
 doctest_global_setup = '''
 import os
 import sys
