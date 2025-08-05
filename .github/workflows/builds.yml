@@ -23,6 +23,7 @@ jobs:
     strategy:
       matrix:
         format: [html, pdf]
+        language : [en, fr]
 
     steps:
     - name: Harden Runner
@@ -65,7 +66,7 @@ jobs:
 
     - name: Build English ${{ matrix.format }} documentation
       run: |
-          make ${{ matrix.format }}
+          make ${{ matrix.format }} LANG=${{ matrix.language }}
     - name: Upload ${{ matrix.format }} build artifact
       uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
       with:
