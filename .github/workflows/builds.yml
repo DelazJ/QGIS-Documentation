@@ -64,12 +64,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r REQUIREMENTS.txt
 
-    - name: Build English ${{ matrix.format }} documentation
+    - name: Build ${{ matrix.format }} documentation in ${{ matrix.language }}
       run: |
           make ${{ matrix.format }} LANG=${{ matrix.language }}
-    - name: Upload ${{ matrix.format }} build artifact
+    - name: Upload ${{ matrix.format }}-${{ matrix.language }} build artifact
       uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
       with:
-        name: ${{ matrix.format }} build
-        path: build/${{ matrix.format }}
+        name: ${{ matrix.format }}-${{ matrix.language }} build
+        path: build/${{ matrix.format }}-${{ matrix.language }}
         retention-days: 15
