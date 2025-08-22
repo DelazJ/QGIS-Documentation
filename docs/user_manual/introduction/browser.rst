@@ -127,8 +127,8 @@ context menu allows you to :guilabel:`Rename Favorite...` and
 Spatial Bookmarks
 ......................................................................
 
-This is where you will find your spatial bookmarks, organised
-into :guilabel:`Project Bookmarks` and :guilabel:`User Bookmarks`.
+This is where you will find your :ref:`spatial bookmarks <sec_bookmarks>`,
+grouped into :guilabel:`Project Bookmarks` and :guilabel:`User Bookmarks`.
 
 From the top level context menu, you can create a bookmark
 (:guilabel:`New Spatial Bookmark...`),
