@@ -106,7 +106,8 @@ html_theme_options = {
     'navigation_depth': 4,
     # includehidden:Specifies if the navigation includes hidden table(s) of contents – that is, any toctree directive that is marked with the :hidden: option. Default: True,
     # 'includehidden': True,
-    # canonical_url: This will specify a canonical URL meta link element to tell search engines which URL should be ranked as the primary URL for your documentation. This is important if you have multiple URLs that your documentation is available through. The URL points to the root path of the documentation and requires a trailing slash.
+    # canonical_url: This will specify a canonical URL meta link element to tell search engines which URL should be ranked as the primary URL for your documentation.
+    # This is important if you have multiple URLs that your documentation is available through. The URL points to the root path of the documentation and requires a trailing slash.
     'canonical_url': 'https://docs.qgis.org/latest/en/',
     # display_version: If True, the version number is shown at the top of the sidebar. Default: True,
     'display_version': True,
@@ -263,22 +264,23 @@ latex_paper_size = 'a4'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
+testing_details = f"\n\nThis document is a work in progress and may contain features in development version only." if version == 'testing' else ""
 latex_documents = [
     ('docs/about/index', 'AboutQGIS.tex',
-     f'About QGIS {version}', u'QGIS Project', 'manual'),
+     f'About QGIS {version}', f'QGIS Project {testing_details}', 'manual'),
     ('docs/user_manual/index', 'DesktopUserGuide.tex',
-     f'QGIS Desktop {version} User Guide', u'QGIS Project', 'manual'),
+     f'QGIS Desktop {version} User Guide', f'QGIS Project {testing_details}', 'manual'),
     ('docs/server_manual/index', 'ServerUserGuide.tex',
-        f'QGIS Server {version} User Guide', u'QGIS Project', 'manual'),
+        f'QGIS Server {version} User Guide', f'QGIS Project {testing_details}', 'manual'),
     ('docs/pyqgis_developer_cookbook/index', 'PyQGISDeveloperCookbook.tex',
-        f'PyQGIS {version} developer cookbook', u'QGIS Project', 'manual'),
+        f'PyQGIS {version} developer cookbook', f'QGIS Project {testing_details}', 'manual'),
     ('docs/training_manual/index', 'TrainingManual.tex',
-        u'QGIS Training Manual', u'QGIS Project', 'manual'),
+        'QGIS Training Manual', f'QGIS Project {testing_details}', 'manual'),
     ('docs/gentle_gis_introduction/index', 'GentleGISIntroduction.tex',
-        u'Gentle GIS Introduction', u'QGIS Project', 'manual'),
+        'Gentle GIS Introduction', f'QGIS Project {testing_details}', 'manual'),
     ('docs/documentation_guidelines/index', 'DocumentationGuidelines.tex',
-        u'QGIS Documentation Guidelines', u'QGIS Project', 'manual'),
-    #('docs/developers_guide/index', 'DevelopersGuide.tex', u'QGIS Developers Guide', u'QGIS Project', 'manual'),
+        'QGIS Documentation Guidelines', f'QGIS Project {testing_details}', 'manual'),
+    #('docs/developers_guide/index', 'DevelopersGuide.tex', 'QGIS Developers Guide', f'QGIS Project {testing_details}', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
