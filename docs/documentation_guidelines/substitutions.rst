@@ -242,6 +242,7 @@ Icon                            Substitution                        Icon        
 |measure|                       ``|measure|``                       |measureArea|                   ``|measureArea|``
 |measureBearing|                ``|measureBearing|``                |measureAngle|                  ``|measureAngle|``
 |newMap|                        ``|newMap|``                        |new3DMap|                      ``|new3DMap|``
+|new3DMapGlobe|                 ``|new3DMapGlobe|``
 |tiltUp|                        ``|tiltUp|``                        |tiltDown|                      ``|tiltDown|``
 |3dNavigation|                  ``|3dNavigation|``                  |play|                          ``|play|``
 |camera|                        ``|camera|``                        |shadow|                        ``|shadow|``
@@ -1286,6 +1287,8 @@ Icon                            Substitution                        Icon        
 .. |nearestNeighbour| image:: /static/common/mAlgorithmNearestNeighbour.png
    :width: 1.5em
 .. |new3DMap| image:: /static/common/mActionNew3DMap.png
+   :width: 1.5em
+.. |new3DMapGlobe| image:: /static/common/mActionNew3DMapGlobe.png
    :width: 1.5em
 .. |newAttribute| image:: /static/common/mActionNewAttribute.png
    :width: 1.5em

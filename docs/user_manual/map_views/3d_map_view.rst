@@ -11,11 +11,27 @@
       :local:
 
 
-3D visualization support is offered through the 3D map view.
-You can create, manage and open 3D map views via :menuselection:`View --> 3D Map Views -->` menu:
+3D visualization support is offered through the 3D scenes.
+3D scenes allow you to render 3D content (such as 3d Tiles or point cloud
+alongside 2D map content (vector, raster, mesh or annotations)
+appropriately configured.
 
-#. By clicking on |new3DMap| :menuselection:`New 3D Map View` you can create a new 3D map view.
-   A floating and dockable QGIS panel will appear (see :ref:`figure_3dmapview`).
+Two different types of 3D scenes are supported:
+
+* ``3D map view``: overlays the 3D features on a small scale, local 3D Scene 
+  using a projected CRS.
+* ``3D globe view``: shows 3D content over the world displayed as a geospatially
+  accurate ellipsoid.
+  Any map layer type can be used as a 2D texture for the globe.
+  Globe view uses the ellipsoid of the project to generate globe mesh.
+  It is even possible to use other celestial bodies, such as Mars or Moon,
+  if the project’s CRS is set up accordingly.
+
+You can create, manage and open 3D map scenes via :menuselection:`View --> 3D Map Views -->` menu:
+
+#. By clicking dedicated |new3DMap| :menuselection:`New 3D Map View` (:kbd:`Ctrl+Alt+M`)
+   |new3DMapGlobe| :menuselection:`New 3D Globe View` buttons.
+   In both cases, a floating and dockable QGIS panel will appear (see :ref:`figure_3dmapview`).
    It has the same extent and view as the 2D main map canvas
    and provides a set of navigation tools to turn the view into 3D.
 #. By clicking on :menuselection:`Manage 3D Map Views` you get in the 3D Map Views Manager.
@@ -517,6 +533,8 @@ the 3D vector layer.
 .. |measure| image:: /static/common/mActionMeasure.png
    :width: 1.5em
 .. |new3DMap| image:: /static/common/mActionNew3DMap.png
+   :width: 1.5em
+.. |new3DMapGlobe| image:: /static/common/mActionNew3DMapGlobe.png
    :width: 1.5em
 .. |options| image:: /static/common/mActionOptions.png
    :width: 1em
