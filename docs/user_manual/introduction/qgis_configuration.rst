@@ -2023,9 +2023,6 @@ to a file on disk or to |deleteSelected| :guilabel:`Remove selected ICC Profile`
 Once applied, QGIS will enforce the selected color model to ensure
 consistent color representation.
 
-.. note:: Note that the :guilabel:`ICC Profile` option
-  will only be visible if QGIS is built with Qt 6.8.0 or higher.
-
 There is also an additional section where you can define specific colors for the
 running project. Like the :ref:`global colors <colors_options>`, you can:
 
