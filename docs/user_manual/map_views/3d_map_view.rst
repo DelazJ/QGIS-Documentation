@@ -448,6 +448,40 @@ To explore the map view in 3D:
 To reset the camera view, click the |zoomFullExtent| :sup:`Zoom Full`
 button on the top of the 3D canvas panel.
 
+
+Depending on the navigation mode set in the 3D configuration dialog,
+
+In the :guilabel:`Terrain based` navigation mode, the camera follows around a fixed
+position on the surface of the terrain as the scene is navigated. Navigation
+commands are:
+
+* Left click and drag moves the terrain directly. The camera is kept at a fixed
+  height above the surface of the terrain
+* Right click and drag moves the camera closer into the scene or further away
+  from the scene
+* middle click and drag (or :kbd:`Shift` + left click and drag) rotates the
+  entire scene around the point on the terrain that the camera is pointing at
+* :kbd:`Ctrl` + left click and drag: rotates the camera view around the current
+  camera position
+* scroll wheel: zoom in to or out of the scene (a "dolly" motion)
+
+In the :guilabel:`Walk mode` of navigation, available commands are:
+
+* Left click and drag: rotates the camera view around its current position
+* :kbd:`W`/:kbd:`S` moves the camera forward or backward
+* :kbd:`A`/:kbd:`D` slides the camera left or right ("strafe")
+* :kbd:`Q` moves the camera vertically down
+* :kbd:`E` moves the camera vertically up
+* Holding :kbd:`Shift` while pressing above keys results in a faster motion
+* Right click and drag moves the camera into or out of the scene (a "dolly" motion)
+* Middle mouse drag: slides the camera left/right/up/down (a "strafing" motion)
+* Mouse scroll: changes the movement speed. if the ``w/s/a/d`` movement is too fast
+  then scrolling down will slow down the rate of movement. Similarly if the movement
+  is too slow then scrolling up will speed up the rate of movement.
+* The :kbd:`~` key locks the cursor movement into the 3d map, so any mouse movements
+  directly rotate the camera view without having to hold down the left mouse button
+
+
 .. _`create_animation`:
 
 Creating an animation
