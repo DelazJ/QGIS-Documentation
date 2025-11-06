@@ -491,8 +491,8 @@ panel.
 GDAL Settings
 .............
 
-`GDAL <https://gdal.org/en/latest>`_ is a data exchange library for geospatial data that supports a
-large number of vector and raster formats.
+`GDAL`_ is a data exchange library for geospatial data
+that supports a large number of vector and raster formats.
 It provides drivers to read and (often) write data in these formats.
 The :guilabel:`GDAL` tab exposes the drivers for raster and vector
 formats with their capabilities.
@@ -547,7 +547,7 @@ support read and write access:
     entered for the given format are valid
   * Use the :guilabel:`Help` button to find the parameters to use, or refer
     to the `GDAL raster drivers documentation
-    <https://gdal.org/en/latest/drivers/raster/index.html>`_.
+    <https://gdal.org/en/stable/drivers/raster/index.html>`_.
 
 .. _gdal_pyramidsoptions:
 
@@ -2855,6 +2855,7 @@ in the QGIS user profile.
 * Project templates must be deployed in the :file:`project_templates` directory.
 * Custom Python macros must be deployed in the :file:`python` directory.
 
+.. _GDAL: https://gdal.org/en/stable
 .. _`ProxyType-enum`: https://doc.qt.io/qt-6/qnetworkproxy.html#ProxyType-enum
 .. _`PROJ 8.0`: https://proj.org/en/8.0/
 .. _Qt: https://doc.qt.io/qt-6.8/

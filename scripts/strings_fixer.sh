@@ -39,6 +39,7 @@ MATCHING_STRINGS=(
        [":menuselection : "]=":menuselection:"
        [": menuselection :"]=":menuselection:"
        # complete specific strings to update, e.g., urls from make linkcheck output
+       ["gdal.org/en/latest"]="gdal.org/en/stable"
        # ["oldstringtoreplace"]="newstringforreplacement"
 )
 

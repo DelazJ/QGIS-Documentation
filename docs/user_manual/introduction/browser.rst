@@ -395,7 +395,7 @@ each level of the dataset tree.
 
 
 .. [1] The different entries may also be available for some GDAL supported
- `vector file formats <https://gdal.org/en/latest/drivers/vector/index.html>`_
+ `vector file formats <https://gdal.org/en/stable/drivers/vector/index.html>`_
  such as ESRI File Geodatabase, FlatGeobuf, GeoParquet, NetCDF, ... when compatible.
 .. [2] For PostgreSQL connections: only supported with ALTER TABLE privilege.
 

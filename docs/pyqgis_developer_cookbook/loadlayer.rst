@@ -89,7 +89,7 @@ providers:
    pair: Loading; GDAL layers
 
 * The ogr provider from the GDAL library supports a `wide variety of formats
-  <https://gdal.org/en/latest/drivers/vector/index.html>`_,
+  <https://gdal.org/en/stable/drivers/vector/index.html>`_,
   also called drivers in GDAL speak. 
   Examples are ESRI Shapefile, Geopackage, Flatgeobuf, Geojson, ...
   For single-file formats the filepath usually suffices as uri.

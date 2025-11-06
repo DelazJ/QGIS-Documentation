@@ -630,10 +630,8 @@ If this list is specified, only these fields are added
 and the HStore field is updated.
 By default, all unique keys are added.
 
-The PostgreSQL `HStore <https://www.postgresql.org/docs/10/hstore.html>`_
-is a simple key-value store used in PostgreSQL and GDAL (when reading
-an `OSM file <https://gdal.org/en/latest/drivers/vector/osm.html#other-tags-field>`_
-with the ``other_tags`` field.
+The PostgreSQL `HStore`_ is a simple key-value store used in PostgreSQL and GDAL
+(when reading an `OSM`_ file with the ``other_tags`` field.
 
 Parameters
 ..........
@@ -1252,6 +1250,10 @@ Python code
 .. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
+
+
+.. _HStore: https://www.postgresql.org/docs/current/hstore.html
+.. _OSM: https://gdal.org/en/stable/drivers/vector/osm.html#other-tags-field
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE

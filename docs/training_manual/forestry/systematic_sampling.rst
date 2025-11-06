@@ -164,8 +164,7 @@ save your data:
 #. In :guilabel:`CRS` select :guilabel:`Selected CRS`.
 #. Browse for :guilabel:`EPSG:4326 - WGS 84`.
 
-   .. note:: The `GPX <https://gdal.org/en/latest/drivers/vector/gpx.html>`_ format
-    accepts only this CRS, if you select
+   .. note:: The `GPX`_ format accepts only this CRS; if you select
     a different one, QGIS will give no error but you will get an empty file.
 
 #. Click :guilabel:`OK`.
@@ -197,6 +196,9 @@ What's Next?
 In the next lesson you will see how to use the Atlas capabilities in QGIS to
 automatically generate detailed maps that the field teams will be using to
 navigate to the sample plots assigned to them.
+
+
+.. _GPX: https://gdal.org/en/stable/drivers/vector/gpx.html
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE

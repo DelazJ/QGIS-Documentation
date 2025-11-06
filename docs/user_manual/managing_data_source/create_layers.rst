@@ -459,7 +459,7 @@ Depending on the format of export, some of these options may be available:
      the data as a hidden attribute. Only some formats can handle this kind of
      information. KML, DXF and TAB file formats are such formats. For advanced
      details, you can read the `OGR Feature Styles specification
-     <https://gdal.org/en/latest/user/ogr_feature_style.html>`_ document.
+     <https://gdal.org/en/stable/user/ogr_feature_style.html>`_ document.
 
 * :guilabel:`Geometry`: you can configure the geometry capabilities of the
   output layer
@@ -482,11 +482,9 @@ Depending on the format of export, some of these options may be available:
 * :guilabel:`Datasource Options`, :guilabel:`Layer Options` or
   :guilabel:`Custom Options` which allow you to configure advanced parameters
   depending on the output format. Some are described in :ref:`supported_format`
-  but for full details, see the `GDAL <https://gdal.org/en/latest>`_ driver documentation.
+  but for full details, see the `GDAL`_ driver documentation.
   Each file format has its own custom parameters, e.g. for the ``GeoJSON`` format
-  have a look at the
-  `GDAL GeoJSON <https://gdal.org/en/latest/drivers/vector/geojson.html#layer-creation-options>`_
-  documentation.
+  have a look at the `GEOJSON`_ documentation.
 
 .. _figure_save_vector:
 
@@ -956,6 +954,9 @@ box. Example:
 Spatial binary predicates like ``ST_Intersects`` are sped up significantly
 when used in conjunction with this spatial index syntax.
 
+
+.. _GDAL: https://gdal.org/en/stable/index.html
+.. _GeoJSON: https://gdal.org/en/stable/drivers/vector/geojson.html#layer-creation-options
 .. _GeoPackage: https://gdal.org/en/stable/user/sql_sqlite_dialect.html
 .. _OGR: https://gdal.org/en/stable/user/ogr_sql_dialect.html
 .. _PostgreSQL: https://postgresql.org/docs/current/sql-expressions.html
