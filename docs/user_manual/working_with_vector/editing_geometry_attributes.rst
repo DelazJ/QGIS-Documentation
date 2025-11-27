@@ -822,37 +822,45 @@ To create features with custom Z or M values you may want to rely on the
 Cutting, Copying and Pasting Features
 -------------------------------------
 
-Selected features can be cut, copied and pasted between layers in the same
-QGIS project, as long as destination layers are set to |toggleEditing|
-:sup:`Toggle editing` beforehand.
+Once features are selected in a layer, QGIS allows you to |editCopy| :sup:`Copy features`
+and, if the layer is in edit mode, |editCut| :sup:`Cut features`.
+They can then be pasted:
 
-.. index:: Polygon to line, Line to polygon
+* as temporary scratch layer, from :menuselection:`Edit --> Paste feature as -->
+  Temporary scratch layer...`. A new layer is created, inheriting form properties
+  of the source layer (i.e., field size, constraints, widget type,... are the same).
+* pasted to an existing layer: it can be the same layer, another one in the same project,
+  in another project, as long as the destination layer is set to |toggleEditing|
+  :sup:`Toggle editing` beforehand.
 
-.. _tip_polygon_to_line:
+  .. index:: Polygon to line, Line to polygon
 
-.. tip:: **Transform polygon into line and vice-versa using copy/paste**
+  .. _tip_polygon_to_line:
 
-   Copy a line feature and paste it in a polygon layer:
-   QGIS pastes in the target layer a polygon whose boundary corresponds
-   to the closed geometry of the line feature.
-   This is a quick way to generate different geometries of the same
-   data.
+  .. tip:: **Transform polygon into line and vice-versa using copy/paste**
+
+      Copy a line feature and paste it in a polygon layer:
+      QGIS pastes in the target layer a polygon whose boundary corresponds
+      to the closed geometry of the line feature.
+      This is a quick way to generate different geometries of the same data.
 
 .. index:: CSV, WKT, GeoJSON
 
-Features can also be pasted to external applications as text.
-That is, the features are represented in CSV format, with the geometry
-data appearing in the OGC Well-Known Text (WKT) format.
-WKT and GeoJSON features from outside QGIS can also be pasted to a
-layer within QGIS.
+* pasted to external applications, as text.
+  That is, the features are represented in CSV format, with the geometry
+  data appearing in the OGC Well-Known Text (WKT) format.
 
-When would the copy and paste function come in handy? Well, it turns
-out that you can edit more than one layer at a time
+.. to review what ist refers re ally to
+  WKT and GeoJSON features from outside QGIS can also be pasted to a
+  layer within QGIS.
+
+
+When would the copy and paste function come in handy?
+Well, it turns out that you can edit more than one layer at a time
 and copy/paste features between layers. Why would we want to do this?
-Say we need to do some work on a new layer but only need one or two
-lakes, not the 5,000 on our ``big_lakes`` layer.
-We can create a new layer and use copy/paste to plop the needed lakes
-into it.
+Say we need to do some work on a new layer but only need one or two lakes,
+not the 5,000 on our ``big_lakes`` layer.
+We can create a new layer and use copy/paste to plop the needed lakes into it.
 
 As an example, we will copy some lakes to a new layer:
 
@@ -874,16 +882,18 @@ layer, it doesn't matter how you design the fields and data types. If you
 want to make sure everything - the feature and its attributes - gets copied,
 make sure the schemas match.
 
-When you paste features into another layer,
-QGIS checks the attribute values against the :ref:`constraints <constraints>` defined
-in the destination layer (for example, ``NOT NULL``, ``Unique``, or expression constraints).
-If one or more pasted features contain invalid attribute values that
-do not meet these constraints, a dialog will
-appear, listing all affected features and fields.
+When you paste features into another layer, QGIS checks the attribute values
+against the :ref:`constraints <constraints>` defined in the destination layer
+(for example, ``NOT NULL``, ``Unique``, or expression constraints).
+If one or more pasted features contain invalid attribute values
+that do not meet these constraints, a dialog will appear,
+listing all affected features and fields.
 When pasting a single feature, you can decide whether to:
 
-* Edit the invalid values directly in the dialog. The corrected values will be used when pasting.
+* Edit the invalid values directly in the dialog and press :guilabel:`OK`.
+  The corrected values will be used when pasting.
 * :guilabel:`Paste Anyway`: the feature is pasted as-is, even with invalid values.
+* Abort the pasting operation, pressing :guilabel:`Cancel`.
 
 .. figure:: img/edit_paste_invalid_values_single.png
    :align: center
@@ -895,11 +905,14 @@ When pasting multiple features, the dialog lists all invalid fields across all
 features, allowing bulk review and correction. You can decide per field or
 per feature whether to:
 
-* Edit the invalid values directly in the dialog. The corrected values will be used when pasting.
+* Edit the invalid values directly in the dialog and press :guilabel:`OK`.
+  The corrected values will be used when pasting.
 * :guilabel:`Discard All`: no features pasted.
 * :guilabel:`Discard All Invalid`: pasted only features with valid attribute values.
-* :guilabel:`Paste All (Including Invalid)`: all features are pasted as-is, even with invalid
-  values.
+* :guilabel:`Paste All (Including Invalid)`: all features are pasted as-is,
+  even with invalid values.
+  Depending on the constraint enforcement, saving the changes into the layer
+  may not be possible.
 * :guilabel:`Skip`: skip the specific feature, allowing proceeding with the rest.
 
 .. figure:: img/edit_paste_invalid_values_multiple.png
