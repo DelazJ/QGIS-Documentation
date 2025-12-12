@@ -353,6 +353,85 @@ iterator returns all features, but returns partial data for each of them.
   request.setFilterRect(areaOfInterest).setFlags(QgsFeatureRequest.NoGeometry).setFilterFid(45).setSubsetOfAttributes([0,2])
 
 
+.. index:: Spatial index
+
+Using Spatial Index
+-------------------
+
+Spatial indexes can dramatically improve the performance of your code if you
+need to do frequent queries to a vector layer. Imagine, for instance, that you
+are writing an interpolation algorithm, and that for a given location you need
+to know the 10 closest features from a layer, in order to use those features
+for calculating the interpolated value. Without a spatial index, the only way
+for QGIS to find those 10 features is to compute the distance from each and every
+feature to the specified location and then compare those distances. This can be a
+very time consuming task, especially if it needs to be repeated for several
+locations. If a spatial index exists for the layer, the operation is much more
+effective.
+
+Think of a layer without a spatial index as a telephone book in which telephone
+numbers are not ordered or indexed. The only way to find the telephone number
+of a given person is to read from the beginning until you find it.
+
+Spatial indexes are not created by default for a QGIS vector layer, but you can
+create them easily. This is what you have to do:
+
+#. create spatial index using the :class:`QgsSpatialIndex <qgis.core.QgsSpatialIndex>` class:
+
+   .. testcode:: vectors
+
+    index = QgsSpatialIndex()
+
+#. add features to index --- index takes :class:`QgsFeature <qgis.core.QgsFeature>` object
+   and adds it to the internal data structure.
+   You can create the object manually or use one from a previous call to the provider's
+   :meth:`getFeatures() <qgis.core.QgsVectorDataProvider.getFeatures>` method.
+
+   .. testcode:: vectors
+
+    feat = QgsFeature(vlayer.fields())
+    index.addFeature(feat)
+
+   Alternatively (much faster), you can load all features of a layer at once using bulk loading
+
+   .. testcode:: vectors
+
+    vlayer = QgsVectorLayer("testdata/airports.shp", "airports", "ogr")
+    index = QgsSpatialIndex(vlayer.getFeatures())
+
+#. once spatial index is filled with some values, you can do some queries
+
+   .. testcode:: vectors
+
+    # returns array of feature IDs of five nearest features
+    nearest = index.nearestNeighbor(QgsPointXY(25.4, 12.7), 5)
+    print(nearest)
+
+    # returns array of IDs of features which intersect an extent
+    intersect = index.intersects(QgsRectangle(10.5, 8.3, 23.1, 17.2))
+    print(intersect)
+
+   .. testoutput:: vectors
+
+    [583, 712, 405, 453, 156]
+    [314, 156, 712]
+
+You can also use the static but much faster
+:class:`QgsSpatialIndexKDBush <qgis.core.QgsSpatialIndexKDBush>` spatial index
+(only on simple point features):
+
+.. testcode:: vectors
+
+    # returns number of feature IDs within a distance of 20 layer units
+    kIndex = QgsSpatialIndexKDBush(vlayer.getFeatures())
+    neighbors = kIndex.within(QgsPointXY(25.4, 12.7), 20)
+    print(len(neighbors))
+
+.. testoutput:: vectors
+
+    42
+
+
 .. index:: Vector layers; Editing
 .. _editing:
 
@@ -628,83 +707,6 @@ to be updated because the changes are not automatically propagated.
     calling :meth:`commitChanges() <qgis.core.QgsVectorLayer.commitChanges>` at the end. If any exception occurs, it will
     :meth:`rollBack() <qgis.core.QgsVectorLayer.rollBack>` all the changes. See :ref:`editing-buffer`.
 
-
-.. index:: Spatial index
-
-Using Spatial Index
-===================
-
-Spatial indexes can dramatically improve the performance of your code if you
-need to do frequent queries to a vector layer. Imagine, for instance, that you
-are writing an interpolation algorithm, and that for a given location you need
-to know the 10 closest features from a layer, in order to use those features
-for calculating the interpolated value. Without a spatial index, the only way
-for QGIS to find those 10 features is to compute the distance from each and every
-feature to the specified location and then compare those distances. This can be a
-very time consuming task, especially if it needs to be repeated for several
-locations. If a spatial index exists for the layer, the operation is much more
-effective.
-
-Think of a layer without a spatial index as a telephone book in which telephone
-numbers are not ordered or indexed. The only way to find the telephone number
-of a given person is to read from the beginning until you find it.
-
-Spatial indexes are not created by default for a QGIS vector layer, but you can
-create them easily. This is what you have to do:
-
-#. create spatial index using the :class:`QgsSpatialIndex <qgis.core.QgsSpatialIndex>` class:
-
-   .. testcode:: vectors
-
-    index = QgsSpatialIndex()
-
-#. add features to index --- index takes :class:`QgsFeature <qgis.core.QgsFeature>` object
-   and adds it to the internal data structure.
-   You can create the object manually or use one from a previous call to the provider's
-   :meth:`getFeatures() <qgis.core.QgsVectorDataProvider.getFeatures>` method.
-
-   .. testcode:: vectors
-
-    index.addFeature(feat)
-
-   Alternatively (much faster), you can load all features of a layer at once using bulk loading
-
-   .. testcode:: vectors
-
-    vlayer = QgsVectorLayer("testdata/airports.shp", "airports", "ogr")
-    index = QgsSpatialIndex(vlayer.getFeatures())
-
-#. once spatial index is filled with some values, you can do some queries
-
-   .. testcode:: vectors
-
-    # returns array of feature IDs of five nearest features
-    nearest = index.nearestNeighbor(QgsPointXY(25.4, 12.7), 5)
-    print(nearest)
-
-    # returns array of IDs of features which intersect an extent
-    intersect = index.intersects(QgsRectangle(10.5, 8.3, 23.1, 17.2))
-    print(intersect)
-
-   .. testoutput:: vectors
-
-    [583, 712, 405, 453, 156]
-    [314, 156, 712]
-
-You can also use the static but much faster
-:class:`QgsSpatialIndexKDBush <qgis.core.QgsSpatialIndexKDBush>` spatial index
-(only on simple point features):
-
-.. testcode:: vectors
-
-    # returns number of feature IDs within a distance of 20 layer units
-    kIndex = QgsSpatialIndexKDBush(vlayer.getFeatures())
-    neighbors = kIndex.within(QgsPointXY(25.4, 12.7), 20)
-    print(len(neighbors))
-
-.. testoutput:: vectors
-
-    42
 
 .. index:: Vector layers; utils
 
