@@ -15,22 +15,22 @@ The :guilabel:`Elevation Profile` panel is a plotting tool for side view,
 for visualizing elevation data along a line.
 It supports vector, raster, mesh and point cloud layers. Data can be of 2D or 3D type.
 
-To add an elevation profile view, go to :menuselection:`View --> Elevation Profiles -->`
-and press |newElevationProfile| :menuselection:`New Elevation Profile` to create an elevation profile
-based on the project layer tree.
+To create or manage elevation profile panels,
+expand the :menuselection:`View --> Elevation Profiles -->` and either press:
+
+* |newElevationProfile| :menuselection:`New Elevation Profile` (:kbd:`Ctrl+Alt+E`):
+  creates an elevation profile based on the project layer tree.
+* The :menuselection:`Manage Elevation Profiles...` button:
+  opens the :guilabel:`Elevation Profile Manager` dialog listing all available elevation profile views,
+  and allowing to:
+
+  * search for an elevation profile
+  * open any elevation profile in the project
+  * duplicate, rename or remove an existing elevation profile
 
 You can add as many profile views as you want, and they can be docked,
 piled on top of each other, or floating.
 They are stored in the project upon saving the project.
-
-The :menuselection:`View --> Elevation Profiles --> Manage Elevation Profiles...` button
-opens the :guilabel:`Elevation Profile Manager` dialog listing all available elevation profile views,
-and allowing to:
-
-* search for an elevation profile
-* open any elevation profile in the project
-* duplicate, rename or remove an existing elevation profile
-
 
 .. _figure_elevation_tool_interaction:
 
@@ -65,9 +65,8 @@ At the top of the :guilabel:`Elevation Profile` panel, a toolbar provides you wi
    * - |addGroup| :sup:`Add Group`
      - 
      - Allows grouping of layers, with similar logic to main canvas layer tree groups.
-       Individual groups can be checked or unchecked,
-       allowing multiple layers to be shown / hidden from the elevation
-       profile at once.
+       Individual groups can be checked or unchecked, allowing multiple layers to be shown or hidden
+       from the elevation profile at once.
 
        Just like the main canvas layer tree group handling:
 
@@ -200,10 +199,10 @@ It also allows a set of interactions such as zooming, panning, measuring, identi
 Creating an elevation profile
 =============================
 
-To create a profile view, you can:
+To create an elevation profile view:
 
-#. Go to :menuselection:`View -->` |newElevationProfile| :menuselection:`Elevation Profile` menu.
-   The :guilabel:`Elevation profile` panel opens.
+#. Press :menuselection:`View -->` |newElevationProfile| :menuselection:`New Elevation Profile` button 
+   or press :kbd:`Ctrl+Alt+E`. The :guilabel:`Elevation profile` view opens.
 #. Create the profile line along which the terrain and the features will be rendered.
    Select a drawing tool:
 
@@ -245,6 +244,7 @@ To create a profile view, you can:
    #. Toggle visibility of the layers you are interested in.
       These are the only ones rendered in the profile view
       and selected layers can be different from the main :guilabel:`Layers` panel's.
+   #. 
    #. Double-click a layer name or right-click and select :guilabel:`Properties`.
       The :guilabel:`Elevation` properties tab of the layer opens.
       This is the place you configure how each feature or terrain should render on the profile view.
