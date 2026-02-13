@@ -127,9 +127,8 @@ a :class:`QgsVectorLayer <qgis.core.QgsVectorLayer>` object.
 
 .. testcode:: vectors
 
- # "layer" is a QgsVectorLayer instance
- layer = iface.activeLayer()
- features = layer.getFeatures()
+ # "vlayer" is a QgsVectorLayer instance
+ features = vlayer.getFeatures()
 
  for feature in features:
      # retrieve every feature with its geometry and attributes
@@ -172,8 +171,8 @@ a :class:`QgsVectorLayer <qgis.core.QgsVectorLayer>` object.
 .. testoutput:: vectors
 
     Feature ID:  1
-    Point:  <QgsPointXY: POINT(7 45)>
-    [1, 'First feature']
+    Point:  <QgsPointXY: POINT(75.95707224036517857 30.85035985617017573)>
+    [1, 1, 9, 'Airport', 'small', 'Sahnewal', 'LUH', 'terminal', 'VILD', 'LUH', 'http://en.wikipedia.org/wiki/Sahnewal_Airport', 8.0]
 
 
 .. index:: Selecting features
@@ -193,18 +192,15 @@ To select all the features, the :meth:`selectAll() <qgis.core.QgsVectorLayer.sel
 
 .. testcode:: vectors
 
- # Get the active layer (must be a vector layer)
- layer = iface.activeLayer()
- layer.selectAll()
+ vlayer.selectAll()
 
 To select using an expression, use the :meth:`selectByExpression() <qgis.core.QgsVectorLayer.selectByExpression>` method:
 
 .. testcode:: vectors
 
- # Assumes that the active layer is points.shp file from the QGIS test suite
- # (Class (string) and Heading (number) are attributes in points.shp)
- layer = iface.activeLayer()
- layer.selectByExpression('"Class"=\'B52\' and "Heading" > 10 and "Heading" <70', QgsVectorLayer.SetSelection)
+ # Assumes that the active layer is airports layer from the QGIS Documentation test suite
+ # (type (string) and natlscale (number) are attributes of the layer)
+ vlayer.selectByExpression('"type"=\'major\' and "natlscale" > 10 and "natlscale" <70', QgsVectorLayer.SetSelection)
 
 To change the selection color you can use :meth:`setSelectionColor()
 <qgis.gui.QgsMapCanvas.setSelectionColor>` method of
@@ -222,18 +218,18 @@ can call :meth:`select() <qgis.core.QgsVectorLayer.select>` passing to it the li
  selected_fid = []
 
  # Get the first feature id from the layer
- feature = next(layer.getFeatures())
+ feature = next(vlayer.getFeatures())
  if feature:
      selected_fid.append(feature.id())
 
  # Add that features to the selected list
- layer.select(selected_fid)
+ vlayer.select(selected_fid)
 
 To clear the selection:
 
 .. testcode:: vectors
 
- layer.removeSelection()
+ vlayer.removeSelection()
 
 Accessing attributes
 --------------------
@@ -284,7 +280,7 @@ to the :meth:`getFeatures() <qgis.core.QgsVectorLayer.getFeatures>` call. Here's
 
 .. testcode:: vectors
 
- areaOfInterest = QgsRectangle(450290,400520, 450750,400780)
+ areaOfInterest = QgsRectangle(3.2, 44.7, 10.1, 49.5)
 
  request = QgsFeatureRequest().setFilterRect(areaOfInterest)
 
@@ -313,8 +309,8 @@ Here's an example:
 
 .. testoutput:: vectors
 
-    <qgis._core.QgsFeature object at 0x7f9b78590948>
-    <qgis._core.QgsFeature object at 0x7faef5881670>
+    <qgis._core.QgsFeature object at 0x31b5b7bb0>
+    <qgis._core.QgsFeature object at 0x31b5b7d90>
 
 If you need an attribute-based filter instead (or in addition) of a spatial
 one like shown in the examples above, you can build a :class:`QgsExpression
@@ -345,11 +341,11 @@ iterator returns all features, but returns partial data for each of them.
   # Don't return geometry objects to increase the "speed" of the request
   request.setFlags(QgsFeatureRequest.NoGeometry)
 
-  # Fetch only the feature with id 45
-  request.setFilterFid(45)
+  # Fetch only the feature with id 540
+  request.setFilterFid(540)
 
   # The options may be chained
-  request.setFilterRect(areaOfInterest).setFlags(QgsFeatureRequest.NoGeometry).setFilterFid(45).setSubsetOfAttributes([0,2])
+  request.setFilterRect(areaOfInterest).setFlags(QgsFeatureRequest.NoGeometry).setFilterFid(540).setSubsetOfAttributes([0,2])
 
 
 .. index:: Vector layers; Editing
