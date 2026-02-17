@@ -242,7 +242,7 @@ Attributes can be referred to by their name:
 
 .. testoutput:: vectors
 
-    First feature
+    Sahnewal
 
 Alternatively, attributes can be referred to by index.
 This is a bit faster than using the name.
@@ -254,7 +254,7 @@ For example, to get the second attribute:
 
 .. testoutput:: vectors
 
-    First feature
+    1
 
 
 Iterating over selected features
@@ -265,7 +265,7 @@ If you only need selected features, you can use the :meth:`selectedFeatures()
 
 .. testcode:: vectors
 
-  selection = layer.selectedFeatures()
+  selection = vlayer.selectedFeatures()
   for feature in selection:
       # do whatever you need with the feature
       pass
@@ -284,7 +284,7 @@ to the :meth:`getFeatures() <qgis.core.QgsVectorLayer.getFeatures>` call. Here's
 
  request = QgsFeatureRequest().setFilterRect(areaOfInterest)
 
- for feature in layer.getFeatures(request):
+ for feature in vlayer.getFeatures(request):
      # do whatever you need with the feature
      pass
 
@@ -304,7 +304,7 @@ Here's an example:
 
   request = QgsFeatureRequest()
   request.setLimit(2)
-  for feature in layer.getFeatures(request):
+  for feature in vlayer.getFeatures(request):
       print(feature)
 
 .. testoutput:: vectors
@@ -336,7 +336,7 @@ iterator returns all features, but returns partial data for each of them.
   request.setSubsetOfAttributes([0,2])
 
   # More user friendly version
-  request.setSubsetOfAttributes(['name','id'],layer.fields())
+  request.setSubsetOfAttributes(['name','id'],vlayer.fields())
 
   # Don't return geometry objects to increase the "speed" of the request
   request.setFlags(QgsFeatureRequest.NoGeometry)
@@ -361,6 +361,7 @@ to find out what set of functionality is supported.
 
 .. testcode:: vectors
 
+  layer = iface.activeLayer()
   caps = layer.dataProvider().capabilities()
   # Check if a particular capability is supported:
   if caps & QgsVectorDataProvider.DeleteFeatures:
