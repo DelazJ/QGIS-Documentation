@@ -23,6 +23,9 @@ A new layer is created.
 Parameters
 ..........
 
+Basic parameters
+^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 20 20 20 40
@@ -50,6 +53,37 @@ Parameters
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
           :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
+
 
 Outputs
 .......
@@ -381,6 +415,24 @@ Advanced parameters
        .. include:: ../algs_include.rst
           :start-after: **extent_options**
           :end-before: **end_extent_options**
+
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
 
 Outputs
 .......
@@ -1117,6 +1169,23 @@ Advanced parameters
      - [datum]
      - The :ref:`datum transformation <datum_transformation>` to use to reproject the data
        between the origin and target systems.
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
 
 Outputs
 .......
@@ -1227,6 +1296,24 @@ Advanced parameters
           :start-after: **extent_options**
           :end-before: **end_extent_options**
 
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
+
 Outputs
 .......
 
@@ -1328,6 +1415,24 @@ Advanced parameters
        .. include:: ../algs_include.rst
           :start-after: **extent_options**
           :end-before: **end_extent_options**
+
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
 
 Outputs
 .......
@@ -1565,6 +1670,23 @@ Advanced parameters
      - ``CRS``
      - [crs]
      - The CRS to apply to the layer
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.VPC`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
 
 Outputs
 .......
