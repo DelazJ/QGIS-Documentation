@@ -687,15 +687,9 @@ Supported file types
    :width: 1.5em
 .. |settings| image:: /static/common/settings.png
    :width: 1.5em
-.. |sourceFields| image:: /static/common/mSourceFields.png
-   :width: 1.5em
 .. |spatialite| image:: /static/common/mIconSpatialite.png
    :width: 1.5em
 .. |stac| image:: /static/common/mIconStac.png
-   :width: 1.5em
-.. |symbologyAdd| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |symbologyRemove| image:: /static/common/symbologyRemove.png
    :width: 1.5em
 .. |tiledSceneLayer| image:: /static/common/mIconTiledSceneLayer.png
    :width: 1.5em

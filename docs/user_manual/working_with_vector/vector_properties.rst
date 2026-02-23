@@ -4350,8 +4350,6 @@ To do so:
    :width: 1.5em
 .. |widgetRange| image:: /static/common/mEditorWidgetRange.png
    :width: 1.5em
-.. |widgetRelationEditor| image:: /static/common/mEditorWidgetRelationEditor.png
-   :width: 1.5em
 .. |widgetRelationReference| image:: /static/common/mEditorWidgetRelationReference.png
    :width: 1.5em
 .. |widgetSpacer| image:: /static/common/mEditorWidgetSpacer.png
