@@ -177,8 +177,10 @@ Python code
 
 Classify ground points
 ------------------------
+|400|
 
-Classifies ground points using the Simple Morphological Filter (SMRF) algorithm.
+Classifies ground points using the
+`Simple Morphological Filter (SMRF) <https://pdal.io/en/stable/stages/filters.smrf.html>`_ algorithm.
 Analyses elevation differences and local surface structure to separate ground from non-ground points.
 Morphological filtering is applied to identify iteratively,
 considering various parameters such as cell size, slope, elevation threshold
@@ -263,14 +265,13 @@ Advanced parameters
      - Type
      - Description
    * - **VPC Output Format**
-
-       Optional
      - ``VPC_OUTPUT_FORMAT``
      - [enumeration]
 
        Default: 0
      - Specify the underlying format in which data are stored
-       for VPC output. Possible formats are
+       for Virtual Point Cloud (:file:`.VPC`) output.
+       Possible formats are:
        
        * 0 --- ``COPC``
        * 1 --- ``LAZ``
