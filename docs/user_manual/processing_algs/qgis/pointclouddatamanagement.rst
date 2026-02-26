@@ -425,7 +425,7 @@ the local orientation of the surface. It estimates surface normals at a user-def
 scale and measures the average distance between clouds within a cylindrical
 projection along those normals.
 
-The approach is highly robust against sensor noise and surface roughness, making
+The approach is highly robust against sensor  and surface roughness, making
 it the standard for detecting change in complex natural environments. It also
 provides a sign (indicating whether a surface has moved in or out) and
 a statistically significant level of detection to distinguish real change from
@@ -644,6 +644,120 @@ Python code
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
+.. _pdalfilternoisestatistical:
+
+Filter noise
+--------------
+|400|
+
+Filters noise in a point cloud using a statistical outlier removal algorithm.
+For each point, the algorithm computes the mean distance to its K nearest neighbors.
+Points whose mean distance exceeds a threshold (mean distance + multiplier × standard deviation)
+are classified as noise.
+
+Parameters
+..........
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layer**
+     - ``INPUT``
+     - [point cloud]
+     - Input point cloud layer to be filtered for noise.
+   * - **Remove noise points**
+     - ``REMOVE_NOISE_POINTS``
+     - [boolean]
+
+       Default: False
+     - Set to True to remove points classified as noise from the output point cloud.
+       If False, noise points are kept in the output but remain classified as noise.
+   * - **Mean number of neighbors**
+     - ``MEAN_K``
+     - [numeric: integer]
+    
+       Default: 8
+     - Number of nearest neighbors (K) used to compute the average distance for each point.
+   * - **Standard deviation multiplier**
+     - ``MULTIPLIER``
+     - [numeric: double]
+
+       Default: 2.0
+     - Value used to multiply the standard deviation of the mean distances in order to
+       compute the threshold for classifying points as noise.
+       Higher values result in fewer points being classified as noise.
+   * - **Filtered (statistical algorithm)**
+     - ``OUTPUT``
+     - [point cloud]
+
+       Default: ``[Save to temporary file]``
+     - Specify the point cloud file to export the filtered point cloud to. :ref:`One of <output_parameter_widget>`:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **VPC Output Format**
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Filtered (statistical algorithm)**
+     - ``OUTPUT``
+     - [point cloud]
+     - Output point cloud layer where points are classified as noise based on the statistical filter.
+       If ``REMOVE_NOISE_POINTS`` is set to True, noise-classified points are removed from the output.
+       Otherwise, they remain in the layer and can be identified by their classification value (typically LAS class 7).
+
+Python code
+...........
+
+**Algorithm ID**: ``pdal:filternoisestatistical``
+
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
 
 .. _pdalfilternoiseradius:
 
