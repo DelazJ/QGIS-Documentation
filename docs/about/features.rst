@@ -1,3 +1,7 @@
+.. includes colors references for text roles in HTMl
+ (https://docutils.sourceforge.io/docs/ref/rst/definitions.html#s5-html-definitions)
+.. include:: <s5defs.txt>
+
 .. _qgis.documentation.features:
 
 ********
@@ -8,6 +12,17 @@ Features
 
    .. contents::
       :local:
+
+The tabs :green:`where you can customize` your options are described below.
+
+.. note:: **Plugins can embed their settings within the Options dialog**
+
+ :red:`While only Core settings` are presented below, note that this list can be extended
+ by :ref:`installed plugins <plugins>` implementing their own options into the
+ :blue:`standard Options` dialog. This avoids each plugin having their own config dialog
+ with extra menu items just for them...
+
+
 
 QGIS offers a wealth of GIS functions, provided by core features
 and plugins.
