@@ -543,7 +543,8 @@ Parameters
      - [boolean]
 
        Default: False
-     - Set to True to permanently remove points classified as noise from the output.
+     - Set to True to remove points classified as noise from the output point cloud.
+       If False, noise points are kept in the output but remain classified as noise.
    * - **Mean number of neighbors**
      - ``MEAN_K``
      - [numeric: integer]
@@ -590,7 +591,7 @@ Advanced parameters
        Default: 0
      - Specify the underlying format in which data are stored
        for Virtual Point Cloud (:file:`.vpc`) output.
-       Possible formats are:
+       Possible formats are::
 
        * 0 --- ``COPC``
        * 1 --- ``LAZ``
@@ -614,7 +615,9 @@ Outputs
    * - **Filtered (statistical algorithm)**
      - ``OUTPUT``
      - [point cloud]
-     - Output point cloud layer containing classified noise.
+     - Output point cloud layer where points are classified as noise based on the statistical filter.
+       If ``REMOVE_NOISE_POINTS`` is set to True, noise-classified points are removed from the output.
+       Otherwise, they remain in the layer and can be identified by their classification value (typically LAS class 7).
 
 Python code
 ...........
