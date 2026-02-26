@@ -292,7 +292,7 @@ the local orientation of the surface. It estimates surface normals at a user-def
 scale and measures the average distance between clouds within a cylindrical
 projection along those normals.
 
-The approach is highly robust against sensor noise and surface roughness, making
+The approach is highly robust against sensor  and surface roughness, making
 it the standard for detecting change in complex natural environments. It also
 provides a sign (indicating whether a surface has moved in or out) and
 a statistically significant level of detection to distinguish real change from
@@ -583,15 +583,13 @@ Advanced parameters
      - Type
      - Description
    * - **VPC Output Format**
-
-       |400|
      - ``VPC_OUTPUT_FORMAT``
      - [enumeration]
 
        Default: 0
      - Specify the underlying format in which data are stored
        for Virtual Point Cloud (:file:`.vpc`) output.
-       Possible formats are::
+       Possible formats are:
 
        * 0 --- ``COPC``
        * 1 --- ``LAZ``
