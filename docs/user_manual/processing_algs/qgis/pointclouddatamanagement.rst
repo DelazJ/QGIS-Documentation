@@ -515,6 +515,7 @@ Python code
 
 Filter noise
 --------------
+|400|
 
 Filters noise in a point cloud using a statistical outlier removal algorithm.
 For each point, the algorithm computes the mean distance to its K nearest neighbors.
@@ -582,19 +583,20 @@ Advanced parameters
      - Description
    * - **VPC Output Format**
 
-       Optional
+       |400|
      - ``VPC_OUTPUT_FORMAT``
      - [enumeration]
 
        Default: 0
      - Specify the underlying format in which data are stored
-       for VPC output. Possible formats are
-       
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
        * 0 --- ``COPC``
        * 1 --- ``LAZ``
        * 2 --- ``LAS``
-       
-       LAZ/LAS may be faster to process, however only
+
+       LAZ/LAS may be faster to process, however they only
        allow rendering of the point cloud extents.
 
 Outputs
