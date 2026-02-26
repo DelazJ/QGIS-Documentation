@@ -327,7 +327,15 @@ latex_elements = {
     \\newunicodechar{\u25BA}{$\u25BA$}
     \\newunicodechar{′}{\\ensuremath{^{\\prime}}}
     \\newunicodechar{″}{\\ensuremath{^{\\prime\\prime}}}
-    \\newunicodechar{​}{ }''',
+    \\newunicodechar{​}{ }'''
+
+    # Add specific text roles with color display
+    '''
+    \\usepackage{xcolor}
+    \\newcommand{\\DUrolered}[1]{{\\color[HTML]{FF0000} #1}}
+    \\newcommand{\\DUroleblue}[1]{{\\color{blue} #1}}
+    \\newcommand{\\DUrolegreen}[1]{{\\color{green} #1}}
+    ''',
 
     # Latex figure float alignment
     # use ‘H’ to disable floating, and position the figures strictly in the order they appear in the source
