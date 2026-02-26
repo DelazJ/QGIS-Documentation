@@ -101,3 +101,20 @@ from https://rackerlabs.github.io/docs-rackspace/tools/rtd-tables.html */
     display: none;
   }
 }
+
+
+/* Add specific text roles with color display, allowing to write e.g., :red:`text in red`
+ requires use of .. include:: <s5defs.txt>
+*/
+@import url("default.css");
+
+.red {
+  color: #ff0000;
+}
+.blue {
+  color: blue;
+}
+.green {
+  color: green;
+}
+
