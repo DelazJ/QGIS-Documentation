@@ -23,6 +23,9 @@ A new layer is created.
 Parameters
 ..........
 
+Basic parameters
+^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 20 20 20 40
@@ -50,6 +53,37 @@ Parameters
        .. include:: ../algs_include.rst
           :start-after: **file_output_types**
           :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
+
 
 Outputs
 .......
@@ -382,6 +416,24 @@ Advanced parameters
           :start-after: **extent_options**
           :end-before: **end_extent_options**
 
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
+
 Outputs
 .......
 
@@ -644,6 +696,116 @@ Python code
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
+
+.. _pdaltile:
+
+Create tiles from point cloud
+-----------------------------
+
+Creates tiles from input point cloud files,
+recommended for best performance (in display or analysis) with such datasets in QGIS.
+
+.. seealso:: :ref:`pdalvirtualpointcloud`, :ref:`pdalcreatecopc`
+
+Parameters
+..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Input layers**
+     - ``LAYERS``
+     - [point cloud] [list]
+     - Input point cloud layers to create tiles from
+   * - **Tile length**
+     - ``LENGTH``
+     - [numeric: double]
+
+       Default: 1000.0
+     - Size of the edge of each generated tile
+   * - **Output directory**
+     - ``OUTPUT``
+     - [folder]
+
+       Default: ``[Save to temporary folder]``
+     - Specify the folder to store the generated tiles. :ref:`One of <output_parameter_widget>`:
+
+       .. include:: ../algs_include.rst
+          :start-after: **directory_output_types**
+          :end-before: **end_directory_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Assign CRS**
+
+       Optional
+     - ``CRS``
+     - [crs]
+     - The CRS to apply to the layer
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.VPC`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
+
+Outputs
+.......
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - Label
+     - Name
+     - Type
+     - Description
+   * - **Output directory**
+     - ``OUTPUT``
+     - [folder]
+     - Output folder containing the tiles generated from input files.
+
+Python code
+...........
+
+**Algorithm ID**: ``pdal:tile``
+
+.. include:: ../algs_include.rst
+  :start-after: **algorithm_code_section**
+  :end-before: **end_algorithm_code_section**
+
+
 .. _pdalfilternoisestatistical:
 
 Filter noise
@@ -681,7 +843,7 @@ Parameters
    * - **Mean number of neighbors**
      - ``MEAN_K``
      - [numeric: integer]
-    
+
        Default: 8
      - Number of nearest neighbors (K) used to compute the average distance for each point.
    * - **Standard deviation multiplier**
@@ -759,6 +921,7 @@ Python code
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
 
+
 .. _pdalfilternoiseradius:
 
 Filter noise (using radius)
@@ -795,7 +958,7 @@ Parameters
    * - **Minimum number of neighbors in radius**
      - ``MIN_K``
      - [numeric: integer]
-    
+
        Default: 2
      - Minimum number of neighboring points within the search radius.
    * - **Radius**
@@ -828,8 +991,6 @@ Advanced parameters
      - Type
      - Description
    * - **VPC Output Format**
-
-       |400|
      - ``VPC_OUTPUT_FORMAT``
      - [enumeration]
 
@@ -1117,6 +1278,23 @@ Advanced parameters
      - [datum]
      - The :ref:`datum transformation <datum_transformation>` to use to reproject the data
        between the origin and target systems.
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
 
 Outputs
 .......
@@ -1227,6 +1405,24 @@ Advanced parameters
           :start-after: **extent_options**
           :end-before: **end_extent_options**
 
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
+
 Outputs
 .......
 
@@ -1328,6 +1524,24 @@ Advanced parameters
        .. include:: ../algs_include.rst
           :start-after: **extent_options**
           :end-before: **end_extent_options**
+
+   * - **VPC Output Format**
+
+       |400|
+     - ``VPC_OUTPUT_FORMAT``
+     - [enumeration]
+
+       Default: 0
+     - Specify the underlying format in which data are stored
+       for Virtual Point Cloud (:file:`.vpc`) output.
+       Possible formats are:
+
+       * 0 --- ``COPC``
+       * 1 --- ``LAZ``
+       * 2 --- ``LAS``
+
+       LAZ/LAS may be faster to process, however they only
+       allow rendering of the point cloud extents.
 
 Outputs
 .......
@@ -1500,98 +1714,6 @@ Python code
 .. include:: ../algs_include.rst
   :start-after: **algorithm_code_section**
   :end-before: **end_algorithm_code_section**
-
-.. _pdaltile:
-
-Create tiles from point cloud
------------------------------
-
-Creates tiles from input point cloud files,
-recommended for best performance (in display or analysis) with such datasets in QGIS.
-
-.. seealso:: :ref:`pdalvirtualpointcloud`, :ref:`pdalcreatecopc`
-
-Parameters
-..........
-
-Basic parameters
-^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-   :class: longtable
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Input layers**
-     - ``LAYERS``
-     - [point cloud] [list]
-     - Input point cloud layers to create tiles from
-   * - **Tile length**
-     - ``LENGTH``
-     - [numeric: double]
-
-       Default: 1000.0
-     - Size of the edge of each generated tile
-   * - **Output directory**
-     - ``OUTPUT``
-     - [folder]
-
-       Default: ``[Save to temporary folder]``
-     - Specify the folder to store the generated tiles. :ref:`One of <output_parameter_widget>`:
-
-       .. include:: ../algs_include.rst
-          :start-after: **directory_output_types**
-          :end-before: **end_directory_output_types**
-
-Advanced parameters
-^^^^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-   :class: longtable
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Assign CRS**
-
-       Optional
-     - ``CRS``
-     - [crs]
-     - The CRS to apply to the layer
-
-Outputs
-.......
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-   :class: longtable
-
-   * - Label
-     - Name
-     - Type
-     - Description
-   * - **Output directory**
-     - ``OUTPUT``
-     - [folder]
-     - Output folder containing the tiles generated from input files.
-
-Python code
-...........
-
-**Algorithm ID**: ``pdal:tile``
-
-.. include:: ../algs_include.rst
-  :start-after: **algorithm_code_section**
-  :end-before: **end_algorithm_code_section**
-
 
 .. _PDAL: https://pdal.io/en/stable/
 
