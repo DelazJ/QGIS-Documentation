@@ -1,14 +1,36 @@
+# Pre-commit hooks for QGIS Documentation
+# Install: pre-commit install
+# Run manually: pre-commit run --all-files
+# Update hooks: pre-commit autoupdate
 
 repos:
-
-  - repo: local
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
     hooks:
-      - id: find_set_subst
-        name: find_set_subst
-        entry: ./scripts/find_set_subst.py
-        language: system
-        always_run: true
-        pass_filenames: false
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+        exclude: ^(locale/|_dummy/)
+      - id: end-of-file-fixer
+        exclude: ^(locale/|_dummy/)
+      - id: check-yaml
+        args: [--unsafe]
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=1024']
+      - id: mixed-line-ending
+        args: [--fix=lf]
+        exclude: ^(locale/|_dummy/)
+
+  # - repo: local
+  #   hooks:
+  #     - id: find_set_subst
+  #       name: find_set_subst
+  #       entry: ./scripts/find_set_subst.py
+  #       language: system
+  #       always_run: true
+  #       pass_filenames: false
 
 ci:
   autofix_prs: true
