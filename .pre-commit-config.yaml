@@ -1,14 +1,32 @@
+# Pre-commit hooks for QGIS Documentation
+# Install: pre-commit install
+# Run manually: pre-commit run --all-files
+# Update hooks: pre-commit autoupdate
 
 repos:
 
-  - repo: local
+  # RST linting with rstcheck
+  - repo: https://github.com/rstcheck/rstcheck
+    rev: v6.2.0
     hooks:
-      - id: find_set_subst
-        name: find_set_subst
-        entry: ./scripts/find_set_subst.py
-        language: system
-        always_run: true
-        pass_filenames: false
+      - id: rstcheck
+        args:
+          - --report-level=warning
+          - --ignore-directives=toctree,include,only,ifconfig,literalinclude,index,glossary,substitution-definitions,highlight,todo,todolist,deprecated,versionadded,versionchanged,seealso,productionlist,centered,testcode,testoutput,testsetup,tabs,tab,code-block,toggle
+          - --ignore-roles=menuselection,guilabel,file,kbd,ref,doc,term,command,program,option,envvar,index,abbr,dfn,numref,eq,download,py:mod,py:obj,py:class,py:meth,py:attr,py:func,py:exc,pyqgis,api,source,sup,sub,raw,math
+          - --ignore-languages=python,bash,sql,json,xml,yaml
+        exclude: ^(locale/|_dummy/|build/)
+        additional_dependencies:
+          - sphinx
+
+  # - repo: local
+  #   hooks:
+  #     - id: find_set_subst
+  #       name: find_set_subst
+  #       entry: ./scripts/find_set_subst.py
+  #       language: system
+  #       always_run: true
+  #       pass_filenames: false
 
 ci:
   autofix_prs: true
