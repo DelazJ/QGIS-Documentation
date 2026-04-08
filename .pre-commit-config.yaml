@@ -1,14 +1,28 @@
+# Pre-commit hooks for QGIS Documentation
+# Install: pre-commit install
+# Run manually: pre-commit run --all-files
+# Update hooks: pre-commit autoupdate
 
 repos:
 
-  - repo: local
+  # RST style checker (doc8)
+  - repo: https://github.com/PyCQA/doc8
+    rev: v1.1.1
     hooks:
-      - id: find_set_subst
-        name: find_set_subst
-        entry: ./scripts/find_set_subst.py
-        language: system
-        always_run: true
-        pass_filenames: false
+      - id: doc8
+        args:
+          - --max-line-length=300
+          - --ignore=D001,D002,D004
+        exclude: ^(locale/|_dummy/|build/)
+
+  # - repo: local
+  #   hooks:
+  #     - id: find_set_subst
+  #       name: find_set_subst
+  #       entry: ./scripts/find_set_subst.py
+  #       language: system
+  #       always_run: true
+  #       pass_filenames: false
 
 ci:
   autofix_prs: true
