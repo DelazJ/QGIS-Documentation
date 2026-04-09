@@ -20,16 +20,6 @@ You can customize its properties in the :guilabel:`Item Properties` panel.
 In addition to the :ref:`common properties <item_common_properties>`,
 this feature has the following functionalities:
 
-.. todo: add properties screenshot
-   .. _figure_layout_elevationprofile_prop:
-
-   .. figure:: img/elevationprofile_properties.png
-   :align: center
-   :width: 20em
-
-   Elevation Profile Item Properties
-
-
 The Elevation profile :guilabel:`Item Properties` panel embeds a top toolbar
 with the following functionalities:
 
