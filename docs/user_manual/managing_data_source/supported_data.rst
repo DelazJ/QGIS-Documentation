@@ -38,8 +38,7 @@ working with QGIS.
 The popular and powerful GeoTiff format is a good alternative.
 
 QGIS makes use of georeference information inside the raster layer
-(e.g., :index:`GeoTiff`) or an associated *world file* to properly
-display the data.
+(e.g., GeoTiff) or an associated *world file* to properly display the data.
 
 .. if there are particularities for some raster formats that are worth mention,
    put them here. Maybe some comments on working with vrt, landsat data...?
