@@ -152,10 +152,10 @@ def read_subst(file):
                 subs_name = m.group(1)
                 subs_dict[subs_name] = dict()
                 subs_dict[subs_name]['image'] = m.group(2)
-            elif width_pattern.match(line) is not None:
-                # complements last image object
-                m = width_pattern.match(line)
-                subs_dict[subs_name]['width'] = m.group(1)
+                if width_pattern.match(line) is not None:
+                    # complements last image object
+                    m = width_pattern.match(line)
+                    subs_dict[subs_name]['width'] = m.group(1)
             elif replace_pattern.match(line) is not None:
                 # Adds new replace object to dictionary
                 m = replace_pattern.match(line)
