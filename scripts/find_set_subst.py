@@ -93,7 +93,7 @@ def create_image_subst():
     """
     image_folder = path.abspath(path.join(__file__ ,"../../static"))
     #print(image_folder)
-    filename_pattern = re.compile(r"^(mAction|mIcon|icon|renderer|mAlgorithm|m)([A-Z\d]\w+)")
+    filename_pattern = re.compile(r"^(mAction|mIcon|mEditor|mIndicator|icon|Indicator|renderer|mAlgorithm|m)([A-Z\d]\w+)")
     img_subs_dict = dict()
     i=0
     exception_subst=['CRS', 'mAction']
