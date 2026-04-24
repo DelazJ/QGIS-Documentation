@@ -7,7 +7,7 @@ repos:
 
   # Standard pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
@@ -26,7 +26,7 @@ repos:
 
   # YAML formatting
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.33.0
+    rev: v1.38.0
     hooks:
       - id: yamllint
         args: [-d, "{extends: relaxed, rules: {line-length: {max: 200}}}"]
@@ -34,7 +34,7 @@ repos:
 
   # RST linting with rstcheck
   - repo: https://github.com/rstcheck/rstcheck
-    rev: v6.2.0
+    rev: v6.2.5
     hooks:
       - id: rstcheck
         args:
@@ -49,7 +49,7 @@ repos:
 
   # RST style checker (doc8)
   - repo: https://github.com/PyCQA/doc8
-    rev: v1.1.1
+    rev: v2.0.0
     hooks:
       - id: doc8
         args:
@@ -59,7 +59,7 @@ repos:
 
   # Spell checking
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.4.2
     hooks:
       - id: codespell
         args:
