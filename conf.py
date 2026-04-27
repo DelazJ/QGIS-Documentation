@@ -485,8 +485,6 @@ def start_qgis():
 
     QgsProject.instance().clear()
 
-    from qgis.analysis import QgsNativeAlgorithms
-
     # Expose the iface for plugins snippets
     iface = get_iface()
 
