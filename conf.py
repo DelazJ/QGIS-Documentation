@@ -202,7 +202,8 @@ extlinks = {  # api website: docs master branch points to '/' while x.y points t
     # pyqgis website: docs master branch points to 'master' and x.y points to x.y
     'pyqgis': ('https://qgis.org/pyqgis/{}/%s'.format(pyqgis_version), None),
     # code on github: docs master branch points to 'master' while x.y points to release-x_y
-    'source': ('https://github.com/qgis/QGIS/blob/{}/%s'.format(source_version), None)
+    'source': ('https://github.com/qgis/QGIS/blob/{}/%s'.format(source_version), None),
+    "qt": ("https://doc.qt.io/qt-6/%s.html", None),
 }
 
 def calculate_tx_slug(filepath):
@@ -397,10 +398,6 @@ if tags.has('hi'):
 # eg: Map canvas is implemented as :class:`QgsMapCanvas` ...
 # I hope somebody will create the real references for these so they can be removed here...
 nitpick_ignore = [
-    ('py:class', 'QDomElement'),
-    ('py:class', 'QAction'),
-    ('py:class', 'QMenu'),
-
     ('py:data', 'iface'),
     ('py:data', 'qgis.utils.iface'),
 
@@ -408,8 +405,6 @@ nitpick_ignore = [
     ('py:func', '__init__'),
     ('py:func', 'initGui'),
     ('py:func', 'hide'),
-    ('py:func', 'requestReady'),
-    ('py:func', 'sendResponse'),
     ('py:func', 'serverClassFactory'),
     ('py:func', 'show'),
     ('py:func', 'showPluginHelp'),

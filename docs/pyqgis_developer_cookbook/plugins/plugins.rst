@@ -339,7 +339,7 @@ custom menu group directly to the menu bar, as the next example demonstrates:
     def unload(self):
         self.menu.deleteLater()
 
-Don't forget to set :class:`QAction` and :class:`QMenu` ``objectName`` to a name
+Don't forget to set :qt:`QAction` and :qt:`QMenu` ``objectName`` to a name
 specific to your plugin so that it can be customized.
 
 While help and about actions can also be added to your custom menu,

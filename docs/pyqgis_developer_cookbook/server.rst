@@ -423,8 +423,9 @@ the :class:`QgsServerInterface <qgis.server.QgsServerInterface>`.
 The :class:`QgsRequestHandler <qgis.server.QgsRequestHandler>` class has plenty of
 methods that can be used to alter
 the input parameters before entering the core processing of the server (by using
-:func:`requestReady`) or after the request has been processed by the core services
-(by using :func:`sendResponse`).
+:meth:`requestReady() <qgis.server.QgsServerFilter.requestReady>`)
+or after the request has been processed by the core services
+(by using :meth:`sendResponse() <qgis.server.QgsServerFilter.sendResponse>`).
 
 The following examples cover some common use cases:
 

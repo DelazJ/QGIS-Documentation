@@ -1652,7 +1652,7 @@ RandomRenderer example
 Similarly as with symbol layers, abstract metadata constructor awaits renderer
 name, name visible for users and optionally name of renderer's icon.
 The :meth:`createRenderer() <qgis.core.QgsRendererAbstractMetadata.createRenderer>`
-method passes a :class:`QDomElement` instance that can be
+method passes a :qt:`QDomElement<qdomelement>` instance that can be
 used to restore the renderer's state from the DOM tree. The :meth:`createRendererWidget()
 <qgis.core.QgsRendererAbstractMetadata.createRendererWidget>`
 method creates the configuration widget. It does not have to be present or can
