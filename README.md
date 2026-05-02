@@ -15,10 +15,9 @@ offering a range of complementary open-source GIS software projects.
 The latest documentation of QGIS is available at <https://docs.qgis.org/latest>
 
 * [Building the documentation](#building-the-documentation)
-   * [Build on Linux or macOS](#build-on-linux-or-macos)
+   * [Build HTML](#build-html)
      * [Fixing build locale error on macOS](#fixing-build-locale-error-on-macos)
-   * [Build on Windows](#build-on-windows)
-   * [Build PDFs](#build-pdfs)
+   * [Build PDF](#build-pdf)
 * [Translating](#translating)
   * [GitHub workflow](#github-workflow)
   * [Managing translations locally](#managing-translations-locally)
@@ -33,61 +32,87 @@ The latest documentation of QGIS is available at <https://docs.qgis.org/latest>
 
    You can install both in default places and with default options.
 1. [Clone the repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
-1. Go into that directory and follow the next instructions depending on your OS.
 
 The best way to build the documentation is within a Python Virtual Environment (venv).
 
-## Build on Linux or macOS
+## Build HTML
 
-You can use your own virtual env by creating it first:
+1. Open a terminal
+1. Enter the QGIS-Documentation repository folder:
+2. 
+   ```sh
+   cd /path/to/your/local/QGIS-Documentation/repository/
+   ```
+1. Create your own virtual environment:
 
-```sh
-# you NEED python >=3.9. Depending on distro either use `python3` or `python`
-# common name is 'venv' but call it whatever you like
+   ```sh
+   # you NEED python >=3.9. Depending on the OS either use `python3` or `python`
+   # common name is 'venv' but call it whatever you like
 
-python3 -m venv venv  # using the venv module, create a venv named 'venv'
-```
+   python3 -m venv venv  # i.e., using the venv module, create a virtual environment named 'venv'
+   ```
 
-Then activate the venv:
+1. Then activate the venv:
 
-```sh
-source ./venv/bin/activate
-```
+   * On Linux or macOS:
+     ```sh
+     source ./venv/bin/activate
+     ```
+   * On Windows:
+     ```cmd
+     venv\Scripts\activate.bat
+     ```
 
-With 'activated' virtualenv, you should see 'venv' in the prompt. Install the requirements via the REQUIREMENTS.txt:
+   With the virtual environment activated, you should now see `(venv)` in the prompt.
 
-```sh
-pip install -r REQUIREMENTS.txt
-```
+1. Install the required libraries and extensions for building the documents
+   using the [REQUIREMENTS.txt](REQUIREMENTS.txt) file:
 
-And run the build from within that venv:
+   ```sh
+   pip install -r REQUIREMENTS.txt
+   ```
 
-```sh
-make html
-```
+1. Everything is now in place to allow you build the docs.
+   For source English documentation, from within the venv, run:
 
-Want to build your own language? Note that you will use the translations from the po files from git! For example for 'nl' do:
+   * On Linux or macOS:
+     ```sh
+     make html
+     ```
+   * On Windows:
+     ```cmd
+     make.bat html
+     ```
 
-```sh
-make LANG=nl html
-```
+1. Want to build your own language?
+   Note that you will use the translations from the `.po` files in the [locale](locale) folder!
+   For example for 'nl' do:
 
-<details>
-  <summary>Tip: One-line command to create the venv and run the build in a row</summary>
+   * On Linux or macOS:
+     ```sh
+     make LANG=nl html
+     ```
+   * On Windows:
+     ```cmd
+     make.bat LANG=nl html
+     ```
 
-  The `venv.mk` file will create/update a virtual env (if not available) in current dir/venv
-  AND run the html build in it.
+> [!TIP]
+> **One-line command to create the venv and run the build in a row**
+>
+> The [venv.mk](venv.mk) file will create/update a virtual env (if not available) in current dir/venv
+> AND run the html build in it.
+>
+> ```sh
+> make -f venv.mk html
+> ```
 
-  ```sh
-  make -f venv.mk html
-  ```
-</details>
-
-If, for some reason, you want to (re)start from scratch:
-
-```sh
-make -f venv.mk cleanall
-```
+> [!NOTE]
+> If, for some reason, you want to (re)start from scratch:
+>
+> ```sh
+> make -f venv.mk cleanall
+> ```
 
 ### Fixing build locale error on macOS
 
@@ -105,60 +130,26 @@ The file is stored at `./venv/lib/python3.10/site-packages/sphinx/cmd/build.py`
 1. Open the file in the text editor
 2. Search and replace:
 
-```py
-def main(argv: Sequence[str] = (), /) -> int:
-    locale.setlocale(locale.LC_ALL, '')
-```
-
-to:
-
-```py
-def main(argv: Sequence[str] = (), /) -> int:
-    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-```
+   ```py
+   def main(argv: Sequence[str] = (), /) -> int:
+       locale.setlocale(locale.LC_ALL, '')
+   ```
+  
+   to:
+  
+   ```py
+   def main(argv: Sequence[str] = (), /) -> int:
+       locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+   ```
 
 3. Save and close the file, now you should be able to build the documentation with:
 
-```sh
-make html
-```
+   ```sh
+   make html
+   ```
 
-## Build on Windows
 
-Create a virtual environment called 'venv' in that directory (search the Internet for Python Virtual
-Env on Windows for more details), but in short: use the module 'venv' to create a virtual environment called 'venv'
-
-```cmd
-# in dos box:
-python -m venv venv
-```
-
-Then activate the venv:
-
-```cmd
-venv\Scripts\activate.bat
-```
-
-With 'activated' virtualenv, you should see 'venv' in the prompt. Install the requirements via the REQUIREMENTS.txt:
-
-```cmd
-pip install -r REQUIREMENTS.txt
-```
-
-And run the build from within that venv, using the make.bat script with the html argument to locally build the docs:
-
-```cmd
-make.bat html
-```
-
-Want to build your own language? Note that you will use the translations from the po files from git! For example 'nl' do:
-
-```cmd
-set SPHINXOPTS=-D language=nl
-make.bat html
-```
-
-## Build PDFs
+## Build PDF
 
 In Linux, you can also build the PDF versions of the main documents.
 
