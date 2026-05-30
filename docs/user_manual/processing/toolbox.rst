@@ -446,9 +446,13 @@ and a drop-down :menuselection:`...` button for additional options
 
 * :guilabel:`Skip Output`: if you are not interested in a given output of the algorithm
 * :guilabel:`Create Temporary Layer` (``TEMPORARY_OUTPUT``):
-  the output is stored in a vector :ref:`temporary scratch layer <vector_new_scratch_layer>`.
-* :guilabel:`Save to File…`: you will be prompted with a save file dialog,
-  where you can select the desired file path.
+  the output is stored in a vector :ref:`temporary scratch layer <vector_new_scratch_layer>`,
+  using a default hardcoded name.
+  You can however assign a custom name to the temporary output layer directly from the output widget:
+  enter a file name, without extension and path.
+  Remember that the layer is not permanently saved to disk.
+* :guilabel:`Save to File…`: permanently saves the output to a file on disk.
+  You will be prompted with a save file dialog, where you can select the desired file path.
   Supported file extensions are shown in the file format selector of the dialog,
   depending on the kind of output and the algorithm.
 
@@ -468,7 +472,11 @@ and a drop-down :menuselection:`...` button for additional options
   and in the :guilabel:`General` group, you will find a parameter named :guilabel:`Output folder`.
   This output folder is used as the default path in case you type just a filename
   with no path (i.e., :file:`myfile.shp`) when executing an algorithm.
-* :guilabel:`Save to a Temporary File`: if you do not enter any filename in the output text box
+* :guilabel:`Save to a Temporary File`: When the output is not a vector layer
+  (raster, mesh, XML, HTML or PDF
+  or is expected to be of a specific format Available for outputs that can't be saved as scratch layers
+  i.e., they are expected to be (better describe what defines them: raster, specified format, not layer format???)
+  if you do not enter any filename in the output text box
   (or select the corresponding option in the context menu), the result will be saved as a temporary file
   in the corresponding default file format, and it will be deleted once you exit QGIS
   (take care with that, in case you save your project and it contains temporary layers).
