@@ -1,3 +1,4 @@
+pre-commit
 pyYAML
 Sphinx==9.0
 sphinx_copybutton
