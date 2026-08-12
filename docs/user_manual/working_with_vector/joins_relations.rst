@@ -421,12 +421,12 @@ only if both already exist in their layers.
 
 Instead of PostgreSQL you can also use GeoPackage.
 In this case, the three tables can be created manually
-using the :menuselection:`Database --> DB Manager…`.
+using the :guilabel:`New Table…` entry in the database contextual menu.
 In GeoPackage there are no schemas so the *locations* prefix is not needed.
 
 Foreign key constraints in ``airports_airlines`` table can´t be created
-using :menuselection:`Table --> Create Table…` or :menuselection:`Table --> Edit Table…`
-so they should be created using :menuselection:`Database --> SQL Window…`.
+using the :menuselection:`New Table…` tool,
+so they should be created using :menuselection:`Execute SQL…`.
 GeoPackage doesn't support *ADD CONSTRAINT* statements so the ``airports_airlines``
 table should be created in two steps:
 

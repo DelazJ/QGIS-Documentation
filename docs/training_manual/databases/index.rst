@@ -12,5 +12,4 @@ implementations including SpatiaLite.
    :maxdepth: 2
 
    db_browser
-   db_manager
    spatialite

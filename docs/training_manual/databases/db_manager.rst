@@ -1,3 +1,6 @@
+:orphan:
+
+
 Lesson: Using DB Manager to work with Spatial Databases in QGIS
 ===============================================================================
 

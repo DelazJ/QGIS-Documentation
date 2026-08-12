@@ -72,7 +72,12 @@ templates_path = ["./themes"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["venv", ".github", "docs/user_manual/expressions/expression_help/*"]
+exclude_patterns = [
+    "venv",
+    ".github",
+    "docs/user_manual/expressions/expression_help/*",
+    "docs/training_manual/databases/db_manager.rst",
+]
 
 # -- Internationalisation ----------------------------------------------------
 
