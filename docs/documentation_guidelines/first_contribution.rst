@@ -359,13 +359,15 @@ A new pull request will automatically be added to the `Pull requests list
 Other editors and administrators will review your pull request and they may make
 suggestions or ask for corrections.
 
-A pull request will also trigger automated build checks (eg, for rst formatting,
-python code syntaxes), and reports are displayed at the bottom of the page.
-If an error is found, a red cross will appear next to your commit.
-Click on the red cross or on ``Details`` in the summary section at the bottom
-of the pull request page to see the details of the error. You'll have to fix
-any reported errors or warnings before your changes are committed to the
-``qgis/QGIS-Documentation`` repository.
+A pull request will also trigger automated build checks (e.g., for text formatting,
+code syntaxes, misspelling) and, depending on the encountered issues:
+
+* a new commit is automatically created and appended to your branch to fix them
+* or a red cross appears next to your latest commit.
+  Click on the red cross or on ``Details`` in the summary section at the bottom
+  of the pull request page to see the details of the error. You'll have to fix
+  any reported errors or warnings before your changes are merged to the
+  ``qgis/QGIS-Documentation`` repository.
 
 You can make modifications to your pull request until it is merged with the
 main repository, either to improve your request, to address requested
@@ -539,13 +541,10 @@ to the testing documentation, run the following command lines:
 
   # switch to master branch (it is easy to forget this step!)
   $ git checkout master
-  # get "information" from the master branch in the upstream repository
-  # (aka qgis/QGIS-Documentation's repository)
-  $ git fetch upstream master
-  # merge update from upstream/master to the current local branch
-  # (which should be master, see step 1)
-  $ git merge upstream/master
-  # update **your** remote repository (aka <YourName>/QGIS-Documentation)
+  # get modifications from the master branch in the upstream qgis/QGIS-Documentation repository
+  # and add them to the active local branch (which should be master, see step 1)
+  $ git pull upstream/master
+  # update **your** remote <YourName>/QGIS-Documentation repository
   $ git push origin master
 
 Now you have your local and remote repositories which both have their ``master``
@@ -558,6 +557,19 @@ You can start to work on your contribution.
   `latest release <https://docs.qgis.org/latest>`_, meaning
   that you can also contribute to it. Follow the previous section sample code,
   replacing ``master`` with the corresponding branch of the latest documentation.
+
+
+Configure commit checks
+-----------------------
+
+In order to ensure increasing quality of the documentation,
+a set of automated tools are in place and help catch errors
+before they reach the main repository.
+`precommit-ci <https://pre-commit.com/>`
+
+
+
+
 
 .. _contribute:
 
@@ -577,11 +589,11 @@ base branch! Always!
    # Let's check the list of existing branches (* indicates the current branch)
    $ git branch
    master
-   release_2.18
+   release_4.2
    ...
    * myNewBranch
    # You can now add your contribution, by editing the concerned file(s)
-   # with any application (in this case, vim is used)
+   # with any text editor (in this case, vim is used)
    $ vim myFile
    # once done
    $ git add myFile
@@ -597,6 +609,7 @@ Few words about commit/push commands:
 * use a ``#`` with a number to refer to an issue. Prefix with ``Fix`` if you fix the
   ticket: your commit will close the ticket.
 
+When you ``git commit``, ...XXX
 Now that your changes are saved and committed in your local branch,
 you need to send them to your remote repository in order to create pull request:
 
