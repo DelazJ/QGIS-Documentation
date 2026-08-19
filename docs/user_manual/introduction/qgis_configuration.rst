@@ -1739,9 +1739,19 @@ User Profiles` menu. You can also run QGIS with a specific user profile from the
    A new ``default`` user profile will be created and executed.
  * Start QGIS from the command line, using the new :ref:`profile name <profile_commandline>` argument:
 
-   .. code-block:: bash
+   .. only:: testing
 
-     qgis-ltr --profile newprofilename
+      .. code-block:: bash
+
+        qgis --profile newprofilename
+
+
+   .. only:: isLtr
+
+      .. code-block:: bash
+
+        qgis-ltr --profile newprofilename
+
 
 .. _user_profile_setting:
 
