@@ -37,14 +37,14 @@ that you need to import all the data you want to use into a GRASS database.
 
 The GRASS database has a straightforward structure, even if at a first look it
 seems very complicated. The most important thing you should know is that the
-upper level of the database is the ``Location``. Each ``Location`` can contain
+upper level of the database is the ``Project``. Each ``Project`` can contain
 different ``Mapset``: in **every** ``Mapset`` you will find the ``PERMANENT``
 Mapset because it is created by default by GRASS. Each ``Mapset`` contains the
 data (raster, vector, etc) in a particular structure, but don't worry, GRASS will
 take care of this for you.
 
-Just remember: ``Location`` contains ``Mapset`` that contains the data. For more
-information visit the `GRASS website <https://grass.osgeo.org/grass-stable/manuals/grass_database.html>`_.
+Just remember: ``Project`` contains ``Mapset`` that contains the data.
+For more information visit the `GRASS`_ website.
 
 .. figure:: img/grass_database.png
    :align: center
@@ -68,15 +68,15 @@ information visit the `GRASS website <https://grass.osgeo.org/grass-stable/manua
 
 #. Click :guilabel:`Next`.
 
-GRASS needs to create a ``Location``, which describes the maximum extent of the
-geographic area you'll be working in, also known as Grass ``Region``.
+   GRASS needs to create a ``Project``, which describes the maximum extent of the
+   geographic area you'll be working in, also known as Grass ``Region``.
 
-.. note:: the Region is extremely important for GRASS because it describes the
-  area in which all layers will be taken into account for GRASS. Everything
-  that is outside will not be considered. Don't worry, you can always change the
-  extent of the GRASS Region after the Location has been created
+   .. note:: The Region is extremely important for GRASS because it describes the
+     area in which all layers will be taken into account for GRASS. Everything
+     that is outside will not be considered. Don't worry, you can always change the
+     extent of the GRASS Region after the Project has been created.
 
-#. Call the new location ``SouthAfrica``:
+#. Call the new project ``SouthAfrica``:
 
    .. figure:: img/new_location.png
       :align: center
@@ -138,13 +138,13 @@ you will see the |grassMapsetOpen| icon next to the Mapset that is opened.
 .. figure:: img/grass_browser.png
    :align: center
 
-.. note:: You will see a replication of the GRASS Location as normal folder:
+.. note:: You will see a replication of the GRASS Project as normal folder:
   GRASS ``Mapset`` data are those within the |grassLogo| folder
 
 You can easily **drag and drop** layers from a folder to the GRASS Mapset.
 
 Let's try to import the :file:`roads` layer into the ``grass_mapset`` Mapset
-of the ``SouthAfrica`` Location.
+of the ``SouthAfrica`` Project.
 
 Go to the Browser, and simply drag the :file:`roads` layer  from the
 :file:`training_data.gpkg` GeoPackage file into the ``grass_mapset`` Mapset.
@@ -190,9 +190,8 @@ same Mapset.
    .. figure:: img/grass_tool_selected.png
       :align: center
 
-   .. note:: :abbr:`★★★ (Advanced level)` Note the extra import options provided under
-    :guilabel:`Advanced Options`. These include the ability to add a WHERE
-    clause for the SQL query used for importing the data.
+   .. note:: Note the extra import options provided under :guilabel:`Advanced Options`.
+    These include the ability to add a WHERE clause for the SQL query used for importing the data.
 
 #. Click :guilabel:`Run` to begin the import.
 #. When it's done, click the :guilabel:`View output` button to see the newly
@@ -212,9 +211,9 @@ You can import a raster layer in the same ways we imported vector layers.
 
 We are going to import in the GRASS Mapset the layer |srtmFileName|.
 
-.. note:: the raster layer is already in the correct CRS, ``WGS 84``. If you
+.. note:: The raster layer is already in the correct CRS, ``WGS 84``. If you
   have layers in different CRS you must reproject them in the same CRS of the
-  GRASS Mapset
+  GRASS Mapset.
 
 
 #. Load the |srtmFileName| layer in QGIS
@@ -230,8 +229,7 @@ We are going to import in the GRASS Mapset the layer |srtmFileName|.
 
 #. Click :guilabel:`Run`.
 #. When the process is done, click :guilabel:`View output`.
-#. :guilabel:`Close` the current tab, and then :guilabel:`Close` the whole
-   dialog.
+#. :guilabel:`Close` the current tab, and then :guilabel:`Close` the whole dialog.
 
    .. figure:: img/g_dem_result.png
       :align: center
@@ -244,7 +242,7 @@ We are going to import in the GRASS Mapset the layer |srtmFileName|.
 Try to import in the GRASS Mapset the vector layers :file:`water.shp` and
 :file:`places.shp` from the :file:`exercise_data/shapefile/` folder. As we did
 for :file:`rivers` rename the imported layer as :file:`g_water` and :file:`g_places`
-to avoid confusion
+to avoid confusion.
 
 .. admonition:: Answer
    :class: dropdown
@@ -270,14 +268,14 @@ Let's close the Mapset by clicking on the :guilabel:`Close Mapset` button of the
 #. Click on the :menuselection:`Plugins --> GRASS --> Open Mapset` menu.
 
 #. Browse to the GRASS database folder: be careful! You must choose the parent folder,
-   not the GRASS Mapset one. Indeed GRASS will read all the ``Locations`` of the
-   database and all the ``Mapsets`` of each ``Location``:
+   not the GRASS Mapset one. Indeed GRASS will read all the ``Projects`` of the
+   database and all the ``Mapsets`` of each ``Project``:
 
    .. figure:: img/grass_open_mapset.png
       :align: center
 
-#. Choose the ``Location`` ``SouthAfrica`` and the ``Mapset``
-   ``grass_mapset`` that we have created before.
+#. Choose the ``SouthAfrica`` project and the ``grass_mapset`` mapset
+   that we have created before.
 
 That's it! The GRASS Panel will become active meaning that the Mapset has been
 correctly opened.
@@ -316,6 +314,9 @@ What's Next?
 
 Now that the data is imported into GRASS, we can look at the advanced analysis
 operations that GRASS offers.
+
+
+.. _`GRASS`: https://grass.osgeo.org/grass-stable/manuals/grass_database.html
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
