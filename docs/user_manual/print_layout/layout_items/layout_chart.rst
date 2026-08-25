@@ -24,7 +24,6 @@ has the following functionalities (:numref:`figure_layout_chart_prop`):
 
 .. figure:: img/chart_itemproperties.png
    :align: center
-   :width: 20em
 
    Chart Item Properties
 
@@ -41,19 +40,44 @@ panel provides the following functionalities (see :numref:`figure_layout_chart_p
 
 .. figure:: img/chart_mainproperties.png
    :align: center
-   :width: 20em
 
    Chart Main Properties group
 
 In the :guilabel:`Main Properties` you can select the :guilabel:`Chart type` from the drop-down list.
-Available types are:
-
-* :guilabel:`Bar chart`,
-* :guilabel:`Line chart`,
-* and :guilabel:`Pie chart`.
-
-Modify the chart through the :guilabel:`Modify Chart Properties...` button.
+Available types are :guilabel:`Bar chart`, :guilabel:`Line chart` and :guilabel:`Pie chart`.
+Use the :guilabel:`Modify Chart Properties...` button to adjust the global rendering of the plot.
 Depending on the selected type, available options may vary.
+
+.. list-table:: Chart properties by plot type
+   :header-rows: 1
+   :widths: 40 20 20 20
+   :class: longtable
+   :align: center
+
+   * - Property
+     - Bar Chart
+     - Line Chart
+     - Pie Chart
+   * - :ref:`Chart Ranges <layout_chart_ranges>`
+     - |checkbox|
+     - |checkbox|
+     -
+   * - :ref:`Symbols list <layout_chart_symbols>`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
+   * - :ref:`X axis <layout_chart_axes>`
+     - |checkbox|
+     - |checkbox|
+     -
+   * - :ref:`Y axis <layout_chart_axes>`
+     - |checkbox|
+     - |checkbox|
+     -
+   * - :ref:`Chart area <layout_chart_area>`
+     - |checkbox|
+     - |checkbox|
+     - |checkbox|
 
 The |checkbox| :guilabel:`Flip Axes` option allows reversing the direction of the X or Y axis
 for charts such as bar charts, line charts, and XY plots. This can be useful
@@ -86,6 +110,13 @@ The :guilabel:`Symbols List` allows you to customize the appearance of each data
 series in the chart. You can change the color, shape, pattern, or
 other visual properties for individual series to improve readability
 and match your layout style.
+
+.. _figure_layout_chart_symbols:
+
+.. figure:: img/chart_symbolslist.png
+   :align: center
+
+   Configuring list of symbols for chart series
 
 .. note:: **Symbol and color assignment**
 
@@ -122,6 +153,15 @@ For the :guilabel:`X Axis` and :guilabel:`Y Axis`, the following can be set:
 * :guilabel:`Label font`: sets the font style and size for axis labels.
 * :guilabel:`Label placement`: determines where labels are positioned relative to the axis.
 
+
+.. _figure_layout_chart_axes:
+
+.. figure:: img/chart_axes.png
+   :align: center
+
+   Configuring axes properties for chart series
+
+
 .. _layout_chart_area:
 
 Chart Area
@@ -141,6 +181,13 @@ It can be set to:
 - **Value label**: displays the numerical value associated with each category.
 
 Configure the margin to adjust the spacing around the pie chart.
+
+.. _figure_layout_chart_area:
+
+.. figure:: img/chart_chartarea.png
+   :align: center
+
+   Chart Area Properties group
 
 .. _layout_chart_datasource:
 
@@ -176,7 +223,7 @@ In this section, select and configure the layer and fields you want to display i
 
 .. figure:: img/chart_datasource.png
    :align: center
-   :width: 20em
+   :width: 50%
 
    Chart Data Source group
 
