@@ -43,12 +43,12 @@ panel provides the following functionalities (see :numref:`figure_layout_chart_p
 
    Chart Main Properties group
 
-In the :guilabel:`Main Properties` you can select the :guilabel:`Chart type` from the drop-down list.
+In the :guilabel:`Main Properties` group, you can select the :guilabel:`Chart type` from the drop-down list.
 Available types are :guilabel:`Bar chart`, :guilabel:`Line chart` and :guilabel:`Pie chart`.
 Use the :guilabel:`Modify Chart Properties...` button to adjust the global rendering of the plot.
 Depending on the selected type, available options may vary.
 
-.. list-table:: Chart properties by plot type
+.. list-table:: Availability of chart properties by plot type
    :header-rows: 1
    :widths: 40 20 20 20
    :class: longtable
@@ -98,7 +98,9 @@ Set the minimum and maximum values for the axes to determine
 how the data is displayed. By default, the :guilabel:`Minimum X axis`
 and :guilabel:`Minimum Y axis` are set to 0, while the :guilabel:`Maximum X axis`
 and :guilabel:`Maximum Y axis` are set to 10.
-You can adjust these values to fit your data range and improve the chart's readability.
+You should adjust these values to fit your data range and improve the chart's readability.
+Data-defined expressions can be used to easily fetch the bounds
+of
 For pie charts, these options are not available.
 
 .. _layout_chart_symbols:
@@ -111,24 +113,21 @@ series in the chart. You can change the color, shape, pattern, or
 other visual properties for individual series to improve readability
 and match your layout style.
 
+* For bar and line charts, symbols are assigned to series in the order they are listed.
+  Make sure to have at least as many symbols as data series;
+  otherwise, the last series will reuse the last available symbol.
+
+* For pie charts, colors are assigned to slices following the order
+  defined by the color ramp rather than the series.
+  If you use a discrete color ramp, ensure it contains enough distinct colors for all slices.
+  Otherwise, some slices may share the same color.
+
 .. _figure_layout_chart_symbols:
 
 .. figure:: img/chart_symbolslist.png
    :align: center
 
    Configuring list of symbols for chart series
-
-.. note:: **Symbol and color assignment**
-
-   For bar and line charts, symbols are assigned to series in the order they are listed.
-   Make sure to have at least as many symbols as data series; otherwise,
-   the last series will reuse the last available symbol.
-
-   For pie charts, colors are assigned to slices following the order
-   defined by the color ramp rather than the series.
-   If you use a discrete color ramp,
-   ensure it contains enough distinct colors for all slices.
-   Otherwise, some slices may share the same color.
 
 
 .. _layout_chart_axes:
