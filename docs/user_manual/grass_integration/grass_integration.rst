@@ -9,7 +9,7 @@ GRASS GIS Integration
 
    .. contents::
       :local:
-      :depth: 2
+..      :depth: 2
 
 
 Introduction to GRASS Data
@@ -140,11 +140,6 @@ The GRASS project provides official `sample data <https://grass.osgeo.org/downlo
 As an example we will download, unzip and use the "Spearfish" dataset,
 but feel free to pick anything that suits you.
 
-..
-   .. _sec_load_grassdata:
-
-   Loading GRASS raster and vector layers
-   ======================================
 
 .. _grass_browser_panel:
 
@@ -167,90 +162,65 @@ Inside mapset, layers are identifiable by their name and geometry type.
 
 Right-clicking a leaf will provide you with different options.
 
-.. table:: Contextual menu of GRASS dataset items (ICONS TO REVIEW!!!)
+.. table:: Contextual menu of GRASS dataset items
 
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | Contextual menu                                                                     | Folder     | PROJECT    | MAPSET     | Vector MAP | Raster MAP | Mixed MAP ([1]_) |
-   +=====================================================================================+============+============+============+============+============+==================+
-   | :guilabel:`GRASS Options…`                                                          |            | |checkbox| | |checkbox| | |checkbox| | |checkbox| | |checkbox|       |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`New Mapset…`                                                             |            | |checkbox| |            |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Open Mapset`                                                             |            |            | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Add Mapset to Search Path`                                               |            |            | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Remove Mapset from Search Path`                                          |            |            | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Rename…`                                                                 |            |            |            | |checkbox| | |checkbox| | |checkbox|       |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Delete…`                                                                 |            |            |            | |checkbox| | |checkbox| | |checkbox|       |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`New Point Layer…`                                                        |            |            | |checkbox| | |checkbox| |            | |checkbox|       |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`New Line Layer…`                                                         |            |            | |checkbox| | |checkbox| |            | |checkbox|       |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`New Polygon Layer…`                                                      |            |            | |checkbox| | |checkbox| |            | |checkbox|       |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :menuselection:`Export Layer --> To File…`                                          |            |            |            | |checkbox| | |checkbox| |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Refresh`                                                                 | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :menuselection:`New -->` |folder| :menuselection:`Directory…`                       | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :menuselection:`New -->` |newGeoPackageLayer| :menuselection:`GeoPackage…`          | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :menuselection:`New -->` |newVectorLayer| :menuselection:`Shapefile…`               | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :menuselection:`New -->` :menuselection:`ESRI FileGeodatabase…`                     | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | |favourites| :guilabel:`Add as a Favorite`                                          | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Hide from Browser`                                                       | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Set Color…`                                                              | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :menuselection:`Scanning -->` |checkbox| :menuselection:`Monitor for Changes`       | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :menuselection:`Scanning -->` |unchecked| :menuselection:`Fast Scan this Directory` | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Open Directory…`                                                         | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Open in Terminal…`                                                       | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Add Layer to Project`                                                    |            |            |            | |checkbox| | |checkbox| |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Layer Properties…`                                                       |            |            |            | |checkbox| | |checkbox| |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Properties…`                                                             | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-   | :guilabel:`Directory Properties…`                                                   | |checkbox| | |checkbox| | |checkbox| |            |            |                  |
-   +-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+------------------+
-
-.. [1] mixed maps are layers that contain features of different geometry types.
-  Not usable as such in QGIS, they are shown as database entries whose tables are split by geometry table.
-
-
-Loading GRASS raster and vector layers into a QGIS project is like any other layer:
-from the :guilabel:`Browser` panel, either double-click on the layer item or
-drag-and-drop it to the map canvas or legend.
-
-Likewise, importing a layer to a GRASS database or across mapsets
-can be done through drag-and-drop in the :guilabel:`Browser` panel:
-
-#. Select the layer to import, either from the :guilabel:`Browser` panel or the :guilabel:`Layers` panel,
-#. Drag-and-drop it over the target GRASS mapset. The import may take some time for larger layers,
-   you will see animated icon |import| in front of new layer item until the import finishes.
-
-When raster data are in different CRS than the mapset, they can be reprojected
-using an :guilabel:`Approximate` (fast) or :guilabel:`Exact` (precise) transformation.
-If a link to the source raster is created (using ``r.external``),
-the source data are in the same CRS and the format is known to GDAL, the source data CRS will be used.
-You can set these options in the :guilabel:`Browser` tab in :ref:`grass_options`.
-
-If a source raster has more bands, a new GRASS map is created for each layer with
-``.<band number>`` suffix and group of all maps with |rasterGroup| icon is created.
-External rasters have a different icon |rasterLink|.
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | Contextual menu                                                                       | Folder     | PROJECT    | MAPSET     | Vector MAP | Raster MAP |
+   +=======================================================================================+============+============+============+============+============+
+   | :guilabel:`GRASS Options…`                                                            |            | |checkbox| | |checkbox| | |checkbox| | |checkbox| |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`New Mapset…`                                                               |            | |checkbox| |            |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Open Mapset`                                                               |            |            | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Add Mapset to Search Path`                                                 |            |            | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Remove Mapset from Search Path`                                            |            |            | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Rename…`                                                                   |            |            |            | |checkbox| | |checkbox| |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Delete…`                                                                   |            |            |            | |checkbox| | |checkbox| |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`New Point Layer…`                                                          |            |            | |checkbox| | |checkbox| |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`New Line Layer…`                                                           |            |            | |checkbox| | |checkbox| |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`New Polygon Layer…`                                                        |            |            | |checkbox| | |checkbox| |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :menuselection:`Export Layer --> To File…`                                            |            |            |            | |checkbox| | |checkbox| |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Refresh`                                                                   | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :menuselection:`New -->` |newFolder| :menuselection:`Directory…`                      | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :menuselection:`New -->` |newGeoPackageLayer| :menuselection:`GeoPackage…`            | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :menuselection:`New -->` |newVectorLayer| :menuselection:`Shapefile…`                 | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :menuselection:`New -->` |newFileGeodatabase| :menuselection:`ESRI FileGeodatabase…`  | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | |favourites| :guilabel:`Add as a Favorite`                                            | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Hide from Browser`                                                         | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Set Color…`                                                                | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :menuselection:`Scanning -->` |checkbox| :menuselection:`Monitor for Changes`         | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :menuselection:`Scanning -->` |unchecked| :menuselection:`Fast Scan this Directory`   | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Open Directory…`                                                           | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Open in Terminal…`                                                         | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Add Layer to Project`                                                      |            |            |            | |checkbox| | |checkbox| |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Layer Properties…`                                                         |            |            |            | |checkbox| | |checkbox| |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Properties…`                                                               | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+   | :guilabel:`Directory Properties…`                                                     | |checkbox| | |checkbox| | |checkbox| |            |            |
+   +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
 
 
 .. _grass_options:
@@ -261,7 +231,7 @@ GRASS Options
 GRASS options may be set in :guilabel:`GRASS Options` dialog, which can be opened by right
 clicking on the project or mapset item in the browser and then choosing :guilabel:`GRASS Options`.
 
-.. This section needs more details.
+.. This section needs more details and could be moved later next to the GRASS Region.
 
 .. _grass_plugin:
 
@@ -357,7 +327,6 @@ Type in the new region bounds and resolution, and click :guilabel:`Apply`.
 If you click on :guilabel:`Select the extent by dragging on canvas` you can select
 a new region interactively with your mouse on the QGIS canvas dragging a rectangle.
 
-
 The GRASS module :file:`g.region` provides a lot more parameters to define an
 appropriate region extent and resolution for your raster analysis. You can use
 these parameters with the GRASS Toolbox, described in section :ref:`subsec_grass_toolbox`.
@@ -389,67 +358,94 @@ these parameters with the GRASS Toolbox, described in section :ref:`subsec_grass
 Managing GRASS data
 ===================
 
-See section :ref:`grass_browser_panel` to find how data can be easily imported
-by dragging and dropping in the browser. ????
 
-.. _sec_import_loc_data:
+.. _sec_load_grassdata:
 
-Importing data into a GRASS Project
------------------------------------
+Loading GRASS raster and vector layers
+======================================
 
-This section gives an example of how to import raster and vector data into the
-'alaska' GRASS project provided by the QGIS 'Alaska' dataset in traditional
-way, using standard GRASS modules.
-Therefore, we use the landcover raster map :file:`landcover.img` and the vector GML
-file :file:`lakes.gml` from the QGIS 'Alaska' dataset (see :ref:`label_sampledata`).
+Loading GRASS raster and vector layers into a QGIS project is like any other layer:
+from the :guilabel:`Browser` panel, either double-click on the layer item or
+drag-and-drop it from the mapset to the map canvas or :guilabel:`Layers` panel.
 
-#. Start QGIS and make sure the GRASS plugin is loaded.
-#. In the GRASS toolbar, click the |grassOpenMapset| :sup:`Open MAPSET` icon
-   to bring up the :guilabel:`MAPSET` wizard.
-#. Select as GRASS database the folder :file:`grassdata` in the QGIS
-   Alaska dataset, as project 'alaska', as mapset 'demo' and
-   click :guilabel:`OK`.
-#. Now click the |grassTools| :sup:`Open GRASS tools` icon. The
-   GRASS Toolbox (see section :ref:`subsec_grass_toolbox`) dialog appears.
-#. To import the raster map :file:`landcover.img`, click the module
-   :file:`r.in.gdal` in the :guilabel:`Modules Tree` tab. This GRASS module
-   allows you to import GDAL-supported raster files into a GRASS
-   project. The module dialog for :file:`r.in.gdal` appears.
-#. Browse to the folder :file:`raster` in the QGIS 'Alaska' dataset
-   and select the file :file:`landcover.img`.
-#. As raster output name, define :file:`landcover_grass` and click
-   :guilabel:`Run`. In the :guilabel:`Output` tab, you see the currently running GRASS
-   command ``r.in.gdal -o input=/path/to/landcover.img output=landcover_grass``.
-#. When it says **Successfully finished**, click :guilabel:`View Output`.
-   The :file:`landcover_grass` raster layer is now imported into GRASS and
-   will be visualized in the QGIS canvas.
-#. To import the vector GML file :file:`lakes.gml`, click the module
-   :file:`v.in.ogr` in the :guilabel:`Modules Tree` tab. This GRASS module allows
-   you to import OGR-supported vector files into a GRASS project.
-   The module dialog for :file:`v.in.ogr` appears.
-#. Browse to the folder :file:`gml` in the QGIS 'Alaska' dataset
-   and select the file :file:`lakes.gml` as OGR file.
-#. As vector output name, define :file:`lakes_grass` and click :guilabel:`Run`.
-   You don't have to care about the other options in this example.
-   In the :guilabel:`Output` tab you see the currently running GRASS command
-   ``v.in.ogr -o dsn=/path/to/lakes.gml output=lakes\_grass``.
-#. When it says **Successfully finished**, click :guilabel:`View Output`.
-   The :file:`lakes_grass` vector layer is now imported into GRASS
-   and will be visualized in the QGIS canvas.
+Likewise, importing a layer to a GRASS database or across mapsets
+can be done through drag-and-drop in the :guilabel:`Browser` panel:
+
+#. Select the layer to import, either from the :guilabel:`Browser` panel or the :guilabel:`Layers` panel,
+#. Drag-and-drop it over the target GRASS mapset. The import may take some time for larger layers,
+   you will see animated icon |import| in front of new layer item until the import finishes.
+
+When raster data are in different CRS than the mapset, they can be reprojected
+using an :guilabel:`Approximate` (fast) or :guilabel:`Exact` (precise) transformation.
+If a link to the source raster is created (using ``r.external``),
+the source data are in the same CRS and the format is known to GDAL, the source data CRS will be used.
+You can set these options in the :guilabel:`Browser` tab in :ref:`grass_options`.
+
+If a source raster has more bands, a new GRASS map is created for each layer with
+``.<band number>`` suffix and group of all maps with |rasterGroup| icon is created.
+External rasters have a different icon |rasterLink|.
+
+
+.. note:: GRASS modules and Processing algorithms provide some more advanced tools
+   to achieve the above actions.
+
+
+..
+   .. _sec_import_loc_data:
+
+   Importing data into a GRASS Project
+   -----------------------------------
+
+   This section gives an example of how to import raster and vector data into the
+   'alaska' GRASS project provided by the QGIS 'Alaska' dataset in traditional
+   way, using standard GRASS modules.
+   Therefore, we use the landcover raster map :file:`landcover.img` and the vector GML
+   file :file:`lakes.gml` from the QGIS 'Alaska' dataset (see :ref:`label_sampledata`).
+
+   #. Start QGIS and make sure the GRASS plugin is loaded.
+   #. In the GRASS toolbar, click the |grassOpenMapset| :sup:`Open MAPSET` icon
+      to bring up the :guilabel:`MAPSET` wizard.
+   #. Select as GRASS database the folder :file:`grassdata` in the QGIS
+      Alaska dataset, as project 'alaska', as mapset 'demo' and
+      click :guilabel:`OK`.
+   #. Now click the |grassTools| :sup:`Open GRASS tools` icon. The
+      GRASS Toolbox (see section :ref:`subsec_grass_toolbox`) dialog appears.
+   #. To import the raster map :file:`landcover.img`, click the module
+      :file:`r.in.gdal` in the :guilabel:`Modules Tree` tab. This GRASS module
+      allows you to import GDAL-supported raster files into a GRASS
+      project. The module dialog for :file:`r.in.gdal` appears.
+   #. Browse to the folder :file:`raster` in the QGIS 'Alaska' dataset
+      and select the file :file:`landcover.img`.
+   #. As raster output name, define :file:`landcover_grass` and click
+      :guilabel:`Run`. In the :guilabel:`Output` tab, you see the currently running GRASS
+      command ``r.in.gdal -o input=/path/to/landcover.img output=landcover_grass``.
+   #. When it says **Successfully finished**, click :guilabel:`View Output`.
+      The :file:`landcover_grass` raster layer is now imported into GRASS and
+      will be visualized in the QGIS canvas.
+   #. To import the vector GML file :file:`lakes.gml`, click the module
+      :file:`v.in.ogr` in the :guilabel:`Modules Tree` tab. This GRASS module allows
+      you to import OGR-supported vector files into a GRASS project.
+      The module dialog for :file:`v.in.ogr` appears.
+   #. Browse to the folder :file:`gml` in the QGIS 'Alaska' dataset
+      and select the file :file:`lakes.gml` as OGR file.
+   #. As vector output name, define :file:`lakes_grass` and click :guilabel:`Run`.
+      You don't have to care about the other options in this example.
+      In the :guilabel:`Output` tab you see the currently running GRASS command
+      ``v.in.ogr -o dsn=/path/to/lakes.gml output=lakes\_grass``.
+   #. When it says **Successfully finished**, click :guilabel:`View Output`.
+      The :file:`lakes_grass` vector layer is now imported into GRASS
+      and will be visualized in the QGIS canvas.
 
 .. _sec_create_loc:
 
-Creating a new GRASS Project (or Mapset ???)
---------------------------------------------
+Creating a new GRASS Project
+----------------------------
 
-Creating a GRASS project can be done in QGIS only through the :guilabel:`GRASS Plugin`.
-
-.. And since the project requires at least one mapset,
- the process is the same as creating a new mapset in a new project.
-
+Creating a GRASS project in QGIS can be done only through the :guilabel:`GRASS Plugin`.
 
 #. Start QGIS and make sure the GRASS plugin is loaded.
-#. In the :menuselection:`Plugins --> GRASS` menu, click on the |grassNewMapset| :guilabel:`New mapset`
+#. In the :menuselection:`Plugins --> GRASS` menu,
+   click on the |grassNewMapset| :guilabel:`New mapset`
    to bring up the :guilabel:`New Mapset` wizard.
 #. Browse to or enter path to a folder, as :guilabel:`Database directory`.
    It can be an existing GRASS database (GISDBASE) folder,
@@ -679,7 +675,7 @@ assigned and new record in attribute table is created when an attribute of that 
    If you want to do bulk update of attributes in table,
    for example using :ref:`Field Calculator <vector_field_calculator>`,
    and there are features without category which you don't want to update (typically boundaries),
-   you can filter them out by setting :guilbel:`Advanced Filter` to ``cat is not null``.
+   you can filter them out by setting :guilabel:`Advanced Filter` to ``cat is not null``.
 
 
 .. index::
@@ -996,8 +992,6 @@ you select the module.
    :width: 1.3em
 .. |favourites| image:: /static/common/mIconFavourites.png
    :width: 1.5em
-.. |folder| image:: /static/common/mActionFolder.png
-   :width: 1.5em
 .. |general| image:: /static/common/general.png
    :width: 1.5em
 .. |grassCloseMapset| image:: /static/common/grass_close_mapset.png
@@ -1013,6 +1007,10 @@ you select the module.
 .. |grassTools| image:: /static/common/grass_tools.png
    :width: 1.5em
 .. |import| image:: /static/common/mIconImport.png
+   :width: 1.5em
+.. |newFileGeodatabase| image:: /static/common/mActionNewFileGeodatabase.png
+   :width: 1.5em
+.. |newFolder| image:: /static/common/mActionNewFolder.png
    :width: 1.5em
 .. |newGeoPackageLayer| image:: /static/common/mActionNewGeoPackageLayer.png
    :width: 1.5em
