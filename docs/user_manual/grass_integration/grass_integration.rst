@@ -131,10 +131,8 @@ This can be done using:
 * the :guilabel:`Browser Panel`
 * the :guilabel:`GRASS GIS Processing Provider` core plugin
   from the :menuselection:`Plugins --> Manage and Install Plugins…` menu.
-* the now deprecated but still working plugin: :guilabel:`GRASS 8 (deprecated plugin)`.
-  This is currently the most featured tool for GRASS in QGIS,
-  while switching to the Browser panel. XXREFORMULATIONXX?????
-
+* the :guilabel:`GRASS 8 (deprecated plugin)`: the most featured tool
+  for GRASS in QGIS, while transitioning to the Browser panel.
 
 The GRASS project provides official `sample data <https://grass.osgeo.org/download/data/>`_ to work with.
 As an example we will download, unzip and use the "Spearfish" dataset,
@@ -152,6 +150,10 @@ With GRASS installed and provider enabled, browse the :guilabel:`Browser panel`,
 and expand the downloaded dataset to preview the database structure in QGIS.
 GRASS projects and mapsets are identified by the |grassLogo| GRASS icon next to the entry.
 Inside mapset, layers are identifiable by their name and geometry type.
+
+You will also see under the GRASS database directory a replication
+of each GRASS project as normal folder, with mapsets as sub-folders of specific structure.
+You shouldn't have to manipulate those folders.
 
 .. _figure_grass_project:
 
@@ -199,7 +201,7 @@ Right-clicking a leaf will provide you with different options.
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
    | :menuselection:`New -->` |newFileGeodatabase| :menuselection:`ESRI FileGeodatabase…`  | |checkbox| | |checkbox| | |checkbox| |            |            |
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
-   | |favourites| :guilabel:`Add as a Favorite`                                            | |checkbox| | |checkbox| | |checkbox| |            |            |
+   | |favorites| :guilabel:`Add as a Favorite`                                             | |checkbox| | |checkbox| | |checkbox| |            |            |
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
    | :guilabel:`Hide from Browser`                                                         | |checkbox| | |checkbox| | |checkbox| |            |            |
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
@@ -209,9 +211,9 @@ Right-clicking a leaf will provide you with different options.
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
    | :menuselection:`Scanning -->` |unchecked| :menuselection:`Fast Scan this Directory`   | |checkbox| | |checkbox| | |checkbox| |            |            |
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
-   | :guilabel:`Open Directory…`                                                           | |checkbox| | |checkbox| | |checkbox| |            |            |
+   | |folder24| :guilabel:`Open Directory…`                                                | |checkbox| | |checkbox| | |checkbox| |            |            |
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
-   | :guilabel:`Open in Terminal…`                                                         | |checkbox| | |checkbox| | |checkbox| |            |            |
+   | |terminal| :guilabel:`Open in Terminal…`                                              | |checkbox| | |checkbox| | |checkbox| |            |            |
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
    | :guilabel:`Add Layer to Project`                                                      |            |            |            | |checkbox| | |checkbox| |
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
@@ -228,8 +230,9 @@ Right-clicking a leaf will provide you with different options.
 GRASS Options
 .............
 
-GRASS options may be set in :guilabel:`GRASS Options` dialog, which can be opened by right
-clicking on the project or mapset item in the browser and then choosing :guilabel:`GRASS Options`.
+GRASS options may be set in :guilabel:`GRASS Options` dialog,
+which can be opened by right clicking on the project
+or mapset item in the browser and then choosing :guilabel:`GRASS Options`.
 
 .. This section needs more details and could be moved later next to the GRASS Region.
 
@@ -240,7 +243,7 @@ Exploring the GRASS plugin
 
 .. warning::
    The GRASS plugin is the tool originally used to work with GRASS data in QGIS.
-   There are plans to replace it with tools in the :guilabel:`Browser` panel
+   There are plans to replace it with tools in both the :guilabel:`Browser` panel
    and the :ref:`Processing <grass_configure>` toolbox,
    and as such, it is currently marked as deprecated.
    In the meantime, it still has functionalities not yet ported to the :guilabel:`Browser` panel
@@ -990,7 +993,9 @@ you select the module.
    :width: 1.5em
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-.. |favourites| image:: /static/common/mIconFavourites.png
+.. |favorites| image:: /static/common/mIconFavorites.png
+   :width: 1.5em
+.. |folder24| image:: /static/common/mIconFolder24.png
    :width: 1.5em
 .. |general| image:: /static/common/general.png
    :width: 1.5em
@@ -1027,6 +1032,8 @@ you select the module.
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em
 .. |showPluginManager| image:: /static/common/mActionShowPluginManager.png
+   :width: 1.5em
+.. |terminal| image:: /static/common/mActionTerminal.png
    :width: 1.5em
 .. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em
