@@ -364,8 +364,8 @@ Managing GRASS data
 
 .. _sec_load_grassdata:
 
-Loading GRASS raster and vector layers
-======================================
+Loading raster and vector layers from/to GRASS
+----------------------------------------------
 
 Loading GRASS raster and vector layers into a QGIS project is like any other layer:
 from the :guilabel:`Browser` panel, either double-click on the layer item or
@@ -388,56 +388,9 @@ If a source raster has more bands, a new GRASS map is created for each layer wit
 ``.<band number>`` suffix and group of all maps with |rasterGroup| icon is created.
 External rasters have a different icon |rasterLink|.
 
-
 .. note:: GRASS modules and Processing algorithms provide some more advanced tools
    to achieve the above actions.
 
-
-..
-   .. _sec_import_loc_data:
-
-   Importing data into a GRASS Project
-   -----------------------------------
-
-   This section gives an example of how to import raster and vector data into the
-   'alaska' GRASS project provided by the QGIS 'Alaska' dataset in traditional
-   way, using standard GRASS modules.
-   Therefore, we use the landcover raster map :file:`landcover.img` and the vector GML
-   file :file:`lakes.gml` from the QGIS 'Alaska' dataset (see :ref:`label_sampledata`).
-
-   #. Start QGIS and make sure the GRASS plugin is loaded.
-   #. In the GRASS toolbar, click the |grassOpenMapset| :sup:`Open MAPSET` icon
-      to bring up the :guilabel:`MAPSET` wizard.
-   #. Select as GRASS database the folder :file:`grassdata` in the QGIS
-      Alaska dataset, as project 'alaska', as mapset 'demo' and
-      click :guilabel:`OK`.
-   #. Now click the |grassTools| :sup:`Open GRASS tools` icon. The
-      GRASS Toolbox (see section :ref:`subsec_grass_toolbox`) dialog appears.
-   #. To import the raster map :file:`landcover.img`, click the module
-      :file:`r.in.gdal` in the :guilabel:`Modules Tree` tab. This GRASS module
-      allows you to import GDAL-supported raster files into a GRASS
-      project. The module dialog for :file:`r.in.gdal` appears.
-   #. Browse to the folder :file:`raster` in the QGIS 'Alaska' dataset
-      and select the file :file:`landcover.img`.
-   #. As raster output name, define :file:`landcover_grass` and click
-      :guilabel:`Run`. In the :guilabel:`Output` tab, you see the currently running GRASS
-      command ``r.in.gdal -o input=/path/to/landcover.img output=landcover_grass``.
-   #. When it says **Successfully finished**, click :guilabel:`View Output`.
-      The :file:`landcover_grass` raster layer is now imported into GRASS and
-      will be visualized in the QGIS canvas.
-   #. To import the vector GML file :file:`lakes.gml`, click the module
-      :file:`v.in.ogr` in the :guilabel:`Modules Tree` tab. This GRASS module allows
-      you to import OGR-supported vector files into a GRASS project.
-      The module dialog for :file:`v.in.ogr` appears.
-   #. Browse to the folder :file:`gml` in the QGIS 'Alaska' dataset
-      and select the file :file:`lakes.gml` as OGR file.
-   #. As vector output name, define :file:`lakes_grass` and click :guilabel:`Run`.
-      You don't have to care about the other options in this example.
-      In the :guilabel:`Output` tab you see the currently running GRASS command
-      ``v.in.ogr -o dsn=/path/to/lakes.gml output=lakes\_grass``.
-   #. When it says **Successfully finished**, click :guilabel:`View Output`.
-      The :file:`lakes_grass` vector layer is now imported into GRASS
-      and will be visualized in the QGIS canvas.
 
 .. _sec_create_loc:
 
@@ -809,10 +762,54 @@ GRASS module examples
 
 The following examples will demonstrate the power of some of the GRASS modules.
 
+.. _sec_import_loc_data:
+
+Importing data into a GRASS Project
+-----------------------------------
+
+This section gives an example of how to import raster and vector data into a
+GRASS project using the standard GRASS modules.
+We will use the landcover raster map :file:`landcover.img`
+and the vector GML file :file:`lakes.gml` from the QGIS :ref:`Alaska dataset <label_sampledata>`.
+
+#. Start QGIS and make sure the GRASS plugin is loaded.
+#. In the :menuselection:`Plugins --> GRASS` menu, click the |grassOpenMapset| :sup:`Open MAPSET` icon
+   to bring up the :guilabel:`Select GRASS Mapset` dialog.
+#. Select as GRASS database the folder :file:`grassdata` in the QGIS
+   Alaska dataset, as project 'alaska', as mapset 'demo' and
+   click :guilabel:`OK`.
+#. Now click the |grassTools| :sup:`Open GRASS tools` icon.
+   The GRASS Toolbox dialog appears.
+#. To import the raster map :file:`landcover.img`,
+   find and click the module :guilabel:`r.in.gdal` in the :guilabel:`Modules` tab.
+   The module dialog for :file:`r.in.gdal` appears.
+   This GRASS module allows you to import GDAL-supported raster files into a GRASS project.
+#. Browse to the folder :file:`raster` in the QGIS 'Alaska' dataset
+   and select the file :file:`landcover.img` as raster file to import.
+#. As raster output name, define ``landcover_grass`` and click :guilabel:`Run`.
+   In the :guilabel:`Output` tab, you see the currently running GRASS
+   command ``r.in.gdal -o input=/path/to/landcover.img output=landcover_grass``.
+#. When it says **Successfully finished**, click :guilabel:`View Output`.
+   The :file:`landcover_grass` raster layer is now imported into GRASS and
+   will be visualized in the QGIS canvas.
+#. To import the vector GML file :file:`lakes.gml`, find and click the module
+   :guilabel:`v.in.ogr` in the :guilabel:`Modules` tab.
+   The module dialog for :file:`v.in.ogr` appears.
+   This GRASS module allows you to import OGR-supported vector files into a GRASS project.
+#. Browse to the folder :file:`gml` in the QGIS 'Alaska' dataset
+   and select the file :file:`lakes.gml` as OGR file to import.
+#. As vector output name, define ``lakes_grass`` and click :guilabel:`Run`.
+   You don't have to care about the other options in this example.
+   In the :guilabel:`Output` tab you see the currently running GRASS command
+   ``v.in.ogr -o dsn=/path/to/lakes.gml output=lakes\_grass``.
+#. When it says **Successfully finished**, click :guilabel:`View Output`.
+   The :file:`lakes_grass` vector layer is now imported into GRASS
+   and will be visualized in the QGIS canvas.
+
 Creating contour lines
 ......................
 
-The first example creates a vector contour map from an elevation raster (DEM).
+This example creates a vector contour map from an elevation raster (DEM).
 Here, it is assumed that you have the Alaska project set up as explained
 in section :ref:`sec_import_loc_data`.
 
@@ -974,6 +971,7 @@ you select the module.
 
 
 .. _`GRASS`: https://grass.osgeo.org/grass-stable/manuals/grass_database.html
+
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
