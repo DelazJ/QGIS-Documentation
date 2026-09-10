@@ -9,6 +9,7 @@ GRASS GIS Integration
 
    .. contents::
       :local:
+      :depth: 2
 
 
 Introduction to GRASS Data
