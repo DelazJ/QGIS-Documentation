@@ -371,102 +371,93 @@ External rasters have a different icon |rasterLink|.
 
 .. _sec_create_loc:
 
-Creating a new GRASS PROJECT
------------------------------
+Creating a new GRASS Project
+----------------------------
 
-As an example, here is the sample GRASS :file:`PROJECT alaska`, which is
-projected in the Albers Equal Area projection using feet as units.
-This sample GRASS :file:`PROJECT alaska` will be used for all examples and
-exercises in the following GRASS-related sections. It is useful to download and
-install the dataset on your computer (see :ref:`label_sampledata`).
+Creating a GRASS project in QGIS can be done only through the :guilabel:`GRASS Plugin`.
 
 #. Start QGIS and make sure the GRASS plugin is loaded.
-#. Visualize the :file:`alaska.shp` shapefile (see section :ref:`loading_file`)
-   from the QGIS Alaska dataset (see :ref:`label_sampledata`).
-#. In the GRASS toolbar, click on the |grassNewMapset| :sup:`New mapset` icon
-   to bring up the :guilabel:`MAPSET` wizard.
-#. Select an existing GRASS database (GISDBASE) folder :file:`grassdata`, or create
-   one for the new :file:`PROJECT` using a file manager on your computer. Then
-   click :guilabel:`Next`.
-#. We can use this wizard to create a new :file:`MAPSET` within an existing
-   :file:`PROJECT` (see section :ref:`sec_add_mapset`) or to create a new
-   :file:`PROJECT` altogether. Select |radioButtonOn| :guilabel:`Create new
-   project` (see :numref:`figure_grass_new_project`).
-#. Enter a name for the :file:`PROJECT` -- we used 'alaska' -- and click :guilabel:`Next`.
-#. Define the projection by clicking on the radio button |radioButtonOn|
-   :guilabel:`Projection` to enable the projection list.
-#. We are using Albers Equal Area Alaska (feet) projection. Since we happen to
-   know that it is represented by the EPSG ID 2964, we enter it in the search box.
-   (Note: If you want to repeat this process for another :file:`PROJECT` and
-   projection and haven't memorized the EPSG ID, click on the |projectionEnabled|
-   :sup:`CRS Status` icon in the lower right-hand corner of the status bar (see
-   section :ref:`label_projections`)).
-#. In :guilabel:`Filter`, insert 2964 to select the projection.
+#. In the :menuselection:`Plugins --> GRASS` menu,
+   click on the |grassNewMapset| :guilabel:`New mapset`
+   to bring up the :guilabel:`New Mapset` wizard.
+#. Browse to or enter path to a folder, as :guilabel:`Database directory`.
+   It can be an existing GRASS database (GISDBASE) folder,
+   or a simple folder on your computer.
 #. Click :guilabel:`Next`.
-#. To define the default region, we have to enter the :file:`PROJECT` bounds in the
-   north, south, east, and west directions. Here, we simply click on the button
-   :guilabel:`Set Current QGIS Extent`, to apply the extent of the loaded layer
-   :file:`alaska.shp` as the GRASS default region extent.
+#. In the :guilabel:`GRASS Project` page, select :guilabel:`Create new project`
+   and enter a name.
+
+   .. _figure_grass_new_project:
+
+   .. figure:: img/create_grass_project.png
+      :align: center
+
+      Creating a new GRASS PROJECT in QGIS
+
 #. Click :guilabel:`Next`.
-#. We also need to define a :file:`MAPSET` within our new :file:`PROJECT` (this
-   is necessary when creating a new :file:`PROJECT`). You can name it whatever you
-   like - we used 'demo'. GRASS automatically creates a special :file:`MAPSET` called
-   :file:`PERMANENT`, designed to store the core data for the project, its default
-   spatial extent and coordinate system definitions (see Neteler & Mitasova 2008
-   in :ref:`literature_and_web`).
-#. Check out the summary to make sure it's correct and click :guilabel:`Finish`.
-#. The new :file:`PROJECT`, 'alaska', and two :file:`MAPSETs`, 'demo' and 'PERMANENT',
-   are created. The currently opened working set is 'demo', as you defined.
-#. Notice that some of the tools in the GRASS toolbar that were disabled are now
-   enabled.
+#. Click on the radio button |radioButtonOn| :guilabel:`Projection`
+   to enable the list of Coordinate Reference Systems.
+   Find and select the CRS you want to use in the GRASS project.
+   You can enter a CRS name or ID in the :guilabel:`Filter` search box,
+   and select the target projection in the list.
+#. Click :guilabel:`Next`.
+#. Indicate the default region to use in the GRASS project.
+   You can enter the bounds in the north, south, east, and west directions
+   or calculate them from a layer, map or bookmark extent (see :ref:`extent_selector`).
+   The widget also allows selection of country :guilabel:`Preset regions`.
+   You can preview the set extent as a red polygon over a world map.
+#. Click :guilabel:`Next`.
+#. You also need to define a mapset within your new project
+   (this is necessary when creating a new project). Name it whatever you like.
 
-
-.. _figure_grass_new_project:
-
-.. figure:: img/create_grass_project.png
-   :align: center
-
-   Creating a new GRASS PROJECT or a new MAPSET in QGIS
+   GRASS also automatically creates a special mapset called :file:`PERMANENT`,
+   designed to store the core data for the project, its default spatial extent
+   and coordinate system definitions.
+#. Check out the summary to make sure it's correct.
+   You can leave |checkbox| :guilabel:`Open new mapset` ticked if you want the new mapset
+   to get automatically activated in QGIS.
+#. Click :guilabel:`Finish`.
+   The new project containing two mapsets is created.
+   With the mapset opened, you can notice that some of the tools in the GRASS toolbar
+   that were disabled are now enabled.
 
 If that seemed like a lot of steps, it's really not all that bad and a very quick
-way to create a :file:`PROJECT`. The :file:`PROJECT` 'alaska' is now ready for
-data import (see section :ref:`sec_import_loc_data`). You can also use the already-existing
-vector and raster data in the sample GRASS :file:`PROJECT` 'alaska',
-included in the QGIS 'Alaska' dataset :ref:`label_sampledata`, and move on to
-section :ref:`label_vectmodel`.
+way to create a project. The project is now ready for data import or editing.
+
 
 .. _sec_add_mapset:
 
-Adding a new MAPSET
+Adding a new Mapset
 -------------------
 
-A user has write access only to a GRASS :file:`MAPSET` which he or she created. This
-means that besides access to your own :file:`MAPSET`, you can read maps in other users'
-:file:`MAPSETs` (and they can read yours), but you can modify or remove only the maps in
-your own :file:`MAPSET`.
-
-All :file:`MAPSETs` include a :file:`WIND` file that stores the current boundary
-coordinate values and the currently selected raster resolution (see Neteler & Mitasova
-2008 in :ref:`literature_and_web`, and section :ref:`sec_grass_region`).
+To create a mapset in an existing GRASS project:
 
 #. Start QGIS and make sure the GRASS plugin is loaded.
-#. In the GRASS toolbar, click on the |grassNewMapset| :sup:`New mapset` icon
-   to bring up the :guilabel:`MAPSET` wizard.
-#. Select the GRASS database (GISDBASE) folder :file:`grassdata` with the
-   :file:`PROJECT` 'alaska', where we want to add a further :file:`MAPSET`
-   called 'test'.
+#. In the :menuselection:`Plugins --> GRASS` menu,
+   click on the |grassNewMapset| :guilabel:`New mapset`
+   to bring up the :guilabel:`New Mapset` wizard.
+#. Browse to or enter path to a folder, as :guilabel:`Database directory`.
 #. Click :guilabel:`Next`.
-#. We can use this wizard to create a new :file:`MAPSET` within an existing
-   :file:`PROJECT` or to create a new :file:`PROJECT` altogether. Click on the
-   radio button |radioButtonOn| :guilabel:`Select project`
-   (see :numref:`figure_grass_new_project`) and click :guilabel:`Next`.
-#. Enter the name :file:`test` for the new :file:`MAPSET`. Below in the wizard, you
-   see a list of existing :file:`MAPSETs` and corresponding owners.
+#. In the :guilabel:`GRASS Project` page, tick :guilabel:`Select project`
+   and pick a project from the drop-down menu.
+#. From the :guilabel:`GRASS Project` page, you can create a new mapset within an existing
+   project or :ref:`create a new project <sec_create_loc>` altogether.
+   Let's click on the radio button |radioButtonOn| :guilabel:`Select project`
+   and pick a project from the drop-down menu.
+#. Click :guilabel:`Next`.
+#. Enter the name for the new mapset. Below in the wizard, you
+   see a list of existing mapsets and corresponding owners.
 #. Click :guilabel:`Next`, check out the summary to make sure it's all correct and
    click :guilabel:`Finish`.
 
 
+A user has write access only to a GRASS mapset which he or she created.
+This means that besides access to your own mapset,
+you can read maps in other users' mapsets (and they can read yours),
+but you can modify or remove only the maps in your own mapset.
 
+All mapsets include a :file:`WIND` file that stores the current boundary
+coordinate values and the currently selected raster resolution (see :ref:`sec_grass_region`).
 
 
 .. index::
@@ -475,29 +466,36 @@ coordinate values and the currently selected raster resolution (see Neteler & Mi
 .. _creating_new_grass_vectors:
 
 Creating a new GRASS vector layer
-=================================
+---------------------------------
 
-To create a new GRASS vector layer, select one of following items from mapset context
-menu in the browser:
+To create a new GRASS vector layer:
 
-* New Point Layer
-* New Line Layer
-* New Polygon Layer
+#. In the :guilabel:`Browser` panel, select the target mapset
+#. Right-click and select one of following items:
 
-and enter a name in the dialog. A new vector map will be created and layer will be added
-to canvas and editing started. Selecting type of the layer does not restrict geometry
-types which can be digitized in the vector map. In GRASS, it is possible to organize all sorts
-of geometry types (point, line and polygon) in one vector map. The type is only used to add
-the layer to the canvas, because QGIS requires a layer to have a specific type.
+   * :guilabel:`New Point Layer…`
+   * :guilabel:`New Line Layer…`
+   * :guilabel:`New Polygon Layer…`
+
+#. Enter a name in the dialog.
+   A new vector map will be created and a layer added to the canvas in edit mode.
+
+   Selecting type of the layer does not restrict geometry types which can be digitized in the vector map.
+   In GRASS, it is possible to organize all sorts of geometry types (point, line and polygon) in one vector map.
+   The type is only used to add the layer to the canvas, because QGIS requires a layer to have a specific type.
+
+In GRASS, it is possible to organize all sorts of geometry types
+(point, line and area) in one layer, because GRASS uses a topological vector model,
+so you don't need to select the geometry type when creating a new GRASS vector.
+This is different from shapefile creation with QGIS for example,
+because shapefiles use the Simple Feature vector model (see section :ref:`sec_create_vector`).
 
 It is also possible to add layers to existing vector maps selecting one of the items
-described above from context menu of existing vector map.
+described above from the contextual menu of an existing vector map.
+A new layer of the same name as the map is loaded in the :guilabel:`Layers` panel, ready for editing.
+Note that this is currently possible only if :ref:`GRASS plugin <grass_plugin>` is enabled
+from the :guilabel:`Plugin Manager`.
 
-In GRASS, it is possible to organize all sorts of geometry types (point, line and
-area) in one layer, because GRASS uses a topological vector model, so you don't
-need to select the geometry type when creating a new GRASS vector. This is
-different from shapefile creation with QGIS, because shapefiles use the Simple
-Feature vector model (see section :ref:`sec_create_vector`).
 
 .. index::
    pair: GRASS; Digitizing tools
