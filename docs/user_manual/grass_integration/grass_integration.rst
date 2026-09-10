@@ -50,25 +50,75 @@ For more information visit the `GRASS`_ documentation.
 
 .. _sec_load_grassdata:
 
+.. index:: GRASS vector data model
+.. _label_vectmodel:
 Loading GRASS raster and vector layers
 ======================================
 
+The GRASS vector data model
+---------------------------
 With GRASS installed and loaded in QGIS, you find in the :guilabel:`Browser panel`,
 the GRASS icon |grassLogo| under each folder item which contains a GRASS project.
 Go to the folder :file:`grassdata` and expand project :file:`alaska` and
 mapset :file:`demo`.
 
+It is important to understand the GRASS vector data model prior to digitizing.
+In general, GRASS uses a topological vector model.
+This means that areas are not represented as closed polygons, but by one or more boundaries.
+A boundary between two adjacent areas is digitized only once, and it is shared by both areas.
+Boundaries must be connected and closed without gaps.
+An area is identified (and labelled) by the **centroid** of the area.
+
+Besides boundaries and centroids, a vector map can also contain points and lines.
+All these geometry elements can be mixed in one vector
+and will be represented in different so-called 'layers' inside one GRASS vector map.
+So in GRASS, a layer is not a vector or raster map but a level inside a vector layer.
+This is important to distinguish carefully.
+Although it is possible to mix geometry elements, it is unusual and, even in GRASS,
+only used in special cases such as vector network analysis.
+Normally, you should prefer to store different geometry elements in different layers.
+
+It is possible to store several 'layers' in one vector dataset.
+For example, fields, forests and lakes can be stored in one vector.
+An adjacent forest and lake can share the same boundary, but they have separate attribute tables.
+It is also possible to attach attributes to boundaries.
+An example might be the case where the boundary between a lake and a forest is a road,
+so it can have a different attribute table.
+
+The 'layer' of the feature is defined by the 'layer' inside GRASS.
+'Layer' is the number which defines if there is more than one layer inside the dataset
+(e.g., if the geometry is forest or lake). For now, it can be only a number.
+In the future, GRASS will also support names as fields in the user interface.
+
+Attributes can be stored inside the GRASS Project as SQLite3 (the default), dBase, OGR,
+or in external database tables, for example, PostgreSQL, MySQL, etc.
 You can load GRASS raster and vector layers like any other layer from the browser either
 by double click on layer item or by dragging and dropping to map canvas or legend.
 
+.. index::
+   single: GRASS; Attribute storage
+
+Attributes in database tables are linked to geometry elements using a 'category'
+value.
+
+.. index::
+   single: GRASS; Attribute linkage
+
+'Category' (key, ID) is an integer attached to geometry primitives, and it is
+used as the link to one key column in the database table.
 .. tip:: **GRASS Data Loading**
 
    If you don't see GRASS project item, verify in
    :menuselection:`Help --> About --> Providers` if
    GRASS vector provider is loaded.
 
+.. tip:: **Learning the GRASS Vector Model**
 .. _import_data_dnd:
 
+   The best way to learn the GRASS vector model and its capabilities is to download
+   one of the many GRASS tutorials where the vector model is described more deeply.
+   See `GRASSS manuals <https://grass.osgeo.org/learn/manuals/>`_ for more information,
+   books and tutorials in several languages.
 Importing data into a GRASS Project via drag and drop
 ======================================================
 
@@ -243,60 +293,9 @@ coordinate values and the currently selected raster resolution (see Neteler & Mi
 #. Click :guilabel:`Next`, check out the summary to make sure it's all correct and
    click :guilabel:`Finish`.
 
-.. index:: GRASS vector data model
-.. _label_vectmodel:
 
-The GRASS vector data model
-===========================
 
-It is important to understand the GRASS vector data model prior to digitizing.
-In general, GRASS uses a topological vector model.
-This means that areas are not represented as closed polygons, but by one or more
-boundaries. A boundary between two adjacent areas is digitized only once, and it
-is shared by both areas. Boundaries must be connected and closed without gaps.
-An area is identified (and labelled) by the **centroid** of the area.
 
-Besides boundaries and centroids, a vector map can also contain points and lines.
-All these geometry elements can be mixed in one vector and will be represented
-in different so-called 'layers' inside one GRASS vector map. So in GRASS, a layer
-is not a vector or raster map but a level inside a vector layer. This is important
-to distinguish carefully. (Although it is possible to mix geometry elements, it
-is unusual and, even in GRASS, only used in special cases such as vector network
-analysis. Normally, you should prefer to store different geometry elements in
-different layers.)
-
-It is possible to store several 'layers' in one vector dataset. For example,
-fields, forests and lakes can be stored in one vector. An adjacent forest and lake
-can share the same boundary, but they have separate attribute tables. It is also
-possible to attach attributes to boundaries. An example might be the case where the boundary
-between a lake and a forest is a road, so it can have a different attribute table.
-
-The 'layer' of the feature is defined by the 'layer' inside GRASS. 'Layer' is the
-number which defines if there is more than one layer inside the dataset (e.g.,
-if the geometry is forest or lake). For now, it can be only a number. In the future,
-GRASS will also support names as fields in the user interface.
-
-Attributes can be stored inside the GRASS :file:`PROJECT` as dBase,  SQLite3 or
-in external database tables, for example, PostgreSQL, MySQL, Oracle, etc.
-
-.. index::
-   single: GRASS; Attribute storage
-
-Attributes in database tables are linked to geometry elements using a 'category'
-value.
-
-.. index::
-   single: GRASS; Attribute linkage
-
-'Category' (key, ID) is an integer attached to geometry primitives, and it is
-used as the link to one key column in the database table.
-
-.. tip:: **Learning the GRASS Vector Model**
-
-   The best way to learn the GRASS vector model and its capabilities is to
-   download one of the many GRASS tutorials where the vector model is described
-   more deeply. See https://grass.osgeo.org/learn/manuals/ for more information,
-   books and tutorials in several languages.
 
 .. index::
       seealso: Creating new layer; GRASS
