@@ -10,21 +10,43 @@ GRASS GIS Integration
    .. contents::
       :local:
 
-GRASS integration provides access to GRASS GIS databases and functionalities
-(see GRASS-PROJECT in :ref:`literature_and_web`). The integration consists of two parts:
-provider and plugin. The provider allows to browse, manage and visualize GRASS raster
-and vector layers. The plugin can be used to create new GRASS projects and mapsets,
-change GRASS region, create and edit vector layers and analyze GRASS 2-D and 3-D data
-with more than 400 GRASS modules. In this section, we'll introduce the provider and plugin
-functionalities and give some examples of managing and working with GRASS data.
 
-In order to manipulate GRASS data in QGIS,
-you first need to `install GRASS <https://grass.osgeo.org/download/>`_.
-Supported GRASS versions may vary depending on your Operating System.
+Introduction to GRASS Data
+===========================
 
+The Data structure
+------------------
 
+QGIS provides access to GRASS databases and functionalities.
+`GRASS (Geographic Resources Analysis Support System) <https://grass.osgeo.org>`_
+is a powerful computational engine for raster, vector, and geospatial processing.
+It supports terrain and ecosystem modeling, hydrology, data management, and imagery processing.
 
+GRASS database has a straightforward structure, even if at first it may look complicated.
+The GRASS data are stored in a directory referred to as GISDBASE, often called ``grassdata``.
+Within this directory, the GRASS GIS data are organized by projects
+stored in subdirectories called ``PROJECT``.
+Each project is defined by its coordinate system, map projection and geographical boundaries.
+Each project can have several ``MAPSET`` (subdirectories of the project)
+that are used to subdivide the project into different topics or sub-regions,
+or as workspaces for individual team members.
+In every project, there is the ``PERMANENT`` mapset, created by default by GRASS,
+in which the core data for the project can be stored.
+Mapsets contain actual geospatial data (called ``MAP``),
+what we know in other environments as raster or vector data types.
+Mapsets also hold additional data such as color tables
+and the current computational region's extent and resolution.
 
+Just remember the following structure :menuselection:`grassdata --> projects --> mapsets --> maps`
+to get to the actual data (geometry and attributes).
+For more information visit the `GRASS`_ documentation.
+
+.. _figure_grass_project:
+
+.. figure:: img/grass_project.png
+   :align: center
+
+   Diagram of GRASS data structure (source: `GRASS documentation <https://grass.osgeo.org/programming8/>`_)
 
 .. _sec_load_grassdata:
 
@@ -114,32 +136,11 @@ A GRASS mapset must be opened to get access to GRASS Tools in the plugin (the to
 are disabled if no mapset is open). You can open a mapset from the browser:
 right click on mapset item and then choose :guilabel:`Open mapset` from context menu.
 
-.. _sec_about_loc:
 
-GRASS PROJECT and MAPSET
-=========================
 
-GRASS data are stored in a directory referred to as GISDBASE. This directory, often
-called :file:`grassdata`, must be created before you start working with the GRASS
-plugin in QGIS. Within this directory, the GRASS GIS data are organized by projects
-stored in subdirectories called :file:`PROJECTs`. Each :file:`PROJECT` is defined
-by its coordinate system, map projection and geographical boundaries. Each
-:file:`PROJECT` can have several :file:`MAPSETs` (subdirectories of the
-:file:`PROJECT`) that are used to subdivide the project into different topics or
-sub-regions, or as workspaces for individual team members (see Neteler & Mitasova
-2008 in :ref:`literature_and_web`). In order to analyze vector and raster layers
-with GRASS modules, you generally have to import them into a GRASS :file:`PROJECT`.
-(This is not strictly true -- with the GRASS modules :file:`r.external` and :file:`v.external`
-you can create read-only links to external GDAL-supported datasets without
-importing them. This is not the usual way for beginners to work with GRASS, therefore
-this functionality will not be described here.)
 
-.. _figure_grass_project:
 
-.. figure:: img/grass_project.png
-   :align: center
 
-   GRASS data structure
 
 
 
@@ -822,6 +823,9 @@ looks like this:
 
 The parser reads this definition and creates a new tab inside the Toolbox when
 you select the module.
+
+
+.. _`GRASS`: https://grass.osgeo.org/grass-stable/manuals/grass_database.html
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
