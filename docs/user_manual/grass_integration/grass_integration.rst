@@ -48,12 +48,9 @@ For more information visit the `GRASS`_ documentation.
 
    Diagram of GRASS data structure (source: `GRASS documentation <https://grass.osgeo.org/programming8/>`_)
 
-.. _sec_load_grassdata:
 
 .. index:: GRASS vector data model
 .. _label_vectmodel:
-Loading GRASS raster and vector layers
-======================================
 
 The GRASS vector data model
 ---------------------------
@@ -88,8 +85,6 @@ In the future, GRASS will also support names as fields in the user interface.
 
 Attributes can be stored inside the GRASS Project as SQLite3 (the default), dBase, OGR,
 or in external database tables, for example, PostgreSQL, MySQL, etc.
-You can load GRASS raster and vector layers like any other layer from the browser either
-by double click on layer item or by dragging and dropping to map canvas or legend.
 
 .. index::
    single: GRASS; Attribute storage
@@ -105,32 +100,15 @@ used as the link to one key column in the database table.
 
 
 .. tip:: **Learning the GRASS Vector Model**
-.. _import_data_dnd:
 
    The best way to learn the GRASS vector model and its capabilities is to download
    one of the many GRASS tutorials where the vector model is described more deeply.
    See `GRASSS manuals <https://grass.osgeo.org/learn/manuals/>`_ for more information,
    books and tutorials in several languages.
-Importing data into a GRASS Project via drag and drop
-======================================================
 
-This section gives an example of how to import raster and vector data into a GRASS mapset.
 
 Working with GRASS data in QGIS
 ================================
-#. In QGIS browser navigate to the mapset you want to import data into.
-#. In QGIS browser find a layer you want to import to GRASS, note that you can
-   open another instance of the browser (:guilabel:`Browser Panel (2)`) if
-   source data are too far from the mapset in the tree.
-#. Drag a layer and drop it on the target mapset. The import may take some time for
-   larger layers, you will see animated icon |import| in front of new layer item
-   until the import finishes.
-
-When raster data are in different CRS, they can be reprojected using an :guilabel:`Approximate`
-(fast) or :guilabel:`Exact` (precise) transformation. If a link to the source raster
-is created (using ``r.external``), the source data are in the same CRS and the format
-is known to GDAL, the source data CRS will be used. You can set these options in the
-:guilabel:`Browser` tab in :ref:`grass_options`.
 
 QGIS provides access to GRASS databases and functionalities.
 This integration consists of allowing to browse, manage
@@ -161,9 +139,6 @@ Browser Panel
 -------------
 GRASS menus
 ...........
-If a source raster has more bands, a new GRASS map is created for each layer with
-**.<band number>** suffix and group of all maps with |rasterGroup| icon is created.
-External rasters have a different icon |rasterLink|.
 
 With GRASS installed and provider enabled, browse the :guilabel:`Browser panel`,
 and expand the downloaded dataset to preview the database structure in QGIS.
@@ -178,7 +153,6 @@ You shouldn't have to manipulate those folders.
 
 .. figure:: img/grass_browser.png
    :align: center
-.. _managing_grass_data:
 
    GRASS data in Browser panel
 
@@ -244,12 +218,7 @@ Right-clicking an item in the GRASS folder will provide you with different optio
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
    | :guilabel:`Directory Properties…`                                                     | |checkbox| | |checkbox| | |checkbox| |            |            |
    +---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
-Managing GRASS data in QGIS Browser
-===================================
 
-* Copying maps: GRASS maps may be copied between mapsets within the same project using drag and drop.
-* Deleting maps: Right click on a GRASS map and select :guilabel:`Delete` from context menu.
-* Renaming maps: Right click on a GRASS map and select :guilabel:`Rename` from context menu.
 
 .. _grass_options:
 
@@ -331,13 +300,8 @@ need to be written to the currently selected project and mapset.
 .. figure:: img/grass_toolbox_moduletree.png
    :align: center
 
-Opening GRASS mapset
-====================
    GRASS Toolbox and Module Tree
 
-A GRASS mapset must be opened to get access to GRASS Tools in the plugin (the tools
-are disabled if no mapset is open). You can open a mapset from the browser:
-right click on mapset item and then choose :guilabel:`Open mapset` from context menu.
 
 .. index::
    single: GRASS; Region
@@ -370,7 +334,39 @@ appropriate region extent and resolution for your raster analysis. You can use
 these parameters with the GRASS Toolbox, described in section :ref:`subsec_grass_toolbox`.
 
 
+.. _managing_grass_data:
 
+Managing GRASS data
+===================
+
+.. _sec_load_grassdata:
+
+Loading raster and vector layers from/to GRASS
+----------------------------------------------
+
+Loading GRASS raster and vector layers into a QGIS project is like any other layer:
+from the :guilabel:`Browser` panel, either double-click on the layer item or
+drag-and-drop it from the mapset to the map canvas or :guilabel:`Layers` panel.
+
+Likewise, importing a layer to a GRASS database or across mapsets
+can be done through drag-and-drop in the :guilabel:`Browser` panel:
+
+#. Select the layer to import, either from the :guilabel:`Browser` panel or the :guilabel:`Layers` panel,
+#. Drag-and-drop it over the target GRASS mapset. The import may take some time for larger layers,
+   you will see animated icon |import| in front of new layer item until the import finishes.
+
+When raster data are in different CRS than the mapset, they can be reprojected
+using an :guilabel:`Approximate` (fast) or :guilabel:`Exact` (precise) transformation.
+If a link to the source raster is created (using ``r.external``),
+the source data are in the same CRS and the format is known to GDAL, the source data CRS will be used.
+You can set these options in the :guilabel:`Browser` tab in :ref:`grass_options`.
+
+If a source raster has more bands, a new GRASS map is created for each layer with
+``.<band number>`` suffix and group of all maps with |rasterGroup| icon is created.
+External rasters have a different icon |rasterLink|.
+
+.. note:: GRASS modules and Processing algorithms provide some more advanced tools
+   to achieve the above actions.
 
 
 .. _sec_create_loc:
