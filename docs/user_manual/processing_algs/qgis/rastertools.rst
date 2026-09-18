@@ -481,12 +481,13 @@ Python code
 
 Generate XYZ tiles (Directory)
 -----------------------------------
+Generates XYZ raster tiles from the current project and saves them as individual image files
+in a structured directory hierarchy ({z}/{x}/{y}.png or .jpg).
+All visible map layers from the project will be rendered into tiles
+across the specified extent and zoom range.
 
-Generates raster “XYZ” tiles using the current QGIS project
-as individual images to a directory structure.
-
-Optionally, a Leaflet HTML output file using the generated
-tiles as a map layer could be created.
+Optionally, a standalone Leaflet HTML file can be generated
+for instant web previewing of the tiles.
 
 Parameters
 ..........
@@ -525,12 +526,6 @@ Basic parameters
 
        Default: 12
      - Minimum 0, maximum 25.
-   * - **DPI**
-     - ``DPI``
-     - [numeric: integer]
-
-       Default: 96
-     - Minimum 48, maximum 600.
    * - **Background color**
 
        Optional
@@ -539,12 +534,6 @@ Basic parameters
 
        Default: QColor(0, 0, 0, 0)
      - Choose the background color for the tiles
-   * - **Enable antialiasing**
-     - ``ANTIALIAS``
-     - [boolean]
-
-       Default: True
-     - Determines if antialiasing should be enabled
    * - **Tile format**
      - ``TILE_FORMAT``
      - [enumeration]
@@ -554,27 +543,6 @@ Basic parameters
 
        * 0 --- PNG
        * 1 --- JPG
-
-   * - **Quality (JPG only)**
-
-       Optional
-     - ``QUALITY``
-     - [numeric: integer]
-
-       Default: 75
-     - Minimum 1, maximum 100.
-   * - **Metatile size**
-
-       Optional
-     - ``METATILESIZE``
-     - [numeric: integer]
-
-       Default: 4
-     - Specify a custom metatile size when generating XYZ tiles.
-       Larger values may speed up the rendering of tiles and provide
-       better labelling (fewer gaps without labels) at the expense of
-       using more memory.
-       Minimum 1, maximum 20.
    * - **Tile width**
 
        Optional
@@ -582,7 +550,8 @@ Basic parameters
      - [numeric: integer]
 
        Default: 256
-     - Minimum 1, maximum 4096.
+     - Width of each tile image in pixels.
+       Minimum 1, maximum 4096.
    * - **Tile height**
 
        Optional
@@ -590,13 +559,14 @@ Basic parameters
      - [numeric: integer]
 
        Default: 256
-     - Minimum 1, maximum 4096.
+     - Height of each tile image in pixels.
+       Minimum 1, maximum 4096.
    * - **Use inverted tile Y axis (TMS conventions)**
      - ``TMS_CONVENTION``
      - [boolean]
 
        Default: False
-     -
+     - Inverts the Y tile coordinate naming convention to follow TMS format.
    * - **Output directory**
      - ``OUTPUT_DIRECTORY``
      - [folder]
@@ -633,6 +603,44 @@ Advanced parameters
      - Name
      - Type
      - Description
+   * - **DPI**
+     - ``DPI``
+     - [numeric: integer]
+
+       Default: 96
+     - Minimum 48, maximum 600.
+   * - **Enable antialiasing**
+     - ``ANTIALIAS``
+     - [boolean]
+
+       Default: True
+     - Determines if antialiasing should be enabled
+   * - **Quality (JPG only)**
+
+       Optional
+     - ``QUALITY``
+     - [numeric: integer]
+
+       Default: 75
+     - Minimum 1, maximum 100.
+   * - **Metatile size**
+
+       Optional
+     - ``METATILESIZE``
+     - [numeric: integer]
+
+       Default: 4
+     - Specify a custom metatile size when generating XYZ tiles.
+       Larger values may speed up the rendering of tiles and provide
+       better labelling (fewer gaps without labels) at the expense of
+       using more memory.
+       Minimum 1, maximum 20.
+   * - **Skip empty tiles**
+     - ``SKIP_EMPTY_TILES``
+     - [boolean]
+
+       Default: False
+     - If true, completely empty tiles will be skipped in the output.
    * - **Leaflet HTML output title**
 
        Optional
@@ -662,8 +670,8 @@ Advanced parameters
 
        Default: False
      - An OpenStreetMap basemap layer (source: https://tile.openstreetmap.org)
-       is included in the Leaflet HTML output file. Proper map attribution is
-       added automatically.
+       is included in the Leaflet HTML output file.
+       Proper map attribution is added automatically.
 
 Outputs
 .......
@@ -685,6 +693,10 @@ Outputs
      - ``OUTPUT_HTML``
      - [html]
      - The output HTML (Leaflet) file
+   * - **Output tiles as raster layer**
+     - ``OUTPUT_LAYER``
+     - [raster]
+     - A raster layer of the tiles
 
 Python code
 ...........
@@ -701,11 +713,16 @@ Python code
 Generate XYZ tiles (MBTiles)
 ---------------------------------
 
-Generates raster “XYZ” tiles using the current QGIS project
-as a single file in the “MBTiles” format.
+Generates XYZ raster tiles from the current project
+and packages them into a single, portable MBTiles (SQLite) database file.
+All visible map layers from the project will be rendered
+into tiles across the specified extent and zoom range.
 
 Parameters
 ..........
+
+Basic parameters
+^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -738,12 +755,6 @@ Parameters
 
        Default: 12
      - Minimum 0, maximum 25.
-   * - **DPI**
-     - ``DPI``
-     - [numeric: integer]
-
-       Default: 96
-     - Minimum 48, maximum 600.
    * - **Background color**
 
        Optional
@@ -752,12 +763,6 @@ Parameters
 
        Default: QColor(0, 0, 0, 0)
      - Choose the background color for the tiles
-   * - **Enable antialiasing**
-     - ``ANTIALIAS``
-     - [boolean]
-
-       Default: True
-     - Determines if antialiasing should be enabled
    * - **Tile format**
      - ``TILE_FORMAT``
      - [enumeration]
@@ -767,7 +772,49 @@ Parameters
 
        * 0 --- PNG
        * 1 --- JPG
+   * - **Output**
+     - ``OUTPUT_FILE``
+     - [file]
 
+       Default: ``[Save to temporary file]``
+     - Specification of the output :file:`mbtiles` file.
+       :ref:`One of <output_parameter_widget>`:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+   * - **Output MBTiles raster layer**
+     - ``OUTPUT_LAYER``
+     - [raster]
+
+       Default: ``[Save to temporary file]``
+     - Specification of the output raster layer. :ref:`One of <output_parameter_widget>`:
+
+       .. include:: ../algs_include.rst
+          :start-after: **file_output_types**
+          :end-before: **end_file_output_types**
+
+Advanced parameters
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 40
+   :class: longtable
+
+   * - **DPI**
+     - ``DPI``
+     - [numeric: integer]
+
+       Default: 96
+     - Minimum 48, maximum 600.
+   * - **Enable antialiasing**
+     - ``ANTIALIAS``
+     - [boolean]
+
+       Default: True
+     - Determines if antialiasing should be enabled
    * - **Quality (JPG only)**
 
        Optional
@@ -788,17 +835,12 @@ Parameters
        better labelling (fewer gaps without labels) at the expense of
        using more memory.
        Minimum 1, maximum 20.
-   * - **Output file (for MBTiles)**
-     - ``OUTPUT_FILE``
-     - [file]
+   * - **Skip empty tiles**
+     - ``SKIP_EMPTY_TILES``
+     - [boolean]
 
-       Default: ``[Save to temporary file]``
-     - Specification of the output file. :ref:`One of <output_parameter_widget>`:
-
-       .. include:: ../algs_include.rst
-          :start-after: **file_output_types_skip**
-          :end-before: **end_file_output_types_skip**
-
+       Default: False
+     - If true, completely empty tiles will be skipped in the output.
 
 Outputs
 .......
@@ -812,10 +854,14 @@ Outputs
      - Name
      - Type
      - Description
-   * - **Output file (for MBTiles)**
+   * - **Output**
      - ``OUTPUT_FILE``
      - [file]
-     - The output file.
+     - The output :file:`.mbtiles` file.
+   * - **Output MBTiles as raster layer**
+     - ``OUTPUT_LAYER``
+     - [raster]
+     - A raster layer containing the tiles
 
 Python code
 ...........
