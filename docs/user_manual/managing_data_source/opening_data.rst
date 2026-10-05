@@ -1602,8 +1602,6 @@ update all its sub-elements (e.g. buckets, folders and files).
    :width: 1.5em
 .. |addHanaLayer| image:: /static/common/mActionAddHanaLayer.png
    :width: 1.5em
-.. |addLayer| image:: /static/common/mActionAddLayer.png
-   :width: 1.5em
 .. |addMeshLayer| image:: /static/common/mActionAddMeshLayer.png
    :width: 1.5em
 .. |addMssqlLayer| image:: /static/common/mActionAddMssqlLayer.png
@@ -1632,53 +1630,25 @@ update all its sub-elements (e.g. buckets, folders and files).
    :width: 1.3em
 .. |cloud| image:: /static/common/mIconCloud.png
    :width: 1.5em
-.. |collapseTree| image:: /static/common/mActionCollapseTree.png
-   :width: 1.5em
 .. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
-   :width: 1.5em
-.. |filterMap| image:: /static/common/mActionFilterMap.png
-   :width: 1.5em
-.. |geoPackage| image:: /static/common/mGeoPackage.png
-   :width: 1.5em
-.. |hana| image:: /static/common/mIconHana.png
    :width: 1.5em
 .. |imageServer| image:: /static/common/mIconImageServer.png
    :width: 1.5em
 .. |kde| image:: /static/common/kde.png
    :width: 1.5em
-.. |metadata| image:: /static/common/metadata.png
-   :width: 1.5em
-.. |mssql| image:: /static/common/mIconMssql.png
-   :width: 1.5em
 .. |nix| image:: /static/common/nix.png
    :width: 1em
-.. |oracle| image:: /static/common/mIconOracle.png
-   :width: 1.5em
 .. |osx| image:: /static/common/osx.png
    :width: 1em
-.. |postgis| image:: /static/common/mIconPostgis.png
-   :width: 1.5em
 .. |radioButtonOff| image:: /static/common/radiobuttonoff.png
    :width: 1.5em
 .. |radioButtonOn| image:: /static/common/radiobuttonon.png
    :width: 1.5em
-.. |refresh| image:: /static/common/mActionRefresh.png
-   :width: 1.5em
 .. |setProjection| image:: /static/common/mActionSetProjection.png
-   :width: 1.5em
-.. |spatialite| image:: /static/common/mIconSpatialite.png
-   :width: 1.5em
-.. |vectorTileLayer| image:: /static/common/mIconVectorTileLayer.png
    :width: 1.5em
 .. |warning| image:: /static/common/mIconWarning.png
    :width: 1.5em
-.. |wcs| image:: /static/common/mIconWcs.png
-   :width: 1.5em
-.. |wfs| image:: /static/common/mIconWfs.png
-   :width: 1.5em
 .. |win| image:: /static/common/win.png
    :width: 1em
-.. |wms| image:: /static/common/mIconWms.png
-   :width: 1.5em
 .. |xyz| image:: /static/common/mIconXyz.png
    :width: 1.5em

@@ -12,23 +12,15 @@ The Browser panel
    :local:
    :depth: 2
 
-The QGIS Browser panel is a great tool for browsing, searching,
+
+The QGIS :guilabel:`Browser` panel is a great tool for browsing, searching,
 inspecting, copying and loading QGIS resources.
-Only resources that QGIS knows how to handle are shown in the
-browser.
+It is available as:
 
-Using the Browser panel you can locate, inspect and add data, as
-described in :ref:`browser_panel`.
-In addition, the Browser panel supports drag and drop of many QGIS
-resources, such as project files, Python scripts, Processing scripts and
-Processing models.
-
-Python scripts, Processing scripts and Processing models can also be opened for
-editing in an external editor and the graphical modeller.
-
-You can drag and drop layers from the :guilabel:`Layers` panel
-to the :guilabel:`Browser` panel, for instance into a GeoPackage or a
-PostgreSQL database.
+* a :guilabel:`Data Source Manager` tab, enabled pressing the
+  |dataSourceManager| :sup:`Open Data Source Manager` button (:kbd:`Ctrl+L`);
+* as a QGIS panel you can open from the menu :menuselection:`View --> Panels`
+  (or |kde| :menuselection:`Settings --> Panels`) or by pressing :kbd:`Ctrl+2`.
 
 .. _figure_browser_panel:
 
@@ -38,62 +30,135 @@ PostgreSQL database.
 
    The Browser panel
 
-The browser panel (:numref:`figure_browser_panel`) is organised
-as an expandable hierarchy with some fixed top-level entries that
-organise the resources handled by the browser.
-Node entries are expanded by clicking on |browserExpand| to the left
-of the entry name.
+
+A second browser panel can be opened by activating the :guilabel:`Browser (2)` panel
+in :menuselection:`View --> Panels`.
+Having two browser panels can be useful when copying layers between resources
+that are locationed deep down in different branches of the browser hierarchy.
+
+..
+ Only resources that QGIS knows how to handle are shown in the browser.
+
+Exploring the Interface
+-----------------------
+The Toolbar
+...........
+At the top of the Browser panel, you find some buttons that help you:
+
+* |addLayer| :sup:`Add Selected Layers`: you can also add data to the map
+  canvas by selecting **Add selected layer(s)** from the layer's context menu;
+* |refresh| :sup:`Refresh` the browser tree;
+* |filterMap| :sup:`Filter Browser` to search for specific data. Enter a search
+  word or wildcard and the browser will filter the tree to only show paths to
+  matching DB tables, filenames or folders.
+  Using the |options| :sup:`Options` pull-down menu next to the filter text field,
+  you can:
+
+  * make the comparison :guilabel:`Case Sensitive` or not
+  * set the :guilabel:`Filter pattern syntax` to one of:
+
+    * :guilabel:`Normal`: show items containing the search text
+    * :guilabel:`Wildcard(s)`: fine tune the search using the ``?`` and/or ``*``
+      characters to specify the position of the search text
+    * :guilabel:`Regular expression`: use full capabilities of regular expression
+      to find specific data.
+
+* |collapseTree| :sup:`Collapse All` the whole tree;
+* |metadata| :sup:`Enable/disable properties widget`: when toggled on,
+  a new widget is added at the bottom of the panel showing, if applicable,
+  metadata for the selected item.
+
+  .. _figure_properties_widget:
+
+  .. figure:: img/browser_p_properties_w.png
+     :align: center
+     :width: 30%
+
+     The properties widget
+
+The Entries
+...........
+
+The main part of the :guilabel:`Browser` panel is organised as an expandable hierarchy
+with some fixed top-level entries that organise the resources handled by the browser.
+Node entries are expanded by clicking on |browserExpand| to the left of the entry name.
 A branch is collapsed by clicking on |browserCollapse|.
-The |collapseTree| :sup:`Collapse All` button collapses all top-level
-entries.
+The |collapseTree| :sup:`Collapse All` button collapses all top-level entries.
+Top level entries include:
 
-In :menuselection:`Settings --> Interface Customization` it is
-possible to disable resources.
-If you, for instance, would not like to show Python scripts in the
-browser, you can uncheck the :menuselection:`Browser --> py` entry,
-and if you want to get rid of your home folder in the browser, you
-can uncheck the :menuselection:`Browser --> special:Home` entry.
+#. :guilabel:`Favorites` where you can place shortcuts to often used locations
+#. :guilabel:`Spatial Bookmarks` where you can store often used map extents
+   (see :ref:`sec_bookmarks`)
+#. :guilabel:`Project Home`: for a quick access to the folder in which (most of)
+   the data related to your project are stored.
+   The default value is the directory where your project file resides.
+#. :guilabel:`Home` directory in the file system and the filesystem root directory.
+#. Connected local or network drives
+#. Then comes a number of container / database types and service protocols,
+   depending on your platform and underlying libraries:
 
-A filter (|filterMap| :sup:`Filter Browser`) can be used for searching
-based on entry names (both leaf entries and node entries in the
-hierarchy).
-Using the |options| :sup:`Options` pull-down menu next to the filter
-text field, you can
+   .. list-table:: Database and service entries in Browser panel
+      :header-rows: 1
+      :widths: 20 80
+      :class: longtable
 
-* toggle :guilabel:`Case Sensitive` search
-* set the :guilabel:`Filter pattern syntax` to one of
+      * - Label
+        - References
+      * - |geoPackage| :guilabel:`GeoPackage`
+        - :ref:`database_entries`, :ref:`vector_create_geopackage`
+      * - |spatialite| :guilabel:`SpatiaLite`
+        - :ref:`database_entries`, :ref:`vector_create_spatialite`, :ref:`label_spatialite`
+      * - |postgis| :guilabel:`PostgreSQL`
+        - :ref:`database_entries`, :ref:`create_postgresql_connection`
+      * - |hana| :guilabel:`SAP HANA`
+        - :ref:`database_entries`, :ref:`create_hana_connection`
+      * - |stac| :guilabel:`STAC`
+        - :ref:`tiles_web_services`, :ref:`stac`
+      * - |mssql| :guilabel:`MS SQL Server`
+        - :ref:`database_entries`, :ref:`create_ms_sql_server_connection`
+      * - |oracle| :guilabel:`Oracle`
+        - :ref:`database_entries`, :ref:`create_oracle_connection`
+      * - |wms| :guilabel:`WMS/WMTS`
+        - :ref:`tiles_web_services`, :ref:`ogc-wms`
+      * - |cloud| :guilabel:`Cloud`
+        - :ref:`tiles_web_services`, :ref:`cloud_connections`
+      * - |tiledSceneLayer| :guilabel:`Scenes`
+        - :ref:`tiles_web_services`, :ref:`3d_tiles`
+      * - |sensor| :guilabel:`SensorThings`
+        - :ref:`tiles_web_services`, :ref:`sensor_things`
+      * - |vectorTileLayer| :guilabel:`Vector Tiles`
+        - :ref:`tiles_web_services`, :ref:`vector_tiles`
+      * - |xyz| :guilabel:`XYZ Tiles`
+        - :ref:`tiles_web_services`, :ref:`xyz_tile`
+      * - |wcs| :guilabel:`WCS`
+        - :ref:`tiles_web_services`, :ref:`ogc-wcs`
+      * - |wfs| :guilabel:`WFS/OGC API-Features`
+        - :ref:`tiles_web_services`, :ref:`ogc-wfs`
+      * - |afs| :guilabel:`ArcGIS REST Servers`
+        - :ref:`tiles_web_services`, :ref:`arcgis_rest`
 
-  * :guilabel:`Normal`
-  * :guilabel:`Wildcard(s)`
-  * :guilabel:`Regular Expressions`
 
-The *Properties widget*, showing useful information about some
-entries / resources, can be enabled / disabled using the |metadata|
-:sup:`Enable/disable properties widget` button.
-When enabled, it opens at the bottom of the browser panel, as shown in
-:numref:`figure_properties_widget`.
+You can customize the list of displayed resources by disabling some of them
+in the :menuselection:`Settings --> Interface Customization` dialog.
+If you, for instance, would not like to show Python scripts in the browser,
+you can uncheck the :menuselection:`Browser --> py` entry,
+and if you want to get rid of your home folder in the browser,
+you can uncheck the :menuselection:`Browser --> special:Home` entry.
+Read :ref:`sec_customization` for more details.
 
-.. _figure_properties_widget:
+Interactions in the Browser panel
+----------------------------------
 
-.. figure:: img/browser_p_properties_w.png
-   :align: center
-   :width: 30%
+A lot can be accomplished in the :guilabel:`Browser` panel.
+It generally supports drag and drop of many QGIS resources,
+such as layers, project files, Python scripts, Processing scripts and models,
+across entries in the Browser panel and from/to the :guilabel:`Layers` panel
+or the map canvas.
 
-   The properties widget
+Most of the elements in the :guilabel:`Browser` panel also have actions
+assigned through their contextual menu. They vary depending on the item you right-clicked over.
 
-A second browser panel can be opened by activating the
-:guilabel:`Browser (2)` panel in :menuselection:`View --> Panels`.
-Having two browser panels can be useful when copying layers between
-resources that are locationed deep down in different branches of the
-browser hierarchy.
-
-
-Resources that can be opened / run from the Browser
-----------------------------------------------------------------------
-
-A lot can be accomplished in the Browser panel
-
-* Add vector, raster and mesh layers to your map by double-clicking,
+* Add any supported layer type to your map by double-clicking,
   dragging onto the map canvas or clicking the |addLayer|
   :sup:`Add Selected Layers` button (after selecting layers)
 * Run Python scripts (including Processing algorithms) by
@@ -105,9 +170,13 @@ A lot can be accomplished in the Browser panel
   (:guilabel:`Open <file type> Externally...` in the context menu).
   Examples: HTML files, spreadsheets, images, PDFs, text files, ...
 * Copy entries
-* Rename and delete (multiple) layers (context menu: :menuselection:`Manage -->`)
+* Rename and delete (multiple) layers
 * Open a file explorer window and directly select the file
   :guilabel:`Show in Files`
+
+
+
+
 
 Resource specific actions are listed for the different resource groups
 sorted under the top-level entries listed below.
@@ -118,12 +187,12 @@ Browser panel top-level entries
 
 Favorites
 ......................................................................
+
 Often used file system locations can be tagged as favorites.
 The ones you have tagged will appear here.
 
-In addition to the operations described under *Home*, the
-context menu allows you to :guilabel:`Rename Favorite...` and
-:guilabel:`Remove Favorite`.
+In addition to the operations described under common :ref:`folders and drives <drives_file_system>`,
+the context menu allows you to :guilabel:`Rename Favorite…` and :guilabel:`Remove Favorite`.
 
 
 Spatial Bookmarks
@@ -170,12 +239,13 @@ Displayed in the :guilabel:`Browser` panel, it allows you to quickly
 access data and other files of the project.
 
 It defaults to the project file folder but can be changed through the
-:menuselection:`Project --> Properties... --> General --> Project home` option,
+:menuselection:`Project --> Properties… --> General --> Project home` option,
 or by right-clicking on the :guilabel:`Project Home` item of the Browser panel
-and selecting :guilabel:`Set project home...`.
+and selecting :guilabel:`Set project home…`.
 Customizing that folder is especially useful in contexts where QGIS projects
 are not stored in the root folder of an organisational 'project', along with datasets.
 
+.. _drives_file_system:
 
 Drives and file system
 ......................
@@ -187,17 +257,22 @@ They are mainly:
 
 * The :guilabel:`Home` folder, pointing to the current user home folder
 * on Unix-based machines, the root :guilabel:`/` folder
-* the connected drives, either local or network. Depending on the OS,
-  they are directly listed (eg, ``C:\``, ``D:\``) or through the ``/Volumes``
-  entry.
+* the connected drives, either local or network.
+  Depending on the OS, they are directly listed (e.g., ``C:\``, ``D:\``)
+  or through the ``/Volumes`` entry.
 
 From the contextual menu of each of these folders or drives, you can:
 
-* refresh the contents
-* create a :menuselection:`New -->` subitem that is a :guilabel:`Directory`,
-  :guilabel:`GeoPackage` or ESRI :guilabel:`Shapefile` format dataset
-* hide the directory (:guilabel:`Hide from Browser`)
-* :guilabel:`Set color`: customize the folder icon color, aiding in rapid
+* :guilabel:`Refresh`: refreshes the files and folders of the entry
+* create a :menuselection:`New -->` subitem that is a :guilabel:`Directory…`,
+  :guilabel:`GeoPackage…`, ESRI :guilabel:`Shapefile…` or
+  :guilabel:`ESRI FileGeodatabase…` format dataset
+* :guilabel:`Hide from Browser`: hides the selected directory or drive from the panel.
+  The list of hidden folders can be found in :menuselection:`Settings --> Options -->
+  Data sources --> Hidden folders` and the folders can be recovered individually.
+  They also can be recovered from the contextual menu
+  of their parent folder using the :menuselection:`Hidden Items -->` entry.
+* :guilabel:`Set color…`: customize the folder icon color, aiding in rapid
   browser navigation of complex folder structures
 * enable :guilabel:`Scanning`:
 
@@ -209,10 +284,9 @@ From the contextual menu of each of these folders or drives, you can:
     directories which you don't want monitored for other reasons.
     By default, remote or network drives are not automatically monitored.
   * |unchecked| :guilabel:`Fast scan this directory`
-* open the directory in your file manager (:guilabel:`Open Directory...`)
-* open the directory in a terminal window  (:guilabel:`Open in Terminal...`)
-* inspect the :guilabel:`Properties...` or the parent :guilabel:`Directory
-  Properties...`
+* :guilabel:`Open Directory…`: opens the directory in your file manager
+* :guilabel:`Open in Terminal…`: opens the directory in a terminal window
+* inspect the :guilabel:`Properties…` or the parent :guilabel:`Directory Properties…`
 
 
 Data type
@@ -439,7 +513,7 @@ You can start the import in two ways:
 
 * Drag and drop a single vector layer from the Browser panel or from the Project into
   a database connection or schema item.
-* Right-click on a database connection or schema item and choose :guilabel:`Import Vector Layer...`
+* Right-click on a database connection or schema item and choose :guilabel:`Import Vector Layer…`
   from the context menu.
 
 This triggers the :guilabel:`Import Vector Layer` dialog for further customisation.
@@ -516,6 +590,9 @@ You can then fill the following options:
 
 * Optionally, apply an attribute filter with :ref:`Feature filter <expression_builder>`.
   This allows you to use an expression to select which features are imported.
+
+
+.. _tiles_web_services:
 
 Tiles and Web Services
 ......................
@@ -628,8 +705,14 @@ Tiles and Web Services
    | :guilabel:`Details…`                                         |                   |                   |                       |                   | |checkbox|       |
    +--------------------------------------------------------------+-------------------+-------------------+-----------------------+-------------------+------------------+
 
-Supported file types
-....................
+Other specific supported file types
+....................................
+
+The Browser panel supports drag and drop of many QGIS resources,
+such as project files, Python scripts, Processing scripts and Processing models.
+
+Python scripts, Processing scripts and Processing models can also be opened for
+editing in an external editor and the graphical modeler.
 
 .. table:: Available actions for various supported files
    :class: longtable
@@ -690,6 +773,8 @@ Supported file types
    :width: 1.5em
 .. |collapseTree| image:: /static/common/mActionCollapseTree.png
    :width: 1.5em
+.. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
+   :width: 1.5em
 .. |deleteAttribute| image:: /static/common/mActionDeleteAttribute.png
    :width: 1.5em
 .. |filterMap| image:: /static/common/mActionFilterMap.png
@@ -697,6 +782,8 @@ Supported file types
 .. |geoPackage| image:: /static/common/mGeoPackage.png
    :width: 1.5em
 .. |hana| image:: /static/common/mIconHana.png
+   :width: 1.5em
+.. |kde| image:: /static/common/kde.png
    :width: 1.5em
 .. |metadata| image:: /static/common/metadata.png
    :width: 1.5em
