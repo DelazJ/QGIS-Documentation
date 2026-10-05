@@ -12,13 +12,109 @@ The Browser panel
    :local:
    :depth: 2
 
+
 The QGIS Browser panel is a great tool for browsing, searching,
 inspecting, copying and loading QGIS resources.
-Only resources that QGIS knows how to handle are shown in the
-browser.
+Only resources that QGIS knows how to handle are shown in the browser.
 
-Using the Browser panel you can locate, inspect and add data, as
-described in :ref:`browser_panel`.
+The :guilabel:`Browser` is one of the main ways to quickly and easily
+add your data to projects. It's available as:
+
+* a :guilabel:`Data Source Manager` tab, enabled pressing the
+  |dataSourceManager| :sup:`Open Data Source Manager` button (:kbd:`Ctrl+L`);
+* as a QGIS panel you can open from the menu :menuselection:`View --> Panels`
+  (or |kde| :menuselection:`Settings --> Panels`) or by pressing :kbd:`Ctrl+2`.
+
+.. _figure_browser_panel:
+
+.. figure:: img/browser_panel.png
+   :align: center
+   :width: 30%
+
+   The Browser panel
+
+
+A second browser panel can be opened by activating the :guilabel:`Browser (2)` panel
+in :menuselection:`View --> Panels`.
+Having two browser panels can be useful when copying layers between resources
+that are locationed deep down in different branches of the browser hierarchy.
+
+Exploring the Interface
+-----------------------
+
+At the top of the Browser panel, you find some buttons that help you to:
+
+* |addLayer| :sup:`Add Selected Layers`: you can also add data to the map
+  canvas by selecting **Add selected layer(s)** from the layer's context menu;
+* |refresh| :sup:`Refresh` the browser tree;
+* |filterMap| :sup:`Filter Browser` to search for specific data. Enter a search
+  word or wildcard and the browser will filter the tree to only show paths to
+  matching DB tables, filenames or folders.
+  Using the |options| :sup:`Options` pull-down menu next to the filter text field,
+  you can:
+
+  * make the comparison :guilabel:`Case Sensitive` or not
+  * set the :guilabel:`Filter pattern syntax` to one of:
+
+    * :guilabel:`Normal`: show items containing the search text
+    * :guilabel:`Wildcard(s)`: fine tune the search using the ``?`` and/or ``*``
+      characters to specify the position of the search text
+    * :guilabel:`Regular expression`: use full capabilities of regular expression
+      to find specific data.
+
+* |collapseTree| :sup:`Collapse All` the whole tree;
+* |metadata| :sup:`Enable/disable properties widget`: when toggled on,
+  a new widget is added at the bottom of the panel showing, if applicable,
+  metadata for the selected item.
+
+  .. _figure_properties_widget:
+
+  .. figure:: img/browser_p_properties_w.png
+     :align: center
+     :width: 30%
+
+     The properties widget
+
+
+The browser panel is organised as an expandable hierarchy
+with some fixed top-level entries that organise the resources handled by the browser.
+Node entries are expanded by clicking on |browserExpand| to the left of the entry name.
+A branch is collapsed by clicking on |browserCollapse|.
+The |collapseTree| :sup:`Collapse All` button collapses all top-level entries.
+Top level entries include:
+
+#. :guilabel:`Favorites` where you can place shortcuts to often used locations
+#. :guilabel:`Spatial Bookmarks` where you can store often used map extents
+   (see :ref:`sec_bookmarks`)
+#. :guilabel:`Project Home`: for a quick access to the folder in which (most of)
+   the data related to your project are stored.
+   The default value is the directory where your project file resides.
+#. :guilabel:`Home` directory in the file system and the filesystem root directory.
+#. Connected local or network drives
+#. Then comes a number of container / database types and service protocols,
+   depending on your platform and underlying libraries:
+
+   * |geoPackage| :guilabel:`GeoPackage`
+   * |spatialite| :guilabel:`SpatiaLite`
+   * |postgis| :guilabel:`PostgreSQL`
+   * |hana| :guilabel:`SAP HANA`
+   * |mssql| :guilabel:`MS SQL Server`
+   * |oracle| :guilabel:`Oracle`
+   * |wms| :guilabel:`WMS/WMTS`
+   * |cloud| :guilabel:`Cloud`
+   * |tiledSceneLayer| :guilabel:`Scenes`
+   * |sensor| :guilabel:`SensorThings`
+   * |vectorTileLayer| :guilabel:`Vector Tiles`
+   * |xyz| :guilabel:`XYZ Tiles`
+   * |wcs| :guilabel:`WCS`
+   * |wfs| :guilabel:`WFS/OGC API-Features`
+   * |afs| :guilabel:`ArcGIS REST Server`
+
+
+
+
+
+
 In addition, the Browser panel supports drag and drop of many QGIS
 resources, such as project files, Python scripts, Processing scripts and
 Processing models.
@@ -30,22 +126,6 @@ You can drag and drop layers from the :guilabel:`Layers` panel
 to the :guilabel:`Browser` panel, for instance into a GeoPackage or a
 PostgreSQL database.
 
-.. _figure_browser_panel:
-
-.. figure:: img/browser_panel.png
-   :align: center
-   :width: 30%
-
-   The Browser panel
-
-The browser panel (:numref:`figure_browser_panel`) is organised
-as an expandable hierarchy with some fixed top-level entries that
-organise the resources handled by the browser.
-Node entries are expanded by clicking on |browserExpand| to the left
-of the entry name.
-A branch is collapsed by clicking on |browserCollapse|.
-The |collapseTree| :sup:`Collapse All` button collapses all top-level
-entries.
 
 In :menuselection:`Settings --> Interface Customization` it is
 possible to disable resources.
@@ -54,18 +134,7 @@ browser, you can uncheck the :menuselection:`Browser --> py` entry,
 and if you want to get rid of your home folder in the browser, you
 can uncheck the :menuselection:`Browser --> special:Home` entry.
 
-A filter (|filterMap| :sup:`Filter Browser`) can be used for searching
-based on entry names (both leaf entries and node entries in the
-hierarchy).
-Using the |options| :sup:`Options` pull-down menu next to the filter
-text field, you can
 
-* toggle :guilabel:`Case Sensitive` search
-* set the :guilabel:`Filter pattern syntax` to one of
-
-  * :guilabel:`Normal`
-  * :guilabel:`Wildcard(s)`
-  * :guilabel:`Regular Expressions`
 
 The *Properties widget*, showing useful information about some
 entries / resources, can be enabled / disabled using the |metadata|
@@ -73,19 +142,6 @@ entries / resources, can be enabled / disabled using the |metadata|
 When enabled, it opens at the bottom of the browser panel, as shown in
 :numref:`figure_properties_widget`.
 
-.. _figure_properties_widget:
-
-.. figure:: img/browser_p_properties_w.png
-   :align: center
-   :width: 30%
-
-   The properties widget
-
-A second browser panel can be opened by activating the
-:guilabel:`Browser (2)` panel in :menuselection:`View --> Panels`.
-Having two browser panels can be useful when copying layers between
-resources that are locationed deep down in different branches of the
-browser hierarchy.
 
 
 Resources that can be opened / run from the Browser
@@ -118,6 +174,7 @@ Browser panel top-level entries
 
 Favorites
 ......................................................................
+
 Often used file system locations can be tagged as favorites.
 The ones you have tagged will appear here.
 
@@ -628,8 +685,8 @@ Tiles and Web Services
    | :guilabel:`Details…`                                         |                   |                   |                       |                   | |checkbox|       |
    +--------------------------------------------------------------+-------------------+-------------------+-----------------------+-------------------+------------------+
 
-Supported file types
-....................
+Additional supported file types
+................................
 
 .. table:: Available actions for various supported files
    :class: longtable
@@ -690,6 +747,8 @@ Supported file types
    :width: 1.5em
 .. |collapseTree| image:: /static/common/mActionCollapseTree.png
    :width: 1.5em
+.. |dataSourceManager| image:: /static/common/mActionDataSourceManager.png
+   :width: 1.5em
 .. |deleteAttribute| image:: /static/common/mActionDeleteAttribute.png
    :width: 1.5em
 .. |filterMap| image:: /static/common/mActionFilterMap.png
@@ -697,6 +756,8 @@ Supported file types
 .. |geoPackage| image:: /static/common/mGeoPackage.png
    :width: 1.5em
 .. |hana| image:: /static/common/mIconHana.png
+   :width: 1.5em
+.. |kde| image:: /static/common/kde.png
    :width: 1.5em
 .. |metadata| image:: /static/common/metadata.png
    :width: 1.5em
