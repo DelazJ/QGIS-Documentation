@@ -5,8 +5,8 @@
 
 #Find all images in the resources folder
 echo "Searching for image files..."
-find ./docs -type f -regex ".*\.\(png\|PNG\|gif\|jpg\|jpeg\)" -printf "%f\n" | sort -u > all_images.txt
-find ./static -type f -regex ".*\.\(png\|PNG\|gif\|jpg\|jpeg\)" -printf "%f\n" | sort -u >> all_images.txt
+find ./docs -type f -name "*.png" | sort -u > all_images.txt
+find ./static -type f -regex ".*\.(png|PNG|gif|jpg|jpeg)" -printf "%f\n" | sort -u >> all_images.txt
 
 #Check for images that are used in the source
 echo "Checking what images are used..."
@@ -24,7 +24,7 @@ if [ -s not_found.txt ]; then
 fi
 
 #Remove temporary files
-rm all_images.txt
-rm found.txt
-rm not_found.txt
+#rm all_images.txt
+#rm found.txt
+#rm not_found.txt
 echo "Done!"
