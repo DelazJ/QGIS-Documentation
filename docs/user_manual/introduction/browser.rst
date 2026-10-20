@@ -167,135 +167,6 @@ assigned through their contextual menu.
 The actions vary depending on the item you right-clicked over.
 
 
-Files on disk
-.............
-
-Folder
-^^^^^^^
-
-Data type
-^^^^^^^^^
-
-.. Introduce the section with a small paragraph
-
-For file system directory entries, the context menu offers the following:
-
-* :menuselection:`New -->` to create in the selected entry a:
-
-  * :guilabel:`Directory…`
-  * :guilabel:`GeoPackage…`
-  * :guilabel:`ShapeFile…`
-* :guilabel:`Add as a Favorite`: favorite folders can be renamed
-  (:guilabel:`Rename favorite…`) or removed (:guilabel:`Remove favorite`) any time.
-* :guilabel:`Hide from Browser`: hidden folders can be toggled to visible from
-  the :menuselection:`Settings --> Options --> Data Sources --> Hidden Folders` setting
-  or from the parent folder's contextual menu (:menuselection:`Hidden Items -->`).
-* :guilabel:`Fast Scan this Directory`
-* :guilabel:`Open Directory`
-* :guilabel:`Open in Terminal`
-* :guilabel:`Properties…`
-* :guilabel:`Directory Properties…`
-
-For leaf entries that can act as layers in the project,
-and depending on whether the resource is from a project file or in a directory,
-the contextual menu will present some of the following entries.
-
-.. table:: Available actions for plain layer files
-   :widths: 32, 17, 17, 17, 17
-   :class: longtable
-
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | Level and Contextual menu                          | Types of layers                                                                                              |
-   |                                                    +-----------------------------+-----------------------------+------------------------------+-------------------+
-   |                                                    | |addRasterLayer|            | |addOgrLayer|               | |addPointCloudLayer|         | |addMeshLayer|    |
-   |                                                    | Raster                      | Vector                      | Point clouds                 | Mesh              |
-   |                                                    |                             |                             |                              |                   |
-   |                                                    | (:ref:`Reference            | (:ref:`Reference            | (:ref:`Reference             | (:ref:`Reference  |
-   |                                                    | <raster_properties_dialog>`)| <vector_properties_dialog>`)| <working_with_point_clouds>`)| <label_meshdata>`)|
-   +====================================================+=============================+=============================+==============================+===================+
-   | :guilabel:`Execute SQL…`                           |                             | |checkbox|                  |                              |                   |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :menuselection:`Export Layer --> To File…`         | |checkbox|                  | |checkbox|                  |                              |                   |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :guilabel:`Add Layer to Project`                   | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :guilabel:`Add Selected Layers to Project`         | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :guilabel:`Layer Properties…`                      | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :guilabel:`Open with Data Source Manager…`         | |checkbox|                  | |checkbox|                  |                              |                   |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :menuselection:`Manage -->`Rename <file_name>`     | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :menuselection:`Manage -->`Delete <file_name>`     | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :menuselection:`Manage -->`Delete Selected Files`  | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :guilabel:`Show in Files`                          | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :guilabel:`File Properties…`                       | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-   | :guilabel:`Open <file type> Externally…`           | |checkbox|                  |                             |                              |                   |
-   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
-
-Project files
-^^^^^^^^^^^^^^
-
-Project file items inside the browser can be expanded, showing the full
-layer tree (including groups) contained within that project.
-Project items are treated the same way as any other item in the browser,
-so they can be dragged and dropped within the browser (for example to
-copy a layer item to a geopackage file) or added to the current project
-through drag and drop or double click.
-
-
-Other specific supported file types
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-..
- The Browser panel supports drag and drop of many QGIS resources,
- such as project files, Python scripts, Processing scripts and Processing models.
-
- Python scripts, Processing scripts and Processing models can also be opened for
- editing in an external editor and the graphical modeler.
-
-.. table:: Available actions for various supported files
-   :class: longtable
-
-   +--------------------------+------------------------------------------------------------+
-   | File type                | Context menu                                               |
-   +==========================+============================================================+
-   | QGIS Layer Definition    | :menuselection:`Export Layer --> To File…`                 |
-   | (.qlr)                   +------------------------------------------------------------+
-   |                          | :menuselection:`Add Layer to Project`                      |
-   |                          +------------------------------------------------------------+
-   |                          | :menuselection:`Layer Properties…`                         |
-   +--------------------------+------------------------------------------------------------+
-   | Processing Model         | :menuselection:`Run Model…`                                |
-   | (.model3)                +------------------------------------------------------------+
-   |                          | :menuselection:`Edit Model…`                               |
-   +--------------------------+------------------------------------------------------------+
-   | Print Composer Template  | :menuselection:`New Layout from Template`                  |
-   | (.qpt)                   |                                                            |
-   +--------------------------+------------------------------------------------------------+
-   | Python script            | :menuselection:`Run Script…`                               |
-   | (.py)                    +------------------------------------------------------------+
-   |                          | :menuselection:`Open in External Editor`                   |
-   +--------------------------+------------------------------------------------------------+
-
-
-
-
-
-
-* :guilabel:`Extract Symbols...` from QGIS Project files using the
-  context menu
-* Open files with their default applications
-  (:guilabel:`Open <file type> Externally...` in the context menu).
-  Examples: HTML files, spreadsheets, images, PDFs, text files, ...
-* Rename and delete (multiple) layers
-* Open a file explorer window and directly select the file
-  :guilabel:`Show in Files`
 
 .. _metadata_browser:
 
@@ -303,6 +174,7 @@ Metadata
 .........
 
 .. Todo: Take into account no-layer items in the description
+ and where to move it? At the end?
 
 In the :guilabel:`Layer properties` entry, you will find (similar
 to what you will find in the
@@ -408,7 +280,7 @@ They are mainly:
 
 From the contextual menu of each of these folders or drives, you can:
 
-* :guilabel:`Refresh`: refreshes the files and folders of the entry
+* :guilabel:`Refresh` the files and folders of the entry
 * create a :menuselection:`New -->` subitem that is a :guilabel:`Directory…`,
   :guilabel:`GeoPackage…`, ESRI :guilabel:`Shapefile…` or
   :guilabel:`ESRI FileGeodatabase…` format dataset
@@ -433,7 +305,119 @@ From the contextual menu of each of these folders or drives, you can:
 * :guilabel:`Open in Terminal…`: opens the directory in a terminal window
 * inspect the :guilabel:`Properties…` or the parent :guilabel:`Directory Properties…`
 
+.. note:: The abovementioned contextual menu items are also available
+    from any directory in the browser, regardless of its location.
 
+Under the directories, interaction with files may differ depending on
+whether it is a QGIS project file, it is of a data format supported or not by QGIS,
+it is a plain file or a data container, ...
+
+
+Project files
+^^^^^^^^^^^^^^
+
+Project files can be dragged and dropped from the browser to the map canvas
+to open the project or to a database (e.g., GeoPackage, PostgreSQL, ...) for storage.
+Further operations can be done through their contextual menu:
+
+* :guilabel:`Open project`
+* :guilabel:`Extract symbols…`: opens the :ref:`Style manager <vector_style_manager>` dialog
+  filled with all the symbols (marker, text, label, material, 3D symbol, ...).
+  It is then possible to select items and :ref:`share them <share_symbols>` with other contexts.
+* :menuselection:`Manage --> Rename <project_file>…`
+* :menuselection:`Manage --> Delete <project_file>…`
+* :guilabel:`Show in files`: Opens the folder containing the project file
+  in the Operating System file explorer
+* :guilabel:`File properties…`
+
+Project files stored in directories can be expanded in the :guilabel:`Browser`panel,
+showing the full layer tree (including groups) within that project.
+Layers of a project can be loaded from the browser to the active project
+through double-click or drag and drop to map canvas or :guilabel:`Layers` panel.
+They can also be dropped onto a database and :ref:`imported within <import_vector_db_browser>`.
+Their contextual menu allows to :menuselection:`Export Layer --> To File…`,
+:guilabel:`Add Layer to Project` and preview :guilabel:`Layer Properties…`.
+
+Layer files
+^^^^^^^^^^^
+
+For leaf entries that can act as layers in a QGIS project,
+the contextual menu will present some of the following entries.
+
+.. table:: Available actions for plain layer files
+   :widths: 32, 17, 17, 17, 17
+   :class: longtable
+
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | Level and Contextual menu                          | Types of layers                                                                                              |
+   |                                                    +-----------------------------+-----------------------------+------------------------------+-------------------+
+   |                                                    | |addRasterLayer|            | |addOgrLayer|               | |addPointCloudLayer|         | |addMeshLayer|    |
+   |                                                    | Raster                      | Vector                      | Point clouds                 | Mesh              |
+   |                                                    |                             |                             |                              |                   |
+   |                                                    | (:ref:`Reference            | (:ref:`Reference            | (:ref:`Reference             | (:ref:`Reference  |
+   |                                                    | <raster_properties_dialog>`)| <vector_properties_dialog>`)| <working_with_point_clouds>`)| <label_meshdata>`)|
+   +====================================================+=============================+=============================+==============================+===================+
+   | :guilabel:`Open <file type> Externally…`           | |checkbox|                  |                             |                              |                   |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :guilabel:`Execute SQL…`                           |                             | |checkbox|                  |                              |                   |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :menuselection:`Export Layer --> To File…`         | |checkbox|                  | |checkbox|                  |                              |                   |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :guilabel:`Add Layer to Project`                   | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :guilabel:`Add Selected Layers to Project`         | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :guilabel:`Layer Properties…`                      | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :guilabel:`Open with Data Source Manager…`         | |checkbox|                  | |checkbox|                  |                              |                   |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :menuselection:`Manage -->`Rename <file_name>`     | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :menuselection:`Manage -->`Delete <file_name>`     | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :menuselection:`Manage -->`Delete Selected Files`  | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :guilabel:`Show in Files`                          | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+   | :guilabel:`File Properties…`                       | |checkbox|                  | |checkbox|                  | |checkbox|                   | |checkbox|        |
+   +----------------------------------------------------+-----------------------------+-----------------------------+------------------------------+-------------------+
+
+
+Other specific supported file types
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. table:: Available actions for various supported files
+   :class: longtable
+
+   +--------------------------+------------------------------------------------------------+
+   | File type                | Context menu                                               |
+   +==========================+============================================================+
+   | QGIS Layer Definition    | :menuselection:`Export Layer --> To File…`                 |
+   | (.qlr)                   +------------------------------------------------------------+
+   |                          | :menuselection:`Add Layer to Project`                      |
+   |                          +------------------------------------------------------------+
+   |                          | :menuselection:`Layer Properties…`                         |
+   +--------------------------+------------------------------------------------------------+
+   | Processing Model         | :menuselection:`Run Model…`                                |
+   | (.model3)                +------------------------------------------------------------+
+   |                          | :menuselection:`Edit Model…`                               |
+   +--------------------------+------------------------------------------------------------+
+   | Print Composer Template  | :menuselection:`New Layout from Template`                  |
+   | (.qpt)                   |                                                            |
+   +--------------------------+------------------------------------------------------------+
+   | Python script            | :menuselection:`Run Script…`                               |
+   | (.py)                    +------------------------------------------------------------+
+   |                          | :menuselection:`Open in External Editor`                   |
+   +--------------------------+------------------------------------------------------------+
+
+
+
+
+
+
+* Open files with their default applications
+  (:guilabel:`Open <file type> Externally...` in the context menu).
+  Examples: HTML files, spreadsheets, images, PDFs, text files, ...
 
 
 
@@ -612,6 +596,8 @@ each level of the dataset tree.
  `vector file formats <https://gdal.org/en/latest/drivers/vector/index.html>`_
  such as ESRI File Geodatabase, FlatGeobuf, GeoParquet, NetCDF, ... when compatible.
 .. [2] For PostgreSQL connections: only supported with ALTER TABLE privilege.
+
+.. _import_vector_db_browser:
 
 Importing vector layers into databases using Browser panel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
