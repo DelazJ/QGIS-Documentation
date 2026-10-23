@@ -893,9 +893,12 @@ The properties dialog of an annotation layer provides the following tabs:
     Billboards always face the camera in 3D views, improving readability during navigation
     (only for marker and text annotations).
 
-    * :guilabel:`Relative to Terrain`: billboard elevation is relative to the terrain height.
-    * :guilabel:`Absolute`: all billboard will be placed at the same elevation.
-    * :guilabel:`Offset`: allows you to set a vertical offset for the billboards in 3D views.
+    * Billboards altitude can be set as:
+  
+      * :guilabel:`Relative to Terrain`: billboard elevation is relative to the terrain height.
+      * :guilabel:`Absolute`: all billboards will be placed at the same elevation,
+        regardless of the variation in the terrain elevationdefined by the :guilabel:`Offset` parameter.
+    * :guilabel:`Offset`: controls the elevation of the billboards in 3D views.
     * :guilabel:`Font`: allows you to set the font properties for text annotations in 3D views.
     * |checkbox| :guilabel:`Show callout lines`: when enabled, callout lines are drawn from the annotation to its anchor point on the terrain.
 
