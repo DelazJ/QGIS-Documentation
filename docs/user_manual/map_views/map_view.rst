@@ -888,18 +888,26 @@ The properties dialog of an annotation layer provides the following tabs:
 * :guilabel:`3D View`: allows users to control the appearance of annotation layers in
   3D map views.
 
-  * :guilabel:`Render on Terrain Surface`: enables annotations to be rendered as flat items on the terrain surface in 3D views.
-  * :guilabel:`3D Billboards`: allows annotations to be rendered as 3D objects in 3D views.
-    When enabled, you can configure :guilabel:`3D Appearance` settings in the :guilabel:`Layer Styling`
-    panel.
-    Billboards always face the camera in 3D views, improving readability during navigation
-    (only for marker, text and picture annotations).
+  * :guilabel:`Render on Terrain Surface`: enables annotations to be rendered as flat items
+    on the terrain surface in 3D views.
+  * :guilabel:`3D Billboards`: Only operational with marker, text and picture annotations,
+    allows annotations to be rendered as 3D objects in 3D views.
+    Billboards always face the camera in 3D views, improving readability during navigation.
+    When enabled, you can also configure pictures :guilabel:`3D Appearance` settings
+    in the :guilabel:`Layer Styling` panel.
 
-    * :guilabel:`Relative to Terrain`: billboard elevation is relative to the terrain height.
-    * :guilabel:`Absolute`: all billboard will be placed at the same elevation.
-    * :guilabel:`Offset`: allows you to set a vertical offset for the billboards in 3D views.
+    * Billboards elevation can be set as:
+
+      * :guilabel:`Relative to Terrain`: billboards are placed at an :guilabel:`Offset` height
+        to the terrain elevation
+      * :guilabel:`Absolute`: all billboards are placed at the same elevation,
+        defined by the :guilabel:`Offset` parameter, regardless of the variation in the terrain elevation.
+    * :guilabel:`Offset`: controls the elevation of the billboards in 3D views;
+      Depending on the altitude setting, it represents either the difference between the billboard
+      elevation and the terrain altitude, either the altitude at which all the billboards are placed.
     * :guilabel:`Font`: allows you to set the font properties for text annotations in 3D views.
-    * |checkbox| :guilabel:`Show callout lines`: when enabled, callout lines are drawn from the annotation to its anchor point on the terrain.
+    * |checkbox| :guilabel:`Show callout lines`: when enabled, callout lines are drawn
+      from the annotation to its anchor point on the terrain.
 
 Interacting with features
 .........................
