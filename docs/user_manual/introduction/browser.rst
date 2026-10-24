@@ -361,6 +361,34 @@ Some notes about opening options:
   It is currently available for vector (including the dedicated GeoPackage entry),
   raster, and SpatiaLite data sources.
 
+Other specific supported file types
+....................................
+
+.. table:: Available actions for various supported files
+   :class: longtable
+
+   +--------------------------+------------------------------------------------------------+
+   | File type                | Context menu                                               |
+   +==========================+============================================================+
+   | QGIS Layer Definition    | :menuselection:`Export Layer --> To File…`                 |
+   | (.qlr)                   +------------------------------------------------------------+
+   |                          | :menuselection:`Add Layer to Project`                      |
+   |                          +------------------------------------------------------------+
+   |                          | :menuselection:`Layer Properties…`                         |
+   +--------------------------+------------------------------------------------------------+
+   | Processing Model         | :menuselection:`Run Model…`                                |
+   | (.model3)                +------------------------------------------------------------+
+   |                          | :menuselection:`Edit Model…`                               |
+   +--------------------------+------------------------------------------------------------+
+   | Print Composer Template  | :menuselection:`New Layout from Template`                  |
+   | (.qpt)                   |                                                            |
+   +--------------------------+------------------------------------------------------------+
+   | Python script            | :menuselection:`Run Script…`                               |
+   | (.py)                    +------------------------------------------------------------+
+   |                          | :menuselection:`Open in External Editor`                   |
+   +--------------------------+------------------------------------------------------------+
+
+
 .. _metadata_browser:
 
 Properties of Browser items
@@ -705,33 +733,6 @@ Tiles and Web Services
    +--------------------------------------------------------------+-------------------+-------------------+-----------------------+-------------------+------------------+
    | :guilabel:`Details…`                                         |                   |                   |                       |                   | |checkbox|       |
    +--------------------------------------------------------------+-------------------+-------------------+-----------------------+-------------------+------------------+
-
-Supported file types
----------------------
-
-.. table:: Available actions for various supported files
-   :class: longtable
-
-   +--------------------------+------------------------------------------------------------+
-   | File type                | Context menu                                               |
-   +==========================+============================================================+
-   | QGIS Layer Definition    | :menuselection:`Export Layer --> To File…`                 |
-   | (.qlr)                   +------------------------------------------------------------+
-   |                          | :menuselection:`Add Layer to Project`                      |
-   |                          +------------------------------------------------------------+
-   |                          | :menuselection:`Layer Properties…`                         |
-   +--------------------------+------------------------------------------------------------+
-   | Processing Model         | :menuselection:`Run Model…`                                |
-   | (.model3)                +------------------------------------------------------------+
-   |                          | :menuselection:`Edit Model…`                               |
-   +--------------------------+------------------------------------------------------------+
-   | Print Composer Template  | :menuselection:`New Layout from Template`                  |
-   | (.qpt)                   |                                                            |
-   +--------------------------+------------------------------------------------------------+
-   | Python script            | :menuselection:`Run Script…`                               |
-   | (.py)                    +------------------------------------------------------------+
-   |                          | :menuselection:`Open in External Editor`                   |
-   +--------------------------+------------------------------------------------------------+
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
