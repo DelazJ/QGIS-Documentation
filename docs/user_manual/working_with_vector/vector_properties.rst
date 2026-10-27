@@ -3240,11 +3240,14 @@ In this case, ``.qgd`` and  ``.qgs`` files are both embedded in the archive.
 Actions Properties
 ==================
 
-The |action| :guilabel:`Actions` tab provides the ability to perform an action
-based on the attributes of a feature.
+The |action| :guilabel:`Actions` tab provides the ability to configure automated actions
+that can be triggered in various places of QGIS (canvas, attribute table, form, identify results, ...).
+The actions can be based on the attributes of a feature.
 This can be used to perform any number of actions, for example,
 running a program with arguments built from the attributes of a feature
 or passing parameters to a web reporting tool.
+Actions are useful when you frequently want to run an external application
+or view a web page based on one or more values in your vector layer.
 
 .. _figure_actions:
 
@@ -3253,40 +3256,21 @@ or passing parameters to a web reporting tool.
 
    Overview action dialog with some sample actions
 
-Actions are useful when you frequently want to run an external application
-or view a web page based on one or more values in your vector layer.
-They are of different types and can be used like this:
-
-* :guilabel:`Generic`, :guilabel:`macOS`, :guilabel:`Windows`
-  and :guilabel:`Unix` actions start an external process.
-* :guilabel:`Python` actions execute a Python expression.
-* :guilabel:`Generic` and :guilabel:`Python` actions are visible everywhere.
-* :guilabel:`macOS`, :guilabel:`Windows` and :guilabel:`Unix`
-  actions are visible only on the respective platform
-  (i.e., you can define three "Edit" actions to open an editor and the users can only
-  see and execute the one "Edit" action for their platform to run the editor).
-* :guilabel:`Open URL`: Uses a HTTP GET request to open a provided URL.
-* :guilabel:`Submit URL (urlencoded or JSON)`:
-  Same as the :guilabel:`Open URL` action but using a HTTP POST request.
-  Data are posted to a URL, using "application/x-www-form-urlencoded"
-  or "application/json" if the body is a valid JSON.
-
-  An example of action call could be::
-
-    http://localhost:8000?/[% url_encode(map('file', 'index.php')) %]
-
-* :guilabel:`Submit URL (multipart)`: Same as the :guilabel:`Open URL` action
-  but using a HTTP POST request.
-  Data are posted to a URL, using "multipart/form-data".
-
-There are several examples included in the dialog. You can load them by clicking
-on :guilabel:`Create Default Actions`. To edit any of the examples, double-click
-its row. One example is performing a search based on an attribute value. This
-concept is used in the following discussion.
+By default QGIS contains several examples you can use as starting point.
+You can load them by clicking on :guilabel:`Create Default Actions`.
+The |arrowUp| :sup:`Move the selected action up`
+and |arrowDown| :sup:`Move the selected action down` buttons
+help you reorganize the list of the actions.
+You can also |symbologyRemove| :sup:`Remove the selected action`,
+|symbologyAdd| :sup:`Add a new action` and |duplicateLayout| :sup:`Duplicate an action`.
+To edit any existing action, double-click its row.
 
 The |checkbox| :guilabel:`Show in Attribute Table` allows you to display in the
 attribute table dialog the checked feature-scoped actions, either as :guilabel:`Combo
 Box` or as :guilabel:`Separate Buttons` (see :ref:`configure_table_columns`).
+
+..  One example is performing a search based on an attribute value.
+ This concept is used in the following discussion.
 
 
 .. index:: Actions, Attribute Actions
@@ -3296,59 +3280,120 @@ Box` or as :guilabel:`Separate Buttons` (see :ref:`configure_table_columns`).
 Defining Actions
 ----------------
 
-To define an attribute action, open the vector :guilabel:`Layer
-Properties` dialog and click on the :guilabel:`Actions` tab. In the
-:guilabel:`Actions` tab, click the |symbologyAdd| :sup:`Add a new action`
-to open the :guilabel:`Edit Action` dialog.
+To define an attribute action:
 
-Select the action :guilabel:`Type` and provide a descriptive name
-for the action. The action itself must contain the name of the application
-that will be executed when the action is invoked.
-You can add one or more attribute field values as arguments to the application.
-When the action is invoked, any set of characters that start with a ``%``
-followed by the name of a field will be replaced by the value of that field.
-The special characters ``%%`` will be replaced by the value of the field
-that was selected from the identify results or attribute table (see :ref:`using_actions`).
-Double quote marks can be used to group text into a single argument to the program, script or command.
-Double quotes will be ignored if preceded by a backslash.
+#. Open the vector :guilabel:`Layer Properties` dialog
+   and click on the :guilabel:`Actions` tab.
+#. Click the |symbologyAdd| :sup:`Add a new action` and configure its properties
+   in the :guilabel:`Add New Action` dialog.
 
-Actions can invoke a single process, with arguments, so Boolean operators
-(such as ``&``, ``&&``, ``;``, ``|``) will not work.
-In UNIX-like operating systems multiple commands can be executed via ``bash -c``.
+#. Select the :guilabel:`Type` of action.
+   Different types exist and can be used like this:
 
-The :guilabel:`Action Scopes` allows you to define where the action should be available.
-You have following choices:
+   * :guilabel:`Generic`, :guilabel:`macOS`, :guilabel:`Windows`
+     and :guilabel:`Unix` actions start an external process.
+   * :guilabel:`Python` actions execute a Python expression.
+   * :guilabel:`Generic` and :guilabel:`Python` actions are visible on every Operating Systems.
+   * :guilabel:`macOS`, :guilabel:`Windows` and :guilabel:`Unix`
+     actions are visible only on the respective platform
+     (i.e., you can define three "Edit" actions to open an editor and the users can only
+     see and execute the one "Edit" action for their platform to run the editor).
+   * :guilabel:`Open URL`: Uses a HTTP GET request to open a provided URL.
+   * :guilabel:`Submit URL (urlencoded or JSON)`:
+     Same as the :guilabel:`Open URL` action but using a HTTP POST request.
+     Data are posted to a URL, using "application/x-www-form-urlencoded"
+     or "application/json" if the body is a valid JSON.
 
-#. :guilabel:`Field`: action is available when right click in the cell
-   within the attribute table, in the feature form and in the default action
-   button of the main toolbar.
-#. :guilabel:`Feature`: action is available when right click in the cell
-   within the attribute table.
-#. :guilabel:`Canvas`: action is available in the main action button in the toolbar.
-#. :guilabel:`Form`: action is available only in a feature form designed
-   using the :ref:`drag-and-drop <drag_drop_designer>` mode.
-#. :guilabel:`Layer`: action is available in the action button in the attribute table toolbar.
-   Be aware that this type of action involves the entire layer and not the single features.
+     An example of action call could be::
 
-If you have field names that are substrings of other field names (e.g.,
-``col1`` and ``col10``), you should indicate that by surrounding the field name
-(and the \% character) with square brackets (e.g., ``[%col10]``). This will
-prevent the ``%col10`` field name from being mistaken for the ``%col1`` field
-name with a ``0`` on the end. The brackets will be removed by QGIS when it
-substitutes in the value of the field. If you want the substituted field to be
-surrounded by square brackets, use a second set like this: ``[[%col10]]``.
+       http://localhost:8000?/[% url_encode(map('file', 'index.php')) %]
 
-Using the :guilabel:`Identify Features` tool, you can open the
-:guilabel:`Identify Results` dialog. It includes a *(Derived)* item that contains
-information relevant to the layer type. The values in this item can be accessed
-in a similar way to the other fields by proceeding the derived field name with
-``(Derived).``. For example, a point layer has an ``X`` and ``Y`` field, and the
-values of these fields can be used in the action with ``%(Derived).X`` and
-``%(Derived).Y``. The derived attributes are only available from the
-:guilabel:`Identify Results` dialog box, not the :guilabel:`Attribute Table` dialog box.
+   * :guilabel:`Submit URL (multipart)`: Same as the :guilabel:`Open URL` action
+     but using a HTTP POST request.
+     Data are posted to a URL, using "multipart/form-data".
+
+#. |checkbox| :guilabel:`Capture output`: captures the standard output or error
+   generated by the action and displays it in a dialog box
+#. Provide a descriptive name for the action.
+   If the name already exists (e.g. when duplicating an action), QGIS will append "_1".
+   If left empty, QGIS will generate one, as a unique name.
+#. The :guilabel:`Action Scopes` allows you to define where the action should be available.
+   You have following choices:
+
+   #. :guilabel:`Field`: action is available when right click in the cell
+      within the attribute table, in the feature form and in the default action
+      button of the main toolbar.
+   #. :guilabel:`Feature`: action is available when right click in the cell
+      within the attribute table.
+   #. :guilabel:`Canvas`: action is available in the main action button in the toolbar.
+   #. :guilabel:`Form`: action is available only in a feature form designed
+      using the :ref:`drag-and-drop <drag_drop_designer>` mode.
+   #. :guilabel:`Layer`: action is available in the action button in the attribute table toolbar.
+      Be aware that this type of action involves the entire layer and not the single features.
+
+#. The :guilabel:`Action Text` provides a text box to include the command to run.
+   It must contain the name of the application that will be executed when the action is invoked.
+   You can :guilabel:`Insert` one or more attribute field values as arguments to the application.
+   When the action is invoked, any set of characters that start with a ``%``
+   followed by the name of a field will be replaced by the value of that field.
+   The special characters ``%%`` will be replaced by the value of the field
+   that was selected from the identify results or attribute table (see :ref:`using_actions`).
+   Double quote marks can be used to group text into a single argument to the program, script or command.
+   Double quotes will be ignored if preceded by a backslash.
+
+   Actions can invoke a single process, with arguments, so Boolean operators
+   (such as ``&``, ``&&``, ``;``, ``|``) will not work.
+   In UNIX-like operating systems multiple commands can be executed via ``bash -c``.
+
+
+   If you have field names that are substrings of other field names
+   (e.g., ``col1`` and ``col10``), you should indicate that by surrounding the field name
+   (and the \% character) with square brackets (e.g., ``[%col10]``).
+   This will prevent the ``%col10`` field name from being mistaken for the ``%col1`` field
+   name with a ``0`` on the end. The brackets will be removed by QGIS when it
+   substitutes in the value of the field. If you want the substituted field to be
+   surrounded by square brackets, use a second set like this: ``[[%col10]]``.
+
+   Using the :guilabel:`Identify Features` tool,
+   you can open the :guilabel:`Identify Results` dialog.
+   It includes a *(Derived)* item that contains information relevant to the layer type.
+   The values in this item can be accessed in a similar way to the other fields
+   by proceeding the derived field name with ``(Derived).``.
+   For example, a point layer has an ``X`` and ``Y`` field, and the values of these fields
+   can be used in the action with ``%(Derived).X`` and ``%(Derived).Y``.
+   The derived attributes are only available from the :guilabel:`Identify Results` dialog box,
+   not the :guilabel:`Attribute Table` dialog box.
+
+#. :guilabel:`Execute if notification matches`
+
+
+
+
+   .. warning:
+
+     For PostgreSQL providers, if :guilabel:`Refresh layer on notification` is checked,
+     or if one layer action has :guilabel:`On notification` specified in the :guilabel:`Rendering` tab,
+     a new connection to the database is made to listen to PostgreSQL notifications.
+     This holds even if transaction groups are enabled at the project level.
+
+     Note that once the notification mechanism is started in a QGIS session,
+     it will not stop, even if there is no more need for it
+     (:guilabel:`Refresh layer on notification` unchecked and no :guilabel:`On notification` in any action).
+     Consequently the connection listening to notification will remain open.
+
+
+
+
+#. The |checkbox| :guilabel:`Enable when editable` will make the action available
+   only when the layer is in edit mode.
+
 
 .. index::
    single: Actions; Examples
+
+..  One example is performing a search based on an attribute value.
+ This concept is used in the following discussion.
+
 
 Two example actions are shown below:
 
@@ -3368,23 +3413,6 @@ The second example uses the \%\% notation, which does not rely on a particular
 field for its value. When the action is invoked, the \%\% will be replaced by
 the value of the selected field in the identify results or attribute table.
 
-.. index:: Actions, Attribute Actions
-   single: Actions; Duplicate an action
-.. _duplicating_actions:
-
-Duplicating Actions
--------------------
-
-QGIS allows you to duplicate existing actions. To duplicate an attribute action,
-open the vector :guilabel:`Layer Properties` dialog and click on the :guilabel:`Actions` tab.
-In the :guilabel:`Actions` tab, click the |duplicateLayout| :sup:`Duplicate an action`
-to open the :guilabel:`Duplicate Action` dialog. You must have selected at least one existing action
-in order to create a duplicate.
-
-In the dialogue that appears, make any changes that are necessary. See :ref:`adding_actions`
-for further information. Once finished, press :guilabel:`OK` to create a duplicate of the action with
-any changes that you made. If you did not edit the description, or if you changed it to be
-identical to the description of any other existing action, "_1" will be added to the end of it.
 
 .. index::
    single: Actions; Using actions
@@ -3393,8 +3421,8 @@ identical to the description of any other existing action, "_1" will be added to
 Using Actions
 -------------
 
-QGIS offers many ways to execute actions you enabled on a layer. Depending on
-their settings, they can be available:
+QGIS offers many ways to execute actions you enabled on a layer.
+Depending on their settings, they can be available:
 
 * in the drop-down menu of |actionRun| :sup:`Run Feature Action` button from
   the :guilabel:`Attributes toolbar` or :guilabel:`Attribute table` dialog;
@@ -3403,10 +3431,11 @@ their settings, they can be available:
 * from the :guilabel:`Identify Results` panel, under the :guilabel:`Actions` section;
 * as items of an :guilabel:`Actions` column in the :guilabel:`Attribute Table` dialog.
 
-If you are invoking an action that uses the ``%%`` notation, right-click on the
-field value in the :guilabel:`Identify Results` dialog or the
-:guilabel:`Attribute Table` dialog that you wish to pass to the application
-or script.
+
+
+If you are invoking an action that uses the ``%%`` notation,
+right-click on the field value in the :guilabel:`Identify Results` dialog
+or the :guilabel:`Attribute Table` dialog that you wish to pass to the application or script.
 
 Here is another example that pulls data out of a vector layer and inserts
 it into a file using bash and the ``echo`` command (so it will only work on
@@ -3728,12 +3757,16 @@ The |rendering| :guilabel:`Rendering` tab offers following properties:
 
   It is also possible to set the :guilabel:`Interval (seconds)` between consecutive refreshments.
 
-* Depending on the data provider (e.g. PostgreSQL), notifications can be sent to
-  QGIS when changes are applied to the data source, out of QGIS. Use the |checkbox|
-  :guilabel:`Refresh layer on notification` option to trigger an update.
+* Depending on the data provider (e.g. PostgreSQL), notifications can be sent to QGIS
+  when changes are applied to the data source, out of QGIS.
+  Use the |checkbox| :guilabel:`Refresh layer on notification` option to trigger an update.
+  E.g., using a PostgreSQL datasource, if a ``NOTIFY qgis;`` command is issued
+  by one of the database clients, a refresh of the layer will occur.
   You can also limit the layer refresh to a specific message set in the |checkbox|
   :guilabel:`Only if message is` text box.
-
+  E.g., if the text box is filled with the string ``refresh``,
+  then a ``NOTIFY qgis, 'refresh';`` command in the datatabase will trigger a layer refresh,
+  while ``NOTIFY qgis;`` or ``NOTIFY qgis, 'something else';`` won't.
 
 .. index:: Temporal
 .. _vectortemporalmenu:
