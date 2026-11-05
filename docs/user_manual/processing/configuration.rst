@@ -162,23 +162,19 @@ Providers
 You will also find a block for algorithm |processingAlgorithm| :guilabel:`Providers`.
 This is the place where installed providers expose their settings.
 
-By default, QGIS is installed with two algorithm providers:
+Core algorithm providers are activated through the :menuselection:`Plugins Manager` dialog.
+The :guilabel:`GRASS GIS Processing Provider` has some additional settings
+to configure under the :guilabel:`GRASS` entry:
 
-* :guilabel:`GDAL` whose algorithms you may :guilabel:`Activate` (or not) in this dialog.
-  Read more about the :ref:`GDAL algorithms <gdal_algorithms>`.
-* :guilabel:`GRASS` whose algorithms require the installation
-  of the :guilabel:`GRASS GIS Processing Provider` from the :guilabel:`Plugins Manager`.
-  You could then set some dedicated settings such as:
-
-  * |checkbox| :guilabel:`For raster layers, use r.external (faster) instead of r.in.gdal`
-  * |checkbox| :guilabel:`For vector layers, use v.external (faster) instead of v.in.ogr`
-  * :guilabel:`Location of GRASS docs`: by default, and depending on your OS,
-    QGIS utilizes a hardcoded list of paths for finding the local GRASS documentation
-    and opening it whenever you hit the :guilabel:`Help` button of a GRASS algorithm dialog.
-    Filling this option will override the default path, allowing you to use a custom location,
-    or remote documentation.
-  * |checkbox| :guilabel:`Log console output`
-  * |checkbox| :guilabel:`Log execution commands`
+* |checkbox| :guilabel:`For raster layers, use r.external (faster) instead of r.in.gdal`
+* |checkbox| :guilabel:`For vector layers, use v.external (faster) instead of v.in.ogr`
+* :guilabel:`Location of GRASS docs`: by default, and depending on your OS,
+  QGIS utilizes a hardcoded list of paths for finding the local GRASS documentation
+  and opening it whenever you hit the :guilabel:`Help` button of a GRASS algorithm dialog.
+  Filling this option will override the default path, allowing you to use a custom location,
+  or remote documentation.
+* |checkbox| :guilabel:`Log console output`
+* |checkbox| :guilabel:`Log execution commands`
 
 Installed plugins that provide Processing algorithms may also have their provider
 listed in this group, with custom settings.

@@ -10,16 +10,23 @@ spatial analysis tasks more productive and easy to accomplish.
 As a :ref:`Core plugin <core_plugins>`, Processing is installed by default but
 you need to activate it:
 
-#. Go to :menuselection:`Plugins --> Manage and install plugins...`
-#. Click on the :guilabel:`Installed` tab at the left
+#. Go to :menuselection:`Plugins -->`|showPluginManager| :menuselection:`Manage and install plugins...`
+#. In the :guilabel:`Plugins Manager` dialog, click on the :guilabel:`Installed` tab at the left
 #. Check the box next to the |processingAlgorithm| :guilabel:`Processing` entry
 #. Close the dialog.
 
-   A :menuselection:`Processing` menu is now available in the top menu bar.
-   From there you can reach the main components of this framework.
+A :menuselection:`Processing` menu is now available in the top menu bar.
+From there you can reach the main components of this framework.
+By default, the :guilabel:`Processing` plugin will add a set of native algorithms to QGIS.
+You can extend the capabilities with additional providers
+you enable in the :guilabel:`Plugins Manager` dialog:
 
-In the following sections, we will review how to use the graphical elements of
-this framework and make the most out of each one of them.
+* :guilabel:`Additional QGIS Processing Tools` for Python-based QGIS core algorithms
+* :guilabel:`GDAL Processing provider` for algorithms that rely on GDAL utility tools
+* :guilabel:`GRASS Processing provider` for algorithms that rely on GRASS tools
+
+.. In the following sections, we will review how to use the graphical elements of
+ this framework and make the most out of each one of them.
 
 There are four basic elements in the framework GUI, which are used to run
 algorithms for different purposes. Choosing one tool or another will depend on
@@ -85,4 +92,6 @@ In the following sections, we will review each one of these elements in detail.
    source folder.
 
 .. |processingAlgorithm| image:: /static/common/processingAlgorithm.png
+   :width: 1.5em
+.. |showPluginManager| image:: /static/common/mActionShowPluginManager.png
    :width: 1.5em
