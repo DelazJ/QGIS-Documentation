@@ -22,21 +22,41 @@ They can be found through the :menuselection:`Plugins -->`
 |showPluginManager| :menuselection:`Manage and Install Plugins` menu
 and are not necessarily enabled by default.
 
-.. table:: QGIS Core Plugins
+.. list-table:: QGIS Core Plugins
+   :header-rows: 1
+   :widths: 30 40 30
+   :class: longtable
 
-  ==================================================  ======================================================  ===============================
-   Plugin                                              Description                                             Manual Reference
-  ==================================================  ======================================================  ===============================
-   |geoprocessing| Additional QGIS Processing Tools    Enable Python-based Processing core algorithms          :ref:`label_processing`
-   |geometryChecker|  Geometry Checker                 Check and repair errors in vector geometries            :ref:`geometry_checker`
-   |gdal| GDAL Processing provider                     Enable GDAL-based Processing core algorithms            :ref:`gdal_algorithms`
-   |grassTools| GRASS 8                                GRASS functionality                                     :ref:`sec_grass`
-   |grassLogo| GRASS Processing provider               GRASS Processing core algorithms                        :ref:`sec_grass`
-   |metasearch| MetaSearch Catalog Client              Interact with metadata catalog services (CSW)           :ref:`metasearch`
-   |offlineEditingCopy| Offline Editing                Offline editing and synchronizing with database         :ref:`offlinedit`
-   |geoprocessing| Processing                          Spatial data processing framework                       :ref:`label_processing`
-   |topologyChecker| Topology Checker                  Find topological errors in vector layers                :ref:`topology`
-  ==================================================  ======================================================  ===============================
+   * - Plugin
+     - Description
+     - Manual Reference
+   * - |geoprocessing| :guilabel:`Additional QGIS Processing Tools`
+     - Enable Python-based Processing core algorithms
+     - :ref:`label_processing`
+   * - |geometryChecker|  :guilabel:`Geometry Checker`
+     - Check and repair errors in vector geometries
+     - :ref:`geometry_checker`
+   * - |gdal| :guilabel:`GDAL Processing provider`
+     - Enable GDAL-based Processing core algorithms
+     - :ref:`gdal_algorithms`
+   * - |grassTools| :guilabel:`GRASS 8`
+     - GRASS functionality
+     - :ref:`sec_grass`
+   * - |grassLogo| :guilabel:`GRASS Processing provider`
+     - Enable GRASS Processing core algorithms
+     - :ref:`sec_grass`
+   * - |metasearch| :guilabel:`MetaSearch Catalog Client`
+     - Interact with metadata catalog services (CSW)
+     - :ref:`metasearch`
+   * - |offlineEditingCopy| :guilabel:`Offline Editing`
+     - Offline editing and synchronizing with database
+     - :ref:`offlinedit`
+   * - |geoprocessing| :guilabel:`Processing`
+     - Spatial data processing framework
+     - :ref:`label_processing`
+   * - |topologyChecker| :guilabel:`Topology Checker`
+     - Find topological errors in vector layers
+     - :ref:`topology`
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
